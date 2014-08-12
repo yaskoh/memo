@@ -1,0 +1,54 @@
+* git
+
+** command
+
+- git init
+
+- git add
+    追跡対象にしたり、変更をステージしたりと、いくつか意味がある。
+    
+
+- git commit
+    ステージされた変更をコミットする。
+    -v diffの内容も表示する。
+    -m インラインでメッセージを記載
+    -a 追跡対象となっているファイルを追加してからコミット
+
+- git clone
+    既存リポジトリのコピーを取得する
+    git clone url [directory]
+
+- git status
+    状態を確認する。
+
+- git diff
+    差分を表示する。オプションをつけない場合はステージされていない変更の表示。
+    また、--cached / --stagedオプションをつけると、ステージされた変更の差分を表示する。
+
+- git rm
+    追跡対象からファイルを削除し、作業ディレクトリからも除く。
+    --cached ステージ上からのみファイルを取り除く。
+    -f すでにステージされた変更も含めて削除したい場合。
+
+- git mv
+    ファイルを移動する。git mv file_from file_to
+    実際は以下と一緒。
+      mv file_from file_to
+      git rm file_from
+      git add file_to
+
+- git log
+
+
+** status
+
+|--------------------+------------------+-------------------+-----------|
+| untractked         | unmodified       | modified          | staged    |
+|--------------------+------------------+-------------------+-----------|
+| add the file =>    |                  |                   |           |
+|                    | edit the file => |                   |           |
+|                    |                  | stage the file => |           |
+| <= remove the file |                  |                   |           |
+|                    |                  | <= commit         | <= commit |
+|--------------------+------------------+-------------------+-----------|
+

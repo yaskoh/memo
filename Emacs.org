@@ -1,0 +1,12 @@
+* Emacs
+
+** memo
+
+çsî‘çÜ
+    M-x linum
+
+dired
+    C-x C-j
+
+IME on/off
+    C-\

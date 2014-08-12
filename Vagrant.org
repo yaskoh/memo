@@ -1,0 +1,27 @@
+* Vagrant
+
+
+init
+
+up
+
+suspend
+
+halt
+
+display
+
+reload
+
+resume
+
+status
+
+provision
+
+box
+
+package
+
+plugin
+

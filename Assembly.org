@@ -1,0 +1,273 @@
+* Assembly
+
+** レジスタ
+
+- 汎用レジスタ
+    31            (15)    15 8    7 0
+    EAX            AX        AH        AL
+    EBX            BX        AH        AL
+        何でも使う
+    ECX            CX        CH        CL
+        何にでも使うが主にカウンタ
+    EDX            DX        DH        DL
+        何でも使う
+
+        EnXは32bit
+        nH,nLが8bitで両者を合わせたものがnX（16bit）
+
+    ESI            SI
+    EDI            DI
+        ストリング命令に利用するが、何に利用しても良い
+    EBP            BP
+        特別な用途に利用し、めったに利用しない
+    ESP            SP
+        スタックを格納するアドレスのオフセット
+
+- ステータス・制御レジスタ
+
+    EIP            IP
+        次に実行するアドレスのオフセットを指す
+    EFLAGS        FLAGS
+        CPUの状態や前の命令のエラー状態が入る
+
+- セグメントレジスタ
+
+    15    0
+    CS
+        次に実行するアドレスのセグメントを指す
+    SS
+        スタックを格納するアドレスのセグメントを指す
+    DS, ES
+        データを読み書きするアドレスのセグメントを指す
+
+
+** 命令
+
+    move dest,src
+    (.COMはセグメントレジストが全て同じ値)
+
+- ソフトウェア割り込み
+    int
+        ソフトウェア割り込み
+        "int 21h"がファンクションコール
+        AHの内容で実行値が変わる。
+        AHに4Chが入っている時にint 21hを動かすと終了する。
+
+
+- 即値の転送
+    mov ah,10     10進数
+    mov ah,10h    16進数
+    mov ah,10o    8進数
+    mov ah,10b    2進数
+    mov ah,'A'    文字コード
+    mov ax,offset DATA    DATAという変数のアドレス
+
+
+- 直接アドレス法
+
+    mov DATA,al        変数に書き込む
+    mov [1000h],al    アドレスに書き込む
+
+    メモリ  レジストリと違い大きさが分からないため大きさを書く
+    mov byte ptr DATA, 0 (byte ptr)
+    mov word ptr DATA, 0 (word ptr)
+    or
+    mov DATA, byte ptr 0
+    mov DATA, word ptr 0
+    (コンパイラによって書き方が違う)
+
+- 間接アドレス法(メモリのアドレスをレジスタを使って指定)
+
+    mov bx,offset DATA
+    mov byte ptr [bx], 0
+    or
+    mov [bx], byte ptr 0
+    mov [byte ptr bx], 0
+
+    ワード以上だと逆順に格納
+    mov [1000h],word ptr 1234h ⇒ 34h(1000h), 12h(1001h)
+    mov [1000h],dword ptr 12345678h ⇒ 78h(1000h), 56h(1001h), 34h(1000h), 12h(1000h)
+
+
+- 疑似命令
+    CPUでなくアセンブラに伝える命令を「疑似命令」という。
+    DB    byte
+    DW    word
+    DD    dword
+
+
+- 足し算
+
+    ADD DEST,SRC (DEST←DEST+SRC)
+    ADC DEST,SRC
+
+    AAA
+        桁超えをしたものを補正してくれる
+
+
+- フラグ
+    CF    キャリーフラグ
+    PF    パリティーフラグ
+    AF    補助フラグ
+    ZF    ゼロフラグ
+    SF    サインフラグ
+    IF    割り込み許可フラグ
+    DF    ディレクションフラグ
+    SF    オーバーフローフラグ
+
+
+- 引き算
+    SUB DEST,SRC
+    SBB DEST,SRC    (キャリーフラグつき)
+
+
+- かける
+    MUL SRC        符号なし
+    IMUL SRC    符号付き
+        AX        AL×SRC
+        DX:AX    AX×SRC
+        EDX:EAX    EAX×SRC
+
+- わる
+    DIV SRC
+    IDIV SRC
+        AX÷SRC→余AH, 商AL
+        DX:AX÷SRC→余DX, 商AX
+        EDX:EAX÷SRC→余EDX, 商EAX
+
+
+- INC, DEC
+    1足す（引く）
+
+
+- JMP DEST
+    DESTに移行する
+    short, near, farがある。
+
+- CMP SRC1,SRC2
+    比較
+    SRC1 - SRC2のフラグのみ残る
+
+
+JCXZ DEST
+JECXZ DEST
+    条件分岐。CX(ECX)が0のときジャンプ。
+
+LOOP SRC
+    (E)CX=(E)CX-1,not equal 0ならSRCにショートジャンプ
+
+LOOPZ, LOOPE SRC
+    ZF=1ならジャンプ
+LOOPNZ, LOOPNE SRC
+    ZF=0ならジャンプ
+
+- サブルーチン
+    CALL
+    RET
+        SS:SPを2増やしてcall, 2減らしてret
+
+    先：public サブルーチン名
+    元：extern サブルーチン名:near
+
+    PUSH
+    POP
+
+    PUSHA,POPA        AX,CX,DX,BX,SP,BP,SI,DI(POPはA逆順）
+    PUSHAD,POPAD    EAX,ECX...
+
+    PUSHF,POPF        FLAGS
+    PUSHFD,POPFD    EFLAGS
+
+- 論理
+    AND DEST,SRC
+    OR DEST,SRC
+    XOR DEST,SRC
+    NOT DEST
+    NEG DEST
+        2の補数
+    TEST SRC1,SRC2
+        論理積(ANDと同じ)、結果が保持されずフラグのみ持つ
+
+- シフト
+    SHR DEST,COUNT
+    SHL DEST,COUNT
+    SAR DEST,COUNT
+    SAL DEST,COUNT
+        算術（最上位ビットが保存）
+
+- ローテート
+    RCL, RCR キャリーフラグ込み
+    ROL, ROR キャリーフラグは溢れ分
+
+
+
+- ストリング命令
+    読み出しは[DS:SI]
+    書き出しは[ES:DI]
+    レジスタはEAX,AX,ALのみ
+
+
+    MOVSB, MOVSW, MOVSD
+    REP MOVS?
+        CX回繰り返す
+    REP,REPE(REPZ),REPNE(REPNZ)
+
+    CLD        DF=0
+    STD        DF=1
+
+
+    LODS?
+        メモリをレジストリAL,AX.EAXに読み込む
+    STOS?
+        レジストリをメモリに
+    SCAS?
+        レジスタとメモリを比較
+    CMPS?
+        [DS:SI]と[ES:DI]の比較
+
+- 入出力
+    Memory Mapped I/O
+        メモリ空間の一部を制御用の空間に
+    I/O Mapped I/O
+        メモリと制御は別
+        IN,OUTなど専用命令がある
+
+    IN DEST,SRC
+        SRCのポートに接続されているデバイスの状態を読みだす
+    OUT DEST,SRC
+        DESTに接続されているデバイスにコマンドを送る
+
+    INS?
+    OUTS?
+        ストリング命令用
+
+
+- 他
+    LEA DEST,SRC
+        SRCの実行アドレスを計算し、DESTに代入
+    XCHG DEST1,DEST2
+        DEST1とDEST2を交換する
+    NOP
+        何もしない。あとで書くための場所の確保とか。
+
+
+- 割り込み
+    トラップ
+        INT
+    フォルト
+        メモリー制限
+    アボート
+        例外。0除算などで発生。
+
+
+
+
+
+
+
+
+
+
+
+
+

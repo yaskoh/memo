@@ -1,0 +1,117 @@
+* HTML
+
+** tag:
+    <html>
+
+    <body>
+
+    <script>
+    <noscript>
+
+    <h1> to <h6>
+    <hr>
+    <!-->
+    <p> paragraph
+    <br> line breaks
+    <a>
+    <img>
+      <map>
+      <area>
+    <table>
+      <tr>
+        <th>
+        <td>
+      <thead>
+      <tbody>
+      <tfoot>
+    <ol>
+    <ul>
+    <li>
+    <div>
+    <span>
+
+    
+    <form>
+      <input>
+        type="text", "password", "radio", "checkbox", "submit"
+      <label>
+      <fieldset> group related elements in a form. draws a box around the related elements.
+        <legend> caption of fieldset
+    <textarea>
+    <select> drop-down list
+    <datalist>
+      <optgroup> group of option
+        <option> drop-down list elements
+    <button>
+    <keygen> key-pair generator
+    <output> result of a calculation
+
+    <Iframe> Inline Frame
+
+*** FormattingTags
+    <b>
+    <strong>
+    <i>
+    <em>
+    <small>
+    <sub>
+    <sup>
+    <ins>
+    <del>
+    <mark>
+    
+*** ComputerOutputTags
+    <code> computer code
+    <kbd> keyboard text
+    <samp> sample
+    <var> variable
+    <pre>
+    
+*** Citations,Quotations,DefinitionTags
+    <abbr> abbreviation or acronym
+    <address> contact information
+    <bdo> text direction(Bi-Directional Override)
+    <cite> title of a work
+    <dfn> defines a definition term
+
+*** Head(?)
+    <head>
+    <title>
+    <base>
+    <link>
+    <style>
+    <meta>
+
+** Symbol
+  Entities
+    &nbsp;       non-breaking space
+    &lt;     <   less than
+    &gt;     >   greater than
+    &cent;
+    &pound;
+    &yen;
+    &euro;
+    &copy;       copyright
+    &reg;        registered trademark
+
+  Symbols
+    &forall;
+    &part;
+    &exist;
+    &empty;
+    &nabla;
+    ...
+    &larr;   Å©   leftwards arrow
+    &uarr;   Å™   upwards arrow
+    &larr;   Å®   rightwards arrow
+    &larr;   Å´   downwards arrow
+    
+    
+** memo
+
+Use lower case
+
+Attribute values should always be enclosed in quotes.
+    class, id, style, title
+
+

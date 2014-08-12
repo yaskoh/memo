@@ -1,0 +1,175 @@
+* Ruby
+
+** 初めてのRuby
+
+- オブジェクト
+    アイデンティティを持っている
+    メッセージを受け取る
+    内部状態を持つ
+
+- 型付け
+    Rubyは強く型付けされた言語なので、原則的には勝手に他の型にかわることはない。
+    to_i, to_s, to_f, to_ioなどが用意されている。
+    
+.class
+    
+
+
+[[http://i.loveruby.net/ja/rhg/book/][** Rubyソースコード完全解説]]
+
+*** ruby言語ミニマム
+- rubyに基本形はない。
+- 配列
+    [1,2,3]
+- ハッシュテーブル
+    {"key1"=>"value", "key2"=>"value2"}
+- ローカル変数
+    小文字から始まる
+- 定数
+    大文字から始まる
+- インスタンス変数
+    @から始まる
+- 制御
+    ifとwhile
+- boolean
+    falseとnilのみが偽、他は0や空文字も真。
+- クラス
+    「Stringのupcaseメソッド」→「String#upcase」
+    「Object.new」はクラスオブジェクトObjectそれ自体に対して呼ぶメソッドnew、の意味。
+    クラスの中にinitializeというメソッドを定義しておくと、newした際に呼んでくれる(newの仕様)
+    継承は以下のように書く
+       class C < SuperClassName
+       end
+    省略した場合はObjectがスーパークラスとなる。
+    すべてのクラスはObjectクラスを直接または間接に継承する。
+- メソッド
+    self: 自分自身が誰か、という情報
+    自分自身を呼ぶときはself（receiver）を省略できる。
+    self.real_my_p(obj)→real_my_p(obj)
+- モジュール
+    スーパークラスを指定できず、インスタンスも作れないクラス。
+    他のクラスにインクルードして使う。
+    スーパークラスは継承できないが他のモジュールはインクルードできる。
+    クラスとモジュールで同名のメソッドが存在した場合、モジュールが使用される。つまりモジュールの方が近い。
+
+
+
+** etc
+
+encoding
+    # encoding: utf-8(etc)
+
+local variable
+    start with '_' or small alphabet
+constant
+    start with initialized alphabet
+interpolation
+    #{} in ""
+
+array
+    []
+    %w, %W, %i, %I
+
+    insert, delete(_at)
+    unshift, << or push
+    shift, pop
+
+condition
+    if, elsif, else, end
+    unless (=> 
+
+puts
+gets
+    .chomp
+
+print
+    文字列を返す。改行文字なし。
+p
+    読みやすい形にして出力
+
+<=>
+    宇宙船演算子
+
+- 数値
+    クラス構成
+    ・Numeric
+        ・Integer
+            ・Fixnum
+            ・Bignum
+        ・Float
+    メソッド
+        times, upto, downto, step
+
+- 範囲
+    Rangeクラス
+    1..5は終端を含む。(1,2,3,4,5)
+    1...5は終端を含まない。(1,2,3,4)
+
+- 文字列
+    ・バックスラッシュ記法
+        ""はバックスラッシュ記法を使える、''は使えない。
+    ・パーセント記法
+        バックスラッシュのエスケープが毎度毎度面倒な時とかに使うらしい。
+        %Qは式展開やバックスラッシュ記法を使えるが、%qは使えない。
+        ex: str = %q("Ruby", "HTML", "JavaScript", "Rails")
+    ・ヒアドキュメント
+        開始と終了のラベルとしてキーワードを決め、
+        その範囲を文字列オブジェクトとして扱う機能。
+        ex:
+            print <<EOS
+            foo
+            bar
+            baz
+            EOS
+            #=>foobarbaz
+    メソッド
+        +, <<, concat, size, length, empty?, [], split, chomp,
+        upcase, downcase, capitalize, swapcase
+            
+- 正規表現
+    /check/ =~ "original"
+    %rでも正規表現オブジェクト作成可能
+    String#sub(gsub)メソッド
+    
+- 配列
+    Array = [1, 2, 3]
+    Array#length
+    Array#each
+    ・初期化
+        Array.new(3, Ruby) #=> ["Ruby", "Ruby", "Ruby"]
+    unshift, shift, push, pop, first, last, reverse
+    sort, sort_by, each_with_index, inject
+
+- ハッシュ
+    キーには文字列かシンボル、値にはオブジェクトが格納できる。
+    hash = {"key" => value}
+    hash["key"] #=>value
+    Hash#delete
+    keys, include?, key?, values, value?, clear
+
+- 構文
+    until, each, times, for, loop
+        break, next, redo
+
+    yield
+        ブロック付きメソッド呼び出しの際、ブロック中のプログラムの処理を行う。
+
+    alias
+        別名をつける。別名というか、メソッドのコピーみたいな形になるようで、
+        元のメソッドの定義を変更しても、別名をつけたメソッドには反映されない。
+- モジュール
+    module_function
+
+- 特異メソッド
+    オブジェクト特有のメソッド。継承されない。
+    extendにより定義することも可能。
+
+- ファイル操作等
+    入出力
+        組み込み定数：STDIN, STDOUT, STDERR
+        グローバル変数：$stdin, $stdout, #stderr
+    その他クラス・モジュール名
+        IO, File, Dir, FileTest
+        OperURI(open-uri.rb), Find(find.rb), Pathname(pathname.rb),
+        Tempfile(tempfile.rb), FileUtils(fileutils.rb)
+    
