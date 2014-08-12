@@ -1,0 +1,96 @@
+* Linux
+
+** directory
+
+- /
+- /vmlinuz
+   Linux Kernel
+- /boot
+   - System.map
+   - config
+   - grub
+   - initrd.img
+      init ram disk
+- /etc
+   Setting Files
+- /bin
+   commands using by system admin and user
+- /sbin
+   admin tools using by system admin
+- /usr
+   directory which has data shared by users using the system
+   - bin
+   - include
+   - lib
+   - local
+      - bin
+      - etc
+      - games
+      - include
+      - lib
+      - man
+      - sbin
+      - share
+      - src
+   - sbin
+   - share
+- /home
+- /var
+   variable data
+   - tmp
+      directory with sticky bit, that makes the files in the directory not able to delete without the owner
+   - log,spool
+   - mail
+   - run
+      having PID in text files
+   - lock
+- /proc
+   procfs(Process File System)
+   pseudo file system giving system information
+   /proc/PID/oom_score, oom_adj <-concerning with OOM Killer(Out Of Memory Killer)
+- /sys
+   sysfs: devise info, procfs: process and kernel info
+- /dev
+   deployed device files
+- /tmp
+   temporary
+   deleted when unmounting or rebooting
+   
+** command
+
+- touch
+- mkdir
+- rmdir
+
+- chmod
+- chgrp
+
+- tail
+   n:number f: follow (exit with C-c)
+- ls
+- man
+- whatis
+   show summary of man, searched from command names.
+- apropos
+   show result searched from summaries and command names.
+- info
+   info documents on emacs
+- whereis
+- clear
+- ps
+
+- mount
+- unmount
+
+- sysctl
+   system settings
+   /proc/sys/net/ipv4/ip_forward -> net.ipv4.ip_forward (in /etc/sysctl.conf)
+
+** memo
+
+-
+suid
+    set user id
+sgid
+    set group id
+- 

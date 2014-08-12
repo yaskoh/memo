@@ -1,0 +1,54 @@
+* SQL Server Command
+
+** DBCC
+
+- dbcc ind
+    隠しコマンド。インデックスのページ割り当て等の情報を見ることができる。
+    dbcc ind ( { 'dbname' | dbid }, { 'objname' | objid }, { nonclustered indid | 1 | 0 | -1 | -2 } [, partition_number] )
+
+- dbcc page
+    隠しコマンド。ページIDを指定することでページの中身を見ることができる。
+    dbcc page ( {'dbname' | dbid}, filenum, pagenum [, printopt={0|1|2|3} ])
+    プリントオプションは以下。
+        0:ページヘッダのみ 1:ページヘッダ＋データ部 2:ページヘッダ＋データ部の16進ダンプ 3:各行を個別に出力
+    出力するためにはトレースフラグ3604を有効にする必要がある。
+    
+- dbcc help('name')
+    nameで指定されたdbccコマンドの構文情報を返す。
+
+- dbcc traceon(数字) / dbcc traceoff(数字)
+    指定されたトレースフラグを有効/無効にする。
+    カンマ区切りで複数指定可。最後に-1を列挙すると、グローバルに設定が反映される。
+
+- dbcc tracestatus
+    トレースフラグの状態を出力する。
+    DBCC TRACESTATUS ( [ [ trace# [ ,...n ] ] [ , ] [ -1 ] ] ) [ WITH NO_INFOMSGS ]
+
+- dbcc showcontig
+    テーブル・ビューとインデックスの断片化情報を表示する。
+    削除予定機能。ただし、代替とされているdm_db_index_physical_statsではエクステントの断片化を見ることができない。
+
+- dbcc opentran(DB名)
+    DB内にアクティブなトランザクションが存在するか否かを確認できる。
+
+** Procedure
+
+- sp_helptext 'procedure'
+    プロシージャの内容を出力する。
+
+- sp_MSforeachdb / sp_MSforeachtable
+    すべてのdb/tableに対して操作を行うことができる。
+    ex: sp_MSforeachdb @command1="select '?'"
+        ->'?'が補完され、master, tempdb,等のselect結果が返ってくる。
+    @command1以外にも、@command2/3, @whereand, @replacechar, @precommand, @postcommandがある。
+
+
+** 動的管理ビュー
+
+- sys.dm_db_index_physical_stats
+    指定したテーブルまたはビューとインデックスに関する、サイズおよび断片化情報を返す。
+
+- sys.dm_tran_locks
+    ロックマネージャの情報を返す。
+
+

@@ -1,0 +1,63 @@
+* SQL Server Builtin Functions
+
+
+組込関数
+
+
+	関数の種類
+		行セット関数
+		集計関数
+		順位付け関数
+		スカラー関数
+			構成関数
+			変換関数
+			カーソル関数
+			日付と時刻のデータ型及び関数
+			論理関数
+			数学関数
+			メタデータ関数
+			セキュリティ関数
+			文字列関数
+			システム関数
+			システム統計関数
+			テキストとイメージ関数
+
+
+
+-------------------------------------------------------------
+
+行セット関数
+	テーブル参照の代わりに使用できるオブジェクトを返す。
+
+	OPENDATASOURCE
+
+	OPENQUERY
+
+	OPENROWEST
+
+	OPENXML
+
+
+
+集計関数
+	値の集まりに対し計算を実行し、1つの値を返す。
+	決定的(deterministic)。
+
+	AVG
+		平均値
+	CHECKSUM_AGG
+		チェックサムを返す。テーブルの変更を検出する場合などに使用。
+	COUNT
+		件数を返す。戻り値はint型。
+	COUNT_BIG
+		件数を返す。bigintを返す。COUNTと動きは同じ。
+	GROUPING
+		rollupやcube、grouping setsを使った場合に返されるnullを区別する。
+	GROUPING_ID
+	MAX
+	MIN
+	SUM
+	STDEV
+	STDEVP
+	VAR
+	VARP
