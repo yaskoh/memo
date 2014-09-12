@@ -10,3 +10,6 @@ dired
 
 IME on/off
     C-\
+
+’uŠ·‚Ì‰üs
+    ^J

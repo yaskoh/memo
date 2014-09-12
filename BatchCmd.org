@@ -1,0 +1,32 @@
+Batch
+
+- IF文の複数条件指定
+    ANDやORに相当する機能はない。ただし、AND条件であればIF文を並べて記述できる。
+    ex:) IF %A% == 1 IF %B% == 2 (
+             REM 1かつ2のAND条件
+         ) ELSE (
+             それ以外
+         )
+    [[http://capm-network.com/?tag=Windows%E3%83%90%E3%83%83%E3%83%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87][CapmNetwork Windowsバッチファイル制御構文]]
+
+- 処理の途中で改行を入れる
+    バッチファイルでのエスケープシーケンスは「^(hat)」なので、
+    改行前に^をおくと複数行を1行として扱える。
+    ex:) IF %ABCDEFGHIJKLM% ==1 ^
+         IF %NOPQRSTUVWXYZ% ==2 (
+             REM 処理
+         )
+    [[http://orangeclover.hatenablog.com/entry/20100810/1281450669][みちしるべ バッチファイルで長い1行の処理を改行を入れて複数行に分けて書きたい]]
+    [[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
+
+- 環境変数の消し方
+    "SET 変数="とする。
+    たとえば変数XYZを初期化したければ、"set XYZ="でよい。
+    [[http://orangeclover.hatenablog.com/entry/20090826/1251293551][みちしるべ 3.環境変数 (1)環境変数の使い方 ～意外に削除の仕方はしらない人が多い～ 【コマンドプロンプト、バッチファイルを使わなきゃならなくなった人向けのメモ】]]
+
+- バッチでの標準入力待ち
+    "SET /P 変数=出力文字列"、という感じの構文。
+    たとえば"set /P var=好きな英数字を入力してください。"とすると、
+    "好きな英数字を入力してください。"と画面に出力された後入力待ちになり、
+    改行するまでの文字列がvarに格納される。
+    [[http://oshiete.goo.ne.jp/qa/1635931.html][バッチファイルでユーザーに入力させた値を取得する]]

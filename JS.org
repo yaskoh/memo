@@ -1,4 +1,6 @@
-* JavaScript
+JavaScript
+
+* various
 
 標準スクリプト言語の指定
     HTML4.01までは、以下の記述によりonclickなどで使われる標準のスクリプト言語指定が推奨されていたが、
@@ -20,7 +22,7 @@ Math
     Math.pow(x,y) // xのyべき乗
 
 
-*W3C
+* W3C
 
 Syntax
   Loop
@@ -66,3 +68,27 @@ Object
 
 Developer Tool
   Ctrl-Shift-J or F12
+
+
+
+* memo
+
+** DOM
+
+*** window
+
+- setInterval
+    一定の遅延間隔を置いて関数を繰り返し呼び出す。
+    ex: intervalId = window.setInterval(animate, 500)
+
+- clearInterval
+    setIntervalを使用して設定された繰り返し動作をキャンセルする。
+    ex: window.clearInterval(intervalID)
+
+**** document
+
+- readyState
+    読み込み中の場合"loading",
+    パースが完了したがサブリソースが読み込み中の場合"inactivate",
+    サブリソースの読み込みも完了した時点で"complete"となる。
+

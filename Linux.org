@@ -2,95 +2,395 @@
 
 ** directory
 
-- /
-- /vmlinuz
-   Linux Kernel
-- /boot
-   - System.map
-   - config
-   - grub
-   - initrd.img
-      init ram disk
-- /etc
-   Setting Files
-- /bin
-   commands using by system admin and user
-- /sbin
-   admin tools using by system admin
-- /usr
-   directory which has data shared by users using the system
-   - bin
-   - include
-   - lib
-   - local
-      - bin
-      - etc
-      - games
-      - include
-      - lib
-      - man
-      - sbin
-      - share
-      - src
-   - sbin
-   - share
-- /home
-- /var
-   variable data
-   - tmp
-      directory with sticky bit, that makes the files in the directory not able to delete without the owner
-   - log,spool
-   - mail
-   - run
-      having PID in text files
-   - lock
-- /proc
-   procfs(Process File System)
-   pseudo file system giving system information
-   /proc/PID/oom_score, oom_adj <-concerning with OOM Killer(Out Of Memory Killer)
-- /sys
-   sysfs: devise info, procfs: process and kernel info
-- /dev
-   deployed device files
-- /tmp
-   temporary
-   deleted when unmounting or rebooting
+- / (FHS)
+    + 第一階層、ルートディレクトリ
+    - bin
+      + シングルユーザモードで必要となる一般ユーザ向け基本コマンドの実行ファイル。
+      + 必須: cat, chgrp, chmod, chown, cp, date, dd, df, dmesg, echo, false, hostname,
+              kill, ln, login, ls, mkdir, mknod, more, mount, mv, ps, pwd, rm, rmdir,
+              sed, sh, stty, su, sync, true, unmount, uname
+      + オプション: csh, ed, tar, cpio, gzip, gunzip, zcat, netstat, ping
+    - boot
+        +ブートローダ関連のファイル群。カーネルやinitrd。通常別パーティション。
+    - dev
+        + 基本デバイス。/dev/null, /dev/consoleなど。
+    - etc
+        + システム全体の固有設定ファイル群。バイナリファイルを置かない。
+        + fstab, gateway, group, hosts, password, profile, servicesなど。
+        - opt
+            + /opt/のための設定ファイル群。
+        - X11
+            + X Window System用の設定ファイル群。
+        - sgml
+            + sgml設定ファイル群。
+        - xml
+            + xml設定ファイル群。
+    - home
+        + ユーザのホームディレクトリ。オプション。
+    - lib
+        + /bin や /sbin にある実行ファイルの基本となるライブラリ群。
+    - lost+found (FHSの規定にはなし)
+        + fsckでディスクチェックした際に作られる、破損ファイルの断片を収めるディレクトリ。
+    - media
+        + CD-ROMなどのリムーバブル媒体マウントポイント。
+    - mnt
+        + ファイルシステムの一時マウントポイント。
+    - opt
+        + オプションのアプリケーションソフトウェアのインストール用
+    - proc
+        + カーネルやプロセスの情報をテキストで示す仮想ファイルシステム。
+          procfsのマウントポイント。
+    - root
+        + rootユーザのホームディレクトリ。オプション。
+    - sbin
+        + システム管理系コマンドの実行ファイル群。
+        + 必須: shutdown
+        + オプション: fastboot, fasthalt, fdisk, fsck, fsck.*, getty, halt, ifconfig, init,
+                      mkfs, mkfs.*, mkswap, reboot, route, swapon, swapoff, update
+    - srv
+        + システムによって提供された(served)固有のデータ
+    - tmp
+        + 一時ファイル置場。リブート時には内容が削除される。
+    - usr
+        + ユーザユーティリティとアプリケーションを格納。
+        - bin
+            + 一般ユーザ向けだが基本的でないコマンド。
+              シングルユーザモードには不要なバイナリで、パッケージの追加削除でファイルは増減する。
+        -include
+            + 標準includeファイル群。C言語で使う標準ヘッダファイル。
+        - lib
+            + /usr/bin や /usr/sbin にある実行ファイルの基本ライブラリ。
+        - sbin
+            + 基本的でない実行ファイル群。ネットワーク用デーモンなど。
+        - share
+            + アーキテクチャに依存しない共有データ
+        - src
+            + ソースコード。
+        - X11R6
+            + X Windows System Version 11 Release 6
+        - local
+            + ホスト固有のローカルデータを格納する。システム管理者が自分でアプリケーションをインストールする場所。
+            - bin
+            - games
+            - include
+            - lib
+            - man
+                + /local/bin用マニュアル
+            - sbin
+                + /sbinと比べて重要でないシステムバイナリを配置する。
+                  /sbinは緊急時に必要なもの、/usr/sbinは通常運用時。
+            - share
+                + アーキテクチャに依存しないデータを収める。
+                - man
+                    - man1
+                        + ユーザプログラム
+                    - man2
+                        + システムコール
+                    - man3
+                        + Cライブラリ関数
+                    - man4
+                        + スペシャル(デバイス)ファイル
+                    - man5
+                        + ファイルフォーマット
+                    - man6
+                        + ゲーム
+                    - man7
+                        + その他
+                    - man8
+                        + システム管理
+            - misc
+            - src
+    - var
+        + 可変なファイル群。内容が常に変化するようなファイル群を格納する。
+          ログ、スプール、一時的な電子メール等。
+        - cache
+            + アプリケーションのキャッシュデータ。
+              普通は要領に上限を設けて、古い順に捨てていく。
+        - lib
+            + 状態情報。データベース、パッケージングシステムのメタデータなど。
+            - misc
+        - local
+        - lock
+            + ロックファイル群。使用中リソースを保持するファイル。排他制御を行いたい場合に使用する。
+        - log
+            + 各種ログ
+        - opt
+        - mail
+            + メール
+        - run
+            + 走行中システムに関する情報。現在ログイン中のユーザ、走行中デーモン等。
+              "`kill -HUP `cat /var/run/sendmail.pid`"などするとプロセス番号をタイポせずよい。
+        - spool
+            + 処理待ちスプール。プリントキュー、未読メールなど。
+            - mail
+                + 互換のためのかつてのメールボックス。
+        - tmp
+            + 一時ファイル置場。/tmpとは異なり、リブートしても内容が失われない。
+
+    + ディレクトリの分類
+      |----------+----------------------------+---------------------|
+      |          | 共有可能                   | 共有不可            |
+      |----------+----------------------------+---------------------|
+      | 変化せず | /usr, /opt                 | /etc, /boot         |
+      |----------+----------------------------+---------------------|
+      | 変化する | /var/mail, /var/spool/news | /var/run, /var/lock |
+      |----------+----------------------------+---------------------|
+
+
+- / (何を参照したかは忘れた。)
+    - vmlinuz
+        Linux Kernel
+    - boot
+        - System.map
+        - config
+        - grub
+        - initrd.img
+          init ram disk
+    - etc
+        Setting Files
+    - bin
+        commands using by system admin and user
+    - sbin
+        admin tools using by system admin
+    - usr
+        directory which has data shared by users using the system
+        - bin
+        - include
+        - lib
+        - local
+            - bin
+            - etc
+            - games
+            - include
+            - lib
+            - man
+            - sbin
+            - share
+            - src
+        - sbin
+        - share
+    - home
+    - var
+        variable data
+        - tmp
+            directory with sticky bit, that makes the files in the directory not able to delete without the owner
+        - log,spool
+        - mail
+        - run
+            having PID in text files
+        - lock
+    - proc
+        procfs(Process File System)
+        pseudo file system giving system information
+        /proc/PID/oom_score, oom_adj <-concerning with OOM Killer(Out Of Memory Killer)
+    - sys
+        sysfs: devise info, procfs: process and kernel info
+    - dev
+        deployed device files
+    - tmp
+        temporary
+        deleted when unmounting or rebooting
    
 ** command
+
+- mv
+    リネームとかファイルの移動とか。
+    mv aaa{,bbb}とするとaaa->aaabbbにリネームされる。
 
 - touch
 - mkdir
 - rmdir
 
 - chmod
+    アクセス権限の変更。
+    u:所有者 g:グループ o:その他すべて a:すべての権限
+    +:権限付与 -:権限削除 =:権限の書き換え
+    r:読み込み w:書き込み x:実行 s:セットID t:スティッキービット
+    - SUID
+        SUID(Set User ID)は特殊なパーミッションのひとつで、
+        実行可能ファイルに設定する。
+        実行権にRootユーザのユーザIDをセットできる。
+        u+s, 4xxx
+    - SGID
+        SGID(Set Group ID)は特殊なパーミッションのひとつで、
+        実行可能ファイルおよびディレクトリに設定する。
+        実行権にGroupのグループIDをセットできる。
+        g+s, 2xxx
+    - スティッキービット
+        特殊なパーミッションのひとつで、ディレクトリに対して設定する。
+        書き込み権限があっても、自分以外のユーザが所有するファイルを削除できなくなる。
+        o+t, 1xxx
 - chgrp
 
 - tail
-   n:number f: follow (exit with C-c)
+    n:number f: follow (exit with C-c)
 - ls
 - man
 - whatis
-   show summary of man, searched from command names.
+    show summary of man, searched from command names.
 - apropos
-   show result searched from summaries and command names.
+    show result searched from summaries and command names.
 - info
-   info documents on emacs
+    info documents on emacs
 - whereis
 - clear
 - ps
 
 - mount
+    [--bind] すでにマウントされているツリーの一部を別の場所にマウントする。
+    [-v] verbose
+    [-t] ファイルシステムのタイプを指定
+        ext3, ntfs, sysfs, devpts, proc, tmpfsなど。
+
 - unmount
 
 - sysctl
-   system settings
-   /proc/sys/net/ipv4/ip_forward -> net.ipv4.ip_forward (in /etc/sysctl.conf)
+    system settings
+    /proc/sys/net/ipv4/ip_forward -> net.ipv4.ip_forward (in /etc/sysctl.conf)
+
+- fdisk
+    パーティションを設定する。
+    [- l] リストを取得する。 (sudo fdisk -l /dev/sda)
+
+- dmesg
+    カーネルのメッセージバッファの内容を表示する。"display message"の略。
+
+- df
+    ファイルシステムについて、使用領域と空き領域のサイズを表示する。
+    disk free : display free disk space.
+    [-h] サイズの単位をつけてくれる。
+    [-a] サイズが0のファイルシステムも出力
+    [-T] ファイルシステムの種類(ex: ext4)も出力
+
+- mkfs
+    ファイルシステムの作成
+    [-t] ファイルシステムタイプを指定する。
+    [-V] verboseもversionも兼用しているようです。
+    ex: mkfs -v -t ext4 /dev/sdb1
+
+- mkswap
+    スワップ領域を設定する。
+    mkswap /dev/sbd2
+
+- export
+    変数を大域変数として追加する。
+    export FOO="BAR"
+
+- ln
+    [-s, --symbolic] シンボリックリンクの作成
+    [-v, --verbose]
+
+- groupadd
+    新しいグループの作成
+- useradd
+    新規ユーザの作成
+    [-s] shellを設定する。
+    [-g] 主グループを設定する。
+    [-m] ホームディレクトリが存在しない場合に作成する。
+         [-k] -mと同時に指定すると、指定したフォルダ以下のファイルがコピーされる。
+              指定しない場合は/etc/skel以下をコピー。
+
+- passwd
+    ユーザパスワードを変更する。
+
+- chown
+    所有者を変更する。
+    [-v] verbose
+
+- su
+    ユーザを切り替える。
+    [-, -l, --login] シェルをログインシェルにする。
+
+- source
+    "source filename"で、filenameで指定されたスクリプトファイルを実行する。
+    ファイルの内容を、自分で手で打っていくのと同じ。
+
+- tar
+    ファイルを書庫化、展開する。
+    - メインオプション
+        [-A, --catenate] tarファイルを書庫に追加する
+        [-c, --create] 書庫を新規作成する
+        [-d, --diff] 書庫とファイルシステム比較する
+        [--delete] 書庫内からファイルを削除する
+        [-r, --append] 書庫の後部にファイルを追加する
+        [-t, --list] 書庫の内容を表示する
+        [-u, --update] 新しいファイルのみ追加する
+        [-x, --extract] 書庫内からファイルを取り出す
+    - その他
+        [-f] ファイルを指定
+        [-v, --verbose] ファイル一覧を詳細に表示
+    - 形式別(最近は自動判断)
+        [-z] tar + gzip
+        [-j] tar + bzip2
+        [-J] tar + xz
+
+- zip / unzip
+- rar / unrar
+- gzip / gunzip
+- bzip2 / bunzip2
+- xz / unxz
+
+- readelf
+    ELFファイルに関する情報を表示
+
+- make
+    コンパイル等の処理を自動で行う。
+    [-k, --keep-going] エラーが発生してもできるだけ処理を継続させる。
+    [-n, --just-print, --dry-run] 実際には処理せず実行コマンドのみ表示する。
+
+- tee
+    標準入力から読み込んだ内容を、標準出力とファイルの両方へ出力する。
+
+- find
+    ファイルやディレクトリを検索する。
+    用法: find [option] [path...] [expression]
+    [-name] ファイル名を検索、パターンマッチ可。
+    [-exec] 検索後コマンドを実行する。
+
+- strip
+    オブジェクトファイルからシンボル(デバッグ用のデータ)を切り捨てる。
+
+- mknod
+    特殊ファイルを作成する。
+    mknod [オプション] ファイル名 タイプ メジャー マイナー
+    [-m] アクセス権を設定する。デフォルトは0666からumaskを引いたもの。
+    タイプ: b ブロック(buffered)型、c,u キャラクタ(unbuffered)型
+            p FIFO(名前つきパイプ)
+            ※pを指定を指定した場合はデバイス番号（メジャーマイナー）を指定しない。
+
+- chroot
+    ルートディレクトリを変更してコマンドを実行する。
+    chroot directory [command [args]]
+
+- install
+    ファイルをコピーして属性の設定をする。
+    1. install [OPTION]... SOURCE DEST
+    2. install [OPTION]... SOURCE... DIRECTORY
+    3. install -d [OPTION]... DIRECTORY...
+    [-d, --directory] ディレクトリを作成する。
+    [-m, --mode] アクセス権を設定する。
+    [-v, --verbose]
+
+- tzselect
+    タイムゾーンを選択する。
+
+- readlink
+    シンボリックリンクの値を読む。
+    readlink [OPTION]... FILE...
 
 ** memo
 
--
 suid
     set user id
 sgid
     set group id
-- 
+
+- /etc/passwd
+    ユーザ名:暗号化パスワード:UID:GID:ユーザのフルネーム:ユーザのホームディレクトリ:ログインシェル
+
+- /etc/group
+    グループ名:パスワード:GID:ユーザアカウントのリスト(カンマ区切り)
+
+- /etc/nsswitch.conf
+    ネームサービススイッチ(NSS)の設定ファイル。
+    いろいろなカテゴリの名前サービス情報を、どの情報源からどの順序で取得するかを判断するのに使用される。
