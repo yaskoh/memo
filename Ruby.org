@@ -15,10 +15,10 @@
     
 
 
-[[http://i.loveruby.net/ja/rhg/book/][** Rubyソースコード完全解説]]
+** [[http://i.loveruby.net/ja/rhg/book/][Rubyソースコード完全解説]]
 
 *** ruby言語ミニマム
-- rubyに基本形はない。
+- rubyでは全てがオブジェクトで、Javaのintやlongのような基本型(primitive)はない。
 - 配列
     [1,2,3]
 - ハッシュテーブル
@@ -51,6 +51,83 @@
     他のクラスにインクルードして使う。
     スーパークラスは継承できないが他のモジュールはインクルードできる。
     クラスとモジュールで同名のメソッドが存在した場合、モジュールが使用される。つまりモジュールの方が近い。
+
+
+
+** [[http://docs.ruby-lang.org/ja/2.1.0/doc/index.html][オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル(2.1)]]
+
+*** 組み込みライブラリ
+- Ruby本体に組み込まれているライブラリ。
+  このライブラリのクラスやモジュールは、requireを書かなくても使うことが出来る。
+
+**** クラス
+
+***** BasicObject
+- 継承リスト : BasicObject
+- 要約
+  特殊な用途のために意図的にほとんど何も定義されていないクラス。
+  Ruby 1.9以降で導入された。
+
+***** Object
+- 継承リスト : Object < Kernel < BasicObject
+- 要約
+  全てのクラスのスーパークラス。オブジェクトの一般的な振る舞いを定義する。
+
+***** Class
+- 継承リスト : Class < Module  < Object < Kernel < BasicObject
+- 要約
+  クラスのクラス。多くの機能はモジュールからModuleから継承されている。
+- インスタンスメソッド
+  - new(*args, &block) -> object
+    自身のインスタンスを絵師制して返す。
+  - superclass -> Class | nil
+    自身のスーパークラスを返す。
+
+***** Module
+- 継承リスト : Module < Object < Kernel < BasicObject
+- 要約
+  モジュールクラス。
+- インスタンスメソッド
+  - 一覧
+    < <= <=> === > >= ancestors autoload autoload? class_eval module_eval class_variable_defined? class_variables
+    const_defined? const_get const_missing const_set constants include? include_modules inspect name to_s instance_method
+    instance_methods method_defined? prepend private_class_method private_instance_methods private_method_defined?
+    protected_instance_metohds protected_method_defined? public_class_method public_instance_method public_instance_methods
+    public_method_defined? remove_class_variable
+
+***** Dir
+- 継承リスト : Dir < Enumerable < Object < Kernel < BasicObject
+- 要約
+  ディレクトリの操作を行うためのクラス
+- 特異メソッド
+  - 一覧
+    [] glob chdir chroot delete rmdir unlink entries exist? exists? foreach getwd pwd home mkdir new open
+  - glob(pattern, flags = 0) -> [String]
+    ワイルドカードの展開を行い、パターンにマッチするファイル名を文字列の配列として返す。
+    パターンにマッチするファイルがない場合は空の配列を返す。
+    - ワイルドカード
+      - * : 空文字列を含む任意の文字列と一致
+      - ? : 任意の一文字と一致
+      - [] : かぎカッコ内のいずれかの文字と一致。
+             -でつながれた文字は範囲を表す。
+             最初の文字が^である場合は含まれない文字と一致。同様に!も使える。
+      - {} : コンマで区切られた文字列の組み合わせに展開する。
+             {foo, bar{foo,bar}}はfoo, barfoo, barbarにマッチする。
+      - **/ : ワイルドカード*/の0回以上の繰り返しを意味し、ディレクトリを再帰的にたどってマッチを行う。
+              foo/**/barは、foo/bar, foo/*/bar, foo/*/*/bar, ... とマッチする。
+- インスタンスメソッド
+  - 一覧
+    close each inspect path to_path pos tell pos= seek read rewind
+
+**** モジュール
+
+***** Kernel
+- 継承リスト : Kernel
+- 要約
+  全てのクラスから参照できるメソッドを定義しているモジュール。
+  トップレベルのメソッドの再定義に対応するため、Objectクラスのメソッドは実際にはこのモジュールで定義されている。
+
+
 
 
 
