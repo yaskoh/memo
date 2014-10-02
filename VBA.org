@@ -1,0 +1,26 @@
+* VisualBasic
+
+** memo
+
+- ByValとByRef
+
+  何もつけない場合、ByRef(参照渡し)として定義されている。
+  値渡しをしたい場合は明示的にByVal、としなくてはならない。
+  出来る限りつけておくのが良い。
+
+- subとfunction
+
+  functionは戻り値を返す。subはsubroutineの略で戻り値は返さない。
+
+- 代入
+
+  オブジェクトに値を代入するときは、Set A = B、という形で"Set"が必要。
+  値であれば、A = Bとすると代入できる。
+
+- GUIDの作成
+
+  Mid$(CreateObject("Scriptlet.TypeLib").GUID, 2, 36)
+  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBAでGUIDを作成する]]
+
+
+

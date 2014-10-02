@@ -56,34 +56,36 @@
 
 ** [[http://docs.ruby-lang.org/ja/2.1.0/doc/index.html][オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル(2.1)]]
 
-*** 組み込みライブラリ
+*** ライブラリ
+
+**** 組み込みライブラリ
 - Ruby本体に組み込まれているライブラリ。
   このライブラリのクラスやモジュールは、requireを書かなくても使うことが出来る。
 
-**** クラス
+***** クラス
 
-***** BasicObject
+****** BasicObject
 - 継承リスト : BasicObject
 - 要約
   特殊な用途のために意図的にほとんど何も定義されていないクラス。
   Ruby 1.9以降で導入された。
 
-***** Object
+****** Object
 - 継承リスト : Object < Kernel < BasicObject
 - 要約
   全てのクラスのスーパークラス。オブジェクトの一般的な振る舞いを定義する。
 
-***** Class
+****** Class
 - 継承リスト : Class < Module  < Object < Kernel < BasicObject
 - 要約
   クラスのクラス。多くの機能はモジュールからModuleから継承されている。
 - インスタンスメソッド
   - new(*args, &block) -> object
-    自身のインスタンスを絵師制して返す。
+    自身のインスタンスを生成して返す。
   - superclass -> Class | nil
     自身のスーパークラスを返す。
 
-***** Module
+****** Module
 - 継承リスト : Module < Object < Kernel < BasicObject
 - 要約
   モジュールクラス。
@@ -95,7 +97,7 @@
     protected_instance_metohds protected_method_defined? public_class_method public_instance_method public_instance_methods
     public_method_defined? remove_class_variable
 
-***** Dir
+****** Dir
 - 継承リスト : Dir < Enumerable < Object < Kernel < BasicObject
 - 要約
   ディレクトリの操作を行うためのクラス
@@ -119,9 +121,9 @@
   - 一覧
     close each inspect path to_path pos tell pos= seek read rewind
 
-**** モジュール
+***** モジュール
 
-***** Kernel
+****** Kernel
 - 継承リスト : Kernel
 - 要約
   全てのクラスから参照できるメソッドを定義しているモジュール。
@@ -129,6 +131,41 @@
 
 
 
+
+
+**** rexml (ファイルフォーマット)
+
+***** rexml/document
+- DOBスタイルのXMLパーサ。
+  REXML::Document.newでXML文書からDOMツリーを構築し、
+  ツリーのノードの各メソッドで文書の内容にアクセスする。
+- [[http://www.germane-software.com/software/rexml/docs/tutorial.html][REXML Tutorial]] <- これが良い感じ。
+
+****** Elements
+- 継承リスト
+  REXML:Elements < Enumerable < Object < Kernel < BasicObject
+- 要約
+  要素の集合を現すクラス。XPathによる探索をサポートする。
+  REXML::Element#elementsはこのオブジェクトを返す。
+  XPathで相対パスを指定した場合、このレシーバが基準要素となる。
+
+
+****** XPath
+- 継承リスト
+  REXML:XPath < REXML:Functions < Object < Kernel < BasicObject
+- 要約
+  XPathを取り扱うためのクラス。
+  インスタンスは使わずにクラスメソッドのみを使う。
+- 特異メソッド
+  - 一覧
+    each first match
+  - each(element, path = nil, namespaces = {}, variables = {}) {|e| ...} -> ()
+    elementのpathで指定したXPath文字列にマッチする各ノードに対してブロックを呼び出す。
+    ex) REXML::XPath.each(doc, "/root/a/b"){|e| p e.text}
+        docというXMLDocumentから、/root/a/bを順次抜き出し、その要素を出力する。
+  - first(element, path = nil, namespace = {}, variables = {}) -> Node | nil
+    elementのpathで指定したXPath文字列にマッチする最初のノードを返す。
+  - match(element, path = nil, namespaces = {}, variables = {}) -> [Node]
 
 
 ** etc
