@@ -193,15 +193,15 @@
    
 ** command
 
-- mv
+*** mv
     リネームとかファイルの移動とか。
     mv aaa{,bbb}とするとaaa->aaabbbにリネームされる。
 
-- touch
-- mkdir
-- rmdir
+*** touch
+*** mkdir
+*** rmdir
 
-- chmod
+*** chmod
     アクセス権限の変更。
     u:所有者 g:グループ o:その他すべて a:すべての権限
     +:権限付与 -:権限削除 =:権限の書き換え
@@ -220,69 +220,69 @@
         特殊なパーミッションのひとつで、ディレクトリに対して設定する。
         書き込み権限があっても、自分以外のユーザが所有するファイルを削除できなくなる。
         o+t, 1xxx
-- chgrp
+*** chgrp
 
-- tail
+*** tail
     n:number f: follow (exit with C-c)
-- ls
-- man
-- whatis
+*** ls
+*** man
+*** whatis
     show summary of man, searched from command names.
-- apropos
+*** apropos
     show result searched from summaries and command names.
-- info
+*** info
     info documents on emacs
-- whereis
-- clear
-- ps
+*** whereis
+*** clear
+*** ps
 
-- mount
+*** mount
     [--bind] すでにマウントされているツリーの一部を別の場所にマウントする。
     [-v] verbose
     [-t] ファイルシステムのタイプを指定
         ext3, ntfs, sysfs, devpts, proc, tmpfsなど。
 
-- unmount
+*** unmount
 
-- sysctl
+*** sysctl
     system settings
     /proc/sys/net/ipv4/ip_forward -> net.ipv4.ip_forward (in /etc/sysctl.conf)
 
-- fdisk
+*** fdisk
     パーティションを設定する。
     [- l] リストを取得する。 (sudo fdisk -l /dev/sda)
 
-- dmesg
+*** dmesg
     カーネルのメッセージバッファの内容を表示する。"display message"の略。
 
-- df
+*** df
     ファイルシステムについて、使用領域と空き領域のサイズを表示する。
     disk free : display free disk space.
     [-h] サイズの単位をつけてくれる。
     [-a] サイズが0のファイルシステムも出力
     [-T] ファイルシステムの種類(ex: ext4)も出力
 
-- mkfs
+*** mkfs
     ファイルシステムの作成
     [-t] ファイルシステムタイプを指定する。
     [-V] verboseもversionも兼用しているようです。
     ex: mkfs -v -t ext4 /dev/sdb1
 
-- mkswap
+*** mkswap
     スワップ領域を設定する。
     mkswap /dev/sbd2
 
-- export
+*** export
     変数を大域変数として追加する。
     export FOO="BAR"
 
-- ln
+*** ln
     [-s, --symbolic] シンボリックリンクの作成
     [-v, --verbose]
 
-- groupadd
+*** groupadd
     新しいグループの作成
-- useradd
+*** useradd
     新規ユーザの作成
     [-s] shellを設定する。
     [-g] 主グループを設定する。
@@ -290,22 +290,22 @@
          [-k] -mと同時に指定すると、指定したフォルダ以下のファイルがコピーされる。
               指定しない場合は/etc/skel以下をコピー。
 
-- passwd
+*** passwd
     ユーザパスワードを変更する。
 
-- chown
+*** chown
     所有者を変更する。
     [-v] verbose
 
-- su
+*** su
     ユーザを切り替える。
     [-, -l, --login] シェルをログインシェルにする。
 
-- source
+*** source
     "source filename"で、filenameで指定されたスクリプトファイルを実行する。
     ファイルの内容を、自分で手で打っていくのと同じ。
 
-- tar
+*** tar
     ファイルを書庫化、展開する。
     - メインオプション
         [-A, --catenate] tarファイルを書庫に追加する
@@ -324,33 +324,33 @@
         [-j] tar + bzip2
         [-J] tar + xz
 
-- zip / unzip
-- rar / unrar
-- gzip / gunzip
-- bzip2 / bunzip2
-- xz / unxz
+*** zip / unzip
+*** rar / unrar
+*** gzip / gunzip
+*** bzip2 / bunzip2
+*** xz / unxz
 
-- readelf
+*** readelf
     ELFファイルに関する情報を表示
 
-- make
+*** make
     コンパイル等の処理を自動で行う。
     [-k, --keep-going] エラーが発生してもできるだけ処理を継続させる。
     [-n, --just-print, --dry-run] 実際には処理せず実行コマンドのみ表示する。
 
-- tee
+*** tee
     標準入力から読み込んだ内容を、標準出力とファイルの両方へ出力する。
 
-- find
+*** find
     ファイルやディレクトリを検索する。
     用法: find [option] [path...] [expression]
     [-name] ファイル名を検索、パターンマッチ可。
     [-exec] 検索後コマンドを実行する。
 
-- strip
+*** strip
     オブジェクトファイルからシンボル(デバッグ用のデータ)を切り捨てる。
 
-- mknod
+*** mknod
     特殊ファイルを作成する。
     mknod [オプション] ファイル名 タイプ メジャー マイナー
     [-m] アクセス権を設定する。デフォルトは0666からumaskを引いたもの。
@@ -358,11 +358,11 @@
             p FIFO(名前つきパイプ)
             ※pを指定を指定した場合はデバイス番号（メジャーマイナー）を指定しない。
 
-- chroot
+*** chroot
     ルートディレクトリを変更してコマンドを実行する。
     chroot directory [command [args]]
 
-- install
+*** install
     ファイルをコピーして属性の設定をする。
     1. install [OPTION]... SOURCE DEST
     2. install [OPTION]... SOURCE... DIRECTORY
@@ -371,26 +371,31 @@
     [-m, --mode] アクセス権を設定する。
     [-v, --verbose]
 
-- tzselect
+*** tzselect
     タイムゾーンを選択する。
 
-- readlink
+*** readlink
     シンボリックリンクの値を読む。
     readlink [OPTION]... FILE...
 
 ** memo
 
-suid
+*** suid
     set user id
-sgid
+*** sgid
     set group id
 
-- /etc/passwd
+*** /etc/passwd
     ユーザ名:暗号化パスワード:UID:GID:ユーザのフルネーム:ユーザのホームディレクトリ:ログインシェル
 
-- /etc/group
+*** /etc/group
     グループ名:パスワード:GID:ユーザアカウントのリスト(カンマ区切り)
 
-- /etc/nsswitch.conf
+*** /etc/nsswitch.conf
     ネームサービススイッチ(NSS)の設定ファイル。
     いろいろなカテゴリの名前サービス情報を、どの情報源からどの順序で取得するかを判断するのに使用される。
+
+*** Ctrl-s
+    スクロール停止キー。画面がフリーズしたように見える。
+    ログを見ていて、一時的にとめておくために使ったりする。
+    解除はCtrl-q。
