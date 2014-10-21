@@ -1,0 +1,32 @@
+* Network
+
+** Term
+
+- CSMA/CD
+  Carrier Sence Multiple Access with Collision Domain
+
+- LLC
+  Logical Link Control
+
+- SNAP
+  SubNetwork Access Protocol
+
+- FCS
+  Frame Check Sequence
+
+- CRC
+  Cyclic Redundancy Check
+
+- NIC
+  Network Interface Card
+
+- PoE
+  Power over Ethernet
+
+- OUI
+  Organiation Unique Identifier
+
+- CSMA/CA
+  Collision Domain Multiple Access with Carrrier Avoidance
+
+
