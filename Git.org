@@ -4,310 +4,313 @@
 
 *** git help
 - <verb>
-  <verb>�R�}���h�̃w���v���m�F����B
-  ���l�̃R�}���h�ɁAgit <verb> --help, man git-<verb>������B
+  <verb>コマンドのヘルプを確認する。
+  同様のコマンドに、git <verb> --help, man git-<verb>がある。
 
 *** git init
 - 
-  Git���|�W�g����V���ɍ쐬����R�}���h�B
-  git init�͖{���������|�W�g�����쐬����ۂɈ�x�����g�p������̂ł���A
-  �����̊J���҂����[�J�����|�W�g�����쐬����ۂ�git clone���ăR�s�[����B
+  Gitリポジトリを新たに作成するコマンド。
+  git initは本来中央リポジトリを作成する際に一度だけ使用するものであり、
+  ここの開発者がローカルリポジトリを作成する際はgit cloneしてコピーする。
 - --bare
-  ��ƃf�B���N�g���������Ȃ����Git���|�W�g�����쐬�ł���B
-  ���L���|�W�g���͕K��--bare�t���O���g�p���č쐬����B
-  �m���x�A���|�W�g���Ƀv�b�V�����s���ƕύX�̌돑�����݂��N�����\�������邽�߁B
+  作業ディレクトリを持たない空のGitレポジトリを作成できる。
+  共有レポジトリは必ず--bareフラグを使用して作成する。
+  ノンベアリポジトリにプッシュを行うと変更の誤書き込みを起こす可能性があるため。
 
 *** git clone
 - 
-  �������|�W�g���̃R�s�[���擾����
+  既存リポジトリのコピーを取得する
   git clone url [directory]
 - --depth n <url>
-  ���߂�n�R�~�b�g�������_�E�����[�h
+  直近のnコミットだけをダウンロード
 
 *** git config
 - 
-  ���ڂ̐ݒ���s���B
+  項目の設定を行う。
 
-- �ݒ�t�@�C��
-  �e���|�W�g�� �F <repo>/.git/config
-  ���[�U�ŗL �F ~/.gitconfig
-  �V�X�e���S�� �F $(prefix)/etc/gitconfig
+- 設定ファイル
+  各リポジトリ ： <repo>/.git/config
+  ユーザ固有 ： ~/.gitconfig
+  システム全体 ： $(prefix)/etc/gitconfig
 
 - --global user.name <name>
-  ���݂̃��[�U���s���S�ẴR�~�b�g�̃I�[�T�[����ݒ肷��B
+  現在のユーザが行う全てのコミットのオーサー名を設定する。
 - --global user.email <email>
-  �I�[�T�[E���[���A�h���X��ݒ肷��B
+  オーサーEメールアドレスを設定する。
 - --global alias.<alias-name> <git-command>
-  Git�R�}���h�̃V���[�g�J�b�g��ݒ肷��B
+  Gitコマンドのショートカットを設定する。
 - --system core.editor <editor>
-  git command�̂悤�ȃR�}���h�����s����ۂ̃G�f�B�^���w�肷��B
+  git commandのようなコマンドを実行する際のエディタを指定する。
 - --global --edit
-  �O���[�o���Ȑݒ�t�@�C�����e�L�X�g�G�f�B�^�łЂ炭�R�}���h�B
+  グローバルな設定ファイルをテキストエディタでひらくコマンド。
 - --global color.ui "auto"
-  ���[�U�C���^�[�t�F�[�X�������ŐF�t������B
+  ユーザインターフェースを自動で色付けする。
 
 *** git add
 - 
-  ��ƃf�B���N�g�����̕ύX���X�e�[�W���O�G���A�ɒǉ�����R�}���h�B
-  git commit�����s����܂ł͕ύX�����ۂɋL�^����邱�Ƃ͂Ȃ��B
-  �ǐՑΏۂɂ�����A�ύX���X�e�[�W�����肷��B
+  作業ディレクトリ内の変更をステージングエリアに追加するコマンド。
+  git commitを実行するまでは変更が実際に記録されることはない。
+  追跡対象にしたり、変更をステージしたりする。
 - -p, --patch
-  �C���^���N�e�B�u�Ƀp�b�`�̈ꕔ��ǉ�����B
-  y:�X�e�[�W����
-  n:��������
-  s:��菬���������ɕ���
-  e:���ƂŕҏW
-  q:�I������
-  ?:�w���v�B���̃R�}���h���m�F�ł���B
+  インタラクティブにパッチの一部を追加する。
+  y:ステージする
+  n:無視する
+  s:より小さい部分に分割
+  e:手作業で編集
+  q:終了する
+  ?:ヘルプ。他のコマンドを確認できる。
 - i, --interactive
-  �C���^���N�e�B�u�Ƀt�@�C����ǉ�����B
+  インタラクティブにファイルを追加する。
 
 *** git commit
 - 
-  �X�e�[�W���ꂽ�ύX���R�~�b�g����B
-  SVN�͍�����~�ς��邪�AGit�̓X�i�b�v�V���b�g���擾����B
-  - v diff�̓��e���\������B
-  - m �C�����C���Ń��b�Z�[�W���L��
-  - a �ǐՑΏۂƂȂ��Ă���t�@�C����ǉ����Ă���R�~�b�g
-- �R�~�b�g���b�Z�[�W
-  1�s�ڂɃR�~�b�g�̑S�̓I������50�����ȓ��ŁA2�s�ڂ��󔒍s�A3y���ڈȍ~�ɏڍׂ��L�q����̂��W���I�B
+  ステージされた変更をコミットする。
+  SVNは差分を蓄積するが、Gitはスナップショットを取得する。
+  - v diffの内容も表示する。
+  - m インラインでメッセージを記載
+  - a 追跡対象となっているファイルを追加してからコミット
+- コミットメッセージ
+  1行目にコミットの全体的説明を50文字以内で、2行目を空白行、3y合目以降に詳細を記述するのが標準的。
   ex:) Change the message displayed by hello.py
        
        - Update the sayHello() function to output the user's name
        - Change the sayGoodbye() function to a friendlier message
 - --amend
-  �X�e�[�W���ꂽ�ύX�𒼑O�̃R�~�b�g�ƌ������A
-  ���̌��ʐ��������X�i�b�v�V���b�g�Œ��O�̃R�~�b�g��u��������R�}���h�B
+  ステージされた変更を直前のコミットと結合し、
+  その結果生成されるスナップショットで直前のコミットを置き換えるコマンド。
 - -C <commit>
-  �w�肵��<commit>�̃��b�Z�[�W���w�肵�ăR�~�b�g����B
+  指定した<commit>のメッセージを指定してコミットする。
 - -c <commit>
-  <commit>�̃��b�Z�[�W���L��������ԂŃG�f�B�^�������オ��B
+  <commit>のメッセージを記入した状態でエディタが立ち上がる。
 
 *** git status
 - 
-  �X�e�[�W���ꂽ�t�@�C���A�X�e�[�W����Ă��Ȃ��t�@�C���A�ǐՑΏۊO�̃t�@�C���ꗗ��\������B
+  ステージされたファイル、ステージされていないファイル、追跡対象外のファイル一覧を表示する。
 
 *** git log
 - 
-  �R�~�b�g������\������B
+  コミット履歴を表示する。
 
 - -n <limit>
-  �\������R�~�b�g����<limit>�ɐ�������B
+  表示するコミット数を<limit>に制限する。
 - --oneline
-  �e�X�̃R�~�b�g���e��1�s�Ɉ��k���ĕ\������R�}���h�B
+  各々のコミット内容を1行に圧縮して表示するコマンド。
 - --stat
-  ���ς��ꂽ�t�@�C������т��̒��ł̒ǉ��s���ƍ폜�s���𑝌����ŕ\������B
+  改変されたファイルおよびその中での追加行数と削除行数を増減数で表示する。
 - -p
-  �e�X�̃R�~�b�g�ɑ΂���p�b�`��\������B
+  各々のコミットに対するパッチを表示する。
 - --author="<pattern>"
-  ����̃I�[�T�[���s�����R�~�b�g����������B
+  特定のオーサーが行ったコミットを検索する。
 - --grep="<pattern>"
-  �R�~�b�g���b�Z�[�W��<pattern>(�v���[���e�L�X�g���͐��K�\��)�ƈ�v����R�~�b�g����������B
+  コミットメッセージが<pattern>(プレーンテキスト又は正規表現)と一致するコミットを検索する。
 - --prety=format:"<fmt>"
-  �t�H�[�}�b�g�w�肷��B
+  フォーマット指定する。
 - --since="<time>"
-  <time>�ȍ~�̃��O���擾����B5 hours, 1 minute, 2008-10.01(!) ���Ŏw��\
+  <time>以降のログを取得する。5 hours, 1 minute, 2008-10.01(!) 等で指定可能
 - --before="<time>"
-  <time>�ȑO�̃��O���擾����B
+  <time>以前のログを取得する。
 - <since>..<until>
-  <since>��<until>�̊ԂɈʒu����R�~�b�g�݂̂�\������B
-  2�̈����ɂ́A�R�~�b�gID�A�u�����`���AHEAD�A���̑��C�ӂ̃��r�W�������t�@�����X��p���邱�Ƃ��o����B
+  <since>と<until>の間に位置するコミットのみを表示する。
+  2個の引数には、コミットID、ブランチ名、HEAD、その他任意のリビジョンリファレンスを用いることが出来る。
 - <file>
-  ����̃t�@�C�����܂ރR�~�b�g�̂ݕ\������B
+  特定のファイルを含むコミットのみ表示する。
 - --graph --decorate --oneline
-  ���₷�����邽�߂̊e��I�v�V����
+  見やすくするための各種オプション
 
 - -C -C -p
-  �R�s�[�����o����B
+  コピーを検出する。
 
 
 *** git checkout
 - 
-  �t�@�C���̃`�F�b�N�A�E�g�A�R�~�b�g�̃`�F�b�N�A�E�g�A�u�����`�̃`�F�b�N�A�E�g��
-  3�̈قȂ�@�\��L����R�}���h�B
+  ファイルのチェックアウト、コミットのチェックアウト、ブランチのチェックアウトの
+  3つの異なる機能を有するコマンド。
 - <commit>
-  �R�~�b�g�̃`�F�b�N�A�E�g
-  ��ƃf�B���N�g�����̑S�Ẵt�@�C�����A�w�肵���R�~�b�g�Ɠ���̏�ԂɍX�V����R�~�b�g�B
-  �R�~�b�g�n�b�V���܂��̓^�O���d�l�ł���B
-  "detached HEAD"��ԁBgit master���Ō��̏�Ԃɖ߂�B
+  コミットのチェックアウト
+  作業ディレクトリ内の全てのファイルを、指定したコミットと同一の状態に更新するコミット。
+  コミットハッシュまたはタグを仕様できる。
+  "detached HEAD"状態。git master等で元の状態に戻る。
 - <commit> <file>
-  �t�@�C���̃`�F�b�N�A�E�g
-  �t�@�C���̉ߋ��̃��r�W�������`�F�b�N�A�E�g����R�}���h�B
-  ��ƃf�B���N�g���̑��̕����Ɉ�؉e����^���邱�ƂȂ��t�@�C���̉ߋ��̃��r�W�������m�F�ł���B
-  ��ƃf�B���N�g�����͕̂ύX����Ă��܂��̂ŁA�ύX���s�v�ł����git checkout HEAD <file>���Ō��ɖ߂��B
+  ファイルのチェックアウト
+  ファイルの過去のリビジョンをチェックアウトするコマンド。
+  作業ディレクトリの他の部分に一切影響を与えることなくファイルの過去のリビジョンを確認できる。
+  作業ディレクトリ自体は変更されてしまうので、変更が不要であればgit checkout HEAD <file>等で元に戻す。
 
 - <existing-branch>
-  �u�����`�̃`�F�b�N�A�E�g
-  <existing-branch>�����݂̃u�����`�ƂȂ�A����ƈ�v����悤�ɍ�ƃf�B���N�g�����X�V�����B
+  ブランチのチェックアウト
+  <existing-branch>が現在のブランチとなり、それと一致するように作業ディレクトリが更新される。
 - b <new-branch>
-  �V�K�u�����`<new-branch>���쐬���đ����`�F�b�N�A�E�g����R�}���h�B
-  git branch <new-branch> -> git checkout <new-branch> �Ɠ��l�B
+  新規ブランチ<new-branch>を作成して即時チェックアウトするコマンド。
+  git branch <new-branch> -> git checkout <new-branch> と同様。
 - b <new-branch> <existing-branch>
-  ���݂̃u�����`�łȂ��A<exsiting-branch>����_�Ƃ��č쐬����B
-  �^�O���w��B
+  現在のブランチでなく、<exsiting-branch>を基点として作成する。
+  タグも指定可。
 
 
 *** git revert
 - <commit>
-  <commit>�ɂ�������ꂽ���ׂĂ̕ύX�����ɖ߂��V�����R�~�b�g�𐶐����A
-  ��������݂̃u�����`�ɓK�p����R�}���h�B
+  <commit>により加えられたすべての変更を元に戻す新しいコミットを生成し、
+  それを現在のブランチに適用するコマンド。
 
 *** git reset
 - 
-  git reset�R�}���h���g�p���Č��ɖ߂�ƁA���̏�Ԃ𕜌�������@�͂Ȃ��B
-  ���̂��߁A���[�J���ȕύX�����ɖ߂��ꍇ�Ɍ���ׂ��B
-  �����w�肵�Ȃ��ꍇ�A��ƃf�B���N�g���ɉ��̕ύX���������A
-  �X�e�[�W�G���A�����Z�b�g���Ē��O�̃R�~�b�g���̏�Ԃƈ�v������B
+  git resetコマンドを使用して元に戻ると、元の状態を復元する方法はない。
+  そのため、ローカルな変更を元に戻す場合に限るべき。
+  何も指定しない場合、作業ディレクトリに何の変更も加えず、
+  ステージエリアをリセットして直前のコミット時の状態と一致させる。
 - <file>
-  �w�肵���t�@�C�����X�e�[�W���O�G���A����폜����R�}���h�B
+  指定したファイルをステージングエリアから削除するコマンド。
 - --hard
-  ��ƃf�B���N�g���ƃX�e�[�W�G���A�𒼑O�̃R�~�b�g���̏�Ԃƈ�v������R�}���h�B
+  作業ディレクトリとステージエリアを直前のコミット時の状態と一致させるコマンド。
 - <commit>
-  �u�����`�̐�[��<commit>�̈ʒu�ɖ߂��X�e�[�W���O�G���A�����̏�Ԃƈ�v����悤�ɂ��邪�A
-  ��ƃf�B���N�g���͂��̂܂܂ɂ��Ă����B
-- hard <commit>
-  <commit>�ʒu�ɖ߂���ƃf�B���N�g�������킹��B
+  ブランチの先端を<commit>の位置に戻しステージングエリアをその状態と一致するようにするが、
+  作業ディレクトリはそのままにしておく。
+- --hard <commit>
+  <commit>位置に戻し作業ディレクトリもあわせる。
 
 *** git clean
 -
-  �ǐՑΏۊO�̃t�@�C�����폜����B
-  ���ʂ�rm���ō폜���Ă��悢���A���֐��̂��߂ɑ��݂��Ă���B
-  reset���l��t�ȑ���ƂȂ�B
+  追跡対象外のファイルを削除する。
+  普通にrm等で削除してもよいが、利便性のために存在している。
+  reset同様非可逆な操作となる。
 - -n
-  git clean�ō폜�����t�@�C���̈ꗗ���\�������B���ۂɂ͍폜����Ȃ��B
+  git cleanで削除されるファイルの一覧が表示される。実際には削除されない。
 - -f
-  �ǐՑΏۊO�̃t�@�C�����J�����g�f�B���N�g������폜����R�}���h�B
+  追跡対象外のファイルをカレントディレクトリから削除するコマンド。
 - -f <path>
-  �Ώ۔͈͂��w�肵���p�X�Ɍ��肵�A�ǐՑΏۊO�t�@�C�����폜����B
+  対象範囲を指定したパスに限定し、追跡対象外ファイルを削除する。
 
 
 *** git branch
 - 
-  �u�����`�̍쐬�A�ꗗ�\���A���l�[���A�폜���s���R�}���h�B
-  �����w�肵�Ȃ��ꍇ�A���|�W�g�����̃u�����`���ꗗ�\������B
-  �u�����`�͒P�Ȃ�R�~�b�g�ւ̃|�C���^�ŁA�u�����`���쐬���������ł̓��|�W�g���͕ύX����Ȃ��B
+  ブランチの作成、一覧表示、リネーム、削除を行うコマンド。
+  何も指定しない場合、リポジトリ内のブランチを一覧表示する。
+  ブランチは単なるコミットへのポインタで、ブランチを作成しただけではリポジトリは変更されない。
 - <branch>
-  <branch>�Ƃ������̂̐V�K�u�����`���쐬����B
+  <branch>という名称の新規ブランチを作成する。
 - d <branch>
-  �w�肵���u�����`���폜����B�}�[�W����Ă��Ȃ��ύX���c���Ă���ꍇ�͋��ۂ����B
+  指定したブランチを削除する。マージされていない変更が残っている場合は拒否される。
 - D <branch>
-  �}�[�W����Ă��Ȃ��ύX���c���Ă��Ă������I�ɍ폜����R�}���h�B
+  マージされていない変更が残っていても強制的に削除するコマンド。
 - m <branch>
-  ���݂̃u�����`�̖��O��<branch>�ɕύX����B
+  現在のブランチの名前を<branch>に変更する。
 - m <old> <new>
-  <old>�u�����`�̖��O��<new>�ɕύX����B
+  <old>ブランチの名前を<new>に変更する。
 - M <old> <new>
-  <new>�u�����`��<old>�u�����`�ŏ㏑������i�H�j
+  <new>ブランチを<old>ブランチで上書きする（？）
 - r
-  �����[�g�̃u�����`��\������B
+  リモートのブランチを表示する。
 - a
-  �����[�g�ƃ��[�J���̃u�����`�S�Ă�\������B
+  リモートとローカルのブランチ全てを表示する。
 
 *** git merge
 - 
-  git branch�ō쐬���ꂽ�Ɨ��ȕ����̊J�����C�����ЂƂ̃u�����`�ɓ�������R�}���h�B
-  �ȉ��ł͌��݂̃u�����`�ւ̃}�[�W���s���B���݂̃u�����`�͍X�V����A�^�[�Q�b�g�u�����`�͂��̂܂܎c��B
+  git branchで作成された独立な複数の開発ラインをひとつのブランチに統合するコマンド。
+  以下では現在のブランチへのマージを行う。現在のブランチは更新され、ターゲットブランチはそのまま残る。
 - <branch>
-  �w�肵���u�����`�����݂̃u�����`�Ƀ}�[�W����R�}���h�B
-  �}�[�W�A���S���Y���͎����I�ɑI�������B�i������}�[�W���O�����}�[�W�j
+  指定したブランチを現在のブランチにマージするコマンド。
+  マージアルゴリズムは自動的に選択される。（早送りマージか三方向マージ）
 - --no-ff <branch>
-  ��Ƀ}�[�W�R�~�b�g���쐬���ă}�[�W����B
+  常にマージコミットを作成してマージする。
 - --squash
-  ���̃u�����`���玝���Ă����R�~�b�g���A1�̃R�~�b�g�Ɉ��k���ēo�^����B
+  他のブランチから持ってきたコミットを、1つのコミットに圧縮して登録する。
 
 *** git cherry-pick
 - 
-  �ʃu�����`��1�̃R�~�b�g�������擾���ă}�[�W����B
+  別ブランチの1つのコミットだけを取得してマージする。
 - -n
-  �R�~�b�g���T����̂ŁA�A���K�p���邱�ƂŁA�������̃R�~�b�g���`�F���[�s�b�N�ł���B
+  コミットを控えるので、連続適用することで、いくつかのコミットをチェリーピックできる。
 
 
 *** git rebase
 - <base>
-  �u�����`�̊�_�ƂȂ�R�~�b�g��ʂ̃R�~�b�g�Ɉړ����鑀��B
+  ブランチの基点となるコミットを別のコミットに移動する操作。
 - i <base>
-  �C���^���N�e�B�u�ȃx�[�X�Z�b�V�����B
+  インタラクティブなベースセッション。
 
 *** git reflog
-reflog�Ƃ����@�\�������Ă��āA�u�����`�̐�[�ɑ΂���X�V�̒ǐՂ��s���Ă���A
-�����Ȃ�u�����`������^�O������Q�Ƃ���Ă��Ȃ��X�V���e�ł����Ă��߂邱�Ƃ��ł���B
+reflogという機能が働いていて、ブランチの先端に対する更新の追跡が行われており、
+いかなるブランチからもタグからも参照されていない更新内容であっても戻ることができる。
 
 
 *** git remote
-�����[�g�ڑ��B�����N�ł͂Ȃ��u�b�N�}�[�N�̂悤�Ȃ��́B
-�ʏ��HTTP�v���g�R���̓��[�h�I�����[�ŁA�v�b�V�����o���Ȃ��B
-SSH�͗����\�B
+リモート接続。リンクではなくブックマークのようなもの。
+通常はHTTPプロトコルはリードオンリーで、プッシュが出来ない。
+SSHは両方可能。
 - 
-  ���̃��|�W�g���ւ̃����[�g�ڑ��ꗗ���\�������
+  他のリポジトリへのリモート接続一覧が表示される
 - v
-  �e�X��URL���\�������
+  各々のURLも表示される
 - add <name> <unl>
-  �����[�g���|�W�g���ɑ΂���V�K�ڑ����쐬����R�}���h�B
+  リモートリポジトリに対する新規接続を作成するコマンド。
 - rm <name>
-  <name>���|�W�g���ւ̐ڑ����폜����R�}���h�B
+  <name>リポジトリへの接続を削除するコマンド。
 - rename <old-name> <new-name>
-  <old-name>����<new-name>�փ��l�[������R�}���h�B
+  <old-name>から<new-name>へリネームするコマンド。
 - show <name>
-  <name>�����[�g���|�W�g���̏�񂪕\�������B
+  <name>リモートリポジトリの情報が表示される。
 - prune <name>
-  �Â��Ȃ��������[�g���|�W�g������菜��
+  古くなったリモートリポジトリを取り除く
 
 *** git fetch
 - 
-  �ύX�������[�g���|�W�g������擾���邪�A���[�J���u�����`�Ƀ}�[�W���Ȃ��B
+  変更をリモートリポジトリから取得するが、ローカルブランチにマージしない。
 
 *** git pull
 - 
-  �ύX���擾������}�[�W����
+  変更を取得した後マージする
 
 *** git push
 - 
-  �ύX��origin���|�W�g���̑Ή�����u�����`�ɑ��M����B
+  変更をoriginリポジトリの対応するブランチに送信する。
 - --dry-run
-  �v�b�V�������ύX���m�F����
+  プッシュされる変更を確認する
 
 
 *** git diff
 - 
-  ������\������B�I�v�V���������Ȃ��ꍇ�̓X�e�[�W����Ă��Ȃ��ύX�̕\���B
-  �܂��A--cached / --staged�I�v�V����������ƁA�X�e�[�W���ꂽ�ύX�̍�����\������B
+  差分を表示する。オプションをつけない場合はステージされていない変更の表示。
+  また、--cached / --stagedオプションをつけると、ステージされた変更の差分を表示する。
   |------+--------------------------+-----------------------------------|
   | tree | stage                    | repository                        |
   |------+--------------------------+-----------------------------------|
-  |      | tree  <- (����) -> stage |                                   |
+  |      | tree  <- (無印) -> stage |                                   |
   |      |                          | stage  <- --cached ->  repository |
   |      | tree          <-   HEAD  | ->                     repository |
   |------+--------------------------+-----------------------------------|
 - --stat <tag>
-  ���v����\������B
+  統計情報を表示する。
 
+*** git show
+- 
+  
 *** git blame
 - <file>
-  �e�s���ƂɁA�Ō�ɕҏW������񂪏o�͂����B
+  各行ごとに、最後に編集した情報が出力される。
 - L <start>,<end>
-  �o�͂���s���w�������B
-  "12,13"��A"12,+2"���̎w�肪�o����B
-  ���K�\���̎w����o����̂ŁA'"/<\/body>/",-2'���̕\�L���\�B
+  出力する行を指定をする。
+  "12,13"や、"12,+2"等の指定が出来る。
+  正規表現の指定も出来るので、'"/<\/body>/",-2'等の表記も可能。
 - -- <file>
-  �t�@�C�����̎w��B�t�@�C�������ς�����ꍇ�ȂǂɁA�ȑO�̃t�@�C�������w�肷�邽�߂̃I�v�V�����B
+  ファイル名の指定。ファイル名が変わった場合などに、以前のファイル名を指定するためのオプション。
     ex) git blame -L "/<\/body>/",-2 4333289^ -- hello.html
 - -M
-  �ړ����ꂽ�s�⓯�t�@�C�����ŃR�s�[���ꂽ�s�����o���ďo�͂���B
+  移動された行や同ファイル内でコピーされた行も検出して出力する。
 - -C -C
-  �t�@�C���Ԃ̃R�s�[�����o�ł���悤�ɂ���B
+  ファイル間のコピーを検出できるようにする。
 
 
 *** git rm
-�ǐՑΏۂ���t�@�C�����폜���A��ƃf�B���N�g������������B
+追跡対象からファイルを削除し、作業ディレクトリからも除く。
 - --cached
-  �X�e�[�W�ォ��̂݃t�@�C������菜���B
+  ステージ上からのみファイルを取り除く。
 - f
-  ���łɃX�e�[�W���ꂽ�ύX���܂߂č폜�������ꍇ�B
+  すでにステージされた変更も含めて削除したい場合。
 
 *** git mv
 - 
-  �t�@�C�����ړ�����Bgit mv <old> <new>
-  ���ۂ͈ȉ��ƈꏏ�B
+  ファイルを移動する。git mv <old> <new>
+  実際は以下と一緒。
     mv file_from file_to
     git rm file_from
     git add file_to
@@ -315,60 +318,60 @@ SSH�͗����\�B
 
 *** git tag
 - 
-  �^�O��\������
+  タグを表示する
 - <tagname>
-  �y�ʔ�(lightweight)�̃^�O������B
+  軽量版(lightweight)のタグをつける。
 - -a
-  ���ߕt���^�O(annotated)���쐬����
+  注釈付きタグ(annotated)を作成する
 - -am
-  ���ߕt���^�O�Ƀ��b�Z�[�W������
+  注釈付きタグにメッセージをつける
 - -n
-  ���b�Z�[�W�t���Ń^�O��\������
+  メッセージ付きでタグを表示する
 - -d <tagname>
-  �^�O���폜����
+  タグを削除する
 
 *** git archive
-�A�[�J�C�u���쐬����B
+アーカイブを作成する。
 - <tree-ish>
-  �A�[�J�C�u����c���[��^�O���w�肷��BHEAD�ȂǁB
+  アーカイブするツリーやタグを指定する。HEADなど。
 - --format=<fmt> 
-  �t�H�[�}�b�g���w�肷��Bzip, tar�ȂǁB
+  フォーマットを指定する。zip, tarなど。
 - --prefix=<pfx>
-  �i�[�t�H���_��ݒ肷��B
+  格納フォルダを設定する。
 
 
 *** git submodule
-�i�T�u���W���[���͎g���������܂����s���j
+（サブモジュールは使い方がいまいち不明）
 - 
-  �T�u���W���[����\������
+  サブモジュールを表示する
 - add <url> <name>
-  �T�u���W���[����ǉ�����
+  サブモジュールを追加する
 - init <sbmdl>
-  �T�u���W���[��������������
+  サブモジュールを初期化する
 - update <sbmdl>
-  �T�u���W���[�����ŐV�ɍX�V����
+  サブモジュールを最新に更新する
 
 
 *** git gui
 - 
-  GUI�ŕҏW�E�m�F���ł���B�炵���B
-  ���ꂽ���Ƃ͂Ȃ��B
+  GUIで編集・確認ができる。らしい。
+  見れたことはない。
 
 *** git mergetool
 - 
-  �}�[�W���s�����߂̃c�[���𗧂��グ��B
-  �ݒ肳�ꂽmerge.tool�̒l�����ɍs���B
+  マージを行うためのツールを立ち上げる。
+  設定されたmerge.toolの値を見に行く。
 
 
 *** git gc
 - 
-  ���|�W�g���̑傫�������k����
+  リポジトリの大きさを圧縮する
 - --agressive
-  �f���^���ꂩ��Čv�Z���A��苭���œK�������s����
+  デルタを一から再計算し、より強い最適化を実行する
 
 *** git bisect
 - 
-  �񕪒T������
+  二分探索する
 - start
 - bad
 - good
@@ -377,22 +380,22 @@ SSH�͗����\�B
 - log
 - replay
 - run
-  �e�X�g�X�N���v�g�𓊂��A�e�X�g���ʂ���good/bad�𔻒f����B
-  �����0, �X�L�b�v��125, �I���͂���ȊO�̐����l�i���ʂ�1)
+  テストスクリプトを投げ、テスト結果からgood/badを判断する。
+  正常は0, スキップは125, 終了はそれ以外の正数値（普通は1)
 
 ** memo
 
 *** ~N
 
-~(�`���_)�͐e�R�~�b�g�̑��ΎQ�Ƃ��s���ꍇ�Ɏg�p����B
-3157e~1��3157e�̈�O�̐e�R�~�b�g�AHEAD~3�͌��݂̃R�~�b�g��3�O�̃R�~�b�g�B
-"HEAD~10..HEAD"���w�肵�Ă��ƕ֗��B
+~(チルダ)は親コミットの相対参照を行う場合に使用する。
+3157e~1は3157eの一つ前の親コミット、HEAD~3は現在のコミットの3つ前のコミット。
+"HEAD~10..HEAD"等指定してやると便利。
 
 *** ^
 
-^(�L�����b�g)�͈�O������킷�B
-"18f822e^"��"18f822e"�̂ЂƂO�̃��r�W�����A"18f822e^^^"��3�O�̃��r�W������\���B
-�`���_�Ƒg�ݍ��킹�āA"HEAD~1^^"��"HEAD^~2"�Ȃǂ��\�B
+^(キャレット)は一つ前をあらわす。
+"18f822e^"は"18f822e"のひとつ前のリビジョン、"18f822e^^^"は3つ前のリビジョンを表す。
+チルダと組み合わせて、"HEAD~1^^"や"HEAD^~2"なども可能。
 
 
 *** status
@@ -410,19 +413,19 @@ SSH�͗����\�B
 
 *** .git/info/exclude
 
-���[�J���̃��|�W�g�������ɐ����������̂����O����B
-���ׂẴ��|�W�g���ɐ��������t�@�C�������O����ɂ́A.gitignore���g�p����B
+ローカルのレポジトリだけに生成されるものを除外する。
+すべてのレポジトリに生成されるファイルを除外するには、.gitignoreを使用する。
 
 
-*** �^�O�ƃu�����`�̖��O
+*** タグとブランチの名前
 
-- �擪��.(�s���I�h)�ł����Ă͂Ȃ�Ȃ�
-- ������/(�X���b�V��)�ł����Ă͂Ȃ�Ȃ�
-- ���ꕶ���̒��ɂ͎g���Ȃ����̂�����B
-  �X�y�[�X, ~(�`���_), ^(�L�����b�g), ?(�N�G�X�`�����}�[�N), *(�A�X�^���X�N), [(�J�u���P�b�g), ASCII�̐��䕶����
-- �s���I�h�̘A��(..)�͎g���Ȃ�
+- 先頭が.(ピリオド)であってはならない
+- 末尾が/(スラッシュ)であってはならない
+- 特殊文字の中には使えないものがある。
+  スペース, ~(チルダ), ^(キャレット), ?(クエスチョンマーク), *(アスタリスク), [(開ブラケット), ASCIIの制御文字等
+- ピリオドの連続(..)は使えない
 
 ** Link
 
-[[https://www.atlassian.com/ja/git/tutorial][Git�`���[�g���A�� Atlassian]]
+[[https://www.atlassian.com/ja/git/tutorial][Gitチュートリアル Atlassian]]
 
