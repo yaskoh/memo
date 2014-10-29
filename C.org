@@ -1,0 +1,84 @@
+* C
+
+** standard C library
+- 
+  標準Cライブラリ。
+  /libの中のファイルらしい。
+  linuxで普通使われているlibcはGNU libc(glibc)。
+
+*** assert.h
+
+*** complex.h
+
+*** ctype.h
+
+*** error.h
+
+*** float.h
+
+*** limits.h
+
+*** locale.h
+
+*** math.h
+
+*** setjmp.h
+
+*** signal.h
+
+*** stdarg.h
+
+*** stddef.h
+
+*** stdio.h
+- 概要
+  ストリームおよびファイルの操作に関する型・マクロ・関数の宣言定義
+
+**** perror(3)
+- def
+  #include <stdio.h>
+
+  void perror(const char *s);
+
+- argument
+  s:出力用文字列
+- 
+  "s:"につづきエラーメッセージを出力する。
+
+**** strerror()
+- def
+  #include <string.h>
+  
+  char *strerror(int errnum);
+
+- argument
+  errnum:errnoを指定する
+- 
+  errnoの値errnumに対応したエラーメッセージを返す
+
+*** stdlib.h
+- 概要
+  一般ユーティリティに関する型・マクロ・関数の宣言定義
+
+
+**** exit()
+- 
+  プログラムを終了する関数
+
+*** string.h
+
+*** time.h
+
+
+** memo
+
+*** ANSI C
+- K&R
+  K&R Cは1978年に出版された本がもとになったもの。
+- ANSI C(C89)
+  ANSI Cといえば、89年に規定されたものを言うのが普通(C89)。
+  K&Rに曖昧な点があったため、ISOとANSIが規格化を進めた。
+- C99
+  99年に改訂された企画はC99と呼ぶ。
+- C11(C2011)
+  2011年の改訂版はC2011(C11)。

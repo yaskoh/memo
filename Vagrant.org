@@ -1,27 +1,64 @@
 * Vagrant
 
+** command
 
-init
+*** init
+仮想マシンの定義ファイルを作成する
+vagrant init [box-name] [box-url]
 
-up
+*** up
+仮想マシンを起動する
 
-suspend
+*** sh
+仮想マシンにssh接続する
 
-halt
+*** suspend
+仮想マシンを一時中断する
 
-display
+*** halt
+仮想マシンをシャットダウンする
 
-reload
+*** distroy
+仮想マシンを廃棄する
 
-resume
+*** reload
+仮想マシンを再起動する
 
-status
+*** resume
+一時停止(suspend)からの復帰
 
-provision
+*** status
+仮想マシンの状態を確認する
 
-box
+*** ssh-config
+仮想マシンのSSH情報を確認する
 
-package
+*** provision
+プロビジョニングを行う。
 
-plugin
+*** box
 
+- add [box-name] [box-url]
+  Boxを追加する
+
+- list
+  Boxが追加されたことを確認する
+
+- remove [box-name]
+  いらなくなったBoxの削除を行う
+
+*** package
+作業中のマシンをBox化する
+
+*** plugin
+
+- list
+  インストール済みのプラグイン確認
+- install [name]
+
+**** sahara
+
+- sandbox
+  - on
+  - off
+  - rollback

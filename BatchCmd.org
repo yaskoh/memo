@@ -25,6 +25,15 @@
       ⇒続行しますか [Y,N]?
 
 
+*** DEFINED
+
+- 環境変数が設定されているかチェックするには、DEFINEDを使う。
+
+- ex) IF DEFINED ENV echo OK
+
+[[http://orangeclover.hatenablog.com/entry/20110127/1296135692][バッチファイル/コマンドプロンプトで環境変数が設定されているかチェックする方法]]
+
+
 ** memo
 
 *** IF文の複数条件指定
@@ -47,8 +56,8 @@ ex:) IF %ABCDEFGHIJKLM% ==1 ^
      IF %NOPQRSTUVWXYZ% ==2 (
          REM 処理
      )
-みちしるべ バッチファイルで長い1行の処理を改行を入れて複数行に分けて書きたい]]
-ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
+[[http://orangeclover.hatenablog.com/entry/20100810/1281450669][みちしるべ バッチファイルで長い1行の処理を改行を入れて複数行に分けて書きたい]]
+[[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
 
 
 *** 環境変数の消し方

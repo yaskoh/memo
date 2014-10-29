@@ -1,5 +1,41 @@
 * Linux
 
+** Linux OS
+
+- shell
+  bash, ash, csh, tsch, zsh, pdksh, ...
+- util-linux
+  init, getty, login, reset, fdisk, ...
+- procps
+  ps, pstree, top, ...
+- GNU coreutils
+  ls, cat, mkdir, rmdir, cut, chmod, ...
+- GNU grep, find, diff
+- GNU libc
+- libraries 
+  ncurses, GDMB, zlib, ...
+- development enviroment
+  gcc, binutils, make, bison, flex, headerfiles, ...
+- X Window System
+- GNOME, KDE
+(「ふつうのLinux」p.27)
+
+** File
+- memo
+  以下は広義ではすべてファイル。
+
+- regular file
+- directory
+- symbolic link
+- device file
+  - character device file
+    プリンタやモデムなど
+  - block device file
+    ハードディスクなど
+- named pipe
+  プロセス間通信に使うファイル。FIFO。
+- UNIX domain socket
+
 ** directory
 
 - / (FHS)
@@ -191,6 +227,135 @@
         temporary
         deleted when unmounting or rebooting
    
+** system calls
+*** read(2)
+- def
+  #include <unistd.h>
+  ssize_t read(int fd, void *buf, size_t bufsize);
+
+- argument
+  fd:ファイルディスクリプタの番号
+  buf:格納先
+  bufsize:最大読込バイト数
+
+- return
+  正常終了した場合は読込んだバイト数を返す。
+  ファイル終端に達したときは0を、エラーが起きたときは-1を返す。
+
+*** write(2)
+- def
+  #include <unistd.h>
+  ssize_t write(int fd, const void *buf, size_t bufsize)
+
+- argument
+  fd:ファイルディスクリプタの番号
+  buf:書込元
+  bufsize:最大書込サイズ数
+
+- return
+  正常終了時は書き込んだバイト数を返す。
+  エラー時は-1を返す。
+
+*** open(2)
+- def
+  #include <sys/types.h>
+  #include <sys/stat.h>
+  #include <fcntl.h>
+  int open(const char *path, int flags);
+  int open(const char *path, int flags, mode_t mode);
+
+- argument
+  path:openするファイルのパス
+  flags:ストリームの性質を表すフラグ
+  mode:O_CREATを指定した場合に、新規ファイルのパーミッションを指定する
+
+  - flags 1
+    常にどれか一つを指定する
+    |----------+--------------|
+    | O_RDONLY | 読み取り専用 |
+    | O_WRONLY | 書込み専用   |
+    | O_RDWR   | 読み書き両用 |
+    |----------+--------------|
+
+  - flag 2
+    指定しなくても良いし、複数指定しても良い。
+    下のもの以外にも色々ある。
+    |----------+-----------------------------------------------------------------------------------|
+    | O_CREAT  | ファイルが存在しなければ新しいファイルを作る                                      |
+    | O_EXCL   | O_CREATとともに指定すると、すでにファイルが存在するときはエラーとなる             |
+    | O_TRUNC  | O_CREATとともに指定すると、ファイルが存在するときはまずファイルの長さをゼロにする |
+    | O_APPEND | write()が常にファイル末尾に書込まれるよう指定する                                 |
+    |----------+-----------------------------------------------------------------------------------|
+
+- return
+  ファイルディスクリプタの値を返す
+
+  - ex
+    open(file, O_RDWR|O_CREAT|O_TRUNC, 0666)
+
+*** close(2)
+- def
+  #include <unistd.h>
+  int close(int fd);
+
+- argument
+  fd:ファイルディスクリプタ
+
+- return
+  問題なく閉じられた場合は0, エラーがあった場合は-1を返す。
+
+- ex
+  if (close(fd) < 0){
+      /* エラー処理 */
+  }
+
+*** lseek(2)
+- 
+  ファイルディスクリプタfd内部のファイルオフセットを指定した位置offsetへ移動する。
+  移動方法はwhenceに指定する。
+
+- def
+  #include <sys/types.h>
+  #include <unistd.h>
+  off_t lseek(int fd, off_t offset, int whence);
+
+- argument
+  whence:位置の指定方法。
+         SEEK_SET:offsetに移動（起点はファイル先頭）
+         SEEK_CUR:現在のファイルオフセット+offsetに移動
+         SEEK_END:ファイル末尾+offsetに移動
+
+*** dup(2), dup2(2)
+- 
+  oldfdを複製するシステムコール。
+  dupはduplicateより。
+
+- def
+  #include <unistd.h>
+  int dup(int oldfd);
+  int dup2(int oldfd, int newfd);
+
+*** ioctl(2)
+- 
+  ストリームがつながる先にあるデバイスに特化した操作を全て含めたシステムコール。
+
+- def
+  #include <sys.ioctl.h>
+  int ioctl(int fd, int request, ...);
+
+- argument
+  request:どのような操作をするか定数で指定し、そのrequest特有の引数を第3引数以降に渡す。
+
+*** fcntl(2)
+- 
+  ファイルディスクリプタ関連の操作をioctlより分離したもの。
+
+- def
+  #include <unistd.h>
+  #include <fcntl.h>
+  int fcntl(int fd, int cmd, ...);
+
+
 ** command
 
 *** mv
@@ -226,6 +391,25 @@
     n:number f: follow (exit with C-c)
 *** ls
 *** man
+- マニュアルを呼び出す。
+  |------------+------------------------|
+  | セクション | 分類                   |
+  |------------+------------------------|
+  |          1 | ユーザコマンド         |
+  |          2 | システムコール         |
+  |          3 | ライブラリ関数         |
+  |          4 | デバイスファイルなど   |
+  |          5 | ファイルフォーマット   |
+  |          6 | ゲーム                 |
+  |          7 | 規格など               |
+  |          8 | システム管理用コマンド |
+  |------------+------------------------|
+
+*** info
+- 
+  emacsを使ってマニュアルを表示する。
+  GNU libcの一次情報はinfo。
+
 *** whatis
     show summary of man, searched from command names.
 *** apropos
@@ -235,8 +419,10 @@
 *** whereis
 *** clear
 *** ps
+- ax
 
 *** mount
+    現在マウントされているファイルシステムを調べる。
     [--bind] すでにマウントされているツリーの一部を別の場所にマウントする。
     [-v] verbose
     [-t] ファイルシステムのタイプを指定
@@ -378,6 +564,19 @@
     シンボリックリンクの値を読む。
     readlink [OPTION]... FILE...
 
+*** gcc
+- 
+  コンパイルする。
+- -o
+  ファイル名を指定する。
+  ex) gcc -o hello.exe hello.c
+- -Wall
+  ANSI Cスタイルの宣言と定義を使った場合に、一般的な警告オプションがすべてOnになり、
+  細かな警告をしてくれる。
+- -O1(O), -O2, -O3
+  最適化オプション。数字が大きい方が強力な最適化が行われる。
+  ただしO3はバグが多い印象があるとのこと。
+
 ** memo
 
 *** suid
@@ -398,4 +597,35 @@
 *** Ctrl-s
     スクロール停止キー。画面がフリーズしたように見える。
     ログを見ていて、一時的にとめておくために使ったりする。
-    解除はCtrl-q。
+    解除はCtrl-q
+*** glob
+- 
+  シェルが*?{}[]~などを解釈し、ファイル名として展開することをグロブ（ファイルグロブ）という。
+  正規表現とは別物。
+  働かせたくない場合は""等で囲む。
+  ちなみにWindowsではLinuxと異なりプログラム側で展開する。
+*** tty
+- 
+  端末を表すttyは、TeleTYpeの略。
+*** standard input/output
+- 
+  |----------------+---------------+----------------|
+  | FileDiscriptor | Macro         | Meaning        |
+  |----------------+---------------+----------------|
+  |              0 | STDIN_FILENO  | 標準入力       |
+  |              1 | STDOUT_FILENO | 標準出力       |
+  |              2 | STDERR_FILENO | 標準エラー出力 |
+  |----------------+---------------+----------------|
+
+*** sys/types.h システム定義型
+OSやCPUの差異を隠蔽するために別名で基本型を再定義している。
+- size_t
+  符号なし整数型
+- ssize_ti
+  符号付き整数型
+
+*** '\0'の有無
+- 
+  read(2)は終端に'\0'を想定していない。
+  対して、printf()は末尾に'\0'を前提としているので、
+  そのまま渡したり、合わせて使うのは間違い。
