@@ -33,6 +33,307 @@
 *** stdio.h
 - 概要
   ストリームおよびファイルの操作に関する型・マクロ・関数の宣言定義
+**** fopen(3)
+- 
+  システムコールのopen()に対応するAPI。
+
+- def
+  #inculde <stdio.h>
+  FILE *fopen(const char *path, const char *mode);
+
+- argument
+  mode:ストリームの性質を指定する。
+  |------+-------------------------------+--------------------------------------------------------------|
+  | 値   | 対応するopen(2)のmode         | 意味                                                         |
+  |------+-------------------------------+--------------------------------------------------------------|
+  | "r"  | O_RDONLY                      | 読込み専用。ファイルの存在が前提。                           |
+  | "w"  | O_WRONLY ^ O_CREAT ^ O_TRUNC  | 書込み専用。存在しなければ作成。存在したら新たに書込み       |
+  | "a"  | O_WRONLY ^ O_CREAT ^ O_APPEND | 追加書込み専用。存在しなければ作成。存在したら末尾に書込む。 |
+  | "r+" | O_RDWR                        | 読み書き両用。ファイルの存在が前提。                         |
+  | "w+" | O_RDWR ^ O_CREAT ^ O_TRUNC    | 読み書き両用。存在しなければ作成。存在したら新たに書込み。   |
+  | "a+" | O_RDWR ^ O_CREAT ^ O_APPEND   | 読み書き両用。存在しなければ作成。存在したら末尾に書込む。   |
+  |------+-------------------------------+--------------------------------------------------------------|
+
+- return
+  失敗した場合はNULLを返し、原因を表す定数をerrnoにセットする。
+
+**** fclose(3)
+- 
+  システムコールのclose()に対応する。
+
+- def
+  #include <stdio.h>
+  int fclose(FILE *stream);
+
+- return
+  失敗した場合は定数EOFを返す。
+  EOFはstdio.hで定義されるが、普通は-1。
+
+**** fgetc(3), fputc(3)
+- 
+  バイト単位の入出力API
+
+- def
+  include <stdio.h>
+  int fgetc(FILE *stream);
+  int fputc(int c, FILE *stream);
+
+- fgetc
+  streamから1バイト読み込んで返す。
+  ストリームが終了した場合はEOF(マクロ、普通は-1)を返す。
+- fputc
+  streamにバイトcを書込む。
+  fgetcした値をそのままfputcできるよう、引数のcはcharでなくint。
+
+**** getc(3), putc(3)
+- 
+  マクロとして定義されたAPI。
+  速度のため定義されているが、最近の環境ではfgetc/fputcと対して変わらない。
+
+- def
+  #include <stdio.h>
+  int getc(FILE *stream);
+  int putc(int c, FILE *stream);
+
+**** getchar(3), putchar(3)
+- 
+  入力元・出力先が固定されているバイト単位の入出力API。
+  getchar()はgetc(stdin), putchar(c)はputchar(c, stdout)と同じ意味。
+
+- def
+  #include <stdio.h>
+  int getchar(void);
+  int putchar(int c);
+
+**** ungetc(3)
+- 
+  バイト単位で値をバッファに戻す。
+  読込んだストリームを１つ戻すことができる。
+
+- def
+  #include <stdio.h>
+  int ungetc(int c, FILE *stream);
+
+
+**** fgets(3)
+- 
+  行単位の入力API
+  streamから一行読み込んでバッファbufに格納する。
+  ただし最大でもsize-1バイトまでしか読み込まない(最後に\0がつくため)。
+
+- def
+  #include <stdio.h>
+  char *fgets(char *buf, int size, FILE *stream);
+
+- return
+  正常に読み込むか、size-1バイト読み込んだ場合はbufを返す。
+  一文字も読まずにEOFにあたった場合はNULLを返す。
+
+**** gets(3)
+- 
+  fgets(3)と類似機能で、1行を取得するが、
+  バッファサイズを示す引数がなく、バッファオーバーフローが起こる可能性があるため、
+  この関数は使ってはいけない。
+
+- def
+  #include <stdio.h>
+  char *gets(char *buf);
+
+**** fputs(3)
+- 
+  文字列bufをstreamに出力する。
+
+- def
+  #include <stdio.h>
+  int fputs(const char *buf, FILE *stream);
+
+- return
+  問題なく出力できた場合は0以上の数字を返す。
+  全てのバイト列を書き終わったか、問題が起きた場合はEOFを返す。
+  errnoにも値がセットされるが、ストリームが終了した場合と区別するため、
+  あらかじめerrnoを0に設定しておく必要がある。
+
+**** puts(3)
+- 
+  bufを標準出力に出力後、'\n'を出力する。
+  fputs(3)との違いは、出力先が標準出力固定の点と、末尾に'\n'が入る点。
+
+- def
+  #include <stdio.h>
+  int puts(const char *buf);
+
+**** printf(3), fprintf(3)
+- 
+  fmtで指定した体裁にしたがって後続の引数をフォーマットした文字列を出力する。
+  printf(3)は標準出力固定、fprintf(3)はstreamに出力する。
+
+- def
+  #include <stdio.h>
+  int printf(const char *fmt, ...);
+  int fprintf(FILE *stream, const char *fmt, ...);
+
+- 型指定子
+  |------+------------------------------------------------|
+  | 文字 | 出力                                           |
+  |------+------------------------------------------------|
+  | c    | unsigned char型の値を文字として出力            |
+  | s    | unsigned char*型が示す値を文字列として出力     |
+  | d, i | 整数型の値を10進数で出力                       |
+  | u    | 符号なし整数型の値を10進表記で出力             |
+  | o    | 符号なし整数型の値を8進表記で出力              |
+  | x, X | 符号なし整数型の値を16進表記で出力             |
+  | f, F | 浮動小数点数型の値を小数点表現(XX.XXXX)で出力  |
+  | e, E | 浮動小数点数型の値を「e表記」(XX.XXe+XX)で出力 |
+  | p    | ポインタを16進表記で出力                       |
+  |------+------------------------------------------------|
+
+  - X, F, E
+    出力するアルファベットが大文字になる。
+    %x, 77 -> 4d, %X, 77 -> 4D
+  - l
+    long型を取得する場合につける。
+    %lxで、long型を16進出力できる。
+  - 桁数
+    %と型指定子の間に数字を挟む。
+    %10dなど。
+  - 左詰め
+    マイナスを前置する。
+    %-5sなど。
+  - 0埋め
+    0を前置すると空いた部分が0で埋められる。
+    %010x, 7 -> 000000004d
+
+- 問題
+  標準入力から1行取得してそのままprintf()した場合、%が入っていた場合に問題が起こる可能性あり。
+  下記bufに%が入っていた場合に問題発生する。
+  ex) char buf[1024];
+      fgets(buf, sizeof buf, stdin);
+      printf(buf);
+
+**** scanf(3)
+- 
+  フォーマットを指定して入力できる。
+  ただし、潜在的にgets()と同様バッファオーバーフローを起こす危険がある。
+  ex) scanf("%d", &n);
+
+
+**** fread(3)
+- 
+  streamより、(size * nmemb)バイト読み込み、bufに格納する。
+  失敗したか、読みきる前にEOFに到達した場合はnmembより小さい値を返す。
+  '\0'を期待しないので、バッファ末尾に'\0'は書き込まない。
+
+- def
+  #include <stdio.h>
+  size_t fread(void *buf, size_t size, size_t nmemb, FILE *stream);
+
+**** fwrite(3)
+- 
+  (size * nmemb)バイト分のバイト列をbufからstreamに書き込む。
+  成功したらnmembを返す。
+  失敗したらnmembより小さい値を返し、errnoをセットする。
+
+- def
+  #include <stdio.h>
+  size_t fwrite(const void *buf, size_t size, size_t nmemb, FILE *stream);
+
+
+**** fseek(3), fseeko(3)
+- 
+  lseek()システムコールに対応する関数。
+  streamのファイルオフセットを、whenceとoffsetで示される位置に移動する。
+  whenceはlseek()と同じ。
+  long型で表せる限度が2GBなので、fseeko()が存在する。
+  off_tはデフォルトでlongだが、"#define _FILE_OFFSET_BITS 64"とすることで64ビット符号付整数型となる。
+
+- def
+  #include <stdio.h>
+  int fseek(FILE *stream, long offset, int whence);
+  int fseeko(FILE *stream, off_t offset, int whence);
+
+- whence
+  SEEK_SET:offsetに移動（起点はファイル先頭）
+  SEEK_CUR:現在のファイルオフセット+offsetに移動
+  SEEK_END:ファイル末尾+offsetに移動
+
+**** ftell(3), ftello(3)
+- 
+  streamのファイルオフセットの値を返す。
+
+- def
+  #include <stdio.h>
+  long ftell(FILE *stream);
+  off_t ftello(FILE *stream);
+
+**** rewind(3)
+- 
+  streamのファイルオフセットをファイルの先頭に戻す。
+- def
+  #include <stdio.h>
+  void rewind(FILE *stream);
+
+**** fileno(3)
+- 
+  streamがラップしているファイルディスクリプタを返す。
+
+- def
+  #include <stdio.h>
+  int flieno(FILE *stream);
+
+**** fdopen(3)
+- 
+  fdをラップするFILE型の値を新しく作成してポインタを返す。
+  失敗したらNULLを返す。
+  modeはfopen()の第2引数と同じ。
+
+- def
+  #include <stdio.h>
+  FILE *fdopen(int fd, const char *mode);
+
+
+**** fflush(3)
+- 
+  streamがバッファリングしている内容を即座にwrite()する。
+  成功したら0を返す。失敗したらEOFを返してerrnoをセットする。
+  改行せずに文字列を端末に出力したいときなどに使う。
+
+- def
+  #include <stdio.h>
+  int fflush(FILE *stream);
+
+**** setvbuf(3)
+- 
+  用意したバッファをstdioに強制的に使わせることができる。
+
+
+**** feof(3)
+- 
+  直前の読み込み作業でstreamがEOFに達していたら真を返す。
+  この関数は必要になることはないし、初心者は使い方を間違えるため、
+  使うな、とのこと。
+
+- def
+  #include <stdio.h>
+  int feof(FILE *stream);
+
+**** ferror(3)
+- 
+  直前の入出力操作でエラーが起きていたら真を返す。
+  ほとんど使わない。
+
+- def
+  #include <stdio.h>
+  int ferror(FILE *steram);
+
+**** clearerr(3)
+- 
+  streamのエラーフラグとEOFフラグをクリアする。
+  stdioのルーチンはread()が一度でもEOFを返すとFILEにEOFフラグをセットし、
+  それ以降はread()を呼ばなくなってしまうので、clearerr()を使うとEOFフラグをクリアできる。
+
+- def
+  #include <stdio.h>
+  void clearerr(FILE *stream);
 
 **** perror(3)
 - def
@@ -55,6 +356,7 @@
   errnum:errnoを指定する
 - 
   errnoの値errnumに対応したエラーメッセージを返す
+
 
 *** stdlib.h
 - 概要
@@ -82,3 +384,10 @@
   99年に改訂された企画はC99と呼ぶ。
 - C11(C2011)
   2011年の改訂版はC2011(C11)。
+*** ファイルディスクリプタとFILE
+- 
+  FILEは生のストリームにバッファ機能を追加する層で、
+  ファイルディスクリプタをラップしている。
+  この2つの型を同時に使うと、バッファを介す操作と介さない操作が混在するため、
+  出力順がおかしくなる可能性がある。
+

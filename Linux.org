@@ -18,162 +18,162 @@
   gcc, binutils, make, bison, flex, headerfiles, ...
 - X Window System
 - GNOME, KDE
-(�u�ӂ���Linux�vp.27)
+(「ふつうのLinux」p.27)
 
 ** File
 - memo
-  �ȉ��͍L�`�ł͂��ׂăt�@�C���B
+  以下は広義ではすべてファイル。
 
 - regular file
 - directory
 - symbolic link
 - device file
   - character device file
-    �v�����^�⃂�f���Ȃ�
+    プリンタやモデムなど
   - block device file
-    �n�[�h�f�B�X�N�Ȃ�
+    ハードディスクなど
 - named pipe
-  �v���Z�X�ԒʐM�Ɏg���t�@�C���BFIFO�B
+  プロセス間通信に使うファイル。FIFO。
 - UNIX domain socket
 
 ** directory
 
 - / (FHS)
-    + ���K�w�A���[�g�f�B���N�g��
+    + 第一階層、ルートディレクトリ
     - bin
-      + �V���O�����[�U���[�h�ŕK�v�ƂȂ��ʃ��[�U������{�R�}���h�̎��s�t�@�C���B
-      + �K�{: cat, chgrp, chmod, chown, cp, date, dd, df, dmesg, echo, false, hostname,
+      + シングルユーザモードで必要となる一般ユーザ向け基本コマンドの実行ファイル。
+      + 必須: cat, chgrp, chmod, chown, cp, date, dd, df, dmesg, echo, false, hostname,
               kill, ln, login, ls, mkdir, mknod, more, mount, mv, ps, pwd, rm, rmdir,
               sed, sh, stty, su, sync, true, unmount, uname
-      + �I�v�V����: csh, ed, tar, cpio, gzip, gunzip, zcat, netstat, ping
+      + オプション: csh, ed, tar, cpio, gzip, gunzip, zcat, netstat, ping
     - boot
-        +�u�[�g���[�_�֘A�̃t�@�C���Q�B�J�[�l����initrd�B�ʏ�ʃp�[�e�B�V�����B
+        +ブートローダ関連のファイル群。カーネルやinitrd。通常別パーティション。
     - dev
-        + ��{�f�o�C�X�B/dev/null, /dev/console�ȂǁB
+        + 基本デバイス。/dev/null, /dev/consoleなど。
     - etc
-        + �V�X�e���S�̂̌ŗL�ݒ�t�@�C���Q�B�o�C�i���t�@�C����u���Ȃ��B
-        + fstab, gateway, group, hosts, password, profile, services�ȂǁB
+        + システム全体の固有設定ファイル群。バイナリファイルを置かない。
+        + fstab, gateway, group, hosts, password, profile, servicesなど。
         - opt
-            + /opt/�̂��߂̐ݒ�t�@�C���Q�B
+            + /opt/のための設定ファイル群。
         - X11
-            + X Window System�p�̐ݒ�t�@�C���Q�B
+            + X Window System用の設定ファイル群。
         - sgml
-            + sgml�ݒ�t�@�C���Q�B
+            + sgml設定ファイル群。
         - xml
-            + xml�ݒ�t�@�C���Q�B
+            + xml設定ファイル群。
     - home
-        + ���[�U�̃z�[���f�B���N�g���B�I�v�V�����B
+        + ユーザのホームディレクトリ。オプション。
     - lib
-        + /bin �� /sbin �ɂ�����s�t�@�C���̊�{�ƂȂ郉�C�u�����Q�B
-    - lost+found (FHS�̋K��ɂ͂Ȃ�)
-        + fsck�Ńf�B�X�N�`�F�b�N�����ۂɍ����A�j���t�@�C���̒f�Ђ����߂�f�B���N�g���B
+        + /bin や /sbin にある実行ファイルの基本となるライブラリ群。
+    - lost+found (FHSの規定にはなし)
+        + fsckでディスクチェックした際に作られる、破損ファイルの断片を収めるディレクトリ。
     - media
-        + CD-ROM�Ȃǂ̃����[�o�u���}�̃}�E���g�|�C���g�B
+        + CD-ROMなどのリムーバブル媒体マウントポイント。
     - mnt
-        + �t�@�C���V�X�e���̈ꎞ�}�E���g�|�C���g�B
+        + ファイルシステムの一時マウントポイント。
     - opt
-        + �I�v�V�����̃A�v���P�[�V�����\�t�g�E�F�A�̃C���X�g�[���p
+        + オプションのアプリケーションソフトウェアのインストール用
     - proc
-        + �J�[�l����v���Z�X�̏����e�L�X�g�Ŏ������z�t�@�C���V�X�e���B
-          procfs�̃}�E���g�|�C���g�B
+        + カーネルやプロセスの情報をテキストで示す仮想ファイルシステム。
+          procfsのマウントポイント。
     - root
-        + root���[�U�̃z�[���f�B���N�g���B�I�v�V�����B
+        + rootユーザのホームディレクトリ。オプション。
     - sbin
-        + �V�X�e���Ǘ��n�R�}���h�̎��s�t�@�C���Q�B
-        + �K�{: shutdown
-        + �I�v�V����: fastboot, fasthalt, fdisk, fsck, fsck.*, getty, halt, ifconfig, init,
+        + システム管理系コマンドの実行ファイル群。
+        + 必須: shutdown
+        + オプション: fastboot, fasthalt, fdisk, fsck, fsck.*, getty, halt, ifconfig, init,
                       mkfs, mkfs.*, mkswap, reboot, route, swapon, swapoff, update
     - srv
-        + �V�X�e���ɂ���Ē񋟂��ꂽ(served)�ŗL�̃f�[�^
+        + システムによって提供された(served)固有のデータ
     - tmp
-        + �ꎞ�t�@�C���u��B���u�[�g���ɂ͓��e���폜�����B
+        + 一時ファイル置場。リブート時には内容が削除される。
     - usr
-        + ���[�U���[�e�B���e�B�ƃA�v���P�[�V�������i�[�B
+        + ユーザユーティリティとアプリケーションを格納。
         - bin
-            + ��ʃ��[�U����������{�I�łȂ��R�}���h�B
-              �V���O�����[�U���[�h�ɂ͕s�v�ȃo�C�i���ŁA�p�b�P�[�W�̒ǉ��폜�Ńt�@�C���͑�������B
+            + 一般ユーザ向けだが基本的でないコマンド。
+              シングルユーザモードには不要なバイナリで、パッケージの追加削除でファイルは増減する。
         -include
-            + �W��include�t�@�C���Q�BC����Ŏg���W���w�b�_�t�@�C���B
+            + 標準includeファイル群。C言語で使う標準ヘッダファイル。
         - lib
-            + /usr/bin �� /usr/sbin �ɂ�����s�t�@�C���̊�{���C�u�����B
+            + /usr/bin や /usr/sbin にある実行ファイルの基本ライブラリ。
         - sbin
-            + ��{�I�łȂ����s�t�@�C���Q�B�l�b�g���[�N�p�f�[�����ȂǁB
+            + 基本的でない実行ファイル群。ネットワーク用デーモンなど。
         - share
-            + �A�[�L�e�N�`���Ɉˑ����Ȃ����L�f�[�^
+            + アーキテクチャに依存しない共有データ
         - src
-            + �\�[�X�R�[�h�B
+            + ソースコード。
         - X11R6
             + X Windows System Version 11 Release 6
         - local
-            + �z�X�g�ŗL�̃��[�J���f�[�^���i�[����B�V�X�e���Ǘ��҂������ŃA�v���P�[�V�������C���X�g�[������ꏊ�B
+            + ホスト固有のローカルデータを格納する。システム管理者が自分でアプリケーションをインストールする場所。
             - bin
             - games
             - include
             - lib
             - man
-                + /local/bin�p�}�j���A��
+                + /local/bin用マニュアル
             - sbin
-                + /sbin�Ɣ�ׂďd�v�łȂ��V�X�e���o�C�i����z�u����B
-                  /sbin�ً͋}���ɕK�v�Ȃ��́A/usr/sbin�͒ʏ�^�p���B
+                + /sbinと比べて重要でないシステムバイナリを配置する。
+                  /sbinは緊急時に必要なもの、/usr/sbinは通常運用時。
             - share
-                + �A�[�L�e�N�`���Ɉˑ����Ȃ��f�[�^�����߂�B
+                + アーキテクチャに依存しないデータを収める。
                 - man
                     - man1
-                        + ���[�U�v���O����
+                        + ユーザプログラム
                     - man2
-                        + �V�X�e���R�[��
+                        + システムコール
                     - man3
-                        + C���C�u�����֐�
+                        + Cライブラリ関数
                     - man4
-                        + �X�y�V����(�f�o�C�X)�t�@�C��
+                        + スペシャル(デバイス)ファイル
                     - man5
-                        + �t�@�C���t�H�[�}�b�g
+                        + ファイルフォーマット
                     - man6
-                        + �Q�[��
+                        + ゲーム
                     - man7
-                        + ���̑�
+                        + その他
                     - man8
-                        + �V�X�e���Ǘ�
+                        + システム管理
             - misc
             - src
     - var
-        + �ςȃt�@�C���Q�B���e����ɕω�����悤�ȃt�@�C���Q���i�[����B
-          ���O�A�X�v�[���A�ꎞ�I�ȓd�q���[�����B
+        + 可変なファイル群。内容が常に変化するようなファイル群を格納する。
+          ログ、スプール、一時的な電子メール等。
         - cache
-            + �A�v���P�[�V�����̃L���b�V���f�[�^�B
-              ���ʂ͗v�̂ɏ����݂��āA�Â����Ɏ̂ĂĂ����B
+            + アプリケーションのキャッシュデータ。
+              普通は要領に上限を設けて、古い順に捨てていく。
         - lib
-            + ��ԏ��B�f�[�^�x�[�X�A�p�b�P�[�W���O�V�X�e���̃��^�f�[�^�ȂǁB
+            + 状態情報。データベース、パッケージングシステムのメタデータなど。
             - misc
         - local
         - lock
-            + ���b�N�t�@�C���Q�B�g�p�����\�[�X��ێ�����t�@�C���B�r��������s�������ꍇ�Ɏg�p����B
+            + ロックファイル群。使用中リソースを保持するファイル。排他制御を行いたい場合に使用する。
         - log
-            + �e�탍�O
+            + 各種ログ
         - opt
         - mail
-            + ���[��
+            + メール
         - run
-            + ���s���V�X�e���Ɋւ�����B���݃��O�C�����̃��[�U�A���s���f�[�������B
-              "`kill -HUP `cat /var/run/sendmail.pid`"�Ȃǂ���ƃv���Z�X�ԍ����^�C�|�����悢�B
+            + 走行中システムに関する情報。現在ログイン中のユーザ、走行中デーモン等。
+              "`kill -HUP `cat /var/run/sendmail.pid`"などするとプロセス番号をタイポせずよい。
         - spool
-            + �����҂��X�v�[���B�v�����g�L���[�A���ǃ��[���ȂǁB
+            + 処理待ちスプール。プリントキュー、未読メールなど。
             - mail
-                + �݊��̂��߂̂��Ẵ��[���{�b�N�X�B
+                + 互換のためのかつてのメールボックス。
         - tmp
-            + �ꎞ�t�@�C���u��B/tmp�Ƃ͈قȂ�A���u�[�g���Ă����e�������Ȃ��B
+            + 一時ファイル置場。/tmpとは異なり、リブートしても内容が失われない。
 
-    + �f�B���N�g���̕���
+    + ディレクトリの分類
       |----------+----------------------------+---------------------|
-      |          | ���L�\                   | ���L�s��            |
+      |          | 共有可能                   | 共有不可            |
       |----------+----------------------------+---------------------|
-      | �ω����� | /usr, /opt                 | /etc, /boot         |
+      | 変化せず | /usr, /opt                 | /etc, /boot         |
       |----------+----------------------------+---------------------|
-      | �ω����� | /var/mail, /var/spool/news | /var/run, /var/lock |
+      | 変化する | /var/mail, /var/spool/news | /var/run, /var/lock |
       |----------+----------------------------+---------------------|
 
 
-- / (�����Q�Ƃ������͖Y�ꂽ�B)
+- / (何を参照したかは忘れた。)
     - vmlinuz
         Linux Kernel
     - boot
@@ -234,13 +234,13 @@
   ssize_t read(int fd, void *buf, size_t bufsize);
 
 - argument
-  fd:�t�@�C���f�B�X�N���v�^�̔ԍ�
-  buf:�i�[��
-  bufsize:�ő�Ǎ��o�C�g��
+  fd:ファイルディスクリプタの番号
+  buf:格納先
+  bufsize:最大読込バイト数
 
 - return
-  ����I�������ꍇ�͓Ǎ��񂾃o�C�g����Ԃ��B
-  �t�@�C���I�[�ɒB�����Ƃ���0���A�G���[���N�����Ƃ���-1��Ԃ��B
+  正常終了した場合は読込んだバイト数を返す。
+  ファイル終端に達したときは0を、エラーが起きたときは-1を返す。
 
 *** write(2)
 - def
@@ -248,13 +248,13 @@
   ssize_t write(int fd, const void *buf, size_t bufsize)
 
 - argument
-  fd:�t�@�C���f�B�X�N���v�^�̔ԍ�
-  buf:������
-  bufsize:�ő发���T�C�Y��
+  fd:ファイルディスクリプタの番号
+  buf:書込元
+  bufsize:最大書込サイズ数
 
 - return
-  ����I�����͏������񂾃o�C�g����Ԃ��B
-  �G���[����-1��Ԃ��B
+  正常終了時は書き込んだバイト数を返す。
+  エラー時は-1を返す。
 
 *** open(2)
 - def
@@ -265,30 +265,30 @@
   int open(const char *path, int flags, mode_t mode);
 
 - argument
-  path:open����t�@�C���̃p�X
-  flags:�X�g���[���̐�����\���t���O
-  mode:O_CREAT���w�肵���ꍇ�ɁA�V�K�t�@�C���̃p�[�~�b�V�������w�肷��
+  path:openするファイルのパス
+  flags:ストリームの性質を表すフラグ
+  mode:O_CREATを指定した場合に、新規ファイルのパーミッションを指定する
 
   - flags 1
-    ��ɂǂꂩ����w�肷��
+    常にどれか一つを指定する
     |----------+--------------|
-    | O_RDONLY | �ǂݎ���p |
-    | O_WRONLY | �����ݐ�p   |
-    | O_RDWR   | �ǂݏ������p |
+    | O_RDONLY | 読み取り専用 |
+    | O_WRONLY | 書込み専用   |
+    | O_RDWR   | 読み書き両用 |
     |----------+--------------|
 
   - flag 2
-    �w�肵�Ȃ��Ă��ǂ����A�����w�肵�Ă��ǂ��B
-    ���̂��̈ȊO�ɂ��F�X����B
+    指定しなくても良いし、複数指定しても良い。
+    下のもの以外にも色々ある。
     |----------+-----------------------------------------------------------------------------------|
-    | O_CREAT  | �t�@�C�������݂��Ȃ���ΐV�����t�@�C�������                                      |
-    | O_EXCL   | O_CREAT�ƂƂ��Ɏw�肷��ƁA���łɃt�@�C�������݂���Ƃ��̓G���[�ƂȂ�             |
-    | O_TRUNC  | O_CREAT�ƂƂ��Ɏw�肷��ƁA�t�@�C�������݂���Ƃ��͂܂��t�@�C���̒������[���ɂ��� |
-    | O_APPEND | write()����Ƀt�@�C�������ɏ����܂��悤�w�肷��                                 |
+    | O_CREAT  | ファイルが存在しなければ新しいファイルを作る                                      |
+    | O_EXCL   | O_CREATとともに指定すると、すでにファイルが存在するときはエラーとなる             |
+    | O_TRUNC  | O_CREATとともに指定すると、ファイルが存在するときはまずファイルの長さをゼロにする |
+    | O_APPEND | write()が常にファイル末尾に書込まれるよう指定する                                 |
     |----------+-----------------------------------------------------------------------------------|
 
 - return
-  �t�@�C���f�B�X�N���v�^�̒l��Ԃ�
+  ファイルディスクリプタの値を返す
 
   - ex
     open(file, O_RDWR|O_CREAT|O_TRUNC, 0666)
@@ -299,20 +299,20 @@
   int close(int fd);
 
 - argument
-  fd:�t�@�C���f�B�X�N���v�^
+  fd:ファイルディスクリプタ
 
 - return
-  ���Ȃ�����ꂽ�ꍇ��0, �G���[���������ꍇ��-1��Ԃ��B
+  問題なく閉じられた場合は0, エラーがあった場合は-1を返す。
 
 - ex
   if (close(fd) < 0){
-      /* �G���[���� */
+      /* エラー処理 */
   }
 
 *** lseek(2)
 - 
-  �t�@�C���f�B�X�N���v�^fd�����̃t�@�C���I�t�Z�b�g���w�肵���ʒuoffset�ֈړ�����B
-  �ړ����@��whence�Ɏw�肷��B
+  ファイルディスクリプタfd内部のファイルオフセットを指定した位置offsetへ移動する。
+  移動方法はwhenceに指定する。
 
 - def
   #include <sys/types.h>
@@ -320,15 +320,15 @@
   off_t lseek(int fd, off_t offset, int whence);
 
 - argument
-  whence:�ʒu�̎w����@�B
-         SEEK_SET:offset�Ɉړ��i�N�_�̓t�@�C���擪�j
-         SEEK_CUR:���݂̃t�@�C���I�t�Z�b�g+offset�Ɉړ�
-         SEEK_END:�t�@�C������+offset�Ɉړ�
+  whence:位置の指定方法。
+         SEEK_SET:offsetに移動（起点はファイル先頭）
+         SEEK_CUR:現在のファイルオフセット+offsetに移動
+         SEEK_END:ファイル末尾+offsetに移動
 
 *** dup(2), dup2(2)
 - 
-  oldfd�𕡐�����V�X�e���R�[���B
-  dup��duplicate���B
+  oldfdを複製するシステムコール。
+  dupはduplicateより。
 
 - def
   #include <unistd.h>
@@ -337,53 +337,52 @@
 
 *** ioctl(2)
 - 
-  �X�g���[�����Ȃ����ɂ���f�o�C�X�ɓ������������S�Ċ܂߂��V�X�e���R�[���B
+  ストリームがつながる先にあるデバイスに特化した操作を全て含めたシステムコール。
 
 - def
   #include <sys.ioctl.h>
   int ioctl(int fd, int request, ...);
 
 - argument
-  request:�ǂ̂悤�ȑ�������邩�萔�Ŏw�肵�A����request���L�̈������3�����ȍ~�ɓn���B
+  request:どのような操作をするか定数で指定し、そのrequest特有の引数を第3引数以降に渡す。
 
 *** fcntl(2)
 - 
-  �t�@�C���f�B�X�N���v�^�֘A�̑����ioctl��蕪���������́B
+  ファイルディスクリプタ関連の操作をioctlより分離したもの。
 
 - def
   #include <unistd.h>
   #include <fcntl.h>
   int fcntl(int fd, int cmd, ...);
 
-
 ** command
 
 *** mv
-    ���l�[���Ƃ��t�@�C���̈ړ��Ƃ��B
-    mv aaa{,bbb}�Ƃ����aaa->aaabbb�Ƀ��l�[�������B
+    リネームとかファイルの移動とか。
+    mv aaa{,bbb}とするとaaa->aaabbbにリネームされる。
 
 *** touch
 *** mkdir
 *** rmdir
 
 *** chmod
-    �A�N�Z�X�����̕ύX�B
-    u:���L�� g:�O���[�v o:���̑����ׂ� a:���ׂĂ̌���
-    +:�����t�^ -:�����폜 =:�����̏�������
-    r:�ǂݍ��� w:�������� x:���s s:�Z�b�gID t:�X�e�B�b�L�[�r�b�g
+    アクセス権限の変更。
+    u:所有者 g:グループ o:その他すべて a:すべての権限
+    +:権限付与 -:権限削除 =:権限の書き換え
+    r:読み込み w:書き込み x:実行 s:セットID t:スティッキービット
     - SUID
-        SUID(Set User ID)�͓���ȃp�[�~�b�V�����̂ЂƂŁA
-        ���s�\�t�@�C���ɐݒ肷��B
-        ���s����Root���[�U�̃��[�UID���Z�b�g�ł���B
+        SUID(Set User ID)は特殊なパーミッションのひとつで、
+        実行可能ファイルに設定する。
+        実行権にRootユーザのユーザIDをセットできる。
         u+s, 4xxx
     - SGID
-        SGID(Set Group ID)�͓���ȃp�[�~�b�V�����̂ЂƂŁA
-        ���s�\�t�@�C������уf�B���N�g���ɐݒ肷��B
-        ���s����Group�̃O���[�vID���Z�b�g�ł���B
+        SGID(Set Group ID)は特殊なパーミッションのひとつで、
+        実行可能ファイルおよびディレクトリに設定する。
+        実行権にGroupのグループIDをセットできる。
         g+s, 2xxx
-    - �X�e�B�b�L�[�r�b�g
-        ����ȃp�[�~�b�V�����̂ЂƂŁA�f�B���N�g���ɑ΂��Đݒ肷��B
-        �������݌����������Ă��A�����ȊO�̃��[�U�����L����t�@�C�����폜�ł��Ȃ��Ȃ�B
+    - スティッキービット
+        特殊なパーミッションのひとつで、ディレクトリに対して設定する。
+        書き込み権限があっても、自分以外のユーザが所有するファイルを削除できなくなる。
         o+t, 1xxx
 *** chgrp
 
@@ -391,24 +390,24 @@
     n:number f: follow (exit with C-c)
 *** ls
 *** man
-- �}�j���A�����Ăяo���B
+- マニュアルを呼び出す。
   |------------+------------------------|
-  | �Z�N�V���� | ����                   |
+  | セクション | 分類                   |
   |------------+------------------------|
-  |          1 | ���[�U�R�}���h         |
-  |          2 | �V�X�e���R�[��         |
-  |          3 | ���C�u�����֐�         |
-  |          4 | �f�o�C�X�t�@�C���Ȃ�   |
-  |          5 | �t�@�C���t�H�[�}�b�g   |
-  |          6 | �Q�[��                 |
-  |          7 | �K�i�Ȃ�               |
-  |          8 | �V�X�e���Ǘ��p�R�}���h |
+  |          1 | ユーザコマンド         |
+  |          2 | システムコール         |
+  |          3 | ライブラリ関数         |
+  |          4 | デバイスファイルなど   |
+  |          5 | ファイルフォーマット   |
+  |          6 | ゲーム                 |
+  |          7 | 規格など               |
+  |          8 | システム管理用コマンド |
   |------------+------------------------|
 
 *** info
 - 
-  emacs���g���ă}�j���A����\������B
-  GNU libc�̈ꎟ����info�B
+  emacsを使ってマニュアルを表示する。
+  GNU libcの一次情報はinfo。
 
 *** whatis
     show summary of man, searched from command names.
@@ -422,11 +421,11 @@
 - ax
 
 *** mount
-    ���݃}�E���g����Ă���t�@�C���V�X�e���𒲂ׂ�B
-    [--bind] ���łɃ}�E���g����Ă���c���[�̈ꕔ��ʂ̏ꏊ�Ƀ}�E���g����B
+    現在マウントされているファイルシステムを調べる。
+    [--bind] すでにマウントされているツリーの一部を別の場所にマウントする。
     [-v] verbose
-    [-t] �t�@�C���V�X�e���̃^�C�v���w��
-        ext3, ntfs, sysfs, devpts, proc, tmpfs�ȂǁB
+    [-t] ファイルシステムのタイプを指定
+        ext3, ntfs, sysfs, devpts, proc, tmpfsなど。
 
 *** unmount
 
@@ -435,77 +434,77 @@
     /proc/sys/net/ipv4/ip_forward -> net.ipv4.ip_forward (in /etc/sysctl.conf)
 
 *** fdisk
-    �p�[�e�B�V������ݒ肷��B
-    [- l] ���X�g���擾����B (sudo fdisk -l /dev/sda)
+    パーティションを設定する。
+    [- l] リストを取得する。 (sudo fdisk -l /dev/sda)
 
 *** dmesg
-    �J�[�l���̃��b�Z�[�W�o�b�t�@�̓��e��\������B"display message"�̗��B
+    カーネルのメッセージバッファの内容を表示する。"display message"の略。
 
 *** df
-    �t�@�C���V�X�e���ɂ��āA�g�p�̈�Ƌ󂫗̈�̃T�C�Y��\������B
+    ファイルシステムについて、使用領域と空き領域のサイズを表示する。
     disk free : display free disk space.
-    [-h] �T�C�Y�̒P�ʂ����Ă����B
-    [-a] �T�C�Y��0�̃t�@�C���V�X�e�����o��
-    [-T] �t�@�C���V�X�e���̎��(ex: ext4)���o��
+    [-h] サイズの単位をつけてくれる。
+    [-a] サイズが0のファイルシステムも出力
+    [-T] ファイルシステムの種類(ex: ext4)も出力
 
 *** mkfs
-    �t�@�C���V�X�e���̍쐬
-    [-t] �t�@�C���V�X�e���^�C�v���w�肷��B
-    [-V] verbose��version�����p���Ă���悤�ł��B
+    ファイルシステムの作成
+    [-t] ファイルシステムタイプを指定する。
+    [-V] verboseもversionも兼用しているようです。
     ex: mkfs -v -t ext4 /dev/sdb1
 
 *** mkswap
-    �X���b�v�̈��ݒ肷��B
+    スワップ領域を設定する。
     mkswap /dev/sbd2
 
 *** export
-    �ϐ�����ϐ��Ƃ��Ēǉ�����B
+    変数を大域変数として追加する。
     export FOO="BAR"
 
 *** ln
-    [-s, --symbolic] �V���{���b�N�����N�̍쐬
+    [-s, --symbolic] シンボリックリンクの作成
     [-v, --verbose]
 
 *** groupadd
-    �V�����O���[�v�̍쐬
+    新しいグループの作成
 *** useradd
-    �V�K���[�U�̍쐬
-    [-s] shell��ݒ肷��B
-    [-g] ��O���[�v��ݒ肷��B
-    [-m] �z�[���f�B���N�g�������݂��Ȃ��ꍇ�ɍ쐬����B
-         [-k] -m�Ɠ����Ɏw�肷��ƁA�w�肵���t�H���_�ȉ��̃t�@�C�����R�s�[�����B
-              �w�肵�Ȃ��ꍇ��/etc/skel�ȉ����R�s�[�B
+    新規ユーザの作成
+    [-s] shellを設定する。
+    [-g] 主グループを設定する。
+    [-m] ホームディレクトリが存在しない場合に作成する。
+         [-k] -mと同時に指定すると、指定したフォルダ以下のファイルがコピーされる。
+              指定しない場合は/etc/skel以下をコピー。
 
 *** passwd
-    ���[�U�p�X���[�h��ύX����B
+    ユーザパスワードを変更する。
 
 *** chown
-    ���L�҂�ύX����B
+    所有者を変更する。
     [-v] verbose
 
 *** su
-    ���[�U��؂�ւ���B
-    [-, -l, --login] �V�F�������O�C���V�F���ɂ���B
+    ユーザを切り替える。
+    [-, -l, --login] シェルをログインシェルにする。
 
 *** source
-    "source filename"�ŁAfilename�Ŏw�肳�ꂽ�X�N���v�g�t�@�C�������s����B
-    �t�@�C���̓��e���A�����Ŏ�őł��Ă����̂Ɠ����B
+    "source filename"で、filenameで指定されたスクリプトファイルを実行する。
+    ファイルの内容を、自分で手で打っていくのと同じ。
 
 *** tar
-    �t�@�C�������ɉ��A�W�J����B
-    - ���C���I�v�V����
-        [-A, --catenate] tar�t�@�C�������ɂɒǉ�����
-        [-c, --create] ���ɂ�V�K�쐬����
-        [-d, --diff] ���ɂƃt�@�C���V�X�e����r����
-        [--delete] ���ɓ�����t�@�C�����폜����
-        [-r, --append] ���ɂ̌㕔�Ƀt�@�C����ǉ�����
-        [-t, --list] ���ɂ̓��e��\������
-        [-u, --update] �V�����t�@�C���̂ݒǉ�����
-        [-x, --extract] ���ɓ�����t�@�C�������o��
-    - ���̑�
-        [-f] �t�@�C�����w��
-        [-v, --verbose] �t�@�C���ꗗ���ڍׂɕ\��
-    - �`����(�ŋ߂͎������f)
+    ファイルを書庫化、展開する。
+    - メインオプション
+        [-A, --catenate] tarファイルを書庫に追加する
+        [-c, --create] 書庫を新規作成する
+        [-d, --diff] 書庫とファイルシステム比較する
+        [--delete] 書庫内からファイルを削除する
+        [-r, --append] 書庫の後部にファイルを追加する
+        [-t, --list] 書庫の内容を表示する
+        [-u, --update] 新しいファイルのみ追加する
+        [-x, --extract] 書庫内からファイルを取り出す
+    - その他
+        [-f] ファイルを指定
+        [-v, --verbose] ファイル一覧を詳細に表示
+    - 形式別(最近は自動判断)
         [-z] tar + gzip
         [-j] tar + bzip2
         [-J] tar + xz
@@ -517,65 +516,69 @@
 *** xz / unxz
 
 *** readelf
-    ELF�t�@�C���Ɋւ������\��
+    ELFファイルに関する情報を表示
 
 *** make
-    �R���p�C�����̏����������ōs���B
-    [-k, --keep-going] �G���[���������Ă��ł��邾���������p��������B
-    [-n, --just-print, --dry-run] ���ۂɂ͏����������s�R�}���h�̂ݕ\������B
+    コンパイル等の処理を自動で行う。
+    [-k, --keep-going] エラーが発生してもできるだけ処理を継続させる。
+    [-n, --just-print, --dry-run] 実際には処理せず実行コマンドのみ表示する。
 
 *** tee
-    �W�����͂���ǂݍ��񂾓��e���A�W���o�͂ƃt�@�C���̗����֏o�͂���B
+    標準入力から読み込んだ内容を、標準出力とファイルの両方へ出力する。
 
 *** find
-    �t�@�C����f�B���N�g������������B
-    �p�@: find [option] [path...] [expression]
-    [-name] �t�@�C�����������A�p�^�[���}�b�`�B
-    [-exec] ������R�}���h�����s����B
+    ファイルやディレクトリを検索する。
+    用法: find [option] [path...] [expression]
+    [-name] ファイル名を検索、パターンマッチ可。
+    [-exec] 検索後コマンドを実行する。
 
 *** strip
-    �I�u�W�F�N�g�t�@�C������V���{��(�f�o�b�O�p�̃f�[�^)��؂�̂Ă�B
+    オブジェクトファイルからシンボル(デバッグ用のデータ)を切り捨てる。
 
 *** mknod
-    ����t�@�C�����쐬����B
-    mknod [�I�v�V����] �t�@�C���� �^�C�v ���W���[ �}�C�i�[
-    [-m] �A�N�Z�X����ݒ肷��B�f�t�H���g��0666����umask�����������́B
-    �^�C�v: b �u���b�N(buffered)�^�Ac,u �L�����N�^(unbuffered)�^
-            p FIFO(���O���p�C�v)
-            ��p���w����w�肵���ꍇ�̓f�o�C�X�ԍ��i���W���[�}�C�i�[�j���w�肵�Ȃ��B
+    特殊ファイルを作成する。
+    mknod [オプション] ファイル名 タイプ メジャー マイナー
+    [-m] アクセス権を設定する。デフォルトは0666からumaskを引いたもの。
+    タイプ: b ブロック(buffered)型、c,u キャラクタ(unbuffered)型
+            p FIFO(名前つきパイプ)
+            ※pを指定を指定した場合はデバイス番号（メジャーマイナー）を指定しない。
 
 *** chroot
-    ���[�g�f�B���N�g����ύX���ăR�}���h�����s����B
+    ルートディレクトリを変更してコマンドを実行する。
     chroot directory [command [args]]
 
 *** install
-    �t�@�C�����R�s�[���đ����̐ݒ������B
+    ファイルをコピーして属性の設定をする。
     1. install [OPTION]... SOURCE DEST
     2. install [OPTION]... SOURCE... DIRECTORY
     3. install -d [OPTION]... DIRECTORY...
-    [-d, --directory] �f�B���N�g�����쐬����B
-    [-m, --mode] �A�N�Z�X����ݒ肷��B
+    [-d, --directory] ディレクトリを作成する。
+    [-m, --mode] アクセス権を設定する。
     [-v, --verbose]
 
 *** tzselect
-    �^�C���]�[����I������B
+    タイムゾーンを選択する。
 
 *** readlink
-    �V���{���b�N�����N�̒l��ǂށB
+    シンボリックリンクの値を読む。
     readlink [OPTION]... FILE...
 
 *** gcc
 - 
-  �R���p�C������B
+  コンパイルする。
 - -o
-  �t�@�C�������w�肷��B
+  ファイル名を指定する。
   ex) gcc -o hello.exe hello.c
 - -Wall
-  ANSI C�X�^�C���̐錾�ƒ�`���g�����ꍇ�ɁA��ʓI�Ȍx���I�v�V���������ׂ�On�ɂȂ�A
-  �ׂ��Ȍx�������Ă����B
+  ANSI Cスタイルの宣言と定義を使った場合に、一般的な警告オプションがすべてOnになり、
+  細かな警告をしてくれる。
 - -O1(O), -O2, -O3
-  �œK���I�v�V�����B�������傫���������͂ȍœK�����s����B
-  ������O3�̓o�O��������ۂ�����Ƃ̂��ƁB
+  最適化オプション。数字が大きい方が強力な最適化が行われる。
+  ただしO3はバグが多い印象があるとのこと。
+
+*** strace
+- 
+  動作中のプログラムが呼んだシステムコールを表示してくれる。
 
 ** memo
 
@@ -585,47 +588,47 @@
     set group id
 
 *** /etc/passwd
-    ���[�U��:�Í����p�X���[�h:UID:GID:���[�U�̃t���l�[��:���[�U�̃z�[���f�B���N�g��:���O�C���V�F��
+    ユーザ名:暗号化パスワード:UID:GID:ユーザのフルネーム:ユーザのホームディレクトリ:ログインシェル
 
 *** /etc/group
-    �O���[�v��:�p�X���[�h:GID:���[�U�A�J�E���g�̃��X�g(�J���}��؂�)
+    グループ名:パスワード:GID:ユーザアカウントのリスト(カンマ区切り)
 
 *** /etc/nsswitch.conf
-    �l�[���T�[�r�X�X�C�b�`(NSS)�̐ݒ�t�@�C���B
-    ���낢��ȃJ�e�S���̖��O�T�[�r�X�����A�ǂ̏�񌹂���ǂ̏����Ŏ擾���邩�𔻒f����̂Ɏg�p�����B
+    ネームサービススイッチ(NSS)の設定ファイル。
+    いろいろなカテゴリの名前サービス情報を、どの情報源からどの順序で取得するかを判断するのに使用される。
 
 *** Ctrl-s
-    �X�N���[����~�L�[�B��ʂ��t���[�Y�����悤�Ɍ�����B
-    ���O�����Ă��āA�ꎞ�I�ɂƂ߂Ă������߂Ɏg�����肷��B
-    ������Ctrl-q
+    スクロール停止キー。画面がフリーズしたように見える。
+    ログを見ていて、一時的にとめておくために使ったりする。
+    解除はCtrl-q
 *** glob
 - 
-  �V�F����*?{}[]~�Ȃǂ����߂��A�t�@�C�����Ƃ��ēW�J���邱�Ƃ��O���u�i�t�@�C���O���u�j�Ƃ����B
-  ���K�\���Ƃ͕ʕ��B
-  �����������Ȃ��ꍇ��""���ň͂ށB
-  ���Ȃ݂�Windows�ł�Linux�ƈقȂ�v���O�������œW�J����B
+  シェルが*?{}[]~などを解釈し、ファイル名として展開することをグロブ（ファイルグロブ）という。
+  正規表現とは別物。
+  働かせたくない場合は""等で囲む。
+  ちなみにWindowsではLinuxと異なりプログラム側で展開する。
 *** tty
 - 
-  �[����\��tty�́ATeleTYpe�̗��B
+  端末を表すttyは、TeleTYpeの略。
 *** standard input/output
 - 
-  |----------------+---------------+----------------|
-  | FileDiscriptor | Macro         | Meaning        |
-  |----------------+---------------+----------------|
-  |              0 | STDIN_FILENO  | �W������       |
-  |              1 | STDOUT_FILENO | �W���o��       |
-  |              2 | STDERR_FILENO | �W���G���[�o�� |
-  |----------------+---------------+----------------|
+  |----------------+---------------+--------+----------------|
+  | FileDiscriptor | Macro         | stdio  | Meaning        |
+  |----------------+---------------+--------+----------------|
+  |              0 | STDIN_FILENO  | stdin  | 標準入力       |
+  |              1 | STDOUT_FILENO | stdout | 標準出力       |
+  |              2 | STDERR_FILENO | stderr | 標準エラー出力 |
+  |----------------+---------------+--------+----------------|
 
-*** sys/types.h �V�X�e����`�^
-OS��CPU�̍��ق��B�����邽�߂ɕʖ��Ŋ�{�^���Ē�`���Ă���B
+*** sys/types.h システム定義型
+OSやCPUの差異を隠蔽するために別名で基本型を再定義している。
 - size_t
-  �����Ȃ������^
+  符号なし整数型
 - ssize_ti
-  �����t�������^
+  符号付き整数型
 
-*** '\0'�̗L��
+*** '\0'の有無
 - 
-  read(2)�͏I�[��'\0'��z�肵�Ă��Ȃ��B
-  �΂��āAprintf()�͖�����'\0'��O��Ƃ��Ă���̂ŁA
-  ���̂܂ܓn������A���킹�Ďg���̂͊ԈႢ�B
+  read(2)は終端に'\0'を想定していない。
+  対して、printf()は末尾に'\0'を前提としているので、
+  そのまま渡したり、合わせて使うのは間違い。
