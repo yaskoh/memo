@@ -13,6 +13,23 @@
 
 *** ctype.h
 
+**** isalnum
+- 
+  半角の英字か数字なら0以外（真）を返す。それ以外は0を返す。
+
+- def
+  #include <ctype.h>
+  int isalnum(int ch);
+
+**** isalpha
+- 
+  引数chが半角英字なら0以外（真）を、それ以外は0を返す。
+
+- def
+  #include <ctype.h>
+  int isalpha(int ch);
+
+
 *** error.h
 
 *** float.h
@@ -185,14 +202,15 @@
   | x, X | 符号なし整数型の値を16進表記で出力             |
   | f, F | 浮動小数点数型の値を小数点表現(XX.XXXX)で出力  |
   | e, E | 浮動小数点数型の値を「e表記」(XX.XXe+XX)で出力 |
+  | g, G | %f(F)と%e(E)の短い方                           |
   | p    | ポインタを16進表記で出力                       |
   |------+------------------------------------------------|
 
   - X, F, E
     出力するアルファベットが大文字になる。
     %x, 77 -> 4d, %X, 77 -> 4D
-  - l
-    long型を取得する場合につける。
+  - h, l
+    short, long型を取得する場合につける。
     %lxで、long型を16進出力できる。
   - 桁数
     %と型指定子の間に数字を挟む。
@@ -216,7 +234,8 @@
   フォーマットを指定して入力できる。
   ただし、潜在的にgets()と同様バッファオーバーフローを起こす危険がある。
   ex) scanf("%d", &n);
-
+  また、%s指定した場合も、最初のホワイトスペース(tab, space, 改行)にぶつかった時点で読み込みをやめるので、
+  使い方が難しく、gets()が使われる場合が多い。
 
 **** fread(3)
 - 
@@ -358,7 +377,6 @@
 - 
   errnoの値errnumに対応したエラーメッセージを返す
 
-
 *** stdlib.h
 - 概要
   一般ユーティリティに関する型・マクロ・関数の宣言定義
@@ -368,9 +386,234 @@
 - 
   プログラムを終了する関数
 
+
+**** atoi(3), atol(3)
+- 
+  整数表現を含む文字列strから対応する整数値を得る。
+
+- def
+  #include <stdilb.h>
+  int atoi(const char *str);
+  long atol(const char *str);
+
+- return
+  整数を返す。
+  整数が含まれていない場合やエラーが発生した場合は0を返す。
+
+**** strtol()
+**** strtoll()
+**** strtod()
+
 *** string.h
 
+**** strcpy()
+
+**** strcat()
+
+**** strcmp()
+
+**** strlen()
 *** time.h
+
+
+** library
+*** conio.h
+
+**** getche()
+- 
+  getchar()をインタラクティブに処理したい場合に使う。
+
+**** cprintf()
+- 
+  printf()関数と同様のはたらきだが、改行文字を(\n)を復帰改行に変換しない。
+
+**** cscanf()
+- 
+  scanf()と同様のはたらきをする
+
+*** unistd.h
+- 
+  Unix Standard Header File
+
+**** getopt(3)
+- 
+  ショートオプションだけを認識するオプション解析API。
+  UNIX系OSに古くから存在する。
+
+- def
+  #include <unistd.h>
+  int getopt(int argc, char * const argv[], const char *optdecl);
+  extern char *optarg;
+  extern int optind, opterr, optopt;
+
+- getoptに関連したグローバル変数
+  |-------+--------+--------------------------------------------------|
+  | 型    | 名前   | 意味                                             |
+  |-------+--------+--------------------------------------------------|
+  | char* | optarg | 現在処理中のオプションのパラメータ               |
+  | int   | optind | 現在処理中のオプションのargvでのインデックス     |
+  | int   | optopt | 現在処理中のオプション文字                       |
+  | int   | opterr | 真ならばエラー時にgetopt()がメッセージを表示する |
+  |-------+--------+--------------------------------------------------|
+
+- return
+  オプションがなくなった場合に-1を返す。
+  オプションが存在する場合はオプションを返す。
+
+*** getopt.h
+
+**** getopt_long(3)
+- 
+  glibcらしい。
+
+- def
+  #define _GNU_SOURCE
+  #include <getopt.h>
+
+  int getopt_long(int argc, char * const argv[],
+                  const char *optdecl,
+                  const struct option *longoptdecl,
+                  int *longindex);
+
+  struct option {
+      const char *name;
+      int has_arg;
+      int *flags;
+      int val;
+  };
+
+  extern char *optarg;
+  extern int optind, opterr, optopt;
+
+- struct option member
+  |----------+-------+--------------------------------------------------------------------|
+  | メンバ名 | 型    | 値と意味                                                           |
+  |----------+-------+--------------------------------------------------------------------|
+  | name     | char* | ロングオプション名。"lines" "help"など                             |
+  | has_arg  | int   | no_argument(または0) : パラメータを取らない                        |
+  |          |       | required_argument(または1) : 必ずパラメータを取る                  |
+  |          |       | optional_argument(または2) : パラメータをとるかもしれない          |
+  | flags    | int*  | NULL : getopt_long()はvalメンバの値を返す                          |
+  |          |       | NULL以外 : getopt_long()は0を返し、*flagsにvalメンバの値を代入する |
+  | val      | int   | flagsメンバで指定されたところに返す値                              |
+  |----------+-------+--------------------------------------------------------------------|
+
+*** regex.h
+**** regex
+- 
+  libcの正規表現API。
+  実際どこにあるのかは知らない。
+
+- def
+  #include <sys/types.h>
+  #include <regex.h>
+
+  int regcomp(regex_t *reg, const char *pattern, int flags);
+  void regfree(regex_t *reg);
+  int regexec(const regex_t *reg, const char *string,
+              size_t nmatch, regmatch_t pmatch[], int flags);
+  size_t regerror(int errcode, const regex_t *reg,
+                  char *msgbuf, size_t msgbuf_size);
+
+- 一部説明
+  - regcomp
+    正規表現パターンpatternを専用のデータ型regex_tに変換する。
+    結果は第1引数regに書込まれる。
+    regのメモリ領域は割り当ててそのポインタを渡す必要があるが、
+    その他に独自に確保した領域をregex_t内部に確保する。
+    成功したら0を返し、失敗したらエラーコードを返す。
+    regerror()でエラーメッセージに変換できる。
+  - regfree
+    regcompで独自に確保した領域を解放する。
+  - regexec
+    実際に文字列のパターンを照合する。
+    文字列stringがパターンregに適合するなら0を返す。
+    適合しなければ、定数REG_NOMATCHを返す。
+
+*** dirent.h
+**** opendir(3)
+- 
+  pathにあるディレクトリを読み込みのため開く。
+  戻り値はDIRという型のポインタで、構造体ストリームを管理するための構造体。
+
+- def
+  #include <sys/types.h>
+  #include <dirent.h>
+
+  DIR *opendir(const char *path);
+
+**** readdir(3)
+- 
+  ディレクトリストリームdからエントリを一つ読込み、エントリを返す。。
+  struct direntはOSにより異なるが、Linuxにはエントリの名前を表す「char *d_name」が存在する。
+  d_nameは普通の文字列なので、printf()やfputs()に渡せる。
+  エントリがなくなるか読込みに失敗するとNULLを返す。
+  ちなみにシステムコールのreaddirもあるので、"man 3 readdir"と明示する必要あり。
+
+- def
+  #include <sys/types.h>
+  #include <dirent.h>
+
+  struct dirent *readdir(DIR *d);
+
+**** closedir(3)
+- 
+  ディレクトリストリームdを閉じる関数。
+- def
+  #include <sys/types.h>
+  #include <dirent.h>
+  int closedir(DIR *d);
+
+**** seekdir()
+- 
+  fseek()に相当するdir操作
+
+**** telldir()
+- 
+  ftell()に相当するdir操作
+
+
+** syntax
+*** do { ... } while ();
+
+*** break;
+*** continue;
+*** switch() { case [value]: ... break; ... ; default ... }
+*** goto [tag];
+
+
+** preprocessor
+
+*** #include
+
+*** #define
+- #define マクロ名 文字列
+
+*** #if, #else, #elif, #endif
+
+*** #ifdef, #ifndef
+
+*** macro
+
+**** __LINE__
+- 
+  ソースの行番号を返す
+
+**** __FILE__
+- 
+  ファイルの名前を表す文字列を定義する。
+
+**** __DATE__
+- 
+  月/日/年 のフォーマットでシステム日付を返す
+
+**** __TIME__
+- 
+  プログラムのコンパイルを開始した時間を表す文字列を定義する。
+
+**** __STDC__
+- 
+  ANSI Cに準拠している場合に1を返す。
 
 
 ** memo
@@ -407,3 +650,36 @@
   |------+---------------+---------------+---------------------------|
 
 
+*** keyword
+- 
+  auto, break, case, char, const, continue, default, do,
+  double, else, enum, extern, float, for, goto, if,
+  int, long, register, return, short, signed, sizeof, static,
+  struct, switch, typedef, union, unsigned, void, volatile, while
+
+*** 演算子の優先順位
+- 
+  |----------+------------|
+  | 優先順位 | 演算子     |
+  |----------+------------|
+  | 高い     | !          |
+  |          | > >= < <=  |
+  |          | == !=      |
+  |          | &&         |
+  | 低い     | ll(パイプ) |
+  |----------+------------|
+
+
+*** 基本データ型
+- 基本データ型
+  char, int, float, double, void
+- 型修飾子
+  long, short, signed, unsigned
+
+*** suffix
+- 
+  数値のデフォルトはintとdouble。
+  末尾に接尾子をつけることで型を変えられる。
+- F float
+- L long
+- U unsigned
