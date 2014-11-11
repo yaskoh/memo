@@ -356,15 +356,15 @@
   void clearerr(FILE *stream);
 
 **** perror(3)
+- 
+  "s:"につづきエラーメッセージを出力する。
+
 - def
   #include <stdio.h>
 
   void perror(const char *s);
-
 - argument
   s:出力用文字列
-- 
-  "s:"につづきエラーメッセージを出力する。
 
 **** strerror()
 - def
@@ -377,15 +377,40 @@
 - 
   errnoの値errnumに対応したエラーメッセージを返す
 
+
+**** popen(3)
+- 
+  commandを起動してそれにパイプをつなぎ、そのパイプを表すstdioストリームを返す。
+  modeは"r"か"w"。読み書き両用にしたい場合、pipe()とfork()を使いパイプをつなぐ必要がある。
+  プログラムがシェル経由で実行されるので、commandにはリダイレクトやパイプも使える。
+
+- def
+  #include <stdio.h>
+  FILE *popen(const char *command, const char *mode);
+
+**** pclose(3)
+- 
+  popen()でfork()した子プロセスをwait()し、そのあとにストリームを閉じる。
+  popen()で開いたFILE*はpclose()で閉じないといけない。
+
+- def
+  #include <stdio.h>
+  int pclose(FILE *stream);
+
+
 *** stdlib.h
 - 概要
   一般ユーティリティに関する型・マクロ・関数の宣言定義
 
 
-**** exit()
+**** exit(3)
 - 
-  プログラムを終了する関数
+  statusを終了ステータスとしてプロセスを終了する。
+  _exit(2)と異なりlibc関連の処理を始末する。
 
+- def
+  #include <stdlib.h>
+  void exit(int status);
 
 **** atoi(3), atol(3)
 - 
@@ -400,9 +425,54 @@
   整数を返す。
   整数が含まれていない場合やエラーが発生した場合は0を返す。
 
-**** strtol()
-**** strtoll()
-**** strtod()
+**** strtol(3)
+**** strtoll(3)
+**** strtod(3)
+
+**** malloc(3)
+- 
+  sizeバイトのメモリをヒープ領域に割り当てる。
+  戻り値がvoid*なので、キャストして使う必要がある。
+  メモリ割り当てに失敗したらNULLを返す。
+  割り当てられたメモリの内容は保証されない。
+- def
+  #include <stdlib.h>
+  void *malloc(size_t size);
+
+**** calloc(3)
+- 
+  size × nmembバイトのメモリをヒープ領域に割り当てうr。
+  mallocと違い、割り当てたメモリはゼロクリアされている。
+  割り当てに失敗したらNULLを返す。
+  頭のcはclear。
+- def
+  #include <stdlib.h>
+  void *calloc(size_t nmemb, size_t size);
+
+**** realloc(3)
+- 
+  mallocで割り当てたメモリのサイズをsizeバイトに拡張または縮小する。
+  ptr自体は移動する可能性があるが、内容はコピーされる。
+  メモリ割り当てに失敗する可能性があるので、戻り値をそのままポインタに代入してはいけない。
+
+- def
+  #inclued <stdlib.h>
+  void *realloc(void *ptr, size_t size);
+
+**** free(3)
+- 
+  malloc(), calloc(), realloc()でヒープ領域に割り当てたメモリを解放する。
+  
+- def
+  #include <stdlib.h>
+  void free(void *ptr);
+
+**** system(3)
+- 
+  fork(2)を使って子プロセスを作成し、execclを使ってcommandで指定されたシェルコマンドを実行する。
+- 
+  #include <stdlib.h>
+  int system(const char *command);
 
 *** string.h
 
@@ -573,6 +643,7 @@
   ftell()に相当するdir操作
 
 
+
 ** syntax
 *** do { ... } while ();
 
@@ -581,6 +652,12 @@
 *** switch() { case [value]: ... break; ... ; default ... }
 *** goto [tag];
 
+*** const
+- 
+  const修飾子は定数宣言。
+  const int i = 0 でも int const i = 0でも違いはない。
+  ポインタの場合、const int *p = aとすると*pの値（ポインタ先の値）の値が変更できなくなり、
+  またint * const p = a とするとpの値（ポインタが示すアドレス）が変更できなくなる。
 
 ** preprocessor
 
@@ -628,6 +705,7 @@
   99年に改訂された企画はC99と呼ぶ。
 - C11(C2011)
   2011年の改訂版はC2011(C11)。
+  
 *** ファイルディスクリプタとFILE
 - 
   FILEは生のストリームにバッファ機能を追加する層で、
@@ -683,3 +761,45 @@
 - F float
 - L long
 - U unsigned
+
+*** ビルド
+**** preprocess
+- 
+  #includeや#ifdef等を処理する。
+  gcc -Eとすると、プリプロセスだけ処理を行った結果が標準出力に出力される。
+
+**** compile
+- 
+  C言語のソースコード(*.c)をアセンブリ言語(*.s)に変換する。
+  gcc -Sとして処理するとコンパイルまでで処理を中断し、
+  アセンブリファイル（*.s）が作成される
+
+**** assemble
+- 
+  アセンブリ言語のソースコード(*.s)をオブジェクトファイル(*.o)に変換する。
+  オブジェクトファイルはいくつかの種類がある。
+  代表的なのは以下。
+  - ELF (Executable and Linking Format)
+  - COFF (Common Object File Format)
+  - a.out (assembler output)
+  
+  gcc cとして処理すると、アセンブルまでで処理を中断し、*.oというファイルが作成される。
+
+**** link
+- 
+  オブジェクトファイル(*.o)から実行ファイルまたはライブラリ(*.a, *.so)を生成する。
+
+*** Library
+**** Static Library
+- 
+  スタティックリンクに使うライブラリで、通常「*.a」となる。
+  arというプログラムで作ったアーカイブファイルで、多くのオブジェクトファイルが含まれる。
+
+**** Dynamic Library
+- 
+  共有ライブラリはダイナミックリンクに使うライブラリで、ファイル名は通常「*.so」となる。
+  「lib.so.6」のようにバージョン番号がつく場合もある。
+  静的ライブラリと異なり全体が1つのオブジェクトファイルとして構成される。
+
+  ちなみにダイナミックロードは、実行時にすべてのリンクの結合をおこなうので、
+  コンパイル時にライブラリがなくてもよい。
