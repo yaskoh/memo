@@ -1,0 +1,12 @@
+Excel
+
+
+* 関数
+
+** EXACT
+- 
+  2つのテキスト文字列を比較し、同じであればTRUE、それ以外の場合はFALSEを返す。
+
+- ex
+  EXACT(text1, text2)
+

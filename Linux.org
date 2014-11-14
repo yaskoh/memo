@@ -707,7 +707,7 @@
   失敗した場合は子プロセスは作成されず、親でのみ-1が戻る。
 
 - def
-  #include <sys.types.h>
+  #include <sys/types.h>
   #include <unistd.h>
   pid_t fork(void);
 
@@ -805,6 +805,240 @@
 - def
   #include <unistd.h>
   pid_t setsid(void);
+
+*** signal(2)
+- 
+  signalを捕捉するAPI。
+  シグナルを送るAPIでなくtrapするAPIなので注意。
+  
+  シグナル番号sigのシグナルを受けたときの挙動を、
+  第2引数funcの関数を呼ぶように変更する。
+  このfuncに渡す関数を、シグナルを処理する関数という意味でシグナルハンドラ(signal handler)と呼ぶ。
+
+  問題が色々とあるため、sigaction()を用いるのがよい。
+
+- def
+  #include <signal.h>
+  void (*signal (int sig, void (*func)(int)))(int)
+
+  (わかりにくいので少し書き直すと↓
+   typedef void (*sighandler_t)(int);
+   sighandler_t signal(int sig, sighandler_t func);
+  )
+
+- 第2引数funcで用いられる特別な値
+  |---------+--------------------------------------------------|
+  | 定数    | 意味                                             |
+  |---------+--------------------------------------------------|
+  | SIG_DFL | OSのデフォルトの動作に戻す                       |
+  | SIG_IGN | カーネルレベルでシグナルを無視するように指示する |
+  |---------+--------------------------------------------------|
+
+*** sigaction(2)
+- 
+  sigaction()は第1引数のシグナルsigのハンドラを登録する。
+  第2引数actにシグナルハンドラを指定する。具体的には関数ポインタかSIG_IGN, SIG_DFL。
+  第3引数のoldactには、sigaction()呼び出し時のハンドラが返る。不要ならNULLを指定する。
+  struct sigcationのsa_sigcationもシグナルハンドラを指定するメンバで、
+  受信したときにシグナル番号以外の情報を得ることが出来る。
+  
+- def
+  #include <signal.h>
+  
+  int sigaction(int sig, const struct sigaction *act,
+                struct sigaction *oldact);
+  
+  struct sigaction {
+      /* sa_handler, sa_sigactionは片方のみ使う */
+      void (*sa_handler)(int);
+      void (*sa_sigaction)(int, siginfo_t*, void*);
+      sigset_t sa_mask;
+      int sa_flags;
+  };
+
+- signalの問題点に対する対処
+  - ハンドラの再設定
+    sigaction()はOSに関わらずシグナルハンドラの設定を保持し続けることを保証する。
+  - システムコールの再起動
+    sigaction()はデフォルトでシステムコールを再起動しない。
+    sa_flagsメンバにフラグSA_RESTARTを追加すると再起動する設定になる。
+    一般には再起動されるほうが便利なので、SA_RESTARTを常に追加しておくのが無難。
+  - シグナルのブロック
+    sa_maskでブロックするシグナルを指定できる。
+    シグナルハンドラの起動中は処理中のシグナルを自動的にブロックしてくれるので、
+    ほとんどの場合はsa_maskは空にしておけば十分。空にするにはsigemptyset()を使う。
+
+- sigset_t操作API
+  - int sigemptyset(sigset_t *set);
+    setを空に初期化する
+  - int sigfillset(sigset_t *set);
+    setをすべてのシグナルを含む状態にする
+  - int sigaddset(sigset_t *set, int sig);
+    シグナルsigをsetに追加する
+  - int sigdelset(sigset_t *set, int sig);
+    シグナルsigをsetから削除する
+  - int sigismember(const sigset_t *set, int sig);
+    シグナルsigがsetに含まれるとき真をかえす
+
+- シグナルのブロック
+  ブロックしていたシグナルを配送してもらうためのAPI。
+  sigprocmaskは自プロセスのシグナルマスクをセットする。
+  セット方法はフラグhowで決まる。
+  sigpendingは保留されているシグナルをsetに書き込む。
+  成功したら0、失敗したら-1を返しerrnoをセットする。
+  sigsuspendはシグナルマスクmaskをセットすると同時にプロセスをシグナル待ちにする。
+  ブロックしていたシグナルを解除して、保留されていたシグナルを処理するときに使う。
+  sigsuspendは常に-1をかえす。
+
+  - def
+    #include <signal.h>
+    
+    int sigprocmask(int how, sigset_t *set, sigset_t *oldset);
+    int sigpending(sigset_t *set);
+    int sigsuspend(const sigset_t *mask);
+
+  - sigprocmaskのhow値
+    |-------------+---------------------------------------------------|
+    | 値          | 効果                                              |
+    |-------------+---------------------------------------------------|
+    | SIG_BLOCK   | setに含まれるシグナルをシングルマスクに追加する   |
+    | SIG_UNBLOCK | setに含まれるシグナルをシグナルマスクから削除する |
+    | SIG_SETMASK | シグナルマスクをsetに置き換える                   |
+    |-------------+---------------------------------------------------|
+
+*** kill(2)
+- 
+  シグナルを送信するシステムコール。
+  プロセスIDがpidのプロセスにシグナルsigを送信する。
+  成功したら0を返す。失敗したら-1を返し、errnoをセットする。
+  pidが負数のときは、IDが-pidのプロセスグループ全体にシグナルを送る。
+  プロセスグループにシグナルを送るには、killpg()という専用のシステムコールもある。
+
+- def
+  #include <sys/types.h>
+  #include <signal.h>
+  
+  int kill(pid_t pid, int sig);
+
+*** chdir(2)
+- 
+  自プロセスのカレントディレクトリをpathに変更する。
+  成功したら0、失敗したら-1を返しerrnoをセットする。
+
+- def
+  #include <unistd.h>
+  int chdir(const char *path);
+
+*** getuid(2), getgid(2)
+- 
+  現在のクレデンシャルを得る。
+  getuidは実ユーザIDを、geteuidは実行ユーザIDを、
+  getgidは実グループIDを、getegidは実行グループIDを、
+  それぞれ返す。
+  これらのシステムコールは失敗しない。
+
+- def
+  #include <unistd.h>
+  #include <sys/types.h>
+  
+  uid_t getuid(void);
+  uid_t geteuid(void);
+  gid_t getgid(void);
+  gid_t getegid(void);
+
+*** getgroups(2)
+- 
+  自プロセスの捕捉グループIDをbufに書き込む。
+  捕捉グループIDがbufsize個より多い場合は、エラーを返す。
+  成功した場合捕捉グループIDの数を、失敗した場合は-1を返してerrnoをセットする。
+
+- def
+  #include <unistd.h>
+  #include <sys/types.h>
+  
+  int getgroups(int bufsie, gid_t *buf);
+
+*** setuid(2), setgid(2)
+- 
+  setuid()は、実ユーザIDと実行ユーザIDをidに変更する。
+  setgid()は、実グループIDと実行グループIDをidに変更する。
+- def
+  #include <unistd.h>
+  #include <sys/types.h>
+  
+  int setuid(uid_t id);
+  int setgid(gid_t id);
+
+*** initgroups(2)
+- 
+  /etc/groupなどのデータベースを見て、
+  ユーザuserの補足グループを自プロセスに設定する。
+  また、第2引数のgroupも追加する。
+  groupは通常、ユーザのグループ(primary group)を補足グループにも追加するために使う。
+  成功したら0を返す。失敗したら-1を返しerrnoを設定する。
+  スーパーユーザでないと成功しない。
+
+- def
+  #define _BSD_SOURCE
+  #include <grp.h>
+  #include <sys/types.h>
+  
+  int initgroups(const char *user, gid_t group);
+
+*** getrusage(2)
+- 
+  プロセスのリソース使用量を第2引数usageに書き込む。
+  第1引数whoがRUSAGE_SELFならば自プロセスのリソース使用量を書き込む。
+  第1引数whoがRUSAGE_CHILDRENならば子プロセスのリソース使用量を書き込む。
+  この場合の子プロセスは「自プロセスからfork()した子プロセス全てのうち、waitしたもの」を意味する。
+  呼び出しが成功したら0を返す。失敗したら-1を返してerrnoをセットする。
+
+- def
+  #include <unistd.h>
+  #include <sys/resource.h>
+  #include <sys/time.h>
+  
+  int getrusage(int who, struct rusage *usage);
+
+- struct rusage
+  「man getrusage」には沢山のメンバがあるが、
+  Linuxではそのうちの一部しか正しい値がセットされない。
+  
+  |----------------+-----------+--------------------------|
+  | 型             | メンバ名  | 意味                     |
+  |----------------+-----------+--------------------------|
+  | struct timeval | ru_utime  | 使われたユーザ時間       |
+  | struct timeal  | ru_stime  | 使われたシステム時間     |
+  | long           | ru_majflt | メジャーフォールトの回数 |
+  | long           | ru_minflt | マイナーフォールトの回数 |
+  | long           | ru_nswap  | スワップサイズ           |
+  |----------------+-----------+--------------------------|
+
+*** time(2)
+- 
+  UNIXエポックから現在までの経過秒数を返す。
+  tptrがNULLでない場合は*tptrにも同じ値を書き込む。
+  秒までの単位しか扱えない。
+
+- def
+  #include <time.h>
+  time_t time(time_t *tptr);
+
+*** gettimeofday(2)
+- 
+  UNIXエポックから現在までの経過時間をtvに書き込む。
+  tzは既に使われていないので常にNULLを指定する。
+  実行が成功したら0を返し、失敗したら-1を返しerrnoをセットする。
+
+- def
+  #include <sys/time.h>
+  
+  int gettimeofday(struct timeval *tv, struct timezone *tz);
+  
+  struct timeval {
+      long tv_sec;   /* 秒 */
+      long tv_usec;  /* ミリ秒 */
+  };
 
 ** command
 
@@ -1228,7 +1462,7 @@
   プログラムを開始する。オプションをつけるとオプション付きで実行する。
 - backtrace, bt
   バックトレースを表示する。呼び出し順の逆に列挙される。
-k- frame N, f
+- frame N, f
   フレームNに飛ぶ。
   （番号を指定することで、backtraceで確認した番号の処理に飛べる。）
 - list, l
@@ -1334,6 +1568,11 @@ k- frame N, f
   関数の実行を終了する。
   数字を指定して終了ステータスを返すことが出来る。
 
+*** stty
+- 
+  端末ラインの設定を変更・表示する
+- -a
+  すべてのオプション設定の現在の状態を標準出力に書き出す
 
 *** joke
 **** sl
@@ -1352,12 +1591,27 @@ k- frame N, f
 - 
   matrixっぽい表示
 
-
 ** memo
 *** suid
-    set user id
+- 
+  set user id。
+  コマンドを実行するユーザに関係なく特定のユーザで実行したいときに、
+  ファイルパーミッションのset-uidビット(set-user-ID bit)を立てておくと、
+  起動したユーザに関わらず、ファイルのオーナー権限で起動される。
+  パーミッションのxがsと表示される。
+  setuid()システムコールとは何の関係もない。
+-
+  起動ユーザIDを実ユーザID(real user ID)、
+  オーナーIDを実行ユーザID(effective user ID)という。
+
 *** sgid
-    set group id
+- 
+  set group id。
+  suidとほとんど同じなのでそちらを参照。
+
+- 
+  起動ユーザグループIDを実グループID(real group ID)、
+  プログラム所有グループIDを実行グループID(effective group ID)という。
 
 *** /etc/passwd
     ユーザ名:暗号化パスワード:UID:GID:ユーザのフルネーム:ユーザのホームディレクトリ:ログインシェル
@@ -1368,6 +1622,21 @@ k- frame N, f
 *** /etc/nsswitch.conf
     ネームサービススイッチ(NSS)の設定ファイル。
     いろいろなカテゴリの名前サービス情報を、どの情報源からどの順序で取得するかを判断するのに使用される。
+  
+*** heredoc
+- 
+  ヒアドキュメント。
+  << の後にデリミタとなる識別子を続け、最初に指定した識別子だけの行がくるまで入力が続く。
+  
+  - 行頭を<<-ではじめることで、行頭のタブが無視され、インデントを崩さずヒアドキュメントを書ける。
+  - デフォルトでは、変数展開やバッククオートのコマンド展開が行われる。($PWD等)
+  - デリミタを引用符で囲むことで(<< "EOF")、コマンド展開等を無効にできる。
+
+- ex:)
+    cat > ~/.bashrc << "EOF"
+    set +h
+    unmask 022
+    EOF
 
 *** Ctrl-s
     スクロール停止キー。画面がフリーズしたように見える。
@@ -1420,6 +1689,21 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   "kill -l"で参照可能。
   killコマンドでシグナルの送信が可能。
   また、シグナルを受信して処理するにはtrapコマンドが使える。
+
+- よく使われるシグナル
+  |------------------+------+------------+--------------------------------------------------------------------------------------------|
+  | デフォルトの名前 | 補足 | 挙動       | 生成原因と用途                                                                             |
+  |------------------+------+------------+--------------------------------------------------------------------------------------------|
+  | SIGINT           | ○   | 終了       | 割り込み。Ctr+Cで生成され、中止したいときに使う。                                          |
+  | SIGHUP           | ○   | 終了       | ユーザがログアウトしたときなどに生成、デーモンでは設定ファイルの読み直しに使う場合が多い。 |
+  | SIGPIPE          | ○   | 終了       | 切れたパイプに書き込むと生成される。                                                       |
+  | SIGTERM          | ○   | 終了       | プロセスを終了させるときに使う。killのデフォルト値。                                       |
+  | SIGKILL          | ×   | 終了       | 確実にプロセスを終了させるために使う                                                       |
+  | SIGCHLD          | ○   | 無視       | 子プロセスが停止または終了したときに生成される                                             |
+  | SIGSEGV          | ○   | コアダンプ | アクセスが禁止されているメモリ領域にアクセスした。                                         |
+  | SIGBUS           | ○   | コアダンプ | アラインメント違反。ポインタ操作を間違えたときに生成される。                               |
+  | SIGFPE           | ○   | コアダンプ | 算術演算エラー。ゼロ除算や不動小数点数オーバーフローなど。                                 |
+  |------------------+------+------------+--------------------------------------------------------------------------------------------|
 
 *** ファイルの種類を判定するマクロ
 - 
@@ -1549,8 +1833,6 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   psコマンドには"zombie"とか"defunct"と表示される。
   対策としては、1:forkしたらwait, 2:ダブルfork, 3:sigcation()を使う, などがある。
 
-
-
 *** session
 - 
   ユーザのログインからログアウトまでの流れを管理するための概念。
@@ -1573,3 +1855,69 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   制御端末を持たないプロセスをdeamon processという。
   "ps ax"などで確認すると、ttyが"?"となっている。
   
+*** 他のプロセスのカレントディレクトリ
+- 
+  自プロセス以外のカレントディレクトリは変更できない。
+  知るだけなら/proc/プロセスID/cwdで確認可能。
+
+*** environment variable
+- 重要な環境変数
+  |---------+-----------------------------------------------------|
+  | 名前    | 意味                                                |
+  |---------+-----------------------------------------------------|
+  | PATH    | コマンドの存在するディレクトリ                      |
+  | TERM    | 使っている端末の種類                                |
+  | LANG    | ユーザのデフォルトロケール。                        |
+  | LOGNAME | ユーザのログイン名                                  |
+  | TEMP    | 一時ファイルを置くディレクトリ。/tmpなど。          |
+  | PAGER   | manなどで起動するテキスト閲覧プログラム。lessなど。 |
+  | EDITOR  | デフォルトエディタ。viやemacsなど                   |
+  | MANPATH | manのソースをおいてあるディレクトリ                 |
+  | DISPLAY | X Window Systemのデフォルトディスプレイ             |
+  |---------+-----------------------------------------------------|
+
+- environ
+  グローバル関数environを介して環境変数にアクセスできる。
+  型はchar**で、どのヘッダファイルでも宣言されていないので、
+  自分で直接extern宣言をする必要がある。
+  environの指す先は移動することがあるので、変数に保存しあとで使う等してはいけない。
+  ex) extern char **environ;
+*** ユーザ時間、システム時間
+- システム時間
+  そのプロセスのためにカーネルが働いた時間のこと。
+- ユーザ時間
+  システム時間以外の、プロセスが完全に自分で消費した時間のこと。
+
+*** メジャーフォールト、マイナーフォールト
+- メジャーフォールト major fal
+  
+- マイナーフォールト
+*** UNIX epoch
+- 
+  Linuxカーネルは時刻を1970年1月1日からの経過秒数で保持している。
+  この日時を俗に"UNIXエポック"と呼んでいる。
+  1970年なのはUNIXの最初のバージョンがその頃に出来たため。
+  Linuxカーネルでは常に協定世界時(UTC : Coordinated Universal Time)で計算している。
+
+*** ログイン
+- 
+  ログインの流れ
+  1. initが端末の数だけgettyコマンドを起動(/ect/linittabに設定値)
+  2. 端末からのユーザ名入力を待ち、loginコマンドを起動
+     gettyは端末をopen()し、read()して、ユーザ名がタイプされるのを待つ。
+     端末の細かい設定などが必要なので、gettyという独立プログラムが必要。
+     ユーザ名が入力されたら、dup()を使って0, 1, 2番につなぎ、loginをexecする。
+  3. loginコマンドがユーザ認証
+     ユーザデータベースのある場所等の差異は、/etc/nsswitch.confの設定にある。
+     パスワードはPAMがあればそこで吸収、導入されていなければloginコマンドで意識する必要あり。
+     伝統的には/etc/login.defsで設定していた。
+  4. シェルを起動
+     execするときにコマンドの頭に「-」をつけて起動数rと、ログインシェルとなり、動作が少し変わる。
+     例）execl("/bin/sh", "-sh", ....);
+
+*** PAM
+- 
+  Pluggable Authentication Module。
+  実態は共有ライブラリだが、柔軟に対応できるようダイナミックロードを使ってライブラリを分割している。
+  ライブラリは/lib/security。
+

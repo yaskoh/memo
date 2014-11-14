@@ -29,7 +29,6 @@
   #include <ctype.h>
   int isalpha(int ch);
 
-
 *** error.h
 
 *** float.h
@@ -99,6 +98,7 @@
 - fgetc
   streamから1バイト読み込んで返す。
   ストリームが終了した場合はEOF(マクロ、普通は-1)を返す。
+  
 - fputc
   streamにバイトcを書込む。
   fgetcした値をそのままfputcできるよう、引数のcはcharでなくint。
@@ -131,7 +131,6 @@
 - def
   #include <stdio.h>
   int ungetc(int c, FILE *stream);
-
 
 **** fgets(3)
 - 
@@ -257,7 +256,6 @@
   #include <stdio.h>
   size_t fwrite(const void *buf, size_t size, size_t nmemb, FILE *stream);
 
-
 **** fseek(3), fseeko(3)
 - 
   lseek()システムコールに対応する関数。
@@ -310,7 +308,6 @@
   #include <stdio.h>
   FILE *fdopen(int fd, const char *mode);
 
-
 **** fflush(3)
 - 
   streamがバッファリングしている内容を即座にwrite()する。
@@ -324,7 +321,6 @@
 **** setvbuf(3)
 - 
   用意したバッファをstdioに強制的に使わせることができる。
-
 
 **** feof(3)
 - 
@@ -377,7 +373,6 @@
 - 
   errnoの値errnumに対応したエラーメッセージを返す
 
-
 **** popen(3)
 - 
   commandを起動してそれにパイプをつなぎ、そのパイプを表すstdioストリームを返す。
@@ -397,11 +392,9 @@
   #include <stdio.h>
   int pclose(FILE *stream);
 
-
 *** stdlib.h
 - 概要
   一般ユーティリティに関する型・マクロ・関数の宣言定義
-
 
 **** exit(3)
 - 
@@ -474,6 +467,26 @@
   #include <stdlib.h>
   int system(const char *command);
 
+**** getenv(3)
+- 
+  環境変数nameの値を検索して返す。nameが見つからなければNULLを返す。
+  戻り値の文字列に書き込んではいけない。
+
+- def
+  #include <stdlib.h>
+  char *getenv(const char *name);
+
+**** putenv(3)
+- 
+  環境変数の値をセットする。
+  stringは「名前＝値」の形式でなければならない。間違っている場合の動作は不定。
+  putenvは渡したstringを使い続けるため、stringを静的にするかmalloc()で割り当てる必要がある。
+  成功したときは0を返す。失敗したときは-1を返してerrnoをセットする。
+  
+- def
+  #include <stdlib.h>
+  int putenv(char *string);
+
 *** string.h
 
 **** strcpy()
@@ -484,6 +497,97 @@
 
 **** strlen()
 *** time.h
+**** localtime(3), gmtime(3)
+- 
+  time_t型で表された時刻をstruct tm型に変換する。失敗したらNULLを返す。
+  localtimeはシステムのローカルタイムゾーン（日本なら日本標準時）を使うが、
+  gmtimeは協定世界時(UTC)を使う。
+  time_tはタイムゾーン情報が着いていないが、struct tmは時差を含む表現なので、2つのバージョンが必要。
+  gmtimeはGMT(Greenwich Mean Time)から。
+  静的なバッファに戻り値のstruct tmを確保しているため、もう一度呼ぶと内容が破壊される。
+  
+- def
+  #include <time.h>
+  
+  struct tm *localtime(const time_t *timep);
+  struct tm *gmtime(const time_t *timep);
+
+**** mktime(3)
+- 
+  localtime()の逆で、struct tm型で表された時刻をtime_t型で表された時刻に変換する。
+  失敗したら-1を返す。
+
+- def
+  #include <time.h>
+
+  time _t mktime(struct tm *tm);
+
+**** asctime(3), ctime(3)
+- 
+  時刻を表すデータを"Sat Sep 25 00:43:37 2004\n"のような形式の文字列に変換する。
+  asctimeはタイムゾーン情報を考慮するのに対し、ctimeは常にUTC表記。
+  戻り値はctimeが静的に管理しているバッファへのポインタなので、もう一度呼ぶと破壊される。
+
+- def
+  #include <time.h>
+  
+  char *asctime(const struct tm *tm);
+  char *ctime(const time_t *timep);
+
+**** strftime(3)
+- 
+  tmの時刻をfmtに従ってフォーマットし、bufに書き込む。ただし、最大でもbufsizeまで。
+  呼び出しが成功したらbufに書き込んだバイト数を返し、失敗したら0を返す。
+
+- def
+  #include <time.h>
+  
+  size_t strftime(char *buf, size_t bufsize, const char *fmt,
+                  const struct tm *tm);
+
+- フォーマット指定文字列
+  |------+--------------+-------------------------------------------------|
+  | 文字 | ロケール依存 | 意味                                            |
+  |------+--------------+-------------------------------------------------|
+  | %a   | o            | 曜日の省略形(LC_TIME=CではMon, Tue, ...)        |
+  | %A   | o            | 曜日(LC_TIME=CではMonday, Tuesday, ...)         |
+  | %b   | o            | 月名の省略形(LC_TIME=CではJan, Feb, ...)        |
+  | %B   | o            | 月名(LC_TIME=CではJanuary, February, ...)       |
+  | %c   | o            | 現在のロケールでもっとも自然な形式の日付と時刻  |
+  | %C   |              | 年の百の桁以上                                  |
+  | %d   |              | 日付。2桁で0埋め(01～31)                        |
+  | %D   |              | %m%d%yと同じ                                    |
+  | %e   |              | 日付。2桁でスペース埋め(" 1"～31)               |
+  | %F   |              | %Y-%m-%dと同じ                                  |
+  | %h   | o            | %bの別名                                        |
+  | %H   |              | 24時間表記の時。2桁で0埋め(01～23)              |
+  | %I   |              | 12時間表記の時。2桁で0埋め(01～12)              |
+  | %j   |              | 1月1日を起点とした日数。3桁0埋め(001～366)      |
+  | %k   |              | 24時間表記の時。2桁でスペース埋め(" 1"～23)     |
+  | %l   |              | 12時間表記の時。2桁でスペース埋め(" 1"～23)     |
+  | %m   |              | 月の数字表記(01～12)                            |
+  | %M   |              | 分(00～59)                                      |
+  | %n   |              | '\n'                                            |
+  | %p   | o            | 午前午後の表記(LC_TIME=Cでは"AM"または"PM"      |
+  | %P   | o            | 午前午後の表記(LC_TIME=Cでは"am"または"pm"      |
+  | %r   | o            | 午前午後の表記がついた時刻(01:15:41 AMなど)     |
+  | %R   |              | 24時間表記の時分(HH:MM)。%H:%Mと同じ            |
+  | %s   |              | UNIXエポックからの秒数                          |
+  | %S   |              | 秒。2桁で0埋め(00～61)。60と61は閏秒            |
+  | %t   |              | '\t'                                            |
+  | %T   |              | %H:%M:%Sと同じ                                  |
+  | %u   |              | 曜日を表す番号(1～7)。月曜が1、日曜が7          |
+  | %w   |              | 曜日を表す番号(0～7)。日曜が0、土曜が6          |
+  | %x   | o            | 年月日                                          |
+  | %X   | o            | 時分秒                                          |
+  | %y   |              | 年の下2桁(00～99)                               |
+  | %Y   |              | 年                                              |
+  | %z   |              | メールの形式で表現したUTCとの時差(-1200～+1200) |
+  | %Z   | o            | タイムゾーン(LC_TIME=CならGMTやJST)             |
+  | %%   |              | '%'                                             |
+  |------+--------------+-------------------------------------------------|
+
+
 
 
 ** library
@@ -529,6 +633,21 @@
 - return
   オプションがなくなった場合に-1を返す。
   オプションが存在する場合はオプションを返す。
+
+**** getcwd(3)
+- 
+  カレントディレクトリのパスを得る関数。
+  自プロセスのカレントディレクトリをbufに書き込む。
+  成功したらbufを返し、失敗したらNULLを返してerrnoをセットする。
+  また、パスがbufsize以上になるときはERANGEを返す。
+
+  bufsizeはかつてはlimits.hをインクルードしてPATH_MAXを使っていたが、
+  カーネル動作中に変更できるため不十分。
+  malloc()を使って長さを調整するべき。
+  
+- def
+  #include <unistd.h>
+  char *getcwd(char *buf, size_t bufsize);
 
 *** getopt.h
 
@@ -642,7 +761,59 @@
 - 
   ftell()に相当するdir操作
 
+*** pwd.h
 
+**** getpwuid(3), getpwnam(3)
+- 
+  getpwuidは、ユーザ情報をユーザIDから検索する。
+  getpwnamは、ユーザ情報をユーザ名から検索する。
+  該当するユーザが見つからないか、エラーが起きたときはNULLを返してerrnoをセットする。
+  戻り値は静的に確保したバッファへのポインタなので、
+  次にgetpwuid()やgetpwnam()を呼んだ時点で上書きされる可能性がある。
+
+- def
+  #include <pwd.h>
+  #include <sys/types.h>
+  
+  struct passwd *getpwuid(uid_t id);
+  struct passwd *getpwnam(const char *name);
+  
+  struct passwd {
+      char *pw_name;    /* ユーザ名 */
+      char *pw_passwd;  /* パスワード */
+      uid_t pw_uid;     /* ユーザID */
+      gid_t pw_gid;     /* グループID */
+      char *pw_gecos;   /* 本名 */
+      char *pw_dir;     /* ホームディレクトリ */
+      char *pw_shell;   /* シェル */
+  };
+
+*** grp.h
+
+**** getgruid(3), getgrnam(3)
+
+- 
+  getgrgidは、グループ情報をグループIDから検索する。
+  getgrnamは、グループ情報をグループ名から検索する。
+  いずれも成功したらユーザ名をstruct group形式で返す。
+  該当するグループが見つからないか、エラーが起きたときはNULLを返してerrnoをセットする。
+  戻り値は静的に確保したバッファへのポインタなので、
+  次にgetgruid()やgetgrnam()を呼んだ時点で上書きされる可能性がある。
+
+- def
+  #include <grp.h>
+  #include <sys/types.h>
+  
+  struct group *getgrgid(gid_t id);
+  struct group *getgrnam(const char *name);
+  
+  struct group {
+      char *gr_name;    /* グループ名 */
+      char *gr_passwd;  /* グループのパスワード */
+      gid_t gr_gid;     /* グループID */
+      char **gr_mem;    /* グループのメンバ（ユーザ名のリスト */
+  };
+  
 
 ** syntax
 *** do { ... } while ();
@@ -691,7 +862,6 @@
 **** __STDC__
 - 
   ANSI Cに準拠している場合に1を返す。
-
 
 ** memo
 
