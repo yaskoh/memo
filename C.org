@@ -44,6 +44,19 @@
 *** signal.h
 
 *** stdarg.h
+- 
+  可変長の引数を定義するためのヘッダ。
+  va_listという型の変数を宣言して、使い始める前にva_start、使い終わったらva_endを呼ぶ。
+  va_startの第2引数には、va_startが書かれている関数の可変長引数の1つ前の引数を書く。
+  va_listを直接渡せる関数が標準ライブラリにいくつかあり、"vfprintf()"などのように先頭にvがついている。
+
+- def
+  #include <stdarg.h>
+  
+  void va_start(va_list ap, last);
+  type va_arg(va_list ap, type);
+  void va_end(va_list ap);
+  void va_copy(va_list dest, va_list src);
 
 *** stddef.h
 
@@ -392,6 +405,14 @@
   #include <stdio.h>
   int pclose(FILE *stream);
 
+**** sprintf(3)
+- 
+  fmtで指定した体裁にしたがって、後続の引数をフォーマットした文字列をbufに書き込む。
+  
+- def
+  #include <stdio.h>
+  int sprintf(char *buf, const char *fmt, ...);
+
 *** stdlib.h
 - 概要
   一般ユーティリティに関する型・マクロ・関数の宣言定義
@@ -490,12 +511,41 @@
 *** string.h
 
 **** strcpy()
+- 
+  文字列srcの内容をdestにコピーする。
+
+- def
+  #include <string.h>
+  char *strcpy(char *dest, const char *src);
+
+**** strchr()
+- 
+  文字列strから最初にcが出現する場所を探し、そのポインタを返す。
+
+- def
+  #include <string.h>
+  char *strchr(const char *str, int c);
 
 **** strcat()
 
 **** strcmp()
 
 **** strlen()
+
+**** strncasecmp()
+- 
+  アルファベットの大文字小文字の区別を無視して文字列str1とstr2を比較する。
+  な洋画音字なら0を返す。ただし、str1については最初のnバイトしか見ない。
+- def
+  strncasecmp(const char *str1, const char *str2, size_t n)
+
+**** strspn(3)
+- 
+  文字列acceptに含まれる文字だけで構成される部分が文字列strの先頭に何文字あるか数え、その長さを返す。
+
+- def
+  size_t strspn(const char *str, const char *accept);
+
 *** time.h
 **** localtime(3), gmtime(3)
 - 
@@ -586,8 +636,6 @@
   | %Z   | o            | タイムゾーン(LC_TIME=CならGMTやJST)             |
   | %%   |              | '%'                                             |
   |------+--------------+-------------------------------------------------|
-
-
 
 
 ** library
