@@ -1,5 +1,23 @@
 * Emacs
 
+
+** mode
+
+*** picture-mode
+- 
+  picture-modeかedit-pictureを選択する。
+- C-c C-c
+  pictureモードから抜ける。
+
+- C-c <, C-c >, C-c ^, C-c .
+  
+
+- C-right, C-left, C-up, C-down
+  線を描く。
+
+- M-right, M-left, M-up, M-down
+  線を消す。
+
 ** memo
 
 - 行番号
