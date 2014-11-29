@@ -2,39 +2,50 @@
 
 ** command
 
+*** ssh
+- 
+  仮想マシンにssh接続する
+
 *** init
-仮想マシンの定義ファイルを作成する
-vagrant init [box-name] [box-url]
-
-*** up
-仮想マシンを起動する
-
-*** sh
-仮想マシンにssh接続する
-
-*** suspend
-仮想マシンを一時中断する
-
-*** halt
-仮想マシンをシャットダウンする
+- 
+  仮想マシンの定義ファイルを作成する
+  vagrant init [box-name] [box-url]
 
 *** distroy
-仮想マシンを廃棄する
+- 
+  仮想マシンを廃棄する
+
+*** up
+- 
+  仮想マシンを起動する
+
+*** halt
+- 
+  仮想マシンをシャットダウンする
 
 *** reload
-仮想マシンを再起動する
+- 
+  仮想マシンを再起動する
+
+*** suspend
+- 
+  仮想マシンを一時中断する
 
 *** resume
-一時停止(suspend)からの復帰
+- 
+  一時停止(suspend)からの復帰
 
 *** status
-仮想マシンの状態を確認する
+- 
+  仮想マシンの状態を確認する
 
 *** ssh-config
-仮想マシンのSSH情報を確認する
+- 
+  仮想マシンのSSH情報を確認する
 
 *** provision
-プロビジョニングを行う。
+- 
+  プロビジョニングを行う。
 
 *** box
 
@@ -48,7 +59,8 @@ vagrant init [box-name] [box-url]
   いらなくなったBoxの削除を行う
 
 *** package
-作業中のマシンをBox化する
+- 
+  作業中のマシンをBox化する
 
 *** plugin
 
@@ -62,3 +74,34 @@ vagrant init [box-name] [box-url]
   - on
   - off
   - rollback
+
+** network
+
+*** 種類
+- プライベートネットワーク
+  ホストOSとゲストOS間でのみ通信が行える。
+  特に設定しなければ、「ホストオンリーアダプタ」での接続になる。
+  virtualbox_intnetによってゲストOS間の通信が行えるようにする。
+
+- ポートフォワーディング
+  ホストOSへの特定のポートを使った接続をゲストOSに転送する。
+  これにより実質的にゲストOSへ
+
+- パブリックネットワーク
+  同一ネットワーク内のどの端末からでもゲストOSとの通信が行える。
+  ブリッジアダプタに相当するもの。
+  ホストOSと同じネットワーク上にあたかも独立しているように存在し、外部機器と通信が行える。
+
+**** Link
+- [[http://labs.septeni.co.jp/?p=966][Vagrantのネットワーク周りのあれこれ - SepteniEngineerBlog]]
+- [[https://docs.vagrantup.com/v2/networking/index.html][NETWORKING - VAGRANTDOCS]]  
+
+*** 種類(VirtualBox)
+
+- 未割り当て
+- NAT
+- NATネットワーク
+- ブリッジアダプタ
+- 内部ネットワーク
+- ホストオンリーアダプタ
+- 汎用アダプタ

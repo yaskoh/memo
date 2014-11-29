@@ -1,15 +1,15 @@
-Windows
+* Windows
 
-* Batch
+** Batch
 
-** Command
+*** Command
 
-*** cls
+**** cls
 - 
   画面上の文字を消去する。
   POSIX系shellだとclearかCtr+l。
 
-*** choice
+**** choice
 
 - choice[.exe] [/C <choices>] [/N] [/CS] [/T nnnn [/D c]] [/M <message>]
   - /C <choices>
@@ -31,7 +31,7 @@ Windows
 - ex) choice /C YN /M "続行しますか"
       ⇒続行しますか [Y,N]?
 
-*** defined
+**** defined
 - 
   環境変数が設定されているかチェックするには、DEFINEDを使う。
 
@@ -40,7 +40,7 @@ Windows
 
 [[http://orangeclover.hatenablog.com/entry/20110127/1296135692][バッチファイル/コマンドプロンプトで環境変数が設定されているかチェックする方法]]
 
-*** fc
+**** fc
 - fc (option) [file1] [file2]
   2つのファイルを比較して相違点を表示する。
 - /L
@@ -52,28 +52,28 @@ Windows
 - /LB(行数)
   (行数)以上続いた場合に比較をやめる。
 
-*** cacls
+**** cacls
 - 
   ファイルやフォルダに対して設定されているACLの内容を確認したり、
   変更するために利用するコマンドラインのツール。
 
-*** help
+**** help
 - 
   コマンドの一覧を取得できる。
   内部コマンドも外部コマンドもあると思われる。
 
-*** setlocal
+**** setlocal
 - 
   バッチファイルでの環境変数のローカル化を開始する。
   以前の設定を復元するにはENDLOCALを実行する。
   バッチスクリプトが終了すると、そのバッチスクリプトで発行されたSETLOCALコマンドに対し、
   暗黙のENDLOCALが実行される。
 
-*** endlocal
+**** endlocal
 - 
   バッチプログラムで一時的に変更した環境変数のローカル化を終了する。
 
-*** robocopy
+**** robocopy
 - 
   フォルダを同期するためのコマンド。
   Robust File Copyの略で、堅牢で確実なファイル・コピーという意味を持つ。
@@ -113,9 +113,9 @@ Windows
 - /TEE
   コンソールウィンドウとログファイルに出力する
 
-*** ネットワークコマンド
+**** ネットワークコマンド
 
-**** ping
+***** ping
 - 
   ICMPのサブコマンドechoを使った、単純なパケット通信テストプログラム。
 - -t
@@ -123,13 +123,13 @@ Windows
 - -n 要求数
   送信するエコー要求数を設定する
 
-**** tracert
+***** tracert
 - 
   実行するコンピュータから通信相手までの経路上にあるルータを一覧表示するコマンド。
   pingと同様ICMPのエコー要求・応答を利用している。
   TTLが1からスタートし、1つずつ大きくして経路上のルータを一覧表示する機能。
 
-**** netstat
+***** netstat
 - 
   コンピュータの通信状況を一覧表示する。
   どのコンピュータとどんなプロトコルを使って何番ポートで通信しているかわかる。
@@ -138,7 +138,7 @@ Windows
 - -n
   実行結果にコンピュータやプロトコル名を使わず、IPアドレスとポート番号で表示する
 
-**** ipconfig
+***** ipconfig
 - 
   コンピュータのネットワーク設定情報を表示する
 
@@ -157,7 +157,7 @@ Windows
 - /flushdns
   DNSリゾルバのキャッシュをクリアする
 
-**** arp
+***** arp
 - 
   OSが管理しているAPRテーブルを表示したり削除したりするコマンド。
   ARPテーブルは、IPアドレスとMACアドレスを関連付けた一覧。
@@ -168,7 +168,7 @@ Windows
 - -d IPアドレス
   指定したIPアドレスのエントリーを削除する
 
-**** netsh
+***** netsh
 - 
   netsh（ネットシェル）は、コンピュータのネットワーク設定情報を書き換えるコマンド。
   対話型と結果表示型、どちらも可能。
@@ -179,100 +179,100 @@ Windows
 - exit
   終了する
 
-**** nslookup
+***** nslookup
 - 
   DNSサーバと通信して名前解決の「正引き」や「逆引き」を行うコマンド。
   IPアドレスかドメイン名を入力する。
 
-**** telnet
+***** telnet
 - 
   ネットワーク越しに別のコンピュータを操作するコマンド。
   Vista以降はコントロールパネルで有効化する必要がある。
   平文で送信されるので、使う範囲はLAN内に限定するべき。
 
-**** net
+***** net
 - 
   ネットワーク関係の設定を行ったり、現在の状態を表示させたりするために使われるコマンド。
   サブコマンドをいれずに使うとサブコマンド一覧が表示される。
   [[http://www.atmarkit.co.jp/fwin2k/win2ktips/258netcommand/netcommand.html][netコマンドの使い方 - @IT]]
   [[http://pasofaq.jp/windows/command/net7.htm][NETコマンド(Windows 7)]]
 
-***** net use
+****** net use
 - 
   共有リソースの使用/解除。net shareされたネットワーク上のリソースをローカルで使う場合に使う。
 
-***** net share
+****** net share
 - 
   共有リソースの公開/公開停止。ローカルのリソースを公開して、外部のマシンでnet useできるようにする。
 
-***** net view
+****** net view
 - 
   リソースが共有されているマシンの列挙や、特定のマシンが公開している共有リソースの一覧を調べる
 
-***** net file
+****** net file
 - 
   使用されているファイルの一覧の表示/強制終了。
   net shareで公開されたリソースのうち、どのようなファイルが実際に外部マシンで利用されているか調べる。
 
-***** net session
+****** net session
 - 
   ユーザアカウントに対するログオンやパスワードの要件の表示/強制終了
 
-***** net print
+****** net print
 
-***** net user
+****** net user
 
-***** net accounts
+****** net accounts
 
-***** net group
+****** net group
 
-***** net computer
+****** net computer
 
-***** net start
+****** net start
 - 
   サービスの表示/開始
 
-***** net stop
+****** net stop
 - 
   サービスの停止
 
-***** net pause
+****** net pause
 - 
   サービスの一時停止
 
-***** net continue
+****** net continue
 - 
   サービスの再開
 
-***** net name
+****** net name
 - 
   NetBIOS名の表示・追加。
   新しく追加された名前はnet sendコマンドの宛先として利用できる。
 
-***** net send
+****** net send
 - 指定されたユーザやコンピュータに対するメッセージの送信
 
-***** net config
+****** net config
 - 
   サーバ・サービスやワークステーション・サービスに関する情報の表示/設定
 
-***** net sattistics
+****** net sattistics
 - 
   ネットワーク・プロトコルやリソースの公開/共有サービスに対する統計情報の表示
 
-***** net time
+****** net time
 - 
   時間情報の表示や外部との同期
 
-***** net help
+****** net help
 - 
   各コマンドの使い方の表示
 
-***** net helpmsg
+****** net helpmsg
 - 
   エラー番号に対する詳しいエラーメッセージの表示
 
-**** nbtstat
+***** nbtstat
 - 
   Windowsネットワークを管理するためのコマンド。
   NBTとは"NetBIOS over TCP/IP"のこと。
@@ -286,7 +286,7 @@ Windows
 - -n
   自分自身の情報を表示する
 
-**** route
+***** route
 - 
   ルーティングテーブルに関する情報を表示、または変更する。
 - -f
@@ -298,11 +298,11 @@ Windows
 - print
   ルーティング情報を表示する。
 
-**** hostname
+***** hostname
 - 
   現在のホスト名を出力する
 
-**** getmac
+***** getmac
 - 
   ネットワークにつながっている別のWindowsのMACアドレスを調べる。
   getmacを使うには管理者権限が必要なので、
@@ -310,21 +310,37 @@ Windows
 - /s target /u username /p password
   サーバ名、管理者のユーザ名、パスワードを指定して、マックアドレスを確認する。
 
-**** pathping
+***** pathping
 - 
   ノード間のネットワークの状態を確認する。
   pingとtracertを組み合わせたようなイメージ。
 
-**** 外部link
+***** 外部link
 
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230618/][管理者必見！ネットワーク・コマンド集]]
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20131219/525889/][最重要ネットコマンド10]]
 - [[http://blog.asial.co.jp/1157][使えると便利なWindowsネットワークコマンド]]
 
+*** Tool
 
-** etc
+**** systeminfo
+- 
+  システム情報を表示できる。cmd上でsysteminfo。
+  デフォルトではローカルコンピュータ。
+  ただし/s servername, /u UserName, /p Passwordなどを入力すると、
+  リモートの情報も取得できる。
 
-*** IF文の複数条件指定
+**** WMI (Windows Management Instrumentation)
+- 
+  システム管理用インターフェイス。
+  WBEMというシステム管理を目的とした標準仕様に従って、WinOSに実装、拡張したもの。
+  wmicというCommandLineツールを使って情報を取得したり操作できる。
+  "wmic qfe"として適用済みのKBを取得できる。
+
+
+*** etc
+
+**** IF文の複数条件指定
 - 
 
   ANDやORに相当する機能はない。ただし、AND条件であればIF文を並べて記述できる。
@@ -337,7 +353,7 @@ Windows
 [[http://capm-network.com/?tag=Windows%E3%83%90%E3%83%83%E3%83%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87][CapmNetwork Windowsバッチファイル制御構文]]
 
 
-*** 処理の途中で改行を入れる
+**** 処理の途中で改行を入れる
 - 
   バッチファイルでのエスケープシーケンスは「^(hat)」なので、
   改行前に^をおくと複数行を1行として扱える。
@@ -349,14 +365,14 @@ Windows
 [[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
 
 
-*** 環境変数の消し方
+**** 環境変数の消し方
 - 
   "SET 変数="とする。
   たとえば変数XYZを初期化したければ、"set XYZ="でよい。
 [[http://orangeclover.hatenablog.com/entry/20090826/1251293551][みちしるべ 3.環境変数 (1)環境変数の使い方 ～意外に削除の仕方はしらない人が多い～ 【コマンドプロンプト、バッチファイルを使わなきゃならなくなった人向けのメモ】]]
 
 
-*** バッチでの標準入力待ち
+**** バッチでの標準入力待ち
 - 
   "SET /P 変数=出力文字列"、という感じの構文。
   たとえば"set /P var=好きな英数字を入力してください。"とすると、
@@ -365,9 +381,9 @@ Windows
   バッチファイルでユーザーに入力させた値を取得する
 
 
-* memo
+** memo
 
-** ACL
+*** ACL
 - 
   アクセス制御リスト(Access Control List)。
   あるユーザやグループに対して、利用可能な権限を定義したものを
@@ -376,10 +392,17 @@ Windows
   （正確には「随意アクセス制御リスト、Discretionary Access Control List:DACL」らしい。）
   [[http://www.atmarkit.co.jp/fwin2k/win2ktips/700whatisacl/whatisacl.html][アクセス制御リストACLとは？ - @IT]]
 
-** cmdをエクスプローラから開く
+*** cmdをエクスプローラから開く
 - 
   エクスプローラからその場のcmdを開くには、
   アドレスバーにcmdと打つとOK。
-** ローカルユーザで接続する
+
+*** ローカルユーザで接続する
 - 
   .\user、local\user、servername\user等でアクセスできる。
+
+*** システム情報を表示する
+- 
+  msinfo32。
+  スタートからシステム情報も探せるが、プログラム名として打てばよい。
+  

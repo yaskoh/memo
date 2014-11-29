@@ -1,6 +1,5 @@
 * Emacs
 
-
 ** mode
 
 *** picture-mode

@@ -1605,6 +1605,18 @@
 - 
   matrixっぽい表示
 
+** distribution
+
+*** Debian
+
+*** Ubuntu
+
+*** CentOS
+
+*** RHEL
+
+*** CoreOS
+
 ** memo
 *** suid
 - 

@@ -1,0 +1,36 @@
+* Mac
+
+** Framework
+
+- Cocoa Framework
+  Foundation
+  AppKit(GUI)
+  CoreData(Database)
+- Cocoa Touch Framework
+  Foundation
+  UIKit(GUI)
+- Carbon
+  (XCode 4以降はサポートされず)
+
+** memo
+*** NSSObject
+- 
+  すべてのオブジェクトのもと
+
+*** ARC(Automatic Reference Counting)
+- 
+  メモリ管理。コンパイラがコードを解析し、自動でメモリを解放。
+
+*** clang
+- 
+  Apple LLVM Compilerのコマンド。
+
+*** 画面最大化
+- 
+  Ctrl + Opt + yで画面最大化
+
+*** スライドショー
+- 
+  Space押すと出てくる画面を使うと話が早い。プレビューではできないようなので。。
+
+       

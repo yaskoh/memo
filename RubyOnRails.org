@@ -1,0 +1,200 @@
+* Ruby on Rails
+
+** philosophy
+
+- Don't Repeat Yourself: DRY
+  同じことを繰り返すな
+
+- Convention Over Configuration
+  設定より規約が優先される
+
+** REST
+*** GET
+- 
+  データ読取
+*** POST
+- 
+  作成
+
+*** PATCH
+- 
+  更新。
+  以前はPUTリクエストを使っており、Rails40でもサポートはされているが、
+  PATCHの方が意図にあうため、PATCHが推奨されている。
+
+*** DELETE
+- 
+  削除
+
+** Architecture
+*** Controller
+- 
+
+*** View
+
+
+*** Model
+
+** command
+
+*** rails
+**** new
+**** server
+- 
+  サーバを起動する。
+  "rails s"でもよい。
+**** generate
+***** controller
+- 
+  キャメルケースで渡すと、スネークケースのファイルを自動的に生成する。
+  ただし単なる慣習なので、スネークケースのコントローラ名を入力しても
+  同様にスネークケースのファイル名が出力される。
+
+***** integration_test
+**** destroy
+- 
+  generateの逆で作成したコードを削除する
+  ex) rails destroy controller FooBars baz quux
+
+**** console
+- 
+  Railsアプリケーションを対話的に操作することが出来る。
+  exitを入力すると終了できる。
+
+*** bundle
+- update
+- install
+- exec
+  - rake
+    - T
+      コマンド一覧を表示する
+    - db
+      - T
+        データベースのコマンドを表示する。
+  - rspec
+
+*** rake
+
+**** db
+- db:migrate
+  マイレーションを変更する
+  - VERSION=0
+    最初の状態に戻す
+- db:rollback
+  1つ前の状態に戻す
+
+**** routes
+
+** file/directory
+
+- README.rdoc
+  アプリケーションの簡単な説明
+
+- Rakefile
+  rakeコマンドで使用可能なタスク
+
+- Gemfile
+  このアプリケーションに必要なGemの定義ファイル
+
+- Gemfile.lock
+  アプリケーションの全てのコピーが同じgemのバージョンを使用していることを確認するために使用されるgemリスト
+
+- config.ru
+  Rackミドルウェア用の設定ファイル
+
+- .gitignore
+  Gitに含めないファイルを指定する。
+
+*** app/
+- 
+  モデル、ビュー、コントローラ、ヘルパーなどを含む主要なアプリケーションコード
+- assets
+  アプリケーションなどで使用するCSS(Cascading Style Sheet)、JavaScriptファイル、画像などのアセット
+
+*** bin/
+- 
+  バイナリ実行可能ファイル
+- rails
+  コード生成、コンソールの起動、ローカルのWebサーバの立ち上げなどに使用するRailsスクリプト
+
+*** config/
+- 
+  アプリケーションの設定
+- routes.rb
+  - root 'welcome#index'
+    アプリケーションのルートURLへのアクセスをwelcomeコントローラのindexアクションに割り当てる。
+  - get 'welcome/index'
+  - get 'static_pages/home'
+    /static_pages/homeというURLに対するgetリクエストに対し、
+    StaticPagesコントローラのhomeアクションと結びつける。
+
+*** db/
+- 
+  データベース関連のファイル
+
+*** doc/
+- 
+  マニュアルなど、アプリケーションのドキュメント
+
+*** lib/
+- 
+  ライブラリモジュール
+
+- assets
+  ライブラリで使用するCSS、JavaScripts、画像などのアセット
+
+*** log/
+- 
+  アプリケーションのログファイル
+
+*** public/
+- 
+  エラーページなど、一般（Webブラウザなど）に直接公開するデータ
+
+*** test/
+- 
+  アプリケーションのテスト（spec/ディレクトリがあるため、現在は使用されていない。)
+
+*** tmp/
+- 
+  一時ファイル
+
+*** vendor/
+- 
+  サードパーティのプラグインやgemなど
+
+- assets
+  サードパーティのプラグインやgemで使用するCSS、JavaScripts、画像などのアセット
+
+** memo
+
+- form_forメソッド
+
+*** heroku
+(他に書くところもないので、とりあえず。。)
+
+**** command
+
+- heroku login
+- heroku create
+- git push heroku master
+- heroku open
+- heroku rename
+
+*** rspec
+- 
+  ダブルクォート""で囲った文字列は評価しない
+
+- ex)
+  describe "Home page" do
+    it "should have the content 'Sample App'" do
+      visit '/static_pages/home'
+      expect(page).to have_content('Sample App')
+    end
+  end
+*** erb
+- 
+- <% ... %>
+  中に書かれたコードを単に実行する
+- <%= ... %>
+  中に書かれたコードが実行され結果がテンプレートに挿入する。

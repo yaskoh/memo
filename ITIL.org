@@ -1,0 +1,36 @@
+@ハインリッヒの法則
+
+重症1に対し軽傷29、可能性が300件ある。
+インシデントはその可能性があった災害。
+インシデントを防げばアクシデントはなくせる、というのが、
+ハインリッヒの主張。
+<http://www.olivenet.co.jp/essay/8.html>
+
+
+
+@CMMI(Capability Maturity Model Integration)
+
+ソフトウェア開発の成熟度モデル。
+レベル1～5で表わされる。
+<http://e-words.jp/w/CMMI.html>
+
+
+
+@CSIモデル
+
+顧客満足度指数...
+じゃなさそう。Critical Succsess Indicator、とかかな。
+
+
+
+
+@サービスプロバイダ
+
+1はそれぞれに内在
+2はシェアードサービス部門
+3は外部
+
+
+
+@NPV NetPresentValue
+<http://m-words.jp/w/NPV.html>

@@ -1,0 +1,153 @@
+* Docker
+
+** commands
+*** docker
+- 
+  show the full list of accepted arguments.
+
+**** version
+- 
+  show the Docker version information
+
+**** search
+- 
+  search for an image in the Docker index
+
+**** pull
+- 
+  Pull an image or a repository from the Docker repository server
+
+**** push
+- 
+  Push an image or a repository to the Docker registry server
+
+**** run
+- 
+  Run a command in a new container
+
+- -d, --detach=false
+  Detached mode: run container in the background and print new container ID
+  tells Docker to run the container and put it in the background, to deamonize it.
+
+- -i, --interactive=false
+  Keep STDiIN open even if not attached
+  allows us to make an interactive connection by grabbing the standard in of the container.
+
+- -p
+  Publish a container's port to the host
+  format:  ip:hostPort:containerPont | ip::containerPort | hostPort:cantainerPort
+
+- -t, --tty=false
+  Allocate a pseudo-tty
+  assign a pseudo-tty or terminal inside container
+
+**** commit
+- 
+  Create a new image from a container's changes
+
+- Usage
+  docker commit [OPTIONS] CONTAINER [REPOSITORY [TAG]]
+
+**** ps
+- 
+  Show a list of all running containers
+
+- -l
+  show the ID of the machine you using
+
+**** inspect
+- 
+  Return low-level information on a container
+
+- Usage
+  docker inspect CONTAINER|IMAGE [CONTAIR|IMAGE...]
+
+**** logs
+- 
+  Fetch the logs of a container
+  looks inside the container and returns its standard output.
+
+**** stop
+- 
+  Stop a running container
+  Tells Docker to politely stop the running container.
+
+**** images
+- 
+  List images
+
+
+*** unused
+**** attach
+- 
+  Attach to a running container
+
+**** build
+- 
+  Build a container from a Dockerfile
+
+**** diff
+- 
+  Inspect changes on a container's filesystem
+
+**** export
+- 
+  Stream the contents of a container as a tar archive
+
+**** history
+- 
+  Show the history of an image
+
+**** import
+- 
+  Create a new filesystem image from the contents of a tarball
+
+**** info
+- 
+  Display system-wide information
+
+**** insert
+- 
+  Insert a file in an image
+
+**** kill
+- 
+  Kill a running container
+
+**** login
+- 
+  Register or Login to the Docker registry server
+
+**** port
+- 
+  Lookup the public-facing port which is NAT-ed to PRIVATE_PORT
+
+**** restart
+- 
+  Restart a running container
+
+**** rm
+- 
+  Remove a conatiner
+
+**** rmi
+- 
+  Remove an image
+
+**** start
+- 
+  Start a stopped container
+
+**** tag
+- 
+  Tag an image into a repository
+
+**** wait
+- 
+  Block until a container stops, then print its exit code
+
+
+** network
+
+*** Link
+- [[http://deeeet.com/writing/2014/05/11/docker-network/][Dockerのネットワークの基礎 - SOTA]]

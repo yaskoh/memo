@@ -2,169 +2,180 @@
 
 ** memo
 
-GROUPING SETS
-	GROUP BY��ŁA�ǂ̒P�ʂł܂Ƃ߂邩�����̑I�����\�B
-	rollup��cube�����łȂ��A�_��Ȑݒ肪�ł���B
+*** GROUPING SETS
+-
+  GROUP BY句で、どの単位でまとめるか複数の選択が可能。
+  rollupやcubeだけでなく、柔軟な設定ができる。
+
+
+*** データベースの種類
+- master
+  インスタンスレベルの構成情報やログインなどのセキュリティ情報
+- model
+  ユーザーデータベースのテンプレート
+- msdb
+  ジョブやスケジューリング関連情報
+- tempdb
+  一時テーブルやソートデータなどの格納
+  パフォーマンスが要求されるため、専用のボリュームへ配置する。
+  多数並行してtempdbのクエリが実行される場合、スペース管理をする特定のページにて
+  競合が発生することが知られている。
+  サイズが同じデータファイルをプロセッサと同数配置することで緩和できる。
+  ドライブは分けなくともよい。
+- resource
+  システムメタデータ（表示されないが、binn内にmssqlsystemresource.mdf/ldfが存在
+- ユーザdb
+  ユーザが作成したもの。
+
+
+*** 復旧モデル
+- 完全(Full)復旧モデル
+  トランザクションログへ全ての処理履歴を完全に記録する。
+  Standard以上のデフォルト。
+- 一括ログ(Bulk Logged)復旧モデル
+  バルク操作する際のパフォーマンスを向上するために、
+  ログの記録を最小限に抑えるモデル。
+  完全モデルの補完
+- 単純(Simple)復旧モデル
+  チェックポイント時のログ切捨て。
+  チェックポイントが完了する毎に
+  現在実行しているトランザクション以外のログを切り捨てる。
+
+
+*** 設定変更手段
+- SQL Server構成マネージャ
+  起動アカウント、起動モード等
+- SQL Server Management Studio Object Explorer
+  いつものSSMS。認証モード等、これでのみ変更可能なオプションあり。
+- サーバオプション(sp_configue)
+- DDLやシステムストアドプロシージャ
+  自動拡張の設定など
+
+※照合順序と導入フォルダは、導入後の変更が難しい。
 
 
 
-�f�[�^�x�[�X�̎��
-	master:		�C���X�^���X���x���̍\�����⃍�O�C���Ȃǂ̃Z�L�����e�B���
-	model:		���[�U�[�f�[�^�x�[�X�̃e���v���[�g
-	msdb:		�W���u��X�P�W���[�����O�֘A���
-	tempdb:		�ꎞ�e�[�u����\�[�g�f�[�^�Ȃǂ̊i�[
-				�p�t�H�[�}���X���v������邽�߁A��p�̃{�����[���֔z�u����B
-				�������s����tempdb�̃N�G�������s�����ꍇ�A�X�y�[�X�Ǘ����������̃y�[�W�ɂ�
-				�������������邱�Ƃ��m���Ă���B
-				�T�C�Y�������f�[�^�t�@�C�����v���Z�b�T�Ɠ����z�u���邱�ƂŊɘa�ł���B
-				�h���C�u�͕����Ȃ��Ƃ��悢�B
-	resource:	�V�X�e�����^�f�[�^�i�\������Ȃ����Abinn����mssqlsystemresource.mdf/ldf������
-	���[�Udb:	���[�U���쐬�������́B
+*** 書き込みキャッシュ
+- 
+  書き込みキャッシュと拡張処理能力で、
+  ディスクの書き込みがキャッシュされるか否か、
+  およびFlush/Write-Throughコマンドを使用するか否か設定する。
 
 
-
-�������f��
-	���S(Full)�������f��
-		�g�����U�N�V�������O�֑S�Ă̏������������S�ɋL�^����B
-		Standard�ȏ�̃f�t�H���g�B
-	�ꊇ���O(Bulk Logged)�������f��
-		�o���N���삷��ۂ̃p�t�H�[�}���X�����シ�邽�߂ɁA
-		���O�̋L�^���ŏ����ɗ}���郂�f���B
-		���S���f���̕⊮
-	�P��(Simple)�������f��
-		�`�F�b�N�|�C���g���̃��O�؎̂āB
-		�`�F�b�N�|�C���g���������閈��
-		���ݎ��s���Ă���g�����U�N�V�����ȊO�̃��O��؂�̂Ă�B
+*** パーティション開始位置
+- 
+  パーティションの開始位置をMBR後の64番目のセクタから開始するとパフォーマンスが向上する場合あり。
+  Diskpart起動、"LIST DISK"で確認、"SELECT DISK X"、"Create Partition Primary Align = 64"とかする。
 
 
-
-�ݒ�ύX��i
-	SQL Server�\���}�l�[�W��
-		�N���A�J�E���g�A�N�����[�h��
-	SQL Server Management Studio Object Explorer
-		������SSMS�B�F�؃��[�h���A����ł̂ݕύX�\�ȃI�v�V��������B
-	�T�[�o�I�v�V����(sp_configue)
-	DDL��V�X�e���X�g�A�h�v���V�[�W��
-		�����g���̐ݒ�Ȃ�
-	���ƍ������Ɠ����t�H���_�́A������̕ύX������B
+*** インスタントコピー機能
+- スプリットミラー方式
+  ミラーリングしていたRAIDアレイを、ミラーリングを解くことで瞬時に分割、バックアップとする。
+  コピー前に同期が完了している必要があるため、バックアップ時は高速だが、普段はミラーリングのオーバーヘッドが発生する。
+- コピーオンライト(Copy-On-Write,COW)方式
+  書き換えがあった時に、元のデータを退避する方式。
+  コピー前の準備時間は不要だが、実際のコピーが完了する際は時間がかかる。
+上記をSQL Serverスナップショットバックアップで利用できるか、製品ごとに異なるので確認する必要あり。
 
 
+*** データサイズ
+- 
+  データブロックの大きさはでかい方がよいので、I/Oパターンから考えるに64KでNTFSをフォーマットするとよい。
 
-�������݃L���b�V��
-	�������݃L���b�V���Ɗg�������\�͂ŁA
-	�f�B�X�N�̏������݂��L���b�V������邩�ۂ��A
-	�����Flush/Write-Through�R�}���h���g�p���邩�ۂ��ݒ肷��B
+*** ファイルグループ
+- 
+  以下の場合にファイルグループを分ける意味あり。
+  1. I/Oが集中するテーブルを他から分ける。
+  2. 特定のデータをリストアする要件あり。
+  3. パーティションテーブルを個別のファイルグループへ（運用が柔軟になることがある）
+  4. 管理上、業務ごとにデータを分けたい。
+  5. 特定のファイルグループをRead_onlyにしたい。
 
-
-
-�p�[�e�B�V�����J�n�ʒu
-	�p�[�e�B�V�����̊J�n�ʒu��MBR���64�Ԗڂ̃Z�N�^����J�n����ƃp�t�H�[�}���X�����シ��ꍇ����B
-	Diskpart�N���A"LIST DISK"�Ŋm�F�A"SELECT DISK X"�A"Create Partition Primary Align = 64"�Ƃ�����B
-
-
-�C���X�^���g�R�s�[�@�\
-	�X�v���b�g�~���[����
-		�~���[�����O���Ă���RAID�A���C���A�~���[�����O���������Ƃŏu���ɕ����A�o�b�N�A�b�v�Ƃ���B
-		�R�s�[�O�ɓ������������Ă���K�v�����邽�߁A�o�b�N�A�b�v���͍��������A���i�̓~���[�����O�̃I�[�o�[�w�b�h����������B
-	�R�s�[�I�����C�g(Copy-On-Write,COW)����
-		�������������������ɁA���̃f�[�^��ޔ���������B
-		�R�s�[�O�̏������Ԃ͕s�v�����A���ۂ̃R�s�[����������ۂ͎��Ԃ�������B
-	��L��SQL Server�X�i�b�v�V���b�g�o�b�N�A�b�v�ŗ��p�ł��邩�A���i���ƂɈقȂ�̂Ŋm�F����K�v����B
+*** Read_Only
+- 
+  データベース単位だけでなく、ファイルグループ単位でRead_onlyに設定できる。
 
 
-�f�[�^�T�C�Y
-	�f�[�^�u���b�N�̑傫���͂ł��������悢�̂ŁAI/O�p�^�[������l�����64K��NTFS���t�H�[�}�b�g����Ƃ悢�B
-
-�t�@�C���O���[�v
-	�ȉ��̏ꍇ�Ƀt�@�C���O���[�v�𕪂���Ӗ�����B
-	�@I/O���W������e�[�u���𑼂��番����B
-	�A����̃f�[�^�����X�g�A����v������B
-	�B�p�[�e�B�V�����e�[�u�����ʂ̃t�@�C���O���[�v�ցi�^�p���_��ɂȂ邱�Ƃ�����j
-	�C�Ǘ���A�Ɩ����ƂɃf�[�^�𕪂������B
-	�D����̃t�@�C���O���[�v��Read_only�ɂ������B
-
-Read_Only
-	�f�[�^�x�[�X�P�ʂ����łȂ��A�t�@�C���O���[�v�P�ʂ�Read_only�ɐݒ�ł���B
-
+*** ネーミングルール
+- 標準識別子
+  - 先頭文字
+    Unicode3.2の文字、及び_,@,#を使用可
+    @で始まる識別子はローカル変数またはローカルパラメータ
+    @@で始まる識別子が、一部のTransact-SQLで使われる。
+    #で始まる識別子は一時テーブルまたは一時プロシージャ
+    ##で始まる識別子はグローバルな一時オブジェクト
+  - 先頭以外
+    Unicode3.2、および各国の10進数、_,@,#,$を使用可能
+- 区切られた識別子
+  標準識別子でないもの。[]か""で囲んで使用する必要がある。
 
 
-�l�[�~���O���[��
-	�W�����ʎq
-		�E�擪����
-			Unicode3.2�̕����A�y��_,@,#���g�p��
-			@�Ŏn�܂鎯�ʎq�̓��[�J���ϐ��܂��̓��[�J���p�����[�^
-			@@�Ŏn�܂鎯�ʎq���A�ꕔ��Transact-SQL�Ŏg����B
-			#�Ŏn�܂鎯�ʎq�͈ꎞ�e�[�u���܂��͈ꎞ�v���V�[�W��
-			##�Ŏn�܂鎯�ʎq�̓O���[�o���Ȉꎞ�I�u�W�F�N�g
-		�E�擪�ȊO
-			Unicode3.2�A����ъe����10�i���A_,@,#,$���g�p�\
-	��؂�ꂽ���ʎq
-		�W�����ʎq�łȂ����́B[]��""�ň͂�Ŏg�p����K�v������B
+*** ページ
+- 
+  8KB。
+  先頭96Byteがページヘッダ、そのあとがデータ。
+  ページヘッダにはテーブル識別し等のシステム情報やペ−ジばんごう、ページ上の空き容量、前後のページへのポインタ等が含まれる。
+  末尾から「行オフセットテーブル」が始まる。データ行の方向と逆方向に登録される。
+  単一のオブジェクトのみに割り当てられる。
+
+*** エクステント
+- 
+  8ページで1エクステント。64KB。
+  - 混合エクステント
+    複数のオブジェクトが入ったエクステント。
+    テーブルページやインデックスページが混ざっているもの。
+    新しいテーブルやインデックスを作成すると、まずは混合エクステントが作成される。
+    8ページまで拡張すると、単一エクステントに切り替わる。
+  - 単一エクステント
+    単一のオブジェクトで構成されたエクステント。
+    テーブルのエクステントなら、テーブルのページのみ8つが含まれる。
+  I/Oアクセスは、基本1ページまたは1エクステント単位で行われる。更に大きい場合もあり。
 
 
-�y�[�W
-	8KB�B
-	�擪96Byte���y�[�W�w�b�_�A���̂��Ƃ��f�[�^�B
-	�y�[�W�w�b�_�ɂ̓e�[�u�����ʂ����̃V�X�e������y�|�W�΂񂲂��A�y�[�W��̋󂫗e�ʁA�O��̃y�[�W�ւ̃|�C���^�����܂܂��B
-	��������u�s�I�t�Z�b�g�e�[�u���v���n�܂�B�f�[�^�s�̕����Ƌt�����ɓo�^�����B
-	�P��̃I�u�W�F�N�g�݂̂Ɋ��蓖�Ă���B
+*** データ型
+**** 真数
+- bigint, bit, decimal, int, numeric, smallint, money, tinyint, smallmoney
+**** 概数
+- float, real
+**** 日付、時刻
+- datetime, smalldate, date, time, datetime2, datetimeoffset
+**** 文字列
+- char, text, varchar
+**** Unicode型
+- nchar, ntext, nvarchar
+**** バイナリ
+- binary, image, varbinary
+**** 空間データ型
+- geometry, geography
+**** その他
+- cursor, timestamp, sql_variant, uniqueidentifier, table, xml, hierarchyd
 
-�G�N�X�e���g
-	8�y�[�W��1�G�N�X�e���g�B64KB�B
-	�E�����G�N�X�e���g
-		�����̃I�u�W�F�N�g���������G�N�X�e���g�B
-		�e�[�u���y�[�W��C���f�b�N�X�y�[�W���������Ă�����́B
-		�V�����e�[�u����C���f�b�N�X���쐬����ƁA�܂��͍����G�N�X�e���g���쐬�����B
-		8�y�[�W�܂Ŋg������ƁA�P��G�N�X�e���g�ɐ؂�ւ��B
-	�E�P��G�N�X�e���g
-		�P��̃I�u�W�F�N�g�ō\�����ꂽ�G�N�X�e���g�B
-		�e�[�u���̃G�N�X�e���g�Ȃ�A�e�[�u���̃y�[�W�̂�8���܂܂��B
-	I/O�A�N�Z�X�́A��{1�y�[�W�܂���1�G�N�X�e���g�P�ʂōs����B�X�ɑ傫���ꍇ������B
-
-
-�f�[�^�^
-	�^��
-		bigint, bit, decimal, int, numeric, smallint, money, tinyint, smallmoney
-	�T��
-		float, real
-	���t�A����
-		datetime, smalldate, date, time, datetime2, datetimeoffset
-	������
-		char, text, varchar
-	Unicode�^
-		nchar, ntext, nvarchar
-	�o�C�i��
-		binary, image, varbinary
-	��ԃf�[�^�^
-		geometry, geography
-	���̑�
-		cursor, timestamp, sql_variant, uniqueidentifier, table, xml, hierarchyd
-
-	�D�揇��
-		�قȂ�f�[�^�^���m�ŉ��Z���s�����ꍇ�A�D�揇�ʂ̍����f�[�^�^�ɂ��킹�ĕϊ������B
-		sql_variant, xml, datetimeoffset, datetime2, datetime, smalldatetime, date, time, float, real, decimal, money, smallmoney,
-		bigint, int, smallint, tinyint, bit, ntext, text, image, timestamp, uniqueidentifier, nvarchar, char, varvinary, binary
+**** 優先順位
+- 
+  異なるデータ型同士で演算を行った場合、優先順位の高いデータ型にあわせて変換される。
+  sql_variant, xml, datetimeoffset, datetime2, datetime, smalldatetime, date, time, float, real, decimal, money, smallmoney,
+  bigint, int, smallint, tinyint, bit, ntext, text, image, timestamp, uniqueidentifier, nvarchar, char, varvinary, binary
 
 
-IDENTITY
-	�E���[���o�b�N�����ۂɌ��Ԃ���������\��������B
-	�E��̈�Ӑ���ۂ@�\�ł͂Ȃ����߁A�ʓrPRIMARY KEY�����UNIQUE����ƍ��킹�Ďg�p����K�v����B
+*** IDENTITY
+- ロールバックした際に欠番が発生する可能性がある。
+- 列の一意性を保つ機能ではないため、別途PRIMARY KEY制約やUNIQUE制約と合わせて使用する必要あり。
 
 
-�s
-	�s�̍ő�T�C�Y��8,060Byte�B�y�[�W�T�C�Y����̐����B
-	��O�Ƃ��āAvarchar, nvarchar, varbinary����܂ޏꍇ�͍s������8,060Byte�𒴂�����B
-	�������A�e��̒�����8,000Byte�Ɏ��܂�K�v������B
+*** 行
+- 
+  行の最大サイズは8,060Byte。ページサイズからの制限。
+  例外として、varchar, nvarchar, varbinary列を含む場合は行あたり8,060Byteを超えられる。
+  ただし、各列の長さが8,000Byteに収まる必要がある。
 
 
-rebulid, reorganize
-    reorganize�̓g�����U�N�V�����ɂ��Ǘ����ł��Ȃ����߁A
-    ���[�U�g�����U�N�V�����̓����Ŏg��Ȃ��B
-    commit, rollback���Ă����ʂ��ς��Ȃ������łȂ��A
-    �g�����U�N�V�����̉e���ŁA�G�N�X�e���g�ɑ΂��ă��b�N���������Ă��܂��B
-    rebuild�̓g�����U�N�V�����ɂ��Ǘ����\�ŁAcommit, rollback�ɑΉ�����B
-    online�����ɂ���ƁA���s���̎Q�ƥ�X�V���\�����A���s��̓��[�U�g�����U�N�V�������̓��b�N�̂܂܂ƂȂ�B
+*** rebulid, reorganize
+- 
+  reorganizeはトランザクションによる管理ができないため、
+  ユーザトランザクションの内部で使わない。
+  commit, rollbackしても結果が変わらないだけでなく、
+  トランザクションの影響で、エクステントに対してロックがかかってしまう。
+  rebuildはトランザクションによる管理が可能で、commit, rollbackに対応する。
+  online処理にすると、実行中の参照･更新が可能だが、実行後はユーザトランザクション中はロックのままとなる。
 
 
-
-    

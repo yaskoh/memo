@@ -1,12 +1,17 @@
-Excel
+* Excel
 
+** 関数
 
-* 関数
-
-** EXACT
+*** EXACT
 - 
   2つのテキスト文字列を比較し、同じであればTRUE、それ以外の場合はFALSEを返す。
 
 - ex
   EXACT(text1, text2)
+
+** memo
+
+*** シート名を取得する
+- 
+  =RIGHT(CELL("filename",A1),LEN(CELL("filename",A1))-FIND("]",CELL("filename",A1)))
 
