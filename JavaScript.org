@@ -1,0 +1,230 @@
+* JavaScript
+
+** 文法
+
+*** Values, variables, literals
+
+**** 値
+
+***** 数値
+
+***** 論理値
+
+***** 文字列
+
+***** null
+
+***** undefined
+
+**** 変数
+
+***** 名前
+- 
+  識別子はアルファベット、アンダースコア(_)、ドル記号($)から始まらなければいけない。
+  続く文字は数字(0-9)も使用できる。
+  大文字・小文字を区別する。
+
+***** スコープ
+- グローバル（大域）変数
+  関数の外側で宣言すると、どのコードからも使用できる。
+- ローカル（局所）変数
+  関数の内部で宣言すると、関数の中のみで使用できる。
+- ブロック文
+  ブロックを内包しているコードに局所化される。
+
+**** 定数
+- 
+  constキーワードを用いて、読み取り専用の定数を作成できる。
+
+**** リテラル
+
+***** 配列リテラル
+
+***** 真偽値リテラル
+
+***** 整数
+
+***** 浮動小数点数リテラル
+
+***** オブジェクトリテラル
+
+***** 文字列リテラル
+
+***** Unicode
+
+
+*** 式と演算子
+
+**** 式
+- 算術式
+- 文字列式
+- 論理式
+- オブジェクト式
+
+**** 演算子
+
+***** 代入演算子
+
+***** 比較演算子
+
+***** 算術演算子
+
+***** ビット演算子
+
+***** 論理演算子
+
+***** 文字列演算子
+
+***** 特殊演算子
+
+
+*** 正規表現
+
+
+*** 条件式
+
+**** ブロック文
+
+**** 条件文
+
+***** if...else
+
+***** switch
+
+**** ループ文
+
+***** for
+
+***** do...while
+
+***** while
+
+***** label
+
+***** break
+
+***** continue
+
+**** オブジェクト操作文
+
+***** for...in
+
+***** for each...in
+
+**** コメント
+
+**** 例外処理分
+
+***** throw
+
+***** try...catch
+
+****** catchブロック
+
+****** finallyブロック
+
+
+
+
+*** 関数
+
+
+*** オブジェクト
+
+
+** various
+
+標準スクリプト言語の指定
+    HTML4.01までは、以下の記述によりonclickなどで使われる標準のスクリプト言語指定が推奨されていたが、
+    HTML5ではデフォルトがjavascriptとなり、設定不要に。
+    <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+変換
+    int.toString(2)  // 2進数へ変換
+    int.toString(16) // 16進数へ変換
+    parseInt(bin,2)  // 2進⇒10進数へ変換
+    parseInt(hex,16) // 16進⇒10進数へ変換
+
+Math
+    Math.random  // 0以上1未満の乱数を取得。
+    ex:
+        Math.floor(Math.random * 10) // 0以上10未満の自然数を取得
+        Math.ceil(Math.random * 10)  // 0以上10以下の自然数を取得、気持ち0含まない。
+
+    Math.pow(x,y) // xのyべき乗
+
+
+** W3C
+
+Syntax
+  Loop
+    for(;;)
+    for( in )
+    while()
+    do...while()
+    break
+    continue
+    try, catch, throw
+
+
+Function
+  Popup
+    alert
+    confirm
+    prompt
+
+
+Event
+  onload
+  onunload
+  onfocus
+  onblur (when losing focus)
+  onchange
+  onsubmit
+  onmouseover
+  onmouseout
+
+
+Object
+  Document
+  String
+    length
+    toUpperCase()
+  Date
+  Array
+  Boolean
+  Math
+  RegExp
+  Navigator
+
+
+Developer Tool
+  Ctrl-Shift-J or F12
+
+
+
+** memo
+
+*** DOM
+
+**** window
+
+- setInterval
+    一定の遅延間隔を置いて関数を繰り返し呼び出す。
+    ex: intervalId = window.setInterval(animate, 500)
+
+- clearInterval
+    setIntervalを使用して設定された繰り返し動作をキャンセルする。
+    ex: window.clearInterval(intervalID)
+
+***** document
+
+- readyState
+    読み込み中の場合"loading",
+    パースが完了したがサブリソースが読み込み中の場合"inactivate",
+    サブリソースの読み込みも完了した時点で"complete"となる。
+
+
+*** Link
+
+- [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]

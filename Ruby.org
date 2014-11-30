@@ -212,18 +212,30 @@
 
 ** 文法、構文、要素
 *** リテラル
+- 
+  数字の1や文字列"hello world"のようにプログラム中に直接記述できる値をリテラルという。
 
 **** 配列
+- 
+  Arrayクラスで表す。
+  配列が保持しているのはオブジェクトへの参照。
+  ex) cattle = "yahoo"
+      container = [cattle, cattle]
+      cattle[2] = 'p'
+      p container  #=> ["yapoo", "yapoo"]
 
-Arrayクラスで表す。
-
+***** 構築 
 - 
   [](角括弧)で括ると並列が構築される。
   ex) c = [a, b, 3, "string"]
 
-- 添字参照
+- 初期化
+  Array.new(3, Ruby) #=> ["Ruby", "Ruby", "Ruby"]
+
+***** 添字参照
+- 
   添字で内容を参照できる。
-  ex) c[0]
+  ex) c[0] #=> 'a'
   
   - 負の添字
     負の添字も使える。その場合は末尾から逆順に要素を指すこととなる。
@@ -239,39 +251,183 @@ Arrayクラスで表す。
     開始位置または終了位置に負の添字も使える。
     ex) c[0..1], c[0...1]
 
-- 添字代入
+***** 添字代入
   ex) a[4] = 3
 
-- 配列の比較
+***** 配列の比較
   対応する要素が全て同値のとき、且つそのときに限り同値。
 
-
-**** Array
-配列を表すオブジェクトを提供する。
-
-***** inheritance
-Array < Enumerable < Object < Kernel < BasicObject
-
-***** ClassMethod
-****** []
-****** new
-
-***** InstanceMethod
-****** +
-- 
-  配列を連結
-****** <<
-- 
-  末尾に要素を追加
-****** []
-****** []=
-****** length
-****** empty?
-****** include?
-****** select
-****** collect
+***** メソッド例
+-
+ Array#length
+ Array#each
+ unshift, shift, push, pop, first, last, reverse
+ sort, sort_by, each_with_index, inject
 
 **** ハッシュ
+- 
+  任意のオブジェクトをキーとして別のオブジェクトに対応づけるコンテナオブジェクト。
+
+***** 構築
+- 
+  波括弧内にキーと値の対応関係を並べる。
+  ex) 
+      test = {
+        "CAT" => "Concatenate",
+        "LS"  => "List",
+        "PWD" => "Print Working Director
+      }
+- シンボルをキーとする略記
+  シンボルをキートする場合、以下の略記法が利用できる。
+  ex) params = { rin: 5, kimiko: 7, kayo: nil }
+      p params   #=> {:rin => 5, :kimiko => 7, :kayo => nil}
+
+***** 添字演算式
+- 
+  キーとなるオブジェクトを返して値を返す。一種類の方法しかない。
+
+- 参照
+  ex) p book_to_author["Programmnig Ruby"]  #=> "Thomas"
+      p book_to_author["Programmnig Perl"]  #=> nil
+
+- 更新
+  ex) book_to_author["Ruby in Nutshell"] = ["Flanagan", "Mats"]
+
+- 登録
+  ex) book_to_author["The Ruby Way"] = "Fulton"
+
+***** 比較
+- 
+  すべての対応する要素ペアについて、互いにキーが等しく値が等しいときに同値となる。
+
+***** メソッド例
+- 
+  Hash#delete
+  keys, include?, key?, values, value?, clear
+
+**** 数値
+***** クラス
+- 
+  Numeric ┬ Integer ┬ Fixnum
+          │         └ Bignum
+          └ Float
+
+***** 整数
+****** Integer
+- 
+  Integerクラスのサブクラスに、FixnumとBignumがある。
+  Fixnumは内部的に固定長で実装されている整数で、小さな整数を効率的に処理可能。
+  Bignumは多売長整数で、任意に大きな整数を表すことができる。Fixnumで格納できない場合は自動的にBignumとなる。
+
+****** 基数
+- 
+  先頭記号を付けることで10進数以外のリテラルを表現できる。
+  
+  |------------------+--------|
+  | 先頭記号         | 基数   |
+  |------------------+--------|
+  | 0x, 0X           | 16進数 |
+  | 0d, 0D, 記号なし | 10進数 |
+  | 0o, 0O, 0        | 8進数  |
+  | 0b, 0B           | 2進数  |
+  |------------------+--------|
+
+***** 浮動小数点数
+- 
+  Floatクラス。
+
+****** 浮動小数点の精度を表す定数
+- 
+  |------------+---------------------------------------------------+----------------------|
+  | 定数名     | 意味                                              |                   例 |
+  |------------+---------------------------------------------------+----------------------|
+  | DIG        | floatが表現できる最大の10進数桁数                 |                   15 |
+  | EPSILON    | 1.0 + Float::EPSILON != 1.0となるような最小の数   |  2.2044604925031e-16 |
+  | MANT_DIG   | 仮数部のFloat::RADIX進法における桁数              |                   53 |
+  | MAX        | Floatが取りうる最大の値                           | 1.79769313486232e308 |
+  | MIN        | Floatが取りうる最小の値                           | 2.2250738585072e-308 |
+  | MAX_10_EXP | Floatが取りうる最大の10進の指数                   |                  308 |
+  | MIN_10_EXP | Floatが取りうる最小の10進の指数                   |                 -307 |
+  | MAX_EXP    | Floatが取りうる最大のFloat::RADIX進法における指数 |                 1024 |
+  | MIN_EXP    | Floatが取りうる最小のFloat::RADIX進法における指数 |                -1021 |
+  | RADIX      | Floatの内部表現における基数                       |                    2 |
+  |------------+---------------------------------------------------+----------------------|
+
+****** 特殊な浮動小数点値
+- Infinity
+  正の無限大。1.0/0.0の結果など。
+- -Infinity
+  負の無限大。-1.0/0.0の結果など。
+- 非数(NaN)
+  0.0/0.0の結果など。どんな数とも等しくなく、自分自身とも同値でない。
+
+***** 数値演算
+- /
+  除算
+- %
+  剰余
+- -
+  符号操作
+- divmod(n)
+  整除と剰余を同時に計算する。
+  ex) -7.divmod(2) #=> [-4, 1]
+- abs
+  ex) -3.141.abs   #=> 3.141
+- ceil
+  小数部繰り上げ
+  ex) 0.5772       #=> 1
+
+- メソッド
+  times, upto, downto, step
+
+***** その他の数値・代数系クラス
+- 
+  標準添付されているライブラリにも各種の数値型が存在する。
+- rational
+  有理数クラスRationalを提供する。
+- complex
+  複素数クラスComplexを提供する。
+- bigdecimal
+  可変長の10進浮動小数点数クラスBigDecimalを提供する。
+- matrix
+  行列クラスMatrixおよびベクトルクラスVectorを提供する。
+
+**** 文字列
+
+***** memo
+    ・バックスラッシュ記法
+        ""はバックスラッシュ記法を使える、''は使えない。
+    ・パーセント記法
+        バックスラッシュのエスケープが毎度毎度面倒な時とかに使うらしい。
+        %Qは式展開やバックスラッシュ記法を使えるが、%qは使えない。
+        ex: str = %q("Ruby", "HTML", "JavaScript", "Rails")
+    ・ヒアドキュメント
+        開始と終了のラベルとしてキーワードを決め、
+        その範囲を文字列オブジェクトとして扱う機能。
+        ex:
+            print <<EOS
+            foo
+            bar
+            baz
+            EOS
+            #=>foobarbaz
+    メソッド
+        +, <<, concat, size, length, empty?, [], split, chomp,
+        upcase, downcase, capitalize, swapcase
+
+**** 正規表現リテラル
+***** memo
+      /check/ =~ "original"
+      %rでも正規表現オブジェクト作成可能
+      String#sub(gsub)メソッド
+
+**** シンボル
+
+**** 範囲オブジェクト
+***** memo
+      Rangeクラス
+      1..5は終端を含む。(1,2,3,4,5)
+      1...5は終端を含まない。(1,2,3,4)
 
 *** 変数
 - 
@@ -631,7 +787,7 @@ Array < Enumerable < Object < Kernel < BasicObject
   今回の繰り返しをもう一度初めからやり直す。
   繰り返し条件が成立しているかどうかはチェックされない。
   
-*** 例外処理
+**** 例外処理
 - 
   begin, endで囲んだ範囲内で例外が発生した場合、対応するrescue節へ移動する。
   rescue節、else節、ensure節は不要であれば省略可能。
@@ -678,7 +834,7 @@ Array < Enumerable < Object < Kernel < BasicObject
   ex) error = ArgumentError.new('message')
       raise error
 
-*** 大域脱出
+**** 大域脱出
 - 
   catchとthrowを使って深い入れ子になった繰り返しから外側へ脱出できる。
   throwの引数にシンボルまたは文字列を渡し、catchを識別する。
@@ -750,6 +906,43 @@ Array < Enumerable < Object < Kernel < BasicObject
 ******* ancestors
 - ancestors -> [Class, Module]
   クラス、モジュールのスーパークラスとインクルードしているモジュールを優先順位順に配列に格納して返す。
+***** Array
+- 
+  配列を表すオブジェクトを提供する。
+
+****** Inheritance
+- Array < Enumerable < Object < Kernel < BasicObject
+
+****** ClassMethod
+******* []
+******* new
+
+****** InstanceMethod
+******* +
+- 
+  配列を連結
+******* <<
+- 
+  末尾に要素を追加
+******* []
+******* []=
+******* length
+******* empty?
+******* include?
+******* select
+******* collect
+
+***** Hash
+- 
+  ハッシュテーブルのクラス。
+****** Inheritance
+- Hash < Enumerable < Object < Kernel < BasicObject
+***** Enumerator
+- 
+  each以外のメソッドにもEnumerableの機能を提供するためのラッパークラス。
+****** Inheritance
+- Enumerator < Enumerable < Object < Kernel < BasicObject
+  
 ***** Dir
 - 要約
   ディレクトリの操作を行うためのクラス
@@ -819,6 +1012,10 @@ Array < Enumerable < Object < Kernel < BasicObject
 - 
   比較演算を許すクラスのためのMix-in。
 
+***** Enumerable
+- 
+  繰り返しを行うクラスのためのMix-in。
+  メソッドが全てeachを用いて定義されているので、インクルードするクラスにeachを定義する必要がある。
 
 *** rexml (ファイルフォーマット)
 
@@ -853,7 +1050,6 @@ Array < Enumerable < Object < Kernel < BasicObject
   - first(element, path = nil, namespace = {}, variables = {}) -> Node | nil
     elementのpathで指定したXPath文字列にマッチする最初のノードを返す。
   - match(element, path = nil, namespaces = {}, variables = {}) -> [Node]
-
 
 *** Link
 - [[http://docs.ruby-lang.org/ja/2.1.0/doc/index.html][オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル(2.1)]]
@@ -904,7 +1100,6 @@ Array < Enumerable < Object < Kernel < BasicObject
   #{} in ""
 
 - array
-  []
   %w, %W, %i, %I
 
 - insert, delete(_at)
@@ -922,76 +1117,14 @@ Array < Enumerable < Object < Kernel < BasicObject
 
 - <=>
     宇宙船演算子
-
-*** 数値
-    クラス構成
-    ・Numeric
-        ・Integer
-            ・Fixnum
-            ・Bignum
-        ・Float
-    メソッド
-        times, upto, downto, step
-
-*** 範囲
-    Rangeクラス
-    1..5は終端を含む。(1,2,3,4,5)
-    1...5は終端を含まない。(1,2,3,4)
-
-*** 文字列
-    ・バックスラッシュ記法
-        ""はバックスラッシュ記法を使える、''は使えない。
-    ・パーセント記法
-        バックスラッシュのエスケープが毎度毎度面倒な時とかに使うらしい。
-        %Qは式展開やバックスラッシュ記法を使えるが、%qは使えない。
-        ex: str = %q("Ruby", "HTML", "JavaScript", "Rails")
-    ・ヒアドキュメント
-        開始と終了のラベルとしてキーワードを決め、
-        その範囲を文字列オブジェクトとして扱う機能。
-        ex:
-            print <<EOS
-            foo
-            bar
-            baz
-            EOS
-            #=>foobarbaz
-    メソッド
-        +, <<, concat, size, length, empty?, [], split, chomp,
-        upcase, downcase, capitalize, swapcase
             
-*** 正規表現
-    /check/ =~ "original"
-    %rでも正規表現オブジェクト作成可能
-    String#sub(gsub)メソッド
-    
-*** 配列
-    Array = [1, 2, 3]
-    Array#length
-    Array#each
-    ・初期化
-        Array.new(3, Ruby) #=> ["Ruby", "Ruby", "Ruby"]
-    unshift, shift, push, pop, first, last, reverse
-    sort, sort_by, each_with_index, inject
-
-*** ハッシュ
-    キーには文字列かシンボル、値にはオブジェクトが格納できる。
-    hash = {"key" => value}
-    hash["key"] #=>value
-    Hash#delete
-    keys, include?, key?, values, value?, clear
-
-*** 構文
+*** 別名
 - alias
   別名をつける。別名というか、メソッドのコピーみたいな形になるようで、
   元のメソッドの定義を変更しても、別名をつけたメソッドには反映されない。
 
 *** モジュール
 - module_function
-
-*** 特異メソッド
-- 
-  オブジェクト特有のメソッド。継承されない。
-  extendにより定義することも可能。
 
 *** ファイル操作等
 - 入出力
