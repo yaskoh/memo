@@ -1605,6 +1605,12 @@
 - 
   matrixっぽい表示
 
+*** wget
+- 
+  ファイルをダウンロードする。
+  wget [option] URL
+
+
 ** distribution
 
 *** Debian
