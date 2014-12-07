@@ -4,11 +4,11 @@
 
 *** CamelCase
 - 
-  �啶���ɂ���ĒP��̋�؂��\���\�L�@�B
-  Java���莞�ɁA�t�H���g�ƃv�����^�ɂ���Ă̓A���_�[�X�R�A���������Ȃ��o�O���������Ƃ��ŁA
-  Camel���g��ꂽ�Ƃ��Ȃ�Ƃ��B�B
-  ���Ȃ݂ɐ擪�������啶���Ȃ̂�PascalCase�A2�ڈȍ~���啶���Ȃ̂�camelCase�A�Ƃ����ꍇ������B
+  大文字によって単語の区切りを表す表記法。
+  Java策定時に、フォントとプリンタによってはアンダースコアが印刷されないバグがあったとかで、
+  Camelが使われたとかなんとか。。
+  ちなみに先頭文字が大文字なのをPascalCase、2つ目以降が大文字なのをcamelCase、という場合もある。
 
 *** snake_case
 - 
-  �A���_�[�X�R�A�ŒP��̋�؂��\���\�L�@�B
+  アンダースコアで単語の区切りを表す表記法。

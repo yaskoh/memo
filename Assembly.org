@@ -1,114 +1,114 @@
 * Assembly
 
-** ƒŒƒWƒXƒ^
+** ãƒ¬ã‚¸ã‚¹ã‚¿
 
-*** ”Ä—pƒŒƒWƒXƒ^(GBR)
-**** ”Ä—pƒŒƒWƒXƒ^
+*** æ±Žç”¨ãƒ¬ã‚¸ã‚¹ã‚¿(GBR)
+**** æ±Žç”¨ãƒ¬ã‚¸ã‚¹ã‚¿
 - 
   |------+------+------+-----+------------------+----------------------------|
-  | 31-0 | 15-0 | 15-8 | 7-0 | –¼Ì             | —p“r                       |
+  | 31-0 | 15-0 | 15-8 | 7-0 | åç§°             | ç”¨é€”                       |
   |------+------+------+-----+------------------+----------------------------|
-  | EAX  | AX   | AH   | AL  | ƒAƒLƒ…ƒ€ƒŒ[ƒ^   | ‰½‚É‚Å‚àŽg‚¤               |
-  | EBX  | BX   | BH   | BL  | ƒx[ƒXƒŒƒWƒXƒ^   | ‰½‚É‚Å‚àŽg‚¤               |
-  | ECX  | CX   | CH   | CL  | ƒJƒEƒ“ƒgƒŒƒWƒXƒ^ | ‰½‚É‚Å‚àŽg‚¤‚ªŽå‚ÉƒJƒEƒ“ƒ^ |
-  | EDX  | DX   | DH   | DL  | ƒf[ƒ^ƒŒƒWƒXƒ^   | ‰½‚Å‚àŽg‚¤                 |
+  | EAX  | AX   | AH   | AL  | ã‚¢ã‚­ãƒ¥ãƒ ãƒ¬ãƒ¼ã‚¿   | ä½•ã«ã§ã‚‚ä½¿ã†               |
+  | EBX  | BX   | BH   | BL  | ãƒ™ãƒ¼ã‚¹ãƒ¬ã‚¸ã‚¹ã‚¿   | ä½•ã«ã§ã‚‚ä½¿ã†               |
+  | ECX  | CX   | CH   | CL  | ã‚«ã‚¦ãƒ³ãƒˆãƒ¬ã‚¸ã‚¹ã‚¿ | ä½•ã«ã§ã‚‚ä½¿ã†ãŒä¸»ã«ã‚«ã‚¦ãƒ³ã‚¿ |
+  | EDX  | DX   | DH   | DL  | ãƒ‡ãƒ¼ã‚¿ãƒ¬ã‚¸ã‚¹ã‚¿   | ä½•ã§ã‚‚ä½¿ã†                 |
   |------+------+------+-----+------------------+----------------------------|
 - 
-  EnX‚Í32bit
-  nH,nL‚ª8bit‚Å—¼ŽÒ‚ð‡‚í‚¹‚½‚à‚Ì‚ªnXi16bitj
-  X, E‚ÍExtend‚©‚çB
+  EnXã¯32bit
+  nH,nLãŒ8bitã§ä¸¡è€…ã‚’åˆã‚ã›ãŸã‚‚ã®ãŒnXï¼ˆ16bitï¼‰
+  X, Eã¯Extendã‹ã‚‰ã€‚
 
-**** ƒCƒ“ƒfƒbƒNƒXƒŒƒWƒXƒ^
+**** ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ãƒ¬ã‚¸ã‚¹ã‚¿
 - 
   |------+------+--------------------------------+------------------------------------------------|
-  | 31-0 | 15-0 | –¼Ì                           | —p“r                                           |
+  | 31-0 | 15-0 | åç§°                           | ç”¨é€”                                           |
   |------+------+--------------------------------+------------------------------------------------|
-  | ESI  | SI   | ƒ\[ƒXƒCƒ“ƒfƒbƒNƒX             | ƒXƒgƒŠƒ“ƒO–½—ß‚É—˜—p‚·‚é‚ªA‰½‚É—˜—p‚µ‚Ä‚à‚æ‚¢ |
-  | EDI  | DI   | ƒfƒXƒeƒBƒl[ƒVƒ‡ƒ“ƒCƒ“ƒfƒbƒNƒX | “¯ã                                           |
+  | ESI  | SI   | ã‚½ãƒ¼ã‚¹ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹             | ã‚¹ãƒˆãƒªãƒ³ã‚°å‘½ä»¤ã«åˆ©ç”¨ã™ã‚‹ãŒã€ä½•ã«åˆ©ç”¨ã—ã¦ã‚‚ã‚ˆã„ |
+  | EDI  | DI   | ãƒ‡ã‚¹ãƒ†ã‚£ãƒãƒ¼ã‚·ãƒ§ãƒ³ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ | åŒä¸Š                                           |
   |------+------+--------------------------------+------------------------------------------------|
 
-**** ƒ|ƒCƒ“ƒ^ƒŒƒWƒXƒ^
+**** ãƒã‚¤ãƒ³ã‚¿ãƒ¬ã‚¸ã‚¹ã‚¿
 - 
   |------+------+------------------+----------------------------------------|
-  | 31-0 | 15-0 | –¼Ì             | —p“r                                   |
+  | 31-0 | 15-0 | åç§°             | ç”¨é€”                                   |
   |------+------+------------------+----------------------------------------|
-  | EBP  | BP   | ƒx[ƒXƒ|ƒCƒ“ƒ^   | “Á•Ê‚È—p“r‚É—˜—p‚µA‚ß‚Á‚½‚É—˜—p‚µ‚È‚¢ |
-  | ESP  | SP   | ƒXƒ^ƒbƒNƒ|ƒCƒ“ƒ^ | ƒXƒ^ƒbƒN‚ðŠi”[‚·‚éƒAƒhƒŒƒX‚ÌƒIƒtƒZƒbƒg |
+  | EBP  | BP   | ãƒ™ãƒ¼ã‚¹ãƒã‚¤ãƒ³ã‚¿   | ç‰¹åˆ¥ãªç”¨é€”ã«åˆ©ç”¨ã—ã€ã‚ã£ãŸã«åˆ©ç”¨ã—ãªã„ |
+  | ESP  | SP   | ã‚¹ã‚¿ãƒƒã‚¯ãƒã‚¤ãƒ³ã‚¿ | ã‚¹ã‚¿ãƒƒã‚¯ã‚’æ ¼ç´ã™ã‚‹ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆ |
   |------+------+------------------+----------------------------------------|
 
-*** ƒZƒOƒƒ“ƒgƒŒƒWƒXƒ^
+*** ã‚»ã‚°ãƒ¡ãƒ³ãƒˆãƒ¬ã‚¸ã‚¹ã‚¿
 - 
   |------+----------------------+------------------------------------------------------|
-  | 15-0 | –¼Ì                 | —p“r                                                 |
+  | 15-0 | åç§°                 | ç”¨é€”                                                 |
   |------+----------------------+------------------------------------------------------|
-  | SS   | ƒXƒ^ƒbƒNƒZƒOƒƒ“ƒg   | ƒXƒ^ƒbƒN‚ðŠi”[‚·‚éƒAƒhƒŒƒX‚ÌƒZƒOƒƒ“ƒg‚ðŽw‚·         |
-  | CS   | ƒR[ƒhƒZƒOƒƒ“ƒg     | ŽŸ‚ÉŽÀs‚·‚éƒAƒhƒŒƒX‚ÌƒZƒOƒƒ“ƒg‚ðŽw‚·               |
-  | DS   | ƒf[ƒ^ƒZƒOƒƒ“ƒg     | ƒf[ƒ^‚ð“Ç‚Ý‘‚«‚·‚éƒAƒhƒŒƒX‚ÌƒZƒOƒƒ“ƒg‚ðŽw‚·       |
-  | ES   | ƒGƒNƒXƒgƒ‰ƒZƒOƒƒ“ƒg | ’Ç‰Á‚Ìƒf[ƒ^‚ð“Ç‚Ý‘‚«‚·‚éƒAƒhƒŒƒX‚ÌƒZƒOƒƒ“ƒg‚ðŽw‚· |
+  | SS   | ã‚¹ã‚¿ãƒƒã‚¯ã‚»ã‚°ãƒ¡ãƒ³ãƒˆ   | ã‚¹ã‚¿ãƒƒã‚¯ã‚’æ ¼ç´ã™ã‚‹ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ã‚»ã‚°ãƒ¡ãƒ³ãƒˆã‚’æŒ‡ã™         |
+  | CS   | ã‚³ãƒ¼ãƒ‰ã‚»ã‚°ãƒ¡ãƒ³ãƒˆ     | æ¬¡ã«å®Ÿè¡Œã™ã‚‹ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ã‚»ã‚°ãƒ¡ãƒ³ãƒˆã‚’æŒ‡ã™               |
+  | DS   | ãƒ‡ãƒ¼ã‚¿ã‚»ã‚°ãƒ¡ãƒ³ãƒˆ     | ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿æ›¸ãã™ã‚‹ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ã‚»ã‚°ãƒ¡ãƒ³ãƒˆã‚’æŒ‡ã™       |
+  | ES   | ã‚¨ã‚¯ã‚¹ãƒˆãƒ©ã‚»ã‚°ãƒ¡ãƒ³ãƒˆ | è¿½åŠ ã®ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿æ›¸ãã™ã‚‹ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ã‚»ã‚°ãƒ¡ãƒ³ãƒˆã‚’æŒ‡ã™ |
   |------+----------------------+------------------------------------------------------|
 
-*** ƒXƒe[ƒ^ƒXE§ŒäƒŒƒWƒXƒ^
+*** ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ»åˆ¶å¾¡ãƒ¬ã‚¸ã‚¹ã‚¿
 - 
   |--------+-------+----------------------------+----------------------------------------|
-  | 31-0   | 15-0  | –¼Ì                       | —p“r                                   |
+  | 31-0   | 15-0  | åç§°                       | ç”¨é€”                                   |
   |--------+-------+----------------------------+----------------------------------------|
-  | EIP    | IP    | ƒCƒ“ƒXƒgƒ‰ƒNƒVƒ‡ƒ“ƒ|ƒCƒ“ƒ^ | ŽŸ‚ÉŽÀs‚·‚éƒAƒhƒŒƒX‚ÌƒIƒtƒZƒbƒg‚ðŽw‚· |
-  | EFLAGS | FLAGS | ƒXƒe[ƒ^ƒXƒŒƒWƒXƒ^         | CPU‚Ìó‘Ô‚â‘O‚Ì–½—ß‚ÌƒGƒ‰[ó‘Ô‚ª“ü‚é  |
+  | EIP    | IP    | ã‚¤ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚·ãƒ§ãƒ³ãƒã‚¤ãƒ³ã‚¿ | æ¬¡ã«å®Ÿè¡Œã™ã‚‹ã‚¢ãƒ‰ãƒ¬ã‚¹ã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’æŒ‡ã™ |
+  | EFLAGS | FLAGS | ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ¬ã‚¸ã‚¹ã‚¿         | CPUã®çŠ¶æ…‹ã‚„å‰ã®å‘½ä»¤ã®ã‚¨ãƒ©ãƒ¼çŠ¶æ…‹ãŒå…¥ã‚‹  |
   |--------+-------+----------------------------+----------------------------------------|
 
-- ƒtƒ‰ƒO
+- ãƒ•ãƒ©ã‚°
   |-------+------+-------------------------|
-  |   bit | —ª‹L | –¼Ì                    |
+  |   bit | ç•¥è¨˜ | åç§°                    |
   |-------+------+-------------------------|
-  |     0 | CF   | ƒLƒƒƒŠ[ƒtƒ‰ƒO          |
-  |     2 | PF   | ƒpƒŠƒeƒB[ƒtƒ‰ƒO        |
-  |     4 | AF   | •â•ƒtƒ‰ƒO              |
-  |     6 | ZF   | ƒ[ƒƒtƒ‰ƒO              |
-  |     7 | SF   | ƒTƒCƒ“ƒtƒ‰ƒO            |
-  |     8 | TF   | ƒgƒ‰ƒbƒvƒtƒ‰ƒO          |
-  |     9 | IF   | Š„‚èž‚Ý‹–‰Âƒtƒ‰ƒO      |
-  |    10 | DF   | ƒfƒBƒŒƒNƒVƒ‡ƒ“ƒtƒ‰ƒO    |
-  |    11 | OF   | ƒI[ƒo[ƒtƒ[ƒtƒ‰ƒO    |
-  | 12-13 | IOPL | I/O“ÁŒ ƒŒƒxƒ‹ƒtƒB[ƒ‹ƒh |
+  |     0 | CF   | ã‚­ãƒ£ãƒªãƒ¼ãƒ•ãƒ©ã‚°          |
+  |     2 | PF   | ãƒ‘ãƒªãƒ†ã‚£ãƒ¼ãƒ•ãƒ©ã‚°        |
+  |     4 | AF   | è£œåŠ©ãƒ•ãƒ©ã‚°              |
+  |     6 | ZF   | ã‚¼ãƒ­ãƒ•ãƒ©ã‚°              |
+  |     7 | SF   | ã‚µã‚¤ãƒ³ãƒ•ãƒ©ã‚°            |
+  |     8 | TF   | ãƒˆãƒ©ãƒƒãƒ—ãƒ•ãƒ©ã‚°          |
+  |     9 | IF   | å‰²ã‚Šè¾¼ã¿è¨±å¯ãƒ•ãƒ©ã‚°      |
+  |    10 | DF   | ãƒ‡ã‚£ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ãƒ•ãƒ©ã‚°    |
+  |    11 | OF   | ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ãƒ•ãƒ©ã‚°    |
+  | 12-13 | IOPL | I/Oç‰¹æ¨©ãƒ¬ãƒ™ãƒ«ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ |
   |-------+------+-------------------------|
 
 
-** –½—ß
+** å‘½ä»¤
 
 - move dest,src
-    (.COM‚ÍƒZƒOƒƒ“ƒgƒŒƒWƒXƒg‚ª‘S‚Ä“¯‚¶’l)
+    (.COMã¯ã‚»ã‚°ãƒ¡ãƒ³ãƒˆãƒ¬ã‚¸ã‚¹ãƒˆãŒå…¨ã¦åŒã˜å€¤)
 
-- ƒ\ƒtƒgƒEƒFƒAŠ„‚èž‚Ý
+- ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢å‰²ã‚Šè¾¼ã¿
     int
-        ƒ\ƒtƒgƒEƒFƒAŠ„‚èž‚Ý
-        "int 21h"‚ªƒtƒ@ƒ“ƒNƒVƒ‡ƒ“ƒR[ƒ‹
-        AH‚Ì“à—e‚ÅŽÀs’l‚ª•Ï‚í‚éB
-        AH‚É4Ch‚ª“ü‚Á‚Ä‚¢‚éŽž‚Éint 21h‚ð“®‚©‚·‚ÆI—¹‚·‚éB
+        ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢å‰²ã‚Šè¾¼ã¿
+        "int 21h"ãŒãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã‚³ãƒ¼ãƒ«
+        AHã®å†…å®¹ã§å®Ÿè¡Œå€¤ãŒå¤‰ã‚ã‚‹ã€‚
+        AHã«4ChãŒå…¥ã£ã¦ã„ã‚‹æ™‚ã«int 21hã‚’å‹•ã‹ã™ã¨çµ‚äº†ã™ã‚‹ã€‚
 
 
-- ‘¦’l‚Ì“]‘—
-    mov ah,10     10i”
-    mov ah,10h    16i”
-    mov ah,10o    8i”
-    mov ah,10b    2i”
-    mov ah,'A'    •¶ŽšƒR[ƒh
-    mov ax,offset DATA    DATA‚Æ‚¢‚¤•Ï”‚ÌƒAƒhƒŒƒX
+- å³å€¤ã®è»¢é€
+    mov ah,10     10é€²æ•°
+    mov ah,10h    16é€²æ•°
+    mov ah,10o    8é€²æ•°
+    mov ah,10b    2é€²æ•°
+    mov ah,'A'    æ–‡å­—ã‚³ãƒ¼ãƒ‰
+    mov ax,offset DATA    DATAã¨ã„ã†å¤‰æ•°ã®ã‚¢ãƒ‰ãƒ¬ã‚¹
 
 
-- ’¼ÚƒAƒhƒŒƒX–@
+- ç›´æŽ¥ã‚¢ãƒ‰ãƒ¬ã‚¹æ³•
 
-    mov DATA,al        •Ï”‚É‘‚«ž‚Þ
-    mov [1000h],al    ƒAƒhƒŒƒX‚É‘‚«ž‚Þ
+    mov DATA,al        å¤‰æ•°ã«æ›¸ãè¾¼ã‚€
+    mov [1000h],al    ã‚¢ãƒ‰ãƒ¬ã‚¹ã«æ›¸ãè¾¼ã‚€
 
-    ƒƒ‚ƒŠ  ƒŒƒWƒXƒgƒŠ‚Æˆá‚¢‘å‚«‚³‚ª•ª‚©‚ç‚È‚¢‚½‚ß‘å‚«‚³‚ð‘‚­
+    ãƒ¡ãƒ¢ãƒª  ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã¨é•ã„å¤§ãã•ãŒåˆ†ã‹ã‚‰ãªã„ãŸã‚å¤§ãã•ã‚’æ›¸ã
     mov byte ptr DATA, 0 (byte ptr)
     mov word ptr DATA, 0 (word ptr)
     or
     mov DATA, byte ptr 0
     mov DATA, word ptr 0
-    (ƒRƒ“ƒpƒCƒ‰‚É‚æ‚Á‚Ä‘‚«•û‚ªˆá‚¤)
+    (ã‚³ãƒ³ãƒ‘ã‚¤ãƒ©ã«ã‚ˆã£ã¦æ›¸ãæ–¹ãŒé•ã†)
 
-- ŠÔÚƒAƒhƒŒƒX–@(ƒƒ‚ƒŠ‚ÌƒAƒhƒŒƒX‚ðƒŒƒWƒXƒ^‚ðŽg‚Á‚ÄŽw’è)
+- é–“æŽ¥ã‚¢ãƒ‰ãƒ¬ã‚¹æ³•(ãƒ¡ãƒ¢ãƒªã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ãƒ¬ã‚¸ã‚¹ã‚¿ã‚’ä½¿ã£ã¦æŒ‡å®š)
 
     mov bx,offset DATA
     mov byte ptr [bx], 0
@@ -116,121 +116,121 @@
     mov [bx], byte ptr 0
     mov [byte ptr bx], 0
 
-    ƒ[ƒhˆÈã‚¾‚Æ‹t‡‚ÉŠi”[
-    mov [1000h],word ptr 1234h Ë 34h(1000h), 12h(1001h)
-    mov [1000h],dword ptr 12345678h Ë 78h(1000h), 56h(1001h), 34h(1000h), 12h(1000h)
+    ãƒ¯ãƒ¼ãƒ‰ä»¥ä¸Šã ã¨é€†é †ã«æ ¼ç´
+    mov [1000h],word ptr 1234h â‡’ 34h(1000h), 12h(1001h)
+    mov [1000h],dword ptr 12345678h â‡’ 78h(1000h), 56h(1001h), 34h(1000h), 12h(1000h)
 
 
-- ‹^Ž—–½—ß
-    CPU‚Å‚È‚­ƒAƒZƒ“ƒuƒ‰‚É“`‚¦‚é–½—ß‚ðu‹^Ž—–½—ßv‚Æ‚¢‚¤B
+- ç–‘ä¼¼å‘½ä»¤
+    CPUã§ãªãã‚¢ã‚»ãƒ³ãƒ–ãƒ©ã«ä¼ãˆã‚‹å‘½ä»¤ã‚’ã€Œç–‘ä¼¼å‘½ä»¤ã€ã¨ã„ã†ã€‚
     DB    byte
     DW    word
     DD    dword
 
 
-- ‘«‚µŽZ
+- è¶³ã—ç®—
 
-    ADD DEST,SRC (DEST©DEST+SRC)
+    ADD DEST,SRC (DESTâ†DEST+SRC)
     ADC DEST,SRC
 
     AAA
-        Œ…’´‚¦‚ð‚µ‚½‚à‚Ì‚ð•â³‚µ‚Ä‚­‚ê‚é
+        æ¡è¶…ãˆã‚’ã—ãŸã‚‚ã®ã‚’è£œæ­£ã—ã¦ãã‚Œã‚‹
 
 
-- ˆø‚«ŽZ
+- å¼•ãç®—
     SUB DEST,SRC
-    SBB DEST,SRC    (ƒLƒƒƒŠ[ƒtƒ‰ƒO‚Â‚«)
+    SBB DEST,SRC    (ã‚­ãƒ£ãƒªãƒ¼ãƒ•ãƒ©ã‚°ã¤ã)
 
 
-- ‚©‚¯‚é
-    MUL SRC        •„†‚È‚µ
-    IMUL SRC    •„†•t‚«
-        AX        AL~SRC
-        DX:AX    AX~SRC
-        EDX:EAX    EAX~SRC
+- ã‹ã‘ã‚‹
+    MUL SRC        ç¬¦å·ãªã—
+    IMUL SRC    ç¬¦å·ä»˜ã
+        AX        ALÃ—SRC
+        DX:AX    AXÃ—SRC
+        EDX:EAX    EAXÃ—SRC
 
-- ‚í‚é
+- ã‚ã‚‹
     DIV SRC
     IDIV SRC
-        AX€SRC¨—]AH, ¤AL
-        DX:AX€SRC¨—]DX, ¤AX
-        EDX:EAX€SRC¨—]EDX, ¤EAX
+        AXÃ·SRCâ†’ä½™AH, å•†AL
+        DX:AXÃ·SRCâ†’ä½™DX, å•†AX
+        EDX:EAXÃ·SRCâ†’ä½™EDX, å•†EAX
 
 
 - INC, DEC
-    1‘«‚·iˆø‚­j
+    1è¶³ã™ï¼ˆå¼•ãï¼‰
 
 
 - JMP DEST
-    DEST‚ÉˆÚs‚·‚é
-    short, near, far‚ª‚ ‚éB
+    DESTã«ç§»è¡Œã™ã‚‹
+    short, near, farãŒã‚ã‚‹ã€‚
 
 - CMP SRC1,SRC2
-    ”äŠr
-    SRC1 - SRC2‚Ìƒtƒ‰ƒO‚Ì‚ÝŽc‚é
+    æ¯”è¼ƒ
+    SRC1 - SRC2ã®ãƒ•ãƒ©ã‚°ã®ã¿æ®‹ã‚‹
 
 
 JCXZ DEST
 JECXZ DEST
-    ðŒ•ªŠòBCX(ECX)‚ª0‚Ì‚Æ‚«ƒWƒƒƒ“ƒvB
+    æ¡ä»¶åˆ†å²ã€‚CX(ECX)ãŒ0ã®ã¨ãã‚¸ãƒ£ãƒ³ãƒ—ã€‚
 
 LOOP SRC
-    (E)CX=(E)CX-1,not equal 0‚È‚çSRC‚ÉƒVƒ‡[ƒgƒWƒƒƒ“ƒv
+    (E)CX=(E)CX-1,not equal 0ãªã‚‰SRCã«ã‚·ãƒ§ãƒ¼ãƒˆã‚¸ãƒ£ãƒ³ãƒ—
 
 LOOPZ, LOOPE SRC
-    ZF=1‚È‚çƒWƒƒƒ“ƒv
+    ZF=1ãªã‚‰ã‚¸ãƒ£ãƒ³ãƒ—
 LOOPNZ, LOOPNE SRC
-    ZF=0‚È‚çƒWƒƒƒ“ƒv
+    ZF=0ãªã‚‰ã‚¸ãƒ£ãƒ³ãƒ—
 
-- ƒTƒuƒ‹[ƒ`ƒ“
+- ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³
     CALL
     RET
-        SS:SP‚ð2‘‚â‚µ‚Äcall, 2Œ¸‚ç‚µ‚Äret
+        SS:SPã‚’2å¢—ã‚„ã—ã¦call, 2æ¸›ã‚‰ã—ã¦ret
 
-    æFpublic ƒTƒuƒ‹[ƒ`ƒ“–¼
-    Œ³Fextern ƒTƒuƒ‹[ƒ`ƒ“–¼:near
+    å…ˆï¼špublic ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³å
+    å…ƒï¼šextern ã‚µãƒ–ãƒ«ãƒ¼ãƒãƒ³å:near
 
     PUSH
     POP
 
-    PUSHA,POPA        AX,CX,DX,BX,SP,BP,SI,DI(POP‚ÍA‹t‡j
+    PUSHA,POPA        AX,CX,DX,BX,SP,BP,SI,DI(POPã¯Aé€†é †ï¼‰
     PUSHAD,POPAD    EAX,ECX...
 
     PUSHF,POPF        FLAGS
     PUSHFD,POPFD    EFLAGS
 
-- ˜_—
+- è«–ç†
     AND DEST,SRC
     OR DEST,SRC
     XOR DEST,SRC
     NOT DEST
     NEG DEST
-        2‚Ì•â”
+        2ã®è£œæ•°
     TEST SRC1,SRC2
-        ˜_—Ï(AND‚Æ“¯‚¶)AŒ‹‰Ê‚ª•ÛŽ‚³‚ê‚¸ƒtƒ‰ƒO‚Ì‚ÝŽ‚Â
+        è«–ç†ç©(ANDã¨åŒã˜)ã€çµæžœãŒä¿æŒã•ã‚Œãšãƒ•ãƒ©ã‚°ã®ã¿æŒã¤
 
-- ƒVƒtƒg
+- ã‚·ãƒ•ãƒˆ
     SHR DEST,COUNT
     SHL DEST,COUNT
     SAR DEST,COUNT
     SAL DEST,COUNT
-        ŽZpiÅãˆÊƒrƒbƒg‚ª•Û‘¶j
+        ç®—è¡“ï¼ˆæœ€ä¸Šä½ãƒ“ãƒƒãƒˆãŒä¿å­˜ï¼‰
 
-- ƒ[ƒe[ƒg
-    RCL, RCR ƒLƒƒƒŠ[ƒtƒ‰ƒOž‚Ý
-    ROL, ROR ƒLƒƒƒŠ[ƒtƒ‰ƒO‚Íˆì‚ê•ª
+- ãƒ­ãƒ¼ãƒ†ãƒ¼ãƒˆ
+    RCL, RCR ã‚­ãƒ£ãƒªãƒ¼ãƒ•ãƒ©ã‚°è¾¼ã¿
+    ROL, ROR ã‚­ãƒ£ãƒªãƒ¼ãƒ•ãƒ©ã‚°ã¯æº¢ã‚Œåˆ†
 
 
 
-- ƒXƒgƒŠƒ“ƒO–½—ß
-    “Ç‚Ýo‚µ‚Í[DS:SI]
-    ‘‚«o‚µ‚Í[ES:DI]
-    ƒŒƒWƒXƒ^‚ÍEAX,AX,AL‚Ì‚Ý
+- ã‚¹ãƒˆãƒªãƒ³ã‚°å‘½ä»¤
+    èª­ã¿å‡ºã—ã¯[DS:SI]
+    æ›¸ãå‡ºã—ã¯[ES:DI]
+    ãƒ¬ã‚¸ã‚¹ã‚¿ã¯EAX,AX,ALã®ã¿
 
 
     MOVSB, MOVSW, MOVSD
     REP MOVS?
-        CX‰ñŒJ‚è•Ô‚·
+        CXå›žç¹°ã‚Šè¿”ã™
     REP,REPE(REPZ),REPNE(REPNZ)
 
     CLD        DF=0
@@ -238,45 +238,45 @@ LOOPNZ, LOOPNE SRC
 
 
     LODS?
-        ƒƒ‚ƒŠ‚ðƒŒƒWƒXƒgƒŠAL,AX.EAX‚É“Ç‚Ýž‚Þ
+        ãƒ¡ãƒ¢ãƒªã‚’ãƒ¬ã‚¸ã‚¹ãƒˆãƒªAL,AX.EAXã«èª­ã¿è¾¼ã‚€
     STOS?
-        ƒŒƒWƒXƒgƒŠ‚ðƒƒ‚ƒŠ‚É
+        ãƒ¬ã‚¸ã‚¹ãƒˆãƒªã‚’ãƒ¡ãƒ¢ãƒªã«
     SCAS?
-        ƒŒƒWƒXƒ^‚Æƒƒ‚ƒŠ‚ð”äŠr
+        ãƒ¬ã‚¸ã‚¹ã‚¿ã¨ãƒ¡ãƒ¢ãƒªã‚’æ¯”è¼ƒ
     CMPS?
-        [DS:SI]‚Æ[ES:DI]‚Ì”äŠr
+        [DS:SI]ã¨[ES:DI]ã®æ¯”è¼ƒ
 
-- “üo—Í
+- å…¥å‡ºåŠ›
     Memory Mapped I/O
-        ƒƒ‚ƒŠ‹óŠÔ‚Ìˆê•”‚ð§Œä—p‚Ì‹óŠÔ‚É
+        ãƒ¡ãƒ¢ãƒªç©ºé–“ã®ä¸€éƒ¨ã‚’åˆ¶å¾¡ç”¨ã®ç©ºé–“ã«
     I/O Mapped I/O
-        ƒƒ‚ƒŠ‚Æ§Œä‚Í•Ê
-        IN,OUT‚È‚Çê—p–½—ß‚ª‚ ‚é
+        ãƒ¡ãƒ¢ãƒªã¨åˆ¶å¾¡ã¯åˆ¥
+        IN,OUTãªã©å°‚ç”¨å‘½ä»¤ãŒã‚ã‚‹
 
     IN DEST,SRC
-        SRC‚Ìƒ|[ƒg‚ÉÚ‘±‚³‚ê‚Ä‚¢‚éƒfƒoƒCƒX‚Ìó‘Ô‚ð“Ç‚Ý‚¾‚·
+        SRCã®ãƒãƒ¼ãƒˆã«æŽ¥ç¶šã•ã‚Œã¦ã„ã‚‹ãƒ‡ãƒã‚¤ã‚¹ã®çŠ¶æ…‹ã‚’èª­ã¿ã ã™
     OUT DEST,SRC
-        DEST‚ÉÚ‘±‚³‚ê‚Ä‚¢‚éƒfƒoƒCƒX‚ÉƒRƒ}ƒ“ƒh‚ð‘—‚é
+        DESTã«æŽ¥ç¶šã•ã‚Œã¦ã„ã‚‹ãƒ‡ãƒã‚¤ã‚¹ã«ã‚³ãƒžãƒ³ãƒ‰ã‚’é€ã‚‹
 
     INS?
     OUTS?
-        ƒXƒgƒŠƒ“ƒO–½—ß—p
+        ã‚¹ãƒˆãƒªãƒ³ã‚°å‘½ä»¤ç”¨
 
 
-- ‘¼
+- ä»–
     LEA DEST,SRC
-        SRC‚ÌŽÀsƒAƒhƒŒƒX‚ðŒvŽZ‚µADEST‚É‘ã“ü
+        SRCã®å®Ÿè¡Œã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¨ˆç®—ã—ã€DESTã«ä»£å…¥
     XCHG DEST1,DEST2
-        DEST1‚ÆDEST2‚ðŒðŠ·‚·‚é
+        DEST1ã¨DEST2ã‚’äº¤æ›ã™ã‚‹
     NOP
-        ‰½‚à‚µ‚È‚¢B‚ ‚Æ‚Å‘‚­‚½‚ß‚ÌêŠ‚ÌŠm•Û‚Æ‚©B
+        ä½•ã‚‚ã—ãªã„ã€‚ã‚ã¨ã§æ›¸ããŸã‚ã®å ´æ‰€ã®ç¢ºä¿ã¨ã‹ã€‚
 
 
-- Š„‚èž‚Ý
-    ƒgƒ‰ƒbƒv
+- å‰²ã‚Šè¾¼ã¿
+    ãƒˆãƒ©ãƒƒãƒ—
         INT
-    ƒtƒHƒ‹ƒg
-        ƒƒ‚ƒŠ[§ŒÀ
-    ƒAƒ{[ƒg
-        —áŠOB0œŽZ‚È‚Ç‚Å”­¶B
+    ãƒ•ã‚©ãƒ«ãƒˆ
+        ãƒ¡ãƒ¢ãƒªãƒ¼åˆ¶é™
+    ã‚¢ãƒœãƒ¼ãƒˆ
+        ä¾‹å¤–ã€‚0é™¤ç®—ãªã©ã§ç™ºç”Ÿã€‚
 

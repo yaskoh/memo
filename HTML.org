@@ -101,10 +101,10 @@
     &empty;
     &nabla;
     ...
-    &larr;   ©   leftwards arrow
-    &uarr;   ª   upwards arrow
-    &larr;   ¨   rightwards arrow
-    &larr;   «   downwards arrow
+    &larr;   Â©   leftwards arrow
+    &uarr;   Âª   upwards arrow
+    &larr;   Â¨   rightwards arrow
+    &larr;   Â«   downwards arrow
     
     
 ** memo

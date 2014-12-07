@@ -4,22 +4,22 @@
 
 *** picture-mode
 - 
-  picture-mode‚©edit-picture‚ğ‘I‘ğ‚·‚éB
+  picture-modeã‹edit-pictureã‚’é¸æŠã™ã‚‹ã€‚
 - C-c C-c
-  pictureƒ‚[ƒh‚©‚ç”²‚¯‚éB
+  pictureãƒ¢ãƒ¼ãƒ‰ã‹ã‚‰æŠœã‘ã‚‹ã€‚
 
 - C-c <, C-c >, C-c ^, C-c .
   
 
 - C-right, C-left, C-up, C-down
-  ü‚ğ•`‚­B
+  ç·šã‚’æãã€‚
 
 - M-right, M-left, M-up, M-down
-  ü‚ğÁ‚·B
+  ç·šã‚’æ¶ˆã™ã€‚
 
 ** memo
 
-- s”Ô†
+- è¡Œç•ªå·
   M-x linum
 
 - dired
@@ -28,11 +28,11 @@
 - IME on/off
   C-\
 
-- ’uŠ·‚Ì‰üs
+- ç½®æ›æ™‚ã®æ”¹è¡Œ
   ^J(C-q C-j)
 
-- •¶šƒR[ƒhw’è
+- æ–‡å­—ã‚³ãƒ¼ãƒ‰æŒ‡å®š
   C-x RET f
 
-- “ú–{Œê“ü—Í‚ÌƒgƒOƒ‹ƒXƒCƒbƒ`
+- æ—¥æœ¬èªå…¥åŠ›ã®ãƒˆã‚°ãƒ«ã‚¹ã‚¤ãƒƒãƒ
   C-\

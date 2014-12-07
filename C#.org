@@ -3,29 +3,29 @@
 ** memo
 
 - Delegate
-    “ú–{Œê–ó‚ÅuˆÏ÷vB
-    ƒƒ\ƒbƒh‚ÌƒCƒ“ƒ^[ƒtƒFƒCƒX‚¾‚¯Œˆ‚ß‚Ä‚¨‚«A
-    Às‚·‚éƒƒ\ƒbƒh‚ğ’Ç‰Á‚µ‚½‚èíœ‚µ‚½‚è‚µ‚Ä‚Ü‚Æ‚ß‚é‚±‚Æ‚ª‚Å‚«‚éB
+    æ—¥æœ¬èªè¨³ã§ã€Œå§”è­²ã€ã€‚
+    ãƒ¡ã‚½ãƒƒãƒ‰ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã ã‘æ±ºã‚ã¦ãŠãã€
+    å®Ÿè¡Œã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ã‚’è¿½åŠ ã—ãŸã‚Šå‰Šé™¤ã—ãŸã‚Šã—ã¦ã¾ã¨ã‚ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚
     
 - Event
 
 - Threading
-    ƒXƒŒƒbƒhˆ—
-    System.Threading.ThreadiŒÃ‚¢j
-    System.Threading.Task, Parallel, etc(V‚µ‚¢)
-    [[http://msdn.microsoft.com/ja-jp/library/system.threading.tasks(v=vs.110).aspx][Tasks–¼‘O‹óŠÔ]]
+    ã‚¹ãƒ¬ãƒƒãƒ‰å‡¦ç†
+    System.Threading.Threadï¼ˆå¤ã„ï¼‰
+    System.Threading.Task, Parallel, etc(æ–°ã—ã„)
+    [[http://msdn.microsoft.com/ja-jp/library/system.threading.tasks(v=vs.110).aspx][Tasksåå‰ç©ºé–“]]
 
 
-- ƒŠƒtƒŒƒNƒVƒ‡ƒ“
-    Œ^î•ñ‚È‚ÇAƒƒ^ƒf[ƒ^‚ğˆµ‚¦‚é‚æ‚¤‚É‚·‚é‚±‚ÆB
-    TypeƒNƒ‰ƒX‚È‚Ç‚ğg‚Á‚ÄÀ‘•‚·‚éB
+- ãƒªãƒ•ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³
+    å‹æƒ…å ±ãªã©ã€ãƒ¡ã‚¿ãƒ‡ãƒ¼ã‚¿ã‚’æ‰±ãˆã‚‹ã‚ˆã†ã«ã™ã‚‹ã“ã¨ã€‚
+    Typeã‚¯ãƒ©ã‚¹ãªã©ã‚’ä½¿ã£ã¦å®Ÿè£…ã™ã‚‹ã€‚
 
 
 ** Sandcastle
 
-- ƒoƒbƒ`‚É‚æ‚éì¬
-    ƒoƒbƒ`‚Å‚Ü‚Æ‚ß‚Äƒwƒ‹ƒvƒtƒ@ƒCƒ‹‚ğì¬‚µ‚½‚¢ê‡AˆÈ‰º‚ª‰Â”\B
-    ‚½‚¾‚µAshfbproj‚ÍGUI‚Åì‚é‚Ì‚ÅA‚Ü‚Æ‚ß‚ÄXML‚ğì¬‚µ‚½B
+- ãƒãƒƒãƒã«ã‚ˆã‚‹ä½œæˆ
+    ãƒãƒƒãƒã§ã¾ã¨ã‚ã¦ãƒ˜ãƒ«ãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã—ãŸã„å ´åˆã€ä»¥ä¸‹ãŒå¯èƒ½ã€‚
+    ãŸã ã—ã€shfbprojã¯GUIã§ä½œã‚‹ã®ã§ã€ã¾ã¨ã‚ã¦XMLã‚’ä½œæˆã—ãŸã€‚
     C:\Windows\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe /p:Configuration=Release myProject.shfbproj
     [[http://stackoverflow.com/questions/7882746/build-sandcastle-documentation-when-building-visual-studio-project][Build Sandcastle Documentation When Building Visual Studio Project]]
 

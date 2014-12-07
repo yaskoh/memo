@@ -6,217 +6,217 @@
 
 **** cls
 - 
-  ��ʏ�̕�������������B
-  POSIX�nshell����clear��Ctr+l�B
+  画面上の文字を消去する。
+  POSIX系shellだとclearかCtr+l。
 
 **** choice
 
 - choice[.exe] [/C <choices>] [/N] [/CS] [/T nnnn [/D c]] [/M <message>]
   - /C <choices>
-    �I�����ƂȂ镶������w�肷��B
+    選択肢となる文字列を指定する。
   - /N
-    �I�����Ɓu�H�v��\�������Ȃ��B
+    選択肢と「？」を表示させない。
   - /CS
-    �I�����̑啶������������ʂ���B
+    選択肢の大文字小文字を区別する。
   - /T
-    �I�����鎞�Ԃ�ݒ肷��Bnnnn�͐������Ԃ̕b���B
+    選択する時間を設定する。nnnnは制限時間の秒数。
   - /D
-    T�Ŏw�肵�����Ԃ��o�߂����ۂɑI�������I�������w�肷��B
+    Tで指定した時間が経過した際に選択される選択肢を指定する。
   - /M <message>
-    ���b�Z�[�W��\������B
+    メッセージを表示する。
 
-- 1�Ԗڂ̑I������I�Ԃ�1�An�Ԗڂ̑I������I�Ԃ�n���I���R�[�h�i�G���[�R�[�h�j���Ԃ����B
-  Ctrl+C�Ȃǂ���������0�A�G���[���ɂ�255���Ԃ����B
+- 1番目の選択肢を選ぶと1、n番目の選択肢を選ぶとnが終了コード（エラーコード）が返される。
+  Ctrl+Cなどが押されると0、エラー時には255が返される。
 
-- ex) choice /C YN /M "���s���܂���"
-      �ˑ��s���܂��� [Y,N]?
+- ex) choice /C YN /M "続行しますか"
+      ⇒続行しますか [Y,N]?
 
 **** defined
 - 
-  ���ϐ����ݒ肳��Ă��邩�`�F�b�N����ɂ́ADEFINED���g���B
+  環境変数が設定されているかチェックするには、DEFINEDを使う。
 
 - ex) 
     IF DEFINED ENV echo OK
 
-[[http://orangeclover.hatenablog.com/entry/20110127/1296135692][�o�b�`�t�@�C��/�R�}���h�v�����v�g�Ŋ��ϐ����ݒ肳��Ă��邩�`�F�b�N������@]]
+[[http://orangeclover.hatenablog.com/entry/20110127/1296135692][バッチファイル/コマンドプロンプトで環境変数が設定されているかチェックする方法]]
 
 **** fc
 - fc (option) [file1] [file2]
-  2�̃t�@�C�����r���đ���_��\������B
+  2つのファイルを比較して相違点を表示する。
 - /L
-  �e�L�X�g�t�@�C���Ƃ��Ĕ�r����B
+  テキストファイルとして比較する。
 - /B
-  �o�C�i���t�@�C���Ƃ��Ĕ�r����
+  バイナリファイルとして比較する
 - /A
-  �ŏ��ƍŌ�̍s�̂ݕ\������
-- /LB(�s��)
-  (�s��)�ȏ㑱�����ꍇ�ɔ�r����߂�B
+  最初と最後の行のみ表示する
+- /LB(行数)
+  (行数)以上続いた場合に比較をやめる。
 
 **** cacls
 - 
-  �t�@�C����t�H���_�ɑ΂��Đݒ肳��Ă���ACL�̓��e���m�F������A
-  �ύX���邽�߂ɗ��p����R�}���h���C���̃c�[���B
+  ファイルやフォルダに対して設定されているACLの内容を確認したり、
+  変更するために利用するコマンドラインのツール。
 
 **** help
 - 
-  �R�}���h�̈ꗗ���擾�ł���B
-  �����R�}���h���O���R�}���h������Ǝv����B
+  コマンドの一覧を取得できる。
+  内部コマンドも外部コマンドもあると思われる。
 
 **** setlocal
 - 
-  �o�b�`�t�@�C���ł̊��ϐ��̃��[�J�������J�n����B
-  �ȑO�̐ݒ�𕜌�����ɂ�ENDLOCAL�����s����B
-  �o�b�`�X�N���v�g���I������ƁA���̃o�b�`�X�N���v�g�Ŕ��s���ꂽSETLOCAL�R�}���h�ɑ΂��A
-  �Öق�ENDLOCAL�����s�����B
+  バッチファイルでの環境変数のローカル化を開始する。
+  以前の設定を復元するにはENDLOCALを実行する。
+  バッチスクリプトが終了すると、そのバッチスクリプトで発行されたSETLOCALコマンドに対し、
+  暗黙のENDLOCALが実行される。
 
 **** endlocal
 - 
-  �o�b�`�v���O�����ňꎞ�I�ɕύX�������ϐ��̃��[�J�������I������B
+  バッチプログラムで一時的に変更した環境変数のローカル化を終了する。
 
 **** robocopy
 - 
-  �t�H���_�𓯊����邽�߂̃R�}���h�B
-  Robust File Copy�̗��ŁA���S�Ŋm���ȃt�@�C���E�R�s�[�Ƃ����Ӗ������B
-  �R�}���h���C���łȂ�GUI����g�������ꍇ�́Arichcopy�����p�ł���B
+  フォルダを同期するためのコマンド。
+  Robust File Copyの略で、堅牢で確実なファイル・コピーという意味を持つ。
+  コマンドラインでなくGUIから使いたい場合は、richcopyが利用できる。
 
 - source dest files (option)
-  source���R�s�[���Adest���R�s�[��Afiles�ŃR�s�[����t�@�C�����w�肷��B
-  files�̓��C���h�J�[�h�w��\�ŁA�K��l��*.*�B
+  sourceがコピー元、destがコピー先、filesでコピーするファイルを指定する。
+  filesはワイルドカード指定可能で、規定値は*.*。
 
 - /S
-  �T�u�f�B���N�g�����R�s�[���邪�A��̃f�B���N�g���̓R�s�[���Ȃ��B
+  サブディレクトリをコピーするが、空のディレクトリはコピーしない。
   
 - /E
-  ��̃T�u�f�B���N�g�����܂ރT�u�f�B���N�g�����R�s�[����B
+  空のサブディレクトリを含むサブディレクトリをコピーする。
 
 - /LEV:n
-  �R�s�[���f�B���N�g���c���[�̏��n���x���݂̂��R�s�[����B
+  コピー元ディレクトリツリーの上位nレベルのみをコピーする。
 
 - /MIR
-  2�̃t�H���_�𓯊�������B
-  dest�t�@�C����source�ɂȂ��t�@�C��������΍폜���A�Â��t�@�C��������Ώ㏑�������B
-  /purge��/s��g�ݍ��킹�������Ɠ����B
+  2つのフォルダを同期させる。
+  destファイルにsourceにないファイルがあれば削除し、古いファイルがあれば上書きされる。
+  /purgeと/sを組み合わせた挙動と同じ。
 
-- /COPY:�R�s�[�t���O
-  �t�@�C���ɃR�s�[������
-  D:�f�[�^�AA:�����AT:�^�C���X�^���v
+- /COPY:コピーフラグ
+  ファイルにコピーする情報
+  D:データ、A:属性、T:タイムスタンプ
 
 - /TS
-  �o�͂ɃR�s�[���t�@�C���̃^�C���X�^���v���܂߂�
+  出力にコピー元ファイルのタイムスタンプを含める
 
 - /FP
-  �o�͂Ƀt�@�C���̊��S�ȃp�X�����܂߂�
+  出力にファイルの完全なパス名を含める
 
 - /BYTES
-  �T�C�Y���o�C�g�ŏo�͂���
+  サイズをバイトで出力する
 
 - /TEE
-  �R���\�[���E�B���h�E�ƃ��O�t�@�C���ɏo�͂���
+  コンソールウィンドウとログファイルに出力する
 
-**** �l�b�g���[�N�R�}���h
+**** ネットワークコマンド
 
 ***** ping
 - 
-  ICMP�̃T�u�R�}���hecho���g�����A�P���ȃp�P�b�g�ʐM�e�X�g�v���O�����B
+  ICMPのサブコマンドechoを使った、単純なパケット通信テストプログラム。
 - -t
-  ���f�����܂Ńz�X�g��ping����
-- -n �v����
-  ���M����G�R�[�v������ݒ肷��
+  中断されるまでホストをpingする
+- -n 要求数
+  送信するエコー要求数を設定する
 
 ***** tracert
 - 
-  ���s����R���s���[�^����ʐM����܂ł̌o�H��ɂ��郋�[�^���ꗗ�\������R�}���h�B
-  ping�Ɠ��lICMP�̃G�R�[�v���E�����𗘗p���Ă���B
-  TTL��1����X�^�[�g���A1���傫�����Čo�H��̃��[�^���ꗗ�\������@�\�B
+  実行するコンピュータから通信相手までの経路上にあるルータを一覧表示するコマンド。
+  pingと同様ICMPのエコー要求・応答を利用している。
+  TTLが1からスタートし、1つずつ大きくして経路上のルータを一覧表示する機能。
 
 ***** netstat
 - 
-  �R���s���[�^�̒ʐM�󋵂��ꗗ�\������B
-  �ǂ̃R���s���[�^�Ƃǂ�ȃv���g�R�����g���ĉ��ԃ|�[�g�ŒʐM���Ă��邩�킩��B
-  �W���ݒ�ł́A����̃R���s���[�^�̓z�X�g���A�v���g�R���̓E�F���m�E���|�[�g�̃v���g�R�����ŕ\�������B
+  コンピュータの通信状況を一覧表示する。
+  どのコンピュータとどんなプロトコルを使って何番ポートで通信しているかわかる。
+  標準設定では、相手のコンピュータはホスト名、プロトコルはウェルノウンポートのプロトコル名で表示される。
 
 - -n
-  ���s���ʂɃR���s���[�^��v���g�R�������g�킸�AIP�A�h���X�ƃ|�[�g�ԍ��ŕ\������
+  実行結果にコンピュータやプロトコル名を使わず、IPアドレスとポート番号で表示する
 
 ***** ipconfig
 - 
-  �R���s���[�^�̃l�b�g���[�N�ݒ����\������
+  コンピュータのネットワーク設定情報を表示する
 
 - /all
-  ���ׂĂ�NIC����\������
+  すべてのNIC情報を表示する
 
 - /release
-  ���ׂĂ�NIC��IPv4��IP�A�h���X���J������
+  すべてのNICのIPv4のIPアドレスを開放する
 
 - /renew
-  ���ׂĂ�NIC��IPv4��IP�A�h���X���X�V����
+  すべてのNICのIPv4のIPアドレスを更新する
 
 - /displaydns
-  DNS���]���o�̃L���b�V����\������
+  DNSリゾルバのキャッシュを表示する
 
 - /flushdns
-  DNS���]���o�̃L���b�V�����N���A����
+  DNSリゾルバのキャッシュをクリアする
 
 ***** arp
 - 
-  OS���Ǘ����Ă���APR�e�[�u����\��������폜�����肷��R�}���h�B
-  ARP�e�[�u���́AIP�A�h���X��MAC�A�h���X���֘A�t�����ꗗ�B
+  OSが管理しているAPRテーブルを表示したり削除したりするコマンド。
+  ARPテーブルは、IPアドレスとMACアドレスを関連付けた一覧。
 
 - -a
-  ARP�e�[�u����\������
+  ARPテーブルを表示する
 
-- -d IP�A�h���X
-  �w�肵��IP�A�h���X�̃G���g���[���폜����
+- -d IPアドレス
+  指定したIPアドレスのエントリーを削除する
 
 ***** netsh
 - 
-  netsh�i�l�b�g�V�F���j�́A�R���s���[�^�̃l�b�g���[�N�ݒ��������������R�}���h�B
-  �Θb�^�ƌ��ʕ\���^�A�ǂ�����\�B
+  netsh（ネットシェル）は、コンピュータのネットワーク設定情報を書き換えるコマンド。
+  対話型と結果表示型、どちらも可能。
 
 - ?
-  �R�}���h�ꗗ���\�������
+  コマンド一覧が表示される
 
 - exit
-  �I������
+  終了する
 
 ***** nslookup
 - 
-  DNS�T�[�o�ƒʐM���Ė��O�����́u�������v��u�t�����v���s���R�}���h�B
-  IP�A�h���X���h���C��������͂���B
+  DNSサーバと通信して名前解決の「正引き」や「逆引き」を行うコマンド。
+  IPアドレスかドメイン名を入力する。
 
 ***** telnet
 - 
-  �l�b�g���[�N�z���ɕʂ̃R���s���[�^�𑀍삷��R�}���h�B
-  Vista�ȍ~�̓R���g���[���p�l���ŗL��������K�v������B
-  �����ő��M�����̂ŁA�g���͈͂�LAN���Ɍ��肷��ׂ��B
+  ネットワーク越しに別のコンピュータを操作するコマンド。
+  Vista以降はコントロールパネルで有効化する必要がある。
+  平文で送信されるので、使う範囲はLAN内に限定するべき。
 
 ***** net
 - 
-  �l�b�g���[�N�֌W�̐ݒ���s������A���݂̏�Ԃ�\���������肷�邽�߂Ɏg����R�}���h�B
-  �T�u�R�}���h�����ꂸ�Ɏg���ƃT�u�R�}���h�ꗗ���\�������B
-  [[http://www.atmarkit.co.jp/fwin2k/win2ktips/258netcommand/netcommand.html][net�R�}���h�̎g���� - @IT]]
-  [[http://pasofaq.jp/windows/command/net7.htm][NET�R�}���h(Windows 7)]]
+  ネットワーク関係の設定を行ったり、現在の状態を表示させたりするために使われるコマンド。
+  サブコマンドをいれずに使うとサブコマンド一覧が表示される。
+  [[http://www.atmarkit.co.jp/fwin2k/win2ktips/258netcommand/netcommand.html][netコマンドの使い方 - @IT]]
+  [[http://pasofaq.jp/windows/command/net7.htm][NETコマンド(Windows 7)]]
 
 ****** net use
 - 
-  ���L���\�[�X�̎g�p/�����Bnet share���ꂽ�l�b�g���[�N��̃��\�[�X�����[�J���Ŏg���ꍇ�Ɏg���B
+  共有リソースの使用/解除。net shareされたネットワーク上のリソースをローカルで使う場合に使う。
 
 ****** net share
 - 
-  ���L���\�[�X�̌��J/���J��~�B���[�J���̃��\�[�X�����J���āA�O���̃}�V����net use�ł���悤�ɂ���B
+  共有リソースの公開/公開停止。ローカルのリソースを公開して、外部のマシンでnet useできるようにする。
 
 ****** net view
 - 
-  ���\�[�X�����L����Ă���}�V���̗񋓂�A����̃}�V�������J���Ă��鋤�L���\�[�X�̈ꗗ�𒲂ׂ�
+  リソースが共有されているマシンの列挙や、特定のマシンが公開している共有リソースの一覧を調べる
 
 ****** net file
 - 
-  �g�p����Ă���t�@�C���̈ꗗ�̕\��/�����I���B
-  net share�Ō��J���ꂽ���\�[�X�̂����A�ǂ̂悤�ȃt�@�C�������ۂɊO���}�V���ŗ��p����Ă��邩���ׂ�B
+  使用されているファイルの一覧の表示/強制終了。
+  net shareで公開されたリソースのうち、どのようなファイルが実際に外部マシンで利用されているか調べる。
 
 ****** net session
 - 
-  ���[�U�A�J�E���g�ɑ΂��郍�O�I����p�X���[�h�̗v���̕\��/�����I��
+  ユーザアカウントに対するログオンやパスワードの要件の表示/強制終了
 
 ****** net print
 
@@ -230,191 +230,191 @@
 
 ****** net start
 - 
-  �T�[�r�X�̕\��/�J�n
+  サービスの表示/開始
 
 ****** net stop
 - 
-  �T�[�r�X�̒�~
+  サービスの停止
 
 ****** net pause
 - 
-  �T�[�r�X�̈ꎞ��~
+  サービスの一時停止
 
 ****** net continue
 - 
-  �T�[�r�X�̍ĊJ
+  サービスの再開
 
 ****** net name
 - 
-  NetBIOS���̕\���E�ǉ��B
-  �V�����ǉ����ꂽ���O��net send�R�}���h�̈���Ƃ��ė��p�ł���B
+  NetBIOS名の表示・追加。
+  新しく追加された名前はnet sendコマンドの宛先として利用できる。
 
 ****** net send
-- �w�肳�ꂽ���[�U��R���s���[�^�ɑ΂��郁�b�Z�[�W�̑��M
+- 指定されたユーザやコンピュータに対するメッセージの送信
 
 ****** net config
 - 
-  �T�[�o�E�T�[�r�X�⃏�[�N�X�e�[�V�����E�T�[�r�X�Ɋւ�����̕\��/�ݒ�
+  サーバ・サービスやワークステーション・サービスに関する情報の表示/設定
 
 ****** net sattistics
 - 
-  �l�b�g���[�N�E�v���g�R���⃊�\�[�X�̌��J/���L�T�[�r�X�ɑ΂��铝�v���̕\��
+  ネットワーク・プロトコルやリソースの公開/共有サービスに対する統計情報の表示
 
 ****** net time
 - 
-  ���ԏ��̕\����O���Ƃ̓���
+  時間情報の表示や外部との同期
 
 ****** net help
 - 
-  �e�R�}���h�̎g�����̕\��
+  各コマンドの使い方の表示
 
 ****** net helpmsg
 - 
-  �G���[�ԍ��ɑ΂���ڂ����G���[���b�Z�[�W�̕\��
+  エラー番号に対する詳しいエラーメッセージの表示
 
 ***** nbtstat
 - 
-  Windows�l�b�g���[�N���Ǘ����邽�߂̃R�}���h�B
-  NBT�Ƃ�"NetBIOS over TCP/IP"�̂��ƁB
+  Windowsネットワークを管理するためのコマンド。
+  NBTとは"NetBIOS over TCP/IP"のこと。
 
 - -c
-  �L���b�V�����Ă������\������
+  キャッシュしている情報を表示する
 
 - -R
-  �L���b�V�����e���N���A����
+  キャッシュ内容をクリアする
 
 - -n
-  �������g�̏���\������
+  自分自身の情報を表示する
 
 ***** route
 - 
-  ���[�e�B���O�e�[�u���Ɋւ������\���A�܂��͕ύX����B
+  ルーティングテーブルに関する情報を表示、または変更する。
 - -f
-  �f�t�H���g�Q�[�g�E�F�C���܂ޑS�Ă̐ÓI���[�e�B���O������������B
+  デフォルトゲートウェイを含む全ての静的ルーティング情報を消去する。
 
-- add|change|delete ����A�h���X [mask �l�b�g�}�X�N] �Q�[�g�E�F�C
-  �w�肵�����[�e�B���O����ǉ��A�ύX�A��������B
+- add|change|delete 宛先アドレス [mask ネットマスク] ゲートウェイ
+  指定したルーティング情報を追加、変更、消去する。
 
 - print
-  ���[�e�B���O����\������B
+  ルーティング情報を表示する。
 
 ***** hostname
 - 
-  ���݂̃z�X�g�����o�͂���
+  現在のホスト名を出力する
 
 ***** getmac
 - 
-  �l�b�g���[�N�ɂȂ����Ă���ʂ�Windows��MAC�A�h���X�𒲂ׂ�B
-  getmac���g���ɂ͊Ǘ��Ҍ������K�v�Ȃ̂ŁA
+  ネットワークにつながっている別のWindowsのMACアドレスを調べる。
+  getmacを使うには管理者権限が必要なので、
 
 - /s target /u username /p password
-  �T�[�o���A�Ǘ��҂̃��[�U���A�p�X���[�h���w�肵�āA�}�b�N�A�h���X���m�F����B
+  サーバ名、管理者のユーザ名、パスワードを指定して、マックアドレスを確認する。
 
 ***** pathping
 - 
-  �m�[�h�Ԃ̃l�b�g���[�N�̏�Ԃ��m�F����B
-  ping��tracert��g�ݍ��킹���悤�ȃC���[�W�B
+  ノード間のネットワークの状態を確認する。
+  pingとtracertを組み合わせたようなイメージ。
 
-***** �O��link
+***** 外部link
 
-- [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230618/][�Ǘ��ҕK���I�l�b�g���[�N�E�R�}���h�W]]
-- [[http://itpro.nikkeibp.co.jp/article/COLUMN/20131219/525889/][�ŏd�v�l�b�g�R�}���h10]]
-- [[http://blog.asial.co.jp/1157][�g����ƕ֗���Windows�l�b�g���[�N�R�}���h]]
+- [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230618/][管理者必見！ネットワーク・コマンド集]]
+- [[http://itpro.nikkeibp.co.jp/article/COLUMN/20131219/525889/][最重要ネットコマンド10]]
+- [[http://blog.asial.co.jp/1157][使えると便利なWindowsネットワークコマンド]]
 
 *** Tool
 
 **** systeminfo
 - 
-  �V�X�e������\���ł���Bcmd���systeminfo�B
-  �f�t�H���g�ł̓��[�J���R���s���[�^�B
-  ������/s servername, /u UserName, /p Password�Ȃǂ���͂���ƁA
-  �����[�g�̏����擾�ł���B
+  システム情報を表示できる。cmd上でsysteminfo。
+  デフォルトではローカルコンピュータ。
+  ただし/s servername, /u UserName, /p Passwordなどを入力すると、
+  リモートの情報も取得できる。
 
 **** WMI (Windows Management Instrumentation)
 - 
-  �V�X�e���Ǘ��p�C���^�[�t�F�C�X�B
-  WBEM�Ƃ����V�X�e���Ǘ���ړI�Ƃ����W���d�l�ɏ]���āAWinOS�Ɏ����A�g���������́B
-  wmic�Ƃ���CommandLine�c�[�����g���ď����擾�����葀��ł���B
-  "wmic qfe"�Ƃ��ēK�p�ς݂�KB���擾�ł���B
+  システム管理用インターフェイス。
+  WBEMというシステム管理を目的とした標準仕様に従って、WinOSに実装、拡張したもの。
+  wmicというCommandLineツールを使って情報を取得したり操作できる。
+  "wmic qfe"として適用済みのKBを取得できる。
 
-**** ���[�U�A�J�E���g
+**** ユーザアカウント
 - 
-  newplwiz.exe�ŊJ���B
-  �p�X���[�h�Y���CMD�����グ���Ƃ��Ƃ��ɖ𗧂B
+  newplwiz.exeで開く。
+  パスワード忘れてCMD立ち上げたときとかに役立つ。
 
 *** etc
 
-**** IF���̕��������w��
+**** IF文の複数条件指定
 - 
 
-  AND��OR�ɑ�������@�\�͂Ȃ��B�������AAND�����ł����IF������ׂċL�q�ł���B
+  ANDやORに相当する機能はない。ただし、AND条件であればIF文を並べて記述できる。
   ex:) IF %A% == 1 IF %B% == 2 (
-         REM 1����2��AND����
+         REM 1かつ2のAND条件
      ) ELSE (
-         ����ȊO
+         それ以外
      )
 
-[[http://capm-network.com/?tag=Windows%E3%83%90%E3%83%83%E3%83%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87][CapmNetwork Windows�o�b�`�t�@�C������\��]]
+[[http://capm-network.com/?tag=Windows%E3%83%90%E3%83%83%E3%83%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87][CapmNetwork Windowsバッチファイル制御構文]]
 
 
-**** �����̓r���ŉ��s������
+**** 処理の途中で改行を入れる
 - 
-  �o�b�`�t�@�C���ł̃G�X�P�[�v�V�[�P���X�́u^(hat)�v�Ȃ̂ŁA
-  ���s�O��^�������ƕ����s��1�s�Ƃ��Ĉ�����B
+  バッチファイルでのエスケープシーケンスは「^(hat)」なので、
+  改行前に^をおくと複数行を1行として扱える。
   ex:) IF %ABCDEFGHIJKLM% ==1 ^
        IF %NOPQRSTUVWXYZ% ==2 (
-         REM ����
+         REM 処理
      )
-[[http://orangeclover.hatenablog.com/entry/20100810/1281450669][�݂������ �o�b�`�t�@�C���Œ���1�s�̏��������s�����ĕ����s�ɕ����ď�������]]
-[[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOS�R�}���h�ꗗ ^(�n�b�g�L��)]]
+[[http://orangeclover.hatenablog.com/entry/20100810/1281450669][みちしるべ バッチファイルで長い1行の処理を改行を入れて複数行に分けて書きたい]]
+[[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
 
 
-**** ���ϐ��̏�����
+**** 環境変数の消し方
 - 
-  "SET �ϐ�="�Ƃ���B
-  ���Ƃ��Εϐ�XYZ����������������΁A"set XYZ="�ł悢�B
-[[http://orangeclover.hatenablog.com/entry/20090826/1251293551][�݂������ 3.���ϐ� (1)���ϐ��̎g���� �`�ӊO�ɍ폜�̎d���͂���Ȃ��l�������` �y�R�}���h�v�����v�g�A�o�b�`�t�@�C�����g��Ȃ���Ȃ�Ȃ��Ȃ����l�����̃����z]]
+  "SET 変数="とする。
+  たとえば変数XYZを初期化したければ、"set XYZ="でよい。
+[[http://orangeclover.hatenablog.com/entry/20090826/1251293551][みちしるべ 3.環境変数 (1)環境変数の使い方 〜意外に削除の仕方はしらない人が多い〜 【コマンドプロンプト、バッチファイルを使わなきゃならなくなった人向けのメモ】]]
 
 
-**** �o�b�`�ł̕W�����͑҂�
+**** バッチでの標準入力待ち
 - 
-  "SET /P �ϐ�=�o�͕�����"�A�Ƃ��������̍\���B
-  ���Ƃ���"set /P var=�D���ȉp��������͂��Ă��������B"�Ƃ���ƁA
-  "�D���ȉp��������͂��Ă��������B"�Ɖ�ʂɏo�͂��ꂽ����͑҂��ɂȂ�A
-  ���s����܂ł̕�����var�Ɋi�[�����B
-  �o�b�`�t�@�C���Ń��[�U�[�ɓ��͂������l���擾����
+  "SET /P 変数=出力文字列"、という感じの構文。
+  たとえば"set /P var=好きな英数字を入力してください。"とすると、
+  "好きな英数字を入力してください。"と画面に出力された後入力待ちになり、
+  改行するまでの文字列がvarに格納される。
+  バッチファイルでユーザーに入力させた値を取得する
 
 
 ** memo
 
 *** ACL
 - 
-  �A�N�Z�X���䃊�X�g(Access Control List)�B
-  ���郆�[�U��O���[�v�ɑ΂��āA���p�\�Ȍ������`�������̂�
-  �A�N�Z�X����G���g��(Access Control Entry : ACE)�Ƃ����A
-  ������W�߂����̂�ACL�ƂȂ�B
-  �i���m�ɂ́u���ӃA�N�Z�X���䃊�X�g�ADiscretionary Access Control List:DACL�v�炵���B�j
-  [[http://www.atmarkit.co.jp/fwin2k/win2ktips/700whatisacl/whatisacl.html][�A�N�Z�X���䃊�X�gACL�Ƃ́H - @IT]]
+  アクセス制御リスト(Access Control List)。
+  あるユーザやグループに対して、利用可能な権限を定義したものを
+  アクセス制御エントリ(Access Control Entry : ACE)といい、
+  これを集めたものがACLとなる。
+  （正確には「随意アクセス制御リスト、Discretionary Access Control List:DACL」らしい。）
+  [[http://www.atmarkit.co.jp/fwin2k/win2ktips/700whatisacl/whatisacl.html][アクセス制御リストACLとは？ - @IT]]
 
-*** cmd���G�N�X�v���[������J��
+*** cmdをエクスプローラから開く
 - 
-  �G�N�X�v���[�����炻�̏��cmd���J���ɂ́A
-  �A�h���X�o�[��cmd�Ƒł�OK�B
+  エクスプローラからその場のcmdを開くには、
+  アドレスバーにcmdと打つとOK。
 
-*** ���[�J�����[�U�Őڑ�����
+*** ローカルユーザで接続する
 - 
-  .\user�Alocal\user�Aservername\user���ŃA�N�Z�X�ł���B
+  .\user、local\user、servername\user等でアクセスできる。
 
-*** �V�X�e������\������
+*** システム情報を表示する
 - 
-  msinfo32�B
-  �X�^�[�g����V�X�e�������T���邪�A�v���O�������Ƃ��đłĂ΂悢�B
+  msinfo32。
+  スタートからシステム情報も探せるが、プログラム名として打てばよい。
   
-*** ���[�J����Admin�p�X���[�h��ύX������@
+*** ローカルのAdminパスワードを変更する方法
 - 
-  �Ǘ��҂̃p�X���[�h��Y��Ă��܂����ہA�u�[�g�f�B�X�N�Ńf�B�X�N�ɃA�N�Z�X���āA
-  Utilman.exe��ޔ����Acmd.exe��copy���Ė��̂�Utilman.exe�Ƃ���ƁA
-  ���O�C����ʂŃR�}���h�v�����v�g���g����悤�ɂȂ�B
+  管理者のパスワードを忘れてしまった際、ブートディスクでディスクにアクセスして、
+  Utilman.exeを退避し、cmd.exeをcopyして名称をUtilman.exeとすると、
+  ログイン画面でコマンドプロンプトが使えるようになる。
   [[http://blogs.technet.com/b/meacoex/archive/2011/08/15/reset-your-windows-sever-2008-r2-domain-controller-administrator-password.aspx][Reset your Windows Server 2008 / R2 Domain Controller administrator password - MEA Center of Expertise]]
-  [[http://level69.net/archives/752][Windows Server 2012�̃p�X���[�h�����������悤�B- �Z�p�I�ȉ����B]]
+  [[http://level69.net/archives/752][Windows Server 2012のパスワードを初期化しよう。- 技術的な何か。]]
   

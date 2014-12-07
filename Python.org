@@ -2,22 +2,22 @@
 
 ** memo
 
-os‚Å‚æ‚­g‚¤ƒRƒ}ƒ“ƒh
+osã§ã‚ˆãä½¿ã†ã‚³ãƒãƒ³ãƒ‰
 	os.getcwd, os.chdir
 
-time.sleep(3)‚Å3•b’â~B
+time.sleep(3)ã§3ç§’åœæ­¢ã€‚
 
-string.rstrip()‚Å––”ö‚Ì‰üs‚ğíœ
+string.rstrip()ã§æœ«å°¾ã®æ”¹è¡Œã‚’å‰Šé™¤
 
-string.find(target)‚ÅAstring“à‚Ìtarget‚ÌˆÊ’u‚ğ•Ô‚·B
- 'abcde'.find('b')‚Å1(int)‚ª•Ô‚éB
+string.find(target)ã§ã€stringå†…ã®targetã®ä½ç½®ã‚’è¿”ã™ã€‚
+ 'abcde'.find('b')ã§1(int)ãŒè¿”ã‚‹ã€‚
 
-copy‚Íshutil(shutil.copy, shutil.copytree, shutil.copyfile“™)A
- rename‚Íos(os.rename)
+copyã¯shutil(shutil.copy, shutil.copytree, shutil.copyfileç­‰)ã€
+ renameã¯os(os.rename)
 
 
-I—¹F
-	Ctr-z(UnixŒn Ctr-d)
+çµ‚äº†ï¼š
+	Ctr-z(Unixç³» Ctr-d)
 	quit()
 
 

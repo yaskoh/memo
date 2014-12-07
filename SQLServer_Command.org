@@ -3,52 +3,52 @@
 ** DBCC
 
 - dbcc ind
-    �B���R�}���h�B�C���f�b�N�X�̃y�[�W���蓖�ē��̏������邱�Ƃ��ł���B
+    隠しコマンド。インデックスのページ割り当て等の情報を見ることができる。
     dbcc ind ( { 'dbname' | dbid }, { 'objname' | objid }, { nonclustered indid | 1 | 0 | -1 | -2 } [, partition_number] )
 
 - dbcc page
-    �B���R�}���h�B�y�[�WID���w�肷�邱�ƂŃy�[�W�̒��g�����邱�Ƃ��ł���B
+    隠しコマンド。ページIDを指定することでページの中身を見ることができる。
     dbcc page ( {'dbname' | dbid}, filenum, pagenum [, printopt={0|1|2|3} ])
-    �v�����g�I�v�V�����͈ȉ��B
-        0:�y�[�W�w�b�_�̂� 1:�y�[�W�w�b�_�{�f�[�^�� 2:�y�[�W�w�b�_�{�f�[�^����16�i�_���v 3:�e�s���ʂɏo��
-    �o�͂��邽�߂ɂ̓g���[�X�t���O3604��L���ɂ���K�v������B
+    プリントオプションは以下。
+        0:ページヘッダのみ 1:ページヘッダ＋データ部 2:ページヘッダ＋データ部の16進ダンプ 3:各行を個別に出力
+    出力するためにはトレースフラグ3604を有効にする必要がある。
     
 - dbcc help('name')
-    name�Ŏw�肳�ꂽdbcc�R�}���h�̍\������Ԃ��B
+    nameで指定されたdbccコマンドの構文情報を返す。
 
-- dbcc traceon(����) / dbcc traceoff(����)
-    �w�肳�ꂽ�g���[�X�t���O��L��/�����ɂ���B
-    �J���}��؂�ŕ����w��B�Ō��-1��񋓂���ƁA�O���[�o���ɐݒ肪���f�����B
+- dbcc traceon(数字) / dbcc traceoff(数字)
+    指定されたトレースフラグを有効/無効にする。
+    カンマ区切りで複数指定可。最後に-1を列挙すると、グローバルに設定が反映される。
 
 - dbcc tracestatus
-    �g���[�X�t���O�̏�Ԃ��o�͂���B
+    トレースフラグの状態を出力する。
     DBCC TRACESTATUS ( [ [ trace# [ ,...n ] ] [ , ] [ -1 ] ] ) [ WITH NO_INFOMSGS ]
 
 - dbcc showcontig
-    �e�[�u���E�r���[�ƃC���f�b�N�X�̒f�Љ�����\������B
-    �폜�\��@�\�B�������A��ւƂ���Ă���dm_db_index_physical_stats�ł̓G�N�X�e���g�̒f�Љ������邱�Ƃ��ł��Ȃ��B
+    テーブル・ビューとインデックスの断片化情報を表示する。
+    削除予定機能。ただし、代替とされているdm_db_index_physical_statsではエクステントの断片化を見ることができない。
 
-- dbcc opentran(DB��)
-    DB���ɃA�N�e�B�u�ȃg�����U�N�V���������݂��邩�ۂ����m�F�ł���B
+- dbcc opentran(DB名)
+    DB内にアクティブなトランザクションが存在するか否かを確認できる。
 
 ** Procedure
 
 - sp_helptext 'procedure'
-    �v���V�[�W���̓��e���o�͂���B
+    プロシージャの内容を出力する。
 
 - sp_MSforeachdb / sp_MSforeachtable
-    ���ׂĂ�db/table�ɑ΂��đ�����s�����Ƃ��ł���B
+    すべてのdb/tableに対して操作を行うことができる。
     ex: sp_MSforeachdb @command1="select '?'"
-        ->'?'���⊮����Amaster, tempdb,����select���ʂ��Ԃ��Ă���B
-    @command1�ȊO�ɂ��A@command2/3, @whereand, @replacechar, @precommand, @postcommand������B
+        ->'?'が補完され、master, tempdb,等のselect結果が返ってくる。
+    @command1以外にも、@command2/3, @whereand, @replacechar, @precommand, @postcommandがある。
 
 
-** ���I�Ǘ��r���[
+** 動的管理ビュー
 
 - sys.dm_db_index_physical_stats
-    �w�肵���e�[�u���܂��̓r���[�ƃC���f�b�N�X�Ɋւ���A�T�C�Y����ђf�Љ�����Ԃ��B
+    指定したテーブルまたはビューとインデックスに関する、サイズおよび断片化情報を返す。
 
 - sys.dm_tran_locks
-    ���b�N�}�l�[�W���̏���Ԃ��B
+    ロックマネージャの情報を返す。
 
 

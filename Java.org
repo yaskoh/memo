@@ -5,50 +5,50 @@
 ** Java Platform
 - 
 
-*** �G�f�B�V����
+*** エディション
 **** Java SE
 - 
-  Java Platform, Standard Edition�B
-  �ėp�I�ȗp�r�Ɏg����B
+  Java Platform, Standard Edition。
+  汎用的な用途に使われる。
 
 **** Java EE
 - 
-  Java Platform, Enterprise Edition�B
-  Java SE�ɉ����A���w�N���C�A���g�T�[�o�̑�K�̓V�X�e�����J�����邽�߂́A
-  ���܂��܂�API���ǉ�����Ă���B
+  Java Platform, Enterprise Edition。
+  Java SEに加え、多層クライアントサーバの大規模システムを開発するための、
+  さまざまなAPIが追加されている。
 
 **** Java ME
 - 
-  Java Platform, Micro Edition�B
-  �g�ݍ��݃V�X�e���Ȃǂ�p�r�Ƃ��đz�肵���G�f�B�V�����B
-  �@��̎�ނɉ����A���C�u�����̂������̈قȂ�Z�b�g�i�v���t�@�C���j���K�肵�Ă���B
+  Java Platform, Micro Edition。
+  組み込みシステムなどを用途として想定したエディション。
+  機器の種類に応じ、ライブラリのいくつかの異なるセット（プロファイル）を規定している。
 
-*** �z�z�`��
+*** 配布形態
 
 **** Java Runtime Environment(JRE)
 - 
-  Java�����s���邽�߂ɕK�v�ȃ\�t�g�E�F�A�B
-  Java���z�}�V��(JVM)��API���琬��B
-  ���z�}�V����API�݂͌��Ɍ݊������Ȃ���΂Ȃ炸�A���Ƀo���h������Ă���B
-  �v���O���������s���邾���ł���΁AJDK�͕K�v�Ȃ�JRE�݂̂ł悢�B
+  Javaを実行するために必要なソフトウェア。
+  Java仮想マシン(JVM)とAPIから成る。
+  仮想マシンとAPIは互いに互換性がなければならず、共にバンドルされている。
+  プログラムを実行するだけであれば、JDKは必要なくJREのみでよい。
 
 ***** Java Virtual Machine(JVM)
 - 
-  Java�o�C�g�R�[�h�Ƃ��Ē�`���ꂽ���߃Z�b�g�����s����X�^�b�N�^�̉��z�}�V���B
+  Javaバイトコードとして定義された命令セットを実行するスタック型の仮想マシン。
 
 ***** Application Programming Interface(API)
 - 
-  �֐��Q�B�N���X���C�u�����B
+  関数群。クラスライブラリ。
 
 **** Java Development Kit(JDK)
 - 
-  �\�t�g�E�F�A�J���L�b�g�B
-  Java�v���O�����̊J�����x�������{�I�ȃ\�t�g�E�F�A�B
-  �e�v���b�g�t�H�[���̑S�Ă̎����B
-  Java�R���p�C���Ajavadoc�A�f�o�b�K�Ȃǂ��܂ޑ����̊J���c�[�����܂ށB
-  Private Runtime�ƌĂ΂�銮�S��JRE���܂ށB
+  ソフトウェア開発キット。
+  Javaプログラムの開発を支援する基本的なソフトウェア。
+  各プラットフォームの全ての実装。
+  Javaコンパイラ、javadoc、デバッガなどを含む多くの開発ツールを含む。
+  Private Runtimeと呼ばれる完全なJREも含む。
 
-***** ���e
+***** 内容
 - appletviewer
 - apt
 - extcheck
@@ -82,28 +82,28 @@
 
 ** memo
 
-*** ���\�[�X�t��try
+*** リソース付きtry
 - 
   try(AutoCloseable Class; ...){
   }
-  ���ʂ̒��g�̃��\�[�X�ɂ��āA������close()���Ă΂��B
+  括弧の中身のリソースについて、自動でclose()が呼ばれる。
 
-*** �g��for��
+*** 拡張for分
 - 
-  for (�f�[�^�^ �ϐ���: �R���N�V����){
+  for (データ型 変数名: コレクション){
   }
-  foreach�B�R���N�V���������Ɏ��o���B
+  foreach。コレクションを順に取り出す。
 
-*** �C���X�^���X�������q
+*** インスタンス初期化子
 - 
-  {����}
-  �����C�����������������ƁA�R���X�g���N�^���Ăяo�����O�Ƀ��\�b�h�Ƃ��ČĂяo�����B
-  �����N���X�ȂǂŎg����������B
+  {実装}
+  何も修飾せず実装を書くと、コンストラクタが呼び出される前にメソッドとして呼び出される。
+  匿名クラスなどで使い道がある。
 
-*** �����N���X
+*** 匿名クラス
 - 
-  new �X�[�p�[�N���X��(�R���X�g���N�^����) { �T�u�N���X���� }
-  �X�[�p�[�N���X�̃T�u�N���X�Ƃ��āA���O�̂Ȃ��N���X���쐬�ł���B
-  �쐬���ɃC���X�^���X�������āA���̂܂܎g���̂Ă�B
+  new スーパークラス名(コンストラクタ引数) { サブクラス実装 }
+  スーパークラスのサブクラスとして、名前のないクラスを作成できる。
+  作成時にインスタンス化もして、そのまま使い捨てる。
 
 

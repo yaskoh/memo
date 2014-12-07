@@ -2,236 +2,236 @@ ASP.NET
 
 * TeachYourSelf ASP.NET
 
-** 1��
-- [[http://msdn.microsoft.com/ja-jp/library/bb400852(v=vs.100).aspx][ASP.NET�|�[�^��]]
+** 1章
+- [[http://msdn.microsoft.com/ja-jp/library/bb400852(v=vs.100).aspx][ASP.NETポータル]]
 - .NetFrameork
-    ���ʌ��ꃉ���^�C�� / .NET Framework�N���X���C�u���� �ō\�������B
-    - .NET Framework�N���X���C�u����
-        ��{���C�u���� / ADO.NET / (�A�v���P�[�V����)�t���[�����[�N �ɕ��ނł���
-        - ��{���C�u����
-            �������\�����f�[�^�̑���A�Z�L�����e�B�E�X���b�h����A�t�@�C���V�X�e���A�N�Z�X��
+    共通言語ランタイム / .NET Frameworkクラスライブラリ で構成される。
+    - .NET Frameworkクラスライブラリ
+        基本ライブラリ / ADO.NET / (アプリケーション)フレームワーク に分類できる
+        - 基本ライブラリ
+            文字列や構造化データの操作、セキュリティ・スレッド制御、ファイルシステムアクセス等
         - ADO.NET
-            �f�[�^�x�[�X��XML�ւ̃A�N�Z�X��i
-        - �t���[�����[�N
-            Windows�t�H�[���AASP.NET�ȂǁBWPF,WCF,WF,WCS�����B
-- ASP.NET�̍\��
-    �u���E�U����A�N�Z�X���邽�߂̃A�v���P�[�V�����J���ƁA
-    API�J���E�A�v���P�[�V�����A�g�̂��߂̃T�[�r�X�J��������B
+            データベースやXMLへのアクセス手段
+        - フレームワーク
+            Windowsフォーム、ASP.NETなど。WPF,WCF,WF,WCS等も。
+- ASP.NETの構造
+    ブラウザからアクセスするためのアプリケーション開発と、
+    API開発・アプリケーション連携のためのサービス開発がある。
 
-** 2��
-- �J�������t�@�C�����E�N���b�N���āA�u���E�U��I���ł���B
-- Web�A�v���P�[�V������Web�T�C�g
-    Web�A�v���P�[�V�����́Acs�t�@�C�������炩���߃r���h���Ă���dll�Ƃ��Ċ܂߂�K�v������B
-    Web�T�C�g�́Acs�t�@�C����aspx�t�@�C���Ɠ��l�ɔz�u���Ă����A���s���Ƀr���h���s����B
-    �A�v���̓\�����[�V�����t�@�C���ŊǗ�����A�T�C�g�͂����łȂ��B
-- �A�v���P�[�V�����t�H���_(�\��t�H���_)
-    ���炩���ߖ����Ɩ��O�����߂�ꂽ�t�H���_�BHTTP�o�R�ŃA�N�Z�X�ł��Ȃ��B
-    App_Browsers, App_Code, App_Data, App_GlobalResources, App_LocalResources, App_THemes, App_WebReferences, Bin�Ȃ�
-- �t�@�C���̎��
-    .ascx, .master, .sitemap, .vb/cs, .mdf, Global.asax, Web.config, .html, .css, .js�Ȃ�
-- �R�[�h�r�n�C���h���f���A�R�[�h�C�����C�����f��
-    �R�[�h�r�n�C���h���f���ł́A�v���O�����ƃf�U�C������������Ă���A
-    �����l�ł̕��Ƃ������Ȃ��₷���B�f�t�H���g�ł͂������B
-    �R�[�h�C�����C���ł͕��Ƃ��s���ɂ������ʁA�Ǘ������₷���ʂ�����B
-- Page�I�u�W�F�N�g
-    Page�h���N���X�Ƃ��ĕ����R�[�h�ƃf�U�C����`�R�[�h���}�[�W���A�C���X�^���X��&���s���Ă���B
-    Page�I�u�W�F�N�g�͖��񐶐����Ȃ������B
+** 2章
+- 開きたいファイルを右クリックして、ブラウザを選択できる。
+- WebアプリケーションとWebサイト
+    Webアプリケーションは、csファイルをあらかじめビルドしておきdllとして含める必要がある。
+    Webサイトは、csファイルをaspxファイルと同様に配置しておき、実行時にビルドが行われる。
+    アプリはソリューションファイルで管理され、サイトはそうでない。
+- アプリケーションフォルダ(予約フォルダ)
+    あらかじめ役割と名前が決められたフォルダ。HTTP経由でアクセスできない。
+    App_Browsers, App_Code, App_Data, App_GlobalResources, App_LocalResources, App_THemes, App_WebReferences, Binなど
+- ファイルの種類
+    .ascx, .master, .sitemap, .vb/cs, .mdf, Global.asax, Web.config, .html, .css, .jsなど
+- コードビハインドモデル、コードインラインモデル
+    コードビハインドモデルでは、プログラムとデザインが分離されており、
+    複数人での分業がおこないやすい。デフォルトではこっち。
+    コードインラインでは分業が行いにくい反面、管理がしやすい面もある。
+- Pageオブジェクト
+    Page派生クラスとして分離コードとデザイン定義コードをマージし、インスタンス化&実行している。
+    Pageオブジェクトは毎回生成しなおされる。
 
-*** Web�t�H�[���̊�{�\��
-- �f�B���N�e�B�u
-    <%@ �f�B���N�e�B�u�� ������="�����l" ... %>
-    @Page�̃f�B���N�e�B�u�̑���: Language, AutoEventWireup, CodeBehind, Inherits
-- �R�[�h�錾�u���b�N
+*** Webフォームの基本構造
+- ディレクティブ
+    <%@ ディレクティブ名 属性名="属性値" ... %>
+    @Pageのディレクティブの属性: Language, AutoEventWireup, CodeBehind, Inherits
+- コード宣言ブロック
     <script runat="Server">~</script>
-    �C�����C�����f���ł́A��L�^�O�̊Ԃɏ������R�[�h���T�[�o�T�C�h�Ŏ��s�����R�[�h�Ƃ݂Ȃ����B
-    runat��Server�ȊO�A�܂��͎w�肳��Ă��Ȃ��ꍇ�A�N���C�A���g�T�C�h�X�N���v�g�Ƃ݂Ȃ���N���C�A���g�ɑ��M�����B
-- �T�[�o�[�R���g���[��
-    <asp:�R���g���[���� ID="ID�l" runat="Server" �v���p�e�B��="�l" ...></asp:�R���g���[����>
-    �T�[�o�R���g���[����<form runat="Server">~</form>�̓����ɏ����B<form~>�̓y�[�W����1�񂵂��L�q�ł��Ȃ��B
+    インラインモデルでは、上記タグの間に書いたコードがサーバサイドで実行されるコードとみなされる。
+    runatがServer以外、または指定されていない場合、クライアントサイドスクリプトとみなされクライアントに送信される。
+- サーバーコントロール
+    <asp:コントロール名 ID="ID値" runat="Server" プロパティ名="値" ...></asp:コントロール名>
+    サーバコントロールは<form runat="Server">~</form>の内側に書く。<form~>はページ内に1回しか記述できない。
 
-*** ASP.NET�𗝉�����3�̎d�g��
-- �T�[�o�[�R���g���[��
-    - �T�[�o�[�R���g���[���́A�R���g���[���c���[�ƌĂ΂��I�u�W�F�N�g�K�w�ɕϊ������B
-      <asp:~>�ȊO�̃e�L�X�g��LiteralControl�I�u�W�F�N�g(�Œ�e�L�X�g)�Ƃ��ăR���g���[���c���[�Ɏ�荞�܂��B
-    - �T�[�o�[�R���g���[���ɂ�Web�T�[�o�[�R���g���[����HTML�T�[�o�[�R���g���[��������B
-      HTML�T�[�o�[�R���g���[���Ƃ́A�]����HTML�^�O�ɃT�[�o�[�R���g���[���Ƃ��Ă̋@�\��t�^�������́B
-      �V�K�쐬����ꍇ��Web�T�[�o�[�R���g���[�����g�p����ׂ��B
-      Web�T�[�o�[�R���g���[���́A��ʃu���E�U�[�Ɖ��ʃu���E�U�[�𔻕ʂ��A�K�؂ȏo�͂����铙�̋@�\��������̂�����B
-    - �T�[�o�[�R���g���[���̓N���X�Ȃ̂ŁA���\�b�h��v���p�e�B�����B
-- �C�x���g�h���u�����f��
-    - �\�[�X�r���[����C�x���g�n���h���[���쐬�����ꍇ��Private�ɁA����ȊO��Protected�ɂȂ�B���������Ⴂ�ł͂Ȃ��B
-    - �C�x���g�n���h���[�̈����́Aobject sender��event e�Bevent��EventArgs�N���X�̔h���N���X�B
-    - VB�ł�Handles~�Ƃ����C�x���g�֘A�t�����s���Ă��邪�AC#�ł�aspx�̕���onclick="btnSend_Click"�Əo��B
-    - �������g�̃y�[�W���e�𑗐M���������邱�Ƃ��|�X�g�o�b�N�Ƃ����B
-      �܂��A�C�x���g�����ɔ����ď������T�[�o/�N���C�A���g�Ԃ��s�������邱�Ƃ��T�[�o�[���E���h�g���b�v�Ƃ����B
-    - �C�x���g�����F Page.PreInit* -> Page.Init* -> �R���g���[���̏����� -> Page.Load* -> �ύX�n�C�x���g -> �N���b�N�n�C�x���g -> Page.PreRender -> Page.Unload
-      (*�̓y�[�W�C�x���g)
-    - �ύX�n�C�x���g�̓f�t�H���g�ł̓v�[���ɂ��߂��A�N���b�N�C�x���g�����ɔ��f�����悤�ɐݒ肳��Ă���B
-      �������AAutoPostBack�v���p�e�B��True�ɐݒ肷��ƁA�N���b�N�C�x���g��҂����Ƀ|�X�g�o�b�N�𔭐���������B
-- �r���[�X�e�[�g
-    - �|�X�g�o�b�N���ɂ��r���[�̏�Ԃ�ێ����邽�߂̎d�g�݁B
-      �B���t�B�[���h�Ƃ���html�ɖ��ߍ��܂�Ă���A�T�[�o�[�֑��M�����B
+*** ASP.NETを理解する3つの仕組み
+- サーバーコントロール
+    - サーバーコントロールは、コントロールツリーと呼ばれるオブジェクト階層に変換される。
+      <asp:~>以外のテキストはLiteralControlオブジェクト(固定テキスト)としてコントロールツリーに取り込まれる。
+    - サーバーコントロールにはWebサーバーコントロールとHTMLサーバーコントロールがある。
+      HTMLサーバーコントロールとは、従来のHTMLタグにサーバーコントロールとしての機能を付与したもの。
+      新規作成する場合はWebサーバーコントロールを使用するべき。
+      Webサーバーコントロールは、上位ブラウザーと下位ブラウザーを判別し、適切な出力をする等の機能があるものもある。
+    - サーバーコントロールはクラスなので、メソッドやプロパティを持つ。
+- イベントドリブンモデル
+    - ソースビューからイベントハンドラーを作成した場合はPrivateに、それ以外はProtectedになる。たいした違いではない。
+    - イベントハンドラーの引数は、object senderとevent e。eventはEventArgsクラスの派生クラス。
+    - VBではHandles~というイベント関連付けを行っているが、C#ではaspxの方にonclick="btnSend_Click"と出る。
+    - 自分自身のページ内容を送信し処理することをポストバックという。
+      また、イベント発生に伴って処理がサーバ/クライアント間を行き来することをサーバーラウンドトリップという。
+    - イベント処理： Page.PreInit* -> Page.Init* -> コントロールの初期化 -> Page.Load* -> 変更系イベント -> クリック系イベント -> Page.PreRender -> Page.Unload
+      (*はページイベント)
+    - 変更系イベントはデフォルトではプールにためられ、クリックイベント時等に反映されるように設定されている。
+      ただし、AutoPostBackプロパティをTrueに設定すると、クリックイベントを待たずにポストバックを発生させられる。
+- ビューステート
+    - ポストバック時にもビューの状態を保持するための仕組み。
+      隠しフィールドとしてhtmlに埋め込まれており、サーバーへ送信される。
 
-** 3��
+** 3章
 
-*** �t�H�[���R���g���[��
+*** フォームコントロール
 
 - TextBox
-    TextMode�v���p�e�B�ŒP��s/�����s/�p�X���[�h���̓{�b�N�X���̎�ʂ�ݒ�ł���B
+    TextModeプロパティで単一行/複数行/パスワード入力ボックス等の種別を設定できる。
 - RadioButtonList
-    ���W�I�{�^���̃��X�g�B
+    ラジオボタンのリスト。
 - CheckBoxList
-    CheckBox�̃��X�g�B
+    CheckBoxのリスト。
 - DropDownList
     DropDownList
 - ListBox
-    SelectionMode�v���p�e�B�ŕ����I���\�ɂł���B
+    SelectionModeプロパティで複数選択可能にできる。
 - FileUpload
-    PostedFile�ɂ��A�A�b�v���[�h���ꂽ����HttpPostedFile�I�u�W�F�N�g�Ƃ��ĕԂ��B
+    PostedFileにより、アップロードされた情報をHttpPostedFileオブジェクトとして返す。
 - HiddenField
-    �B���t�B�[���h
+    隠しフィールド
 
-- ���X�g�R���g���[��
+- リストコントロール
     |---------------+----------------------------------|
-    | SelectedIndex | �I�����ڂ̃C���f�b�N�X�ԍ����擾 |
-    | SelectedItem  | ListItem�I�u�W�F�N�g�Ƃ��Ď擾   |
-    | SelectedValue | �I�����ڂ̒l���擾               |
+    | SelectedIndex | 選択項目のインデックス番号を取得 |
+    | SelectedItem  | ListItemオブジェクトとして取得   |
+    | SelectedValue | 選択項目の値を取得               |
     |---------------+----------------------------------|
 
     list.SelectedValue = list.Items(list.SelectedIndex).Value = list.SelectedItem.Value
 
-*** �\���n�R���g���[��
+*** 表示系コントロール
 
 - Label/Literal
-    Label��<span>�^�O�ŏC������Ă��邪�ALiteral�͒P�ɕ����񂾂����o�͂��Ă���B
-    ���i�̓X�^�C����ύX�ł���Label�𗘗p���Ă���Ζ��Ȃ����A
-    JS��CSS���g�������ꍇ�ɂ́A<span>�^�O���ז��ɂȂ�ꍇ������̂ŁALiteral���K���Ă���ꍇ�����邩���B
+    Labelは<span>タグで修飾されているが、Literalは単に文字列だけを出力している。
+    普段はスタイルを変更できるLabelを利用していれば問題ないが、
+    JSやCSSを使いたい場合には、<span>タグが邪魔になる場合があるので、Literalが適している場合もあるかも。
 - HyperLink
-    �n�C�p�[�����N���o�͂���B
-    �������̂�LinkButton�����邪�A�{�^���N���b�N�C�x���g���������邩�ۂ��̈Ⴂ����B
+    ハイパーリンクを出力する。
+    似たものにLinkButtonがあるが、ボタンクリックイベントが発生するか否かの違いあり。
 - Image
-    �摜��\������B
+    画像を表示する。
 
-*** �{�^���R���g���[��
+*** ボタンコントロール
 
 - Button
 - LinkButton
 - ImageButton
 
-- PostBackUrl�v���p�e�B
-    �|�X�g�o�b�N�𑼂̃y�[�W�ɑ��M���邽�߂̃v���p�e�B�B
-    �N���X�y�[�W�ۂ��Ă��񂮁B
-    �s�ւ������A���������N���������ɂȂ肪���Ȃ̂Ŏg�p�͍T�����ق����悢�炵���B
+- PostBackUrlプロパティ
+    ポストバックを他のページに送信するためのプロパティ。
+    クロスページぽすてぃんぐ。
+    不便も多く、問題を引き起こす原因になりがちなので使用は控えたほうがよいらしい。
 
-- OnClientClick�v���p�e�B
-    �N���b�N����JavaScript�����s����B
+- OnClientClickプロパティ
+    クリック時にJavaScriptを実行する。
 
-*** ���؃R���g���[��
+*** 検証コントロール
 
     |----------------------------+------------------------|
-    | RequiredFieldValidator     | �K�{�`�F�b�N           |
-    | RangeValidator             | �f�[�^�͈̓`�F�b�N     |
-    | CompareValidator           | ��r�`�F�b�N           |
-    | RegularExpressionValidator | ���K�\���`�F�b�N       |
-    | CustomValidator            | �J�X�^���̌��؃`�F�b�N |
-    | ValidationSummary          | ���ʂ��T�}���[�\��     |
+    | RequiredFieldValidator     | 必須チェック           |
+    | RangeValidator             | データ範囲チェック     |
+    | CompareValidator           | 比較チェック           |
+    | RegularExpressionValidator | 正規表現チェック       |
+    | CustomValidator            | カスタムの検証チェック |
+    | ValidationSummary          | 結果をサマリー表示     |
     |----------------------------+------------------------|
-    ��RangeValidator/CompareValidator/RegularExpressionValidator�͒l����̏ꍇ�Ɍ��؂��X�L�b�v����B
+    ※RangeValidator/CompareValidator/RegularExpressionValidatorは値が空の場合に検証をスキップする。
 
-    �N���C�A���g�T�C�h�ƃT�[�o�T�C�h�o���őÓ������؂��s���B
-    �X�N���v�g���L���ɂȂ��Ă���΃N���C�A���g���A�����ł���΃T�[�o���ŏ������s���A
-    ���ʂȃg���t�B�b�N���������Ȃ��悤�ɂȂ��Ă���B
+    クライアントサイドとサーバサイド双方で妥当性検証を行う。
+    スクリプトが有効になっていればクライアント側、無効であればサーバ側で処理が行われ、
+    無駄なトラフィックが発生しないようになっている。
 
-- Display�v���p�e�B
-    Static�̏ꍇ�A�\���̈��ÓI�Ɋm�ۂ���i�����̃��b�Z�[�W������ꍇ�ł��X�y�[�X���l�߂Ȃ��j�B
-    Dynamic�͎����Ń��C�A�E�g���s���B
-    None�̏ꍇ�͕\�����Ȃ��BValidationSummary�R���g���[���ŕʕ\������ꍇ�ɗ��p�B
-- ErrorMessage / Text�v���p�e�B
-    ErrorMessage��ValidationSummary�Ɉ����n�����߂̃G���[���b�Z�[�W�B
-    Text�͌��؃R���g���[�����g�ɕ\������e�L�X�g�B�������ȗ����ꂽ�ꍇ��ErrorMessage��\������B
-- IsValid�v���p�e�B
-    ���ؐ��ۂɂ�����炸�A�T�[�o�T�C�h�̏����̓L�����Z�����ꂸ���������\��������B
-    �N���C�A���g�T�C�h�̌��؂��L���̏ꍇ�́A�G���[�����������ꍇ�㑱�����𒆒f���邪�A
-    �N���C�A���g�T�C�h�X�N���v�g�̓��[�U���ŗL���E������؂�ւ����邽�߁A�L����O��Ƃ���ׂ��ł͂Ȃ��B�B
-    Page.IsValid�Ńy�[�W�S�̂̌��؃R���g���[�����ۂ��m�F�ł���B
-- Enabled/EnableClientScript�v���p�e�B
-    �N���C�A���g�T�C�h�ł̌��؂��Ƃ߂����ꍇ��EnableClientScript��False�ɂ���B
-    �T�[�o�T�C�h���~�߂����ꍇ��Enabled��False�ɂ���B�T�[�o�T�C�h�������Ƃ߂邱�Ƃ͂ł��Ȃ��B
-- ValidationGroup�v���p�e�B
-    ���؃R���g���[�����O���[�v������B
-    �P��Validation�`�F�b�N���s�������Ȃ������ł���΁ACausesValidation�v���p�e�B��False�ɂ��Ă��悢�B
-- CssClass�v���p�e�B
-    ASP.NET4�ł̓C�����C���X�^�C�����p�~���ꂽ�̂ŁACssClass��ݒ肵����ŁA�X�^�C���V�[�g�ɐݒ���L�q����K�v������B
+- Displayプロパティ
+    Staticの場合、表示領域を静的に確保する（複数のメッセージがある場合でもスペースを詰めない）。
+    Dynamicは自動でレイアウトを行う。
+    Noneの場合は表示しない。ValidationSummaryコントロールで別表示する場合に利用。
+- ErrorMessage / Textプロパティ
+    ErrorMessageはValidationSummaryに引き渡すためのエラーメッセージ。
+    Textは検証コントロール自身に表示するテキスト。ただし省略された場合はErrorMessageを表示する。
+- IsValidプロパティ
+    検証成否にかかわらず、サーバサイドの処理はキャンセルされず処理される可能性がある。
+    クライアントサイドの検証が有効の場合は、エラーが発生した場合後続処理を中断するが、
+    クライアントサイドスクリプトはユーザ側で有効・無効を切り替えられるため、有効を前提とするべきではない。。
+    Page.IsValidでページ全体の検証コントロール成否を確認できる。
+- Enabled/EnableClientScriptプロパティ
+    クライアントサイドでの検証をとめたい場合はEnableClientScriptをFalseにする。
+    サーバサイドも止めたい場合はEnabledをFalseにする。サーバサイドだけをとめることはできない。
+- ValidationGroupプロパティ
+    検証コントロールをグループ化する。
+    単にValidationチェックを行いたくないだけであれば、CausesValidationプロパティをFalseにしてもよい。
+- CssClassプロパティ
+    ASP.NET4ではインラインスタイルが廃止されたので、CssClassを設定した上で、スタイルシートに設定を記述する必要がある。
 
 
-- ValidationSummary�R���g���[��
+- ValidationSummaryコントロール
     
-- RegularExpressionValidator�R���g���[��
-    ���K�\���̍\�����T�[�o�T�C�h�ƃN���C�A���g�T�C�h�Ŏ኱�قȂ�B
-    JavaScript�̐��K�\���́A.NET Framework�̐��K�\��(Regex�N���X)�̃T�u�Z�b�g�Ȃ̂ŁA
-    ���������킹��ꍇ�ɂ�JavaScript�̕\���͈͂ɂ��킹��K�v������B
+- RegularExpressionValidatorコントロール
+    正規表現の構文がサーバサイドとクライアントサイドで若干異なる。
+    JavaScriptの正規表現は、.NET Frameworkの正規表現(Regexクラス)のサブセットなので、
+    挙動をあわせる場合にはJavaScriptの表現範囲にあわせる必要がある。
 
-** 4��
+** 4章
 
-*** �f�[�^�o�C���h�R���g���[��
+*** データバインドコントロール
 
     |-------------+------------------------------|
-    | GridView    | �O���b�h�\                   |
-    | DetailsView | �e���v���[�g�Œ�̒P�[�r���[ |
-    | FormView    | ���R�`���̒P�[�r���[         |
-    | ListView    | ���R�`���̃��X�g             |
+    | GridView    | グリッド表                   |
+    | DetailsView | テンプレート固定の単票ビュー |
+    | FormView    | 自由形式の単票ビュー         |
+    | ListView    | 自由形式のリスト             |
     |-------------+------------------------------|
 
-*** �f�[�^�\�[�X�R���g���[��
+*** データソースコントロール
 
     |-------------------+------------------------------------|
-    | SqlDataSource     | ��ʓI�ȃ����[�V���i���f�[�^�x�[�X |
+    | SqlDataSource     | 一般的なリレーショナルデータベース |
     | AccessDataSource  | MSAccess                           |
-    | SiteMapDataSource | �T�C�g�}�b�v�t�@�C��               |
-    | XmlDataSource     | XML�t�@�C��                        |
-    | ObjectDataSource  | �r�W�l�X�I�u�W�F�N�g               |
-    | LinqDataSource    | LINQ�o�R�Ŏ擾�����f�[�^           |
-    | EntityDataSource  | �G���e�B�e�B�o�R�Ŏ擾�����f�[�^   |
+    | SiteMapDataSource | サイトマップファイル               |
+    | XmlDataSource     | XMLファイル                        |
+    | ObjectDataSource  | ビジネスオブジェクト               |
+    | LinqDataSource    | LINQ経由で取得したデータ           |
+    | EntityDataSource  | エンティティ経由で取得したデータ   |
     |-------------------+------------------------------------|
 
 *** GridView
 
-- �ڑ�������
-    - ��{�p�����[�^
-        Data Source (Server) / Database (Initial Catalog)�ȂǁB���B
-    - �R�l�N�V�����v�[�����O
+- 接続文字列
+    - 基本パラメータ
+        Data Source (Server) / Database (Initial Catalog)など。略。
+    - コネクションプーリング
         |---------------------+----------------------+------------|
-        | �p�����[�^��        | �T�v                 | �f�t�H���g |
+        | パラメータ名        | 概要                 | デフォルト |
         |---------------------+----------------------+------------|
-        | Pooling             | �L��/����            | True       |
-        | Connection Lifetime | �L������             | 0(�ő�)    |
-        | Max Pool Size       | �i�[�ł���ő�ڑ��� | 100        |
-        | Min Pool Size       | �ێ�����ŏ��ڑ���   | 0          |
+        | Pooling             | 有効/無効            | True       |
+        | Connection Lifetime | 有効期間             | 0(最大)    |
+        | Max Pool Size       | 格納できる最大接続数 | 100        |
+        | Min Pool Size       | 維持する最小接続数   | 0          |
         |---------------------+----------------------+------------|
 
 - XxxxxField
     |----------------+----------------------------------|
-    | BoundField     | �ʏ�̃e�L�X�g                   |
-    | HyperLinkField | �n�C�p�[�����N                   |
-    | ImageField     | �摜                             |
-    | CheckBoxField  | �`�F�b�N�{�b�N�X                 |
-    | CommandField   | [�I��][�ҏW][�폜]�Ȃ�           |
-    | ButtonField    | CommandField�ȊO�̃J�X�^���{�^�� |
-    | TemplateField  | �e���v���[�g�ɂ��������ďo��     |
+    | BoundField     | 通常のテキスト                   |
+    | HyperLinkField | ハイパーリンク                   |
+    | ImageField     | 画像                             |
+    | CheckBoxField  | チェックボックス                 |
+    | CommandField   | [選択][編集][削除]など           |
+    | ButtonField    | CommandField以外のカスタムボタン |
+    | TemplateField  | テンプレートにしたがって出力     |
     |----------------+----------------------------------|
 
-- HtmlEncode�v���p�e�B
-    "<"��">", "&"�̂悤��HTML�\�񕶎���"&lt;","&gt;","&amp;"�Ȃǂ̕�����ɕϊ�����v���p�e�B�B
-- DataFormatString�v���p�e�B
-    {�C���f�b�N�X�ԍ�[:����������]}
-    �t�H�[�}�b�g�\������B
-    ASP.NET3.5�ȑO�ł�HtmlEncode��True���Ə��������񂪔F������Ȃ��̂Œ��ӁB
-- �o�C���h��(Bind / Eval)
-    Bind(�t�B�[���h��[,����������])
-    Eval(�t�B�[���h��[,����������])
-    Bind���͓ǂݏ����\�AEval���͓ǂݎ���p�B
-    ���̂��߁A�f�[�^�X�V��ړI�Ƃ���EditItemTemplate�ł�Bind,
-    �f�[�^�\����ړI�Ƃ���ItemTemplate, AlternatingItemTemplate��Eval���g���ׂ��B
+- HtmlEncodeプロパティ
+    "<"や">", "&"のようなHTML予約文字を"&lt;","&gt;","&amp;"などの文字列に変換するプロパティ。
+- DataFormatStringプロパティ
+    {インデックス番号[:書式文字列]}
+    フォーマット表示する。
+    ASP.NET3.5以前ではHtmlEncodeがTrueだと書式文字列が認識されないので注意。
+- バインド式(Bind / Eval)
+    Bind(フィールド名[,書式文字列])
+    Eval(フィールド名[,書式文字列])
+    Bind式は読み書き可能、Eval式は読み取り専用。
+    そのため、データ更新を目的としたEditItemTemplateではBind,
+    データ表示を目的としたItemTemplate, AlternatingItemTemplateはEvalを使うべき。
     
 
 

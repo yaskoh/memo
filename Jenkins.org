@@ -1,15 +1,15 @@
 * Jenkins
 
-** �֘Atool
+** 関連tool
 
 *** Apache Ant
 - 
-  �r���h�c�[���\�t�g�E�F�A�BGNU make��Java�ł݂����Ȃ��́B
+  ビルドツールソフトウェア。GNU makeのJava版みたいなもの。
 
 *** Apache Maven
 - 
-  Java�p�v���W�F�N�g�Ǘ��c�[���BApache Ant�ɑ�����̂Ƃ��č��ꂽ�B
-- �@�\
-  - �ˑ����郉�C�u�����̊Ǘ�
-  - �v���W�F�N�g���̔��M(�T�C�g�쐬�A�z���⃆�j�b�g�e�X�g�̃��|�[�g��)
-  - �v���W�F�N�g�쐬�A�R���p�C���A�e�X�g�A�p�b�P�[�W���O�A�z�����̃��C�t�T�C�N�����̊e�^�X�N�̎x���B
+  Java用プロジェクト管理ツール。Apache Antに代わるものとして作られた。
+- 機能
+  - 依存するライブラリの管理
+  - プロジェクト情報の発信(サイト作成、配備やユニットテストのレポート等)
+  - プロジェクト作成、コンパイル、テスト、パッケージング、配備等のライフサイクル中の各タスクの支援。

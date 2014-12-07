@@ -1,34 +1,34 @@
-@�n�C�����b�q�̖@��
+@ハインリッヒの法則
 
-�d��1�ɑ΂��y��29�A�\����300������B
-�C���V�f���g�͂��̉\�����������ЊQ�B
-�C���V�f���g��h���΃A�N�V�f���g�͂Ȃ�����A�Ƃ����̂��A
-�n�C�����b�q�̎咣�B
+重症1に対し軽傷29、可能性が300件ある。
+インシデントはその可能性があった災害。
+インシデントを防げばアクシデントはなくせる、というのが、
+ハインリッヒの主張。
 <http://www.olivenet.co.jp/essay/8.html>
 
 
 
 @CMMI(Capability Maturity Model Integration)
 
-�\�t�g�E�F�A�J���̐��n�x���f���B
-���x��1�`5�ŕ\�킳���B
+ソフトウェア開発の成熟度モデル。
+レベル1〜5で表わされる。
 <http://e-words.jp/w/CMMI.html>
 
 
 
-@CSI���f��
+@CSIモデル
 
-�ڋq�����x�w��...
-����Ȃ������BCritical Succsess Indicator�A�Ƃ����ȁB
-
-
+顧客満足度指数...
+じゃなさそう。Critical Succsess Indicator、とかかな。
 
 
-@�T�[�r�X�v���o�C�_
 
-1�͂��ꂼ��ɓ���
-2�̓V�F�A�[�h�T�[�r�X����
-3�͊O��
+
+@サービスプロバイダ
+
+1はそれぞれに内在
+2はシェアードサービス部門
+3は外部
 
 
 

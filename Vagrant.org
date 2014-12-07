@@ -4,68 +4,68 @@
 
 *** ssh
 - 
-  ‰¼‘zƒ}ƒVƒ“‚ÉsshÚ‘±‚·‚é
+  ä»®æƒ³ãƒžã‚·ãƒ³ã«sshæŽ¥ç¶šã™ã‚‹
 
 *** init
 - 
-  ‰¼‘zƒ}ƒVƒ“‚Ì’è‹`ƒtƒ@ƒCƒ‹‚ðì¬‚·‚é
+  ä»®æƒ³ãƒžã‚·ãƒ³ã®å®šç¾©ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œæˆã™ã‚‹
   vagrant init [box-name] [box-url]
 
 *** distroy
 - 
-  ‰¼‘zƒ}ƒVƒ“‚ð”pŠü‚·‚é
+  ä»®æƒ³ãƒžã‚·ãƒ³ã‚’å»ƒæ£„ã™ã‚‹
 
 *** up
 - 
-  ‰¼‘zƒ}ƒVƒ“‚ð‹N“®‚·‚é
+  ä»®æƒ³ãƒžã‚·ãƒ³ã‚’èµ·å‹•ã™ã‚‹
 
 *** halt
 - 
-  ‰¼‘zƒ}ƒVƒ“‚ðƒVƒƒƒbƒgƒ_ƒEƒ“‚·‚é
+  ä»®æƒ³ãƒžã‚·ãƒ³ã‚’ã‚·ãƒ£ãƒƒãƒˆãƒ€ã‚¦ãƒ³ã™ã‚‹
 
 *** reload
 - 
-  ‰¼‘zƒ}ƒVƒ“‚ðÄ‹N“®‚·‚é
+  ä»®æƒ³ãƒžã‚·ãƒ³ã‚’å†èµ·å‹•ã™ã‚‹
 
 *** suspend
 - 
-  ‰¼‘zƒ}ƒVƒ“‚ðˆêŽž’†’f‚·‚é
+  ä»®æƒ³ãƒžã‚·ãƒ³ã‚’ä¸€æ™‚ä¸­æ–­ã™ã‚‹
 
 *** resume
 - 
-  ˆêŽž’âŽ~(suspend)‚©‚ç‚Ì•œ‹A
+  ä¸€æ™‚åœæ­¢(suspend)ã‹ã‚‰ã®å¾©å¸°
 
 *** status
 - 
-  ‰¼‘zƒ}ƒVƒ“‚Ìó‘Ô‚ðŠm”F‚·‚é
+  ä»®æƒ³ãƒžã‚·ãƒ³ã®çŠ¶æ…‹ã‚’ç¢ºèªã™ã‚‹
 
 *** ssh-config
 - 
-  ‰¼‘zƒ}ƒVƒ“‚ÌSSHî•ñ‚ðŠm”F‚·‚é
+  ä»®æƒ³ãƒžã‚·ãƒ³ã®SSHæƒ…å ±ã‚’ç¢ºèªã™ã‚‹
 
 *** provision
 - 
-  ƒvƒƒrƒWƒ‡ƒjƒ“ƒO‚ðs‚¤B
+  ãƒ—ãƒ­ãƒ“ã‚¸ãƒ§ãƒ‹ãƒ³ã‚°ã‚’è¡Œã†ã€‚
 
 *** box
 
 - add [box-name] [box-url]
-  Box‚ð’Ç‰Á‚·‚é
+  Boxã‚’è¿½åŠ ã™ã‚‹
 
 - list
-  Box‚ª’Ç‰Á‚³‚ê‚½‚±‚Æ‚ðŠm”F‚·‚é
+  BoxãŒè¿½åŠ ã•ã‚ŒãŸã“ã¨ã‚’ç¢ºèªã™ã‚‹
 
 - remove [box-name]
-  ‚¢‚ç‚È‚­‚È‚Á‚½Box‚Ìíœ‚ðs‚¤
+  ã„ã‚‰ãªããªã£ãŸBoxã®å‰Šé™¤ã‚’è¡Œã†
 
 *** package
 - 
-  ì‹Æ’†‚Ìƒ}ƒVƒ“‚ðBox‰»‚·‚é
+  ä½œæ¥­ä¸­ã®ãƒžã‚·ãƒ³ã‚’BoxåŒ–ã™ã‚‹
 
 *** plugin
 
 - list
-  ƒCƒ“ƒXƒg[ƒ‹Ï‚Ý‚Ìƒvƒ‰ƒOƒCƒ“Šm”F
+  ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ¸ˆã¿ã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ç¢ºèª
 - install [name]
 
 **** sahara
@@ -77,31 +77,31 @@
 
 ** network
 
-*** Ží—Þ
-- ƒvƒ‰ƒCƒx[ƒgƒlƒbƒgƒ[ƒN
-  ƒzƒXƒgOS‚ÆƒQƒXƒgOSŠÔ‚Å‚Ì‚Ý’ÊM‚ªs‚¦‚éB
-  “Á‚ÉÝ’è‚µ‚È‚¯‚ê‚ÎAuƒzƒXƒgƒIƒ“ƒŠ[ƒAƒ_ƒvƒ^v‚Å‚ÌÚ‘±‚É‚È‚éB
-  virtualbox_intnet‚É‚æ‚Á‚ÄƒQƒXƒgOSŠÔ‚Ì’ÊM‚ªs‚¦‚é‚æ‚¤‚É‚·‚éB
+*** ç¨®é¡ž
+- ãƒ—ãƒ©ã‚¤ãƒ™ãƒ¼ãƒˆãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯
+  ãƒ›ã‚¹ãƒˆOSã¨ã‚²ã‚¹ãƒˆOSé–“ã§ã®ã¿é€šä¿¡ãŒè¡Œãˆã‚‹ã€‚
+  ç‰¹ã«è¨­å®šã—ãªã‘ã‚Œã°ã€ã€Œãƒ›ã‚¹ãƒˆã‚ªãƒ³ãƒªãƒ¼ã‚¢ãƒ€ãƒ—ã‚¿ã€ã§ã®æŽ¥ç¶šã«ãªã‚‹ã€‚
+  virtualbox_intnetã«ã‚ˆã£ã¦ã‚²ã‚¹ãƒˆOSé–“ã®é€šä¿¡ãŒè¡Œãˆã‚‹ã‚ˆã†ã«ã™ã‚‹ã€‚
 
-- ƒ|[ƒgƒtƒHƒ[ƒfƒBƒ“ƒO
-  ƒzƒXƒgOS‚Ö‚Ì“Á’è‚Ìƒ|[ƒg‚ðŽg‚Á‚½Ú‘±‚ðƒQƒXƒgOS‚É“]‘—‚·‚éB
-  ‚±‚ê‚É‚æ‚èŽÀŽ¿“I‚ÉƒQƒXƒgOS‚Ö
+- ãƒãƒ¼ãƒˆãƒ•ã‚©ãƒ¯ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°
+  ãƒ›ã‚¹ãƒˆOSã¸ã®ç‰¹å®šã®ãƒãƒ¼ãƒˆã‚’ä½¿ã£ãŸæŽ¥ç¶šã‚’ã‚²ã‚¹ãƒˆOSã«è»¢é€ã™ã‚‹ã€‚
+  ã“ã‚Œã«ã‚ˆã‚Šå®Ÿè³ªçš„ã«ã‚²ã‚¹ãƒˆOSã¸
 
-- ƒpƒuƒŠƒbƒNƒlƒbƒgƒ[ƒN
-  “¯ˆêƒlƒbƒgƒ[ƒN“à‚Ì‚Ç‚Ì’[––‚©‚ç‚Å‚àƒQƒXƒgOS‚Æ‚Ì’ÊM‚ªs‚¦‚éB
-  ƒuƒŠƒbƒWƒAƒ_ƒvƒ^‚É‘Š“–‚·‚é‚à‚ÌB
-  ƒzƒXƒgOS‚Æ“¯‚¶ƒlƒbƒgƒ[ƒNã‚É‚ ‚½‚©‚à“Æ—§‚µ‚Ä‚¢‚é‚æ‚¤‚É‘¶Ý‚µAŠO•”‹@Ší‚Æ’ÊM‚ªs‚¦‚éB
+- ãƒ‘ãƒ–ãƒªãƒƒã‚¯ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯
+  åŒä¸€ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯å†…ã®ã©ã®ç«¯æœ«ã‹ã‚‰ã§ã‚‚ã‚²ã‚¹ãƒˆOSã¨ã®é€šä¿¡ãŒè¡Œãˆã‚‹ã€‚
+  ãƒ–ãƒªãƒƒã‚¸ã‚¢ãƒ€ãƒ—ã‚¿ã«ç›¸å½“ã™ã‚‹ã‚‚ã®ã€‚
+  ãƒ›ã‚¹ãƒˆOSã¨åŒã˜ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ä¸Šã«ã‚ãŸã‹ã‚‚ç‹¬ç«‹ã—ã¦ã„ã‚‹ã‚ˆã†ã«å­˜åœ¨ã—ã€å¤–éƒ¨æ©Ÿå™¨ã¨é€šä¿¡ãŒè¡Œãˆã‚‹ã€‚
 
 **** Link
-- [[http://labs.septeni.co.jp/?p=966][Vagrant‚Ìƒlƒbƒgƒ[ƒNŽü‚è‚Ì‚ ‚ê‚±‚ê - SepteniEngineerBlog]]
+- [[http://labs.septeni.co.jp/?p=966][Vagrantã®ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯å‘¨ã‚Šã®ã‚ã‚Œã“ã‚Œ - SepteniEngineerBlog]]
 - [[https://docs.vagrantup.com/v2/networking/index.html][NETWORKING - VAGRANTDOCS]]  
 
-*** Ží—Þ(VirtualBox)
+*** ç¨®é¡ž(VirtualBox)
 
-- –¢Š„‚è“–‚Ä
+- æœªå‰²ã‚Šå½“ã¦
 - NAT
-- NATƒlƒbƒgƒ[ƒN
-- ƒuƒŠƒbƒWƒAƒ_ƒvƒ^
-- “à•”ƒlƒbƒgƒ[ƒN
-- ƒzƒXƒgƒIƒ“ƒŠ[ƒAƒ_ƒvƒ^
-- ”Ä—pƒAƒ_ƒvƒ^
+- NATãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯
+- ãƒ–ãƒªãƒƒã‚¸ã‚¢ãƒ€ãƒ—ã‚¿
+- å†…éƒ¨ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯
+- ãƒ›ã‚¹ãƒˆã‚ªãƒ³ãƒªãƒ¼ã‚¢ãƒ€ãƒ—ã‚¿
+- æ±Žç”¨ã‚¢ãƒ€ãƒ—ã‚¿

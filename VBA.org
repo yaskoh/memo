@@ -2,25 +2,25 @@
 
 ** memo
 
-- ByVal��ByRef
+- ByValとByRef
 
-  �������Ȃ��ꍇ�AByRef(�Q�Ɠn��)�Ƃ��Ē�`����Ă���B
-  �l�n�����������ꍇ�͖����I��ByVal�A�Ƃ��Ȃ��Ă͂Ȃ�Ȃ��B
-  �o���������Ă����̂��ǂ��B
+  何もつけない場合、ByRef(参照渡し)として定義されている。
+  値渡しをしたい場合は明示的にByVal、としなくてはならない。
+  出来る限りつけておくのが良い。
 
-- sub��function
+- subとfunction
 
-  function�͖߂�l��Ԃ��Bsub��subroutine�̗��Ŗ߂�l�͕Ԃ��Ȃ��B
+  functionは戻り値を返す。subはsubroutineの略で戻り値は返さない。
 
-- ���
+- 代入
 
-  �I�u�W�F�N�g�ɒl��������Ƃ��́ASet A = B�A�Ƃ����`��"Set"���K�v�B
-  �l�ł���΁AA = B�Ƃ���Ƒ���ł���B
+  オブジェクトに値を代入するときは、Set A = B、という形で"Set"が必要。
+  値であれば、A = Bとすると代入できる。
 
-- GUID�̍쐬
+- GUIDの作成
 
   Mid$(CreateObject("Scriptlet.TypeLib").GUID, 2, 36)
-  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBA��GUID���쐬����]]
+  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBAでGUIDを作成する]]
 
 
 
