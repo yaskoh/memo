@@ -1,23 +1,64 @@
 * Python
 
+** Language
+
+** pip
+- 
+  Pythonにおけるパッケージ管理システム。
+*** command
+**** help
+- 
+  ex) pip help
+      pip help install
+
+**** search
+- 
+  Python Package Index(pypi)にあるパッケージをsearchコマンドで検索可能。
+
+**** install
+- 
+  インストールを行う。
+
+**** freeze
+- 
+  書き出しておいたパッケージリストを全部インストールする。
+
+**** show
+- 
+  パッケージの詳細を確認できる。
+
+
+*** etc
+**** install
+- 
+  githubのget-pip.pyをパイプでpython呼び出しして実行した。
+  ただし、pythonをzlib付でビルドしていないとだめらしく、
+  configure時に"--with-zlib-dir=/usr/local/lib"とか付けた。
+  [[https://github.com/pypa/pip/issues/1919][zipimport.ZipImportError#1919]]
+
+**** Link
+- [[https://pip.pypa.io/en/latest/index.html][pip]]
+- [[http://tdoc.info/blog/2014/01/15/pip.html][pipの使い方(2014/1バージョン) - そこはかとなく書くよん。]]
+
+
 ** memo
 
-os�ł悭�g���R�}���h
+osでよく使うコマンド
 	os.getcwd, os.chdir
 
-time.sleep(3)��3�b��~�B
+time.sleep(3)で3秒停止。
 
-string.rstrip()�Ŗ����̉��s���폜
+string.rstrip()で末尾の改行を削除
 
-string.find(target)�ŁAstring����target�̈ʒu��Ԃ��B
- 'abcde'.find('b')��1(int)���Ԃ�B
+string.find(target)で、string内のtargetの位置を返す。
+ 'abcde'.find('b')で1(int)が返る。
 
-copy��shutil(shutil.copy, shutil.copytree, shutil.copyfile��)�A
- rename��os(os.rename)
+copyはshutil(shutil.copy, shutil.copytree, shutil.copyfile等)、
+ renameはos(os.rename)
 
 
-�I���F
-	Ctr-z(Unix�n Ctr-d)
+終了：
+	Ctr-z(Unix系 Ctr-d)
 	quit()
 
 
