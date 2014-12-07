@@ -1610,6 +1610,9 @@
   ファイルをダウンロードする。
   wget [option] URL
 
+*** ssh-keygen
+- 
+  認証用の鍵を生成、管理、および変換する。
 
 ** distribution
 

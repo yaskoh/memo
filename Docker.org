@@ -5,82 +5,128 @@
 - 
   show the full list of accepted arguments.
 
-**** version
+**** attach
 - 
-  show the Docker version information
-
-**** search
+  Attach to a running container
+**** export
 - 
-  search for an image in the Docker index
-
-**** pull
-- 
-  Pull an image or a repository from the Docker repository server
-
-**** push
-- 
-  Push an image or a repository to the Docker registry server
-
-**** run
-- 
-  Run a command in a new container
-
-- -d, --detach=false
-  Detached mode: run container in the background and print new container ID
-  tells Docker to run the container and put it in the background, to deamonize it.
-
-- -i, --interactive=false
-  Keep STDiIN open even if not attached
-  allows us to make an interactive connection by grabbing the standard in of the container.
-
-- -p
-  Publish a container's port to the host
-  format:  ip:hostPort:containerPont | ip::containerPort | hostPort:cantainerPort
-
-- -t, --tty=false
-  Allocate a pseudo-tty
-  assign a pseudo-tty or terminal inside container
+  Stream the contents of a container as a tar archive
 
 **** commit
 - 
-  Create a new image from a container's changes
+  create a new image from a container's changes
 
 - Usage
   docker commit [OPTIONS] CONTAINER [REPOSITORY [TAG]]
 
-**** ps
-- 
-  Show a list of all running containers
+**** images
+- Usage
+  list images
 
-- -l
-  show the ID of the machine you using
+**** import
+- 
+  Create a new filesystem image from the contents of a tarball
 
 **** inspect
 - 
-  Return low-level information on a container
+  return low-level information on a container
 
 - Usage
   docker inspect CONTAINER|IMAGE [CONTAIR|IMAGE...]
 
+**** load
+- 
+  Load an image from a tar archive on STDIN
+
+- Usage
+  docker load
+
+- -i, --input=""
+  Read from a tar archive file, instead of STDIN
+
 **** logs
 - 
-  Fetch the logs of a container
+  fetch the logs of a container
   looks inside the container and returns its standard output.
+
+**** port
+- 
+  Lookup the public-facing port which is NAT-ed to PRIVATE_PORT
+
+**** ps
+- 
+  show a list of all running containers
+
+- -l
+  show the ID of the machine you using
+
+- -a
+  show all containers including stopped ones.
+
+**** pull
+- 
+  pull an image or a repository from the docker repository server
+
+**** push
+- 
+  push an image or a repository to the Docker registry server
+
+**** restart
+- 
+  Restart a running container
+
+**** rm
+- 
+  Remove a conatiner
+
+**** rmi
+- 
+  Remove an image
+
+**** run
+- 
+  run a command in a new container
+
+- -d, --detach=false
+  detached mode: run container in the background and print new container ID
+  tells Docker to run the container and put it in the background, to deamonize it.
+
+- -i, --interactive=false
+  keep STDiIN open even if not attached
+  allows us to make an interactive connection by grabbing the standard in of the container.
+
+- -p
+  publish a container's port to the host
+  format:  ip:hostPort:containerPont | ip::containerPort | hostPort:cantainerPort
+
+- -t, --tty=false
+  allocate a pseudo-tty
+  assign a pseudo-tty or terminal inside container
+**** search
+- 
+  search for an image in the Docker index
+
+**** save
+- 
+  save an image to a tar archive
+- Usage
+  docker save IMAGE
+**** start
+- 
+  Start a stopped container
 
 **** stop
 - 
-  Stop a running container
-  Tells Docker to politely stop the running container.
+  stop a running container
+  tells Docker to politely stop the running container.
 
-**** images
+**** version
 - 
-  List images
+  show the Docker version information
+
 
 
 *** unused
-**** attach
-- 
-  Attach to a running container
 
 **** build
 - 
@@ -90,17 +136,9 @@
 - 
   Inspect changes on a container's filesystem
 
-**** export
-- 
-  Stream the contents of a container as a tar archive
-
 **** history
 - 
   Show the history of an image
-
-**** import
-- 
-  Create a new filesystem image from the contents of a tarball
 
 **** info
 - 
@@ -117,26 +155,6 @@
 **** login
 - 
   Register or Login to the Docker registry server
-
-**** port
-- 
-  Lookup the public-facing port which is NAT-ed to PRIVATE_PORT
-
-**** restart
-- 
-  Restart a running container
-
-**** rm
-- 
-  Remove a conatiner
-
-**** rmi
-- 
-  Remove an image
-
-**** start
-- 
-  Start a stopped container
 
 **** tag
 - 

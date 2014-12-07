@@ -337,6 +337,10 @@
   wmicというCommandLineツールを使って情報を取得したり操作できる。
   "wmic qfe"として適用済みのKBを取得できる。
 
+**** ユーザアカウント
+- 
+  newplwiz.exeで開く。
+  パスワード忘れてCMD立ち上げたときとかに役立つ。
 
 *** etc
 
@@ -405,4 +409,12 @@
 - 
   msinfo32。
   スタートからシステム情報も探せるが、プログラム名として打てばよい。
+  
+*** ローカルのAdminパスワードを変更する方法
+- 
+  管理者のパスワードを忘れてしまった際、ブートディスクでディスクにアクセスして、
+  Utilman.exeを退避し、cmd.exeをcopyして名称をUtilman.exeとすると、
+  ログイン画面でコマンドプロンプトが使えるようになる。
+  [[http://blogs.technet.com/b/meacoex/archive/2011/08/15/reset-your-windows-sever-2008-r2-domain-controller-administrator-password.aspx][Reset your Windows Server 2008 / R2 Domain Controller administrator password - MEA Center of Expertise]]
+  [[http://level69.net/archives/752][Windows Server 2012のパスワードを初期化しよう。- 技術的な何か。]]
   

@@ -32,11 +32,42 @@
 
 *** View
 
-
 *** Model
+**** ActiveRecord::Base
+***** クラスメソッド
+- new
+  ユーザを作成する
+- create
+  new + saveまで行うメソッド。
+  DBにレコードが追加される。
+- find
+  idを引数にとり、該当するユーザを返す。
+- find_by_(column_name)
+  (column_name)の属性に基づいて、引数を検索する。
+- find_by
+  第1引数にカラム名、第2引数に検索条件をとり、値を検索する。
+  find_by_(column_name)メソッドより普遍性が高く、こちらの使用が推奨される。
+  ex) User.find_by(email: "mhartl@example.com")
+- first
+  最初のユーザを返す
+- all
+  全てのユーザを配列で返す。
+  
+***** インスタンスメソッド
+- save
+  レコードを保存する
+- (column_name)
+  ドット記法を使って属性にアクセスできる。
+- (column_name)=
+  ユーザの属性を更新する。更新後saveが必要。
+- destroy
+  レコードを削除する。
+- reload
+  データベース情報を元にオブジェクトを再読み込みする。
+  従ってsaveしていない情報は消える。
+- valid?
 
 ** Command
-
 *** rails
 **** new
 **** server
@@ -50,6 +81,11 @@
   ただし単なる慣習なので、スネークケースのコントローラ名を入力しても
   同様にスネークケースのファイル名が出力される。
 
+***** model
+- 
+  モデルを作成する。
+  慣習として、controllerには複数形を使い、modelには単数形を使う。
+  ex) rails generate model User name:string email:string
 ***** integration_test
 **** destroy
 - 
@@ -63,29 +99,40 @@
   Ctrl-Cでスタックから抜ける。Ctrl-Dで完全にコンソールを終了する。
   "rails c"でもOK。
 
+- --sandbox
+  サンドボックスモードで起動する
+
 *** bundle
-- update
-- install
-- exec
-  - rake
+**** update
+**** install
+**** exec
+- rake
+  - T
+    コマンド一覧を表示する
+  - db
     - T
-      コマンド一覧を表示する
-    - db
-      - T
-        データベースのコマンドを表示する。
-  - rspec
+      データベースのコマンドを表示する。
+- rspec
 
 *** rake
+- 
+  デフォルトの動作はテストスイートの実行。
 
 **** db
 - db:migrate
-  マイレーションを変更する
+  マイグレーションを変更する
+  初めて実行した際にdb/development.sqlite3というファイルが生成される。
   - VERSION=0
     最初の状態に戻す
 - db:rollback
   1つ前の状態に戻す
 
 **** routes
+
+**** test
+- test:prepare
+  データモデルdb/development.sqlite3がテストデータベースdb/test.sqlite3に反映されるようにするもの。
+  たまにテストデータベースが壊れるので、このコマンドを実行する必要があるらしい。
 
 ** File/Directory
 
@@ -118,6 +165,10 @@
 ***** app/assets/javascripts
 ***** app/assets/images
 
+**** app/controllers/
+**** app/models/
+- 
+  モデルファイルが格納される。
 **** app/views/
 ***** app/views/layouts/
 - 
@@ -148,10 +199,28 @@
   - get 'static_pages/home'
     /static_pages/homeというURLに対するgetリクエストに対し、
     StaticPagesコントローラのhomeアクションと結びつける。
+  - match '/about', to: 'static_pages#about', via: 'get
+    '/about'へのGETリクエストにマッチし、StaticPagesコントローラのaboutアクションにルーティングされる。
+    また、自動的に名前付ルートを生成する。
+    - about_path -> '/about'
+      about_url  -> 'http://localhost:3000/about'
+  - root 'static_pages#home'
+
+- [[http://railsguides.jp/routing.html][Railsのルーティング - RailsGuides]]
 
 *** db/
 - 
   データベース関連のファイル
+- development.sqlite3
+  初めてdb:migrateが実行された際に生成される。
+  SQLiteデータベース。
+**** db/migrate/
+- 
+  マイグレーションと呼ばれるファイルが置かれる。
+  マイグレーションはデータベースをインクリメンタルに変更する手段を提供する。
+***** マイグレーションファイル
+- 
+  データベースの変更を定義したchangeメソッドの集まり。
 
 *** doc/
 - 
@@ -224,14 +293,25 @@
 *** rspec
 - 
   ダブルクォート""で囲った文字列は評価しない
-
-- ex)
+  ex)
   describe "Home page" do
     it "should have the content 'Sample App'" do
       visit '/static_pages/home'
       expect(page).to have_content('Sample App')
     end
   end
+
+- beforeブロック
+  ex)
+  before { visit root_path }
+
+- pending
+  成功と失敗の間の状態を発生させる
+
+- be_(return_boolian)
+  真偽値を返すfoo?メソッドにオブジェクトが応答する場合、
+  テストメソッドbe_fooが自動的に存在する。
+
 *** erb
 - 
 - <% ... %>

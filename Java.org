@@ -1,5 +1,84 @@
 * Java
 
+** Language
+
+** Java Platform
+- 
+
+*** エディション
+**** Java SE
+- 
+  Java Platform, Standard Edition。
+  汎用的な用途に使われる。
+
+**** Java EE
+- 
+  Java Platform, Enterprise Edition。
+  Java SEに加え、多層クライアントサーバの大規模システムを開発するための、
+  さまざまなAPIが追加されている。
+
+**** Java ME
+- 
+  Java Platform, Micro Edition。
+  組み込みシステムなどを用途として想定したエディション。
+  機器の種類に応じ、ライブラリのいくつかの異なるセット（プロファイル）を規定している。
+
+*** 配布形態
+
+**** Java Runtime Environment(JRE)
+- 
+  Javaを実行するために必要なソフトウェア。
+  Java仮想マシン(JVM)とAPIから成る。
+  仮想マシンとAPIは互いに互換性がなければならず、共にバンドルされている。
+  プログラムを実行するだけであれば、JDKは必要なくJREのみでよい。
+
+***** Java Virtual Machine(JVM)
+- 
+  Javaバイトコードとして定義された命令セットを実行するスタック型の仮想マシン。
+
+***** Application Programming Interface(API)
+- 
+  関数群。クラスライブラリ。
+
+**** Java Development Kit(JDK)
+- 
+  ソフトウェア開発キット。
+  Javaプログラムの開発を支援する基本的なソフトウェア。
+  各プラットフォームの全ての実装。
+  Javaコンパイラ、javadoc、デバッガなどを含む多くの開発ツールを含む。
+  Private Runtimeと呼ばれる完全なJREも含む。
+
+***** 内容
+- appletviewer
+- apt
+- extcheck
+- idlj
+- java
+- javac
+- javadoc
+- jar
+- javah
+- javap
+- javaws
+- JConsole
+- jdb
+- jhat
+- jinfo
+- jmap
+- jps
+- jrunscript
+- jstack
+- jstat
+- jstand
+- keytool
+- pack200
+- policytool
+- VisualVM
+- wsimport
+- xjc
+
+([[http://ja.wikipedia.org/wiki/Java_Development_Kit][Java DevelopmentKit]])
+
 
 ** memo
 
@@ -26,4 +105,5 @@
   new スーパークラス名(コンストラクタ引数) { サブクラス実装 }
   スーパークラスのサブクラスとして、名前のないクラスを作成できる。
   作成時にインスタンス化もして、そのまま使い捨てる。
+
 

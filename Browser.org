@@ -1,0 +1,116 @@
+* Browser
+
+** Browsers
+*** GoogleChrome
+
+*** InternetExplorer
+**** IE8
+- 
+  2009/3/20公開。
+  Windows7、Windows Server 2008 R2に標準提供。
+  XP, Vista, 2003, 2008にも追加提供。
+
+**** IE9
+- 
+  2011/3/15公開。
+  Vista, 7, 2008, 2008R2に追加提供。
+- 
+  ユーザインターフェイスの整理が行われた。
+- ウェブ標準
+  - HTML
+    勧告候補の仕様を中心にHTML5を実装する。
+    DOMの対応も強化された。
+  - CSS
+    勧告候補となったCSS3のかくもじゅーうrに対応。
+  - Scripting
+    高速なJavaScriptエンジン「Chakra」が含まれ、
+    ECMAScript 5th editionまで対応。
+  - Typography
+    以前までのEmbedded OpenTypeに加えWebOpenFontFormatに新たに対応。
+- グラフィックス
+- プライバシー・マルウェア
+  
+- その他
+  - トランジション機能の廃止
+    ページを移動するときのビジュアル効果が廃止された。
+
+**** IE10
+- 
+  2012/8/15公開。
+  Windows 8, Windows RT, Windows Server 2012に標準提供。
+  7, 2008R2に追加提供。
+- 新機能
+  - input要素内の×ボタンにより文字列の消去が可能
+  - password型のinput要素内で、目のアイコンをクリックすると入力文字列が表示される。
+  - スクロールバーのデザイン、HTMLユーザインターフェイスの外観変更
+  - タブの改良
+  - ネットワークにつながれていないときのエラー画面変更
+- 廃止機能
+  - 条件付コメント
+  - Vector Markup Language
+    ベクター画像を描画するためのXML言語で、AdobeやSunのPGMLと統合・改良され、SVGとなっている。
+  - DXフィルター
+    DirectXベースのフィルタとトランジション。主要な機能はCSS3に取り込まれた。
+  - HTMLコンポーネント(HTC)
+  - XML Data Islands
+
+**** IE11
+- 
+  2013/10/17公開。
+  Windows 8.1, Windows Server 2012 R2に標準提供。
+  7, 2008R2に追加提供。
+- 変更点
+  - SPDY/3
+    SPDY/3に対応。win7とWS2008R2では対応しない。
+  - Web標準
+    - W3C Fulscreen
+    - CSS3 Flexboxの更新
+    - CSS border-image
+    - W3C Web Cryptography API
+    ...
+  - WebGL
+    WebGLを実装
+  - ユーザエージェントの変更
+    "like Geckoがユーザエージェント末尾に付けられた。
+    トークン"MSIE"の後にIEのバージョンがきていたが、リビジョンを表すトークン"rv"で置き換えられた。
+  - 他ブラウザとの共通化
+    navigator.appNameとnavigator.productが、他のブラウザ同様"Netscape"と"Gecko"を返すようになった。
+  
+- 削除された機能
+  - クイックタグ
+  - [ファイル]メニューの"オフライン作業"
+  - コンテンツを他のアプリケーションにドラッグアンドドロップ
+  - EdgeでのVBScriptサポート
+  - インターネットゾーンにおけるCSS expressionsのサポート
+*** Firefox
+
+*** Safari
+
+*** Opera
+
+*** Sleipnir
+** Memo
+*** Font
+**** EmbeddedOpenType
+- 
+  EmbeddedOpenType(EOT)は、OpenTypeファイルをコンパクトに格納した形式で、米マイクロソフトが開発。
+  Webページの組み込みフォントとして用いられる。
+  一般に拡張子「.eot」を使用する。
+
+**** WebOpenFontFormat
+- 
+  WOFF(Web Opne Font Format)はMozillaが中心となり開発したWebフォント。
+  @font-faceタグをCSSに記述して利用する。
+  拡張子は「.woff」
+
+**** TrueType
+- 
+  拡張子は「.ttf」
+
+**** OpenType
+- 
+  拡張子は「.ttf, .otf」
+
+**** SVG Font
+- 
+  拡張子は「.svg, .svgz」

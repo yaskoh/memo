@@ -20,16 +20,19 @@
 ** memo
 
 - 行番号
-    M-x linum
+  M-x linum
 
 - dired
-    C-x C-j
+  C-x C-j
 
 - IME on/off
-    C-\
+  C-\
 
 - 置換時の改行
-    ^J(C-q C-j)
+  ^J(C-q C-j)
 
 - 文字コード指定
-    C-x RET f
+  C-x RET f
+
+- 日本語入力のトグルスイッチ
+  C-\
