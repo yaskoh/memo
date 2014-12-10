@@ -105,3 +105,13 @@
 - 内部ネットワーク
 - ホストオンリーアダプタ
 - 汎用アダプタ
+
+** setting
+*** node
+- 
+  一台でなく、複数ノードを設定できる。
+  config.vm.define :nodeN do |node|
+    node.vm.box = "centos6"
+    ...
+  end
+  

@@ -1,9 +1,50 @@
 * Python
 
+** Language
+
+** pip
+- 
+  Pythonにおけるパッケージ管理システム。
+*** command
+**** help
+- 
+  ex) pip help
+      pip help install
+
+**** search
+- 
+  Python Package Index(pypi)にあるパッケージをsearchコマンドで検索可能。
+
+**** install
+- 
+  インストールを行う。
+
+**** freeze
+- 
+  書き出しておいたパッケージリストを全部インストールする。
+
+**** show
+- 
+  パッケージの詳細を確認できる。
+
+
+*** etc
+**** install
+- 
+  githubのget-pip.pyをパイプでpython呼び出しして実行した。
+  ただし、pythonをzlib付でビルドしていないとだめらしく、
+  configure時に"--with-zlib-dir=/usr/local/lib"とか付けた。
+  [[https://github.com/pypa/pip/issues/1919][zipimport.ZipImportError#1919]]
+
+**** Link
+- [[https://pip.pypa.io/en/latest/index.html][pip]]
+- [[http://tdoc.info/blog/2014/01/15/pip.html][pipの使い方(2014/1バージョン) - そこはかとなく書くよん。]]
+
+
 ** memo
 
 osでよく使うコマンド
-	os.getcwd, os.chdir
+    os.getcwd, os.chdir
 
 time.sleep(3)で3秒停止。
 
@@ -17,8 +58,8 @@ copyはshutil(shutil.copy, shutil.copytree, shutil.copyfile等)、
 
 
 終了：
-	Ctr-z(Unix系 Ctr-d)
-	quit()
+    Ctr-z(Unix系 Ctr-d)
+    quit()
 
 
 
