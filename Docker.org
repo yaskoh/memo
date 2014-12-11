@@ -169,3 +169,13 @@
 
 *** Link
 - [[http://deeeet.com/writing/2014/05/11/docker-network/][Dockerのネットワークの基礎 - SOTA]]
+
+** memo
+*** detach
+- 
+  press Ctr-p Ctr-q when you detach and leave a container.
+
+** link
+- [[http://www.techscore.com/blog/2014/08/05/introduction-to-docker/][隔離の技術Dockerの考え方と使い方の基本 - TECHSCORE BLOG]]
+- [[http://yuuki.hatenablog.com/entry/docker-performance][Dockerは早いのか？Dockerのパフォーマンスについて重要なことは何か？ - ゆううきブログ]]
+  

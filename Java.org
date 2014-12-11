@@ -1,6 +1,67 @@
 * Java
 
 ** Language
+*** 字句構造
+**** コメント
+- 
+  3種類のコメントがある。
+- /* comment */
+- // line-comment
+- /** documentation */
+  自動生成文書を作成する。
+**** 識別子
+**** キーワード
+- 
+  abstract boolean break byte case catch char class const continue
+  default do double else extends final finally float for goto
+  if implements import instanceof int interface long native new package
+  private protected public return short static super switch synchronized this
+  throw throws transient try void volatile while
+
+**** リテラル
+***** 整数リテラル
+***** 浮動小数点リテラル
+***** 論理値リテラル
+***** 文字リテラル
+***** 文字列リテラル
+***** 空リテラル
+- 
+
+**** 分離子
+- 
+  以下の9個のASCII文字をJava分離子(separators)とする。
+  ( ) { } [ ] ; ,
+
+**** 演算子
+- 
+  以下の37個のトークンをJava演算子(operators)とする。
+  = > < ! ~ ? : == <= >= != && || ++ --
+  + - * / & | ^ % << >> >>>
+  += -= *= /= &= |= ^= %= <<= >>= >>>=
+
+*** 型、値及び変数
+
+*** 変換及び昇格
+
+*** 名前
+
+*** パッケージ
+
+*** クラス
+
+*** インターフェース
+
+*** 配列
+
+*** 例外
+
+*** 実行
+
+*** ブロック及び文
+
+*** 式
+
+*** 
 
 ** Java Platform
 - 
