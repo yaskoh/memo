@@ -869,6 +869,16 @@
   Ruby 1.9以降で導入された。
 ****** Inheritance
 - BasicObject
+****** Instance Method
+****** Private Method
+******* List
+- 
+  method_missing singleton_method_added singleton_method_removed singleton_method_undefined
+******* method_missing
+- method_missing(name, *args) -> object
+  呼び出されたメソッドが定義されていなかった場合にこのメソッドを呼び出す。
+  呼び出しに失敗したメソッドの名前(Symbol)がnameに、そのときの引数がargsに格納される。
+  デフォルトではNoMethodErrorを発生させる。
 
 ***** Object
 - 要約
@@ -876,6 +886,15 @@
 ****** Inheritance
 - 
   Object < Kernel < BasicObject
+****** Instance Method
+******* send
+- send(name, *args) -> object
+  send(name, *args){...} -> object
+  (__send__も同様)
+
+  オブジェクトのメソッドnameを、argsを引数にして呼び出す。
+  sendが再定義された場合に備え別名__send__も用意されているので、ライブラリ等ではこちらを使うべき。
+  メソッドの呼び出し制限にかかわらず任意のメソッドを呼び出せる。
 
 ***** Class
 - 要約
