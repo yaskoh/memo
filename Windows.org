@@ -418,3 +418,23 @@
   [[http://blogs.technet.com/b/meacoex/archive/2011/08/15/reset-your-windows-sever-2008-r2-domain-controller-administrator-password.aspx][Reset your Windows Server 2008 / R2 Domain Controller administrator password - MEA Center of Expertise]]
   [[http://level69.net/archives/752][Windows Server 2012のパスワードを初期化しよう。- 技術的な何か。]]
   
+*** Thumbs.db
+- 
+  エクスプローラで縮小表示を行うと、画像や写真データの縮小イメージが格納されたThumbs.dbが作成される。
+  必要に応じ再作成されるため、消しても問題ない。またキャッシュしない設定に変更することも出来る。
+  [[http://www.atmarkit.co.jp/ait/articles/0602/04/news012.html][Thumbs.dbファイルを作成しないようにする - @IT]]
+*** AXキーボード設定
+- 
+  レジストリを書き換える。
+  HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\i8042prt\Parametersを選択し、
+  以下のように書き換える。
+  |----------------------------+-----------+-------------+------------|
+  | 値の名称                   | データ値  | 変更前      | 変更後     |
+  |----------------------------+-----------+-------------+------------|
+  | LayerDriver JPN            | REG_SZ    | kdb101.dll  | kdbax2.dll |
+  | OverrideKeyboardIdentifier | REG_SZ    | PCAT_101KEY | AX_105KEY  |
+  | OverrideKeyboardSubtype    | REG_DWORD | 0           | 1          |
+  | OverrideKeyboardType       | REG_DWORD | 7           | 7          |
+  |----------------------------+-----------+-------------+------------|
+  [[http://www.atmarkit.co.jp/fwin2k/win2ktips/041axkbd/axkbd.html][右Altキーに漢字キーを割り当てる方法 - @IT]]
+  
