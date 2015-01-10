@@ -102,6 +102,11 @@
 - -t, --tty=false
   allocate a pseudo-tty
   assign a pseudo-tty or terminal inside container
+
+- -v
+  mount file or directory in the host to the container.
+  -v /home/user/hostdir:/target/container
+
 **** search
 - 
   search for an image in the Docker index

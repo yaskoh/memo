@@ -1621,9 +1621,10 @@
   認証用の鍵を生成、管理、および変換する。
 
 *** scp
-- 
+- scp [[user@]host1:]filename1 ... [[user@]host2:]filename2
   データコピーを安全に行う。
   sshを使ってデータをコピーする。
+
 - -F ssh_config
   sshの設定ファイルを指定する。
 
