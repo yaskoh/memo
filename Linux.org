@@ -1620,7 +1620,7 @@
   認証用の鍵を生成、管理、および変換する。
 
 *** scp
-- scp [[user@]host1:]filename1 ... [[user@]host2:]filename2
+- scp [[user@]sourcehost1:]filename1 ... [[user@]desthost2:]filename2
   データコピーを安全に行う。
   sshを使ってデータをコピーする。
 
@@ -1711,6 +1711,7 @@
 - -x, --xhtml
   XHTML形式で表示する
 
+** shell
 ** distribution
 
 *** Debian
