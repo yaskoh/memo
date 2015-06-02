@@ -1,0 +1,149 @@
+* Web
+** Web Application Development Introduction
+*** Chapter1 : Goal
+**** Type
+- .NET
+- LAMP
+- Ruby on Rails
+- Java EE
+
+*** Chapter2 : Environment Settings
+- Download and install OS on the virtual environment
+  Use VMWare and Debian(installed)
+
+- Download Apache and PHP
+  Apt-get apache, php and php-pear,
+  access localhost to test whether http server is going,
+  and set permisson of /var/www.
+
+- Download JDK
+  Get openjdk-6-jdk.
+  Latest IDE required latar version of jdk, and I installed jdk 7.
+  openjdk-7 and update-alternatives --config to set java7.
+
+- Download IDE
+  Install NetBeans or Eclipse on their websites.
+  PHP in not containd normal Eclipse version,
+  and you need to download another version or add PHP Developer Tools(PDT).
+ 
+  I download netbeans installer on the website and do the script.
+  Eclipse is on Synaptic Package Manager, and select and install relating modules.
+
+- Use IDE
+  - Netbeans
+    - Create New Project
+    - Java Web -> Java Application
+    - Name and Location Settings, and set later all default.
+    - Run(Test)
+  - Eclipse
+    - 
+
+- Create PHP Application
+  - NetBeans
+    - Create New Project
+    - PHP -> PHP Application
+    - select index.php and right click, Run.
+  - Eclipse
+
+*** Chapter3 : How to Write Web pages
+- Web Browser
+  Reccomended Firefox as some reasons.
+
+- HTML Foundamental
+  - Heading(h1-h6)    
+  - Paragraph(p)
+  - Anchor(a)
+  - List(ul, ol, dl)
+    - Definition List(dl)
+      - dl : Include Term and Despciption. Definition List.
+      - dt : Definition Term
+      - dd : definition Description
+      ex)
+      <dl>  
+      <dt>dl element</dt>
+      <dd>Definition List it has terms and descriptions</dd>
+      <dt>dt element</dt>
+      <dd>Definition Term</dd>
+      <dt>dd elements</dt>
+      <dd>Description</dd>
+      </dl>
+
+  - Table(table, tr, th, tb)
+    - table
+      table element
+    - tr
+      table row
+    - th
+      table header
+    - td
+      table data
+    - ex
+      <table>
+        <caption>caption area</caption>
+        <tr>
+          <th>tag</th><th>role</th>
+        </tr>
+        <tr>
+          <td>table</td><td>table</td>
+        </tr>
+      </table>
+
+- Additional HTML Elements
+  - image(img)
+  - line break(br)
+  - preformatted text(pre)
+  - quotation(blockquote, q)
+  - emphasis(em, strong)
+
+- HTML Validator
+
+- Style Sheet
+  - font size
+    - "font" will be abandon in the future.
+      so "<font size='5'> is not good.
+      use <span style='font-size: 14pt;'>
+
+*** Chapter4 : Program performing on the browser
+- How to write JavaScript
+  - alert()
+    show diagram.
+    enclose script on the tag <script type="text/javascript>.
+
+- jQuery
+  - Library for using javascript as same appearence over browsers.
+  
+  
+  
+** Apache
+- Download
+  (on debian)
+  sudo apt-get install apache2
+
+- Setting
+  Set the permisson of /var/www as 775.
+
+** PHP
+- Download
+  (on debian)
+  sudo apt-get install php5 php-pear
+
+- What's pear?
+  Pear is "PHP Extension and Application Repository",
+  a framework and distribution system for reusable PHP components.
+
+** Java 
+- Download
+  sudo apt-get install openjdk-6-jdk
+  (sudo apt-get install default-jre)
+  (sudo apt-get install default-jdk)
+  sudo apt-get intall openjdk-7-jre
+  sudo apt-get intall openjdk-7-jdk
+  
+- Managing
+  sudo update-alternatives --config java
+  sudo update-alternatives --config javac
+  [[https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get][How To Install Java on Ubuntu with Apt-Get]]
+
+** IDE
+*** NetBeans
+*** Eclipse
