@@ -188,7 +188,6 @@
   として、>以外のものが続く間だけマッチングさせるなど。
   [[http://techtipshoge.blogspot.jp/2011/10/sed.html][Tech Tips - sedの最短一致]]
 
-
 ** Link
 
 [[http://www.grymoire.com/Unix/Sed.html][Sed - An Introduction and Tutorial by Bruce Barnett]]

@@ -1711,7 +1711,45 @@
 - -x, --xhtml
   XHTML形式で表示する
 
+*** split
+- 
+  ファイルを分割する。
+  usage: split [-b bytes[bkm]] [infile [outfile-prefix]]
+
+- b bytes
+  bytesで示したバイト数で分割する。
+
+- infile
+  元ファイルを指定する
+
+- link
+  [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060227/230888/][【split】ファイルを分割する - Linuxコマンド集]]
+
+*** cut
+- 
+  特定の文字で区切られた項目を分割する。
+  文字列の中から所定の位置にある特定の項目を抜き出したい場合に利用する。
+  cut [option] [file]
+
+- -c 文字数
+  切り出す文字数を指定する。
+
+- -d 文字
+  区切り文字を指定する。デフォルトはタブ。
+
+- -f フィールド数
+  切り出すフィールド数を指定する。
+
+- -s
+  区切り文字を含まない文字列は出力しない。
+
+  
 ** shell
+*** bash
+*** csh
+*** tcsh
+*** zsh
+
 ** distribution
 
 *** Debian
