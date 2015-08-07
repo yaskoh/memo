@@ -1,41 +1,8 @@
 * Excel
 
-** VBA
-
-*** Functions
- 
-*** memo
-
-- ByValとByRef
-
-  何もつけない場合、ByRef(参照渡し)として定義されている。
-  値渡しをしたい場合は明示的にByVal、としなくてはならない。
-  出来る限りつけておくのが良い。
-
-- subとfunction
-
-  functionは戻り値を返す。subはsubroutineの略で戻り値は返さない。
-
-- 代入
-
-  オブジェクトに値を代入するときは、Set A = B、という形で"Set"が必要。
-  値であれば、A = Bとすると代入できる。
-
-- GUIDの作成
-
-  Mid$(CreateObject("Scriptlet.TypeLib").GUID, 2, 36)
-  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBAでGUIDを作成する]]
-
-
-  
-
 ** 関数
-*** EXACT
 - 
-  2つのテキスト文字列を比較し、同じであればTRUE、それ以外の場合はFALSEを返す。
-
-- ex
-  EXACT(text1, text2)
+  [[http://dekiru.net/article/4429/][Excel関数一覧 機能別 - できるネット]]
 
 *** CHOOSE
 - 
@@ -43,6 +10,36 @@
   =choose(条件となる数値,値1,値2,...)
   条件となる数値が1の場合値1、2の場合値2、...が返る。
   29以下までしか定義できない。
+
+*** EXACT
+- 
+  2つのテキスト文字列を比較し、同じであればTRUE、それ以外の場合はFALSEを返す。
+
+- ex
+  EXACT(text1, text2)
+
+*** IF
+- 
+  
+
+*** LEN
+- 
+  
+
+*** MID
+- 書式
+  MID(文字列、開始位置、文字数）
+
+- 
+  "文字列"の"開始位置"から"文字数"分だけ文字を取得する。
+
+*** SUBSTITUTE
+- 書式
+  SUBSTITUTE(対象文字列、検索文字、置き換え文字、[置換対象])
+
+- 
+  "対象文字列"中の"検索文字"を"置き換え文字"に変換する。
+  "置換対象"は、複数の検索文字がヒットする場合、左から何番目を置き換えるか指定する。
 
 *** WEEKDAY
 - 
@@ -86,6 +83,25 @@
 *** オートフィルタ設定解除(Alt,D,F,S)
 *** Link
 - [[http://matome.naver.jp/odai/2134702837577488501][Excelで役立つ10のショートカットキー]]
+
+** データベース機能
+
+*** テーブル
+- 
+  
+- 変換
+  挿入/INSERTタブのテーブルを選択する。
+
+- 利点
+  - 自動的に1行おきの色違いになる
+  - 自動的にフィルタが有効となる
+  - 集計行を簡単に追加可能
+  - スクロールしても先頭行が見える
+  - 上記をDESIGNタブで制御できる
+
+*** ピボットテーブル
+- 
+  「クロス集計」を行う機能。
   
 ** memo
 *** シート名を取得する
@@ -111,3 +127,154 @@
   Ctrlを押しながら、シートをドラッグするとコピーができる。
   [[http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1443247924][エクセルで作成したシートのコピーを一度に複数作る - yahoo!知恵袋]]
 
+*** 各種特殊文字の置換
+- 改行コード
+  Ctrl+J
+
+* VBA
+- [[https://msdn.microsoft.com/en-us/library/office/gg264383.aspx][Visual Basic for Applications language reference for Office 2013 - Dev Center]]
+
+** 概要
+
+*** Object Model
+- 
+  主なものは、Application、Workbook、Worksheet、Range。
+  
+
+** Statement
+- [[http://officetanaka.net/excel/vba/statement/index.htm][VBAのステートメント - officeTANAKA]]
+
+*** Call
+- 
+  他のSubプロシージャやFunctionプロシージャなどを呼び出して制御を渡す。
+
+  下記にプロシージャに関して、幾つかの使用規則を記す。
+  1. 通常のSubプロシージャは、Callステートメントを省略することも可能。
+     ex) ○:Call myFunction(123)
+         ○:myFunction 123
+  2. Callを省略する場合、引数を括弧で囲まない。Callを使う場合は囲む。
+     ex) ×:myFunction(123)
+         ○:myFunction 123
+         ○:Call myFunction(123)
+         ×:Call myFunction 123
+  3. Callでは返り値を受け取れない。
+     ex) ×:rc = Call myFunction(123)
+  4. 返り値を受け取る場合、Callを使わないが、括弧は必要となる。
+     ex) ×:rc = myFunction 123
+         ○:rc = myFunction(123)
+
+*** Dim
+- 
+  変数を宣言する
+
+*** End
+- 
+  プロシージャまたはブロックを終了する
+
+*** For Each ... Next
+- 
+  コレクションや配列の各要素に対してstatementsを実行する。
+
+*** For ... Next
+- 
+  引数startで指定した値から、引数endえ指定した値までstatementを繰り返す
+
+*** Function
+- 
+  Functionプロシージャ（戻り値あり）を作成する
+
+*** If ... Then ... Else
+- 
+  条件を評価して、条件付きの実行を行うステートメント
+
+*** Private
+- 
+  プライベート変数を宣言する。プライベート変数は、宣言されたモジュール内のみ参照できる。
+
+*** Sub
+- 
+  Subプロシージャを作成する。
+
+*** With
+- 
+  
+** Functions / 関数
+- [[http://officetanaka.net/excel/vba/function/index.htm][VBAの関数 - officeTANAKA]]
+
+*** Mid
+- 
+  
+
+*** StrConv
+- 用法
+  StrConv(string, conversion)
+
+- conversion
+  |--------------+----+----------------------------|
+  | 定数         | 値 | 内容                       |
+  |--------------+----+----------------------------|
+  | vpUpperCase  |  1 | 大文字に変換               |
+  | vbLowerCase  |  2 | 小文字に変換               |
+  | vbProperCase |  3 | 各文字の先頭を大文字に変換 |
+  | vbWide       |  4 | 半角文字を全角に変換       |
+  | vbNarrow     |  8 | 全角文字を半角に変換       |
+  |--------------+----+----------------------------|
+  
+- 
+  "string"で指定した文字列に、conversionで指定した変換を行う。
+
+** Property
+*** Format
+*** Value
+** Object
+- [[http://www.vba-ie.net/object/index.html][ExcelのVBAで利用したオブジェクト一覧 - VBAのIE制御入門]]
+
+*** Application
+- 
+  Excelアプリケーション全体を表す。
+
+*** Workbook
+
+*** Workbooks(Collection)
+
+*** Worksheet
+
+*** Worksheets(Collection)
+
+*** Range
+
+** memo
+
+*** ByValとByRef
+- 
+  何もつけない場合、ByRef(参照渡し)として定義されている。
+  値渡しをしたい場合は明示的にByVal、としなくてはならない。
+  出来る限りつけておくのが良い。
+
+*** subとfunction
+- 
+  functionは戻り値を返す。subはsubroutineの略で戻り値は返さない。
+
+*** 複数の値をプロシージャに渡す
+- 
+  複数の値を引数として渡す場合は、以下のどちらかの対応が必要。
+  - Callステートメントをつける
+  - 括弧を除いて平文で渡す
+  
+  括弧は、引数の演算処理のためのものなので、複数引数には対応していない、とのこと。
+  ちなみに以下は正常となる。
+  ex) MsgBox ("お元気ですか？"+"これでよろしいですか？"), vbOKOnly
+  - [[http://www.atmarkit.co.jp/ait/articles/1503/17/news039.html][コンパイルエラーにならない関数の使い方 - @IT]]
+  
+*** 代入
+- 
+  オブジェクトに値を代入するときは、Set A = B、という形で"Set"が必要。
+  値であれば、A = Bとすると代入できる。
+
+*** GUIDの作成
+- 
+  Mid$(CreateObject("Scriptlet.TypeLib").GUID, 2, 36)
+  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBAでGUIDを作成する]]
+
+
+  
