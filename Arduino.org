@@ -1,0 +1,113 @@
+* Arduino
+
+** 概要
+- デジタル出力
+- アナログ出力
+- デジタル入力
+- アナログ入力
+- シリアル通信
+
+** Arduino言語
+- 
+  setup()とloop()が必ず存在する。
+
+- 
+  必ずセミコロンで一文を終える。
+
+*** Statement
+
+**** if
+**** if else
+**** switch case
+**** for
+**** while
+**** do while
+**** break
+**** continue
+**** return
+**** goto
+
+*** DataType
+**** boolean
+**** char
+**** byte
+**** int
+**** unsigned int
+**** long
+**** unsigned long
+**** double
+**** 文字列
+**** 配列
+**** void
+
+*** Const
+**** true / false
+**** HIGH / LOW
+**** INPUT / OUTPUT
+
+*** Functions
+
+**** General
+***** setup()
+- 
+  スケッチが動き始めたときに1度だけ実行したいコードを書く
+
+***** loop()
+- 
+  繰り返し実行されるスケッチの核となる処理を書く
+
+**** Digital I/O
+***** pinMode()
+- 
+  ピンをどう設定するかArduinoに伝える。
+  ex) pinMode(LED, OUTPUT)
+
+***** digitalWrite()
+- 
+  出力に設定されたピンをオン又はオフにする。
+
+***** digitalRead()
+- digitalRead(pin)
+  指定したピンの値を読み取る。
+  その結果はHIGHまたはLOWとなる。
+  
+**** Analog I/O
+***** analogWrite()
+- 
+
+***** analogRead()
+- analogRead(pin)
+  指定したピンから値を読み取る。
+  0〜5Vの入力電流を、0〜1023までの数値に変換して返す。
+
+**** Time
+***** millis()
+- 
+  Arduinoボードがプログラムを実行開始した時間から現在までの時間をミリ秒単位で返す。
+  約50日でオーバーフローしてゼロに戻る。
+
+***** delay()
+- 
+  指定された時間だけ待つ。
+
+
+**** Serial
+***** Serial.begin
+- Serial.begin(speed)
+  シリアル通信のデータ転送レートをbps(baud)で指定する。
+  コンピュータとの通信では、以下のレートから選択する。
+  (300, 1200, 2400, 4800, 9600, 14400, 19200, 28800, 38400, 57600, 115200)
+  
+***** Serial.println
+- Serial.println(data, format)
+  データの末尾にCRLF(ASCIIの1310あるいは\r\n)をつけて送信する。
+  formatは省略可。
+
+*** Standard Library
+
+*** etc
+**** 何も接続していないピンの読み取り
+- 
+  何も接続されていないピンに対して読み取りを実行すると、
+  HIGHとLOWがランダムに現れることがある。
+  
