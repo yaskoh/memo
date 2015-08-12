@@ -1,5 +1,131 @@
 * SQL Server
 
+** Command
+
+*** DBCC
+
+- dbcc ind
+    隠しコマンド。インデックスのページ割り当て等の情報を見ることができる。
+    dbcc ind ( { 'dbname' | dbid }, { 'objname' | objid }, { nonclustered indid | 1 | 0 | -1 | -2 } [, partition_number] )
+
+- dbcc page
+    隠しコマンド。ページIDを指定することでページの中身を見ることができる。
+    dbcc page ( {'dbname' | dbid}, filenum, pagenum [, printopt={0|1|2|3} ])
+    プリントオプションは以下。
+        0:ページヘッダのみ 1:ページヘッダ＋データ部 2:ページヘッダ＋データ部の16進ダンプ 3:各行を個別に出力
+    出力するためにはトレースフラグ3604を有効にする必要がある。
+    
+- dbcc help('name')
+    nameで指定されたdbccコマンドの構文情報を返す。
+
+- dbcc traceon(数字) / dbcc traceoff(数字)
+    指定されたトレースフラグを有効/無効にする。
+    カンマ区切りで複数指定可。最後に-1を列挙すると、グローバルに設定が反映される。
+
+- dbcc tracestatus
+    トレースフラグの状態を出力する。
+    DBCC TRACESTATUS ( [ [ trace# [ ,...n ] ] [ , ] [ -1 ] ] ) [ WITH NO_INFOMSGS ]
+
+- dbcc showcontig
+    テーブル・ビューとインデックスの断片化情報を表示する。
+    削除予定機能。ただし、代替とされているdm_db_index_physical_statsではエクステントの断片化を見ることができない。
+
+- dbcc opentran(DB名)
+    DB内にアクティブなトランザクションが存在するか否かを確認できる。
+
+*** Procedure
+
+- sp_helptext 'procedure'
+    プロシージャの内容を出力する。
+
+- sp_MSforeachdb / sp_MSforeachtable
+    すべてのdb/tableに対して操作を行うことができる。
+    ex: sp_MSforeachdb @command1="select '?'"
+        ->'?'が補完され、master, tempdb,等のselect結果が返ってくる。
+    @command1以外にも、@command2/3, @whereand, @replacechar, @precommand, @postcommandがある。
+
+*** 動的管理ビュー
+
+- sys.dm_db_index_physical_stats
+    指定したテーブルまたはビューとインデックスに関する、サイズおよび断片化情報を返す。
+
+- sys.dm_tran_locks
+    ロックマネージャの情報を返す。
+
+*** システムビュー
+- システムビュー
+
+  - カタログビュー
+  - 情報スキーマビュー
+  - 互換性ビュー
+  - レプリケーションビュー
+  - 動的管理ビューと動的管理関数
+  - データ層アプリケーションのビュー
+
+**** カタログビュー
+
+** Built-in Functions
+- 組込関数
+
+
+	関数の種類
+		行セット関数
+		集計関数
+		順位付け関数
+		スカラー関数
+			構成関数
+			変換関数
+			カーソル関数
+			日付と時刻のデータ型及び関数
+			論理関数
+			数学関数
+			メタデータ関数
+			セキュリティ関数
+			文字列関数
+			システム関数
+			システム統計関数
+			テキストとイメージ関数
+
+
+
+-------------------------------------------------------------
+
+- 行セット関数
+	テーブル参照の代わりに使用できるオブジェクトを返す。
+
+	OPENDATASOURCE
+
+	OPENQUERY
+
+	OPENROWEST
+
+	OPENXML
+
+
+
+- 集計関数
+	値の集まりに対し計算を実行し、1つの値を返す。
+	決定的(deterministic)。
+
+	AVG
+		平均値
+	CHECKSUM_AGG
+		チェックサムを返す。テーブルの変更を検出する場合などに使用。
+	COUNT
+		件数を返す。戻り値はint型。
+	COUNT_BIG
+		件数を返す。bigintを返す。COUNTと動きは同じ。
+	GROUPING
+		rollupやcube、grouping setsを使った場合に返されるnullを区別する。
+	GROUPING_ID
+	MAX
+	MIN
+	SUM
+	STDEV
+	STDEVP
+	VAR
+	VARP
+
 ** memo
 
 *** GROUPING SETS
@@ -52,7 +178,6 @@
   自動拡張の設定など
 
 ※照合順序と導入フォルダは、導入後の変更が難しい。
-
 
 
 *** 書き込みキャッシュ
@@ -179,3 +304,38 @@
   online処理にすると、実行中の参照･更新が可能だが、実行後はユーザトランザクション中はロックのままとなる。
 
 
+
+*** バージョン
+- 
+  'select @@version'でバージョンを取得できる。
+
+  |-----------------------------------+----------------|
+  | リリース                          | 製品バージョン |
+  |-----------------------------------+----------------|
+  | SQL Server 2014 RTM               |   12.0.2000.80 |
+  | SQL Server 2012 Service Pack 1    |  11.00.3000.00 |
+  | SQL Server 2012 RTM               |  11.00.2100.60 |
+  | SQL Server 2008 R2 Service Pack 2 |   10.50.4000.0 |
+  | SQL Server 2008 R2 Service Pack 1 |   10.50.2500.0 |
+  | SQL Server 2008 R2 RTM            |   10.50.1600.1 |
+  | SQL Server 2008 Service Pack 3    |  10.00.5500.00 |
+  | SQL Server 2008 Service Pack 2    |  10.00.4000.00 |
+  | SQL Server 2008 Service Pack 1    |  10.00.2531.00 |
+  | SQL Server 2008 RTM               |  10.00.1600.22 |
+  | SQL Server 2005 Service Pack 4    |   9.00.5500.00 |
+  | SQL Server 2005 Service Pack 3    |      9.00.4035 |
+  | SQL Server 2005 Service Pack 2    |      9.00.3042 |
+  | SQL Server 2005 Service Pack 1    |      9.00.2047 |
+  | SQL Server 2005 RTM               |      9.00.1399 |
+  | SQL Server 2000 Service Pack 4    |      8.00.2039 |
+  | SQL Server 2000 Service Pack 3    |       8.00.760 |
+  | SQL Server 2000 Service Pack 2    |       8.00.534 |
+  | SQL Server 2000 Service Pack 1    |       8.00.384 |
+  | SQL Server 2000 RTM               |       8.00.194 |
+  |-----------------------------------+----------------|
+  
+  [[https://support.microsoft.com/ja-jp/kb/321185][SQL Serverとそのコンポーネントのバージョンとエディションを確認する方法]]
+
+- 用語
+  - RTM : Release To asufacturing
+  - RTW : Release To Web
