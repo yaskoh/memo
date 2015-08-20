@@ -20,8 +20,10 @@
   docker commit [OPTIONS] CONTAINER [REPOSITORY [TAG]]
 
 **** images
-- Usage
+- 
   list images
+
+- Usage
 
 **** import
 - 
@@ -63,6 +65,9 @@
 - -a
   show all containers including stopped ones.
 
+- -q
+  
+
 **** pull
 - 
   pull an image or a repository from the docker repository server
@@ -79,13 +84,18 @@
 - 
   Remove a conatiner
 
+- 
+  All conteners can be deleted by using command as "docker rm `docker ps -a -q`"
+
 **** rmi
 - 
   Remove an image
 
 **** run
 - 
-  run a command in a new container
+  run a command in a new container.
+
+  I usually use this command as "docker run -it image/images /bin/bash"
 
 - -d, --detach=false
   detached mode: run container in the background and print new container ID
@@ -168,7 +178,6 @@
 **** wait
 - 
   Block until a container stops, then print its exit code
-
 
 ** network
 

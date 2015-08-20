@@ -806,17 +806,33 @@
 
 ([[http://ja.wikipedia.org/wiki/Java_Development_Kit][Java DevelopmentKit]])
 
-*** command
-**** java
+*** Command
+- [[http://docs.oracle.com/javase/8/docs/technotes/tools/unix/intro.html#sthref18][Java Platform, Standard Edition Tools Reference]]
+**** Create and Build Applications
+***** java
 - 
+  Starts a java application.
   クラスファイルからクラスを読み込んで実行する。
 
-**** javac
+***** javac
 - 
+  Reads Java class and interface definitions and compiles them into bytecode and class files.
   .javaファイルから.classファイルを作成する。
 
-** memo
+***** jar
+- 
+  Combines multiple files into a sinple JAR file.
 
+***** javadoc
+- 
+  Generates HTML pages of API documentation from Java source file.
+
+**** Monitor the Java Virtual Machine
+***** jps
+- 
+  (Experimental) Lists the instrumented Java Virtual Machines (JVMs) on the target system.
+
+** memo
 *** リソース付きtry
 - 
   try(AutoCloseable Class; ...){
@@ -835,6 +851,23 @@
   スーパークラスのサブクラスとして、名前のないクラスを作成できる。
   作成時にインスタンス化もして、そのまま使い捨てる。
 
+*** apt-getでインストール
+- Installing Java 8 on Ubuntu
+  $ sudo add-apt-repository ppa:webupd8team/java
+  $ sudo apt-get update
+  $ sudo apt-get install oracle-java8-installer
+  [[http://tecadmin.net/install-oracle-java-8-jdk-8-ubuntu-via-ppa/][How to Install JAVA 8 (JDK 8u51) on Ubuntu & Linux Mint Via PPA]]
+
+- add-apt-repostioryが使えない場合
+  $ sudo apt-get install python-software-properties
+
+- 1.7
+  $ sudo apt-get install openjdk-7-jdk
+
+- (古かった。1.6)
+  JRE : "sudo apt-get install default-jre"
+  JDK : "sudo apt-get install default-jdk"
+  [[https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get][How To Install Java on Ubuntu with Apt-Get]]
 
 *** temp
 
