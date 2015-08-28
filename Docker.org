@@ -8,6 +8,7 @@
 **** attach
 - 
   Attach to a running container
+
 **** export
 - 
   Stream the contents of a container as a tar archive
@@ -67,7 +68,6 @@
 
 - -q
   
-
 **** pull
 - 
   pull an image or a repository from the docker repository server
@@ -139,8 +139,6 @@
 - 
   show the Docker version information
 
-
-
 *** unused
 
 **** build
@@ -180,7 +178,6 @@
   Block until a container stops, then print its exit code
 
 ** network
-
 *** Link
 - [[http://deeeet.com/writing/2014/05/11/docker-network/][Dockerのネットワークの基礎 - SOTA]]
 

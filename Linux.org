@@ -1323,6 +1323,13 @@
   -mと同時に指定すると、指定したフォルダ以下のファイルがコピーされる。
   指定しない場合は/etc/skel以下をコピー。
 
+*** adduser
+- 
+  Create a new user or update default new user information.
+  
+  In Debian, this command works as an interactive way of user adding.
+  CentOS or Fedora, this command may not exist, or just a link to "useradd" command.
+
 *** passwd
 - 
   ユーザパスワードを変更する。
@@ -1749,7 +1756,14 @@
 - -s
   区切り文字を含まない文字列は出力しない。
 
+*** lynx
+- 
+  text-based web-browser.
   
+*** w3m
+- 
+  pager / text-based web-browser.
+
 ** shell
 *** bash
 *** csh
