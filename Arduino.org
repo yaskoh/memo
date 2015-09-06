@@ -184,7 +184,8 @@
   formatは省略可。
 
 ***** Serial.read
-- 
+- Serial.read()
+  読み込み可能なデータの最初の1バイトを返す。-1の場合はデータが存在しない。(int)
   
 
 *** Standard Library
