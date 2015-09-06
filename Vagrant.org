@@ -1,7 +1,5 @@
 * Vagrant
-
 ** command
-
 *** ssh
 - 
   仮想マシンにssh接続する
@@ -75,6 +73,10 @@
   - off
   - rollback
 
+*** version
+- 
+  show the version of Vagrant installed on my computer.
+  
 ** network
 
 *** 種類
@@ -115,3 +117,18 @@
     ...
   end
   
+** memo
+*** Vagrantの紐付
+- 
+  .vagrant以下の場所にあるUUIDで紐付けている。
+  <<.vagrant/machines/default/virtualbox/id>>
+
+  仮想マシンのUUIDを知るには、以下のコマンドをたたく。
+  VBoxManage.exe list vms
+*** Vagrantが起動しない場合
+- 
+  vagrant upが失敗していた場合、何が原因か調べるためにもGUIで起動する。
+  今回は以下をVagrantfileへ追加。
+  - config.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+    end

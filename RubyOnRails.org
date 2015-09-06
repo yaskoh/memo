@@ -1,17 +1,14 @@
 * Ruby on Rails
 
 ** Philosophy
-
 - Don't Repeat Yourself: DRY
-  同じことを繰り返すな
-
 - Convention Over Configuration
-  設定より規約が優先される
 
 ** REST
 *** GET
 - 
   データ読取
+
 *** POST
 - 
   作成
@@ -70,6 +67,10 @@
 ** Command
 *** rails
 **** new
+- 
+  create new rails application.
+  ex) rails new appname
+
 **** server
 - 
   サーバを起動する。
@@ -81,16 +82,16 @@
   ただし単なる慣習なので、スネークケースのコントローラ名を入力しても
   同様にスネークケースのファイル名が出力される。
 
+- 
+  ex)generate controller welcome index
+  Above, a controller, which called "welcome" with an action called "index", is created.
+
 ***** model
 - 
   モデルを作成する。
   慣習として、controllerには複数形を使い、modelには単数形を使う。
   ex) rails generate model User name:string email:string
 ***** integration_test
-**** destroy
-- 
-  generateの逆で作成したコードを削除する
-  ex) rails destroy controller FooBars baz quux
 
 **** console
 - 
@@ -101,6 +102,51 @@
 
 - --sandbox
   サンドボックスモードで起動する
+
+**** dbconsole
+- 
+  figuring out which database you're using and drops you into whichever command line interface you would use it.
+  It supported MySQL, PostgreSQL, SQLite and SQLite3.
+
+**** runnner
+- 
+  runner runs Ruby code in the context of Rails non-interactively.
+
+**** destroy
+- 
+  generateの逆で作成したコードを削除する
+  ex) rails destroy controller FooBars baz quux
+
+*** rake
+- 
+  "Make" command on Ruby.
+  
+  By default it execute test suite.
+
+- --tasks, -T
+  get a list of available Rake taskes.
+
+**** about
+- 
+  gives information about version numbers of Ruby, RubyGemns, Rails, Rails subcomponents, application's folder, Rails environment name, etc.
+
+**** db
+- db:migrate
+  マイグレーションを変更する
+  初めて実行した際にdb/development.sqlite3というファイルが生成される。
+  - VERSION=0
+    最初の状態に戻す
+- db:rollback
+  1つ前の状態に戻す
+
+**** routes
+- 
+  list all of defined routs.
+
+**** test
+- test:prepare
+  データモデルdb/development.sqlite3がテストデータベースdb/test.sqlite3に反映されるようにするもの。
+  たまにテストデータベースが壊れるので、このコマンドを実行する必要があるらしい。
 
 *** bundle
 **** update
@@ -113,26 +159,6 @@
     - T
       データベースのコマンドを表示する。
 - rspec
-
-*** rake
-- 
-  デフォルトの動作はテストスイートの実行。
-
-**** db
-- db:migrate
-  マイグレーションを変更する
-  初めて実行した際にdb/development.sqlite3というファイルが生成される。
-  - VERSION=0
-    最初の状態に戻す
-- db:rollback
-  1つ前の状態に戻す
-
-**** routes
-
-**** test
-- test:prepare
-  データモデルdb/development.sqlite3がテストデータベースdb/test.sqlite3に反映されるようにするもの。
-  たまにテストデータベースが壊れるので、このコマンドを実行する必要があるらしい。
 
 ** File/Directory
 
@@ -276,9 +302,9 @@
 *** javascript_include_tag
 *** csrf_meta_tags
 ** Memo
-
-- form_forメソッド
-
+*** form_for
+- 
+  
 *** heroku
 (他に書くところもないので、とりあえず。。)
 
@@ -364,8 +390,14 @@
   上の例の場合、CoffeeScriptとERbの両方で実行される。
   コードは右から左に実行されるので、CoffeeScriptが先に実行される。
   
-
-
+*** Error
+**** Routing Error
+- This error occurs because the route needs to have a controller defined in order to serve the request.
+**** Unknown action
+- This error indicates that Rails cannot find the new action inside the controller.
+**** Template is missing
+- Rails expects plain actions like this one to have views associated with them to display their information.
+**** ActiveModel::ForbiddenAttributesError...
 ** Link
 - 
 
