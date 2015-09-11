@@ -1,0 +1,95 @@
+* Compiler
+** Tools
+*** lex/flex
+- 
+  flex is a tool for generating scanners.
+  A scanner is aprogram which recognizes lexical patterns in text.
+
+- [[http://flex.sourceforge.net/manual/index.html][Lexical Analysis With Flex, for Flex 2.5.37]]
+
+**** Format
+- 
+  definitions
+  %%
+  rules
+  %%
+  user code
+
+- Definitions Section
+  
+  name difiniton
+  ex)DIGIT [0-9]
+
+- Rules Section
+  pattern action
+
+- User Code Section
+  The user code section is simply copied to lex.yy.c varbatim.
+
+- Comments
+  Fley supports C-style comments, '/*' and '*/'.
+
+**** Patterns
+- x
+  match the characer 'x'
+
+- .
+  any character (byte) except newline
+
+- [xyz]
+  a character class, in this case, the pattern matches either an 'x', a 'y', or a 'z'.
+
+- [abj-oZ]
+  a "character class" with a range in it; matches an 'a', a 'b', any letter from 'j' to 'o' or a 'Z'.
+
+- [^A-Z]
+  a "negated character class", i.e., any character but those in the class.
+
+- [a-z]{-}[aeiou]
+  the lowercase consonants
+
+- r*
+  zero or more r's, where r is any regular expression
+
+- r+
+  one or more r's
+
+- r?
+  zero or one r's
+
+- r{2,5}
+  anywhere from two to five r's
+
+- r{2,}
+  two or more r's
+
+- r{4}
+  exactly 4 r's
+
+- {name}
+  the expansion of the 'name' definition
+
+- "[xyz]\"foo"
+  the literal string: '[xyz]"foo'
+
+- \X
+  if X is 'a', 'b', 'f', 'n', 'r', 't', or 'v', then the ANSI-C interpretation of '\x'.
+  Otherwise, a literal 'X'
+
+- \0
+  a NUL character
+
+- \123
+  the character with octal value 123
+
+- \x2a
+  the character with hexadecimal value 2a
+
+- (r)
+  match an 'r'; parentheses are used to override precedence
+
+- (?r-s:pattern)
+  apply option 'r' and omit option 's' while interpreting pattern.
+  Options may be zero or more of characters 'i', 's', or 'x'
+*** bison
+
