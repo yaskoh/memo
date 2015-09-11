@@ -1,32 +1,60 @@
 * Network
+** Classified
+*** LAN
+- Local Area Network
+  狭い範囲のネットワーク
+
+*** WAN
+- Wide Area Network
+  LAN同士を結ぶ広いネットワーク
+
+** Model
+*** OSI Model
+- 
+  |-------+--------------|
+  | Layer | Name         |
+  |-------+--------------|
+  |     7 | Application  |
+  |     6 | Presentation |
+  |     5 | Session      |
+  |     4 | Transport    |
+  |     3 | Network      |
+  |     2 | Datalink     |
+  |     1 | Physical     |
+  |-------+--------------|
+
+*** Physical
+
+** Protocol
+*** TCP/IP
 
 ** Term
 
-- CSMA/CD
-  Carrier Sence Multiple Access with Collision Domain
+*** CSMA/CD
+- Carrier Sence Multiple Access with Collision Domain
 
-- LLC
-  Logical Link Control
+*** LLC
+- Logical Link Control
 
-- SNAP
-  SubNetwork Access Protocol
+*** SNAP
+- SubNetwork Access Protocol
 
-- FCS
-  Frame Check Sequence
+*** FCS
+- Frame Check Sequence
 
-- CRC
-  Cyclic Redundancy Check
+*** CRC
+- Cyclic Redundancy Check
 
-- NIC
-  Network Interface Card
+*** NIC
+- Network Interface Card
 
-- PoE
-  Power over Ethernet
+*** PoE
+- Power over Ethernet
 
-- OUI
-  Organiation Unique Identifier
+*** OUI
+- Organiation Unique Identifier
 
-- CSMA/CA
-  Collision Domain Multiple Access with Carrrier Avoidance
+*** CSMA/CA
+- Collision Domain Multiple Access with Carrrier Avoidance
 
 

@@ -140,7 +140,6 @@
   show the Docker version information
 
 *** unused
-
 **** build
 - 
   Build a container from a Dockerfile

@@ -71,6 +71,9 @@
   create new rails application.
   ex) rails new appname
 
+- -h
+  show command options
+
 **** server
 - 
   サーバを起動する。
