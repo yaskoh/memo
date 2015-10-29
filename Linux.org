@@ -1310,6 +1310,9 @@
 - 
   新しいグループの作成
 
+- ex)
+  groupadd group01
+
 *** useradd
 - 
   新規ユーザの作成
@@ -1322,6 +1325,11 @@
 - -k
   -mと同時に指定すると、指定したフォルダ以下のファイルがコピーされる。
   指定しない場合は/etc/skel以下をコピー。
+- -d
+  
+
+- ex)
+  - useradd -d /user1 -m -g user1 user1
 
 *** adduser
 - 
@@ -1334,6 +1342,9 @@
 - 
   ユーザパスワードを変更する。
 
+- ex)
+  passwd user
+
 *** chown
 - 
   所有者を変更する。
@@ -1342,8 +1353,13 @@
 *** su
 - 
   ユーザを切り替える。
+
 - -, -l, --login 
   シェルをログインシェルにする。
+  
+- 
+  "su"だと、環境をuserから引き継ぐ。
+  "su -"だと、rootの環境となる。
 
 *** source
 - 
@@ -1628,6 +1644,28 @@
 - -l 階層数
   再帰的にファイルを入手する場合の階層数を指定する。
 
+*** ssh
+- 
+  secure shell.
+
+- -L LocalPort:RemoteHost:RemotePort
+  port forwarding.
+  ex) ssh -L 8080:192.168.111.200:8080 User@192.168.111.1
+
+- R LocalPort:RemoteHost:RemortPort
+  like -L option, but port is opened in remote server.
+
+- -g
+  Allows remote hosts to connect to local forwarded ports.
+
+- -p
+  connection port setting
+  ex) ssh user@192.168.100.1 -p 8080
+
+- config
+  write down port forwarding settings to  ~/.ssh/config 
+  and not to need to set everytime to connect.
+
 *** ssh-keygen
 - 
   認証用の鍵を生成、管理、および変換する。
@@ -1764,6 +1802,17 @@
 - 
   pager / text-based web-browser.
 
+*** logrotate
+- 
+  logrotate is designed to ease administration of systems that generate large number of log files.
+  It allows automatic rotation, compression, removal, and mailing of log files.
+
+- -v
+  Turn on verbose mode.
+
+- -d
+  
+
 ** shell
 *** bash
 *** csh
@@ -1810,10 +1859,12 @@
   再実行する際に高速に処理をすることを目的とするが、メモリの大容量化に伴い、使われなくなっている。
 
 *** /etc/passwd
-    ユーザ名:暗号化パスワード:UID:GID:ユーザのフルネーム:ユーザのホームディレクトリ:ログインシェル
+- 
+  ユーザ名:暗号化パスワード:UID:GID:ユーザのフルネーム:ユーザのホームディレクトリ:ログインシェル
 
 *** /etc/group
-    グループ名:パスワード:GID:ユーザアカウントのリスト(カンマ区切り)
+- 
+  グループ名:パスワード:GID:ユーザアカウントのリスト(カンマ区切り)
 
 *** /etc/nsswitch.conf
     ネームサービススイッチ(NSS)の設定ファイル。
@@ -2117,7 +2168,7 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   実態は共有ライブラリだが、柔軟に対応できるようダイナミックロードを使ってライブラリを分割している。
   ライブラリは/lib/security。
 
-*** ssh接続
+*** sshの秘密鍵接続
 - 
   ssh-keygenで、秘密鍵と公開鍵を作成する。
   "~/.ssh/authorized_key"に公開鍵を登録してあげることで、パスワードを入れなくてもssh接続できるようになる。
@@ -2177,3 +2228,10 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   - cat /etc/issue
 
   [[http://d.hatena.ne.jp/PRiMENON/20080119/1200750903][インストールしたLinuxディストリビューション名とバージョンを確認するには]]
+
+*** LANG Settings
+- 
+  you can change messages on the shell by changing LANG variable
+  ex:export LANG=en_US.UTF-8
+  also you can use "export LANG=C"
+  

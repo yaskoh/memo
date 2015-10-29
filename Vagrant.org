@@ -118,6 +118,15 @@
   end
   
 ** memo
+*** VagrantのBox追加
+- 
+  vagrant box add {title} {url}
+  vagrant init {title} ( <- not necesarry?)
+  vagrant up
+
+- Vagrantbox.es
+  [[http://www.vagrantbox.es/][Vagrantbox.es]]
+  
 *** Vagrantの紐付
 - 
   .vagrant以下の場所にあるUUIDで紐付けている。
@@ -125,6 +134,7 @@
 
   仮想マシンのUUIDを知るには、以下のコマンドをたたく。
   VBoxManage.exe list vms
+
 *** Vagrantが起動しない場合
 - 
   vagrant upが失敗していた場合、何が原因か調べるためにもGUIで起動する。
