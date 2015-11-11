@@ -1,0 +1,61 @@
+* Scala
+
+** tool
+
+*** sbt
+**** About
+- 
+  sbt is "Simple Build Tool"
+  sbt is a build tool for Scala, Java, and more.
+  
+**** Directory Structure
+- sbt-sample/
+  - src/
+    - main/
+      - resources/ # files to include in main jar here
+      - scara/ # main Scala sources
+      - java/ # main Java sources
+    - test/
+      - resources/ # files to include in test jar here
+      - scara/ # test Scala sources
+      - java/ # test Java sources
+  - lib/
+  - bulid.sbt # bulid file
+
+***** build.sbt
+- 
+  
+**** Command
+
+***** sbt
+- 
+  sbt will find the following automatically:
+  - Sources in the base directory
+  - Sources in src/main/scala and src/main/java
+  - Tests in src/test/scala and src/test/java
+  - Data files in src/main/resources and src/test/resources
+  - jars in lib
+
+- Interactive modes
+  Running sbt with no command line arguments starts it in iteractive mode.
+
+- Batch mode
+  run sbt in batch mode, specifying a space-separated list of sbt commands as argumets.
+  
+  - ex) sbt clean compile "testOnly TestA TestB"
+
+***** Common commands
+
+****** clean
+****** compile
+****** test
+****** console
+****** run <arguments>*
+****** package
+****** help <command>
+****** reload
+
+**** Link
+- 
+  [[https://github.com/sbt/sbt][sbt / sbt - github]]
+  [[http://www.scala-sbt.org/][scala-sbt.org]]
