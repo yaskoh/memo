@@ -142,3 +142,8 @@
   - config.vm.provider "virtualbox" do |vb|
       vb.gui = true
     end
+*** 共有フォルダ
+- 
+  Vagrantfileが設置されているフォルダ、
+  および/vagrantが共有フォルダとして使用できる。
+

@@ -1108,7 +1108,6 @@
   '\n'を入れないと改行されない。
 
 *** man
-
 - マニュアルを呼び出す。
   |------------+------------------------|
   | セクション | 分類                   |
@@ -1196,6 +1195,8 @@
   自分以外のユーザのプロセスも表示する
 - -x
   制御端末のないプロセスの情報も表示する
+- -u
+  プロセスのユーザ情報を表示
 - -e
   全てのプロセスを表示する。
 - -f
@@ -1256,7 +1257,9 @@
   ファイルシステムのタイプを指定
    ext3, ntfs, sysfs, devpts, proc, tmpfsなど。
 
-*** unmount
+*** umount
+- 
+  unmount file systems
 
 *** sysctl
 - 
@@ -1276,9 +1279,30 @@
 - 
   ファイルシステムについて、使用領域と空き領域のサイズを表示する。
   disk free : display free disk space.
-  [-h] サイズの単位をつけてくれる。
-  [-a] サイズが0のファイルシステムも出力
-  [-T] ファイルシステムの種類(ex: ext4)も出力
+
+- -h
+  適当なサイズの単位をつけてくれる。
+- -a
+  サイズが0のファイルシステムも出力
+- -t fstype, --type=fstype
+  ファイルシステムの種類(ex: ext4)の種別を指定
+
+*** du
+- du [filename...]
+  ディレクトリ内のファイル容量を表示する。
+  実際に使用しているディスク容量なので、ファイルサイズとは一致しない場合がある。
+
+- -c, --total
+  検索したすべての容量の総計を表示する
+
+- -k, --kilobytes
+  単位をキロバイトにする
+
+- -m, --megabytes
+  単位をメガバイトにする
+
+- -s
+  report only the sum of the usage in the current directory
 
 *** mkfs
 - 
@@ -1293,6 +1317,46 @@
 - 
   スワップ領域を設定する。
   mkswap /dev/sbd2
+
+*** fsdk
+- 
+  実際にはLinuxで利用できるさまざまなファイルシステムチェッカーへの単なるフロントエンド、とのこと。
+
+*** e2fsdk
+- e2fsck DEVICE
+  ext2/ext3/ext4ファイルシステムの整合性をチェックし、修復する。
+  マウント中のファイルシステムに実行すると壊れる恐れがあるため注意。
+
+- -f
+  ファイルシステムにcleanマークが付いていても強制的にチェックアウトする。
+
+*** resize2fs
+- 
+  resize ext2, ext3, or ext4 file system.
+  It can be used to enlarge or shrink an unmounted file system located on device.
+
+*** lvreduce
+- 
+  reduce the size of a logical volume
+
+- -L, --size [-]LogicalVolumeSize[bBsSkKmMGtTpPeE]
+  Reduce or set
+  ex) lvreduce -L -20G /dev/mapper/vg01-lvol01
+  
+- link
+  [[http://seriousbirder.com/blogs/lvreduce-ext4-example/][lvreduce ext4 example]]
+
+*** lvextend
+- 
+  extend the size of a logical volume.
+
+*** vgs
+- 
+  report information about volume groups
+
+*** vgdisplay
+- 
+  display attributes of volume groups
 
 *** export
 - 
@@ -1401,6 +1465,13 @@
 *** zip / unzip
 *** rar / unrar
 *** gzip / gunzip
+- 
+  gzip形式で圧縮/解凍する。
+  
+- gzip -l, --list
+  圧縮された個々のファイルについて、以下のフィールドを列挙する。
+  compresed size, uncompressed size, ratio, uncompresed_name
+
 *** bzip2 / bunzip2
 *** xz / unxz
 
@@ -1419,6 +1490,8 @@
 - 
   ファイルやディレクトリを検索する。
   用法: find [option] [path...] [expression]
+  用法：find [path] [condition] [action]
+
 - -name
   ファイル名を検索、パターンマッチ可。
 - -exec
@@ -1776,6 +1849,10 @@
 - link
   [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060227/230888/][【split】ファイルを分割する - Linuxコマンド集]]
 
+*** merge
+- merge (option) file1 file2 file3
+  file2からfile3へのすべての変更をfile1に併合する。
+
 *** cut
 - 
   特定の文字で区切られた項目を分割する。
@@ -1793,6 +1870,83 @@
 
 - -s
   区切り文字を含まない文字列は出力しない。
+
+- --compliment
+
+- --outputdelimiter 'delimiter'
+  デリミタを変更した形で出力する
+
+**** examples
+- select columns for characters
+  ex) cut -c2 test.txt
+  mn) display 2nd character from each line.
+  
+  ex) cut -c1-3 test.txt
+  mn) display first three characters in the file from each line.
+  
+  ex) cut -c-8 test.txt  #1st to 8th
+  ex) cut -c8- test.txt  #8th to end
+  ex) cut -c- test.txt   #all
+
+- select specified field
+  ex) cut -d':' -f1 /etc/passwd
+  mn) divide by ':' in the row and display first culomn each line in passwd file.
+  
+  ex) grep "/bin/bash" /etc/passwd | cut -d':' -f1-4,6,7
+  mn) select first to 4th, 6th and 7th coloumn field.
+
+- other options
+  -s
+  ex) grep "/bin/bash" /etc/passwd | cut -d':' -s -f1
+  mn) "-s" option exclude a line not containing the deliminater, in this case ':'.
+  
+  --compliment
+  ex) grep "/bin/bash" /etc/passwd | cut -d':' --comlement -s -f7
+  mn) it contains all lines excepting 7th field.
+
+  --output-delimiter
+  ex) grep "/bin/bash" /etc/passwd | cut -d':' -s -f7 --output-delimiter='#'
+      -> root#/root#/bin/bash
+  mn) change delimiter from ':' to '#'
+
+*** sort
+- 
+  sorts the contents of a text file, line by line.
+
+- -c, --check
+  Check for sorted input; do not sort.
+
+- -d, --dictionary-order
+  Consider only blanks and alphanumeric characters.
+
+- -f, --ignore-case
+  Fold lower case to upper case characters.
+  
+- -n, --numeric-sort
+
+- -r, --reverse
+
+- -u, --unique
+  With -c, check for strict ordering; without -c, output only the first of an equal run.
+
+*** uniq
+- 
+  reporting or filtering out repeated lines in a file.
+  
+  uniq does not detect repeated lines unless they are adjacent.
+  You may want to sort the input first, or use "sort -u" instead of "uniq".
+
+- -c, --count
+  Prefix lines with a number representing how many times they occurred.
+
+- -d, --repeated
+  Only print duplicated lines.
+
+- -i, --ignore-case
+  This option performs case-insensitive comparisons.
+
+- -u, --unique
+  Only print unique lines.
 
 *** lynx
 - 
@@ -1812,7 +1966,6 @@
 
 - -d
   
-
 ** shell
 *** bash
 *** csh
@@ -2235,3 +2388,12 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   ex:export LANG=en_US.UTF-8
   also you can use "export LANG=C"
   
+*** スーパーブロック
+- 
+  論理パーティションを管理するためのメタデータ。
+  細かい点は不明。リンク参照。
+  
+- Link
+  [[https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF_(%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)][スーパーブロック（ファイルシステム） - Wikipedia]]
+  [[http://open-groove.net/linux/linux-filesystem-superblock/][Linuxファイルシステムにおけるスーパーブロックとは - OpenGroove]]
+

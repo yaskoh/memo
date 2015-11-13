@@ -28,8 +28,40 @@
 ** Protocol
 *** TCP/IP
 
-** Term
+*** BGP
+- 
+  パスベクター(Path Vector)型プロトコルと呼ばれている。
+  
 
+*** HTTP
+
+**** Status
+
+***** Informational 1xx
+
+***** Successful 2xx
+
+****** 200 OK
+
+****** 204 No Content
+
+***** Redirection 3xx
+
+****** 302 Found
+
+****** 304 Not Modified
+
+***** Client Error 4xx
+
+****** 403 Forbiden
+
+****** 404 Not Found
+
+***** Server Erorr 5xx
+
+****** 500 Internal Server Error
+
+** Term
 *** CSMA/CD
 - Carrier Sence Multiple Access with Collision Domain
 
@@ -58,3 +90,71 @@
 - Collision Domain Multiple Access with Carrrier Avoidance
 
 
+*** AS
+- 
+  Autonomous System、自立システム。
+  各組織が保有・運用する自立したネットワーク。
+  
+  単一の経路制御ポリシーを共有するネットワークで、
+  個々のISPや企業などが保有するネットワークがこれにあたる。
+  
+  ASは各国のNIC（日本ではJPNIC）などが発行するAS番号によって識別される。
+
+*** IGP
+- 
+  Interior Gateway Protocol
+  AS内の経路制御に使われるプロトコル。
+  RIPやOSPFなど。
+
+*** EGP
+- 
+  Exterior Gateway Protocol
+  AS間の経路制御に使われるプロトコル。
+  BGPなど。
+  
+  もともとネットワーク生成期の具体的なプロトコルの一つでもあるが、
+  上記のようにBGPなどの総称としても用いられるため、文脈により判断が必要。
+
+*** ISP
+- 
+  Internet Service Provider
+
+*** NIC
+- 
+  Network Information Center
+
+** Memo
+*** Default Gateway
+- 
+  異なるネットワークへの出口となるルータのこと。
+  したがってデフォルトゲートウェイを設定しなければ、他のネットワークとやりとりできない。
+  
+*** Routing
+- 
+  
+
+**** Dynamic Routing
+- 
+  ルータなどが経路情報を互いに交換しあい、自動的に生成・更新し続ける経路表（ルーティング・テーブル）に基づいて経路選択を行うこと。
+  
+  ルーティングプロトコルと呼ばれる通信手段に従って、ルータ同士が互いに自分が持っている経路情報を交換し合い、
+  それぞれが経路表をっ自動的に生成・更新していく。
+
+- メリット
+  一台ずつ人手で経路情報を設定する必要がないため、大規模なネットワークでは機器を効率的に管理でき、
+  障害発生時にも普通になった経路の情報が伝播して迂回経路が自動的に構成される。
+
+- デメリット
+  外部から不正な経路情報を送りつけられるリスクがある。
+  経路情報の交換に一定の通信料を消費するため、通信速度がひっ迫している状況ではデメリットとなる。
+
+**** Static Routing
+- 
+  管理者があらかじめ設定した固定的な経路表を用いる方式。
+
+*** Routing Protocol
+- 
+  ルーティングテーブルを他のルータと交換するためのプロトコル。
+  AS(各組織が保有・運用する小規模なネットワーク)内で用いられるIGP(Interior Gateway Protocol)と、
+  異なるAS間で用いられるEGPとに大別される。
+  

@@ -123,3 +123,8 @@
 - -r C-Down  resize-pane -D
 - -r C-Left  resize-pane -L
 - -r C-Right resize-pane -R
+** Memo
+*** Copy/Paste
+- 
+  (Windows)Shiftを押しながらマウスを動かす・右クリックすると、
+  コピーやペースト等の操作ができる。
