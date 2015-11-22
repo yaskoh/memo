@@ -1055,6 +1055,13 @@
   リネームとかファイルの移動とか。
   mv aaa{,bbb}とするとaaa->aaabbbにリネームされる。
 
+*** cp
+- 
+  
+- -i
+  
+- -p
+  
 *** touch
 *** mkdir
 *** rmdir
@@ -1257,7 +1264,7 @@
   ファイルシステムのタイプを指定
    ext3, ntfs, sysfs, devpts, proc, tmpfsなど。
 
-*** umount
+*** umount / unmount
 - 
   unmount file systems
 
@@ -1335,6 +1342,34 @@
   resize ext2, ext3, or ext4 file system.
   It can be used to enlarge or shrink an unmounted file system located on device.
 
+*** lvcreate
+- 
+  create a new logical volume in a volume group.
+
+- -n, --name LogicalVolume[Name|Path]
+  Sets the name for the new logical volume.
+  
+- -p, --permisson {r|rw}
+  Sets access permissons to read only (r) or read and write (rw).
+
+- -s, --snapshot OriginalLogicalVolume[Name|Path]
+  Creates a snapshot logical volume for an existing, so called original logical volume or origin).
+
+- -L, --size LogicalVolumeSize[bBsSkKmMgGtTpPeE]
+  Gives the size to allocate for the new logical volume.
+
+- ex) lvcreate -s -L 40G -n snapshot_vol -p r /dev/vg01/lvol01
+
+*** lvremove
+- 
+  removes one or more logical volumes.
+  
+- -f, --force
+  Revome active logical volumes without confirmation.
+
+- ex)
+  lvremove -f vg00/lvol1
+
 *** lvreduce
 - 
   reduce the size of a logical volume
@@ -1350,6 +1385,21 @@
 - 
   extend the size of a logical volume.
 
+*** lvs
+- 
+  report information about logical volumes
+
+*** lvdisplay
+- 
+  display attributes of a logical volume
+  
+*** vgextend
+- 
+  add physical volumes to a volume group
+
+- ex)
+  sudo vgextend centos /dev/sdb1
+  
 *** vgs
 - 
   report information about volume groups
@@ -1358,11 +1408,44 @@
 - 
   display attributes of volume groups
 
-*** export
+*** pvcreate
 - 
-  変数を大域変数として追加する。
-  export FOO="BAR"
+  initialize a disk or partition for use by LVM
 
+- ex)
+  sudo pvcreate /dev/sdb1
+  
+*** pvs
+- 
+  report information about physical volumes
+
+*** pvdisplay
+- 
+  display attributes of a physical volume
+
+*** export
+- export VAR
+  set VAR as environment variables.
+  
+- export VAR="value"
+  set value on VAR as environment variables.
+  This form may give an error in bash, sh(ash) of FreeBSD, etc.
+
+  変数を大域変数として追加する。
+  ex) export FOO="BAR"
+
+- (-p)
+  show environ variables
+  
+- -n VAR
+  Remove VAR from export lint
+
+- csh, tcsh
+  in csh or tcsh, use "setenv" instead of export.
+
+*** env
+- 
+  
 *** ln
 - 
   リンクを作成する
@@ -1384,13 +1467,14 @@
   shellを設定する。
 - -g 
   主グループを設定する。
-- -m
+- -m, --create-home
   ホームディレクトリが存在しない場合に作成する。
-- -k
+- -k, --skel
   -mと同時に指定すると、指定したフォルダ以下のファイルがコピーされる。
   指定しない場合は/etc/skel以下をコピー。
-- -d
-  
+  The skelton direcotry
+- -d, --home-dir HOMEDIR
+  The new user will be created using HOME_DIR as the value for the user's login directory.
 
 - ex)
   - useradd -d /user1 -m -g user1 user1
@@ -1401,6 +1485,24 @@
   
   In Debian, this command works as an interactive way of user adding.
   CentOS or Fedora, this command may not exist, or just a link to "useradd" command.
+
+*** vipw
+- 
+  edit /etc/password
+
+- -s
+  edit /etc/shadow
+
+*** vigr
+- 
+  edit /etc/group
+
+*** visudo
+- 
+  Edit /etc/sudoers.
+  
+  Format: User Host=(Permisson) Command
+  ex) root ALL=(ALL) ALL
 
 *** passwd
 - 
@@ -1429,6 +1531,7 @@
 - 
   "source filename"で、filenameで指定されたスクリプトファイルを実行する。
   ファイルの内容を、自分で手で打っていくのと同じ
+
 *** tar
 - 
   ファイルを書庫化、展開する。
@@ -1688,6 +1791,8 @@
   OSやCPUのアーキテクチャ、ホスト名、カーネルバージョン等のシステム情報が表示される。
 - -a
   全ての情報を表示する。
+- -n
+  ホスト名を表示する
 
 *** joke
 **** sl
@@ -1750,6 +1855,10 @@
 
 - -F ssh_config
   sshの設定ファイルを指定する。
+
+- Wildcardを使う方法
+  サーバ側がglobで解釈できるよう、エスケープして渡す。
+  ex) scp 'SERVERNAME:/DIR/\*' .
 
 *** wc
 - 
@@ -1966,6 +2075,10 @@
 
 - -d
   
+*** netstat
+
+*** screen
+
 ** shell
 *** bash
 *** csh
@@ -1982,7 +2095,52 @@
 *** RHEL
 
 *** CoreOS
+** PackageManagement
+*** apt
+**** aptitude
+*** dnf
+- 
+  Dandified Yum
+  rpm-based package system.
+  The next generation version of yum.
 
+*** yum
+- 
+  Yellowdog Updater Modified.
+  interactive, rpm based, package manager.
+  yumは内部でrpmを呼び出していて、rpmよりも高度。
+  
+**** install
+- 
+  install the latest version of a package or group packages while ensuring that all dependencies are satisfied.
+
+- -y
+  answer "yes" to questions in the install message.
+
+**** update
+- 
+  If run without any packeages, update will update every currently installed package.
+  
+**** upgrade
+
+**** remove
+
+**** list
+- 
+  find out which package provides some feature or file.
+
+**** info
+- 
+  show details.
+
+**** clean
+
+**** search
+- 
+  This is used to find packages when you know something about package
+  but aren't sure of it's name.
+
+*** rpm
 ** memo
 *** アクセス権の補助フラグ
 **** suid
@@ -2020,8 +2178,9 @@
   グループ名:パスワード:GID:ユーザアカウントのリスト(カンマ区切り)
 
 *** /etc/nsswitch.conf
-    ネームサービススイッチ(NSS)の設定ファイル。
-    いろいろなカテゴリの名前サービス情報を、どの情報源からどの順序で取得するかを判断するのに使用される。
+- 
+  ネームサービススイッチ(NSS)の設定ファイル。
+  いろいろなカテゴリの名前サービス情報を、どの情報源からどの順序で取得するかを判断するのに使用される。
   
 *** heredoc
 - 
@@ -2039,15 +2198,17 @@
     EOF
 
 *** Ctrl-s
-    スクロール停止キー。画面がフリーズしたように見える。
-    ログを見ていて、一時的にとめておくために使ったりする。
-    解除はCtrl-q
+- 
+  スクロール停止キー。画面がフリーズしたように見える。
+  ログを見ていて、一時的にとめておくために使ったりする。
+  解除はCtrl-q
 *** glob
 - 
   シェルが*?{}[]~などを解釈し、ファイル名として展開することをグロブ（ファイルグロブ）という。
   正規表現とは別物。
   働かせたくない場合は""等で囲む。
   ちなみにWindowsではLinuxと異なりプログラム側で展開する。
+
 *** tty
 - 
   端末を表すttyは、TeleTYpeの略。
@@ -2242,6 +2403,9 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   psコマンド等で確認するとPID(プロセスID)とSID(セッションID)が等しい。
   リーダーは新しいセッションやプロセスを作れない。
   セッションと関連付けられた端末を、プロセスの制御端末(controlling terminal)という。
+*** ログインセッション
+- 
+  特定の端末上でセッションを開始したプロセスの子孫のプロセスが全て含まれる。
 
 *** process group
 - 
@@ -2356,9 +2520,6 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   IPCはInterprocess Communication。
   System V IPCとして、セマフォ(semaphore)、メッセージキュー(message que)、共有メモリ(shared memory)がある。
   shmget(), semget(), msgget()といったシステムコールを呼び出すことで、カーネルはIPC資源を獲得する。
-*** ログインセッション
-- 
-  特定の端末上でセッションを開始したプロセスの子孫のプロセスが全て含まれる。
 
 *** プロセスグループ
 - 
@@ -2385,8 +2546,9 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 *** LANG Settings
 - 
   you can change messages on the shell by changing LANG variable
-  ex:export LANG=en_US.UTF-8
+  ex) export LANG=en_US.UTF-8
   also you can use "export LANG=C"
+  if you like to use Japanese, set ja_JP.UTF-8
   
 *** スーパーブロック
 - 
@@ -2397,3 +2559,66 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   [[https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF_(%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0)][スーパーブロック（ファイルシステム） - Wikipedia]]
   [[http://open-groove.net/linux/linux-filesystem-superblock/][Linuxファイルシステムにおけるスーパーブロックとは - OpenGroove]]
 
+*** IFSの変更
+- 
+  シェルの区切り文字を指定する、"IFS(Internal Field Separator)"という変数がある。
+  スペースと改行がデフォルトで区切り文字となっているが、スペース区切りの行を一つのまとまりとして認識したい場合、
+  IFS=$"\n" とすることで改行のみを区切り文字として変更可能。
+  （もとのIFSはバックアップを取っておいて、変更後もとに戻すとよい）
+
+- 
+  [[http://linux.just4fun.biz/%E9%80%86%E5%BC%95%E3%81%8D%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88/%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%81%8C%E5%90%AB%E3%81%BE%E3%82%8C%E3%82%8B%E6%96%87%E5%AD%97%E5%88%97%E3%82%921%E8%A1%8C%E3%81%A8%E3%81%97%E3%81%A6%E6%89%B1%E3%81%86%E6%96%B9%E6%B3%95.html][スペースが含まれる文字列を1行として扱う方法 - 逆引きシェルスクリプト]]
+
+*** how to change forgotten root password
+**** centos
+- 
+  1. Boot CenTOS and press esc key when seeing the message "Press any key to enter the menu"
+  2. Select your operating system and press 'a' to modify kernel argument.
+  3. Pet number "1" or character "S" in kernel configuration.
+  4. Starting with single mode, command 'pwd' and change password.
+
+- Link
+  [[http://lintut.com/reset-forgotten-root-password-in-centos/][Easy way to reset forgotten root password in CentOS 6.5 - LinTut]]
+
+*** change kbdmap
+- setxkbdmap dvorak
+  change xkeyboardmap to dvorak.
+
+- loadkeys
+  loadkeys dvorak.map
+  loadkeys /usr/share/keymaps/i386/dvorak/dvorak.map.gz
+
+- Link
+  [[http://www.kaufmann.no/roland/dvorak/linux.html][Installing the Programmer Dvorak Keyboard Layout on Linux]]
+
+*** check OS x86 or x86_x64
+- 
+  type "uname -a"
+*** extend lvm volumes
+- create partition
+  fdisk /dev/sda
+  (type some commands like p(print), n(add), m(help), t(change system id), w(write) etc)
+  
+- reboot
+  reboot
+  
+- create lvm physical volume
+  vgextend /dev/sda3
+
+- check volumegroup
+  vgs
+
+- set phsycal volume to volume group
+  vgextend VolGroup00 /dev/sda3
+
+- extend logical volume
+  lvextend -l +100%Free /dev/VolGroup00/LogVol00
+
+- re
+  resize2fs /dev/VolGroup00/LogVol00
+
+- check the size
+  df -h
+
+- [[https://users.miraclelinux.com/technet/document/linux/training/2_2_3.html][Linux技術トレーニング 基本管理コースⅡ - MIRACLE]]
+- [[http://se-suganuma.blogspot.jp/2009/04/centoslvmvmwarehdd.html][【CentOS】LVMでディスク容量を拡張（VMwareのHDD容量を増やす） - SE奮闘記]]

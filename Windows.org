@@ -478,3 +478,37 @@
   
 - [[http://note.chiebukuro.yahoo.co.jp/detail/n129063][Windowsで環境変数を設定する - YAHOO!知恵袋]]
 
+*** (聞いた話メモ)
+- 
+  
+- 
+  ntoskrnl.exe
+  カーネル本体
+
+- 
+  Hardware abstraction の下にBIOSがいる。
+  
+
+- 
+  Ntdll.dll
+  Kernel32.dll
+  Win32
+
+
+- 
+  起動プロセス
+  smssだけ、カーネル直で読んでる。
+  
+- 
+  Object manager
+  セマフォとか、
+
+- 
+  カーネルの中のレジストリとか、
+  
+- 
+  Advanced なんとか。
+  
+- 
+  起動プロセス、
+  

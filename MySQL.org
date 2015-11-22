@@ -7,4 +7,56 @@
   バイナリログは論理ロギング。
   （InnoDBログは物理ロギング）
   
+*** テーブル確認
+- 
+  SHOW TABLES FROM db_name
+
+*** Login
+- 
+  mysql -h hostname -u username -P portnumber
+
+*** commands(memo)
+- CREATE USER user IDENTIFIED BY 'password';
+- select User from mysql.user;
+- create database DB名 ;
+- show databases;
+- grant all privileges on DB名.* to user@"hostname" identified by 'password' with grant option;
+- exit
+- revoke all privileges on DB名.* to "user"@"host"
   
+*** delete "grant usage"
+- 
+  Usage only user is written in the mysql.user table with all global privileges turned off.
+  
+  [[http://dba.stackexchange.com/questions/13083/cant-remove-grant-usage][can't remove "GRANT USAGE"]]
+
+*** path of my.cnf
+- 
+  mysql --help | grep my.cnf
+  ⇒in this case, files is in /etc/my.cnf
+
+*** installation
+- CentOS
+  sudo yum install mysql-server
+  sudo /sbin/server mysqld start
+  
+  then, run the following command (to be secure)
+  sudo /usr/bin/mysql_secure_installation
+  
+  sudo chkconfig mysql on
+  
+*** my.cnf and settings files
+- 
+  there are samples of my.cnf on /usr/share/mysql/.
+  |------------------------+--------+----------------------------------|
+  | sample file            | memory | usage                            |
+  |------------------------+--------+----------------------------------|
+  | my-small.cnf           | ~64MB  | small db                         |
+  | my-medium.cnf          | ~128MB | shared-small                     |
+  | my-large.cnf           | ~512MB | for server mostly used for mysql |
+  | my-huge.cnf            | 1G~2G  | for server used for mysql only   |
+  | my-innodb-heavy-4G.cnf | 4GB    | InnoDB                           |
+  |------------------------+--------+----------------------------------|
+
+** Link
+- [[http://www.rackspace.com/knowledge_center/article/installing-mysql-server-on-centos][Installing MySQL Server on CentOS - Rackspace Support Network]]

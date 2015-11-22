@@ -138,10 +138,11 @@
 *** Vagrantが起動しない場合
 - 
   vagrant upが失敗していた場合、何が原因か調べるためにもGUIで起動する。
-  今回は以下をVagrantfileへ追加。
+  今回は以下をVagrantfileへ追加（コメントを外せばよい）。
   - config.vm.provider "virtualbox" do |vb|
       vb.gui = true
     end
+
 *** 共有フォルダ
 - 
   Vagrantfileが設置されているフォルダ、
