@@ -1,11 +1,30 @@
 * ShellScript
 
 ** Rule
+*** Basics
 - First Line
   #! /bin/sh
   
   use bshell for use every environment.
+
+- Comment
+  use #(sharp).
+  comment is from # to end of the line.
+
+- Line
+  line break is the sign of the end of a command in UNIX.
+  \(backslash) make ignoring the end sign and connect lines.
+
+- Wildcard
+  *      : any characters or none
+  ?      : a character
+  [...]  : one of the character inside of [...]
+  [!...] : one of the character not inside of [...]
+
+- Hidden Files
+  Using wildcard, 
   
+
 ** Built-in Functions
 
 ** Syntax
