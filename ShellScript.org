@@ -2,28 +2,91 @@
 
 ** Rule
 *** Basics
-- First Line
+**** First Line
+- 
   #! /bin/sh
   
   use bshell for use every environment.
 
-- Comment
+**** Comment
+- 
   use #(sharp).
   comment is from # to end of the line.
 
-- Line
+**** Line
+- 
   line break is the sign of the end of a command in UNIX.
   \(backslash) make ignoring the end sign and connect lines.
 
-- Wildcard
-  *      : any characters or none
+**** Wildcard
+- 
+  * : any characters or none
   ?      : a character
   [...]  : one of the character inside of [...]
   [!...] : one of the character not inside of [...]
 
 - Hidden Files
-  Using wildcard, 
+  handle hidden files using wildcard, you have to write .(dot) explicitely.
+
+**** Quotation
+- three ways to Quotate : 
+  - \(backslash)
+  - '(single quote)
+  - "(double quote)
   
+- bachslash(\)
+  escape-character
+  assume a normal character the next of backslash.
+  
+- single quote '
+  in the single quote, all characters are assumed as normal characters.
+    
+- double quote "
+  all characters but $, `(backquote), \(backslash) are assumed as normal characters.
+  backslash is work as escape character when next character is $, `, \, " only.
+    
+- ex
+  using variables, sometimes need to use quotation.
+  1) 
+  STRING=
+  test $STRING = john
+  (ÅÀ test   = john, error)
+    
+  STRING=
+  test "$STRING" = john
+  (ÅÀtest "" = john, error won't occur)
+    
+**** Command substitution with backquotes
+- 
+  backquote substitute command within them to the result of command execution.
+  
+  - ex)
+    $ echo "Today is `date`"
+    ÅÀ Today is Sun Nov 23 11:37:33 JST 2015
+  
+- nest
+  being escaped backquote by backslash can perform.
+  
+  - ex)
+  $ STRING=`echo "abc \`echo def\` ghi"`
+  $ echo $STRING
+  ÅÀ abc def ghi
+
+**** Exit status
+- 
+  True, Normal : 0
+  False, Error : 1
+
+  result is in "$?" variable.
+
+**** Command Separater
+- 
+  - LineBreak
+  - ; (Semicolon)
+  - | (Pipe) - make output input of next command
+  - & (Ampersand) - excute in background
+  - || - OR
+  - && - AND
 
 ** Built-in Functions
 

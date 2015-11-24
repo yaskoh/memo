@@ -1,8 +1,8 @@
-ASP.NET
+* ASP.NET
 
-* TeachYourSelf ASP.NET
+** TeachYourSelf ASP.NET
 
-** 1章
+*** 1章
 - [[http://msdn.microsoft.com/ja-jp/library/bb400852(v=vs.100).aspx][ASP.NETポータル]]
 - .NetFrameork
     共通言語ランタイム / .NET Frameworkクラスライブラリ で構成される。
@@ -18,7 +18,7 @@ ASP.NET
     ブラウザからアクセスするためのアプリケーション開発と、
     API開発・アプリケーション連携のためのサービス開発がある。
 
-** 2章
+*** 2章
 - 開きたいファイルを右クリックして、ブラウザを選択できる。
 - WebアプリケーションとWebサイト
     Webアプリケーションは、csファイルをあらかじめビルドしておきdllとして含める必要がある。
@@ -37,7 +37,7 @@ ASP.NET
     Page派生クラスとして分離コードとデザイン定義コードをマージし、インスタンス化&実行している。
     Pageオブジェクトは毎回生成しなおされる。
 
-*** Webフォームの基本構造
+**** Webフォームの基本構造
 - ディレクティブ
     <%@ ディレクティブ名 属性名="属性値" ... %>
     @Pageのディレクティブの属性: Language, AutoEventWireup, CodeBehind, Inherits
@@ -49,7 +49,7 @@ ASP.NET
     <asp:コントロール名 ID="ID値" runat="Server" プロパティ名="値" ...></asp:コントロール名>
     サーバコントロールは<form runat="Server">~</form>の内側に書く。<form~>はページ内に1回しか記述できない。
 
-*** ASP.NETを理解する3つの仕組み
+**** ASP.NETを理解する3つの仕組み
 - サーバーコントロール
     - サーバーコントロールは、コントロールツリーと呼ばれるオブジェクト階層に変換される。
       <asp:~>以外のテキストはLiteralControlオブジェクト(固定テキスト)としてコントロールツリーに取り込まれる。
@@ -72,9 +72,9 @@ ASP.NET
     - ポストバック時にもビューの状態を保持するための仕組み。
       隠しフィールドとしてhtmlに埋め込まれており、サーバーへ送信される。
 
-** 3章
+*** 3章
 
-*** フォームコントロール
+**** フォームコントロール
 
 - TextBox
     TextModeプロパティで単一行/複数行/パスワード入力ボックス等の種別を設定できる。
@@ -100,7 +100,7 @@ ASP.NET
 
     list.SelectedValue = list.Items(list.SelectedIndex).Value = list.SelectedItem.Value
 
-*** 表示系コントロール
+**** 表示系コントロール
 
 - Label/Literal
     Labelは<span>タグで修飾されているが、Literalは単に文字列だけを出力している。
@@ -112,7 +112,7 @@ ASP.NET
 - Image
     画像を表示する。
 
-*** ボタンコントロール
+**** ボタンコントロール
 
 - Button
 - LinkButton
@@ -126,7 +126,7 @@ ASP.NET
 - OnClientClickプロパティ
     クリック時にJavaScriptを実行する。
 
-*** 検証コントロール
+**** 検証コントロール
 
     |----------------------------+------------------------|
     | RequiredFieldValidator     | 必須チェック           |
@@ -171,30 +171,30 @@ ASP.NET
     JavaScriptの正規表現は、.NET Frameworkの正規表現(Regexクラス)のサブセットなので、
     挙動をあわせる場合にはJavaScriptの表現範囲にあわせる必要がある。
 
-** 4章
+*** 4章
 
-*** データバインドコントロール
+**** データバインドコントロール
 
-    |-------------+------------------------------|
-    | GridView    | グリッド表                   |
-    | DetailsView | テンプレート固定の単票ビュー |
-    | FormView    | 自由形式の単票ビュー         |
-    | ListView    | 自由形式のリスト             |
-    |-------------+------------------------------|
+     |-------------+------------------------------|
+     | GridView    | グリッド表                   |
+     | DetailsView | テンプレート固定の単票ビュー |
+     | FormView    | 自由形式の単票ビュー         |
+     | ListView    | 自由形式のリスト             |
+     |-------------+------------------------------|
 
-*** データソースコントロール
+**** データソースコントロール
 
-    |-------------------+------------------------------------|
-    | SqlDataSource     | 一般的なリレーショナルデータベース |
-    | AccessDataSource  | MSAccess                           |
-    | SiteMapDataSource | サイトマップファイル               |
-    | XmlDataSource     | XMLファイル                        |
-    | ObjectDataSource  | ビジネスオブジェクト               |
-    | LinqDataSource    | LINQ経由で取得したデータ           |
-    | EntityDataSource  | エンティティ経由で取得したデータ   |
-    |-------------------+------------------------------------|
+     |-------------------+------------------------------------|
+     | SqlDataSource     | 一般的なリレーショナルデータベース |
+     | AccessDataSource  | MSAccess                           |
+     | SiteMapDataSource | サイトマップファイル               |
+     | XmlDataSource     | XMLファイル                        |
+     | ObjectDataSource  | ビジネスオブジェクト               |
+     | LinqDataSource    | LINQ経由で取得したデータ           |
+     | EntityDataSource  | エンティティ経由で取得したデータ   |
+     |-------------------+------------------------------------|
 
-*** GridView
+**** GridView
 
 - 接続文字列
     - 基本パラメータ
