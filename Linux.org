@@ -36,7 +36,7 @@
   関数呼び出しに関連したデータを置くところ。
   関数の引数やローカル変数がおかれる。
 
-** File
+*** File
 - memo
   以下は広義ではすべてファイル。
 
@@ -1049,7 +1049,7 @@
       long tv_usec;  /* ミリ秒 */
   };
 
-** command
+** commands
 *** mv
 - 
   リネームとかファイルの移動とか。
@@ -1557,7 +1557,9 @@
       ファイルを指定
     - -v, --verbose
       ファイル一覧を詳細に表示
-  - 形式別(最近は自動判断)
+    - -C, --directory=DIR
+      change to deriectory DIR
+  - 形式別圧縮解凍(最近は自動判断)
     - -z
       tar + gzip
     - -j
@@ -1599,6 +1601,10 @@
   ファイル名を検索、パターンマッチ可。
 - -exec
   検索後コマンドを実行する。
+
+- -empty
+  空ファイルを対象とする
+  ex) find . -empty
 
 *** locate
 - 
@@ -2070,14 +2076,109 @@
   logrotate is designed to ease administration of systems that generate large number of log files.
   It allows automatic rotation, compression, removal, and mailing of log files.
 
+- -d
+  Turns on debug mode and implies -v.
+
 - -v
   Turn on verbose mode.
 
-- -d
+  
+- -f, --force
+  
+  
+*** screen
+
+*** stat
+- 
+  display file or file system status
+
+*** iptables
+- iptables
+  handle iptables settings.
+  see alse [files]
+
+- ex)
+  iptables -t filter -I Input -p tcp -s 123.123.123.123 --dport 80 -j DROP
   
 *** netstat
+  
+*** nc
+- 
+  netcat.
+  arbitrary TCP and UDP connections and listens.
+  nc utility is used for just about anything under the sun involving TCP and UDP.
+  
+- -v
+  give more verbose output.
+  
+- -z
+  Specifies that nc should just scan for listening daemons, without sending any data to them.
 
-*** screen
+*** telnet
+
+*** test, [
+- 
+  - exp1 -a exp2
+    both exp1 and exp2
+
+  - exp1 -o exp2
+    either exp1 or exp2
+
+  - [-n] string
+    the length of string is nonzero
+
+  - -z string
+    the length of string is zero
+
+- Return
+  set $? as 0(true) or 1(false)
+
+** files
+*** /etc/logrotate.d
+- 
+  
+- commands
+  - daily
+  - weekly
+  - monthly
+    頻度の指定
+
+  - missingok
+    ログファイルが存在しなくてもエラーを出さずに処理を続行
+  - nomissingok
+    ログファイルが存在しない場合にエラーを出す
+    
+  - ifempty
+    ログファイルが空でもローテーションする
+  - notifempty
+    ログファイルが空ならローテーションしない
+
+  - create
+    ローテーション後に空のログファイルを新規作成。
+  - nocreate
+    新たな空のログファイルを作成しない。
+    
+  - compress
+    ローテーションしたログをgzipで圧縮
+  - delaycompress
+  - nocompress
+    ローテーションしたログを圧縮しない
+
+  - olddir [dirname]
+    指定したディレクトリにログを格納
+  - noolddir
+    ローテーション対象のログと同じディレクトリにログを格納
+
+  - sharedscripts
+    複数指定したログファイルに対し、postrotateまたはprerotateで記述したコマンドを実行
+  - postrotate～endscript
+    間に記述されたコマンドをログローテーション後に実行
+  - prerotate～endscript
+    間に記述されたコマンドをログローテーション前に実行
+
+*** /etc/sysconfig/iptables
+- 
+  iptables, setting of firewalls.
 
 ** shell
 *** bash
@@ -2581,7 +2682,7 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   [[http://lintut.com/reset-forgotten-root-password-in-centos/][Easy way to reset forgotten root password in CentOS 6.5 - LinTut]]
 
 *** change kbdmap
-- setxkbdmap dvorak
+- setxkbmap dvorak
   change xkeyboardmap to dvorak.
 
 - loadkeys
@@ -2622,3 +2723,162 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 
 - [[https://users.miraclelinux.com/technet/document/linux/training/2_2_3.html][Linux技術トレーニング 基本管理コースⅡ - MIRACLE]]
 - [[http://se-suganuma.blogspot.jp/2009/04/centoslvmvmwarehdd.html][【CentOS】LVMでディスク容量を拡張（VMwareのHDD容量を増やす） - SE奮闘記]]
+  
+*** iptables
+- 
+  the command to configure the tables,chains and rules provided by Netfilter,
+  which is Linux kernel firewall for packet processing.
+  Packet Filtering, Network Address Translation modules for IPv4.
+
+  ip6tables for IPv6, arptables to ARP, ebtables to Ethernet frames.
+  
+- Tables
+  choose tagret to filter
+  - filter
+    control packet accessing, droping.
+    - chain : INPUT, OUTPUT, FORWARD
+  - nat
+    overwrite packet source or destination etc.
+    - chain : POSTROUTING, PREROUTING, OUTPUT
+  - mangle
+    overwiret TOS (Type Of Services) field.
+    - chain : POSTROUTING, PREROUTING, INPUT, OUTPUT, FORWARD
+  - raw
+    Mark special packet not to tracking.
+    - chain : PREROUTING, OUTPUT
+
+  - settings
+    *filter(nat, mangle, raw)
+      #write down settings
+    COMMIT
+
+- Chains
+  - INPUT
+    Packets is going to be locally delivered.
+    It does not have anything to do with processes having an opend socket;
+  - OUTPUT
+    output packet
+  - FORWARD
+    forwarding packet
+  - PREROUTING
+    Packets will enter this chain before a routing decision is made
+  - POSTROUTING
+    Rounting decision has been made. Packets enter this chain just before handing them off to the hardware.
+
+- Targets
+  - ACCEPT
+    allow packet passing.
+  - DROP
+    drop packets.
+  - RETURN
+
+  - MASQUERADE
+    
+  - REJECT
+    reject packets and not reply.
+  - REDIRECT, PREROUTING
+    redirect other ports.
+  - LOG
+    write log.
+    
+- Rules
+  - -p [!] <protocol>
+    protocol.
+    able to choose one of following : tcp, udp, icmp, all
+
+  - -s [!} <address> [/<netmask>]
+    source IP
+
+  - -d [!] <address> [/<netmask>]
+    destination IP
+
+  - --sport <port>
+    source port
+  - --dport <port>
+    destination port
+  
+  - -j <target>
+    
+  - -i <interface>
+    input interface. eth0, eth1, etc.
+
+  - -o <interface>
+    output interface.
+  
+  - -t <table>
+    target table
+
+  - -m <module>
+    set module.
+  
+  
+*** SELinux
+- 
+  Security-Enhanced Linux.
+
+- status
+  - diabled
+  - permissive
+    write audit log only
+  - enforcing
+
+- command for checking status
+  - getenforce
+    return Disabled, Permissive or Enforcing
+  - setlinuxenabled
+    when disabled, return 1. others, return 0.
+    check with "echo $?"
+  - sestatus
+    most detailed.
+
+- command for change status
+  - setenforce 0
+    set permissive.
+  - setenforce 1
+    set enforcing
+
+- setting file
+  - /etc/selinux/config
+
+  - /etc/sysconfig/selinx
+    symbolic link of /etc/selinux/config.
+    change above one.
+
+- auditlog
+  - /var/log/audit/audit.log
+  - ausearch -m avc
+
+**** TE - Type Enforcement
+
+**** RBAC
+
+**** MAC
+
+**** Domain
+
+*** Unset autolock 
+- CentOS
+  System->Preferences->Screensaver
+  uncheck : Lock screen when screensaver is active
+
+*** RHEPL/CentOS Development Tools
+- 
+  install some Development Tools.
+  yum groupinstall 'Development Tools'
+  [[http://www.cyberciti.biz/faq/centos-linux-install-gcc-c-c-compiler/#more-1210][RHEL/CentOS Linux Install Core Development Tools Automake, Gcc(C/C++), Perl, Python & debuggers - nixCraft]]
+
+*** Check i-node inoformation
+- 
+  i-nodeがどれだけ使われているかは、"df -i"で調べられる。
+  また、特定のファイルやディレクトリのiノード情報は、"stat"コマンドで確認できる。
+
+
+*** Copy directory structure without files
+- 
+  find . type >dirs.txt
+  xargs mkdir -p <dirs.txt
+  [[http://stackoverflow.com/questions/4073969/copy-folder-structure-sans-files-from-one-location-to-another][Copy folder structuer (sans files) from one location to another - stackoverflow]]
+
+- 
+  find workarea_root -type d -exec echo doing/{} \; | xargs mkdir -p
+
