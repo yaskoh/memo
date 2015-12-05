@@ -88,6 +88,61 @@
   - || - OR
   - && - AND
 
+***** Semicolon ;
+- 
+  executing left to right
+
+***** Pipe |
+- 
+  vertical line.
+  output of the left command on a pipe is processed as input of the right command.
+
+***** Ampersand &
+- 
+  background execution
+  background command gets /dev/null as input.
+
+***** OR Operator ||
+- 
+  when left command get fail, then right command is executed.
+
+***** AND Operator &&
+- 
+  when left command get success, then right command is executed.
+
+**** Grouping
+***** Parentheses ()
+- 
+  grouping commands.
+  commands in () will execute in subshells.
+  environment won't take ovre subshells to parent.
+
+***** Braces {}
+- 
+  grouping commands.
+  unlike parentheses, commands is executed in current shell.
+  but when using redirect (like {echo abc} > test.txt), it may be executed in subshell.
+
+**** Control Statement
+***** if statement
+- format
+  if command-list
+  then
+    command
+  else
+    command
+  fi
+
+***** for statement
+
+***** while statement
+
+***** case statement
+
+***** test statement
+
+**** Line Break and Semicolomn
+
 ** Built-in Functions
 
 ** Syntax
