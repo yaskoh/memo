@@ -1,0 +1,65 @@
+* Log4j
+
+** 概要
+- 
+  Javaプログラム用のログAPI。
+
+** 1.2
+
+*** Logger
+- 
+  中心クラス。ロギングを行う部分をグループ化し、必要なグループのログだけを出力したり、
+  カテゴリーに優先順位をつけることで様々な出力方法を指定可能。
+
+**** org.apache.log4j.Logger Class
+- 
+  ログイベントを発生させるために使用されるクラス。
+  階層を形成し、親Loggerに設定された属性などは子Loggerに継承される。
+  最上位にRootLoggerが存在する。
+
+**** Level
+- 
+  DEBUG < INFO < WARN < ERROR < FATAL
+
+*** Appender
+- 
+  ログの出力先を指定するもの。
+
+**** org.apache.log4j.Appender Interface
+- 出力先設定
+  |-----------------------------------------------------+-----------------------------|
+  | class                                               | output                      |
+  |-----------------------------------------------------+-----------------------------|
+  | org.apache.log4j.ConsoleAppender                    | コンソール                  |
+  | org.apache.log4j.DailyRollingFileAppender           | ファイル                    |
+  | org.apache.log4j.FileAppender                       | 〃                          |
+  | org.apache.log4j.RollingFileAppender                | 〃                          |
+  | org.apache.log4j.WriterAppender                     | Java.io.Writer              |
+  | org.apache.log4j.net.JMSAppender                    | JMS（Java Message Service） |
+  | org.apache.log4j.net.SMTPAppender                   | 電子メール                  |
+  | org.apache.log4j.net.SocketAppender                 | リモートソケットサーバ      |
+  | org.apache.log4j.net.SyslogAppender                 | リモートUnixSyslogデーモン  |
+  | org.apache.log4j.nt.NTEventLogAppender              | WindowsNTのイベント・ログ   |
+  | org.apache.log4j.AsyncAppender                      | その他                      |
+  | org.apache.log4j.performance.NullAppender           | 〃                          |
+  | org.apache.log4j.varia.ExternallyRolledFileAppender | 〃                          |
+  |-----------------------------------------------------+-----------------------------|
+
+*** Layout
+- 
+  ログの出力フォーマットを指定するもの。
+
+**** org.apache.log4j.Layout Class
+- 
+  |--------------------------------+--------------------------------------------------------------------------------------------|
+  | class                          | format                                                                                     |
+  |--------------------------------+--------------------------------------------------------------------------------------------|
+  | org.apache.log4j.SimpleLayout  | 単純なレイアウト                                                                           |
+  | org.apache.log4j.PatternLayout | ユーザが指定したフォーマット                                                               |
+  | org.apache.log4j.HTMLLayout    | HTMLのテーブル形式                                                                         |
+  | org.apache.log4j.TTCCLayout    | 時間とスレッド、カテゴリとネスト化診断コンテキスト情報、そして名前から成り立つフォーマット |
+  |--------------------------------+--------------------------------------------------------------------------------------------|
+
+*** Link
+- 
+  [[http://www.techscore.com/tech/Java/ApacheJakarta/Log4J/index/][Log4J - TECHSCORE]]
