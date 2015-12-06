@@ -50,11 +50,11 @@
   1) 
   STRING=
   test $STRING = john
-  (Ë test   = john, error)
+  (Ã‹ test   = john, error)
     
   STRING=
   test "$STRING" = john
-  (Ëtest "" = john, error won't occur)
+  (Ã‹test "" = john, error won't occur)
     
 **** Command substitution with backquotes
 - 
@@ -62,7 +62,7 @@
   
   - ex)
     $ echo "Today is `date`"
-    Ë Today is Sun Nov 23 11:37:33 JST 2015
+    Ã‹ Today is Sun Nov 23 11:37:33 JST 2015
   
 - nest
   being escaped backquote by backslash can perform.
@@ -70,7 +70,7 @@
   - ex)
   $ STRING=`echo "abc \`echo def\` ghi"`
   $ echo $STRING
-  Ë abc def ghi
+  Ã‹ abc def ghi
 
 **** Exit status
 - 
@@ -126,22 +126,261 @@
 **** Control Statement
 ***** if statement
 - format
-  if command-list
+  if condition1
   then
+    command
+  elif condition2
     command
   else
     command
   fi
 
+  - else
+    else is not mandatory.
+  
+  - elif
+    you can use elif statement if there is some condition.
+
+- test
+  often used as condition in if statement.
+  test can used as [ ].
+
 ***** for statement
+- format
+  for variable in word-list
+  do
+    command
+    ...
+  done
+
+- ex
+  for i in a b c d e
+  do
+    echo $i
+  done
 
 ***** while statement
+- format
+  while command-list
+  do
+    command
+    ...
+  done
+
+  - command-list
+    loop while last command is true(0).
 
 ***** case statement
+- format
+  case string in
+    pattern1) command-list ;;
+    pattern2) commnad-list ;;
+    pattern3) commnad-list ;;
+    ...
+  esac
+
+  - match
+    the first match pattern will be done.
+    you should pay attention to write down conditions.
 
 ***** test statement
+- format 1
+  if test -r file
+  then ~
+
+- format 2
+  if [ -r file ]
+  then ~
 
 **** Line Break and Semicolomn
+- 
+  Semi-colon (;) can use a substitution of return code.
+  you can use this when you want make the code one-liner.
+  
+- ex
+  if command-list
+  then
+    command
+    ...
+
+  â†“
+  
+  if command-list; then
+    command
+    ...
+
+** Shell Variable
+*** About
+- Rule
+  - Name
+    you can use Alphabet, Number, Underscore(_).
+    Uppercase and lowercase is distinguished.
+    First letter can not be a number.
+    Convention : Use Uppercases
+
+- Using
+  - $ABC
+  - ${ABC}
+  
+  - Double quotes expand variables. Single quotes don't do.
+
+- 
+  |----------+-----------------------|
+  | variable | comments              |
+  |----------+-----------------------|
+  | $0 ~ $9  | positional parameters |
+  | $#       | arguments number      |
+  | $*, $@   | all arguments         |
+  | $?       | end status            |
+  | $$       | process id            |
+  | $!       | background process id |
+  | $-       | flags                 |
+  |----------+-----------------------|
+
+- temporary setting
+  $CFLAGS=-g make -> (CFLAGS=-g; export CLAGS; make)
+  
+*** Variable setting
+- Set
+  without space.
+  like : 
+    variable=value
+  not :
+    variable = value
+
+- Pattern
+  - ${variable:=value}
+  - ${variable:-value}
+  - ${variable:?message}
+  - ${variable:+value}
+
+  - omit colon(:)
+    when omitting colon(:) like ${variable=value},
+    null is regarded as being set and not setting a new variable.
+
+**** =
+- ${variable:=value}
+  variable is undefiend or set null, set value.
+- ${variable=value}
+  variable is undefined, set value.
+
+**** -
+- ${variable:-value}
+  when variable is undefiend or set null, return value but not set it.
+- ${variable-value}
+  when variable is undefined, return value and not set.
+
+- positional parameters
+  you can use this option to positonal parameters like following:
+  {1:-abc}
+
+**** ?
+- ${variable:?message}
+  when variable is undefined or set null, return messsage.
+  in shellscripts, it stopped here.
+  if omit message, show default messages.
+- ${variable?message}
+  when variable is undefined, return messsage.
+  and see above.
+  
+**** +
+- ${variable:+value}
+  when variable is "not" undefiend or set null (when it is defined), return value but not set it.
+  
+- ${variable+value}
+  when variable is defiend (null is ok), return value but not set it.
+
+*** Positional Parameter
+- 
+  arguments set to $0 $1 $2 ... $n
+  $9 is a last value and can't set bigger than 10.
+
+- shift [num]
+  set a 1+num argument to $1, and as follows.
+  
+  - ex)
+    shift 3
+    script 1 2 3 4 5 6 
+    -> $1:4, $2:5, ...
+
+- $#
+  show number of arguments.
+
+- $*
+  return all variables.
+  when enculosing by double quotes, all variables are enclosed by a variables.
+  - ex
+    "$*" -> "$1 $2 $3 ..."
+  
+  when positional parameter is null, "$*" is "" (null)
+  
+- $@
+  return all variables.
+  when enculosing by double quotes, all variables are saparated each variables, then enclosed.
+  - "$@" -> "$1" "$2" "$3" ...
+  
+  when positional parameter is null, "$@" is null.
+
+*** Special variables
+- $?
+  end status.
+  when end normal, set 0. when abnormal end, set others (not 0).
+
+- $$
+  process id.
+  usually used to attach unique number.
+
+- $!
+  background process id.
+  - ex
+    command &
+    ...
+    wait $!
+    (wait command finish)
+
+- $-
+  flags.
+  when start "command -atv", return "atv" in command.
+
+** Shell Functions
+- format
+  name()
+  {
+    command
+    ...
+  }
+
+- format (one-liner)
+  name() { command; ... ; }
+
+- alias
+  bsh don't have alias functions, and you can use shell functions as substitutions of it.
+
+- return [n]
+  Command "return" set return code of the function.
+  Refer to the value checking by $?.
+  If there is no return command, the function returns the return code of the last executed command.
+
+- Environment
+  Usually function executing on the current shell.
+  When using stdin/out redirection in the function, creating sub shell and the function being executed on it.
+
+  - ex (lsl is a created function)
+    $ lsl : on current shell
+    $ lsl > lsl.file : on sub shell
+
+  - influence
+    - Directory
+      When executing on current shell, current directory may be changed.
+      On sub shell, back to working directory when it finishes.
+
+    - Variables
+      Remains variables modification  executing on current shell.
+      On sub shell, the value of variables will be back when the function ends.
+
+    - exit command
+      on current shell, exit command ends not only function but also the shell itself.
+      On sub shell, exit finishes the functions only.
 
 ** Built-in Functions
 
