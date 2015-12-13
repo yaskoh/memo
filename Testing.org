@@ -38,3 +38,12 @@
 ***** 組織へのツール導入
 
 *** 用語
+
+** Kind
+*** Penetration Test
+- 
+  A software attack on a computer system that looks for security weaknesses, potentially gaining access to the computer's features and data.
+  
+
+*** 
+  

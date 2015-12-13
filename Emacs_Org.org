@@ -1,6 +1,6 @@
 * Org-Mode
-
-** 見出し、項目
+** Document Structure
+*** 見出し、項目
 
 - 見出しの編集
     |----------------+------------------------------|
@@ -52,7 +52,48 @@
     S-TAB あるいは C-u TAB でバッファ全体表示を切り替え。
     OVERVIEW, CONTENTS, SHOW ALL
 
-** 表
+*** Outlines
+
+*** Headlines
+
+*** Visibility cycling
+**** Global and local cycling
+
+**** Initial visibility
+
+**** Catching invisible edits
+
+*** Motion
+**** C-c C-n (outline-next-visible-heading)
+**** C-c C-p
+**** C-c C-f
+**** C-c C-u
+**** C-c C-j
+
+*** Structure editing
+
+**** C-c ^ (org-sort)
+- 
+  Sort same-level entries.
+  When there is an active region, all entries in the region will be sorted.
+  Otherwise the children of the current headline are sorted.
+
+*** Sparse trees
+
+*** Plain lists
+
+*** Drawers
+
+*** Blocks
+
+*** Footnotes
+
+*** Orgstruct mode
+
+*** Org syntax
+
+** Tables
+*** 表
 
 - 他のモードでも表を編集する
     M-x orgtbl-mode
@@ -114,7 +155,7 @@
     | M-RET        | 入力欄を分割           |
     |--------------+------------------------|
 
-** 表計算
+*** 表計算
 
 - 必要になったらまた覚える。
     [[http://d.hatena.ne.jp/tamura70/20100206/org]]
@@ -163,9 +204,50 @@
         war     : 分散
         vmedian : メジアン
 
-** TODOリスト
-   SCHEDULED: <2014-08-12 火> DEADLINE: <2014-08-14 木>
+** Hyperlinks
+*** リンク
+- ハイパーリンク
+    [ [リンク][表示] ]のようにかく（半角スペースは不要）
+- リンクとして保存
+    C-c l
+- リンクをorgに貼り付ける
+    C-c C-l
+- ハイパーリンクを開く
+    C-c C-o
 
+
+*** Link format
+- 
+  #+BEGIN_SRC
+  [[link][description]] or [[link]]
+  #+END_SRC
+  
+
+*** Internal links
+
+*** External links
+- links
+  - Web : http://www.astro.uva.nl/~dominik
+  - File : file:./papers/last.pdf
+  - File, Text Search : file:projects.org::some words
+  - Mail : mailto:test@mail.com
+  - Shell : shell:ls *.org
+  - elisp : elisp:org-agenda
+
+- [[shell:ls *.org]]
+
+*** Handling links
+
+*** Using links outside Org
+
+*** Link abbreviations
+
+*** Search options
+
+*** Custom searches
+
+** ToDo items
+*** TODOリスト
 - TODO 
     見出しにTODOと記述するとTODOリストになる。
     他にDONE, 無印状態がある。
@@ -209,22 +291,12 @@
     - 日の設定/年月日時分の設定
         S-RIGHT(LEFT) / S-UP(DOWN)
 
-** アジェンダ
+** Tags
 
-そのうちやる。
-[[http://d.hatena.ne.jp/tamura70/20100208/org]]
+** Properties and columns
 
-** リンク
-- ハイパーリンク
-    [ [リンク][表示] ]のようにかく（半角スペースは不要）
-- リンクとして保存
-    C-c l
-- リンクをorgに貼り付ける
-    C-c C-l
-- ハイパーリンクを開く
-    C-c C-o
-
-** 計時
+** Dates and times
+*** 計時
 - 計時開始
     C-c C-x C-i
 - 計時終了
@@ -238,7 +310,35 @@
 - 計時表示を終了
     C-c C-c
 
-** エクスポートオプション
+** Capture - Refile - Archive
+
+** Agenda views
+*** アジェンダ
+
+そのうちやる。
+[[http://d.hatena.ne.jp/tamura70/20100208/org]]
+
+** Markup for rich export
+*** 文字の装飾
+- 太字
+  *太字*
+- 斜体
+  /斜体/
+- 下線
+  _下線付き_
+- 取消線
+  +取消線+
+- コード
+  =コード=
+- 等幅
+  ~等幅~
+
+** Exporting
+*** 出力
+- C-c C-e
+  あとは画面の表示に従うと作成できる。
+
+*** エクスポートオプション
 
 - エクスポートオプション
     |-----------------+----------------|
@@ -268,21 +368,23 @@
     | ^:         | TeX風の上付下付記法のオンオフ |
     |------------+-------------------------------|
 
+** Publishing
 
-** 出力
-- C-c C-e
-  あとは画面の表示に従うと作成できる。
+** Working with source code
+*** Structuer of code blocks
+- format
+  #+NAME: <name>
+  #+BEGIN_SRC <language> <switches> <header arguments>
+    <body>
+  #+END_SRC
 
-** 文字の装飾
-- 太字
-  *太字*
-- 斜体
-  /斜体/
-- 下線
-  _下線付き_
-- 取消線
-  +取消線+
-- コード
-  =コード=
-- 等幅
-  ~等幅~
+** Miscellaneaus
+
+** Memo
+*** Sorting
+- 
+  org-sort, or "C-c ^".
+
+** Link
+- [[http://orgmode.org/org.html][The Org Manual]]
+- [[http://d.hatena.ne.jp/tamura70/20100203/org][Emacs org-modeを使ってみる:(1)インストール - 屯遁のパズルとプログラミングの日記]]

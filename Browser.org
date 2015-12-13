@@ -3,6 +3,7 @@
 ** Browsers
 *** GoogleChrome
 
+
 *** InternetExplorer
 **** IE8
 - 
@@ -82,6 +83,7 @@
   - コンテンツを他のアプリケーションにドラッグアンドドロップ
   - EdgeでのVBScriptサポート
   - インターネットゾーンにおけるCSS expressionsのサポート
+*** Edge
 *** Firefox
 
 *** Safari
@@ -114,3 +116,10 @@
 **** SVG Font
 - 
   拡張子は「.svg, .svgz」
+*** Langage Settings
+- 
+  ブラウザの言語設定を変更する。
+
+- Link
+  [[http://freesoft.tvbok.com/youtube_f/method/browser_jp.html][ブラウザやＯＳの言語をチェックする (逆に日本語以外にする裏技) - ぼくんちのTV別館]]
+  [[http://memorva.jp/internet/pc/browser_language.php][ブラウザの言語設定 - 日本語が表示されない・英語が表示される - MEMORVA]]
