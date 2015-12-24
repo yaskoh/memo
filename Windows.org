@@ -1,9 +1,7 @@
 * Windows
 
 ** Batch
-
 *** Command
-
 **** cls
 - 
   画面上の文字を消去する。
@@ -38,7 +36,8 @@
 - ex) 
     IF DEFINED ENV echo OK
 
-[[http://orangeclover.hatenablog.com/entry/20110127/1296135692][バッチファイル/コマンドプロンプトで環境変数が設定されているかチェックする方法]]
+- 
+  [[http://orangeclover.hatenablog.com/entry/20110127/1296135692][バッチファイル/コマンドプロンプトで環境変数が設定されているかチェックする方法]]
 
 **** fc
 - fc (option) [file1] [file2]
@@ -353,8 +352,8 @@
      ) ELSE (
          それ以外
      )
-
-[[http://capm-network.com/?tag=Windows%E3%83%90%E3%83%83%E3%83%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87][CapmNetwork Windowsバッチファイル制御構文]]
+- 
+  [[http://capm-network.com/?tag=Windows%E3%83%90%E3%83%83%E3%83%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87][CapmNetwork Windowsバッチファイル制御構文]]
 
 
 **** 処理の途中で改行を入れる
@@ -365,15 +364,16 @@
        IF %NOPQRSTUVWXYZ% ==2 (
          REM 処理
      )
-[[http://orangeclover.hatenablog.com/entry/20100810/1281450669][みちしるべ バッチファイルで長い1行の処理を改行を入れて複数行に分けて書きたい]]
-[[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
+- [[http://orangeclover.hatenablog.com/entry/20100810/1281450669][みちしるべ バッチファイルで長い1行の処理を改行を入れて複数行に分けて書きたい]]
+- [[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
 
 
 **** 環境変数の消し方
 - 
   "SET 変数="とする。
   たとえば変数XYZを初期化したければ、"set XYZ="でよい。
-[[http://orangeclover.hatenablog.com/entry/20090826/1251293551][みちしるべ 3.環境変数 (1)環境変数の使い方 〜意外に削除の仕方はしらない人が多い〜 【コマンドプロンプト、バッチファイルを使わなきゃならなくなった人向けのメモ】]]
+
+- [[http://orangeclover.hatenablog.com/entry/20090826/1251293551][みちしるべ 3.環境変数 (1)環境変数の使い方 〜意外に削除の仕方はしらない人が多い〜 【コマンドプロンプト、バッチファイルを使わなきゃならなくなった人向けのメモ】]]
 
 
 **** バッチでの標準入力待ち
@@ -384,15 +384,7 @@
   改行するまでの文字列がvarに格納される。
   バッチファイルでユーザーに入力させた値を取得する
 
-** Office
-*** Project
-**** ファイルサイズを縮小する
-- 
-  別名で保存すると、ファイルサイズが縮小される。
-  [[http://crossmodelife.com/2014/03/07/5390/][肥大化したMS Projectのファイルサイズを縮小する方法 - Cross Mode Life]]
-
 ** memo
-
 *** ACL
 - 
   アクセス制御リスト(Access Control List)。
@@ -429,6 +421,7 @@
   エクスプローラで縮小表示を行うと、画像や写真データの縮小イメージが格納されたThumbs.dbが作成される。
   必要に応じ再作成されるため、消しても問題ない。またキャッシュしない設定に変更することも出来る。
   [[http://www.atmarkit.co.jp/ait/articles/0602/04/news012.html][Thumbs.dbファイルを作成しないようにする - @IT]]
+
 *** AXキーボード設定
 - 
   レジストリを書き換える。
@@ -477,6 +470,30 @@
   個別ユーザでの設定ではそこを選択して設定する。
   
 - [[http://note.chiebukuro.yahoo.co.jp/detail/n129063][Windowsで環境変数を設定する - YAHOO!知恵袋]]
+
+*** グラフや絵を文字で作るための変換方法
+- 
+  ただし全て"けいせん"でも出るけれども。
+  
+  |------------+------+------|
+  | 読み       | 細字 | 太字 |
+  |------------+------+------|
+  | たて       | │   | ┃   |
+  | よこ       | ─   | ━   |
+  | たてみぎ   | ├   | ┣   |
+  | たてひだり | ┤   | ┫   |
+  | よこうえ   | ┴   | ┻   |
+  | よこした   | ┬   | ┳   |
+  | ひだりうえ | ┌   | ┏   |
+  | ひだりした | └   | ┗   |
+  | みぎうえ   | ┐   | ┓   |
+  | みぎした   | ┘   | ┛   |
+  | まんなか   | ┼   | ╋   |
+  |------------+------+------|
+
+  [[http://support.microsoft.com/kb/883172/ja][特殊文字・記号や罫線文字の入力一覧]]
+  [[http://112123.jugem.jp/?eid=2781][【記号】 文字記号でツリーとか階層を作りたい時の変換方法【豆知識】]]
+
 
 *** (聞いた話メモ)
 - 

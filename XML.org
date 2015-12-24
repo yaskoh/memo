@@ -1,0 +1,12 @@
+* XML
+** DTD
+- 
+  http://www.webword.jp/xml/dtd/index3.html
+
+*** PCDATA
+- Parsed Character Data
+  data difinition that originated in SGML, and is used also in XML DTD to designate mixed content XML elements.
+  
+*** CDATA
+- Character Data
+  the data in between these tags includes data that could be interpreted as XML markup, but shuould not be.

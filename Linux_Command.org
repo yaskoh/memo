@@ -1,0 +1,1262 @@
+* Linux Commands
+** Commands
+*** adduser
+- 
+  Create a new user or update default new user information.
+  
+  In Debian, this command works as an interactive way of user adding.
+  CentOS or Fedora, this command may not exist, or just a link to "useradd" command.
+
+*** apropos
+- 
+  show result searched from summaries and command names.
+  whatisデータベースより文字列を検索する。
+
+*** bg
+- [%jobsid]
+  ジョブをバックグラウンドで実行するよう切り替える。
+
+*** bzip2 / bunzip2
+*** chgrp
+
+*** chkconfig
+- 
+  起動スクリプトを管理する。
+
+- --list
+  ランレベルごとの起動スクリプトごとの状態を表示する。
+
+- --add
+  起動スクリプトを管理対象として追加する。
+
+- --del
+  起動スクリプトを管理対象から削除する。
+
+- --level
+  各ランレベルにおける起動スクリプトの状態を設定する。
+
+- --help, -h
+  使用方法を表示する。
+
+- --version, -v
+  コマンドのバージョンを表示する。
+
+*** chmod
+- 
+  アクセス権限の変更。
+
+  u:所有者 g:グループ o:その他すべて a:すべての権限
+  +:権限付与 -:権限削除 =:権限の書き換え
+  r:読み込み w:書き込み x:実行 s:セットID t:スティッキービット
+
+  - SUID
+    SUID(Set User ID)は特殊なパーミッションのひとつで、
+    実行可能ファイルに設定する。
+    実行権にRootユーザのユーザIDをセットできる。
+    u+s, 4xxx
+  - SGID
+    SGID(Set Group ID)は特殊なパーミッションのひとつで、
+    実行可能ファイルおよびディレクトリに設定する。
+    実行権にGroupのグループIDをセットできる。
+    g+s, 2xxx
+  - スティッキービット
+    特殊なパーミッションのひとつで、ディレクトリに対して設定する。
+    書き込み権限があっても、自分以外のユーザが所有するファイルを削除できなくなる。
+    o+t, 1xxx
+
+*** chown
+- 
+  所有者を変更する。
+- -v verbose
+
+*** chroot
+    ルートディレクトリを変更してコマンドを実行する。
+    chroot directory [command [args]]
+
+*** clear
+
+*** cp
+- 
+  
+- -i
+  
+- -p
+  
+*** cut
+- 
+  特定の文字で区切られた項目を分割する。
+  文字列の中から所定の位置にある特定の項目を抜き出したい場合に利用する。
+  cut [option] [file]
+
+- -c 文字数
+  切り出す文字数を指定する。
+
+- -d 文字
+  区切り文字を指定する。デフォルトはタブ。
+
+- -f フィールド数
+  切り出すフィールド数を指定する。
+
+- -s
+  区切り文字を含まない文字列は出力しない。
+
+- --compliment
+
+- --outputdelimiter 'delimiter'
+  デリミタを変更した形で出力する
+
+**** examples
+- select columns for characters
+  ex) cut -c2 test.txt
+  mn) display 2nd character from each line.
+  
+  ex) cut -c1-3 test.txt
+  mn) display first three characters in the file from each line.
+  
+  ex) cut -c-8 test.txt  #1st to 8th
+  ex) cut -c8- test.txt  #8th to end
+  ex) cut -c- test.txt   #all
+
+- select specified field
+  ex) cut -d':' -f1 /etc/passwd
+  mn) divide by ':' in the row and display first culomn each line in passwd file.
+  
+  ex) grep "/bin/bash" /etc/passwd | cut -d':' -f1-4,6,7
+  mn) select first to 4th, 6th and 7th coloumn field.
+
+- other options
+  -s
+  ex) grep "/bin/bash" /etc/passwd | cut -d':' -s -f1
+  mn) "-s" option exclude a line not containing the deliminater, in this case ':'.
+  
+  --compliment
+  ex) grep "/bin/bash" /etc/passwd | cut -d':' --comlement -s -f7
+  mn) it contains all lines excepting 7th field.
+
+  --output-delimiter
+  ex) grep "/bin/bash" /etc/passwd | cut -d':' -s -f7 --output-delimiter='#'
+      -> root#/root#/bin/bash
+  mn) change delimiter from ':' to '#'
+
+*** date
+- date
+  show 
+
+- (format)
+  - ex
+    date "+%Y%m%d-%H%M%S"
+
+- -d (expr)
+  - expr ex
+    - '1 day'
+    - '2 days' (or '2 day')
+    - '1 day ago'
+    - '-1 day'
+    - yesterday
+    - tomorrow
+    - week
+    - fortnight
+    - '1 month ago'
+    - '1 year ago'
+    - '1 hour ago'
+    - '1 minute ago'
+    - '1 second ago'
+    - '2015/04/25'
+
+- link(tmp)
+  https://hydrocul.github.io/wiki/commands/date.html
+
+*** df
+- 
+  ファイルシステムについて、使用領域と空き領域のサイズを表示する。
+  disk free : display free disk space.
+
+- -h
+  適当なサイズの単位をつけてくれる。
+- -a
+  サイズが0のファイルシステムも出力
+- -t fstype, --type=fstype
+  ファイルシステムの種類(ex: ext4)の種別を指定
+- -s, --summarize
+  display only a total for each argument
+- --max-depth=N
+  print the total for a directory only if it is N or fewer levels below the command line argument;
+  specify 0 is the same as --summarize.
+
+*** dmesg
+- 
+  カーネルのメッセージバッファの内容を表示する。"display message"の略。
+  print or control the kernel ring buffer.
+  the porgram helps users to print out their bootup messaes.
+
+*** du
+- du [filename...]
+  ディレクトリ内のファイル容量を表示する。
+  実際に使用しているディスク容量なので、ファイルサイズとは一致しない場合がある。
+
+- -c, --total
+  検索したすべての容量の総計を表示する
+
+- -k, --kilobytes
+  単位をキロバイトにする
+
+- -m, --megabytes
+  単位をメガバイトにする
+
+- -s
+  report only the sum of the usage in the current directory
+
+*** e2fsdk
+- e2fsck DEVICE
+  ext2/ext3/ext4ファイルシステムの整合性をチェックし、修復する。
+  マウント中のファイルシステムに実行すると壊れる恐れがあるため注意。
+
+- -f
+  ファイルシステムにcleanマークが付いていても強制的にチェックアウトする。
+
+*** echo
+- 
+  メッセージを表示する
+
+*** env
+- 
+  
+*** exec
+- 
+  現在実行中のシェルに変わり、指定したコマンドを実行する。
+  コマンドを実行すると普通forkして子プロセスを生成するが、
+  execから呼ぶとforkせずコマンドが呼ばれる。
+
+*** exit
+- 
+  スクリプトの実行を終了する。
+  returnと異なり、関数がどれだけネストしていても全体が終了される。
+  数字を指定して終了ステータスを返すことが出来る。
+
+*** export
+- export VAR
+  set VAR as environment variables.
+  
+- export VAR="value"
+  set value on VAR as environment variables.
+  This form may give an error in bash, sh(ash) of FreeBSD, etc.
+
+  変数を大域変数として追加する。
+  ex) export FOO="BAR"
+
+- (-p)
+  show environ variables
+  
+- -n VAR
+  Remove VAR from export lint
+
+- csh, tcsh
+  in csh or tcsh, use "setenv" instead of export.
+
+*** export
+- 
+  環境変数を設定する。
+
+- -n
+  指定した環境変数を削除する
+
+- -p
+  環境変数の一覧を取得する
+
+*** fdisk
+- fdisk (option) device
+  ディスクのパーティションを設定する。
+
+- -l
+  get list about partition  (sudo fdisk -l /dev/sda)
+
+- -s partition
+  
+
+*** fg
+- [%jobsid]
+  バックグラウンドで実行しているジョブをフォアグラウンドに切り替える。
+
+*** file
+- 
+  実行可能ファイルかテキストかその他データかなどのファイルのタイプを判定して表示する。
+- -b
+  簡易モードで表示する。
+- -i
+  ファイルをmimeタイプ文字列にする。
+- -z
+  圧縮ファイルの中も調べる
+- -v
+  バージョンを表示する
+
+*** find
+- 
+  ファイルやディレクトリを検索する。
+  用法: find [option] [path...] [expression]
+  用法：find [path] [condition] [action]
+
+- -name
+  ファイル名を検索、パターンマッチ可。
+- -exec
+  検索後コマンドを実行する。
+
+- -empty
+  空ファイルを対象とする
+  ex) find . -empty
+
+*** finger
+- 
+  ユーザ情報を表示する。
+  ただし、最近はセキュリティの強化のためfingerを通さないよう設定している場合が多い。
+
+*** ftp
+- ftp [-options] [host]
+  
+- -A
+  Use active mode for data transfers.
+  
+- -P
+  Use passive mode for data transfers.
+
+- -v
+  Verbose option forces ftp to show all responses from the remote server,
+  
+- Client Host
+  - ?
+    Commands.
+  - !
+  - $
+  - bye
+    Terminate the FTP session with the remote server and exit ftp.
+
+  - ls
+  - open
+    
+*** fsdk
+- 
+  実際にはLinuxで利用できるさまざまなファイルシステムチェッカーへの単なるフロントエンド、とのこと。
+
+*** gcc
+- 
+  コンパイルする。
+- -o
+  ファイル名を指定する。
+  ex) gcc -o hello.exe hello.c
+- -Wall
+  ANSI Cスタイルの宣言と定義を使った場合に、一般的な警告オプションがすべてOnになり、
+  細かな警告をしてくれる。
+- -O1(O), -O2, -O3
+  最適化オプション。数字が大きい方が強力な最適化が行われる。
+  ただしO3はバグが多い印象があるとのこと。
+- -g
+  gdbでのデバッグが可能となる。
+- -E
+  プリプロセスだけ処理して標準出力する
+- -S
+  コンパイルまでを行いアセンブリファイルを出力する
+- -c
+  アセンブルまで行いオブジェクトファイルを出力する
+- -l
+  ダイナミックリンクを行う。
+  引数としてメイン関数を先、ライブラリを後に並べる必要ある。
+  -lの後にスペースはあけず、ライブラリ名のlibを除いたものを指定する。
+  ex) libmをリンクしたければ、-lmとする。
+
+*** gdb
+- 
+  デバッグを行う。
+- run (options)
+  プログラムを開始する。オプションをつけるとオプション付きで実行する。
+- backtrace, bt
+  バックトレースを表示する。呼び出し順の逆に列挙される。
+- frame N, f
+  フレームNに飛ぶ。
+  （番号を指定することで、backtraceで確認した番号の処理に飛べる。）
+- list, l
+  現在の関数のソースコードを表示する。
+- print EXPR, p
+  式EXPRの値を表示する
+- continue, c
+  続きを実行する
+- quit, q
+  gdbの終了する
+
+*** global
+- 説明
+  ソースコードの関数定義等に素早くアクセスできるようにする。
+  apt-getやbrew等でglobalをインストールして使う。
+
+- global 関数名
+  関数からソースコードを探す。
+
+- -f ファイル名
+  そのファイルで定義されているファイル一覧を出力する。
+
+- -r 関数名
+  関数呼び出しの箇所を探す
+
+- -c 関数名の一部
+  関数名の一部から関数を探す。
+
+- -g 検索文字列
+  ソースコードのgrep
+
+*** groupadd
+- 
+  新しいグループの作成
+
+- ex)
+  groupadd group01
+
+*** gtags
+- 
+  tagを作成する。
+
+*** gzip / gunzip
+- 
+  gzip形式で圧縮/解凍する。
+  
+- gzip -l, --list
+  圧縮された個々のファイルについて、以下のフィールドを列挙する。
+  compresed size, uncompressed size, ratio, uncompresed_name
+
+*** htags
+- 
+  ソースコードをhtmlに変換する。
+
+- -a, --alphabet
+  アルファベット順の関数一覧を作成する
+
+- -n, --line-number
+  ソースコードに行番号を表示する
+
+- -s, --symbol
+  関数だけでなくシンボルにもリンクを張る
+
+- -x, --xhtml
+  XHTML形式で表示する
+
+*** id
+- 
+  ユーザIDやグループIDを表示する。
+
+*** info
+- 
+  emacsを使ってマニュアルを表示する。
+  GNU libcの一次情報はinfo。
+
+*** install
+    ファイルをコピーして属性の設定をする。
+    1. install [OPTION]... SOURCE DEST
+    2. install [OPTION]... SOURCE... DIRECTORY
+    3. install -d [OPTION]... DIRECTORY...
+    [-d, --directory] ディレクトリを作成する。
+    [-m, --mode] アクセス権を設定する。
+    [-v, --verbose]
+
+*** iptables
+- iptables
+  handle iptables settings.
+  see alse [files]
+
+- ex)
+  iptables -t filter -I Input -p tcp -s 123.123.123.123 --dport 80 -j DROP
+  
+*** jobs
+- 
+  実行中のジョブを表示する。
+
+*** joke
+**** sl
+- 
+  slが走る。いくつかオプションも存在する。
+
+**** banner
+- 
+  バナーっぽいアスキーアートが表示できる。
+
+**** aafire
+- 
+  AAの炎が表示される。
+
+**** cmatrix
+- 
+  matrixっぽい表示
+
+*** kill
+- [-s signal] pid
+  プロセスおよびジョブを強制終了する
+- -l
+  シグナルの一覧を表示する
+  |----+---------+--------------------------------------------------------------------------------|
+  |  1 | SIGHUP  | 端末との接続が切断された(Hangup)ことによるプロセスの終了                       |
+  |  2 | SIGINT  | キーボードからの割り込み(Interrupt)によるプロセスの終了                        |
+  |  3 | SIGQUIT | キーボードからの中止(Quit)                                                     |
+  |  4 | SIGILL  | 不正な命令(Illegal instruction)によるプロセスの終了                            |
+  |  5 | SIGTRAP | トレース(Trace),ブレークポイントとラップ(break point trap)によるプロセスの終了 |
+  |  6 | SIGABRT | abrot関数によるプロセスの中断                                                  |
+  |  8 | SIGFPE  | 浮動小数点例外(Arithmetic Exception)によるプロセスの終了                       |
+  |  9 | SIGKILL | Killシグナルによるプロセスの終了                                               |
+  | 11 | SIGSEGV | 不正なメモリー参照(Segmentation fault)によるプロセスの終了                     |
+  | 13 | SIGPIPE | パイプ(Pipe)破壊によるプロセスの終了                                           |
+  | 14 | SIGALRM | alerm関数によるプロセスの終了                                                  |
+  | 15 | SIGTERM | 終了(Termination)シグナルによるプロセスの終了                                  |
+  |----+---------+--------------------------------------------------------------------------------|
+
+*** ldd
+- 
+  共有ライブラリの依存関係を表示する。
+
+*** ln
+- 
+  リンクを作成する
+- -s, --symbolic
+  シンボリックリンクの作成
+- -v, --verbose
+
+*** locate
+- 
+  ファイルを高速に検索する。
+  あらかじめ作成したデータベースを用いるため、findコマンドより高速。
+  データベースはスーパーユーザ権限でupdatedbコマンドを実行して作成する。
+
+*** logrotate
+- 
+  logrotate is designed to ease administration of systems that generate large number of log files.
+  It allows automatic rotation, compression, removal, and mailing of log files.
+
+- -d
+  Turns on debug mode and implies -v.
+
+- -v
+  Turn on verbose mode.
+
+  
+- -f, --force
+  
+*** ls
+- 
+  ls means list.
+  show files and directories on the target directory.
+- -l
+  show details.
+- -r  
+  show reverse sorted.
+- -t
+  show sorted by timestamp
+- -S
+  sorted with file size.
+
+*** lvcreate
+- 
+  create a new logical volume in a volume group.
+
+- -n, --name LogicalVolume[Name|Path]
+  Sets the name for the new logical volume.
+  
+- -p, --permisson {r|rw}
+  Sets access permissons to read only (r) or read and write (rw).
+
+- -s, --snapshot OriginalLogicalVolume[Name|Path]
+  Creates a snapshot logical volume for an existing, so called original logical volume or origin).
+
+- -L, --size LogicalVolumeSize[bBsSkKmMgGtTpPeE]
+  Gives the size to allocate for the new logical volume.
+
+- ex) lvcreate -s -L 40G -n snapshot_vol -p r /dev/vg01/lvol01
+
+*** lvdisplay
+- 
+  display attributes of a logical volume
+  
+*** lvextend
+- 
+  extend the size of a logical volume.
+
+*** lvreduce
+- 
+  reduce the size of a logical volume
+
+- -L, --size [-]LogicalVolumeSize[bBsSkKmMGtTpPeE]
+  Reduce or set
+  ex) lvreduce -L -20G /dev/mapper/vg01-lvol01
+  
+- link
+  [[http://seriousbirder.com/blogs/lvreduce-ext4-example/][lvreduce ext4 example]]
+
+*** lvremove
+- 
+  removes one or more logical volumes.
+  
+- -f, --force
+  Revome active logical volumes without confirmation.
+
+- ex)
+  lvremove -f vg00/lvol1
+
+*** lvs
+- 
+  report information about logical volumes
+
+*** lynx
+- 
+  text-based web-browser.
+  
+*** make
+    コンパイル等の処理を自動で行う。
+    [-k, --keep-going] エラーが発生してもできるだけ処理を継続させる。
+    [-n, --just-print, --dry-run] 実際には処理せず実行コマンドのみ表示する。
+
+*** man
+- マニュアルを呼び出す。
+  |------------+------------------------|
+  | セクション | 分類                   |
+  |------------+------------------------|
+  |          1 | ユーザコマンド         |
+  |          2 | システムコール         |
+  |          3 | ライブラリ関数         |
+  |          4 | デバイスファイルなど   |
+  |          5 | ファイルフォーマット   |
+  |          6 | ゲーム                 |
+  |          7 | 規格など               |
+  |          8 | システム管理用コマンド |
+  |------------+------------------------|
+
+*** merge
+- merge (option) file1 file2 file3
+  file2からfile3へのすべての変更をfile1に併合する。
+
+*** mkdir
+*** mkfs
+- 
+  ファイルシステムの作成
+- -t
+  ファイルシステムタイプを指定する。
+- -V
+  verboseもversionも兼用しているようです。
+  ex: mkfs -v -t ext4 /dev/sdb1
+
+*** mknod
+    特殊ファイルを作成する。
+    mknod [オプション] ファイル名 タイプ メジャー マイナー
+    [-m] アクセス権を設定する。デフォルトは0666からumaskを引いたもの。
+    タイプ: b ブロック(buffered)型、c,u キャラクタ(unbuffered)型
+            p FIFO(名前つきパイプ)
+            ※pを指定を指定した場合はデバイス番号（メジャーマイナー）を指定しない。
+
+*** mkswap
+- 
+  スワップ領域を設定する。
+  mkswap /dev/sbd2
+
+*** mount
+- 
+  現在マウントされているファイルシステムを調べる。
+- --bind
+  すでにマウントされているツリーの一部を別の場所にマウントする。
+- -v verbose
+- -t
+  ファイルシステムのタイプを指定
+   ext3, ntfs, sysfs, devpts, proc, tmpfsなど。
+
+*** mv
+- 
+  リネームとかファイルの移動とか。
+  mv aaa{,bbb}とするとaaa->aaabbbにリネームされる。
+
+*** nc
+- 
+  netcat.
+  arbitrary TCP and UDP connections and listens.
+  nc utility is used for just about anything under the sun involving TCP and UDP.
+  
+- -v
+  give more verbose output.
+  
+- -z
+  Specifies that nc should just scan for listening daemons, without sending any data to them.
+
+*** netstat
+  
+*** passwd
+- 
+  ユーザパスワードを変更する。
+
+- ex)
+  passwd user
+
+*** pgrep
+- 
+  選択基準にマッチするプロセスのプロセスIDを標準出力する
+- -l
+  プロセス名をプロセスIDと一緒に表示する
+- -o
+  マッチしたプロセスの中から最古のものを表示する
+- -U ユーザID
+  ユーザIDがリストのどれかであるプロセスを表示する
+- -G グループID
+  実グループIDがリストのどれかであるプロセスのみマッチする
+  
+*** printenv
+- 
+  show list of environment variables.
+
+*** printf
+- 
+  メッセージを整形して表示する。
+  '\n'を入れないと改行されない。
+
+*** ps
+- 
+  実行中のプロセスを表示する。
+- -a
+  自分以外のユーザのプロセスも表示する
+- -x
+  制御端末のないプロセスの情報も表示する
+- -u
+  プロセスのユーザ情報を表示
+- -e
+  全てのプロセスを表示する。
+- -f
+  プロセスの親子関係を表示する
+
+*** pstree
+- [ pid | user ]
+  実行中のプロセスをツリー形式で実行する。
+  pidを基点として表示するが、省略されるとinitを基点とする。
+
+*** pvcreate
+- 
+  initialize a disk or partition for use by LVM
+
+- ex)
+  sudo pvcreate /dev/sdb1
+  
+*** pvdisplay
+- 
+  display attributes of a physical volume
+
+*** pvs
+- 
+  report information about physical volumes
+
+*** rar / unrar
+*** read
+- [varname]
+  標準入力から1行読み取り、読み込んだ内容をvarnameに指定したシェル変数に格納する。
+
+*** readelf
+    ELFファイルに関する情報を表示
+
+*** readlink
+    シンボリックリンクの値を読む。
+    readlink [OPTION]... FILE...
+
+*** resize2fs
+- 
+  resize ext2, ext3, or ext4 file system.
+  It can be used to enlarge or shrink an unmounted file system located on device.
+
+*** return
+- 
+  関数の実行を終了する。
+  数字を指定して終了ステータスを返すことが出来る。
+
+*** rm
+- 
+  ファイルを削除する
+
+*** rmdir
+
+*** scp
+- scp [[user@]sourcehost1:]filename1 ... [[user@]desthost2:]filename2
+  データコピーを安全に行う。
+  sshを使ってデータをコピーする。
+
+- -F ssh_config
+  sshの設定ファイルを指定する。
+
+- Wildcardを使う方法
+  サーバ側がglobで解釈できるよう、エスケープして渡す。
+  ex) scp 'SERVERNAME:/DIR/\*' .
+
+*** screen
+
+*** service
+- 
+  指定されたLinuxデーモンの起動や停止、ステータスの確認を実行する。
+  中身はシェルスクリプト。
+
+*** sh(dash)
+- 
+  'sh -c -x "コマンド内容"'などととすることで、
+  シェルがどのようにコマンドを展開しているか理解するのに役立つ。
+
+- -c
+  Read commands from the command string operand instead of from the standard input.
+  
+- -x xtrace
+  Write each command to standard error befor it is executed. Useful for debugging.
+
+*** sftp
+- 
+  interactive file transfer program, similar to ftp.
+  performing all operations over an encrypted ssh transport.
+  
+**** interactive commands
+- bye
+- cd path
+- chgrp grp path
+- chmod mode path
+- chown own path
+- df [-hi] [path]
+- exit
+- get [-P] remote-path [local-path]
+- help
+- lcd path
+  change local directory to 'path'
+- lls [ls-options [path]]
+  Display local directory listing
+- lmkir path
+  Create local directory
+- ln oldpath newpath
+- lpwd
+  print local working directory
+- ls
+- lumask umask
+- mkdir path
+- progress
+  Toggle display of progress meter
+- put [-P] local-path [remote-path]
+  Upload file
+- pwd
+- quit
+- rename oldpath newpath
+- rm path
+- rmdir path
+- symlink oldpath newpath
+- version
+- !command
+  Execute 'command' in local shell
+- !
+  Escape to local shell
+- ?
+
+*** sort
+- 
+  sorts the contents of a text file, line by line.
+
+- -c, --check
+  Check for sorted input; do not sort.
+
+- -d, --dictionary-order
+  Consider only blanks and alphanumeric characters.
+
+- -f, --ignore-case
+  Fold lower case to upper case characters.
+  
+- -n, --numeric-sort
+
+- -r, --reverse
+
+- -u, --unique
+  With -c, check for strict ordering; without -c, output only the first of an equal run.
+
+*** source
+- 
+  "source filename"で、filenameで指定されたスクリプトファイルを実行する。
+  ファイルの内容を、自分で手で打っていくのと同じ
+
+*** split
+- 
+  ファイルを分割する。
+  usage: split [-b bytes[bkm]] [infile [outfile-prefix]]
+
+- b bytes
+  bytesで示したバイト数で分割する。
+
+- infile
+  元ファイルを指定する
+
+- link
+  [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060227/230888/][【split】ファイルを分割する - Linuxコマンド集]]
+
+*** ssh
+- 
+  secure shell.
+
+- -L LocalPort:RemoteHost:RemotePort
+  port forwarding.
+  ex) ssh -L 8080:192.168.111.200:8080 User@192.168.111.1
+
+- R LocalPort:RemoteHost:RemortPort
+  like -L option, but port is opened in remote server.
+
+- -g
+  Allows remote hosts to connect to local forwarded ports.
+
+- -p
+  connection port setting
+  ex) ssh user@192.168.100.1 -p 8080
+
+- config
+  write down port forwarding settings to  ~/.ssh/config 
+  and not to need to set everytime to connect.
+
+*** ssh-keygen
+- 
+  認証用の鍵を生成、管理、および変換する。
+
+*** stat
+- 
+  display file or file system status
+
+*** stop
+- [%jobsid]
+  バックグラウンドで停止するコマンドのジョブ番号を指定する
+
+*** strace
+- 
+  動作中のプログラムが呼んだシステムコールを表示してくれる。
+
+*** strip
+    オブジェクトファイルからシンボル(デバッグ用のデータ)を切り捨てる。
+
+*** stty
+- 
+  端末ラインの設定を変更・表示する
+- -a
+  すべてのオプション設定の現在の状態を標準出力に書き出す
+
+*** su
+- 
+  ユーザを切り替える。
+
+- -, -l, --login 
+  シェルをログインシェルにする。
+  
+- 
+  "su"だと、環境をuserから引き継ぐ。
+  "su -"だと、rootの環境となる。
+
+*** sysctl
+- 
+  system settings
+  /proc/sys/net/ipv4/ip_forward -> net.ipv4.ip_forward (in /etc/sysctl.conf)
+
+*** tail
+- 
+- -n, --lines=K
+  output the last K lines, instead of the last 10
+
+- -f, --follow[={name|descriptor}]
+  output appended data as the file grows;
+
+- -F
+  same as --follow=name --retry
+
+*** tar
+- 
+  ファイルを書庫化、展開する。
+  - メインオプション
+    - -A, --catenate
+      tarファイルを書庫に追加する
+    - -c, --create
+      書庫を新規作成する
+    - -d, --diff
+      書庫とファイルシステム比較する
+    - --delete
+      書庫内からファイルを削除する
+    - -r, --append
+      書庫の後部にファイルを追加する
+    - -t, --list
+      書庫の内容を表示する
+    - -u, --update
+      新しいファイルのみ追加する
+    - -x, --extract
+      書庫内からファイルを取り出す
+  - その他
+    - -f
+      ファイルを指定
+    - -v, --verbose
+      ファイル一覧を詳細に表示
+    - -C, --directory=DIR
+      change to deriectory DIR
+  - 形式別圧縮解凍(最近は自動判断)
+    - -z
+      tar + gzip
+    - -j
+      tar + bzip2
+    - -J
+      tar + xz
+
+*** tee
+- 
+  標準入力から読み込んだ内容を、標準出力とファイルの両方へ出力する。
+
+*** telnet
+
+*** test, [
+- 
+
+- Expression
+  - exp1 -a exp2
+    both exp1 and exp2
+
+  - exp1 -o exp2
+    either exp1 or exp2
+
+- String
+  - [-n] string
+    the length of string is nonzero
+
+  - -z string
+    the length of string is zero
+
+  - STRING1 = STRING2
+    the strings are equal
+
+- Integer
+  - INTEGER1 -eq INTEGER2
+  - INTEGER1 -ge INTEGER2
+  - INTEGER1 -gt INTEGER2
+  - INTEGER1 -le INTEGER2
+  - INTEGER1 -lt INTEGER2
+  - INTEGER1 -ne INTEGER2
+
+- File
+  - FILE1 -ef FILE2
+    FILE1 and FILE2 have the same device and inode numbers
+
+  - -b FILE
+    FILE exists and is block special
+
+  - -c FILE
+    FILE exists and is character special
+
+  - -d FILE
+    FILE exists and is a directory
+
+  - -f FILE
+    FILE exists and is a regular file
+
+- Return
+  set $? as 0(true) or 1(false)
+
+- Link(temp)
+  - http://linux.about.com/library/cmd/blcmdl1_test.htm
+
+*** top
+- 
+  CPUのプロセスをリアルタイムで表示する。
+- 
+  |----------+-----------------------------------------------|
+  | 表示項目 | 説明                                          |
+  |----------+-----------------------------------------------|
+  | PID      | プロセスID                                    |
+  | USER     | プロセスを実行しているユーザ名                |
+  | PRI      | 優先度                                        |
+  | NI       | ナイス値                                      |
+  | SIZE     | 仮想イメージの大きさ                          |
+  | RSS      | 使用中の物理メモリー量                        |
+  | SHARE    | 使用中の共有メモリー量                        |
+  | STAT     | プロセスのステータス。                        |
+  |          | Rは実行可能、Sは停止、Dは割り込み不可の停止、 |
+  |          | Tは停止またはトレース中、Zはゾンビプロセス、  |
+  |          | Wはスワップアウトしたプロセス、               |
+  |          | Nはナイス値が正であることを表す               |
+  | LIB      | ライブラリが使用するページサイズ              |
+  | %CPU     | CPU占有率                                     |
+  | %MEM     | メモリー占有率                                |
+  | TIME     | プロセス開始からの実行時間                    |
+  | COMMAND  | タスクのコマンド名                            |
+  |----------+-----------------------------------------------|
+
+*** touch
+- touch [options] file...
+  change file timestamp
+
+- -a, --time=atime, --time=access, --time=use
+  change access time only.
+- -c, --no-create
+  not creating a new file when target file is not exist
+- -d, --date time
+  
+- -t MMDDhhmm[[CC]YY][.ss]
+
+*** trap
+- 
+  システム割り込み時の処理を設定する。
+- -l
+  シグナル名と対応する番号の一覧を表示する
+- -p
+  単独で用いた場合、現在各シグナルに対して設定されている処理内容を表示する。
+
+*** tty
+- 
+  どの端末が割り当てられたか確認する
+
+*** type
+- 
+  コマンドに関する情報を表示する
+- -a
+  コマンドのパス名として、実際に起動されるパス以外にその他のパスも表示する。
+- -p
+  コマンド名を指定した場合に、実行されるファイル名を表示する。
+- -t
+  コマンドの型を表示する
+  alias, shell builtin, file, function, keywordがある。
+
+*** tzselect
+    タイムゾーンを選択する。
+
+*** umount / unmount
+- 
+  unmount file systems
+
+*** uname
+- 
+  OSやCPUのアーキテクチャ、ホスト名、カーネルバージョン等のシステム情報が表示される。
+- -a
+  全ての情報を表示する。
+- -n
+  ホスト名を表示する
+
+*** uniq
+- 
+  reporting or filtering out repeated lines in a file.
+  
+  uniq does not detect repeated lines unless they are adjacent.
+  You may want to sort the input first, or use "sort -u" instead of "uniq".
+
+- -c, --count
+  Prefix lines with a number representing how many times they occurred.
+
+- -d, --repeated
+  Only print duplicated lines.
+
+- -i, --ignore-case
+  This option performs case-insensitive comparisons.
+
+- -u, --unique
+  Only print unique lines.
+
+*** unset
+- 
+  指定した変数や関数を削除する。
+  ただし、シェルが始めから利用している変数や
+  readonlyが指定されている変数は削除できない。
+
+*** updatedb
+- 
+  locate用ファイル・データベースを更新する。
+
+*** useradd
+- 
+  新規ユーザの作成
+- -s
+  shellを設定する。
+- -g 
+  主グループを設定する。
+- -m, --create-home
+  ホームディレクトリが存在しない場合に作成する。
+- -k, --skel
+  -mと同時に指定すると、指定したフォルダ以下のファイルがコピーされる。
+  指定しない場合は/etc/skel以下をコピー。
+  The skelton direcotry
+- -d, --home-dir HOMEDIR
+  The new user will be created using HOME_DIR as the value for the user's login directory.
+
+- ex)
+  - useradd -d /user1 -m -g user1 user1
+
+*** vgdisplay
+- 
+  display attributes of volume groups
+
+*** vgextend
+- 
+  add physical volumes to a volume group
+
+- ex)
+  sudo vgextend centos /dev/sdb1
+  
+*** vgs
+- 
+  report information about volume groups
+
+*** vigr
+- 
+  edit /etc/group
+
+*** vipw
+- 
+  edit /etc/password
+
+- -s
+  edit /etc/shadow
+
+*** visudo
+- 
+  Edit /etc/sudoers.
+  
+  Format: User Host=(Permisson) Command
+  ex) root ALL=(ALL) ALL
+
+*** w
+- 
+  ログインユーザ名とその利用状況を表示する。
+
+*** w3m
+- 
+  pager / text-based web-browser.
+
+*** wc
+- 
+  ファイルのバイト、行、文字および単語をカウントする。
+  行数・単語数・文字数・バイト数・ファイル名の順に、オプション指定された情報だけ表示する。
+- -c
+  バイト数を出力する。
+- -l
+  行数を出力する。改行コードの数を行数とみなす。
+- -m
+  文字数を出力する。マルチバイト文字も1文字としてカウントする。
+- -w
+  単語数を出力する。単語数はスペース、タブおよび改行で区切られた文字列の数とする。
+
+*** wget
+- 
+  ファイルをダウンロードする。
+  wget [option] URL
+
+- -r
+  配下全てのデータを取得する。再帰的にファイルを入手する。
+
+- -l 階層数
+  再帰的にファイルを入手する場合の階層数を指定する。
+
+*** whatis
+- 
+  show summary of man, searched from command names.
+  簡単な説明とキーワードを含むデータベースを検索し、結果を出力する。
+
+*** whereis
+- 
+  コマンドのバイナリ、ソース、manページの場所を示す。
+
+*** which
+- 
+  コマンドのフルパスを表示する。パスが通っているもののみ。
+  （パスが通っていないものについては、findやlocateを使用するとよい。）
+
+*** who
+- 
+  現在ログインしているユーザ情報を表示する
+
+*** xz / unxz
+
+*** zip / unzip
+
+** Link
+- [[http://ss64.com/bash/][An A-Z Index of the Bash command line for Linux.]]
+- [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230573/?ST=oss&rt=nocnt][Linuxコマンド集 INDEX （機能別） - ITpro]]

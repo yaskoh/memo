@@ -37,6 +37,10 @@
 - 
   SHOW DATABASES;
 
+**** USE DATABASE
+- 
+  
+
 *** show grants
 - 
   show grants for username
