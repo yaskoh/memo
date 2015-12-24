@@ -394,3 +394,16 @@
 - 
   
 
+** Memo
+*** Addition of ShellVariables
+- 
+  1. num=`expr $num + 1`
+
+  if using bash (not including sh), you can use following:
+  1. num=$[$num+1]
+  2. num=$(($num+1))
+  3. let result=num*mult
+
+- 
+  [[http://qiita.com/d_nishiyama85/items/a117d59a663cfcdea5e4][シェルで変数のインクリメントにexprを使うと100倍遅い件 - Qiita]]
+  [[http://www.atmarkit.co.jp/ait/articles/0010/19/news003.html][シェルの変数に慣れる - @IT]]

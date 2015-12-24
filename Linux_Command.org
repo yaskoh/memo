@@ -177,10 +177,17 @@
   サイズが0のファイルシステムも出力
 - -t fstype, --type=fstype
   ファイルシステムの種類(ex: ext4)の種別を指定
+- -s, --summarize
+  display only a total for each argument
+- --max-depth=N
+  print the total for a directory only if it is N or fewer levels below the command line argument;
+  specify 0 is the same as --summarize.
 
 *** dmesg
 - 
   カーネルのメッセージバッファの内容を表示する。"display message"の略。
+  print or control the kernel ring buffer.
+  the porgram helps users to print out their bootup messaes.
 
 *** du
 - du [filename...]
@@ -257,9 +264,14 @@
   環境変数の一覧を取得する
 
 *** fdisk
-- 
-  パーティションを設定する。
-  [- l] リストを取得する。 (sudo fdisk -l /dev/sda)
+- fdisk (option) device
+  ディスクのパーティションを設定する。
+
+- -l
+  get list about partition  (sudo fdisk -l /dev/sda)
+
+- -s partition
+  
 
 *** fg
 - [%jobsid]
@@ -320,7 +332,6 @@
   - ls
   - open
     
-
 *** fsdk
 - 
   実際にはLinuxで利用できるさまざまなファイルシステムチェッカーへの単なるフロントエンド、とのこと。
@@ -524,6 +535,17 @@
 - -f, --force
   
 *** ls
+- 
+  ls means list.
+  show files and directories on the target directory.
+- -l
+  show details.
+- -r  
+  show reverse sorted.
+- -t
+  show sorted by timestamp
+- -S
+  sorted with file size.
 
 *** lvcreate
 - 
@@ -675,7 +697,6 @@
 - -G グループID
   実グループIDがリストのどれかであるプロセスのみマッチする
   
-
 *** printenv
 - 
   show list of environment variables.
@@ -776,6 +797,50 @@
   
 - -x xtrace
   Write each command to standard error befor it is executed. Useful for debugging.
+
+*** sftp
+- 
+  interactive file transfer program, similar to ftp.
+  performing all operations over an encrypted ssh transport.
+  
+**** interactive commands
+- bye
+- cd path
+- chgrp grp path
+- chmod mode path
+- chown own path
+- df [-hi] [path]
+- exit
+- get [-P] remote-path [local-path]
+- help
+- lcd path
+  change local directory to 'path'
+- lls [ls-options [path]]
+  Display local directory listing
+- lmkir path
+  Create local directory
+- ln oldpath newpath
+- lpwd
+  print local working directory
+- ls
+- lumask umask
+- mkdir path
+- progress
+  Toggle display of progress meter
+- put [-P] local-path [remote-path]
+  Upload file
+- pwd
+- quit
+- rename oldpath newpath
+- rm path
+- rmdir path
+- symlink oldpath newpath
+- version
+- !command
+  Execute 'command' in local shell
+- !
+  Escape to local shell
+- ?
 
 *** sort
 - 
@@ -881,7 +946,14 @@
 
 *** tail
 - 
-  n:number f: follow (exit with C-c)
+- -n, --lines=K
+  output the last K lines, instead of the last 10
+
+- -f, --follow[={name|descriptor}]
+  output appended data as the file grows;
+
+- -F
+  same as --follow=name --retry
 
 *** tar
 - 
@@ -973,7 +1045,6 @@
 
 - Link(temp)
   - http://linux.about.com/library/cmd/blcmdl1_test.htm
-
 
 *** top
 - 

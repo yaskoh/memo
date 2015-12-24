@@ -311,7 +311,7 @@
   | 変化する | /var/mail, /var/spool/news | /var/run, /var/lock |
   |----------+----------------------------+---------------------|
 
-  
+
 *** / (何を参照したかは忘れた。)
     - vmlinuz
         Linux Kernel
@@ -366,7 +366,7 @@
         temporary
         deleted when unmounting or rebooting
 
-** system calls
+** System calls
 *** read(2)
 - def
   #include <unistd.h>
@@ -1050,7 +1050,101 @@
 - 
   [[file:./Linux_Command.org][Linux_Command.org]]
 
+** Boot Process
+*** Switch
+*** BIOS/UEFI
+**** BIOS
+**** UEFI
+*** Bootloader
+**** GRUB
+**** LILO
+*** Linux Kernel
+*** Init daemon
+**** SysVinit
+- 
+  First, kernel make init daemon start.
+  then init gets services to start by following description of /etc/inittab.
+  
+  1. init read /etc/inittab
+  2. init execute /etc/rc.sysinit
+  3. init execute /etc/rc
+  4. /etc/rc execute Start-up scripts on /etc/rc(runlevel).d
+
+- /etc/rc*.d
+  files on it are symbolic links of /etc/init.d
+
+- log
+  - /var/log/messages
+    information of the whole system.
+  - /var/log/boot.log
+    information about whether each prosess status when booting up is ok or not.
+  - /var/log/dmesg
+    messages when system booting
+
+- 
+  [[http://www.seinan-gu.ac.jp/~shito/old_pages/hacking/shell/sh/boot_shutdown.html][initデーモンを理解する--Debian編（bootとshutdown時に自動的に実行されるプログラムの 仕組み）]]
+
+**** Upstart
+**** Systemd
+***** Unit
+- Feature
+  1. Configuration file, not script.
+  2. Being able to define relation among units.
+  3. Some kind of files existing
+
+- Kind
+  |-----------+---------------------------------------------|
+  | extention | content                                     |
+  |-----------+---------------------------------------------|
+  | .service  | settings about process start/stop           |
+  | .mount    | settings about mount/unmount of file system |
+  | .socket   | about monitoring socket connection          |
+  | .device   | device informations system recognized       |
+  | .path     | monitoring path                             |
+  | .target   | gatherd several units                       |
+  |-----------+---------------------------------------------|
+
+- Path
+  - /usr/lib/systemd/system
+    inital settings. not operating it.
+  - /etc/systemd/system
+    individual settings by users.
+    it is superior to read than the file above(/usr~),
+    so you can copy the settigns of the file and edit when you want to change default settings.
+
+***** Link
+- http://equj65.net/tech/systemd-boot/
+- http://enakai00.hatenablog.com/entry/20130914/1379146157
+- http://www.slideshare.net/enakai/linux-27872553
+- http://www.slideshare.net/moriwaka/systemd
+
+**** launchd
 ** Files
+*** /etc/inittab
+- 
+  being read by init process for the first time system starting.
+
+- format
+  id:runlevels:action:process
+
+  - action
+    |-------------+-----------------------------------------------------|
+    | action      | meaning                                             |
+    |-------------+-----------------------------------------------------|
+    | respawn     | starting process, and restarting when it stops      |
+    | wait        | starting process, and waiting stop                  |
+    | once        | executing once when transferred to target runlevel. |
+    | initdefault | default run level                                   |
+    | sysinit     | process when booting systems                        |
+    | powerfail   | process when                                        |
+    | powerokwait |                                                     |
+    | ctrlaltdel  | the case when [Ctrl] + [Alt] + [Delete] are pressed |
+
+*** /etc/rc*.d
+- 
+  files on it are symbolic links of /etc/init.d
+
+*** /etc/rc.sysinit
 *** /etc/passwd
 - Format
   ユーザ名:暗号化パスワード:UID:GID:ユーザのフルネーム:ユーザのホームディレクトリ:ログインシェル
@@ -1819,3 +1913,14 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 
 - Link
   [[http://www.task-notes.com/entry/20150214/1423882800][シェルスクリプトで相対パスと絶対パスを取得する - TASK NOTES]]
+*** About LVM
+**** Disk
+**** Physical Volume
+**** Volume Group
+**** Logical Volume
+**** Mount Point
+*** lost+found
+- 
+  [[http://unix.stackexchange.com/questions/18154/what-is-the-purpose-of-the-lostfound-folder-in-linux-and-unix][What is the purpose of the lost+found folder in Linux and Unix? - UNIX & LINUX]]
+
+
