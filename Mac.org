@@ -34,3 +34,23 @@
   Space押すと出てくる画面を使うと話が早い。プレビューではできないようなので。。
 
        
+*** ウムラウトやアクセント記号の入力方法
+
+**** キーボードショートカットで入力する方法
+- 
+  |----------+------------+------------|
+  | Shortcut | Name       | Example    |
+  |----------+------------+------------|
+  | Opt + E  | acute      | café       |
+  | Opt + U  | umlaut     | Übermensch |
+  | Opt + i  | circumflex | être       |
+  | Opt + N  | tilde      | España     |
+  | Opt + C  |            | façade     |
+  | Opt + _  | grave      | Voilà!     |
+  | Opt + ?  |            |            |
+  | Opt + 1  |            |            |
+
+- 
+  [[http://inforati.jp/apple/mac-tips-techniques/system-hints/how-to-enter-umlaut-diacritic-cedilla-with-macos.html][Macでウムラウトやアクセント記号などを入力する方法 - Inforati]]
+  [[http://inforati.jp/apple/mac-tips-techniques/system-hints/how-to-use-special-characters-and-symbols-keyboard-shortcut-with-macos.html][Mac 記号や特殊文字のキーボードショートカットまとめ（133種類） - Inforati]]
+
