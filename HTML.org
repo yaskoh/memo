@@ -1,52 +1,71 @@
 * HTML
 
-** tag:
-    <html>
+** Tag
+*** <html>
 
-    <body>
+*** <body>
 
-    <script>
-    <noscript>
+*** <script>
+*** <noscript>
 
-    <h1> to <h6>
-    <hr>
-    <!-->
-    <p> paragraph
-    <br> line breaks
-    <a>
-    <img>
-      <map>
-      <area>
-    <table>
-      <tr>
-        <th>
-        <td>
-      <thead>
-      <tbody>
-      <tfoot>
-    <ol>
-    <ul>
-    <li>
-    <div>
-    <span>
+*** <h1> to <h6>
+*** <hr>
+*** <!-->
+*** <p> paragraph
+*** <br> line breaks
+*** <a>
+*** <img>
+**** <map>
+**** <area>
+*** <table>
+**** <tr>
+***** <th>
+***** <td>
+**** <thead>
+**** <tbody>
+**** <tfoot>
+*** <ol>
+*** <ul>
+*** <li>
+*** <div>
+*** <span>
+*** <form>
+****   <input>
+- 
+  type="text", "password", "radio", "checkbox", "submit"
 
-    
-    <form>
-      <input>
-        type="text", "password", "radio", "checkbox", "submit"
-      <label>
-      <fieldset> group related elements in a form. draws a box around the related elements.
-        <legend> caption of fieldset
-    <textarea>
-    <select> drop-down list
-    <datalist>
-      <optgroup> group of option
-        <option> drop-down list elements
-    <button>
-    <keygen> key-pair generator
-    <output> result of a calculation
+****   <label>
+****   <fieldset>
+- 
+  group related elements in a form. draws a box around the related elements.
+*****     <legend> caption of fieldset
 
-    <Iframe> Inline Frame
+*** <textarea>
+*** <select>
+- 
+  drop-down list
+
+*** <datalist>
+**** <optgroup>
+- 
+  group of option
+
+***** <option>
+- 
+  drop-down list elements
+
+*** <button>
+*** <keygen>
+- 
+  key-pair generator
+
+*** <output>
+- 
+  result of a calculation
+
+*** <Iframe>
+- 
+  Inline Frame
 
 *** FormattingTags
     <b>
@@ -105,7 +124,6 @@
     &uarr;   ª   upwards arrow
     &larr;   ¨   rightwards arrow
     &larr;   «   downwards arrow
-    
     
 ** memo
 

@@ -112,7 +112,6 @@
 - jQuery
   - Library for using javascript as same appearence over browsers.
   
-  
 ** Apache
 - Download
   (on debian)
@@ -146,3 +145,20 @@
 ** IDE
 *** NetBeans
 *** Eclipse
+
+** Memo
+*** HTML Editor
+**** TinyMCE
+- 
+  HTMLコンテンツを容易に作成することができるWYSIWYGエディター。
+  ブラウザで利用可能。
+  オープンソースとの親和性が高い。
+  開発元はMokiecode System AB。
+  [[https://www.tinymce.com/][tinymce]]
+
+*** CMS
+- 
+  Contents Management System
+
+**** TeamSite
+**** MODX
