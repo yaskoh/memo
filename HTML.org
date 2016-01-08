@@ -1,69 +1,136 @@
 * HTML
-
 ** Tag
-*** <html>
+*** DOCTYPE
+- HTML5
+  <!DOCTYPE html>
+  <html>
+    <head> ~ </html>
+    <body> ~ </body>
+  </html>
 
-*** <body>
+*** html
+**** head
+***** meta
+****** properties
+******* charset
+- ex
+  <meta charset="utf-8">
 
-*** <script>
-*** <noscript>
+***** title
+- page title
+***** link
+****** properties
+******* rel
+- link type
+- css
+  rel="stylesheet"
 
-*** <h1> to <h6>
-*** <hr>
-*** <!-->
-*** <p> paragraph
-*** <br> line breaks
-*** <a>
-*** <img>
-**** <map>
-**** <area>
-*** <table>
-**** <tr>
-***** <th>
-***** <td>
-**** <thead>
-**** <tbody>
-**** <tfoot>
-*** <ol>
-*** <ul>
-*** <li>
-*** <div>
-*** <span>
-*** <form>
-****   <input>
+******* href
+- link file
+- css
+  href="stylesheet.css"
+
+***** style
+
+***** base
+**** body
+***** <div>
+- 
+  defines a division or a section in an HTML document.
+  the tag is used to group block-elements to format them with CSS.
+
+- 
+  block element
+
+***** <script>
+***** <noscript>
+
+***** <h1> to <h6>
+- 
+  見出し
+
+***** <hr>
+***** <!-->
+***** <p> paragraph
+- 
+  defiens a paragraph.
+
+- id
+  <p id="name">
+  id is identified 
+
+- class
+  <p class="name">
+
+***** <br> line breaks
+***** <a>
+- 
+  link, anchor.
+
+***** <img>
+- 
+  image
+
+****** <map>
+****** <area>
+***** <table>
+****** <tr>
+******* <th>
+******* <td>
+****** <thead>
+****** <tbody>
+****** <tfoot>
+***** <ol>
+- 
+  ordered list
+
+***** <ul>
+- 
+  unordered list
+
+***** <li>
+- 
+  elements in the list.
+
+***** <span>
+- 
+  inline element
+
+***** <form>
+******   <input>
 - 
   type="text", "password", "radio", "checkbox", "submit"
 
-****   <label>
-****   <fieldset>
+******   <label>
+******   <fieldset>
 - 
   group related elements in a form. draws a box around the related elements.
-*****     <legend> caption of fieldset
+*******     <legend> caption of fieldset
 
-*** <textarea>
-*** <select>
+***** <textarea>
+***** <select>
 - 
   drop-down list
 
-*** <datalist>
-**** <optgroup>
+***** <datalist>
+****** <optgroup>
 - 
   group of option
 
-***** <option>
+******* <option>
 - 
   drop-down list elements
 
-*** <button>
-*** <keygen>
+***** <button>
+***** <keygen>
 - 
   key-pair generator
 
-*** <output>
+***** <output>
 - 
   result of a calculation
 
-*** <Iframe>
+***** <Iframe>
 - 
   Inline Frame
 
@@ -93,16 +160,8 @@
     <cite> title of a work
     <dfn> defines a definition term
 
-*** Head(?)
-    <head>
-    <title>
-    <base>
-    <link>
-    <style>
-    <meta>
-
 ** Symbol
-  Entities
+*** Entities
     &nbsp;       non-breaking space
     &lt;     <   less than
     &gt;     >   greater than
@@ -113,7 +172,7 @@
     &copy;       copyright
     &reg;        registered trademark
 
-  Symbols
+*** Symbols
     &forall;
     &part;
     &exist;
@@ -125,11 +184,25 @@
     &larr;   ¨   rightwards arrow
     &larr;   «   downwards arrow
     
-** memo
+** Memo
 
 Use lower case
 
 Attribute values should always be enclosed in quotes.
     class, id, style, title
 
+*** Box Model
+**** padding
+- 
+  Inside area
 
+**** border
+- 
+  Line
+
+**** margin
+- 
+  Outside area
+
+** Link
+- [[http://www.ituore.com/entry/html-css-basic][HTMLとCSSの基本をサルでもわかるようにまとめてみようと思う。 - いつ俺]]

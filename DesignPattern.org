@@ -1,5 +1,4 @@
 * DesignPattern
-
 ** 指針
 
 *** Design Patterns in Ruby
@@ -10,7 +9,6 @@
 5. 必要になるまで作るな
 
 ** GoF
-
 *** Creational
 
 **** Singleton
@@ -100,3 +98,5 @@
 - 
   構文解析のために、文法規則を反映するクラス構造を作る。
   ドメインに特化した言語を実装する。
+** Link
+- [[http://www.happiese.com/system/dpattern.html][デザインパターンを読み解く]]

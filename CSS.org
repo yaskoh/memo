@@ -1,13 +1,10 @@
 * CSS
-
-** memo
-
+** Memo
 *** コメントアウト
 - 
   /* ... */ でコメントアウトできる。
 
 *** 要素の指定
-
 **** 全称セレクタ
 - 
   アスタリスク(*)を記述してすべての要素を対象にスタイルを適用する。
@@ -42,7 +39,6 @@
   | [属性名l="属性値" | 属性名と属性値が一致する要素に適用される(ハイフンで区切られた属性値に対応)       |
   |-------------------+----------------------------------------------------------------------------------|
 
-
 **** その他セレクタ
 - 複数セレクタ
   セレクタをカンマで区切ると、複数のセレクタに同じスタイルを適用できる。
@@ -64,6 +60,192 @@
 
 **** 擬似要素
 
+*** 記述箇所
+- 
+  上のものから順に優先的に適用される。
+  同じ箇所に書いた場合、下に書いたものが優先される。
+
+**** 1. HTMLタグに埋め込む
+- 
+  <p style="color:red;">あいうえお</p>
+
+**** 2. HTMLファイル内に埋め込む
+- 
+  <style>
+  div {
+    background:red;
+  }
+  </style>
+
+**** 3. CSSファイルに記述
+- 
+  div {
+    background:red;
+  }
+
+*** properties
+**** box
+***** size
+- ex)
+  div {
+    width:100px;
+    height:100px;
+  }
+
+****** width
+****** height
+****** max-width
+****** min-width
+****** max-height
+****** min-height
+
+***** background
+****** background-color
+- 
+  div {
+    background-color:red;
+  }
+
+****** background-image
+- 
+  div {
+    background-image:url(image.png);
+  }
+
+***** border, padding, margin
+****** padding
+- 
+  枠線と中身の間隔
+
+****** border
+- 
+  枠線と中身の間隔
+
+******* border
+- 上下左右の枠線
+******* border-left
+- 左側の枠線
+******* border-right
+- 右側の枠線
+******* border-top
+- 上側の枠線
+******* border-bottom
+- 下側の枠線
+
+****** margin
+- 
+  枠線の外側の外側の余白
+
+****** value
+******* 太さ
+- 数値, thin, medium, thick
+******* 色
+******* スタイル
+- none, dotted, dashed, solid, double groove, ridge, inset, outset
+
+****** ex
+- 
+  margin:10px; /* (上下左右) */
+  margin:10px 20px; /* (上下) (左右) */
+  margin:10px 20px 30px; /* (上) (左右) (下) */
+  margin:10px 20px; /* (上) (右) (下) (左) */
+
+***** display
+****** none
+- 非表示
+****** inline
+- インライン要素
+  高さや幅を指定できない。
+****** block
+- ブロック要素
+****** inline-block
+- インラインに入れるブロック要素
+  高さと幅が指定された上で、インライン要素のように横並びになる。
+
+***** placement
+****** float
+- ボックスを左か右に寄せるためのプロパティ。
+
+****** position
+- ボックスの配置方法を指定できる。
+
+******* property
+- static
+  初期位置
+- relative
+  初期位置を基準とした相対位置
+- absolute
+  親要素を基準とした絶対位置
+- fixed
+  絶対位置・固定
+
+******* 例
+- 
+  div {
+    position:relative;
+    top:20px;
+    left:20px;
+  }
+
+**** text
+***** color
+- ex
+  p {
+    color:#ffffff;
+  }
+  
+***** font-size
+- ex
+  p {
+    font-size:13px;
+  }
+
+***** font-weight
+- properties
+  - normal
+  - bold
+  - 100~900
+
+- ex
+  p {
+    font-weight:bold;
+  }
+  
+***** font-family
+− font-family
+
+- ex
+  p {
+    font-family: "MS Pゴシック";
+  }
+
+***** text-align
+- text-align
+  - left
+  - center
+  - right
+
+- ex)
+  p {
+    text-align: center;
+  }
+
+**** action
+***** hover
+- on mouse
+  
+- ex
+  div:hover {
+    background:red;
+  }
+
+***** active
+- on click
+  
+- ex
+  div:active {
+    background:red;
+  }
 
 ** SASS
 - 

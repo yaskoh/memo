@@ -65,9 +65,11 @@
 *** Evasion
 
 ** Memo
-
 *** News
 **** Ransomware対策(2015/11/11)
 - 
   ランサムウェアが猛威を振るっている。
   セキュリティ対策としては、バックアップを取ることが、現在一番重要。
+
+** Link
+- [[http://d.hatena.ne.jp/Kango/][piyolog]] 
