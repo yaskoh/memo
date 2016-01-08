@@ -1,6 +1,6 @@
 * HTML
 
-** Tag
+** Tags
 *** <html>
 
 *** <body>
@@ -14,6 +14,19 @@
 *** <p> paragraph
 *** <br> line breaks
 *** <a>
+- attributes
+  - name
+  - href
+  - hreflang
+  - type
+  - rel
+    - link type. relation to the link from the document
+  - rev
+    - link type. relation to the the document from the link.
+  - charset
+  - title
+    - additional / advisory information, expand on the meaning of the link.
+
 *** <img>
 **** <map>
 **** <area>

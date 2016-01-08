@@ -503,6 +503,14 @@
   | 15 | SIGTERM | 終了(Termination)シグナルによるプロセスの終了                                  |
   |----+---------+--------------------------------------------------------------------------------|
 
+*** less
+- 
+  pager
+
+- +F
+  display added lines like tail -f.
+  Ctrl+F change mode to this mode from normal mode, and Ctrl-c 
+  
 *** ldd
 - 
   共有ライブラリの依存関係を表示する。

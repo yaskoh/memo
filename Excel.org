@@ -87,8 +87,6 @@
 
 ** データベース機能
 *** テーブル
-- 
-  
 - 変換
   挿入/INSERTタブのテーブルを選択する。
 
@@ -130,6 +128,11 @@
 *** 各種特殊文字の置換
 - 改行コード
   Ctrl+J
+
+*** グループ化
+- 
+  Dataタブの配下に、グループ化の設定ができる。
+  [Alt]+[Shift]+[→]でグループ化、[Alt]+[Shift]+[←]でグループ解除ができる。
 
 * VBA
 - [[https://msdn.microsoft.com/en-us/library/office/gg264383.aspx][Visual Basic for Applications language reference for Office 2013 - Dev Center]]

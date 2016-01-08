@@ -1932,7 +1932,6 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   running fsck, and it might find data fragments that are 
   [[http://unix.stackexchange.com/questions/18154/what-is-the-purpose-of-the-lostfound-folder-in-linux-and-unix][What is the purpose of the lost+found folder in Linux and Unix? - UNIX & LINUX]]
 
-
 *** /etc/mtab, /proc/mounts
 - /etc/mtab
   通常のファイルで、ファイルシステムがマウント・アンマウントされると常にmountプログラムによって更新される。
@@ -1941,3 +1940,8 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   実際にはファイルでもなく、ファイル形式で見ることができるシステム状態。
 - 
   [[http://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-isa-ja-4/s1-storage-rhlspec.html][5.9. Red Hat Enterprise Linux 固有の情報 - Red Hat Enterprise Linux 4: システム管理入門ガイド 5章. ストレージを管理する]]
+*** 監視はtail -fでなくless +F
+- 
+  less +Fを使うことにより、監視モードと通常モードをlessを起動したまま行き来できるので、
+  tailよりも便利、とのこと。
+  [[http://www.softantenna.com/wp/unix/stop-using-tail-f/][「tail -f」を使うのは情弱、情強は「less +F」を使う - ソフトアンテナブログ]]
