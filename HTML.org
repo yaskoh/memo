@@ -1,6 +1,8 @@
 * HTML
-** Tag
+** Format
 *** DOCTYPE
+**** <!DOCTYPE html>
+**** HTML5 Structure
 - HTML5
   <!DOCTYPE html>
   <html>
@@ -34,6 +36,25 @@
 
 ***** base
 **** body
+***** Sections
+****** <header>
+- new in html5
+− header
+****** <aside>
+- new in html5
+- sidebar
+****** <article>
+- new in html5
+- main contents
+****** <footer>
+- new in html5
+- footer
+
+****** <section>
+- new in html5
+****** <nav>
+- new in html5
+
 ***** <div>
 - 
   defines a division or a section in an HTML document.
@@ -45,6 +66,7 @@
 ***** <span>
 - 
   inline element
+  use for applying styles in a part of a line.
 
 ***** <script>
 ***** <noscript>
@@ -92,8 +114,11 @@
 ****** <area>
 ***** <table>
 ****** <tr>
+- row
 ******* <th>
+− header
 ******* <td>
+- data
 ****** <thead>
 ****** <tbody>
 ****** <tfoot>
@@ -148,31 +173,76 @@
   Inline Frame
 
 *** FormattingTags
-    <b>
-    <strong>
-    <i>
-    <em>
-    <small>
-    <sub>
-    <sup>
-    <ins>
-    <del>
-    <mark>
+- <b>
+- <strong>
+- <i>
+- <em>
+- <small>
+- <sub>
+- <sup>
+- <ins>
+- <del>
+- <mark>
     
 *** ComputerOutputTags
-    <code> computer code
-    <kbd> keyboard text
-    <samp> sample
-    <var> variable
-    <pre>
+- <code> computer code
+- <kbd> keyboard text
+- <samp> sample
+- <var> variable
+- <pre>
     
 *** Citations,Quotations,DefinitionTags
-    <abbr> abbreviation or acronym
-    <address> contact information
-    <bdo> text direction(Bi-Directional Override)
-    <cite> title of a work
-    <dfn> defines a definition term
+- <abbr> abbreviation or acronym
+- <address> contact information
+- <bdo> text direction(Bi-Directional Override)
+- <cite> title of a work
+- <dfn> defines a definition term
 
+** html5 tags
+− http://www.htmq.com/html5/index.shtml
+
+*** Document type definition
+**** <!DOCTYPE html>
+*** Root element
+**** <html>
+*** Document metadata
+**** <head>
+**** <title>
+**** <base>
+**** <link>
+**** <meta>
+**** <style>
+*** Scripting
+**** <script>
+**** <noscript>
+*** Sections
+**** <body>
+**** <h1>-<h6>
+**** <section>
+- new in html5
+**** <nav>
+- new in html5
+**** <header>
+- new in html5
+− header
+**** <aside>
+- new in html5
+- sidebar
+**** <article>
+- new in html5
+- main contents
+**** <footer>
+- new in html5
+- footer
+**** <address>
+
+*** Grouping content
+*** Text-level semantics
+*** Edits
+*** Embedded content
+*** Tabular data
+*** Forms
+*** Interactive elements
 ** Symbol
 *** Entities
     &nbsp;       non-breaking space
@@ -198,11 +268,10 @@
     &larr;   «   downwards arrow
     
 ** Memo
+- Use lower case
 
-Use lower case
-
-Attribute values should always be enclosed in quotes.
-    class, id, style, title
+- Attribute values should always be enclosed in quotes.
+  class, id, style, title
 
 *** Box Model
 **** padding
@@ -219,3 +288,4 @@ Attribute values should always be enclosed in quotes.
 
 ** Link
 - [[http://www.ituore.com/entry/html-css-basic][HTMLとCSSの基本をサルでもわかるようにまとめてみようと思う。 - いつ俺]]
+- [[http://www.htmq.com/html5/index.shtml][HTML5リファレンス - HTMLクイックリファレンス]]

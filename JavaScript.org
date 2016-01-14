@@ -1,30 +1,98 @@
 * JavaScript
+** Grammer 文法
+*** Fundamentals Memo
+- 文の終了は;(Semicolomn)
+- 文字列は"か'で囲む
+- コメントは//から。
+- 変数定義はvarをつける
+- 演算の省略形として、+=, ++なども使用可能。
+- 配列は、var names = [a, b, c, ...]; という形式。
+- 連想配列は、var key = { };
+- user["name"]と、user.nameは同じ。
 
-** 文法
+*** Global Objects グローバルオブジェクト
+**** Value propeties
+**** Function properties
+**** Fundamental objects
+***** Object
+***** Function
+***** Boolean
+***** Symbol
+***** Error
+****** EvalError
+****** InternalError
+****** RangeError
+****** ReferenceError
+****** SyntaxError
+****** TypeError
+****** URIError
+**** Numbers and dates
+***** Number
+***** Math
+***** Date
+**** Text processing
+***** String
+***** RegExp
+**** Indexed collections
+***** Array
+**** Keyed collections
+***** Map
+***** Set
+***** WeakMap
+***** WeakSet
+**** Vector collections
+***** SIMD
+**** Structured data
+***** ArrayBuffer
+***** DataView
+***** JSON
+**** Control abstraction objects
+***** Promise
+***** Generator
+***** GeneratiorFunction
+**** Reflection
+***** Reflect
+***** Proxy
+**** Internationalization
+***** Intl
+**** Other
+***** arguments
+*** Statements 文
+**** Control flow
+**** Declarations
+**** Functions and classes
+**** Iterations
+**** Others
+*** Expressions and operators 式と演算子
+*** Web APIs
+- https://developer.mozilla.org/en-US/docs/Web/API
+**** Console
+***** Methods
+****** Console.log()
+- 
+  Output a message to the Web Console.
 
-*** Values, variables, literals
+*** Obsolete
+**** Types Values, variables, literals
+***** 値
+****** 数値
 
-**** 値
+****** 論理値
 
-***** 数値
+****** 文字列
 
-***** 論理値
+****** null
 
-***** 文字列
+****** undefined
 
-***** null
-
-***** undefined
-
-**** 変数
-
-***** 名前
+***** Variables 変数
+****** 名前
 - 
   識別子はアルファベット、アンダースコア(_)、ドル記号($)から始まらなければいけない。
   続く文字は数字(0-9)も使用できる。
   大文字・小文字を区別する。
 
-***** スコープ
+****** Scope スコープ
 - グローバル（大域）変数
   関数の外側で宣言すると、どのコードからも使用できる。
 - ローカル（局所）変数
@@ -32,211 +100,273 @@
 - ブロック文
   ブロックを内包しているコードに局所化される。
 
-**** 定数
+***** 定数
 - 
   constキーワードを用いて、読み取り専用の定数を作成できる。
 
-**** リテラル
+***** Literals リテラル
+****** 配列リテラル
 
-***** 配列リテラル
+****** 真偽値リテラル
 
-***** 真偽値リテラル
+****** 整数
 
-***** 整数
+****** 浮動小数点数リテラル
 
-***** 浮動小数点数リテラル
+****** オブジェクトリテラル
 
-***** オブジェクトリテラル
+****** 文字列リテラル
 
-***** 文字列リテラル
+****** Unicode
 
-***** Unicode
-
-
-*** 式と演算子
-
-**** 式
+***** Data structuer and types
+**** Expressions and Operators 式と演算子
+***** 式
 - 算術式
 - 文字列式
 - 論理式
 - オブジェクト式
 
-**** 演算子
+***** 演算子
 
-***** 代入演算子
+****** 代入演算子
 
-***** 比較演算子
+****** 比較演算子
 
-***** 算術演算子
+****** 算術演算子
 
-***** ビット演算子
+****** ビット演算子
 
-***** 論理演算子
+****** 論理演算子
 
-***** 文字列演算子
+****** 文字列演算子
 
-***** 特殊演算子
+****** 特殊演算子
 
+**** 正規表現
+**** Control flow 条件式
+***** ブロック文
 
-*** 正規表現
+***** 条件文
 
+****** if...else
 
-*** 条件式
+****** switch
 
-**** ブロック文
+***** ループ文
 
-**** 条件文
+****** for
 
-***** if...else
+****** do...while
 
-***** switch
+****** while
 
-**** ループ文
+****** label
 
-***** for
+****** break
 
-***** do...while
+****** continue
 
-***** while
+***** オブジェクト操作文
 
-***** label
+****** for...in
 
-***** break
+****** for each...in
 
-***** continue
+***** コメント
 
-**** オブジェクト操作文
+***** 例外処理分
 
-***** for...in
+****** throw
 
-***** for each...in
+****** try...catch
 
-**** コメント
+******* catchブロック
 
-**** 例外処理分
+******* finallyブロック
 
-***** throw
+**** 関数
 
-***** try...catch
+*** W3C
+**** Syntax
+***** Loop
+****** for(;;)
+****** for( in )
+****** while()
+****** do...while()
+****** break
+****** continue
+****** try, catch, throw
 
-****** catchブロック
+**** Function
+***** Popup
+****** alert
+****** confirm
+****** prompt
 
-****** finallyブロック
+**** Event
+***** onload
+***** onunload
+***** onfocus
+***** onblur (when losing focus)
+***** onchange
+***** onsubmit
+***** onmouseover
+***** onmouseout
 
+**** Object
+***** Document
+***** String
+****** length
+****** toUpperCase()
+***** Date
+***** Array
+***** Boolean
+***** Math
+***** RegExp
+***** Navigator
 
-
-
-*** 関数
-
-
-*** オブジェクト
-
-
-** various
-
-標準スクリプト言語の指定
-    HTML4.01までは、以下の記述によりonclickなどで使われる標準のスクリプト言語指定が推奨されていたが、
-    HTML5ではデフォルトがjavascriptとなり、設定不要に。
-    <meta http-equiv="Content-Script-Type" content="text/javascript">
-
-変換
-    int.toString(2)  // 2進数へ変換
-    int.toString(16) // 16進数へ変換
-    parseInt(bin,2)  // 2進⇒10進数へ変換
-    parseInt(hex,16) // 16進⇒10進数へ変換
-
-Math
-    Math.random  // 0以上1未満の乱数を取得。
-    ex:
-        Math.floor(Math.random * 10) // 0以上10未満の自然数を取得
-        Math.ceil(Math.random * 10)  // 0以上10以下の自然数を取得、気持ち0含まない。
-
-    Math.pow(x,y) // xのyべき乗
-
-
-** W3C
-
-Syntax
-  Loop
-    for(;;)
-    for( in )
-    while()
-    do...while()
-    break
-    continue
-    try, catch, throw
-
-
-Function
-  Popup
-    alert
-    confirm
-    prompt
-
-
-Event
-  onload
-  onunload
-  onfocus
-  onblur (when losing focus)
-  onchange
-  onsubmit
-  onmouseover
-  onmouseout
-
-
-Object
-  Document
-  String
-    length
-    toUpperCase()
-  Date
-  Array
-  Boolean
-  Math
-  RegExp
-  Navigator
-
-
-Developer Tool
-  Ctrl-Shift-J or F12
+**** Developer Tool
+***** Ctrl-Shift-J or F12
 
 ** 外部Tool
-
-*** MVC系Framework
+*** 分類
+**** MVC系Framework
 - AngularJS
 - Backbone.js
 
-*** DOM操作
+**** DOM操作
 - jQuery
 
-*** テンプレートエンジン
+**** テンプレートエンジン
 - Underscore.js
 
-*** Webグラフィックス
+**** Webグラフィックス
 - three.js
 - D3.js
 
-*** altJS
+**** altJS
 - CoffeeScript
 - TypeScript
 - Dart
 - Haxe
 - JSX
 
-*** ServerSide
+**** ServerSide
 - Node
 - Rhino
 
-*** Test
+**** Test
 - QUnit
 - Jasmine
 
+*** jQuery
+- 
+  容易に記述できるようにするためのJavaScriptライブラリ。
 
-** memo
+**** Fundamentals
+- 使い方
+  1. jQueryオブジェクトを作成（セレクタ）
+  2. jQueryオブジェクトに対しメソッドを呼び出す（メソッド）
+  
+  - format
+    $('セレクタ').メソッド(引数);
+
+***** Event
+- 処理を行うタイミングを指定できる。
+
+- format
+  $('セレクタ').イベント名(function(){
+    // 処理
+  });
+  
+**** Selector セレクタ
+- 基本的にはCSSと同じ方式。
+
+- id
+  #で指定する。
+
+- class
+  .で指定する。
+
+**** Method メソッド
+***** Ajax
+***** CSS
+****** .css()
+- 
+  Get the value of a computed style property for the first element in the set of matched elements
+  or set one or more CSS properties for every matched element.
+
+***** Effects
+****** Basics
+******* fadeIn()
+- Display the matched elements by fading them to opaque.
+
+******* fadeOut()
+- Hide the matched elements by fading them to trasparent.
+
+******* hide()
+- Hide the matched elements.
+
+******* show()
+- Display the matched elements.
+  表示する
+
+******* slideDown()
+- Display the matched elements with a sliding motion.
+******* slideUp()
+- Hide the matched elements with a sliding motion.
+
+***** Events
+****** Mouse Event
+******* .click()
+- Bind an event handler to the "click" JavaScript event, or trigger that event on an element.
+
+***** Manipulation
+
+****** DOM Insertion, Inside
+
+******* .html()
+- 
+  Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.
+
+******* .text()
+- 
+  Get he combined text contents of each element in the set of matched elements, 
+  including their descendants, or set the text contents of the matched elements.
+
+**** Memo
+***** 読み込む位置
+- 
+  最近は体感スピード向上のため、</body>直前で読み込むことが多い模様。
+
+**** Link
+- [[http://jquery.com/][jQuery]]
+
+** Memo
+*** 標準スクリプト言語の指定
+- 
+  HTML4.01までは、以下の記述によりonclickなどで使われる標準のスクリプト言語指定が推奨されていたが、
+  HTML5ではデフォルトがjavascriptとなり、設定不要に。
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+
+*** 変換
+- 
+  int.toString(2)  // 2進数へ変換
+  int.toString(16) // 16進数へ変換
+  parseInt(bin,2)  // 2進⇒10進数へ変換
+  parseInt(hex,16) // 16進⇒10進数へ変換
+
+*** Math
+- 
+  Math.random  // 0以上1未満の乱数を取得。
+  ex:
+      Math.floor(Math.random * 10) // 0以上10未満の自然数を取得
+      Math.ceil(Math.random * 10)  // 0以上10以下の自然数を取得、気持ち0含まない。
+
+  Math.pow(x,y) // xのyべき乗
 
 *** DOM
-
 **** window
 
 - setInterval
@@ -270,6 +400,9 @@ Developer Tool
 - 
   [[http://web-tan.forum.impressrd.jp/l/6342][Googleアナリティクスとは／衣袋教授のGoogleアナリティクス入門講座 コーナーの記事一覧 - Web担当者Forum]]
 
-*** Link
+** Link
+- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]
+  [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]
+− [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference][JavaScript reference - MDN]] 
+  [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference][JavaScriptリファレンス - MDN]]
 
-- [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]

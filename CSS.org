@@ -1,89 +1,6 @@
 * CSS
-** Memo
-*** コメントアウト
-- 
-  /* ... */ でコメントアウトできる。
-
-*** 要素の指定
-**** 全称セレクタ
-- 
-  アスタリスク(*)を記述してすべての要素を対象にスタイルを適用する。
-
-**** タイプセレクタ
-- 
-  要素名を使った指定は、要素をそのまま記載すればよい。
-  ex) p { color: red; }
-
-**** クラスセレクタ
-- 
-  クラス名はピリオド(.)に続けて記述する。
-  ex) .example { color: red; }
-  要素名に続けて指定する方法もある。
-
-**** IDセレクタ
-- 
-  IDを使った指定では、ハッシュ(#)に続けて記述する。
-  ex) #example { color: red; }
-  要素名に続けて指定する方法もある。
-
-**** 属性セレクタ
-- 
-  要素名に続けて[]を記述して、属性名や属性値を指定する。
-  
-  |-------------------+----------------------------------------------------------------------------------|
-  | 属性セレクタ      | 説明                                                                             |
-  |-------------------+----------------------------------------------------------------------------------|
-  | [属性名]          | 属性名が一致する要素に適用される                                                 |
-  | [属性名="属性値"  | 属性名と属性値が一致する要素に適用される                                         |
-  | [属性名~="属性値" | 属性名と属性値が一致する要素に適用される(スペースで区切られた複数の属性値に対応) |
-  | [属性名l="属性値" | 属性名と属性値が一致する要素に適用される(ハイフンで区切られた属性値に対応)       |
-  |-------------------+----------------------------------------------------------------------------------|
-
-**** その他セレクタ
-- 複数セレクタ
-  セレクタをカンマで区切ると、複数のセレクタに同じスタイルを適用できる。
-  ex) h2, p { color: blue; }
-  
-- 子孫セレクタ
-  あるセレクタ配下の全ての子孫セレクタを対象にスタイルを適用する。
-  ex) p strong { background-color: #3399FF; }
-
-- 子セレクタ
-  あるセレクタ直下の子セレクタを対象にスタイルを適用する。
-  ex) p > strong { background-color: #3399FF; }
-
-- 隣接セレクタ
-  隣接する要素を対象にスタイルを適用する。
-  ex) h2 + p { color: #0000FF; }
-
-**** 擬似クラス
-
-**** 擬似要素
-
-*** 記述箇所
-- 
-  上のものから順に優先的に適用される。
-  同じ箇所に書いた場合、下に書いたものが優先される。
-
-**** 1. HTMLタグに埋め込む
-- 
-  <p style="color:red;">あいうえお</p>
-
-**** 2. HTMLファイル内に埋め込む
-- 
-  <style>
-  div {
-    background:red;
-  }
-  </style>
-
-**** 3. CSSファイルに記述
-- 
-  div {
-    background:red;
-  }
-
-*** properties
+** Properties
+*** Foundamentals
 **** box
 ***** size
 - ex)
@@ -247,6 +164,411 @@
     background:red;
   }
 
+**** class, id
+- class
+  classは、スペースを開けて指定することで複数のクラスを指定することが出来る。
+  ex) <div class="one two three">
+  
+*** Reference
+**** Color, Background
+***** color
+***** background
+***** background-attachment
+***** background-color
+***** background-image
+- url("url")
+- none
+  not useing images. default value.
+
+***** background-position
+***** background-size
+- auto
+  default value.
+  calculate automatically
+
+- contain
+  keep aspect ratio, maximum size including the area.
+
+- cover
+  keep aspect ratio, minimum size covering the area.
+  
+- (length)
+  ex) 10px 10px
+  
+- (parcentage)
+  ex) 50% auto
+
+**** Font
+***** font
+***** font-style
+***** font-variant
+***** font-weight
+***** font-size
+***** font-family
+***** font-size-adjust
+***** font-stretch
+**** Text
+***** line-height
+- 行の高さを指定する
+
+- value
+  - normal
+  - 数値に単位をつけて指定
+  - 数値のみで指定
+  - %で指定
+
+***** text-align
+- 行揃えの位置・均等割付を指定する
+
+- value
+  - left
+  - right
+  - center
+  - justify
+
+***** white-space
+- ソース中のスペース・タブ・改行の表示の仕方を指定する
+
+***** letter-spacing
+- 文字の間隔を指定する
+
+- value
+  - normal
+    標準の間隔にする。初期値。
+  - 数値指定
+
+***** word-spacing
+- 単語の間隔を指定する。
+
+**** Width, Height
+***** width
+***** max-width
+***** min-width
+***** height
+***** max-height
+***** min-height
+**** Margin, Padding
+***** margin
+- auto
+  same width of both side margin.
+  only effect to each side, not to top and bottom.
+  need to set "width" properties.
+  
+***** margin-top
+***** margin-bottom
+***** margin-left
+***** margin-right
+***** padding
+***** padding-top
+***** padding-bottom
+***** padding-left
+***** padding-right
+**** Border
+***** border
+***** border-color
+***** border-style
+***** border-width
+***** border-top
+***** border-top-color
+***** border-top-style
+***** border-top-width
+***** border-bottom
+***** border-bottom-color
+***** border-bottom-style
+***** border-bottom-width
+***** border-left
+***** border-left-color
+***** border-left-sytle
+***** border-left-width
+***** border-right
+***** border-right-color
+***** border-right-style
+***** border-rightwidth
+**** Display, Location
+***** overflow
+***** position
+- 
+  ボックスの配置方法が、相対位置か絶対位置かを指定する。
+  実際の表示位置指定は、top, bottom, left, rightを併用する。
+
+- value
+  - static（初期値）
+    配置位置を指定せず、top, bottom等は適用されない。
+  - relative
+    相対位置の配置となる。staticの位置が基準位置となる。
+  - absolute
+    絶対位置への配置となる。
+    親ボックスイにstatic以外の位置が指定されている場合、親ボックスの左上が基準となる。
+  - fixed
+    絶対位置への配置となるが、スクロールしても位置が固定されたままとなる。
+
+***** top
+***** bottom
+***** left
+***** right
+***** display
+- 要素の表示形式（ブロック・インライン）を指定する
+
+- value
+  - inline
+    インラインボックスを生成する（初期値）
+  - block
+  - list-item
+  - inline-block
+  - table
+  - none
+  - inherit
+
+***** float
+- 左または右に寄せて配置する
+***** clear
+- 回り込みを解除する
+***** z-index
+- 重なりの順序を指定する
+
+- value
+  - auto(初期値)
+    親要素と同じ階層となる。
+  - 整数値
+    0を基準として、大きいものほど上になる。
+
+***** visibility
+- ボックスの表示・非表示を指定する
+**** Table
+***** table-layout
+***** caption-side
+***** border-collapse
+- セルのボーダーの表示の仕方を指定する。
+
+- value
+  - collapse
+    セルのボーダーを重ねて表示する。
+  - separate
+    セルのボーダーを間隔を開けて表示する。
+    テーブル全体の線と、セルごとの線が離れて表示される。
+
+**** List
+**** Insert, Quote
+**** Outline
+**** Cursor
+***** cursor
+- カーソルの形状を指定する
+  
+- value
+  - auto
+    ブラウザが自動的に選択したカーソル
+  - default
+    矢印形など利用環境の標準カーソル
+  - pointer
+    リンクカーソル
+  - crosshair
+    十字カーソル
+  - move
+    移動カーソル
+  - text
+    テキスト編集カーソル
+  - wait
+    待機・処理中カーソル
+**** Print
+**** Filter
+**** Sound
+*** CSS3 Modules
+**** Backgrounds and Borders
+***** Background
+****** background-clip
+****** background-size
+***** Rounded corners
+****** border-radius
+- 角丸をまとめて指定する。
+
+- value
+  - 水平方向左上 右上 右下 左下 / 垂直方向左上 右上 右下 左下
+    ex) border-radius: 100px 25px 50px 50px / 50px 25px 50px 25px
+
+***** Box Display
+****** box-shadow
+- ボックスに影をつける
+  影は2~4つの長さの値で定義される。任意で色、insetキーワードを指定できる。
+
+- format
+  - 1. 水平方向の影のオフセット距離
+  - 2. 垂直方向の影のオフセット距離
+  - 3. ぼかし距離
+  - 4. 広がり距離
+
+  - 色：影の色を指定する。
+  - insetキーワード: 外側から内側の影に変更される。
+
+- value
+  - none(初期値)
+    影をつけない
+  - 上記フォーマットの羅列
+
+- ex
+  box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.4) inset;
+
+**** 2D 3D Transforms
+**** Transitions
+***** transition
+- transition効果（時間的変化）をまとめて指定する。以下の順で指定。
+  - transition-property
+  - transition-duration
+  - transition-timing-function
+  - transition-delay
+***** transition-property
+- transition効果を適用するCSSプロパティ名を指定する
+  初期値はall。
+  
+- value
+  - all
+  - none
+  - 変化させるプロパティ名のリストをカンマ区切りで指定。
+
+***** transition-duration
+- 変化に掛かる時間を指定する
+  初期値は0
+
+***** transition-timing-function
+- 変化のタイミング・進行割合を指定する
+
+- value
+  - ease（初期値）
+    開始と終了を滑らかにする。cubic-bezier(0.25, 0.1, 0.25, 1.0)を指定したのと同じ。
+  - linear
+    一定。cubic-bezier(0.0, 0.0, 1.0, 1.0)と同じ
+  - ease-in
+    ゆっくり始まる。cubic-bezier(0.42, 0, 1.0, 1.0)を指定したのと同じ。
+  - ease-out
+    ゆっくり終わる。cubic-bezier(0, 0, 0.58, 1.0)を指定したのと同じ。
+  - cubic-bezier(x1, y1, x2, y2)
+    3次ベジェ曲線のP1とP2を指定。
+
+***** transition-delay
+- 変化がいつ始まるかを指定する
+
+- value
+  - 時間
+    変化が始まる時間を指定。
+
+**** Animations
+**** Color
+***** opacity
+- 
+  set transparency
+  要素の透明度を指定。
+  
+- value
+  - 0.0(完全に透明)〜1.0(完全に不透明)
+    初期値は1。
+  - inherit
+    継承する
+
+***** rgba
+- RGBAカラーモデルで色を指定する。
+  red/green/blue/alpha。alphaは透明度。
+  RGBは0-225, alphaは0(完全に透明)~1(完全に不透明)
+  
+- ex
+  p.sample {background-color: rgba(0,0,255,0.5);}
+  
+** Selecter
+*** 全称セレクタ
+- 
+  アスタリスク(*)を記述してすべての要素を対象にスタイルを適用する。
+
+*** タイプセレクタ
+- 
+  要素名を使った指定は、要素をそのまま記載すればよい。
+  ex) p { color: red; }
+
+*** クラスセレクタ
+- 
+  クラス名はピリオド(.)に続けて記述する。
+  ex) .example { color: red; }
+  要素名に続けて指定する方法もある。
+
+*** IDセレクタ
+- 
+  IDを使った指定では、ハッシュ(#)に続けて記述する。
+  ex) #example { color: red; }
+  要素名に続けて指定する方法もある。
+
+*** 属性セレクタ
+- 
+  要素名に続けて[]を記述して、属性名や属性値を指定する。
+  
+  |-------------------+----------------------------------------------------------------------------------|
+  | 属性セレクタ      | 説明                                                                             |
+  |-------------------+----------------------------------------------------------------------------------|
+  | [属性名]          | 属性名が一致する要素に適用される                                                 |
+  | [属性名="属性値"  | 属性名と属性値が一致する要素に適用される                                         |
+  | [属性名~="属性値" | 属性名と属性値が一致する要素に適用される(スペースで区切られた複数の属性値に対応) |
+  | [属性名l="属性値" | 属性名と属性値が一致する要素に適用される(ハイフンで区切られた属性値に対応)       |
+  |-------------------+----------------------------------------------------------------------------------|
+
+*** その他セレクタ
+- 複数セレクタ
+  セレクタをカンマで区切ると、複数のセレクタに同じスタイルを適用できる。
+  ex) h2, p { color: blue; }
+  
+- 子孫セレクタ
+  あるセレクタ配下の全ての子孫セレクタを対象にスタイルを適用する。
+  ex) p strong { background-color: #3399FF; }
+
+- 子セレクタ
+  あるセレクタ直下の子セレクタを対象にスタイルを適用する。
+  ex) p > strong { background-color: #3399FF; }
+
+- 隣接セレクタ
+  隣接する要素を対象にスタイルを適用する。
+  ex) h2 + p { color: #0000FF; }
+
+*** 擬似クラス
+**** :link
+**** :visited
+**** :hover
+- カーソルがのっている要素にスタイルを適用する。
+
+**** :active
+- クリック中の要素にスタイルを適用する
+
+**** :focus
+**** :lang
+**** :first-child
+**** :first-line
+**** :first-letter
+**** :before
+**** :after
+*** 擬似要素
+
+** comment
+- 
+  /* ... */ でコメントアウトできる。
+
+** Memo
+*** 記述箇所
+- 
+  上のものから順に優先的に適用される。
+  同じ箇所に書いた場合、下に書いたものが優先される。
+
+**** 1. HTMLタグに埋め込む
+- 
+  <p style="color:red;">あいうえお</p>
+
+**** 2. HTMLファイル内に埋め込む
+- 
+  <style>
+  div {
+    background:red;
+  }
+  </style>
+
+**** 3. CSSファイルに記述
+- 
+  div {
+    background:red;
+  }
+
 ** SASS
 - 
   SCSSというフォーマットに対応。
@@ -296,3 +618,6 @@
 
 *** Link
 - [[http://sass-lang.com/documentation/file.SASS_REFERENCE.html][SASS_REFERENCE]]
+** Link
+- [[http://www.htmq.com/style/index.shtml][スタイルシートリファレンス（目的別） - HTMLクイックリファレンス]]
+- [[http://www.htmq.com/css3/index.shtml][CSS3リファレンス - HTMLクイックリファレンス]]

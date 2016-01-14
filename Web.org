@@ -146,6 +146,18 @@
 *** NetBeans
 *** Eclipse
 
+** Tools
+*** Web Icon
+**** Font Awesome
+- 
+  scalable vector icons
+
+- 
+  classに「fa」と、各アイコンに割り振られている「fa-xxxx」を利用することで表示される。
+  
+- [[http://fontawesome.io/][Font Awesome]]
+- [[https://h2ham.net/font-awasome][楽して便利！Webアイコンフォント『Font Awesome』の使い方と活用 Tips - HAM MEDIA MEMO]]
+
 ** Memo
 *** HTML Editor
 **** TinyMCE
