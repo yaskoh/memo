@@ -1,5 +1,4 @@
 * Ruby on Rails
-
 ** Philosophy
 - Don't Repeat Yourself: DRY
 - Convention Over Configuration

@@ -266,11 +266,34 @@
 
 **** Fundamentals
 - 使い方
-  1. jQueryオブジェクトを作成（セレクタ）
-  2. jQueryオブジェクトに対しメソッドを呼び出す（メソッド）
+  - 
+    1. jQueryオブジェクトを作成（セレクタ）
+    2. jQueryオブジェクトに対しメソッドを呼び出す（メソッド）
   
   - format
     $('セレクタ').メソッド(引数);
+
+- 読み込み
+  - jQueryの読み込み
+    headタグにurlを埋め込むのが一般的。
+    <script src="https://~jquery.min.js"></script>
+
+  - jQuery Scriptの読み込み
+    bodyタグの最後に書くことで、表示速度を速めることをよく行う。
+    <script src="myjQueryScripts.js"></script>
+
+- ファイルの書き方
+  $(document).ready()の中に処理を書く。
+  省略形として、$(function(){});と書いてもよい。
+  
+  - format
+    $(document).ready(function(){
+      // write jQuery here
+    });
+    
+    $(function(){
+      // write jQuery here
+    });
 
 ***** Event
 - 処理を行うタイミングを指定できる。
@@ -280,6 +303,20 @@
     // 処理
   });
   
+***** Variables
+- 
+  変数をvar宣言して使う。頭に$を用いて、jQueryで使うことを分かりやすくする。
+
+- ex)
+  var $div = $('div');
+
+***** Method Chain
+- 
+  連続してオブジェクトにメソッドを適用する。
+
+- ex)
+  $('div').css('color', 'red').html('jQuery');
+
 **** Selector セレクタ
 - 基本的にはCSSと同じ方式。
 
@@ -288,6 +325,9 @@
 
 - class
   .で指定する。
+
+- this
+  イベントが起こった要素を取得できる。クォートでは囲まない。
 
 **** Method メソッド
 ***** Ajax
@@ -322,7 +362,34 @@
 ******* .click()
 - Bind an event handler to the "click" JavaScript event, or trigger that event on an element.
 
+******* .hover()
+- 
+  Bind one or two handlers to the matched elements, to be executed when the mouse pointer enters and leaves the elemensts.
+  2つの引数をとる。1つ目はマウスを乗せたとき、2つ目はマウスを除いた時の挙動。カンマで区切る。
+  
+- ex)
+  $('div').hover(
+    function(){
+      // on mouse event
+    },
+    function(){
+      // off mouse event
+    }
+  };
+
 ***** Manipulation
+****** Class Attribute
+******* .addClass()
+- 
+  Adds the specified class(es) to each element in the set of matched elements.
+
+******* .hasClass()
+- 
+  Determine whether any of the matched elements are assigned the given class.
+
+******* .removeClass()
+- 
+  Remove a single class, multiple classes, or all classess from each element in the set of matched elements.
 
 ****** DOM Insertion, Inside
 
@@ -334,6 +401,21 @@
 - 
   Get he combined text contents of each element in the set of matched elements, 
   including their descendants, or set the text contents of the matched elements.
+
+***** Traversing
+****** Tree Traversal
+******* .children()
+- 
+  Get the children of each element in the set of matched elements, optionally filtered by a selector.
+  自分の一つ下の子要素までを選択。
+
+******* .find()
+- 
+  Get the descendants of each element in the current set of matched elements, filtered by a selector, jQuery object, or element.
+  自分以下の子孫要素を全て選択。
+
+- ex)
+  $('Wrapper').find('a').css('color', 'red');
 
 **** Memo
 ***** 読み込む位置
@@ -400,6 +482,11 @@
 - 
   [[http://web-tan.forum.impressrd.jp/l/6342][Googleアナリティクスとは／衣袋教授のGoogleアナリティクス入門講座 コーナーの記事一覧 - Web担当者Forum]]
 
+*** Modal Window モーダル（用語）
+- 
+  何らかのウインドウの子ウィンドウとして生成され、
+  ユーザーがそれに対して適切に応答しない限り、制御を親ウィンドウに戻さないユーザインターフェイス設計になっているもの。
+  
 ** Link
 - [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]
   [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]

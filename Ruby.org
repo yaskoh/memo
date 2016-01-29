@@ -1100,6 +1100,16 @@
 - 
   === [] call yield arity binding curry hash inspect to_s lambda? parameters source_location to_proc
 
+***** String
+- 
+  文字列クラス
+****** Inheritance
+- String < Comparable < Object < Kernel < BasicObject
+****** InstanceMethod
+******* chomp
+- chopm(rs=$/) -> String
+  selfの末尾からrsで指定する改行コードを取り除いた文字列を生成して返す。
+
 **** モジュール
 
 ***** Kernel
@@ -1110,6 +1120,14 @@
 - 
   Kernel
 ****** ModuleFunction
+******* gets
+- gets(rs=$/) -> String | nil
+  ARGFから一行読み込んで、それを返す。行の区切りは引数rsで指定した文字列となる。
+
+******* chomp
+- chomp(rs=$/) -> String
+  $_.chompとほぼ同じ。置換が発生した時は、$_の内容を置き換える点が異なる。
+
 ******* lambda
 - 
   Procを返す。Proc.newと似ているが、いくつかの場面で挙動が違う。
