@@ -1,5 +1,4 @@
 * ShellScript
-
 ** Rule
 *** Basics
 **** First Line
@@ -383,7 +382,6 @@
       On sub shell, exit finishes the functions only.
 
 ** Built-in Functions
-
 ** Syntax
    
 *** $()
@@ -393,7 +391,6 @@
 *** ``
 - 
   
-
 ** Memo
 *** Addition of ShellVariables
 - 
@@ -407,3 +404,19 @@
 - 
   [[http://qiita.com/d_nishiyama85/items/a117d59a663cfcdea5e4][シェルで変数のインクリメントにexprを使うと100倍遅い件 - Qiita]]
   [[http://www.atmarkit.co.jp/ait/articles/0010/19/news003.html][シェルの変数に慣れる - @IT]]
+
+*** Extract dirpath, filename, extention etc. from path
+- command
+  - dirname
+  - basename
+  
+- Pattern
+  - ${var#pattern}
+  - ${var##pattern}
+  - ${var%pattern}
+  - ${var%%pattern}
+
+- 
+  [[http://zawapro.com/?p=1619][【シェル】パス文字列からディレクトリ部、ファイル名を取得する - ザワプロ！]]
+  [[http://d.hatena.ne.jp/zariganitosh/20100921/get_file_name_ext_dir][ファイルパスからファイル名や拡張子を自由に取り出す - ザリガニが見ていた...。]]
+  [[http://www.kishiro.com/FreeBSD/get_filename_in_shellscript.html][シェルスクリプトでパス文字列からファイル名／ディレクトリ名／拡張子を抽出する]]

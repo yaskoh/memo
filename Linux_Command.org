@@ -12,6 +12,10 @@
   show result searched from summaries and command names.
   whatisデータベースより文字列を検索する。
 
+*** basename
+- 
+  extract filename from path strings.
+
 *** bg
 - [%jobsid]
   ジョブをバックグラウンドで実行するよう切り替える。
@@ -182,6 +186,10 @@
 - --max-depth=N
   print the total for a directory only if it is N or fewer levels below the command line argument;
   specify 0 is the same as --summarize.
+
+*** dirname
+- 
+  extract directory path from full-path string
 
 *** dmesg
 - 

@@ -1212,6 +1212,25 @@
 - 
   iptables, setting of firewalls.
 
+*** /proc/cpuinfo
+- cpuの情報が含まれている
+  コア数など調べることができる。
+
+- Processer数（各種計）
+  cat /proc/cpuinfo | grep processor
+
+- 物理CPU数
+  cat /proc/cpuinfo | grep "physical id"
+  同じ番号は同じ物理CPU
+
+- コア数
+  cat /proc/cpuinfo | grep "cpu cores"
+  また、"core id"でcoreのidを見ることができる。
+
+*** /proc/meminfo
+- メモリーの情報が含まれている
+  メモリサイズなど調べられる。
+
 ** Environment Variables
 - 
   see list with "printenv"
@@ -1940,8 +1959,12 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   実際にはファイルでもなく、ファイル形式で見ることができるシステム状態。
 - 
   [[http://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-isa-ja-4/s1-storage-rhlspec.html][5.9. Red Hat Enterprise Linux 固有の情報 - Red Hat Enterprise Linux 4: システム管理入門ガイド 5章. ストレージを管理する]]
-*** 監視はtail -fでなくless +F
+*** 監視はtail -fでなくless +Fでよい
 - 
   less +Fを使うことにより、監視モードと通常モードをlessを起動したまま行き来できるので、
   tailよりも便利、とのこと。
   [[http://www.softantenna.com/wp/unix/stop-using-tail-f/][「tail -f」を使うのは情弱、情強は「less +F」を使う - ソフトアンテナブログ]]
+
+*** CPU数、コア数、ハイパースレッディングの調査
+- 
+  [[http://tooljp.com/linux/faq/5B503D6E4FD173C549257A570051833A.html][【質問】CPU数、コア数、ハイパースレッディング (Hyper-Threading) を調査する方法 - Redhat Enterprise linux (EL) FAQ]]
