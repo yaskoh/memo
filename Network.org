@@ -27,16 +27,12 @@
 
 ** Protocol
 *** TCP/IP
-
 *** BGP
 - 
   パスベクター(Path Vector)型プロトコルと呼ばれている。
   
-
 *** HTTP
-
 **** Status
-
 ***** Informational 1xx
 
 ***** Successful 2xx
@@ -46,10 +42,11 @@
 ****** 204 No Content
 
 ***** Redirection 3xx
-
 ****** 302 Found
 
 ****** 304 Not Modified
+- 
+  document has not been modified.
 
 ***** Client Error 4xx
 
@@ -61,6 +58,25 @@
 
 ****** 500 Internal Server Error
 
+**** Link
+- https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
+
+*** Application
+*** Presentation
+*** Session
+*** Transportation
+**** TCP
+- Transmission Control Protocol
+
+*** Network
+**** IP
+**** ICMP
+- 
+  IPを利用するネットワークで用いられるプロトコルの一つで、IP通信の制御や通信状態の調査などを行うためのもの。
+  IPと同じネットワーク層のプロトコルに分類される。
+  
+*** Datalink
+*** Physical
 ** Term
 *** CSMA/CD
 - Carrier Sence Multiple Access with Collision Domain

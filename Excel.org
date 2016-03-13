@@ -1,5 +1,4 @@
 * Excel
-
 ** 関数
 - 
   [[http://dekiru.net/article/4429/][Excel関数一覧 機能別 - できるネット]]
@@ -21,10 +20,10 @@
 *** IF
 - 
   
-
 *** LEN
 - 
-  
+  セルの文字数を数える。
+  [[https://support.office.com/ja-jp/article/%E3%82%BB%E3%83%AB%E5%86%85%E3%81%AE%E6%96%87%E5%AD%97%E6%95%B0%E3%82%92%E6%95%B0%E3%81%88%E3%82%8B-1be151d7-5b8f-4186-87b9-7b0318583163][セル内の文字数を数える - Office]]
 
 *** MID
 - 書式

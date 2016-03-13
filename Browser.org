@@ -1,8 +1,22 @@
 * Browser
-
 ** Browsers
 *** GoogleChrome
+**** Developer Tool
+- 要素の検証
 
+***** Kind
+****** Elements
+****** Console
+****** Sources
+- JSのデバッグ
+- http://postd.cc/javascript-debugging-tips-and-tricks/
+
+****** Network
+****** Timeline
+****** Profiles
+****** Resources
+****** Security
+****** Audits
 
 *** InternetExplorer
 **** IE8
@@ -83,6 +97,7 @@
   - コンテンツを他のアプリケーションにドラッグアンドドロップ
   - EdgeでのVBScriptサポート
   - インターネットゾーンにおけるCSS expressionsのサポート
+**** 
 *** Edge
 *** Firefox
 

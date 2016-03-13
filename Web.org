@@ -120,6 +120,9 @@
 - Setting
   Set the permisson of /var/www as 775.
 
+*** mod_rewrite
+- 
+
 ** PHP
 - Download
   (on debian)

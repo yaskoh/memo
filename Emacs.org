@@ -1,7 +1,5 @@
 * Emacs
-
 ** mode
-
 *** picture-mode
 - 
   picture-modeかedit-pictureを選択する。
@@ -16,6 +14,15 @@
 
 - M-right, M-left, M-up, M-down
   線を消す。
+
+*** emmet
+- 
+  Ctrl + j
+
+*** yasnipett
+- 
+  Tag
+  ex) html, then tab
 
 ** memo
 

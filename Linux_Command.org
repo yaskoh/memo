@@ -176,11 +176,13 @@
   disk free : display free disk space.
 
 - -h
-  適当なサイズの単位をつけてくれる。
+  適当なサイズの単位をつけてくれる。(human readable)
 - -a
   サイズが0のファイルシステムも出力
 - -t fstype, --type=fstype
   ファイルシステムの種類(ex: ext4)の種別を指定
+- -T
+  ファイルシステムの種類を表示
 - -s, --summarize
   display only a total for each argument
 - --max-depth=N
@@ -280,7 +282,6 @@
 
 - -s partition
   
-
 *** fg
 - [%jobsid]
   バックグラウンドで実行しているジョブをフォアグラウンドに切り替える。
@@ -462,6 +463,47 @@
     [-m, --mode] アクセス権を設定する。
     [-v, --verbose]
 
+*** iostat
+- iostat
+  Report Central Processing Unit(CPU) statistics and input/output statistics for devices,
+  paritions and network filesystems.
+
+- -x
+  Display extended statistics.
+
+- [interval]
+  set interval to show
+
+*** ip
+- ip [ OPTIONS ] OBJECT { COMMAND | help }
+  show / manipulate routing, devices, policy rounting and tunnels
+
+**** Objects
+- 
+  Object := { link | addr | addrlabel | route | rule | neigh | tunnel | maddr | mroute | monitor }
+
+***** ip link (l)
+****** ip link set
+****** ip link show
+***** ip addr (a)
+****** ip addr { add | del}
+****** ip addr { show | flush }
+***** ip addrlabel
+****** ip addrlabel { add | del }
+****** ip addrlabel { list | flush }
+***** ip route (r)
+****** ip route { list | flush }
+****** ip route get
+****** ip route { add | del | change | append | replace | monitor }
+***** ip rule
+***** ip neigh
+***** ip tunnel
+***** ip maddr
+***** ip mroute
+***** ip monitor (mo)
+**** Link
+- [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][ip COMMAND CHEAT SHEET]]
+
 *** iptables
 - iptables
   handle iptables settings.
@@ -562,7 +604,21 @@
   show sorted by timestamp
 - -S
   sorted with file size.
+- +F
+  wait for data updating
 
+**** Subcommand
+- F
+  waiting and following the updating data. same as +F
+
+- :n
+  show next file (when opening some files)
+
+*** lsof
+- list open files
+  
+- -p [pid]
+  
 *** lvcreate
 - 
   create a new logical volume in a volume group.
@@ -618,6 +674,36 @@
 - 
   text-based web-browser.
   
+*** mail
+- 
+
+**** Subcommands
+- mailnumber
+  show mail of mailnumber
+- n
+  show next mail
+- -
+  show previous mail
+- p
+  show being selected now
+- h
+  show list of mails
+- m receiver
+  send mail to receiver
+- r
+  現在選択中のメールに返信する
+- d mailnumber
+  delete selected mail
+- u
+  undo delete mail
+- q
+  save changes and exit
+- x
+  exit without saving changes
+
+
+- 
+  http://www.uetyi.com/server-const/command/entry-166.html
 *** make
     コンパイル等の処理を自動で行う。
     [-k, --keep-going] エラーが発生してもできるだけ処理を継続させる。
@@ -674,6 +760,12 @@
 - -t
   ファイルシステムのタイプを指定
    ext3, ntfs, sysfs, devpts, proc, tmpfsなど。
+
+*** mpstat
+- Report processors related statistics
+  
+- -A
+  equivalent to specifying "-I ALL -u -P ALL"
 
 *** mv
 - 
@@ -871,7 +963,13 @@
 - -f, --ignore-case
   Fold lower case to upper case characters.
   
+- -k, --key=POS1[, POS2]
+  start a key at at POS1 (origin 1), end it at POS2 (default end of line)
+
 - -n, --numeric-sort
+
+- -t, --field-separator=SEP
+  use SEP instead of non-blank to blank transition
 
 - -r, --reverse
 
@@ -897,6 +995,7 @@
 - link
   [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060227/230888/][【split】ファイルを分割する - Linuxコマンド集]]
 
+*** ss
 *** ssh
 - 
   secure shell.
@@ -1088,6 +1187,8 @@
   | COMMAND  | タスクのコマンド名                            |
   |----------+-----------------------------------------------|
 
+- -c
+
 *** touch
 - touch [options] file...
   change file timestamp
@@ -1166,6 +1267,12 @@
 *** updatedb
 - 
   locate用ファイル・データベースを更新する。
+
+*** uptime
+- 
+  show how long the system has been runnning.
+  this is the same information contained in the header line displayed by w.
+  - Current time, The actual up time, How many users logged in, The load average
 
 *** useradd
 - 

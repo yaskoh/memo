@@ -832,6 +832,48 @@
 - 
   (Experimental) Lists the instrumented Java Virtual Machines (JVMs) on the target system.
 
+** Tools
+*** JBoss
+**** 概要
+- 
+  Javaのオープンソース・フレームワーク群。
+  EJBを動かすもの、というのが基本。
+
+***** TomcatでなくJbossを選ぶ理由
+- [[http://nekop.hatenablog.com/entry/20110421/1303372984][TomcatでなくJBossを選ぶ○○の理由 - nekop's blog]]
+
+**** 機能
+***** JavaEE
+****** JTAトランザクションマネージャ
+****** EJB
+****** MDB
+****** JPA
+****** JMS
+****** JCA
+****** JAX-WS
+***** JBoss固有
+****** JMX
+****** log4jを用いたログ基盤
+****** 分散キャッシュなどの各種クラスタリングサービス
+**** Projects
+***** Wildfly
+***** JBoss Web
+***** JBoss ESB
+***** JBoss Messaging
+***** JBoss Tools
+***** Hibernate
+*** Tomcat
+**** 機能
+***** Servlet
+***** JSP
+***** JDBC接続プール
+*** Spring
+*** EJB
+*** Seasar2
+*** Apache ActiveMQ
+- Java Message Serviceを実装したメッセージ関連のオープンソースのミドルウェア。
+  http://activemq.apache.org/getting-started.html
+
 ** memo
 *** リソース付きtry
 - 
@@ -868,6 +910,20 @@
   JRE : "sudo apt-get install default-jre"
   JDK : "sudo apt-get install default-jdk"
   [[https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get][How To Install Java on Ubuntu with Apt-Get]]
+
+*** セキュリティ・プロンプトの復元
+- 
+  セキュリティ・プロンプトの復元により、非表示にしたプロンプトが再表示される。
+
+*** Glossary
+**** Java applet
+- 
+  Webページの一部として埋め込まれてWebブラウザ上で実行されるもの。
+
+**** Java console
+- 
+  http://www.java.com/en/download/help/javaconsole.xml
+  https://www.java.com/en/download/help/disable_java_icon.xml
 
 *** temp
 

@@ -1231,6 +1231,26 @@
 - メモリーの情報が含まれている
   メモリサイズなど調べられる。
 
+*** /var/spool/mail
+- 
+  mailbox. mails that have sent is saved here temporary.
+  later read them by mail command or POP3 for mailer, etc.
+
+- how to clear
+  cat /dev/null > /var/spool/mail/root
+
+*** /var/log/messages
+- 
+  standard kernel / OS log
+
+*** /var/log/secure
+- 
+  connected ssh logs
+
+*** /var/log/cron
+- 
+  logged cron executed
+
 ** Environment Variables
 - 
   see list with "printenv"
@@ -1959,6 +1979,7 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   実際にはファイルでもなく、ファイル形式で見ることができるシステム状態。
 - 
   [[http://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-isa-ja-4/s1-storage-rhlspec.html][5.9. Red Hat Enterprise Linux 固有の情報 - Red Hat Enterprise Linux 4: システム管理入門ガイド 5章. ストレージを管理する]]
+
 *** 監視はtail -fでなくless +Fでよい
 - 
   less +Fを使うことにより、監視モードと通常モードをlessを起動したまま行き来できるので、
@@ -1967,4 +1988,66 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 
 *** CPU数、コア数、ハイパースレッディングの調査
 - 
+  cat /proc/cpuinfo | grep (processor | "physical id" | "cpu cores" | etc.. )
   [[http://tooljp.com/linux/faq/5B503D6E4FD173C549257A570051833A.html][【質問】CPU数、コア数、ハイパースレッディング (Hyper-Threading) を調査する方法 - Redhat Enterprise linux (EL) FAQ]]
+
+*** メモリの確認
+- 
+  cat /proc/meminfo
+
+*** spool
+- Simultaneous Peripheral Operation On-Line
+  もともとはIBM用語。
+  転じて、FIFO(キュー)と呼ばれるバッファとして使われている。
+
+*** MTA
+- Mail Transfer Agent
+
+**** sendmail
+- 
+  MTAの中でもUNIXで古くから使われてきたソフト。
+  ほとんどのUNIX系OSにデフォルトでインストールされており、通常/etc/mailに設定ファイルが集められている。
+- 
+  http://rfs.jp/server/sendmail/sendmail.html
+*** Linuxサーバ確認オペレーション
+- Link
+  - [[http://yuuki.hatenablog.com/entry/linux-server-operations][Linuxサーバにログインしたらいつもやっているオペレーション - ゆううきブログ]]
+  - [[http://think-t.hatenablog.com/entry/20090218][サーバを調査するときにやること(Linux編) - think-t の晴耕雨読]]
+  - [[http://techblog.netflix.com/2015/11/linux-performance-analysis-in-60s.html][Linux Performance Analysis in 60,000 Milliseconds - The Netflix Tech Blog]]
+
+**** まず確認すること
+***** w
+- 他のユーザを確認
+***** uptime
+- サーバの前回起動してから現在までの稼働している時間の確認。
+  ただしwでも同様の情報が出るとのこと。
+***** ps
+- ps auxf
+- pstreeでも可
+***** ip
+- ip a
+***** df
+- df Th
+**** 負荷状況確認
+***** top
+- top -c, 更に1を押す
+- mpstat -P ALLでも見れる
+***** iostat
+- iostat -dx 5
+***** netstat / ss
+- netstat -tnl
+
+**** ログ調査
+***** /var/log/messages or /var/log/syslog
+- カーネルやOSの標準的なプロセスログ
+***** /var/log/secure
+- ssh接続の情報
+***** /var/log/cron
+- cronが実行されたか否か確認
+***** /var/log/nginx, /var/log/httpd, /var/log/mysql
+- middlewareログは、/var/log/{middleware}にある場合が多い。
+***** /etc
+- /etc/{middleware}辺りにログなどの設定ファイルが書いていないか確認する。
+***** lsof
+- lsof -p <pid>
+  <pid>が開いたファイルディスクリプタ情報が見えるので、そこからログファイルなどを探す。

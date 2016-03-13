@@ -1,5 +1,4 @@
 * Microsoft Office
-
 ** Word
 
 ** Excel
@@ -35,6 +34,26 @@
 
 - [[https://support.office.com/ja-jp/article/%E3%82%B0%E3%83%AA%E3%83%83%E3%83%89%E7%B7%9A%E3%81%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%8A%E3%82%88%E3%81%B3%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B-786b4958-199a-40f9-b17b-01b85084bd5e][グリッド線とガイドを表示および使用する - Office]]
   
+**** Delete all Presentation Note
+- 
+  File -> Info -> Check for Issues -> Inspect Document
+  Check the box of [Presentation Notes], then click [Inspect]
+  Show Remove All
+  [[http://kshimizu.hatenadiary.jp/entry/2015/04/03/052633][PowerPoint（パワポ） 2013 ノートを一括削除する方法 - Training for D-Day]]
+
+** Outlook
+*** memo
+
+**** 条件付書式
+- 
+  [表示]タブ、[現在のビュー]、[ビューの設定]、[ビューの詳細設定]、[条件付書]
+  [[https://support.office.microsoft.com/ja-jp/article/%E9%80%81%E4%BF%A1%E8%80%85%E3%80%81%E4%BB%B6%E5%90%8D%E3%80%81%E3%81%BE%E3%81%9F%E3%81%AF%E5%8F%97%E4%BF%A1%E8%80%85%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%84%E3%81%A6%E8%87%AA%E5%8B%95%E7%9A%84%E3%81%AB%E5%8F%97%E4%BF%A1%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E8%89%B2%E3%82%84%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B-4efbf993-fb00-4f2c-9a3f-78e64e4455ec?CorrelationId=d2b319fe-8b61-4967-9e6c-fec34571060a&ui=ja-JP&rs=ja-JP&ad=JP][送信者、件名、または受信者に基づいて自動的に受信メッセージの色やフォントを変更する - Office]]
+
+**** フォルダのビュー設定をコピー
+- 
+  [表示]タブ、[ビューの変更]、[現在のビューを他のメールフォルダーに適用する]
+  [[http://outlook-navi.com/qa/ol92.htm][Outlook2010：フォルダのビューを一括変更（コピー）するには]]
+
 ** Project
 *** ファイルサイズを縮小する
 - 

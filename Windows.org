@@ -1,5 +1,4 @@
 * Windows
-
 ** Batch
 *** Command
 **** cls
@@ -384,6 +383,15 @@
   改行するまでの文字列がvarに格納される。
   バッチファイルでユーザーに入力させた値を取得する
 
+** Files
+*** pagefile.sys
+- C:\pagefile.sys
+  paging file.
+- [[http://lifehacker.com/5426041/understanding-the-windows-pagefile-and-why-you-shouldnt-disable-it][Understanding the Windows Pagefile and Why You Shouldn't Disable It - lifehacker]]
+
+*** hiberfil.sys
+- C:\hiberfil.sys
+  when hybernation is start, data on memory is moved this file.
 ** memo
 *** ACL
 - 
@@ -494,6 +502,25 @@
   [[http://support.microsoft.com/kb/883172/ja][特殊文字・記号や罫線文字の入力一覧]]
   [[http://112123.jugem.jp/?eid=2781][【記号】 文字記号でツリーとか階層を作りたい時の変換方法【豆知識】]]
 
+*** Win7システム容量
+- [[http://freesoft.tvbok.com/tips/win7rc64/windows7_winsxs.html][Windows7、HDバカ食いの理由 - ぼくんちのTV別館]]
+
+*** Scroll Lock
+- 
+  矢印キーで画面が動いてしまうのは、スクロールロックがかかっているため。
+  キーボードや機種により設定は異なるが、現行は"fn + <(左矢印)"でかかる。
+
+*** IEの設定を取得する
+- 
+  reg export <レジストリキー> <出力先パス>
+  reg export "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings" Path
+
+- 
+  http://yuzuemon.hatenablog.com/entry/20110510/1305043925
+
+*** レジストリ操作
+- 
+  http://www.atmarkit.co.jp/ait/articles/0402/21/news005.html
 
 *** (聞いた話メモ)
 - 

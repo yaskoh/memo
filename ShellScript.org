@@ -420,3 +420,8 @@
   [[http://zawapro.com/?p=1619][【シェル】パス文字列からディレクトリ部、ファイル名を取得する - ザワプロ！]]
   [[http://d.hatena.ne.jp/zariganitosh/20100921/get_file_name_ext_dir][ファイルパスからファイル名や拡張子を自由に取り出す - ザリガニが見ていた...。]]
   [[http://www.kishiro.com/FreeBSD/get_filename_in_shellscript.html][シェルスクリプトでパス文字列からファイル名／ディレクトリ名／拡張子を抽出する]]
+*** Move current execution location
+- 
+  pushd `dirname $0`
+  ...
+  popd
