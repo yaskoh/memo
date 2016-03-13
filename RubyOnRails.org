@@ -25,8 +25,13 @@
 ** Architecture
 *** Controller
 - 
+  "@"をつけて変数を定義すると、ビュー中で使用できる。
 
 *** View
+- 
+  アクションはファイル名を手がかりにビューを探すので、
+  コントローラ名とアクション名に対応させる必要がある。
+  コントローラと同じフォルダ配下にアクション名とマッチするビューファイルを置く。
 
 *** Model
 **** ActiveRecord::Base
@@ -79,7 +84,7 @@
   "rails s"でもよい。
 **** generate
 ***** controller
-- 
+- controllerName actionName
   キャメルケースで渡すと、スネークケースのファイルを自動的に生成する。
   ただし単なる慣習なので、スネークケースのコントローラ名を入力しても
   同様にスネークケースのファイル名が出力される。
@@ -189,7 +194,11 @@
 **** app/assets/
 - 
   アプリケーションなどで使用するCSS(Cascading Style Sheet)、JavaScriptファイル、画像などのアセット
+
 ***** app/assets/stylesheets
+- 
+  stylesheetが入っている。scss。
+
 ***** app/assets/javascripts
 ***** app/assets/images
 
@@ -343,9 +352,9 @@
 *** erb
 - 
 - <% ... %>
-  中に書かれたコードを単に実行する
+  中に書かれたコードを単に実行する。表示されない。
 - <%= ... %>
-  中に書かれたコードが実行され結果がテンプレートに挿入する。
+  中に書かれたコードが実行され結果がテンプレートに挿入する。中身が表示される
 
 *** Rails環境
 - development
@@ -400,6 +409,22 @@
 **** Template is missing
 - Rails expects plain actions like this one to have views associated with them to display their information.
 **** ActiveModel::ForbiddenAttributesError...
+*** Progress Memo
+**** Link
+- link_to helper
+  <%= link_to "text", "URL" %>
+  writing on .erb file
+
+**** 名前付きルート
+- rake routes
+  ex) about GET /about home#about
+      →about_pathは/aboutを指す。
+        名前に_pathをつけたものが名前付きルートになる。
+
+**** ルートパス
+- 
+  /直後にURLが置かれないもの。
+  ex) root 'home#top'
 ** Link
 - 
 
