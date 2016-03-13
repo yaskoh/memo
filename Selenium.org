@@ -1,0 +1,108 @@
+* Selenium
+** Selenium WebDriver
+*** Architecture
+- 
+  各種ブラウザごとにドライバが用意されており、
+  それらのドライバはJSON Wire ProtocolというSeleniumが定義しているRESTful APIに対応している。
+
+- 
+  ◆HTTP Client, Client Library (Java, Ruby, Python, C#, Perl, PHP, Javascript(Node.js))
+    ↑ 
+    JSON Wire Protocol
+    ↓
+  ◆Browser Drivers (Firefox Driver, Chrome Drive, IE Driver, etc.)
+    ↑
+    ブラウザの拡張機能、OSネイティブ機能
+    ↓
+  ◆Browser
+
+*n*** Drivers
+- 
+  各ドライバによって形式や操作方法はさまざま。
+
+***** Firefoxドライバ
+- 
+  Firefoxの拡張機能
+
+***** Chromeドライバ
+- 
+  実行ファイル（バイナリ）
+  http://chromedriver.storage.googleapis.com/index.html
+
+**** Selenium Server
+- 
+  特定のドライバに対応していないライブラリの場合、Selenium Serverを利用する必要がある。
+  Node.jsの2.44.0で対応しているのはFirefoxとChromeのみなので、その他のブラウザを利用したい場合など。
+  
+  Selenium ServerはJavaで書かれたサーバーで、クライアントとドライバの中継サーバとして振る舞うため、
+  クライアントライブラリがドライバの管理をする必要がなくなる。
+  
+  公式ライブラリが用意されていない言語ではサードパーティクライアントが多数公開されているが、
+  Selenium Serverの利用を前提としている場合が多い。
+
+- 
+  次のコマンドで起動する。
+  java -jar selenium-server-standalone-xxx.jar
+
+- Download
+  http://www.seleniumhq.org/download/
+
+- 
+  ◆HTTP Client, Client Library (Java, Ruby, Python, C#, Javascript(Node.js))
+    ↑ 
+    JSON Wire Protocol
+    ↓
+  ◆Selenium Server
+    ↑ 
+    JSON Wire Protocol
+    ↓
+  ◆Browser Drivers (Firefox Driver, Chrome Drive, IE Driver, etc.)
+    ↑
+    ブラウザの拡張機能、OSネイティブ機能
+    ↓
+  ◆Browser
+
+** Selenium IDE
+
+** History
+- [[http://blog.trident-qa.com/2013/05/so-many-seleniums/][Selenium何とかっていうツールがやたら色々あるのはどういうわけなのか - 品質向上ブログ]]
+
+*** Selenium Core
+- 
+  原型は、2004年に米ThoughtWorks社で働いていたJason Huggins氏により作られた社内向けツール。
+
+*** Selenium RC (Remote Control)
+- 
+  Selenium 1とも。
+  コマンドをSeleneseという。
+  
+*** Selenium IDE
+- 
+  ユーザのブラウザ操作を記録して、そこからSeleniumのスクリプトを生成するFirefoxプラグイン。
+
+*** WebDriver
+- 
+  2006年、GoogleのSimon Stewartが開発着手。
+  ブラウザ操作をJavaScriptでなく、ブラウザの拡張機能やOSネイティブの機能を使って行う仕組み。
+  そのためSelenium Serverのような中継サーバも不要となる。
+
+- https://w3c.github.io/webdriver/webdriver-spec.html
+
+*** Selenium WebDriver
+- 
+  2011/7, Selenium RCとWebDriverを統合したもの。
+  どちらのコマンドも使えるが、WebDriverのコマンドが優れているので、そちらを利用するのが良い。
+  Selenium 2 とも。
+*** Selenium Builder
+- 
+  Firefox拡張。
+  Selenium IDEはSelenium RCの機能しか利用できないので、
+  Selenium WebDriverの機能を利用できるSelenium Builderの開発が活発。
+
+** Memo
+*** JSON Wire Protocol
+- [[https://code.google.com/p/selenium/wiki/JsonWireProtocol][The WebDriver Wire Protocol - selenium]]
+
+** Link
+- [[http://www.seleniumhq.org/][SeleniumHQ]]
+- [[https://app.codegrid.net/entry/selenium-1][入門、Selenium - CodeGrid]]
