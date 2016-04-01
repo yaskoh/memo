@@ -419,12 +419,71 @@
 - rake routes
   ex) about GET /about home#about
       →about_pathは/aboutを指す。
-        名前に_pathをつけたものが名前付きルートになる。
+        左側の名前に_pathをつけたものが名前付きルートになる。
 
 **** ルートパス
 - 
-  /直後にURLが置かれないもの。
+  /直後にURLが置かれないものの指定を行う
+  routes.rbに以下のように書く。
   ex) root 'home#top'
+
+**** ビューの共通部分
+- 
+  application.html.erbに書かれる。
+  格ビューファイルのコードは、<%= yield %>の部分に代入されて表示される。
+  
+  stylesheet_link_tagでcssを、javascript_include_tagでjsを読み込んでいる。
+  
+**** command
+
+***** rails generate model
+- rails generate model モデル名 カラム名：データ型
+- 指定したカラム以外に、id, created_at, updated_atカラムが自動で生成される。
+
+***** rake db:migrate
+- 
+  dbの生成
+
+***** rails console
+- 
+  console操作ができる
+
+****** quit
+***** bundle install
+- 
+  gemfileに書いた内容をインストールしてくれる
+
+**** helper
+
+***** link_to
+***** stylesheet_link_tag
+***** javascript_include_tag
+***** redirect_to
+
+***** view
+****** form_tag
+- メソッドの指定
+  method:'patch'
+****** text_field_tag
+****** text_area_tag
+****** submit_tag
+**** Model
+
+***** Class.new
+
+***** instance.save
+
+***** Class.all
+
+***** Class.find()
+
+***** instance.destroy
+**** Verb
+- Create : POST
+- Read : GET
+- Update : PATCH
+- Delete : DELETE
+  
 ** Link
 - 
 
