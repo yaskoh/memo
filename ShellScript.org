@@ -412,9 +412,13 @@
   
 - Pattern
   - ${var#pattern}
+    forward, shortest match
   - ${var##pattern}
+    forward, longest match
   - ${var%pattern}
+    backward, shortest match
   - ${var%%pattern}
+    backward, longest match
 
 - 
   [[http://zawapro.com/?p=1619][【シェル】パス文字列からディレクトリ部、ファイル名を取得する - ザワプロ！]]

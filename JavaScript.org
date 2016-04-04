@@ -73,6 +73,31 @@
 - 
   Output a message to the Web Console.
 
+**** History
+- The History interface allows to manipulate the browser session history,
+  that is the pages visited in the tab or frame that can current page is loaded in.
+
+***** Methods
+
+****** Properties
+******* History.length
+******* History.satte
+****** Methods
+******* History.back()
+- 
+  Goes to the previous page is session history.
+  The same action as when the user clicks the browser's Back button.
+  Equivalent to history.go(-1).
+
+******* History.forward()
+- 
+  Goes to the next page in session history.
+  Equivalent to history.go(1).
+
+******* History.go()
+- 
+  Loads a page from session history, identified by its relative location to the current page.
+
 *** Obsolete
 **** Types Values, variables, literals
 ***** 値
@@ -487,6 +512,10 @@
 - 
   何らかのウインドウの子ウィンドウとして生成され、
   ユーザーがそれに対して適切に応答しない限り、制御を親ウィンドウに戻さないユーザインターフェイス設計になっているもの。
+  
+*** ブラウザ上でのJavaScriptの簡単な実行方法
+- 管理者ツールのconsoleを利用する
+  管理者ツールを立ち上げて、consoleを利用する。
   
 ** Link
 - [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]

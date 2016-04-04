@@ -1,5 +1,82 @@
 * Tools
 
+** Database
+*** HeidiSQL
+- http://celtislab.net/archives/20130826/heidisql%E3%81%A7mysql%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%B8%E6%8E%A5%E7%B6%9A%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
+
+*** MySQL Workbench
+- https://www-jp.mysql.com/products/workbench/
+
+** Undefined
+
+** Ruby
+*** Library
+**** Rack
+- 
+  WSGIに影響されて開発された、Rubyにおけるサーバとアプリケーション／フレームワーク間のインターフェースの役割を果たすライブラリ。
+
+- 
+  [[http://gihyo.jp/dev/serial/01/ruby/0023][第23回 Rackとは何か（1）Rackの生まれた背景 - Ruby Freaks Lounge - gihyo.jp]]
+
+*** Web Server
+**** Unicorn
+- Rack Web Srever.
+  RackとWebサーバーの機能を併せ持つ。
+
+- 
+  Unicorn+Railsで公開も可能だが、レスポンスがApacheやNginxに劣るため、Nginx+Unicorn+Railsでの公開が一般的。
+  ちなみにNginxはRailsの機能をサポートしていないため、Nginx+Railsでは動作しない。
+
+**** WEBrick
+- 汎用HTTPサーバフレームワーク
+  単純なHTTP Webサーバの機能を提供するRubyのライブラリ。
+  
+
+**** Mongrel
+
+**** Thin
+** Python
+
+*** Library
+**** WSGI
+- Web Server Gateway Interface
+  PythonのためのWebサーバとWebアプリケーション・フレームワーク間の標準インターフェースを定める仕様。
+
+- 
+  フレームワークの実装が特定のWebサーバに依存していることが多く、フレームワークかサーバが制限される場合が多くあった。
+  そのため、お互いに複数の環境に対応するため
+  
+- 他言語への影響
+  - PSGI(Perl)
+  - Rack(Ruby)
+  - SCGI
+  - Ring(Clojure)
+  - WAI(Haskell)
+
+*** Web Application Framework
+
+**** Django
+
+**** Flask
+**** Pyramid
+**** Tornado
+- 
+  Facebook製。
+
+**** CherryPy
+
+**** Bottle
+**** Zope
+
+**** Twisted
+
+**** TurboGears
+** PHP
+*** Library
+**** PSGI
+- 
+  PHP版WSGI
+
 ** Usage
 - Temporary use not to be categorised other text, 
   and transfer to somewhere else if each tools collecting enough volumes.

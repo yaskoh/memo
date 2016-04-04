@@ -1,7 +1,6 @@
 * sed
 
 ** Commands
-
 *** ;
   label
 
@@ -41,7 +40,9 @@
   Print
   行を出力する
 *** q
-  Quit
+- 
+  Quit、終了
+
 *** r filename
   Read File
 
@@ -78,7 +79,9 @@
 *** x
   eXchange
 *** y/..../..../
+- 
   Transform
+  一文字ずつ置換
 
 ** Pattern Flags
 
@@ -146,6 +149,7 @@
   Version
   sed -v or sed --version
 
+** Meta Characters
 ** etc
 
 - The slash as a delimiter
@@ -189,6 +193,5 @@
   [[http://techtipshoge.blogspot.jp/2011/10/sed.html][Tech Tips - sedの最短一致]]
 
 ** Link
-
-[[http://www.grymoire.com/Unix/Sed.html][Sed - An Introduction and Tutorial by Bruce Barnett]]
+- [[http://www.grymoire.com/Unix/Sed.html][Sed - An Introduction and Tutorial by Bruce Barnett]]
 

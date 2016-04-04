@@ -1,0 +1,122 @@
+* Regular Expression
+** About
+- 
+  もともと正規言語を表すための手段として導入された。
+
+** Type
+*** BRE
+- basic regular expression
+
+**** Meta Characters
+***** 置換前
+****** External Bracket
+******* ^
+- 
+  head of the sentence
+
+******* $
+- 
+  end of the sentence
+
+******* .
+- 
+  a character
+
+******* {...]
+- 
+  Match a word in the bracket
+
+******* [^...]
+- 
+  Match other characters in the bracket
+
+******* *
+- 
+  repeat over 0 times.
+
+******* \{n\}
+- 
+  n times repeat
+
+******* \{n,\}
+- 
+  more than n times repeat
+
+******* \{m,n\}
+- 
+  over m and under n times repeat
+
+******* \(...\)
+- 
+  
+
+******* \n
+******* \x
+******* \\
+****** Internal Bracket
+******* ^
+******* -
+******* [
+******* ]
+******* \x
+******* \\
+***** 置換後
+****** \n
+****** &
+****** \x
+****** \\
+**** Special Characters
+- 
+  when using as normal character, need to escape by \
+  . [ \ * ^ $
+
+*** ERE
+- extended regular expression、拡張正規表現
+
+**** Meta Characters
+**** Special Characters
+- 
+  when using as normal character, need to escape by \
+  . [ \ ( ) * | ? { | ^ $
+
+*** EMACS Regular Expressions
+
+*** PERL Regular Expressions
+*** Regular Expression Type
+- 
+  |---------+---------------------------|
+  | Utility | Type                      |
+  |---------+---------------------------|
+  | vi      | Basic                     |
+  | sed     | Basic                     |
+  | grep    | Basic                     |
+  | csplit  | Basic                     |
+  | dbx     | Basic                     |
+  | dbxtool | Basic                     |
+  | more    | Basic                     |
+  | ed      | Basic                     |
+  | expr    | Basic                     |
+  | lex     | Basic                     |
+  | pg      | Basic                     |
+  | nl      | Basic                     |
+  | awk     | Extended                  |
+  | nawk    | Extended                  |
+  | egrep   | Extended                  |
+  | Emacs   | Emacs Regular Expressions |
+  | Perl    | PERL Regular Expressions  |
+  |---------+---------------------------|
+
+** Library
+- PCRE
+- 鬼車
+- GNU Regex
+
+** Memo
+*** Difference of BRE/ERE
+- 
+  
+** Link
+- [[http://qiita.com/richmikan@github/items/b6fb641e5b2b9af3522e][どのUNIXコマンドでも使える正規表現 - Qiita]]
+- [[http://pubs.opengroup.org/onlinepubs/9699919799//basedefs/V1_chap09.html][9. Regular Expressions - The Open Group Base Specifications Issue 7]]
+- [[http://www.grymoire.com/Unix/Regular.html][Regular Expressions - Grymoire Navigation]]
+- [[http://doc.mas3.net/regexp/][手を動かしながら覚える正規表現＜基礎入門編＞]]

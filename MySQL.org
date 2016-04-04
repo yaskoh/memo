@@ -1,7 +1,5 @@
 * MySQL
-
 ** memo
-
 *** バイナリログ
 - 
   バイナリログは論理ロギング。
@@ -40,7 +38,6 @@
 **** USE DATABASE
 - 
   
-
 *** show grants
 - 
   show grants for username

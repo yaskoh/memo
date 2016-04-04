@@ -41,6 +41,11 @@
   Show Remove All
   [[http://kshimizu.hatenadiary.jp/entry/2015/04/03/052633][PowerPoint（パワポ） 2013 ノートを一括削除する方法 - Training for D-Day]]
 
+**** Add Hyperink
+- 
+  Insert->Hyperlink
+  [[https://support.office.com/ja-jp/article/%E3%83%8F%E3%82%A4%E3%83%91%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%AF%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B-459946fe-0747-4474-84e8-273d734466fe#bm2][ハイパーリンクを作成する - Office]]
+
 ** Outlook
 *** memo
 
