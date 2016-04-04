@@ -1119,6 +1119,7 @@
 
 **** launchd
 ** Files
+*** /dev/pts/number
 *** /etc/inittab
 - 
   being read by init process for the first time system starting.
@@ -1387,9 +1388,15 @@
   働かせたくない場合は""等で囲む。
   ちなみにWindowsではLinuxと異なりプログラム側で展開する。
 
-*** tty
-- 
-  端末を表すttyは、TeleTYpeの略。
+*** tty, pts
+- tty
+  端末を表すttyは、TeleTYpewriterの略。
+  制御端末のこと。実端末。
+
+- pts
+  sshなどの仮想端末。
+
+- ptmx
 
 *** standard input/output
 - 
@@ -2020,10 +2027,10 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 - 他のユーザを確認
 ***** uptime
 - サーバの前回起動してから現在までの稼働している時間の確認。
-  ただしwでも同様の情報が出るとのこと。
+  ただしwでも同様の情報が出る。
 ***** ps
 - ps auxf
-- pstreeでも可
+- pstreeでも似たようなことが可能
 ***** ip
 - ip a
 ***** df
@@ -2051,3 +2058,37 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 ***** lsof
 - lsof -p <pid>
   <pid>が開いたファイルディスクリプタ情報が見えるので、そこからログファイルなどを探す。
+*** 他のユーザにメッセージを送る
+- write:
+  to a perticular user
+  - usage 
+    write [username]
+    messages...
+  
+- wall:
+  to all users logging in
+  send a message to everybody's terminal.
+  - usage
+    wall 
+
+- pts
+  echo "message here" > /dev/pts/num
+*** net-tools, iproute2
+**** net-tools
+***** arp
+***** hostname
+***** ifconfig
+***** ipmaddr
+***** iptunnel
+***** mil-tool
+***** meif
+***** netstat
+***** plipconfig
+***** rarp
+***** route
+***** slattach
+**** iproute2
+***** ip
+***** ss
+**** Link
+- [[http://www.linuxfoundation.org/collaborate/workgroups/networking/net-tools][net-tools THE LINUX FOUNDATION]]

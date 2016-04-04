@@ -1,7 +1,5 @@
 * Security
-
 ** Vulnerability
-
 *** OS Command Injection
 
 *** XSS / Cross-Site Scripting
@@ -43,8 +41,21 @@
   ブラウザが送ってきたセッションIDが、自分の発行していないにもかかわらず、
   それを有効なセッションIDとして許可してしまうサーバがある場合、問題となる。
 
-** Glossary
+*** ARP spoofing
+- ARPスプーフィング (ARP cache poisoning, ARP poison routing)
+  ARPプロトコルの応答を偽装することにより、LAN上で通信機器のなりすましを行う技法。
 
+*** IP spoofing
+
+*** DNS spoofing
+- DNS偽装, DNS cache poisoning
+** Security Tools or Systems
+*** Firewall
+*** Encryption
+**** PGP
+- Pretty Good Privacy
+  OpenPGP:RFC4880
+** Glossary
 *** nonce
 - 
   number used onceのことで、1回だけ使われる番号、という意味。
@@ -71,5 +82,6 @@
   ランサムウェアが猛威を振るっている。
   セキュリティ対策としては、バックアップを取ることが、現在一番重要。
 
+- 
 ** Link
 - [[http://d.hatena.ne.jp/Kango/][piyolog]] 

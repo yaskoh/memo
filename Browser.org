@@ -7,6 +7,9 @@
 ***** Kind
 ****** Elements
 ****** Console
+- 
+  Javascriptの実行ができる。
+
 ****** Sources
 - JSのデバッグ
 - http://postd.cc/javascript-debugging-tips-and-tricks/

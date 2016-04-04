@@ -28,6 +28,29 @@
 - ex) choice /C YN /M "続行しますか"
       ⇒続行しますか [Y,N]?
 
+**** cmdkey
+- 
+  保存されたユーザ名とパスワードの作成、表示、および削除を行う。
+
+- /list{:targetname}
+  資格情報を表示する
+
+- /add(/genericも可)
+  - /add:targetname /user:username /pass:password
+  - /add:targetname /user:username /pass
+  - /add:targetname /user:username
+  - /add:targetname /smartcard
+  
+  - /smartcard
+
+
+- /delete
+  - /delete:targetname
+
+  - /delete /ras
+    RAS資格情報を削除する
+  
+
 **** defined
 - 
   環境変数が設定されているかチェックするには、DEFINEDを使う。
@@ -392,6 +415,20 @@
 *** hiberfil.sys
 - C:\hiberfil.sys
   when hybernation is start, data on memory is moved this file.
+** Settings
+*** Control Panel
+**** Win7
+***** ユーザーアカウント
+****** 資格情報の管理
+******* 汎用資格情報
+- 
+  [[http://news.mynavi.jp/special/2009/windows7/081.html][第6章 Windows 7のセキュリティとメンテナンス - パスワードを一括管理する「資格情報マネージャー」 - マイナビ ニュース]]
+
+- command
+  cmdkey (/list, /add)
+  [[http://blog.putise.com/windows%E3%81%AE%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E8%B3%87%E6%A0%BC%E6%83%85%E5%A0%B1%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%BC%E5%90%8D%E3%83%BB%E3%83%91%E3%82%B9%E3%83%AF%E3%83%BC/][Windowsのネットワーク資格情報(ユーザー名・パスワード)を記憶させる方法。コマンドもある - puti se blog]]
+
+*** Registry
 ** memo
 *** ACL
 - 

@@ -1,15 +1,27 @@
 * Network
 ** Classified
-*** LAN
+*** Scale
+**** LAN
 - Local Area Network
   狭い範囲のネットワーク
 
-*** WAN
+***** SAN
+- Storage Area Network
+
+**** WAN
 - Wide Area Network
   LAN同士を結ぶ広いネットワーク
 
+**** MAN
+- Metoropolitan Area Network
+  LANよりも広く、WANよりも狭い
+  
+**** NFC
+- Near field radio communication
+  近距離無線通信
+
 ** Model
-*** OSI Model
+*** OSI reference model
 - 
   |-------+--------------|
   | Layer | Name         |
@@ -23,60 +35,319 @@
   |     1 | Physical     |
   |-------+--------------|
 
-*** Physical
+**** Application
 
+**** Presentation
+
+**** Session
+
+**** Transport
+
+**** Network
+**** Datalink
+- 
+  MAC
+
+**** Physical
+
+*** Internet (TCP/IP) Protocol Suite
+
+**** Application
+
+**** Transport
+
+**** Internet
+**** Link
 ** Protocol
-*** TCP/IP
-*** BGP
+*** TCP/IP Protocol Suite
+**** Application
+***** BGP
 - 
   パスベクター(Path Vector)型プロトコルと呼ばれている。
   
-*** HTTP
-**** Status
-***** Informational 1xx
+***** DHCP
 
-***** Successful 2xx
+***** DNS
 
-****** 200 OK
+***** FTP
+- File Transfer Protocol
+  
 
-****** 204 No Content
+***** HTTP
+****** Status
+******* Informational 1xx
 
-***** Redirection 3xx
-****** 302 Found
+******* Successful 2xx
 
-****** 304 Not Modified
+******** 200 OK
+
+******** 204 No Content
+
+******* Redirection 3xx
+******** 302 Found
+
+******** 304 Not Modified
 - 
   document has not been modified.
 
-***** Client Error 4xx
+******* Client Error 4xx
 
-****** 403 Forbiden
+******** 403 Forbiden
 
-****** 404 Not Found
+******** 404 Not Found
 
-***** Server Erorr 5xx
+******* Server Erorr 5xx
 
-****** 500 Internal Server Error
+******** 500 Internal Server Error
 
-**** Link
+****** Link
 - https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 
-*** Application
-*** Presentation
-*** Session
-*** Transportation
-**** TCP
+***** IMAP
+
+***** IRC
+
+***** LDAP
+
+***** MGCP
+
+***** NNTP
+
+***** NTP
+
+***** POP
+
+***** RIP
+
+***** RPC
+
+***** RTP
+
+***** SIP
+
+***** SMTP
+
+***** SNMP
+
+***** SSH
+
+***** Telnet
+- 
+  RFC 15, extended in RFC 854.
+  
+***** TFTP
+
+***** TLS/SSL
+
+***** XMPP
+**** Transport
+***** TCP
 - Transmission Control Protocol
 
-*** Network
-**** IP
-**** ICMP
+***** UDP
+
+***** DCCP
+
+***** SCTP
+
+***** RSVP
+**** Internet
+***** IP
+****** IPv4
+******* IP Address
+******** Class
 - 
-  IPを利用するネットワークで用いられるプロトコルの一つで、IP通信の制御や通信状態の調査などを行うためのもの。
-  IPと同じネットワーク層のプロトコルに分類される。
+  |-------+--------------+---------+------+---------------+-----------------+---------------|
+  | class | Leading bits | network | rest | Start address |     End address |   Subnet Mask |
+  |-------+--------------+---------+------+---------------+-----------------+---------------|
+  | A     |            0 |       8 |   24 |       0.0.0.0 | 127.255.255.255 |     255.0.0.0 |
+  | B     |           10 |      16 |   16 |     128.0.0.0 | 191.255.255.255 |   255.255.0.0 |
+  | C     |          110 |      24 |    8 |     192.0.0.0 | 223.255.255.255 | 255.255.255.0 |
+  | D     |         1110 |         |      |     224.0.0.0 | 239.255.255.255 |               |
+  | E     |         1111 |         |      |     240.0.0.0 | 255.255.255.255 |               |
+  |-------+--------------+---------+------+---------------+-----------------+---------------|
+******** Subnet Mask
+******** Private Address
+- 
+  |--------------+----------------+-------------+-----------------+------------------|
+  |              | Class          |       Start |             End | No. of addresses |
+  |--------------+----------------+-------------+-----------------+------------------|
+  | 24-bit block | Class A        |    10.0.0.0 |  10.255.255.255 | 16,777,216       |
+  | 20-bit block | Class B × 16  |  172.16.0.0 |  172.31.255.255 | 1,048,576        |
+  | 16-bit block | Class C × 256 | 192.168.0.0 | 192.168.255.255 | 65,536           |
+  |--------------+----------------+-------------+-----------------+------------------|
+
+******** CIDR
+- Classless Inter-Domain Routing
+  クラスに関係なくIPアドレスを割り当てる方法。
   
-*** Datalink
-*** Physical
+******* IP fragmentation
+******** MTU
+- Maximum Transmission Unit
+  1回の転送（1フレーム）で送信できるデータの最大値を示す伝送単位のこと。
+  
+
+********* Path MTU Discovery 経路MTU探索
+- 
+  https://en.wikipedia.org/wiki/Path_MTU_Discovery
+
+****** IPv6
+****** IP Protocol Number プロトコル番号
+- 
+  IPで通信する際に、上位層のプロトコルがなんであるかを識別するための番号。
+  IPパケットのヘッダに8ビットの値として記載される。
+  [[http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml][Protocol Numbers]]
+  [[https://ja.wikipedia.org/wiki/%E3%83%97%E3%83%AD%E3%83%88%E3%82%B3%E3%83%AB%E7%95%AA%E5%8F%B7%E4%B8%80%E8%A6%A7][プロトコル番号一覧 - Wikipedia]]
+
+******* List
+- 
+  |---------+------------+-----------|
+  | Decimal | Keyword    | Reference |
+  |---------+------------+-----------|
+  |       0 | HOPOPT     |           |
+  |       1 | ICMP       | [[http://tools.ietf.org/html/rfc792][RFC792]]    |
+  |       2 | IGMP       |           |
+  |       4 | IP         |           |
+  |       6 | TCP        |           |
+  |       7 | CBT        |           |
+  |       8 | EGP        |           |
+  |       9 | IGP        |           |
+  |      17 | UDP        |           |
+  |      41 | IPv6       |           |
+  |      43 | IPv6-Route |           |
+  |      44 | IPv6-Frag  |           |
+  |      45 | IDRP       |           |
+  |      46 | RSVP       |           |
+  |      47 | GRE        |           |
+  |      50 | ESP        |           |
+  |      51 | AH         |           |
+  |      55 | MOBILE     |           |
+  |      58 | IPv6-ICMP  |           |
+  |      59 | IPv6-NoNxt |           |
+  |      60 | IPv6-Opts  |           |
+  |      88 | EIGRP      |           |
+  |      89 | OSPF       |           |
+  |      94 | IPIP       |           |
+  |     103 | PIM        |           |
+  |     112 | VRRP       |           |
+  |     113 | PGM        |           |
+  |     115 | L2TP       |           |
+  |---------+------------+-----------|
+
+***** ICMP
+- Internet Control Message Protocol
+  [[https://tools.ietf.org/html/rfc792][RFC792 Internet Control Message Protocol]]a
+  IPを利用するネットワークで用いられるプロトコルの一つで、IP通信の制御や通信状態の調査などを行うためのもの。
+  TCP、UDPなどと同様にインターネット・プロトコル上位のプロトコルだが、
+  IPと同じネットワーク層のプロトコルであるように特別の処理をされる。
+  
+  pingやtracerouteなどがICMPを利用している。
+
+****** Message Type
+- 
+  |--------------+-------------------------|
+  | タイプコード | 内容                    |
+  |--------------+-------------------------|
+  |            0 | Echo Reply              |
+  |            3 | Destination Unreachable |
+  |            8 | Echo Request            |
+  |           11 | Time Exceeded           |
+  |--------------+-------------------------|
+
+******* 3 : Unreachable Messages
+- 
+  |--------+--------------------------------------------------------+--------------------------------------------------------------------------|
+  | Code   | ICMP到達不能メッセージ                                 | 内容                                                                     |
+  |--------+--------------------------------------------------------+--------------------------------------------------------------------------|
+  | Code 0 | Network Unreachable                                    | 指定されたネットワークに到達できない。ルータが経路情報を保持していない   |
+  | Code 1 | Host Unreachable                                       | ホストに到達できない。ホストがネットワークに接続されていない             |
+  | Code 2 | Protocol unreachable                                   | プロトコルに到達できない。指定されたプロトコルが利用できない。           |
+  | Code 3 | Port unreachable                                       | ホストのポート(SSH/HTTPなど)に到達できない。待ち受け状態になっていない。 |
+  | Code 4 | Fragmentation required, and DF flag set                |                                                                          |
+  | Code 6 | Destination network unknown                            | 指定されたネットワークが発見できない。到達する経路が発見できない。       |
+  | Code 7 | Destination host unknow                                | 指定されたホストが発見できない。ホストに到達する経路が発見できない       |
+  | Code13 | Communication administratively prohivited by filtering | ファイヤーウォールやウィルス対策ソフトのため到達できない                 |
+  |--------+--------------------------------------------------------+--------------------------------------------------------------------------|
+
+***** ICMPv6
+- Internet Control Message Protocol for IPv6
+  IPv6で用いられるICMPプロトコル。ただしv4から各種定義しなおされている新しいプロトコル。
+
+****** Path MTU Discovery
+- パスMTU探索
+  IPv6のパケット断片化は送信元のみでルータでは行われないので、
+  送信元が配送される全経路で通過できるパケットのサイズ(パスMTU)を知らなければならない。
+  これを行うのがパスMTU探索。RFC1981。
+  
+  最初はインターフェースのMTU値などできるだけ大きな値を用いて送信され、
+  途中のルータでMTU値がパケットより小さければ、送信元へ「パケット過大(Packet too big)」エラーを返す。
+  この時送信可能なMTU値も返されるので、再度送信元はそのサイズに合わせて再送信。
+  これを繰り返すことでパスMTUを知る。
+
+***** NDP
+
+***** IGMP
+
+***** IPsec
+**** Link
+***** ARP
+- Address Resolution Protocol
+  イーサネット環境で、IPアドレスから対応するMACアドレスを動的に得るためのプロトコル。
+  IPv6ではARPでなく、ICMPv6の「近接探索プロトコル」を用いる。
+  RFC826で定義され、その後RFC5227, RFC5494でエンハンスが行われている。
+  
+****** 動作
+
+****** フォーマット
+***** RARP
+- Reverse Address Resolution Protocol
+  MACアドレスからIPアドレスを取得するためのプロトコル。
+  近年では同機能でより高機能なDHCPなどにより代替されることが多い。
+
+***** OSPF
+***** SPB
+***** L2TP
+***** PPP
+***** MAC
+- 
+  Media Access Control
+
+****** Ethernet
+****** IEEE 802.11
+****** DSL
+****** ISDN
+** Command
+*** Posix
+**** ifconfig
+- 
+  
+
+**** route
+*** Windows
+*** Link
+- [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230618/?rt=nocnt][管理者必見！ネットワーク・コマンド集]]
+- [[http://enakai00.hatenablog.com/entry/20140712/1405139841][RHEL7/CentOS7でipコマンドをマスター - めもめも]]  
+
+** History
+*** Internet
+- https://en.wikipedia.org/wiki/History_of_the_Internet
+
+** Nodes
+*** Bridge
+
+*** Switch
+
+*** Router
+
+*** Modem
+
+*** Firewall
+** Wireless
+*** Security Protocol
+**** WEP
+- Wired Equivalent Privacy
+**** WPA
+- Wi-Fi Protected Access
 ** Term
 *** CSMA/CD
 - Carrier Sence Multiple Access with Collision Domain
@@ -104,7 +375,6 @@
 
 *** CSMA/CA
 - Collision Domain Multiple Access with Carrrier Avoidance
-
 
 *** AS
 - 
@@ -139,16 +409,53 @@
 - 
   Network Information Center
 
+**** mode
+***** ユニキャスト
+- 
+  宛先アドレスが自分のアドレスを指している場合に取り込むもの。
+
+***** ブロードキャスト
+- 
+  ブロードキャスト・パケットを受信するフィルタ。
+  ハードウェア・ブロードキャスト・アドレスは「FF-FF-FF-FF-FF-FF」。
+
+***** マルチキャスト
+- 
+  あらかじめ登録されたグループ・アドレスあてのパケットを受信するフィルタ。
+  どのパケットを受信するかは、NIC内のマルチキャスト・リストに登録されている。
+  TCP/IPでは「01-00-5E-xx-xx-xx(xx-xx-xxはグループ番号)」にすればマルチキャストされる。
+
+***** オール・マルチキャスト
+- 
+  グループアドレスに関係なく、すべてのマルチキャスト・パケットを受信するフィルタ。
+  実際には、MACアドレスの中のグループ・ビットがオンになっているすべてのパケットを受信する。
+  グループ・ビットは、MACアドレス1バイト目の最下位ビット。
+
+  マルチキャストとオール・マルチキャストの検出方法が違うが、
+  
+
+***** Promiscous mode
+- 
+  NICの持つ動作モードの一つ。
+  自分宛て以外のデータパケットも信号を取り込んで処理をする。
+  
+  標準では自分のMACアドレス宛以外へ送信されたパケットは、
+  ブロードキャストなど一部例外を除き上位に通知しない状態となっている。
+
+** Link
+- [[https://en.wikipedia.org/wiki/Computer_network][Computer network Wikipedia]]
+
 ** Memo
 *** Default Gateway
 - 
   異なるネットワークへの出口となるルータのこと。
   したがってデフォルトゲートウェイを設定しなければ、他のネットワークとやりとりできない。
+  Routerと異なるネットワーク間を接続するときに使用し、IPアドレスと経路制御表を参照してネットワーク間のパケットを中継する。
+  経路制御を「ルーティング」、経路制御表を「ルーティングテーブル」という。
   
 *** Routing
 - 
   
-
 **** Dynamic Routing
 - 
   ルータなどが経路情報を互いに交換しあい、自動的に生成・更新し続ける経路表（ルーティング・テーブル）に基づいて経路選択を行うこと。
@@ -174,3 +481,20 @@
   AS(各組織が保有・運用する小規模なネットワーク)内で用いられるIGP(Interior Gateway Protocol)と、
   異なるAS間で用いられるEGPとに大別される。
   
+*** Free Wi-fi
+*** プロミスキャスモード端末の特定
+- 
+  
+  [[http://sonickun.hatenablog.com/entry/2014/07/28/223049][ARPを利用してプロミスキャスモードの盗聴ホストを特定してみた - sonickun.log]]
+
+*** ポート番号
+- 
+**** Wellknown Port : 0 ~ 1023
+- 
+  
+**** Registerd Port : 1024 ~ 49151
+- 
+  
+**** Dynamic Port : 49152 ~ 65535
+- 
+  別名プライベートポート。クライアントPC、

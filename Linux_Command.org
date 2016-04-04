@@ -69,9 +69,16 @@
     o+t, 1xxx
 
 *** chown
-- 
-  所有者を変更する。
-- -v verbose
+- chown [user][:.][group] file
+  ファイルやディレクトリの所有者を変更する。
+  グループも同時に変更可能。
+  グループのみの変更は、":group"もしくは".group"と指定する。
+
+- -v, --verbose
+  所有者の変更詳細を表示する。
+
+- -R, --recursive
+  ディレクトリとその中身を再帰的に変更する。
 
 *** chroot
     ルートディレクトリを変更してコマンドを実行する。
@@ -449,6 +456,16 @@
 - 
   ユーザIDやグループIDを表示する。
 
+*** ifconfig
+- (obsolete)
+
+- memo
+  - ifconfig eth1 promisc
+    (-> ip link set eth1 promisc on)
+    set promiscous mode.
+
+  - ifconfig eth1 up
+    
 *** info
 - 
   emacsを使ってマニュアルを表示する。
@@ -552,6 +569,11 @@
   | 14 | SIGALRM | alerm関数によるプロセスの終了                                                  |
   | 15 | SIGTERM | 終了(Termination)シグナルによるプロセスの終了                                  |
   |----+---------+--------------------------------------------------------------------------------|
+
+*** last
+- 
+  show listing of last logged in sures
+  searches the file /var/log/wtmp and displays a list of all users logged in.
 
 *** less
 - 
@@ -785,6 +807,17 @@
   Specifies that nc should just scan for listening daemons, without sending any data to them.
 
 *** netstat
+- 
+
+- State
+  |-------------+--------------------------------------|
+  | name        |                                      |
+  |-------------+--------------------------------------|
+  | LISTENING   | サーバとしてクライアントの接続待機中 |
+  | ESTABLISHED | コネクション確立中（通信中）         |
+  | CLOSE_WAIT  | コネクション通信待ち                 |
+  | TIME_WAIT   | コネクション終了後                   |
+  |-------------+--------------------------------------|
   
 *** passwd
 - 
@@ -986,8 +1019,11 @@
   ファイルを分割する。
   usage: split [-b bytes[bkm]] [infile [outfile-prefix]]
 
-- b bytes
+- -b bytes[bkm]
   bytesで示したバイト数で分割する。
+
+- -l 行数
+  指定した行数ごとに分割
 
 - infile
   元ファイルを指定する
@@ -1104,6 +1140,33 @@
       tar + bzip2
     - -J
       tar + xz
+
+*** tcpdump
+- 
+
+- -i [interface]
+  select inetrface 
+
+- -w [filename]
+  output results to file.
+
+- -r [filename]
+  read from file
+
+- -A
+  show packet by ASCII
+  
+- -p
+  execute not being promiscous mode
+  
+**** expression
+- type
+  host, net, port
+- dir
+  src, dst, src or dst, src and dst
+- proto
+  ether, fddi, mopdl, ip, ip6, arp, rarp, decnet, lat, sca, moprc, mopdl, icmp, icmp, tcp, udp
+  
 
 *** tee
 - 
@@ -1334,6 +1397,11 @@
 - 
   pager / text-based web-browser.
 
+*** wall
+- wall [-n] [ message ]
+  send a message to everybody's terminal
+  a message to everybody logged in with their mesg(1) permission set to yes.
+
 *** wc
 - 
   ファイルのバイト、行、文字および単語をカウントする。
@@ -1375,6 +1443,11 @@
 *** who
 - 
   現在ログインしているユーザ情報を表示する
+
+*** write
+- write user [ttyname]
+  send a message to another user
+  to communicate with other users.
 
 *** xz / unxz
 
