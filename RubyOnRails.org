@@ -459,6 +459,11 @@
 ***** stylesheet_link_tag
 ***** javascript_include_tag
 ***** redirect_to
+- 
+- 引数の省略
+  1. redirect_to note_path(@note.id)
+  2. redirect_to note_path(@note)
+  3. redirect_to @note
 
 ***** view
 ****** form_tag
@@ -467,8 +472,8 @@
 ****** text_field_tag
 ****** text_area_tag
 ****** submit_tag
+****** form_for
 **** Model
-
 ***** Class.new
 
 ***** instance.save
@@ -478,12 +483,51 @@
 ***** Class.find()
 
 ***** instance.destroy
+
+***** validate
+- 
+  ex) validates:column_name, presence:true, other_validations:...
+
+****** validations
+- presence: true
+- length: {maximum:140}
 **** Verb
 - Create : POST
 - Read : GET
 - Update : PATCH
 - Delete : DELETE
   
+**** scaffold
+- 
+  rails g scaffold (ModelName) Column:DataType ...
+  
+**** resources
+- 
+  
+**** before_action
+- 
+  各アクションが行われる前に指定したメソッドを呼び出すことができる。
+
+***** only
+- 
+  ex) before_action :set_note, only: [:show, :edit, :update, :destroy]
+
+**** strong parameter
+- 
+  ex) params.require(:note).permit(:title, :content)
+**** render method
+- 
+  redirect_toと異なりアクションを経由せず、ビューファイルを表示する。
+
+**** errors.full_messages
+- 
+  ex) @note.errors.full_messages.each
+
+**** notice function
+- 
+  一度だけ表示したいメッセージを簡単に設定できる。
+  redirect_toの第二引数で設定して(ex: redirect_to @note, notice:'メッセージ'),
+  viewで表示する(ex: <%= notice %>)
 ** Link
 - 
 
