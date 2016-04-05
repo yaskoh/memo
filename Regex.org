@@ -24,7 +24,8 @@
 
 ******* {...]
 - 
-  Match a word in the bracket
+  Match a word in the bracket.
+  character class.
 
 ******* [^...]
 - 
@@ -49,11 +50,10 @@
 ******* \(...\)
 - 
   
-
 ******* \n
 ******* \x
 ******* \\
-****** Internal Bracket
+****** Character ClassInternal Bracket
 ******* ^
 ******* -
 ******* [
@@ -62,6 +62,7 @@
 ******* \\
 ***** 置換後
 ****** \n
+- n
 ****** &
 ****** \x
 ****** \\
@@ -74,15 +75,42 @@
 - extended regular expression、拡張正規表現
 
 **** Meta Characters
+***** 置換前
+****** External Bracket
+******* ^
+******* $
+******* .
+******* [...]
+******* [^...]
+******* *
+******* +
+******* {n}
+******* {n,}
+******* {m,n}
+******* ?
+******* (...)
+******* |
+******* \x
+******* \\
+****** Internal Bracket
+- BREとおなじ
+***** 置換後
+- BREとおなじ
 **** Special Characters
 - 
   when using as normal character, need to escape by \
   . [ \ ( ) * | ? { | ^ $
 
 *** EMACS Regular Expressions
+- [[https://www.emacswiki.org/emacs/RegularExpression][Regular Expression - EmacsWiki]]
+
+**** Command
+- C-M-s
+- C-M-r
+- replace-regexp
 
 *** PERL Regular Expressions
-*** Regular Expression Type
+*** Utility Regular Expression Type
 - 
   |---------+---------------------------|
   | Utility | Type                      |
@@ -99,7 +127,7 @@
   | lex     | Basic                     |
   | pg      | Basic                     |
   | nl      | Basic                     |
-  | awk     | Extended                  |
+  | awk     | Extended(Subset)          |
   | nawk    | Extended                  |
   | egrep   | Extended                  |
   | Emacs   | Emacs Regular Expressions |
@@ -114,7 +142,19 @@
 ** Memo
 *** Difference of BRE/ERE
 - 
+  - EREでは、BREより使えるメタ文字が増えている。(+, ?, |)
+  - EREでは、括弧類のメタ文字がエスケープ不要。\( -> (, \{ -> {など
+  - EREでは、後方参照が保障されていない。
+
+*** Mastering Regular Expressions
+**** [...]
+- character class, 文字クラス
   
+- 文字クラスは、否定形であっても、マッチすべき文字を要求する。
+  ex) q[^u}に、Iraqはひっかからない。qのあとに文字がないため。
+  
+**** [^...]
+- 否定文字クラス
 ** Link
 - [[http://qiita.com/richmikan@github/items/b6fb641e5b2b9af3522e][どのUNIXコマンドでも使える正規表現 - Qiita]]
 - [[http://pubs.opengroup.org/onlinepubs/9699919799//basedefs/V1_chap09.html][9. Regular Expressions - The Open Group Base Specifications Issue 7]]

@@ -1,5 +1,66 @@
 * Emacs
-** mode
+** Command
+*** Key
+**** default
+***** C-b : backward-char
+***** C-f : forward-char
+***** C-p : previous-line
+***** C-n : next-line
+***** C-g :
+***** C-y : yank
+***** C-w : kill-region
+***** C-x C-c : save-buffers-kill
+***** C-x C-f : find-file
+***** C-x b : switch-to-buffer
+***** C-x C-b : list-buffers
+***** C-x C-s : save-buffer
+***** C-x C-w : write-buffer
+***** C-x k : kill-buffer
+***** C-x C-j : dired
+***** C-x RET f : 
+- Set character code
+***** C-\ : 
+- IME on/off
+***** C-q : 
+- 特殊文字の入力
+****** C-j : 改行
+***** M-b : backward-word
+***** M-f : forward-word
+***** M-x : execute-extended-command
+- コマンドを入力して実行
+
+**** obsolete
+**** edited
+***** C-t : forward-char
+*** Command
+**** unallocated
+***** dired
+***** find-file
+- C-x C-f
+***** goto-line
+***** kill-buffer
+- C-k
+***** kill-region
+***** save-buffers-kill
+***** switch-to-buffer
+- C-x b
+***** list-buffers
+- C-x C-b
+***** write-buffer
+- C-x C-w
+**** Cursol move
+***** forward-char
+- (C-f), C-t
+***** backward-char
+- C-b
+***** previous-line
+***** next-line
+***** forward-word
+***** backward-word
+** Mode
+*** linum-mode
+- 行番号をつける
+
 *** picture-mode
 - 
   picture-modeかedit-pictureを選択する。
@@ -24,22 +85,9 @@
   Tag
   ex) html, then tab
 
-** memo
-
-- 行番号
-  M-x linum
-
-- dired
-  C-x C-j
-
-- IME on/off
-  C-\
-
+** Memo
 - 置換時の改行
   ^J(C-q C-j)
 
-- 文字コード指定
-  C-x RET f
-
-- 日本語入力のトグルスイッチ
-  C-\
+** Link
+- [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]
