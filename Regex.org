@@ -24,7 +24,8 @@
 
 ******* {...]
 - 
-  Match a word in the bracket
+  Match a word in the bracket.
+  character class.
 
 ******* [^...]
 - 
@@ -49,11 +50,10 @@
 ******* \(...\)
 - 
   
-
 ******* \n
 ******* \x
 ******* \\
-****** Internal Bracket
+****** Character ClassInternal Bracket
 ******* ^
 ******* -
 ******* [
@@ -62,6 +62,7 @@
 ******* \\
 ***** 置換後
 ****** \n
+- n
 ****** &
 ****** \x
 ****** \\
@@ -74,15 +75,42 @@
 - extended regular expression、拡張正規表現
 
 **** Meta Characters
+***** 置換前
+****** External Bracket
+******* ^
+******* $
+******* .
+******* [...]
+******* [^...]
+******* *
+******* +
+******* {n}
+******* {n,}
+******* {m,n}
+******* ?
+******* (...)
+******* |
+******* \x
+******* \\
+****** Internal Bracket
+- BREとおなじ
+***** 置換後
+- BREとおなじ
 **** Special Characters
 - 
   when using as normal character, need to escape by \
   . [ \ ( ) * | ? { | ^ $
 
 *** EMACS Regular Expressions
+- [[https://www.emacswiki.org/emacs/RegularExpression][Regular Expression - EmacsWiki]]
+
+**** Command
+- C-M-s
+- C-M-r
+- replace-regexp
 
 *** PERL Regular Expressions
-*** Regular Expression Type
+*** Utility Regular Expression Type
 - 
   |---------+---------------------------|
   | Utility | Type                      |
@@ -99,7 +127,7 @@
   | lex     | Basic                     |
   | pg      | Basic                     |
   | nl      | Basic                     |
-  | awk     | Extended                  |
+  | awk     | Extended(Subset)          |
   | nawk    | Extended                  |
   | egrep   | Extended                  |
   | Emacs   | Emacs Regular Expressions |
@@ -114,7 +142,145 @@
 ** Memo
 *** Difference of BRE/ERE
 - 
+  - EREでは、BREより使えるメタ文字が増えている。(+, ?, |)
+  - EREでは、括弧類のメタ文字がエスケープ不要。\( -> (, \{ -> {など
+  - EREでは、後方参照が保障されていない。
+
+*** Mastering Regular Expressions
+**** About
+- 
+  「マッチするか」「マッチしないか」のみ考慮される。
+  「どれだけマッチしたか」は関係ない。
+  他のものをはじくためにのみ、より強固な文字列によるマッチを検討する必要がある。
+
+**** Meta Characters
+***** Outside of Character Class
+****** Match a character
+******* .
+- 
+  任意の位置文字
+
+******* [...]
+- character class, 文字クラス
   
+- 文字クラスは、否定形であっても、マッチすべき文字を要求する。
+  ex) q[^u}に、Iraqはひっかからない。qのあとに文字がないため。
+  
+******* [^...]
+- 否定文字クラス
+  「...でないなにか」にマッチする、という意味。
+  文字がない（空行など）ではマッチしない。
+  
+******* \char
+- 
+  メタ文字に\を前置することで、リテラルとして扱われるようにする。
+
+****** quantifier 量指定子
+******* ?
+- 
+  1回か0回
+******* +
+- 
+  1回以上
+******* *
+- 
+  0回以上
+******* ...{min, max}
+- interval quantifier
+  繰り返し回数を指定する
+****** Match positions
+******* ^
+- 行の先頭
+******* $
+- 行の末尾
+******* \<
+- 語の先頭（egrepの実装により有無あり）
+******* \>
+- 語の末尾（egrepの実装により有無あり）
+****** etc
+******* |
+- or
+******* (...)
+- 
+  まとめる役割。各種用途あり。
+  1. 選択：「|」による選択の範囲に制限を設ける
+  2. グループ化：複数の文字をまとめて、量指定子の対象とする
+  3. キャプチャ：後方参照として使うために使う
+
+- (?:...)
+  キャプチャしない場合。
+  
+
+******* \1, \2
+- 
+  後方参照
+
+***** Inside of Character Class
+****** -
+- A-Z
+  範囲指定。
+- [-
+  [の直後に来た場合、解釈されず、単なる文字として認識される。
+
+****** ^
+- [^
+  [の直後であれば否定。
+- それ以外
+  通常の文字。
+
+**** Perl Extention
+***** Outsite of Character Class
+****** \b
+- 
+  語の先頭と末尾にマッチする。
+****** \d
+- 
+  [0-9]
+
+****** \D
+- 
+  \d以外。[^0-9]
+
+****** \n
+- 
+  改行
+****** \r
+- 
+  復帰
+****** \s
+- 
+  空白文字にマッチする。
+  スペース、タブ、改行、復帰
+****** \S
+- 
+  \s以外のすべての文字
+****** \t
+- 
+  タブにマッチする
+
+****** \w
+- 
+  
+****** \W
+- 
+  \w以外。[^a-zA-Z0-9_]
+
+***** parenthesis sequence
+****** キャプチャしない
+******* (?:...)
+****** 先読み・後読み
+- 
+  パターンと一致する「位置」にマッチする。
+  ex) (?=Jeffery)Jeffは、Jefferyが続く場合の"Jeff"のみにマッチ。Jeffersonにはマッチしない。
+  
+******* (?=pattern)
+- 肯定的先読み
+******* (?!pattern)
+- 否定的先読み
+******* (?<=pattern)
+- 肯定的後読み
+******* (?<!pattern)
+- 否定的後読み
 ** Link
 - [[http://qiita.com/richmikan@github/items/b6fb641e5b2b9af3522e][どのUNIXコマンドでも使える正規表現 - Qiita]]
 - [[http://pubs.opengroup.org/onlinepubs/9699919799//basedefs/V1_chap09.html][9. Regular Expressions - The Open Group Base Specifications Issue 7]]

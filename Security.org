@@ -1,18 +1,19 @@
 * Security
-** Vulnerability
-*** OS Command Injection
+** Threats
+*** Vulnerability
+**** OS Command Injection
 
-*** XSS / Cross-Site Scripting
+**** XSS / Cross-Site Scripting
 
-*** SQL Injection
+**** SQL Injection
 
-*** Code Injection
+**** Code Injection
 
-*** Baffer Error
+**** Baffer Error
 
-*** Certification・Password Management
+**** Certification・Password Management
 
-*** CSRF / Cross-Site Request Forjery
+**** CSRF / Cross-Site Request Forjery
 - 手順
   1. 攻撃者が、攻撃用のWebページを作成しWWW上に公開する。
   2. 第三者が、攻撃用のWebページにアクセスする。
@@ -28,7 +29,7 @@
     - HTTP Refererを取得し照合することで、外部からの不正POSTを判別する。
       第三者サイトから、Refererを偽造したPOSTを送信することは不可能。
 
-*** Session Fixation
+**** Session Fixation
 - 手順
   1. 攻撃者があらかじめWebサイトからCookieとして有効なセッションIDを取得する。
   2. その後ユーザが攻撃者の仕掛けた悪意のWebサイトにアクセスした際、
@@ -41,20 +42,30 @@
   ブラウザが送ってきたセッションIDが、自分の発行していないにもかかわらず、
   それを有効なセッションIDとして許可してしまうサーバがある場合、問題となる。
 
-*** ARP spoofing
+**** ARP spoofing
 - ARPスプーフィング (ARP cache poisoning, ARP poison routing)
   ARPプロトコルの応答を偽装することにより、LAN上で通信機器のなりすましを行う技法。
 
-*** IP spoofing
+**** IP spoofing
 
-*** DNS spoofing
+**** DNS spoofing
 - DNS偽装, DNS cache poisoning
-** Security Tools or Systems
-*** Firewall
-*** Encryption
-**** PGP
+** Defences
+*** Security Tools or Systems
+**** Firewall
+**** Encryption
+***** PGP
 - Pretty Good Privacy
   OpenPGP:RFC4880
+*** Cryptography
+**** Cryptograhic hash function
+- 暗号学的ハッシュ関数
+
+***** アルゴリズム
+- MD5
+- SHA-1
+- SHA-256
+
 ** Glossary
 *** nonce
 - 
