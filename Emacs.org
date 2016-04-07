@@ -2,45 +2,83 @@
 ** Command
 *** Key
 **** default
+***** C-a : beginning-of-line
 ***** C-b : backward-char
+***** C-d : delete-char
+***** C-e : end-of-line
 ***** C-f : forward-char
+***** C-k : kill-line
 ***** C-p : previous-line
 ***** C-n : next-line
-***** C-g :
-***** C-y : yank
-***** C-w : kill-region
-***** C-x C-c : save-buffers-kill
-***** C-x C-f : find-file
-***** C-x b : switch-to-buffer
-***** C-x C-b : list-buffers
-***** C-x C-s : save-buffer
-***** C-x C-w : write-buffer
-***** C-x k : kill-buffer
-***** C-x C-j : dired
-***** C-x RET f : 
-- Set character code
-***** C-\ : 
-- IME on/off
+***** C-g : keyboard-quit
 ***** C-q : 
 - 特殊文字の入力
 ****** C-j : 改行
+***** C-r : isearch-backward
+***** C-s : isearch-forward
+****** C-s C-w : isearch-yank-word
+***** C-u : universal-argument
+***** C-v : scroll-up
+***** C-y : yank
+***** C-w : kill-region
+***** C-\ : 
+- IME on/off
+***** C-Space : set-mark-command
+***** C-x b : switch-to-buffer
+***** C-x e : call-last-kbd-macro
+***** C-x k : kill-buffer
+***** C-x ( : start-kbd-macro
+***** C-x ) : end-kbd-macro
+***** C-x ] : forward-page
+***** C-x [ : backward-page
+***** C-x 0 : delete-window
+***** C-x 1 : delete-other-window
+***** C-x 2 : split-window-vertically
+***** C-x 3 : split-window-horizontally
+***** C-x C-b : list-buffers
+***** C-x C-c : save-buffers-kill
+***** C-x C-f : find-file
+***** C-x C-k e : edit-kdb-macro
+***** C-x C-k n : name-last-kbd-macro
+***** C-x C-s : save-buffer
+***** C-x C-w : write-buffer
+***** C-x C-j : dired
+***** C-x RET f : 
+- Set character code
+***** C-M-s : re-search-forward
+***** C-M-r : re-search-backward
+***** C-M-% : query-replace-regexp
+***** M-a : backward-sentence
 ***** M-b : backward-word
+***** M-e : forward-sentence
 ***** M-f : forward-word
+***** M-g : goto-line
+***** M-v : scroll-down
 ***** M-x : execute-extended-command
 - コマンドを入力して実行
 
 **** obsolete
+***** C-h : 
+***** C-t : 
 **** edited
+***** C-h : delete-backward-char
+***** C-o :
 ***** C-t : forward-char
+***** C-x o :
 *** Command
-**** unallocated
+**** etc
+***** keyboard-quit
+- C-g
+***** compile
+**** File
 ***** dired
 ***** find-file
 - C-x C-f
-***** goto-line
+**** Buffer
 ***** kill-buffer
 - C-k
-***** kill-region
+***** save-buffer
+- C-x C-s
 ***** save-buffers-kill
 ***** switch-to-buffer
 - C-x b
@@ -48,6 +86,11 @@
 - C-x C-b
 ***** write-buffer
 - C-x C-w
+**** Window
+***** delete-window
+***** delete-other-window
+***** split-window-vertically
+***** split-window-horizontally
 **** Cursol move
 ***** forward-char
 - (C-f), C-t
@@ -57,7 +100,89 @@
 ***** next-line
 ***** forward-word
 ***** backward-word
+***** beginning-of-line
+- C-a
+***** end-of-line
+- C-e
+***** forward-sentence
+- M-e
+***** backward-sentence
+- M-a
+***** scroll-up
+- C-v
+***** scroll-down
+- M-v
+***** forward-page
+- C-x ]
+***** backward-page
+- C-x [
+***** goto-line
+- M-g
+**** Edit
+***** delete-char
+- C-d
+***** delete-backward-char
+- C-h
+***** kill-word
+- M-d
+***** kill-line
+- C-k
+***** yank
+- C-y
+***** kill-region
+- C-w
+***** set-mark-command
+- C-Space
+***** universal argument
+- C-u
+  次に入力するコマンドを4回実行する
+**** Search
+***** isearh-forward
+- C-s
+***** isearch-backward
+- C-r
+***** isearch-yank-word
+- C-s C-w
+***** re-search-forward
+- C-M-s
+***** re-search-backward
+- C-M-r
+***** query-replace-regexp
+- C-M-%
+**** Keybind
+***** describe-key
+- 
+  show key bindings that you will press
+  
+***** describe-bindings
+- 
+  show key-bindings list
+
+**** Macro
+***** start-kbd-macro
+- C-x (, <F3>
+***** end-kbd-macro
+- C-x ), <F4>
+***** call-last-kbd-macro
+- C-x e
+***** kbd-macro-query
+- C-x q
+***** edit-kdb-macro
+- C-x C-k e
+***** name-last-kbd-macro
+- C-x C-k n
+***** insert-kbd-maccro
+***** apply-macro-to-region-lines
 ** Mode
+*** Minibuffer
+- M-p, up : previous-history-element
+- M-n , down : next-history-element
+- M-r : previous-matching-history-element
+- M-s : next-matching-history-element
+*** dired
+**** Command
+***** R : dired-do-rename
+***** f : 
 *** linum-mode
 - 行番号をつける
 
@@ -85,9 +210,21 @@
   Tag
   ex) html, then tab
 
+** Regular Expression
+- https://www.emacswiki.org/emacs/RegularExpression
+** Keyboard Macros
+- start
+ C-x (
+- end
+  C-x )
+- execute (most recent)
+  C-x e
+- execute, then start recording
+  C-u C-x (
 ** Memo
 - 置換時の改行
   ^J(C-q C-j)
 
 ** Link
 - [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]
+- [[http://d.hatena.ne.jp/o0cocoron0o/20100424/1272116442][Emacs 基本コマンド一覧 - Cocoron's memo]]

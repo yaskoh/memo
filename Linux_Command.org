@@ -417,6 +417,31 @@
 - -g 検索文字列
   ソースコードのgrep
 
+*** grep
+- grep [OPTIONS] PATTERN [FILE...]
+- grep [OPTIONS] [-e PATTERN | -f FILE} [FILE...] 
+  searches the named input FILEs for lines containing a match to the given PATTERN.
+
+- -E, --extended-repex
+  interpret pattern as an extended regular expression (ERE).
+
+- -F, --fixed-strinngs, --fixed-regexp
+  interpret pattern as a list of fixed strings, not as a regular exression.
+
+- -G, --basic-regexp
+  as a bacis regular expression (BRE)
+
+- -P, --perl-repexp
+  as a Perl regular expresion.
+
+**** egrep
+- 
+  the same as grep -E
+
+**** fgrep
+- 
+  the same as grep -F
+
 *** groupadd
 - 
   新しいグループの作成
