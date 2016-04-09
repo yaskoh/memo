@@ -1,5 +1,4 @@
 * Java
-
 ** Language
 *** 字句構造
 **** コメント
@@ -874,7 +873,7 @@
 - Java Message Serviceを実装したメッセージ関連のオープンソースのミドルウェア。
   http://activemq.apache.org/getting-started.html
 
-** memo
+** Memo
 *** リソース付きtry
 - 
   try(AutoCloseable Class; ...){
@@ -925,8 +924,28 @@
   http://www.java.com/en/download/help/javaconsole.xml
   https://www.java.com/en/download/help/disable_java_icon.xml
 
-*** temp
+*** JAR/WAR/EAR
+- いずれもJava仕様に準拠して定義されたZIP形式の圧縮ファイル。
+**** JAR
+- Java ARchive
+  クラスファイルや設定ファイル(XML形式のものなど)がまとめられている。
+  多くのクラスライブラリがこの形式で配布される。
+  MVCモデルでいうところのModelにあたる。
 
+**** WAR
+- Web Application Resources, Web Application Archive
+  J2EE仕様によってフォルダ構造が決められている。
+  MVCにおける"VC"の部分。
+  クラスファイル、設定ファイルのほか、JSPやHTMLも含まれる。
+  またweb.xmlが含まれ、Tomcatなどのアプリケーションサーバに配布すると、これを元にデプロイされる。
+
+**** EAR
+- Enterprise ARchive
+  J2EE仕様によってフォルダ構造が決められている。
+  複数のWARファイル、(EJB)JARファイルを含む。
+  application.xmlが含まれ、J2EEコンテナ（JBoss, WebSphereなど）に配布すると、これを元にデプロイされる。
+
+*** temp
 **** 文字列の連結
 - 
   +を使う

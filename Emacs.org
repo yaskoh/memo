@@ -173,7 +173,26 @@
 - C-x C-k n
 ***** insert-kbd-maccro
 ***** apply-macro-to-region-lines
+**** Shell
+***** shell
+***** term
+***** eshell
 ** Mode
+*** shells
+**** shell
+- M-x shell
+  標準シェル。
+  タブ補完などが効かない。
+
+**** ansi-term(term)
+- M-x term (M-x ansi-term)
+  
+**** eshell
+- M-x eshell
+  
+**** multi-term
+- 
+  別途インストールが必要。
 *** Minibuffer
 - M-p, up : previous-history-element
 - M-n , down : next-history-element

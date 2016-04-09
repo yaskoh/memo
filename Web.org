@@ -112,7 +112,8 @@
 - jQuery
   - Library for using javascript as same appearence over browsers.
   
-** Apache
+** Web Server
+*** Apache
 - Download
   (on debian)
   sudo apt-get install apache2
@@ -120,10 +121,11 @@
 - Setting
   Set the permisson of /var/www as 775.
 
-*** mod_rewrite
+**** mod_rewrite
 - 
 
-** PHP
+** Lang
+*** PHP
 - Download
   (on debian)
   sudo apt-get install php5 php-pear
@@ -132,7 +134,7 @@
   Pear is "PHP Extension and Application Repository",
   a framework and distribution system for reusable PHP components.
 
-** Java 
+*** Java 
 - Download
   sudo apt-get install openjdk-6-jdk
   (sudo apt-get install default-jre)
@@ -177,3 +179,6 @@
 
 **** TeamSite
 **** MODX
+
+*** MIME Type
+- RFC 2045
