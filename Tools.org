@@ -1,4 +1,6 @@
 * Tools
+- Temporary use. Locate what not being categorised other files. 
+  Transfer to somewhere else if each tools collecting enough volumes.
 
 ** Database
 *** HeidiSQL
@@ -7,8 +9,81 @@
 *** MySQL Workbench
 - https://www-jp.mysql.com/products/workbench/
 
-** Undefined
+** WebServer
+*** Apache
+**** 特徴
+***** 複数バージョンのサポート
+***** MPM : Multi Processing Module
+- 
+  複数OSに最適化
 
+***** モジュールによる機能追加
+- 
+  モジュールを追加することで拡張可能。
+  「Core」がまずあり、モジュールを追加して機能を拡張する。「mod_XXX」と名付けられる。
+  
+  追加は「静的リンク」と「動的リンク」がある。
+  - 静的リンク
+    静的リンクはApacheの実行ファイルそのものにモジュールを組み込む。バイナリ的に一体化する。
+    早いが再コンパイルが必要。
+  - DSO : Dynamic Shared Object、動的共有オブジェクト
+    動的リンクはモジュールを別ファイルとして作成し、必要に応じてモジュールのファイルから機能を呼び出す方式。
+    あらかじめ「mod_so」モジュールを静的リンクしておく必要がある。
+    負荷が高くなるが導入が容易。
+
+***** プロセスの挙動
+****** prefork
+- 
+  スレッドを使わず、先行してforkを行うウェブサーバ。
+  伝統的に親プロセスを1つ持ち、クライアントからリクエストが来るとforkする。実際の通信は子プロセスが受け持つ。
+  そのため、接続数だけ子プロセスが起動する。
+  forkに時間がかかるため、あらかじめ複数個のプロセスを事前に立ち上げておくため、preforkと呼ばれる。
+
+- メリット
+  ある子プロセスがフリーズしても、他のプロセスには影響せず、安定した通信が可能。
+
+- デメリット
+  クライアントが多くなるほどメモリやCPU負荷が増えていく。
+
+****** worker
+- 
+  マルチスレッドとマルチプロセスのハイブリッド型。
+  子プロセス1つ1つがマルチスレッドで動作し、スレッド1つが1つのクライアントを受け持つ。
+
+****** event
+- 
+  workerの一種で、マルチスレッドで動作する。
+  違いはKeep-Aliveの処理方法で、Keep-Aliveの処理を別のスレッドに割り振って通信を処理する。
+  2.4.1で正式に採用された。
+
+**** Modules
+***** mod_rewrite
+- 
+  Apache Webサーバにおいて、クライアントからリクエストのあったURLの内部書き換えや、
+  さまざまな環境変数等に応じたリダイレクトを可能とするモジュール。
+  正規表現を使用したマッチングを行うことができる。
+
+- 使用方法
+  - httpd.confに設定する
+    こちらの方が
+
+  - .htaccessに設定する
+    処理が遅くなるので、httpd.conf推奨。
+
+**** Settings
+***** httpd.conf
+***** .htaccess
+**** Command
+***** httpd
+****** -k
+******* install
+******* uninstall
+******* start
+******* stop
+******* restart
+*** nginx
+
+*** IIS
 ** Ruby
 *** Library
 **** Rack
@@ -76,7 +151,5 @@
 **** PSGI
 - 
   PHP版WSGI
+** Undefined
 
-** Usage
-- Temporary use not to be categorised other text, 
-  and transfer to somewhere else if each tools collecting enough volumes.

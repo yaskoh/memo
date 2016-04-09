@@ -22,19 +22,6 @@
 
 ** Model
 *** OSI reference model
-- 
-  |-------+--------------|
-  | Layer | Name         |
-  |-------+--------------|
-  |     7 | Application  |
-  |     6 | Presentation |
-  |     5 | Session      |
-  |     4 | Transport    |
-  |     3 | Network      |
-  |     2 | Datalink     |
-  |     1 | Physical     |
-  |-------+--------------|
-
 **** Application
 
 **** Presentation
@@ -44,9 +31,212 @@
 **** Transport
 
 **** Network
+***** Networking Device
+****** Router
+- 
+  スイッチング機能とルーティング機能を持つ
+
 **** Datalink
 - 
   MAC。フレームの伝送制御
+
+***** LAN
+****** IEEEの規格
+******* LLC
+- Logical Link Control Sub-Layer 論理リンク制御副層
+  実際の機器に依存しない部分。
+  エラー制御、上位サービスの指定など。
+******* MAC
+- Media Access Control Sub-Layer メディアアクセス制御副層
+  メディアへの接続の取り決め。
+  メディア・アクセス制御（共有メディアのアクセス方法。誰が送信を行うかの制御）。
+
+****** LAN仕様
+******* Ethernet(DIX)
+- レイヤ1、2
+  メディア：同軸・UTP・光ファイバ
+  メディアアクセス制御方式：CSMA/CD
+  物理トポロジ：バス・スター
+
+******** Ethernet Frame
+- 8Byte （プリアンプル）
+- 6Byte 宛先MACアドレス
+- 6Byte 送信先MACアドレス
+- 2Byte フレームタイプ
+- 46-1500Byte パケット
+- 4Byte FCS
+
+******* IEEE802.3
+- レイヤ1、MAC
+  メディア：同軸・UTP・光ファイバ
+  メディアアクセス制御方式：CSMA/CD
+  物理トポロジ：バス・スター
+
+- 
+  イーサネットとほぼ同一。
+  LLC副層が少し異なるため、制御情報が異なってくるが、相互互換している。
+
+******** Frame
+- 8Byte （プリアンプル）
+- 6Byte 宛先MACアドレス
+- 6Byte 送信先MACアドレス
+- 2Byte 長さ・タイプ
+- 46-1500Byte パケット
+- 4Byte FCS
+
+******** Extention 拡張
+********* IEEE802.3u
+- Fast Ethernet
+  1995年制定。100Mbps、下位互換。
+  同軸ケーブルが規格から外れ、バス型物理トポロジが使えなくなりスターのみに。
+  
+********* IEEE802.3z
+- Gigabit Ethernet
+  光ファイバ
+********* IEEE802.3ab
+- Gigabit Ethernet
+  ツイストペア。
+********* IEEE802.3ae
+- 10Gigabit Ethernet
+  下位互換。
+
+******* IEEE802.5
+- レイヤ1、MAC
+  メディア：同軸・UTP
+  メディアアクセス制御方式：トークンパッシング
+  物理トポロジ：リング・スター
+  転送速度が4Mbps/16Mbps
+
+- 
+  元はIBMが1970年代に開発したトークンリング。
+  
+- MSAU
+  MultiStation Access Unit。ハブ。
+  
+******* FDDI
+- レイヤ1、MAC。Fiber distributed data interface
+  メディア：同軸・UTP・光ファイバ
+  メディアアクセス制御方式：トークンパッシング
+  物理トポロジ：二重リング
+  100Mbpsで、最長20KmのLANを作り出せる。
+
+- 
+  二重リングとトークン・パッシング制御方式により信頼性が高い
+  光ファイバでデータ転送速度も速い。
+  ただし価格も高い。
+
+- 
+  プライマリ・リングと、予備のセカンダリ・リングがある。
+  プライマリとセカンダリは逆向きに信号が流れる。
+
+- Node
+  - DAS : Dual Attachment Station
+    両方のリングに接続された機器のこと。
+  - SAS : Single Attachment Station
+    プライマリ・リングとしか接続されない。
+  - Concentrator
+    集線装置。複数の回線を一つにまとめる。
+    複数のSASと接続される。
+
+******* IEEE802.2
+- LLC
+
+****** MACアドレス
+- 
+  Nicにつけられたアドレス。ROMに書き込まれている。
+  48bitを16進数で12桁にしている。
+  
+- OUI : Organizational Unique Identifier
+  MACアドレスの先頭24bit（6桁目）まで。ベンダーコードとも。
+  また、残りの24bitはベンダ割り当てコードで、ベンダが任意につけた値。
+
+****** Media Access Control
+******* CSMA/CD
+- Collision Domain Multiple Access with Carrrier Avoidance
+  
+******** Ethernetの場合
+- 
+  1. 送信準備
+     イーサネットフレームを作成。衝突カウンタを0にする
+  2. CSMA
+     キャリア信号を検知する。なければ一定時間待った後、送信開始。
+  3. CD
+     送信中に衝突したかどうか検出。衝突していなければ送信完了。
+     衝突していた場合、フレーム送信を一時中断しJAM信号を送信。4へ。
+  4. バックオフ
+     衝突カウンタをプラス1．16ならばフレームを破棄し送信中止。
+     16未満ならばランダムな待機後2へ。
+******* CSMA/CD
+- Carrier Sence Multiple Access with Collision Domain
+
+******* Token Passing
+- 
+  トークン、と呼ばれる制御フレームを使う。
+  1. 誰も使用していない状態を"フリートークン"といい、データを乗せる。
+  2. データが乗ったトークンを"ビジートークン"という。この状態では新たにデータを乗せることはできない。
+  3. データが自分宛てでなければ、何もせず送り出す。
+  4. 自分宛てのデータであれば、データを受け取り受信済みを表すデータを乗せる。
+  5. 受信済みビジネストークンを送信者が受け取ったら、再びフリートークンとなる。
+
+- 
+  衝突が発生せず、受け取りの確認も可能。
+  ビジーとなった状態で送り元が故障した場合など、フリーに戻らない場合があるため、監視するノードが必要。
+  
+***** Networking Device
+****** Bridge
+******* Type
+******** Source-route bridge
+- SRB、ソースルートブリッジ。
+  IEEE802.5(トークンリング)同士をつなげるブリッジ。
+  他リング宛てのパケットを受け取ると、全ルート探索パケットを使って、宛先までのすべての道筋を探し出す。
+  それをルーティング情報(Routing Information Field)として表を持つ。ルータのルーティングテーブルとは別物。
+  
+******** Transparent bride
+- 
+  同じアクセス制御方式のセグメントを繋ぐ。イーサネット同士、FDDI同士など。
+  
+******** Source-route transparent bridge
+- SRTB、変換ブリッジ
+  異なる方式のネットワーク同士を繋ぐ。
+  
+******** Encapsulation Bridge
+- 
+  WAN用にカプセル化するブリッジ。
+
+******* 特徴
+******** Filtering
+- 
+  MACアドレスで、ブリッジを通過できるかどうか判断する。
+  知らないアドレスであれば通過させる。
+  ブリッジはアドレステーブルを持ち、ポートと接続しているデバイスを覚えている。
+
+******** 欠点
+- 
+  ハブと異なりパケットを処理するため、時間がかかる。
+  また、ブロードバンドは止められない。
+
+****** Switching hub
+- Layer 2 switch
+  スイッチング機能を持つ。
+  マルチポートであり、ブリッジとは異なりどのポートに送るか、まで判断する。
+  
+  衝突が発生せず、全二重通信を実現することが可能。
+
+******* 方式
+******** Store and Forward
+- 
+  スイッチでバッファメモリを持っており、そこでデータのバッファリングを行い、
+  送信できるタイミングになったら相手へ送信を行う。
+  
+******** cut through
+- 
+  バッファせずに、宛先を確認した時点で送る方法。
+  遅延はないが、アレーフレームの送信の可能性がある。
+
+******** fragment free
+- 
+  基本はcut throughだが、64バイトまでバッファしエラーチェックする。
+  イーサネットで一番多いショートフレームを除去できる。
 
 **** Physical
 ***** 接続方式
@@ -514,33 +704,6 @@
 *** Error correction
 *** Application
 ** Term
-*** CSMA/CD
-- Carrier Sence Multiple Access with Collision Domain
-
-*** LLC
-- Logical Link Control
-
-*** SNAP
-- SubNetwork Access Protocol
-
-*** FCS
-- Frame Check Sequence
-
-*** CRC
-- Cyclic Redundancy Check
-
-*** NIC
-- Network Interface Card
-
-*** PoE
-- Power over Ethernet
-
-*** OUI
-- Organiation Unique Identifier
-
-*** CSMA/CA
-- Collision Domain Multiple Access with Carrrier Avoidance
-
 *** AS
 - 
   Autonomous System、自立システム。
@@ -551,11 +714,8 @@
   
   ASは各国のNIC（日本ではJPNIC）などが発行するAS番号によって識別される。
 
-*** IGP
-- 
-  Interior Gateway Protocol
-  AS内の経路制御に使われるプロトコル。
-  RIPやOSPFなど。
+*** CRC
+- Cyclic Redundancy Check
 
 *** EGP
 - 
@@ -566,9 +726,21 @@
   もともとネットワーク生成期の具体的なプロトコルの一つでもあるが、
   上記のようにBGPなどの総称としても用いられるため、文脈により判断が必要。
 
+*** FCS
+- Frame Check Sequence
+
+*** IGP
+- 
+  Interior Gateway Protocol
+  AS内の経路制御に使われるプロトコル。
+  RIPやOSPFなど。
+
 *** ISP
 - 
   Internet Service Provider
+
+*** LLC
+- Logical Link Control
 
 *** NIC
 - 
@@ -606,6 +778,8 @@
   
   標準では自分のMACアドレス宛以外へ送信されたパケットは、
   ブロードキャストなど一部例外を除き上位に通知しない状態となっている。
+*** OUI
+- Organiation Unique Identifier
 
 *** PDU
 - Protocol Data Unit
@@ -632,6 +806,12 @@
 
 **** Bit
 - 物理層
+
+*** PoE
+- Power over Ethernet
+
+*** SNAP
+- SubNetwork Access Protocol
 
 ** Link
 - [[https://en.wikipedia.org/wiki/Computer_network][Computer network Wikipedia]]
@@ -689,3 +869,12 @@
 **** Dynamic Port : 49152 ~ 65535
 - 
   別名プライベートポート。クライアントPC、
+*** アドレス
+- 物理アドレス
+  レイヤ２。メディアに直接接続されている誰に届けるかを識別する
+- 論理アドレス
+  レイヤ３。どのネットワークの誰に届けるかを識別する。
+*** Segment
+- 
+  衝突ドメインのようなネットワークの区切りのこと。
+  ルータ、ブリッジ、スイッチによって分断されたネットワークの区切り。

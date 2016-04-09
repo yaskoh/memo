@@ -100,7 +100,6 @@
   - コンテンツを他のアプリケーションにドラッグアンドドロップ
   - EdgeでのVBScriptサポート
   - インターネットゾーンにおけるCSS expressionsのサポート
-**** 
 *** Edge
 *** Firefox
 

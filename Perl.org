@@ -285,6 +285,7 @@
 - 
   Treat string as multiple lines. 
   That is, change"^" and "$" from matching the start of the string's first line and the end of its last line to matching the start and end of each line within the string.
+
 ***** s
 - 
   Treat string as single line.
@@ -296,7 +297,20 @@
   大文字と小文字を区別しない。
 ***** x
 - 
-  フリーフォームの正規表現
+  フリーフォームの正規表現。
+  ほとんどの空白が無視されるため、複数行に渡っての記載ができる。
+
+- ex)
+  $text =~ s{
+    \b
+    # アドレスを$1にキャプチャする
+    {
+      username reex
+      \@
+      hostname regex
+    }
+    \b
+  }{<a href="mailto:$1">$1</a>}gix;
 
 ***** g
 - 
