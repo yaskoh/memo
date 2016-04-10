@@ -471,6 +471,19 @@
 - ex
   p.sample {background-color: rgba(0,0,255,0.5);}
   
+**** Basic User Interface
+***** box-sizing
+- 
+  ボックスの算出方法を指定する際に使用する。
+
+- value
+  - content-box
+    パディングとボーダーを幅と高さに含めない（初期値）
+  - border-box
+    パディングとボーダーを幅と高さに含める。
+    すべての要素に指定することが推奨されている。
+  - inherit
+    親要素の値を継承する
 ** Selecter
 *** 全称セレクタ
 - 
@@ -568,6 +581,35 @@
   div {
     background:red;
   }
+
+*** prolog
+**** Media Query メディアクエリ
+- 
+  CSS3の機能。
+  メディアタイプとメディア特性を利用して、スタイルシートの適応条件を決定する式。
+
+- link要素として指定する場合
+  <link rel="stylesheet" href="small.css" media="screen and (max-width:480px)">
+  <link rel="stylesheet" href="medium.css" media="screen and (min-width:480px) and (max-width:1024px)">
+  <link rel="stylesheet" href="wide.css" media="screen and (min-width:1024px)">
+
+- スタイルシートに指定する場合
+  @media screen and (max-width:780px) { 
+    /* 780以下の場合 */
+  }
+  @media screen and (min-width:780px) and ( max-width:1024px) {
+    /* 780以上1024の場合*/
+  }
+  @media screen and (min-width:1024px) {
+    /* 1024以上の場合 */
+  }
+
+- Media features
+  
+
+- Link
+  [[https://www.w3.org/TR/css3-mediaqueries/][Media Queries - W3C]]
+  
 
 ** SASS
 - 

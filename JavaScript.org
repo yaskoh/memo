@@ -443,6 +443,11 @@
 - ex)
   $('Wrapper').find('a').css('color', 'red');
 
+****** Filtering
+******* .eq()
+- 
+  Reduce the set of matched elements to the one at the specified index.
+  
 **** Memo
 ***** 読み込む位置
 - 

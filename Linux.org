@@ -2092,3 +2092,14 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 ***** ss
 **** Link
 - [[http://www.linuxfoundation.org/collaborate/workgroups/networking/net-tools][net-tools THE LINUX FOUNDATION]]
+*** extundelete (rmしてしまった場合の復元)
+- 
+  1. 書き込まれないように、readonlyなどにしてマウントし直す。
+  2. 時間をとっておく。
+  3. extundeleteをインストール、ビルド。ext3, ext4に対応しているらしい。
+  4. パーティションと時間（エポック秒）を指定してextundeleteを実行、復元。
+  5. 名前が戻せないものは、ディレクトリ直下にfiles.{inode番号}みたいな形で並ぶ。
+  
+- 
+  [[http://d.hatena.ne.jp/y-kawaz/20110123/1295779916][Linuxでうっかりrm -rfしちゃったけど復活出来たよー＼(＾o＾)／  - y-kawazの日記]]
+  [[https://tech.aucfan.com/rm-rf-retrieval/][rm -rfでやらかした時すかさず実行する復元コマンド(Linux編) - aucfan Engineer's blog]]
