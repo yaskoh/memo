@@ -1,0 +1,33 @@
+* Character Encoding
+** ASCII
+*** Escape
+** Shift JIS
+*** Code page 932
+** Unicode
+- 
+  Unicodeは文字集合（表現したい文字の集まり）、
+  UTF-8などは符号化方式（文字の表現方法）
+
+*** Code Point / Code Position コードポイント
+- 
+  個々の文字に対して、文字集合内での符号位置が決められており、これをコードポイントという。
+  実際の符号化されたバイトとは異なる。
+  
+  ex) 丈は、UnicodeのコードポイントはU+2000B。
+      UTF-8 : [F0 A0 80 8B], UTF-16 : [D840DC0B], UTF-32 : [0002000B]
+
+*** Surrogate Pairs サロゲートペア
+*** 基底文字、結合文字
+- Base Character
+
+- Combining Character 結合文字
+  結合文字は普通単独では用いない。
+  直前の基底文字でzero width joinerでもzero width nonjoinerでもないものに依存する。
+
+*** Character Encoding Scheme
+- エンコード（符号化）方式
+**** UTF-8
+**** UTF-16
+**** UTF-32
+** EUC-JP
+** EBCDIC
