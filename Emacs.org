@@ -1,17 +1,24 @@
 * Emacs
-** Command
-*** Key
+** KeyBindings
+- Check by "C-h b"
+*** Global Bindings
+**** special
+***** C-c
+***** C-h
+***** C-x
+***** C-u
 **** default
 ***** C-a : beginning-of-line
 ***** C-b : backward-char
 ***** C-d : delete-char
 ***** C-e : end-of-line
 ***** C-f : forward-char
-***** C-k : kill-line
-***** C-p : previous-line
-***** C-n : next-line
 ***** C-g : keyboard-quit
-***** C-q : 
+***** C-k : kill-line
+***** C-l : recenter-top-bottom
+***** C-n : next-line
+***** C-p : previous-line
+***** C-q : quoted-insert
 - 特殊文字の入力
 ****** C-j : 改行
 ***** C-r : isearch-backward
@@ -19,9 +26,9 @@
 ****** C-s C-w : isearch-yank-word
 ***** C-u : universal-argument
 ***** C-v : scroll-up
-***** C-y : yank
 ***** C-w : kill-region
-***** C-\ : 
+***** C-y : yank
+***** C-\ : toggle-input-method
 - IME on/off
 ***** C-Space : set-mark-command
 ***** C-x b : switch-to-buffer
@@ -36,17 +43,18 @@
 ***** C-x 2 : split-window-vertically
 ***** C-x 3 : split-window-horizontally
 ***** C-x C-b : list-buffers
-***** C-x C-c : save-buffers-kill
+***** C-x C-c : save-buffers-kill-terminal
 ***** C-x C-f : find-file
 ***** C-x C-k e : edit-kdb-macro
 ***** C-x C-k n : name-last-kbd-macro
 ***** C-x C-s : save-buffer
 ***** C-x C-w : write-buffer
 ***** C-x C-j : dired
-***** C-x RET f : 
+***** C-x RET f : set-bufer-file-coding-system
 - Set character code
 ***** C-M-s : re-search-forward
 ***** C-M-r : re-search-backward
+***** C-M-\ : indent-region
 ***** C-M-% : query-replace-regexp
 ***** M-a : backward-sentence
 ***** M-b : backward-word
@@ -57,155 +65,242 @@
 ***** M-x : execute-extended-command
 - コマンドを入力して実行
 
+***** <f1> : (help-command)
+***** <help>
+****** (help-command)
+- help-for-help-internal
+****** c KEYS
+****** f FUNCTION
+- Display documentation for the given function.
+****** F COMMAND
+- Show the on-line manual's section that describes the command.
+****** k KEYS
+- Display the full documentation for the key sequence.
+****** K KEYS
+- Show the on-line manual's section for the command bound to KEYS.
+****** m
+- Display documentation of current minor modes and current major mode, including their special commands.
+****** t
+- Tutorial
+****** v VARIABLE
+- Display hte given variable's documentation and value.
 **** obsolete
-***** C-h : 
-***** C-t : 
+***** C-h : (help-command)
+***** C-j
+***** C-m
+***** C-o
+***** C-t
+***** C-x o
+***** C-z
+***** C-/
+***** M-t
+***** M-r
+***** M-z
 **** edited
 ***** C-h : delete-backward-char
-***** C-o :
+***** C-j : newline
+***** C-m : newline-and-indent
+***** C-o : other-window
 ***** C-t : forward-char
-***** C-x o :
-*** Command
-**** etc
-***** keyboard-quit
+***** C-x o : other-frame
+***** C-x ? : help-command
+- 
+  <f1>を使ってください
+
+***** C-z : undo
+***** C-/ : transpose-chars
+***** M-t : forward-word
+***** M-r : replace-string
+***** M-z : transpose-words
+*** indent.el
+**** C-i : indent-for-tab-command
+**** C-M-\ : indent-region
+*** minibuffer.el
+**** C-M-i : completion-at-point
+*** lisp.el
+**** C-M-k : kill-sexp
+*** lisp-mode.el
+**** C-x C-e : eval-last-sexp
+**** C-j : eval-print-last-sexp
+**** C-M-x : eval-defun
+*** yasnippet
+**** C-i : yas-expand-from-trigger-key
+** Command
+*** etc
+**** keyboard-quit
 - C-g
-***** compile
-**** File
-***** dired
-***** find-file
+**** compile
+**** toggle-input-method
+*** Help
+**** describe-bindings
+- (C-h b)
+  show key-bindings list
+**** describe-key
+- (C-h k key)
+  show key bindings that you will press
+
+**** describe-mode
+- (C-h m)
+  現在のメジャーモードの説明
+
+**** help-with-tutorial
+- (C-h t)
+  Emacsの対話型チュートリアルに入る
+
+**** view-lossage
+- (C-h l)
+  これまでに打鍵した最後の100文字を表示する
+*** File
+**** dired
+**** find-file
 - C-x C-f
-**** Buffer
-***** kill-buffer
+**** load-file
+*** Buffer
+**** kill-buffer
 - C-k
-***** save-buffer
+**** save-buffer
 - C-x C-s
-***** save-buffers-kill
-***** switch-to-buffer
+**** save-buffers-kill-terminal
+**** switch-to-buffer
 - C-x b
-***** list-buffers
+**** list-buffers
 - C-x C-b
-***** write-buffer
+**** write-buffer
 - C-x C-w
-**** Window
-***** delete-window
-***** delete-other-window
-***** split-window-vertically
-***** split-window-horizontally
-**** Cursol move
-***** forward-char
+*** Window
+**** delete-window
+**** delete-other-window
+**** split-window-vertically
+**** split-window-horizontally
+*** Moving Point
+**** forward-char
 - (C-f), C-t
-***** backward-char
+**** backward-char
 - C-b
-***** previous-line
-***** next-line
-***** forward-word
-***** backward-word
-***** beginning-of-line
+**** previous-line
+**** next-line
+**** forward-word
+**** backward-word
+**** beginning-of-line
 - C-a
-***** end-of-line
+**** end-of-line
 - C-e
-***** forward-sentence
+**** forward-sentence
 - M-e
-***** backward-sentence
+**** backward-sentence
 - M-a
-***** scroll-up
+**** scroll-up
 - C-v
-***** scroll-down
+**** scroll-down
 - M-v
-***** forward-page
+**** forward-page
 - C-x ]
-***** backward-page
+**** backward-page
 - C-x [
-***** goto-line
+**** goto-line
 - M-g
-**** Edit
-***** delete-char
+*** Editing
+**** delete-char
 - C-d
-***** delete-backward-char
+**** delete-backward-char
 - C-h
-***** kill-word
+**** kill-word
 - M-d
-***** kill-line
+**** kill-line
 - C-k
-***** yank
+**** yank
 - C-y
-***** kill-region
+**** kill-region
 - C-w
-***** set-mark-command
+**** set-mark-command
 - C-Space
-***** universal argument
+**** universal argument
 - C-u
   次に入力するコマンドを4回実行する
-**** Search
-***** isearh-forward
+**** quoted-insert
+*** Search
+**** isearh-forward
 - C-s
-***** isearch-backward
+**** isearch-backward
 - C-r
-***** isearch-yank-word
+**** isearch-yank-word
 - C-s C-w
-***** re-search-forward
+**** re-search-forward
 - C-M-s
-***** re-search-backward
+**** re-search-backward
 - C-M-r
-***** query-replace-regexp
+**** query-replace-regexp
 - C-M-%
-**** Keybind
-***** describe-key
-- 
-  show key bindings that you will press
-  
-***** describe-bindings
-- 
-  show key-bindings list
-
-**** Macro
-***** start-kbd-macro
+*** Macro
+**** start-kbd-macro
 - C-x (, <F3>
-***** end-kbd-macro
+**** end-kbd-macro
 - C-x ), <F4>
-***** call-last-kbd-macro
+**** call-last-kbd-macro
 - C-x e
-***** kbd-macro-query
+**** kbd-macro-query
 - C-x q
-***** edit-kdb-macro
+**** edit-kdb-macro
 - C-x C-k e
-***** name-last-kbd-macro
+**** name-last-kbd-macro
 - C-x C-k n
-***** insert-kbd-maccro
-***** apply-macro-to-region-lines
-**** Shell
-***** shell
-***** term
-***** eshell
-** Mode
-*** shells
+**** insert-kbd-maccro
+**** apply-macro-to-region-lines
+*** Shell
 **** shell
+**** term
+**** eshell
+** Mode
+*** About
+- Majorモードの提供機能
+*** Major
+**** org-mode
+**** lisp-interaction-mode
+***** Command
+****** eval-print-last-sexp
+- C-j
+****** eval-last-sexp
+- C-x C-e
+  直前の括弧で囲まれたS式を評価する
+****** eval-defun
+- C-M-x
+  全体を評価して結果を返す
+****** indent-for-tab-command
+- C-i
+****** indent-sexp
+- C-M-q
+****** load-file
+****** eval-current-buffer
+*** Minor
+*** tmp
+**** shells
+***** shell
 - M-x shell
   標準シェル。
   タブ補完などが効かない。
 
-**** ansi-term(term)
+***** ansi-term(term)
 - M-x term (M-x ansi-term)
   
-**** eshell
+***** eshell
 - M-x eshell
   
-**** multi-term
+***** multi-term
 - 
   別途インストールが必要。
-*** Minibuffer
+**** Minibuffer
 - M-p, up : previous-history-element
 - M-n , down : next-history-element
 - M-r : previous-matching-history-element
 - M-s : next-matching-history-element
-*** dired
-**** Command
-***** R : dired-do-rename
-***** f : 
-*** linum-mode
+**** dired
+***** Command
+****** R : dired-do-rename
+****** f : 
+**** linum-mode
 - 行番号をつける
 
-*** picture-mode
+**** picture-mode
 - 
   picture-modeかedit-pictureを選択する。
 - C-c C-c
@@ -220,18 +315,126 @@
 - M-right, M-left, M-up, M-down
   線を消す。
 
-*** emmet
+**** emmet
 - 
   Ctrl + j
 
-*** yasnipett
+**** yasnipett
 - 
   Tag
   ex) html, then tab
-
-** Regular Expression
+** Library
+*** cl-lib
+- GNU Emacs Common Lisp Emulation
+**** About
+- 
+  The CL package adds a number of Common Lisp functions and control structures to Emacs Lisp.
+  While not a 100% complete implementation of Common Lisp, it ads enough functionality to make Emacs Lisp programming significantly more convenient.
+  
+**** Link
+- [[http://www.gnu.org/software/emacs/manual/html_mono/cl.html][GNU Emacs Common Lisp Emulation]]
+*** etags
+- Etags
+**** Command
+***** find-tags
+- M-. / <menu-bar><edit><goto><find-tag>
+  
+** Feature
+*** Help
+*** Register
+*** Search/Replace 
+**** Regular Expression
 - https://www.emacswiki.org/emacs/RegularExpression
-** Keyboard Macros
+***** Syntax
+****** Special Characters
+- special : . * + ? ^ $ \ [
+- betwen brackets : ] - ^
+
+******* normal
+******** .
+- any character (but new line)
+******** *
+******** +
+******** ?
+******** ^
+******** $
+******** [...]
+******** [^..]
+******** [a-z]
+******** \
+- prevents interpretation of following special char
+******** \|
+******** \w
+- word constituent
+******** \b
+- word boundary
+******** \sc
+- character with c syntax (e.g. \s- for whitespace char)
+******** \( \)
+******** \< \>
+- start/end of word
+******** \_< \_>
+- start/end of symbol
+******** \` \'
+- start/end of buffer/string
+******** \1
+- string matched by the first group
+******** \n
+- string matched by the nth group
+******** \{3\}
+******** \{3,\}
+******** \{3,6\}
+******** \=
+- match succeeds if it is located at poit
+******* non-greedy
+******** *?
+******** +?
+******** ??
+******* not match
+******** \W
+******** \B
+******** \Sc
+******* category
+- 
+  Use "C-u C-x =" to display the category of the character under the cursor.
+
+******** \ca
+- ascii character
+******** \Ca
+- non-ascii character (newline included)
+******** \cl
+- latin chaarcetr
+******** cg
+- greek character
+******* syntax class
+- see the syntax table by typing C-h s (but I have changed the key binding of help.)
+******** \s-
+******** \sw
+******** \s_
+******** \s.
+******** \s(
+******** \s)
+******** \s"
+******** \s\
+******** \s/
+******** \s$
+******** \s'
+******** \s<
+******** \s>
+******** \s!
+******** \s|
+******* syntax class between bracket
+******** [:digit:]
+******** [:alpha:]
+******** [:alnum:]
+******** [:alnum:]
+******** [:upper:]
+******** [:space:]
+******** [:xdigit:]
+******** [:cntrl:]
+******** [:ascii:]
+
+*** Keyboard Macros
 - start
  C-x (
 - end
@@ -240,10 +443,24 @@
   C-x e
 - execute, then start recording
   C-u C-x (
+** Structure
+*** Screen
+**** Point
+**** Echo Area
+**** Mode Line
+**** Menu Bar
+*** Files
+*** Buffers
+*** Windows
+*** Frames
+*** International
 ** Memo
-- 置換時の改行
+*** 置換時の改行
+- 
   ^J(C-q C-j)
 
+*** 
 ** Link
+- [[http://www.gnu.org/software/emacs/manual/html_mono/emacs.html][The Emacs Editor]]
 - [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]
 - [[http://d.hatena.ne.jp/o0cocoron0o/20100424/1272116442][Emacs 基本コマンド一覧 - Cocoron's memo]]

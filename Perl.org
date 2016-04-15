@@ -199,6 +199,11 @@
 - ダイナミックスコープ
   グローバル変数に、一時的に変数名を付け替えるような方式。
 
+**** Special
+***** $_
+- 
+  デフォルト変数。
+  
 **** Link
 - [[http://perldoc.perl.org/perldata.html][perldata]]
 *** Builtin funcitons
@@ -254,6 +259,9 @@
 - <STDIN>
   標準入力
 
+- <>
+  "$_"というデフォルト変数
+
 **** tmp
 ***** die()
 ***** undef()
@@ -279,7 +287,11 @@
       $a =~ s/foo/bar/g;
 
 **** qr// : Regexp quote-like.
-- http://perldoc.perl.org/perlop.html#Regexp-Quote-Like-Operators
+- 
+  正規表現オブジェクト。
+  正規表現を変数に保存できるようにする。
+  http://perldoc.perl.org/perlop.html#Regexp-Quote-Like-Operators
+
 **** Modifiers 修飾子
 ***** m
 - 
@@ -324,6 +336,11 @@
 
 **** Backtrace
 - Use variables, like $1, $2, ...
+
+**** Escape
+- 
+  文字クラス内では、$は末尾を指すことはないので、変数のprefixとしてperlでは処理されてしまう。
+  同様に@も配列のprefixとみなされるので、文字にマッチさせる場合は@, $をエスケープして使う必要がある。
 
 **** Link
 - [[http://perldoc.perl.org/perlre.html][perlre - Perl regular expressions]]

@@ -182,3 +182,9 @@
 
 *** MIME Type
 - RFC 2045
+*** Query String
+- クエリ文字列
+  WebブラウザなどがWebサーバに送信するデータをURLの末尾に特定の形式で表記したもの。
+  URL末尾に「?」マークを付け、続けて「名前=値」の形式で記述する。
+  値が複数ある時は「&」で区切る。
+  例)http://example.com/foo/var.php?name1=value1&name2=value2

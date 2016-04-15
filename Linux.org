@@ -2103,3 +2103,10 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 - 
   [[http://d.hatena.ne.jp/y-kawaz/20110123/1295779916][Linuxでうっかりrm -rfしちゃったけど復活出来たよー＼(＾o＾)／  - y-kawazの日記]]
   [[https://tech.aucfan.com/rm-rf-retrieval/][rm -rfでやらかした時すかさず実行する復元コマンド(Linux編) - aucfan Engineer's blog]]
+*** ANSI escape code
+- 
+  ターミナル上で文字を強調したりできる。
+  CSI(Control Sequence Introducer)と呼ばれるEsc / [を先頭につけた形とし、
+  その後に数字を続ける。
+  [[http://shiroyasha.io/escape-sequences-a-quick-guide.html][Escape Sequences - A Quick Guide]]
+  https://en.wikipedia.org/wiki/ANSI_escape_code

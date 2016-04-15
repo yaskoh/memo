@@ -1,5 +1,4 @@
 * CommonLisp
-
 ** memo
 *** Lispのデータ構造
 - 
@@ -51,7 +50,6 @@
   ex) (a b c . d) ≡ (a . (b . (c . d)))
 
 *** 数
-
 **** 整数
 - 
   CommonLispの場合、整数の大きさに制限はない。
@@ -1342,3 +1340,5 @@
 
 
 
+** Link
+- [[http://ep.yimg.com/ty/cdn/paulgraham/onlisp.pdf][On Lisp(PDF)]]

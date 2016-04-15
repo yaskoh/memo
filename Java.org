@@ -832,6 +832,13 @@
   (Experimental) Lists the instrumented Java Virtual Machines (JVMs) on the target system.
 
 ** Tools
+*** Web Application Framework
+**** Spring
+**** Play
+**** JSF
+- JavaServer Faces
+**** Apache Wicket
+**** Apache Struts
 *** JBoss
 **** 概要
 - 
@@ -866,7 +873,6 @@
 ***** Servlet
 ***** JSP
 ***** JDBC接続プール
-*** Spring
 *** EJB
 *** Seasar2
 *** Apache ActiveMQ

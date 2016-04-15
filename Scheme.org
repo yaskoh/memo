@@ -1,41 +1,44 @@
 * Scheme
+** Implementation
+*** Gauche
+- Start at Emacs
+  Ctrl+c,s
 
-gauche
-	Ctrl+c,s
+- define
+  ex: (define size 2)
+  合成手続き
+  ex: (define (square x) (* x x))
+  
+- cond
+  conditional(条件付き)
+  (cond (<p1> <e1>)
+        (<p2> <e2>)
+      ...
+      (<pn> <en>))
+  ex: (define (abs x)
+      (cond ((> x 0) x)
+          ((= x 0) 0)
+          ((< x 0) -x)))
+  
+- if
+  (if <predicate> <consequent> <alternative>)
+  condの場合分けが2つの場合。
+  (ifとcondの違いは、condの<e>は式の並び（複数の式)でよいということ。
+   順に評価され、最後の値が返る。
+   対してifは単一の式である必要あり。)
 
+- and
+  (and <e1> ... <en>)
+  ある<e>が偽なら残りの式は評価されない。
 
-define
-	ex: (define size 2)
-	合成手続き
-	ex: (define (square x) (* x x))
-	
-cond
-	conditional(条件付き)
-	(cond (<p1> <e1>)
-	      (<p2> <e2>)
-		  ...
-		  (<pn> <en>))
-	ex: (define (abs x)
-			(cond ((> x 0) x)
-				  ((= x 0) 0)
-				  ((< x 0) -x)))
-	
-if
-	(if <predicate> <consequent> <alternative>)
-	condの場合分けが2つの場合。
-	(ifとcondの違いは、condの<e>は式の並び（複数の式)でよいということ。
-	 順に評価され、最後の値が返る。
-	 対してifは単一の式である必要あり。)
+- or
+  (or <e1> ... <en>)
+  ある<e>が真なら残りの式は評価されない。
 
-and
-	(and <e1> ... <en>)
-	ある<e>が偽なら残りの式は評価されない。
+- not
+  (not <e>)
+  <e>が偽なら真、そうでなければ偽。
 
-or
-	(or <e1> ... <en>)
-	ある<e>が真なら残りの式は評価されない。
-
-not
-	(not <e>)
-	<e>が偽なら真、そうでなければ偽。
-
+** Link
+- [[http://www.scheme-reports.org/][Scheme Reprots Process]]
+- [[http://www.scheme.com/tspl4/][The Scheme Programming Language]]

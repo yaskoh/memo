@@ -50,6 +50,11 @@
 
 **** DNS spoofing
 - DNS偽装, DNS cache poisoning
+*** Attack
+**** smurf
+- 
+  送信元IPアドレスを偽装して、相手ネットワークのブロードキャストアドレス宛に大量のエコーリクエストを送りつける。
+
 ** Defences
 *** Security Tools or Systems
 **** Firewall
