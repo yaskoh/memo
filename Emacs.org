@@ -231,6 +231,33 @@
 - C-M-r
 **** query-replace-regexp
 - C-M-%
+***** Reply
+- y
+  replace on match
+- n
+  skip to next
+- RET / q
+  exit
+- . (period)
+  replace one match and exit
+- , (comma)
+  replace but not move point
+- C-r
+  enter recursive edit (C-M-c to get out again)
+- C-w
+  delete match and recursive edit
+- C-l
+  clear the screen, redisplay, and offer same replacement again
+- !
+  replace all remaining matches
+- ^
+  to move point back to previous match
+- E
+  to edit the replacement string
+- Y
+  (Multi-buffer)replace all remaining matches in all remaining buffers with no more questions.
+- N
+  (Multi-buffer)skip to the next buffer ithout replacing remaining matches in the current buffer.
 *** Macro
 **** start-kbd-macro
 - C-x (, <F3>
@@ -254,7 +281,8 @@
 *** About
 - Majorモードの提供機能
 *** Major
-**** org-mode
+**** dired
+**** eshell
 **** lisp-interaction-mode
 ***** Command
 ****** eval-print-last-sexp
@@ -271,6 +299,7 @@
 - C-M-q
 ****** load-file
 ****** eval-current-buffer
+**** org-mode
 *** Minor
 *** tmp
 **** shells
@@ -458,8 +487,15 @@
 *** 置換時の改行
 - 
   ^J(C-q C-j)
+*** Windowsバイナリ
+- 
+  公式バイナリは、日本語入力時にIMEが使えなくて不便(24.5時点)
+- NTEmacsバイナリ（パッチ付）
+  2016/4/19時点ではこの簡易版パッチのものを使っている。
+  [[http://cha.la.coocan.jp/doc/NTEmacs.html][NTEmacs / Emacs for Windows]]
+- Gnu pack
+  [[http://d.hatena.ne.jp/ksugita0510/][gnupackの開発メモ]]
 
-*** 
 ** Link
 - [[http://www.gnu.org/software/emacs/manual/html_mono/emacs.html][The Emacs Editor]]
 - [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]

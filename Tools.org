@@ -17,22 +17,8 @@
 - 
   複数OSに最適化
 
-***** モジュールによる機能追加
-- 
-  モジュールを追加することで拡張可能。
-  「Core」がまずあり、モジュールを追加して機能を拡張する。「mod_XXX」と名付けられる。
-  
-  追加は「静的リンク」と「動的リンク」がある。
-  - 静的リンク
-    静的リンクはApacheの実行ファイルそのものにモジュールを組み込む。バイナリ的に一体化する。
-    早いが再コンパイルが必要。
-  - DSO : Dynamic Shared Object、動的共有オブジェクト
-    動的リンクはモジュールを別ファイルとして作成し、必要に応じてモジュールのファイルから機能を呼び出す方式。
-    あらかじめ「mod_so」モジュールを静的リンクしておく必要がある。
-    負荷が高くなるが導入が容易。
-
-***** プロセスの挙動
-****** prefork
+****** プロセスの挙動(Unix)
+******* prefork
 - 
   スレッドを使わず、先行してforkを行うウェブサーバ。
   伝統的に親プロセスを1つ持ち、クライアントからリクエストが来るとforkする。実際の通信は子プロセスが受け持つ。
@@ -45,19 +31,85 @@
 - デメリット
   クライアントが多くなるほどメモリやCPU負荷が増えていく。
 
-****** worker
+******* worker
 - 
   マルチスレッドとマルチプロセスのハイブリッド型。
   子プロセス1つ1つがマルチスレッドで動作し、スレッド1つが1つのクライアントを受け持つ。
 
-****** event
+******* event
 - 
   workerの一種で、マルチスレッドで動作する。
   違いはKeep-Aliveの処理方法で、Keep-Aliveの処理を別のスレッドに割り振って通信を処理する。
   2.4.1で正式に採用された。
 
+***** モジュールによる機能追加
+- 
+  モジュールを追加することで拡張可能。(Apache->A patch)
+  「Core」がまずあり、モジュールを追加して機能を拡張する。「mod_XXX」と名付けられる。
+  
+  追加は「静的リンク」と「動的リンク」がある。
+  - 静的リンク
+    静的リンクはApacheの実行ファイルそのものにモジュールを組み込む。バイナリ的に一体化する。
+    早いが再コンパイルが必要。
+  - DSO : Dynamic Shared Object、動的共有オブジェクト
+    動的リンクはモジュールを別ファイルとして作成し、必要に応じてモジュールのファイルから機能を呼び出す方式。
+    あらかじめ「mod_so」モジュールを静的リンクしておく必要がある。
+    負荷が高くなるが導入が容易。
+
+**** Build
+- http://httpd.apache.org/docs/2.4/install.html
+***** Download
+***** Expansion
+***** Setting
+- 
+  Defaultのパスは/usr/local/apache2
+
+- [[http://httpd.apache.org/docs/2.4/programs/configure.html][configure - Configure the source tree - Apache HTTP Server]]
+***** Compile
+***** Install
+***** Customize
+***** Test
 **** Modules
+***** core
+- 
+  [[http://httpd.apache.org/docs/2.4/mod/core.html][Apache コア機能]]
+
+****** <Directory>
+
+****** <Location>
+
+****** <VirtualHost>
+****** Include
+- Include file-path|directory-path
+  - 設定ファイルをインクルードできる。
+  - fnmatchのワイルドカード文字の利用が可能。
+  - ファイルは絶対パスかServerRootディレクトリからの相対パス。
+- ex)
+  Include /usr/local/apache2/conf/ssl.conf
+  Include conf/ssl.conf
+***** MPM
+- Multi Prosessing Module
+
+****** About
+- 
+  |---------+------------------------|
+  | Netware | mpm_netware            |
+  | OS/2    | mpmt_os2               |
+  | Unix    | prefork, worker, event |
+  | Windows | mpm_winnt              |
+  |---------+------------------------|
+****** prefork
+****** worker
+- 
+  マルチスレッドとマルチプロセスのハイブリッド型
+
+****** event
+****** mpm_winnt
+****** mpm_netware
+****** mpm_os2
 ***** mod_rewrite
+- 
+  Provides a rule-based rewriting engine to rewrite requested URLs on the fly.
 - 
   Apache Webサーバにおいて、クライアントからリクエストのあったURLの内部書き換えや、
   さまざまな環境変数等に応じたリダイレクトを可能とするモジュール。
@@ -70,6 +122,8 @@
   - .htaccessに設定する
     処理が遅くなるので、httpd.conf推奨。
 
+***** link
+- http://httpd.apache.org/docs/2.4/mod/
 **** Settings
 ***** httpd.conf
 ***** .htaccess
@@ -81,9 +135,30 @@
 ******* start
 ******* stop
 ******* restart
+**** Structure
+***** htdocs
+- 
+  default Apache web server document directory
+***** conf
+- 
+  the directory where all server configuration files are located.
+
+***** logs
+- 
+  the directory where servere logs are kept, and includes Apache access logs and error logs.
+  
+***** cgi-bin
+- 
+  the directory where CGI scripts are kept.
+
+**** Link
+- [[http://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
+
 *** nginx
 
 *** IIS
+*** DIY
+- [[http://kmaebashi.com/programmer/webserver/index.html][本当の基礎からのWebアプリケーション入門 -Webサーバを作ってみよう-]]
 ** Ruby
 *** Library
 **** Rack

@@ -385,6 +385,7 @@
 - 
   org-sort, or "C-c ^".
   その後何を基準にソートするかminibufferで聞かれるので、答える。
+
 ** Link
 - [[http://orgmode.org/org.html][The Org Manual]]
 - [[http://d.hatena.ne.jp/tamura70/20100203/org][Emacs org-modeを使ってみる:(1)インストール - 屯遁のパズルとプログラミングの日記]]
