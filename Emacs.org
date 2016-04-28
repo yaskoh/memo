@@ -71,7 +71,8 @@
 - help-for-help-internal
 ****** c KEYS
 ****** f FUNCTION
-- Display documentation for the given function.
+- describe-function
+  Display documentation for the given function.
 ****** F COMMAND
 - Show the on-line manual's section that describes the command.
 ****** k KEYS
@@ -135,6 +136,7 @@
 **** describe-bindings
 - (C-h b)
   show key-bindings list
+
 **** describe-key
 - (C-h k key)
   show key bindings that you will press
@@ -143,6 +145,10 @@
 - (C-h m)
   現在のメジャーモードの説明
 
+**** describe-function
+- (C-h f)
+- (describe-function FUNCTION)
+
 **** help-with-tutorial
 - (C-h t)
   Emacsの対話型チュートリアルに入る
@@ -150,6 +156,12 @@
 **** view-lossage
 - (C-h l)
   これまでに打鍵した最後の100文字を表示する
+
+**** describe-variable
+- (C-h v)
+  Display the full documentation of VARIABLE (a symbol).
+  Returns the documentation as a string, also.
+
 *** File
 **** dired
 **** find-file
@@ -277,6 +289,13 @@
 **** shell
 **** term
 **** eshell
+** Variables
+*** files
+**** auto-mode-alist
+- 
+  Alist of filename patterns vs corresponding major mode functions.
+  Each element looks like (REGEXP . FUNCTION) or (REGEXP FUNCTION NON-NIL).
+
 ** Mode
 *** About
 - Majorモードの提供機能
@@ -300,6 +319,14 @@
 ****** load-file
 ****** eval-current-buffer
 **** org-mode
+**** ielm
+- Inferior Emacs Lisp Mode
+  this acts like an intreactive Lisp interpreter.
+  real little REPL.
+
+- 
+  うまく評価してくれず、使い方不明。
+
 *** Minor
 *** tmp
 **** shells

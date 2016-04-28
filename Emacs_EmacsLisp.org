@@ -21,6 +21,12 @@
 ***** defvar
 - (defvar SYMBOL &optional INITVALUE DOCSTRING)
   Define SYMBOL as a variable, and return SYMBOL.
+  You are not required to define a variable in order to use it, but defining it lets you supply an initial value and documentation,
+  which can be referred to by the Emacs help facilities and other programming tools.
+
+- 
+  変数は宣言をしなくてもsetqなどで代入・利用できるが、
+  defvarで変数宣言することでバイトコンパイラが文句を言わない。
 
 ***** function
 ***** if
@@ -88,6 +94,11 @@
 - (put SYMBOL PROPNAME VALUE)
   Store SYMBOL's PROPNAME property with value VALUE.
   It can be retrieved with `(get SYMBOL PROPNAME)'.
+******* defconst
+- (defconst SYMBOL INITVALUE [DOCSTRING])
+  Define SYMBOL as a constant variable.
+  This declares that neither programs nor users should ever change the value.
+  
 ******* format
 - (format STRING &rest OBJECTS)
   Format a string out of a format-string and arguments.
@@ -119,13 +130,26 @@
 ******* standard-syntax-table
 - (standard-syntax-table)
   Return the standard syntax table.
+****** Map
 ******* use-local-map
 - 
   Select KEYMAP as the local keymap.
 ******* make-sparse-keymap
+- (make-sparse-keymap &optional STRING)
+  Construct and return a new sparse keymap.
+  
+  In "mode tutorial",
+  "If your keymap will have very few entries, then you may want to consider 'make-sparse-keypap' rather than 'make-keymap'
 - 
-  空のキーマップを作成
+  空のキーマップを作成。make-key-mapと異なりnilで埋められない（おそらく）。
   ex: (setq my-local-map (make-sparse-keymap))
+
+******* make-key-map
+- (make-keymap &optional STRING)
+  Construct and return a new keymap, of the form (keymap CHARTABLE .ALIST).
+  CHARTABLE is a char-table that holds the bindings for all characters without modifiers.
+  All entries in in are initially nil, meaning "command undefined".
+
 ******* define-key
 - (define-key KEYMAP KEY DEF)
   KEYMAP is a keymap.
@@ -160,6 +184,13 @@
 ******* float
 - (float ARG)
   Return the floating point number equal to ARG.
+****** Hook
+******* run-hooks
+- (run-hooks &rest HOOKS)
+  Run each hooks in HOOKS.
+  Each argument should be a symbol, ahook variable.
+  These symbols are processed in the order specified.
+  If a hook symbol has a non-nil value, that value may be a function or a list of functions to be called to run the hook.
 ***** Interactive
 ****** goto-char
 - (goto-char POSITION)
@@ -212,6 +243,14 @@
 - find-file FILENAME &optional WILDCARDS)
   Edit file FILENAME.
   Switch to a buffer visiting file FILENAME, creating one if none already exists.
+**** regexp-opt
+***** regexp-opt
+- (regexp-opt STRINGS &optional PAREN)
+  Return a regexp to match a string in the list STRINGS.
+  Each string should be unique in STRINGS and should not contain any regexps, quoted or not.
+
+**** nadvice
+***** remove-function
 **** subr
 ***** error
 - (error STRING &rest ARGS)
@@ -227,6 +266,25 @@
   If COND yields nil, do BODY, else return nil.
   When COND yields nil, eval BODY forms sequentially and return value of last one, or nil if there are none.
 
+***** add-hook
+- (add-hook HOOK FUNCTION &optional APPEND LOCAL)
+  Add to the value of HOOK the function FUNCTION.
+  FUNCTION is not added if already present.
+  FUNCTION is added (if necessary) at the beginning of the hook list 
+  unless the optional argument APPEND is non-nil, in which case FUNCTION is added at the end.
+
+- 
+  
+***** remove-hook
+- (remove-hook HOOK FUNCTION &optional LOCAL)
+  Remove from the value of HOOK the function FUNCTION.
+  HOOK should be a symbol, and FUNCTION may be any valid function.
+  If FUNCTION isn't the value of HOOK, or, if FUNCTION doesn't appear in the list of hooks to run in HOOK,then nothing is done.
+***** add-to-list
+- (add-to-list LIST-VAR ELEMENT &optional APPEND COMPARE-FN)
+  This function has a compiler macro.
+  Add ELEMENT to the value of LIST-VAR if it isn't htere yet.
+  
 **** 数値形変換関数
 float, round(fround), floor(ffloor), ceiling(fceiling), truncate(ftruncate)
 numberp, integerp, floatp
@@ -355,14 +413,29 @@ self-insert-command
 replace-match
     (replace-match 新文字列 &optional 大文字小文字固定 リテラル) 
     直前の検索関数でマッチした部分全体を新しい文字列に置き換える。
+**** Hooks
+***** run-hooks
+***** run-hook-with-args
+***** add-hook
+***** remove-hook
+***** make-local-hook
 *** Variables
 **** C source code
 ***** features
-**** tmp
+**** files
 ***** auto-mode-alist
+- 
+  Alist of filename patterns vs corresponding major mode functions.
+  Each element looks like (REGEXP . FUNCTION) or (REGEXP FUNCTION NON-NIL).
 - 
   モードと拡張子の組、拡張子によって自動でモードを設定する。
 
+**** font-lock
+***** font-lock-builtin-face
+***** font-lock-variable-name-face
+***** font-lock-keyword-face
+***** font-lock-constant-face
+**** tmp
 ***** major-mode
 - メジャーモードの名前
 ***** mode-name
@@ -387,6 +460,45 @@ replace-match
 *** Comment
 - ;
   重ねることでレベルを表すことをよく行う。
+*** EasyWay
+**** Print
+***** message
+**** Var
+- 
+  変数は宣言をしなくても使えるが、defvarで変数宣言することでバイトコンパイラが文句を言わない。
+
+***** defvar
+- 初期化
+  (defvar foo 1)
+***** setq
+- 数を代入
+  (setq bar 10)
+***** let
+- ローカル変数
+  ただしダイナミックスコープ
+***** let*
+- 直前のローカル変数代入の影響を受ける
+- 例
+  (let ((x (+ x 3))
+        (y (+ x 2)))  ; 同時にバインドされるので、xは1
+    (+ x y))          ; =>7
+  (let* ((x (+ x 3))
+         (y (+ x 2))) ; xは4となる
+    (+ x y))          ; =>10
+  
+**** Comment
+- ;
+  セミコロンの数で使い分ける。
+- 例
+  - ;;;;
+    主要な部分のヘッダ
+  - ;;;
+    関数定義の外側
+  - ;;
+    コメント、字下げに揃える
+  - ;
+    末尾の一言コメントなど
+
 ** Command
 *** eval-print-last-sexp : C-j
 *** eval-last-sexp : C-x C-e
@@ -432,7 +544,21 @@ replace-match
       ↑"\n"までが一文で、プロンプトとして出力される。
        一文字目のsが文字列を引数として取ることを表している。
 
-*** Mode Tutorial
+*** hook フック
+- 
+  既存のプログラムから特定の場面で呼び出される関数を収めた変数。
+  
+**** Normal hook
+- 
+  引数なしで呼び出される関数のリスト。
+
+**** Abnormal hook
+- 
+  
+** BookMemo_Tmp
+*** やさしいEmacs-Lisp講座メモ(Temp)
+*** An Introduction to Programming in Emacs Lisp
+*** Mode tutorial
 **** Basic
 - set vars
   - hook
@@ -443,10 +569,14 @@ replace-match
         (define-key map "\C-j" 'newline-and-indent)
         map)
       "Keeymap for WPDL major mode")
-
-** BookMemo_Tmp
-*** やさしいEmacs-Lisp講座メモ(Temp)
-*** An Introduction to Programming in Emacs Lisp
+**** regexp
+- regexp-opt
+  正規表現を引数から最適化して出力してくれる。
+  
+**** Link
+- http://ichiroc.hatenablog.com/entry/2013/09/10/080525
+  
 ** Link
 - [[https://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp]]
 - [[https://www.gnu.org/software/emacs/manual/eintr.html][An Introduction to Programming in Emacs Lisp]]
+- [[http://d.hatena.ne.jp/rubikitch/20100201/elispsyntax][Emacs Lisp基礎文法最速マスター]]

@@ -29,5 +29,8 @@
 **** UTF-8
 **** UTF-16
 **** UTF-32
+*** Normalization
+- [[http://nomenclator.la.coocan.jp/unicode/normalization.htm][Unicode正規化とは]]
+- [[http://www.sakito.com/2010/05/mac-os-x-normalization.html][Mac OS X におけるファイル名に関するメモ(NFC, NFD等) - 技術的生存報告記]]
 ** EUC-JP
 ** EBCDIC

@@ -1275,6 +1275,7 @@
 *** csh
 *** tcsh
 *** zsh
+- [[file:./Zsh.org][Zsh.org]]
 
 ** Distributions
 *** Debian

@@ -91,6 +91,47 @@
 *** Backdoors
 *** Evasion
 
+** SSO
+*** 認証クッキー
+- 
+  Webは本来ステートレスだが、ブラウザを介してクッキーを伝達することにより、状態を共有する仕掛けを提供する。
+  伝達範囲が同じ認証ドメイン内に制限されている。
+  
+*** PMI
+- Privilege Management Infrastructure
+  
+*** SAML
+- Security Assertion Markup Language
+  XMLをベースにした、異なるインターネットドメイン間でユーザ認証を行うためのXMLをベースにした標準規格。
+  2002年に策定、2005年にバージョン2.0。
+  
+  クッキーを用いず、クッキーの柔軟性を継承し、クッキーの持つスケーラビリティの制限とセキュリティ問題を解決することを目指して設計された。
+
+  セキュリティ情報交換のためのXMLベースのフレームワーク。
+
+**** Authentication Assertion
+- 認証情報伝達サービス
+**** Authorization Assertion
+- 属性情報の伝達
+  
+**** Authorization Decision Assertion
+- アクセス制御情報の伝達
+
+**** XACML
+- eXtensible Access Control Markup Language
+  
+- 
+  - http://www.atmarkit.co.jp/ait/articles/0210/02/news002.html
+  - http://www.cybernet.co.jp/onelogin/function/saml.html
+
+**** Liberty Alliance
+
+**** .NET Passport
+**** Link
+- [[https://www.oasis-open.org/standards#samlv2.0][SAML v2.0 - OASIS Standards]]
+
+- http://www.atmarkit.co.jp/ait/articles/0210/02/news002.html
+
 ** Memo
 *** News
 **** Ransomware対策(2015/11/11)
