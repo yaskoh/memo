@@ -1,0 +1,20 @@
+* License
+** Kind
+*** GNU General Public License (GPL)
+**** version 3
+**** version 2
+*** GNU Lesser General Public License (LGPL)
+**** version 3
+**** version 2.1
+*** Apache License
+**** version 2.0
+**** version 1.1
+**** version 1.0
+*** FreeBSD license
+*** BSD
+** Link
+- [[http://www.gnu.org/licenses/license-list.en.html][Various Licenses and Comments about Them - GNU Operating System]]
+** Memo
+*** Intellectual Property
+- ímìIç‡éYÅAIP
+
