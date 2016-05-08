@@ -110,3 +110,26 @@
 *** 構造
 
 *** 再構成
+** Memo
+*** Expression, Statement
+**** Expression 式
+- 
+  combination of one or more explicit values, constants, variables, operators, and functions
+  that the programming language interprets and computes to produce another value.
+  This process, as for mathematical expressions, is called evaluation.
+
+- 
+  評価された値を持つ。
+
+**** Statement 文
+- 
+  the smallest standalone language that expresses some action to be carried out.
+  statement may have internal components(e.g., expression)
+
+- 
+  大まかに言えば、一つ以上の式や関数呼び出しで作られる、手続き構造の単位が文。
+  if文や代入文など代表例。
+  セミコロンまで含めれば、構造の単位となり文だが、中に評価式が含まれる場合がある。
+  ex) expression : a + b
+      statement  : a + b;
+  

@@ -2,6 +2,19 @@
 - Temporary use. Locate what not being categorised other files. 
   Transfer to somewhere else if each tools collecting enough volumes.
 
+** Language
+*** yakk/bison
+- 
+  [[file:./Compiler.org][Compiler.org]]
+
+*** lex/flex
+- 
+  [[file:./Compiler.org][Compiler.org]]
+
+*** valgrid
+- programming tool for memory debuging, memory leak detection, and profiling.
+  http://valgrind.org/
+  https://en.wikipedia.org/wiki/Valgrind
 ** Database
 *** HeidiSQL
 - http://celtislab.net/archives/20130826/heidisql%E3%81%A7mysql%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%B8%E6%8E%A5%E7%B6%9A%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/

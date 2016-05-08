@@ -461,6 +461,11 @@
   圧縮された個々のファイルについて、以下のフィールドを列挙する。
   compresed size, uncompressed size, ratio, uncompresed_name
 
+*** history
+- 
+  display the command history list with line numbers.
+  Lines listed with a * have been modified.
+
 *** htags
 - 
   ソースコードをhtmlに変換する。
