@@ -2111,3 +2111,8 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   その後に数字を続ける。
   [[http://shiroyasha.io/escape-sequences-a-quick-guide.html][Escape Sequences - A Quick Guide]]
   https://en.wikipedia.org/wiki/ANSI_escape_code
+*** パイプの入力をシェルコマンドとして実行
+- 
+  sh、でパイプで受け取った文字列をシェルコマンドとして実行できる。
+  ex) echo 'hoge foo var' | sed 's/^/mkdir /' | sh -x
+  http://d.hatena.ne.jp/srkzhr/20081216/1229449984

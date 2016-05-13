@@ -16,6 +16,7 @@
   Each clause looks like (CONDITION BODY...).
 - 
   条件分岐をする際に用いる。
+
 ***** condition-case
 ***** defconst
 ***** defvar
@@ -60,6 +61,9 @@
 ***** quote
 ***** save-current-buffer
 ***** save-excursion
+- (save-excursion &rest BODY)
+  Save point, mark, and current buffer; execute BODY; resutore those things.
+  Executes BODY just like 'progn'.
 ***** save-restriction
 ***** setq
 - (setq [SYM VAL]...)
@@ -89,6 +93,10 @@
 ******* eq
 - (eq OBJ1 OBJ2)
   Return t if the two args are the same Lisp object.
+
+******* eval-buffer
+- (eval-buffer &optional BUFFER PRINTFLAG FILENAME UNIBYTE DO-ALLOW-PRINT)
+  Execute the current buffer as Lisp code.
 
 ******* put
 - (put SYMBOL PROPNAME VALUE)
@@ -130,6 +138,14 @@
 ******* standard-syntax-table
 - (standard-syntax-table)
   Return the standard syntax table.
+******* current-indentation
+- (current-indentation)
+  Return the indentation of the current line.
+
+******* looking-at
+- (looking-at REGEXP)
+  Return t if text after point mathes regular expression REGEXP.
+  
 ****** Map
 ******* use-local-map
 - 
@@ -422,6 +438,16 @@ replace-match
 *** Variables
 **** C source code
 ***** features
+***** default-tab-width
+- 
+  *** This variable is obsolete since 23.2. use 'tab-width' instead. ***
+
+***** tab-width
+- 
+  Distance between tab stops, in columns.
+  Automatically bocomes buffer-local when set.
+  
+
 **** files
 ***** auto-mode-alist
 - 

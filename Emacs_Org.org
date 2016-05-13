@@ -215,13 +215,11 @@
 - ハイパーリンクを開く
     C-c C-o
 
-
 *** Link format
 - 
   #+BEGIN_SRC
   [[link][description]] or [[link]]
   #+END_SRC
-  
 
 *** Internal links
 
@@ -385,6 +383,10 @@
 - 
   org-sort, or "C-c ^".
   その後何を基準にソートするかminibufferで聞かれるので、答える。
+
+*** Latex
+- 
+  [[http://d.hatena.ne.jp/natsutan/20120721/1342838705][Emacsのorg-modeで数式をインライン表示する方法 - ぱたへね]]
 
 ** Link
 - [[http://orgmode.org/org.html][The Org Manual]]

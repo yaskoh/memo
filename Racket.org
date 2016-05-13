@@ -1,4 +1,9 @@
 * Racket
+** About
+- 
+  Racket is a full-spectrum programming language.
+  It goas beyond Lisp and Scheme with dialects that support objects, types, laziness, and more.
+
 ** Feature
 - Racket is a lexically scoped language.
 
@@ -127,7 +132,12 @@
 - F1
 
 *** Display
+**** Definitions Window
 - upper : definition area
+  for defining programs
+**** Interactions Window
 - lower : interaciton area
+  for evaluating Racket expressions interactively.
+**** Status Line
 ** Link
 - [[http://docs.racket-lang.org/][Racket Documentation]]

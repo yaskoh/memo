@@ -108,6 +108,11 @@
 *** Opera
 
 *** Sleipnir
+*** Conkeror
+- 
+  Conkeror is a keyboard-oriented, highly-customizable, highly-extensible web browser based on Mozilla,XULRunner,
+  written mainly in JavaScript, and inspired by exceptional software such as Emacs and vi.
+
 ** Memo
 *** Font
 **** EmbeddedOpenType

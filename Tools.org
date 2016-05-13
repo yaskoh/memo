@@ -239,4 +239,18 @@
 **** PSGI
 - 
   PHP版WSGI
+** Firefox
+*** XUL
+- XML User Interface Language, ずーる
+  Mozilaアプリケーションを作成するためのユーザインターフェースマークアップ言語。
+
+** Parser
+*** SintyaxNet
+- 
+  neural models of syntax.
+
+- 
+  http://googleresearch.blogspot.tw/2016/05/announcing-syntaxnet-worlds-most.html?m=1
+  https://github.com/tensorflow/models/tree/master/syntaxnet
+
 ** Undefined

@@ -270,7 +270,6 @@
 - csh, tcsh
   in csh or tcsh, use "setenv" instead of export.
 
-*** export
 - 
   環境変数を設定する。
 
@@ -973,6 +972,8 @@
 - 
   'sh -c -x "コマンド内容"'などととすることで、
   シェルがどのようにコマンドを展開しているか理解するのに役立つ。
+  
+  パイプで受け取った入力をコマンドとして実行するのに利用できる。
 
 - -c
   Read commands from the command string operand instead of from the standard input.
@@ -1208,7 +1209,6 @@
 - proto
   ether, fddi, mopdl, ip, ip6, arp, rarp, decnet, lat, sca, moprc, mopdl, icmp, icmp, tcp, udp
   
-
 *** tee
 - 
   標準入力から読み込んだ内容を、標準出力とファイルの両方へ出力する。
