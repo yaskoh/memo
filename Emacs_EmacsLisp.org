@@ -3,6 +3,9 @@
 *** Functions
 **** special-form-p
 ***** and
+- (and CONDITIONS...)
+  Eval args until one of them yields nil, then return nil.
+
 ***** catch
 - (catch TAG BODY...)
   Eval BODY allowing nonlocal exists using "throw".
@@ -16,6 +19,7 @@
   Each clause looks like (CONDITION BODY...).
 - 
   条件分岐をする際に用いる。
+
 ***** condition-case
 ***** defconst
 ***** defvar
@@ -36,20 +40,64 @@
 
 - (if 式 From1 Form2 ... Fromn)
   式がnil以外だった場合、From1を、nilだった場合はFrom2 ... Fromn までを実行する。
+
 ***** interactive
 - (interactive &optional ARGS)
   Specify a way of parsing arguments for interactive use of a function.
+
+- ARGS
+  ex) (interactive "sInputString :a\nsInputString :b\n"
+  最初の文字が引数の型で、\nまでがプロンプトとして利用される。
+
+****** Code letters
+- a
+- b
+- B
+- c : character
+- C
+- d
+- D : Directory name
+- e
+- f : Exsisting file name
+- F
+- G
+- i
+- k
+- K
+- m
+- M
+- n : Number read using minibuffer.
+- N
+- p : Prefix arg converted to numebr. Does not do I/O. C-u prefixで与えた値。デフォルト1
+- P : Prefix arg in raw form. Does not do I/O. デフォルト nil
+- r : Region point and mark as 2 numeric args, smallest first. Des not do I/O.
+- s : Any string.
+- S : Any symbol.
+- U
+- v
+- x
+- X
+- z
+- Z
+   
 ***** lambda
+- (lambda ARGS [DOCSTRING] [INTERACTIVE] BODY)
+  Return a lambda expression.
+  
 ***** let, let*
 - (let VARLIST BODY...)
   Bind variables according to VARLIST then eval BODY.
 - (let* VARLIST BODY...)
-- 
-   let*は直前の宣言部での値を代入可能。
-   (let (変数リスト)
-    本体)
-***** or
 
+- 
+  局所的に利用する変数を作成する。
+
+  let*は直前の宣言部での値を代入可能。
+  (let (変数リスト)
+    本体)
+
+***** or
+- (or CONDITIONS...)
 ***** progn,prog1,prog2,..
 - (progn BODY...)
   Eval BODY forms sequentially and return value of last one.
@@ -57,6 +105,7 @@
   複数の処理をまとめる。
   式を順に評価していく。複数のS式を一つにまとめるためのもの。
   prognは最後の式を式を評価して返すが、prog1は一つ目の式、prog2は二つ目の式を返す。
+
 ***** quote
 ***** save-current-buffer
 ***** save-excursion
@@ -90,6 +139,10 @@
 - (eq OBJ1 OBJ2)
   Return t if the two args are the same Lisp object.
 
+******* set
+- (set SYMBOL NEWBAL)
+  Set SYMBOL's value to NEWVAL, and return NEWVAL.
+
 ******* put
 - (put SYMBOL PROPNAME VALUE)
   Store SYMBOL's PROPNAME property with value VALUE.
@@ -99,6 +152,12 @@
   Define SYMBOL as a constant variable.
   This declares that neither programs nor users should ever change the value.
   
+******* defvar
+- (defvar SYMBOL &optional INITVALUE DOCSTRING)
+  Define SYMBOL as a variable, and return SYMBOL.
+  setqと異なり、値が代入されるのはシンボルが未定義の時のみ。
+  eval-defun(C-M-x)で評価することで、新しい値に定義し直すことが可能。
+
 ******* format
 - (format STRING &rest OBJECTS)
   Format a string out of a format-string and arguments.
@@ -112,6 +171,10 @@
 ******* message
 - (message FORMAT-STRING &rest ARGS)
   Display a message at the bottom of the screen.
+
+******* null
+- (null OBJCET)
+  Return t if OBJECT in nil.
 
 ******* require
 - (require FEATURE &optional FILENAME NOERROR)
@@ -134,6 +197,7 @@
 ******* use-local-map
 - 
   Select KEYMAP as the local keymap.
+
 ******* make-sparse-keymap
 - (make-sparse-keymap &optional STRING)
   Construct and return a new sparse keymap.
@@ -180,10 +244,80 @@
     - A font name string
     - nil, which explicitly specifies that there's no font for TARGET
 
+****** Number Operand
+******* +
+******* -
+******* *
+******* /
+******* %, mod
+******* 1+
+******* 1-
 ****** Math
 ******* float
 - (float ARG)
   Return the floating point number equal to ARG.
+******* round, fround
+******* floor, ffloor
+******* ceiling, fceiling
+******* truncate, ftruncate
+******* abs
+******* numberp
+******* integerp
+******* floatp
+****** 一般算術関数
+random, max, min
+sin, cos, tan, asin, acos, atan, expt, sqrt
+exp, log, logb, log10 (指数関数、対数関数:底e,2,10）
+logand, logior, lognot, logxor（ビット演算:積、和、否定、排他的論理和）
+lsh, ash（論理シフト、算術シフト）
+
+****** 相互変換
+******* string-to-number
+******* string-to-char
+******* char-to-string
+******* number-to-string
+******* format
+- (foramt STRING &rest OBJECTS)
+  Format a string out of a formt-string and arguments.
+
+- 
+  %s(文字列), %d(整数), %o(8進数), %x(16進数), %c(文字コードに対する文字),
+  %f(浮動小数点数), %S(S式), %%(%自身)
+
+****** 文字列操作
+******* concat
+******* substring
+- 
+  (substring 文字列 開始位置 &optional 終了位置)
+
+******* upcase, downcase
+******* make-string
+******* stringp, string=, string<
+****** 便利
+******* current-time-string
+- (current-time-string &optional SPECIFIED-TIME)
+  Return the current local time, as a human-readable string.
+- 
+  現在の日付時刻を「Fri Apr 08 10:16:00 2016」の形式の文字列で返す。
+
+******* message
+- 
+  ミニバッファにメッセージを表示する。
+
+******* this-command-keys
+- 
+  現在評価されている関数が起動するきっかけとなったキーコマンドを返す。
+
+******* sleep-for
+- 
+  指定秒数だけ一時停止する。
+
+******* sit-for
+- 
+  画面を書き直し、指定秒数だけ一時停止する。
+
+******* ding
+
 ****** Hook
 ******* run-hooks
 - (run-hooks &rest HOOKS)
@@ -285,40 +419,10 @@
   This function has a compiler macro.
   Add ELEMENT to the value of LIST-VAR if it isn't htere yet.
   
-**** 数値形変換関数
-float, round(fround), floor(ffloor), ceiling(fceiling), truncate(ftruncate)
-numberp, integerp, floatp
-
-**** 一般算術関数
-random, max, min
-sin, cos, tan, asin, acos, atan, expt, sqrt
-exp, log, logb, log10 (指数関数、対数関数:底e,2,10）
-logand, logior, lognot, logxor（ビット演算:積、和、否定、排他的論理和）
-lsh, ash（論理シフト、算術シフト）
-
-**** 相互変換
-string-to-number, string-to-char
-char-to-string, number-to-string
-
-format
-    %s(文字列), %d(整数), %o(8進数), %x(16進数), %c(文字コードに対する文字),
-    %f(浮動小数点数), %S(S式), %%(%自身)
-
-**** 文字列操作
-concat
-substring
-    (substring 文字列 開始位置 &optional 終了位置)
-upcase, downcase
-make-string
-stringp, string=, string<
-
-**** 便利
-current-time-string
-message
-this-command-keys
-sleep-for
-sit-for
-ding
+***** not(alias)
+- (not OBJECT)
+  Return t if OBJECT is nil.
+  alias for 'null'
 
 **** 移動系
 ・移動系
@@ -499,6 +603,40 @@ replace-match
   - ;
     末尾の一言コメントなど
 
+*** Literal
+- 整数 : 1234
+- 小数 : 3.14
+- 文字コード : ?c
+- 8進表記 : ?\12
+- 16進表記 : ?\x12
+- N進表記 : #Nr44
+  ただし36進まで。
+  ex) #5r12 -> 5進の12(7)
+      #12rAB -> 12進のAB(131
+)
+**** Meta character
+***** \a
+- ベル
+***** \b
+- バックスペース
+***** \f
+- フォームフィールド(C-l)
+***** \n
+- 改行(C-j)
+***** \r
+- 復帰(C-m)
+***** \t
+- タブ(C-i)
+***** \001
+- 8進数表記の文字コード
+***** \C-a
+- \C-を前置して、コントロール文字を表す
+***** \M-a
+- \M-を前置して、メタ文字を表す
+***** \"
+- "自身
+***** \\
+- \自身
 ** Command
 *** eval-print-last-sexp : C-j
 *** eval-last-sexp : C-x C-e
@@ -506,10 +644,6 @@ replace-match
 *** load-file
 *** eval-current-buffer
 *** old
-- C-x C-e
-  直前の括弧のS式を評価
-- M-C-x
-  現在の括弧のS式を評価
 - C-U M-C-x
   Edebug
 
@@ -540,6 +674,7 @@ replace-match
 
 *** インタラクティブ関数
 - 
+  キーボードで直接呼び出すことができる。
   ex: (interactive "sInput a:\nsInput b:)
       ↑"\n"までが一文で、プロンプトとして出力される。
        一文字目のsが文字列を引数として取ることを表している。
@@ -555,8 +690,53 @@ replace-match
 **** Abnormal hook
 - 
   
+*** 特殊形式
+- 
+  一部の引数を評価せずに処理するもの。
+  厳密には関数と区別する。
+
+*** 名前の衝突の回避
+- 
+  名前空間が処理系全体で一つしかないので、パッケージを作る際はグローバル変数に必ずパッケージ固有の接頭辞をつけるようにする。
+
+*** 動的スコープ
+- 
+  プログラムのある時点でローカル変数が生まれると、その変数が消滅するまではプログラムのどの地点でもその変数への山椒が有効となる。
+
+*** 文字コードの表し方
+- ?
+  ?aで、aの文字コード97を表す。
+
 ** BookMemo_Tmp
-*** やさしいEmacs-Lisp講座メモ(Temp)
+*** やさしいEmacs-Lisp講座メモ
+**** メジャーモードが備えるべき最低条件
+***** モード名の設定
+- major-mode
+  var "major-mode"にシンボルとして格納する。
+  (setq major-mode 'my-mode)
+
+- mode-name
+  モードラインに現れるモード名フィールドの名前を文字列で格納する
+  (setq mode-name "私のモード")
+
+***** 使用するキーマップ設定
+- ローカルマップ作成
+  独自のローカルマップを作成し、割りあてる。
+  下記は変数my-local-mapを新たなキーマップとしている。
+  (setq my-local-map (make-sparse-keymap)
+- キーの割り当て
+  (define-key my-local-map "h" 'backward-char)
+- ローカルマップ使用宣言
+  (use-local-map my-local-map)
+  
+***** 動作に必要な変数の設定
+  
+**** Function
+***** defun
+- 関数定義
+- &optional
+- &rest
+
 *** An Introduction to Programming in Emacs Lisp
 *** Mode tutorial
 **** Basic

@@ -523,6 +523,23 @@
 - Gnu pack
   [[http://d.hatena.ne.jp/ksugita0510/][gnupackの開発メモ]]
 
+*** Macのbackslash
+- 
+  Mac上では、¥はbackslashと同一でなく、YEN SIGN(UTF8 0xC2 0xA5)、となってしまう。
+  \(ASCII 0x5c)をemacs上で出すことは難しいので、keymapに設定すると良い。
+  ちなみにemacs以外のMac上の画面では、Option+¥で\が入力可能。
+
+  ->mac上IMEで、デフォルトを\とするか¥とするか選択できた。
+
+- 
+  http://qiita.com/aKenjiKato/items/4ac7d9b100bdce0b8920
+  http://www.glamenv-septzen.net/view/1119
+
+*** 数値のビット幅
+- 
+  (expt 2 n)で扱える最大のnがビット幅。超えると0が帰ってくる。
+  手持ちのemacsは64bit版のため、60で正、61で負の値が返ってきたあと、62以降は0となる。
+
 ** Link
 - [[http://www.gnu.org/software/emacs/manual/html_mono/emacs.html][The Emacs Editor]]
 - [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]

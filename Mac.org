@@ -1,5 +1,4 @@
 * Mac
-
 ** Framework
 
 - Cocoa Framework
@@ -12,7 +11,7 @@
 - Carbon
   (XCode 4以降はサポートされず)
 
-** memo
+** Memo
 *** NSSObject
 - 
   すべてのオブジェクトのもと
@@ -52,3 +51,10 @@
   [[http://inforati.jp/apple/mac-tips-techniques/system-hints/how-to-enter-umlaut-diacritic-cedilla-with-macos.html][Macでウムラウトやアクセント記号などを入力する方法 - Inforati]]
   [[http://inforati.jp/apple/mac-tips-techniques/system-hints/how-to-use-special-characters-and-symbols-keyboard-shortcut-with-macos.html][Mac 記号や特殊文字のキーボードショートカットまとめ（133種類） - Inforati]]
 
+*** backslash / yen
+- 
+  デフォルトでyen signが出力される状態となっている。
+  IMEを操作することで、デフォルトを\に変更可能。
+
+- 
+  http://www.glamenv-septzen.net/view/1119
