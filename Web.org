@@ -172,6 +172,11 @@
   - [[http://www.amazon.co.jp/%E7%8B%AC%E7%BF%92Java%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89%E7%B7%A8-%E7%AC%AC2%E7%89%88-%E5%B1%B1%E7%94%B0-%E7%A5%A5%E5%AF%9B/dp/4798130494/ref=pd_sim_14_4?ie=UTF8&dpID=51O2ne-sJ-L&dpSrc=sims&preST=_AC_UL160_SR128%2C160_&refRID=0E67A4J2YD3VXXCM531E][独習Javaサーバサイド編]]
   - [[http://www.amazon.co.jp/%E3%83%8F%E3%82%A4%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9Web%E3%82%B5%E3%82%A4%E3%83%88-%E2%80%95%E9%AB%98%E9%80%9F%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B14%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB-Steve-Souders/dp/487311361X][ハイパフォーマンスWebサイト]]
   - [[http://www.amazon.co.jp/JSP%E6%A5%AD%E5%8B%99%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E7%9F%AD%E6%9C%9F%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80-%E7%AB%B9%E5%BD%A2-%E8%AA%A0%E5%8F%B8/dp/4899771983][JSP業務アプリケーション短期開発入門]]
+** Glossary
+*** Carousel カルーセル
+- 
+  Webデザインの一種で、画像などのコンテンツをスムーズに横にスライドさせる表示方法。
+
 ** Memo
 *** HTML Editor
 **** TinyMCE
@@ -197,3 +202,9 @@
   URL末尾に「?」マークを付け、続けて「名前=値」の形式で記述する。
   値が複数ある時は「&」で区切る。
   例)http://example.com/foo/var.php?name1=value1&name2=value2
+*** Percent-Encoding
+- 
+  URIにおいて使用できない文字を使う際に行われるエンコードの名称。一般にURLエンコードとも。
+  RFC3986のSection2.1で定義されている。
+  日本語の文字などで、どの符号化を用いるかは環境により異なる。
+  

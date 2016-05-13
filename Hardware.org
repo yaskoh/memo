@@ -1,0 +1,11 @@
+* Hardware
+** Glossary
+*** HBA
+- host bus adapter
+  ホストシステム（コンピュータ）と他のネットワーク機器やストレージ機器を接続するハードウェアである。
+  主にSCSI、ファイバーチャネル、シリアルATAを接続するデバイスを流石、IDE、Ethernet、Firewire、USBなどを接続するデバイスもホストバスアダプタと呼ぶ。
+
+** Memo
+*** GPU, FPGA
+- http://www.atmarkit.co.jp/ait/articles/1604/25/news021.html
+  

@@ -1,0 +1,33 @@
+* Computer Science
+** Memo
+*** Evaluation
+**** normal-order evaluation
+- 正規順序の評価
+  完全に展開し、簡約する
+
+**** applicative-order evaluation
+- 作用的順序の評価
+  引数を評価し、作用させる
+
+*** bound variable
+- 
+  
+*** Scope
+**** Level
+***** Expression
+
+***** Block
+
+***** Function
+
+***** File
+
+***** Module
+
+***** Global
+
+*** Order of growth
+
+**** Big O
+
+**** Theta

@@ -1,5 +1,15 @@
 * Algorithm
-
 ** Sort
 
-** 
+** Search
+
+*** Beam search
+- heuristic search algorithm
+** Math
+*** Root-finding
+**** Bisection method
+**** Newton's method
+**** Brent's method
+**** Polynomial
+*** Euclidean Algorithm
+**** 

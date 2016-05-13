@@ -1,4 +1,73 @@
 * Scheme
+** Release
+*** R7RS / 2013
+** Syntax
+- (If needed, this section moves to under Release Sections)
+- Syntax
+  E ::= K | I | (E_0 E^*) | (lambda (I^*) E2) | (define I E')
+  - E : Expressions
+  - I : Identifiers(variables)
+  - K : Constants
+
+*** Types
+**** Atoms
+***** nummbers
+***** boolean constants
+- #T
+- #F
+***** empty list
+- ()
+***** strings
+**** Simple Types
+**** Composite Types
+*** Functions
+**** defun
+- 
+  
+**** List
+***** car
+***** cdr
+***** null?
+***** list
+***** length
+***** reverse
+***** append
+**** Boolean
+***** +
+***** (< )
+***** (<= )
+***** (> )
+***** (>= )
+***** (= )
+***** eq?
+***** eqv?
+***** equal?
+***** and
+***** or
+***** not
+**** Conditional Expressions
+***** if
+- 
+  
+***** cond
+- 
+  (cond (<p1> <e1>)
+        (<p2> <e2>)
+        ...
+        (<pn> <en>)
+        (else <eelse>))
+
+** Feature
+- scope
+  - lexical
+
+**** I/O
+***** (read)
+***** (write obj)
+***** (display obj)
+***** (newline)
+***** (transcript-on filename)
+***** (transcript-off)
 ** Implementation
 *** Gauche
 - Start at Emacs
@@ -40,5 +109,8 @@
   <e>が偽なら真、そうでなければ偽。
 
 ** Link
+- [[file:///C:/Users/yasutakk/Downloads/r7rs%20(1).pdf][Revised7 Report on the Algolithmic Language Scheme (pdf)]]
 - [[http://www.scheme-reports.org/][Scheme Reprots Process]]
 - [[http://www.scheme.com/tspl4/][The Scheme Programming Language]]
+- [[https://classes.soe.ucsc.edu/cmps112/Spring03/languages/scheme/SchemeTutorialA.html][Scheme Tutorial]]
+- [[https://www.shido.info/lisp/idx_scm_e.html][Yet Another Scheme Tutorial]]

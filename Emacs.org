@@ -327,6 +327,42 @@
 - 
   うまく評価してくれず、使い方不明。
 
+**** eww
+- web broweser.
+  it is part of the Emacs 24.4.
+
+- [[https://lars.ingebrigtsen.no/2013/06/16/eww/][eww - Random Thoughts]]
+**** lisp
+   
+
+**** slime
+***** Command
+****** slime
+- (slime &optional COMMAND CODING-SYSTEM)
+****** slime-compile-defun
+- C-c C-c
+- (slime-compile-defun &optional RAW-PREFIX-ARG)
+  Compile the current toplevel form.
+  
+****** slime-compile-and-load-file
+- C-c C-k
+- (slime-compile-and-load-file &optional POLICY)
+  Compile and load the buffer's file and highlight compiler notes.
+
+****** slime-switch-to-output-buffer
+- C-c C-z (slime-repl.el)
+- (slime-switch-to-output-buffer)
+  Select the output buffer, when possible in an existing window
+
+***** Memo
+****** Error on Windows 7
+- 
+  Path中にspaceがあると、argumentとして取られてしまう模様。エラーとなる。
+  [[http://stackoverflow.com/questions/17860785/slime-on-windows-7][SLIME on Windows 7]]
+
+***** Link
+- [[https://common-lisp.net/project/slime/][SLIME: The Superior Lisp Interaction Mode for Emacs]]
+
 *** Minor
 *** tmp
 **** shells
