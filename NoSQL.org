@@ -1,5 +1,4 @@
 * NoSQL
-
 ** Classification / 分類
 *** Column / 列指向 ワイドカラムストア
 **** Apache HBase

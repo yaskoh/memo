@@ -206,6 +206,10 @@
   print or control the kernel ring buffer.
   the porgram helps users to print out their bootup messaes.
 
+*** dstat
+- 
+  pythonスクリプト。
+
 *** du
 - du [filename...]
   ディレクトリ内のファイル容量を表示する。
@@ -1304,6 +1308,12 @@
 - -d, --date time
   
 - -t MMDDhhmm[[CC]YY][.ss]
+
+*** tmpwatch
+- tmpwatch time dirs
+  removes files which haven't been accessed for a period of time
+  recursively removes files which haven't been accessed for a given time.
+
 
 *** trap
 - 

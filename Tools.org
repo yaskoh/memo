@@ -23,6 +23,16 @@
 - https://www-jp.mysql.com/products/workbench/
 
 ** WebServer
+*** Architecture
+**** シリアルモデル
+**** マルチプロセスモデル
+**** マルチスレッドモデル
+**** イベント駆動モデル
+**** ハイブリッドモデル
+**** 計量プロセスモデル
+**** Link
+- [[http://yuuki.hatenablog.com/entry/2015-webserver-architecture][2015年Webサーバアーキテクチャ序論 - ゆううきブログ]]
+
 *** Apache
 **** 特徴
 ***** 複数バージョンのサポート
@@ -172,6 +182,82 @@
 *** IIS
 *** DIY
 - [[http://kmaebashi.com/programmer/webserver/index.html][本当の基礎からのWebアプリケーション入門 -Webサーバを作ってみよう-]]
+** Reverse Proxy Server
+*** Squid
+*** Varnish Cache
+*** Apache Traffic Server, ATS
+** Load Balancer
+*** Kind
+**** NAT
+- 
+  パケットがすべてロードバランサを経由する
+
+**** DSR, Direct Server Return
+- 
+  復路がロードバランサを経由しない
+
+*** Linux Virtual Server, LVS
+- 
+  Linuxをロードバランサとして利用するためのソフトウェア。
+  Linuxカーネルに組み込んで使うカーネルモジュールと、設定や管理を行うipvsadmコマンドから構成されている。
+
+*** HAProxy
+- 
+  http://www.haproxy.org/
+
+*** Elastic Load Balancing, ELB
+- 
+  https://aws.amazon.com/jp/elasticloadbalancing/
+
+** Monitoring
+*** Keepalived
+- 
+  routing software written in C.
+  The main goal of this project is to provide smple and robust facilities for loadbalancing and high-availability to Linux system and Linux based infrastructures.
+
+- 
+  サービスの稼働状態を監視するソフトウェア。
+  LVSと合わせて利用し、サーバが停止・LBが停止していたら、他へ振り分けることを行う。
+
+- 
+  http://www.keepalived.org/
+
+*** Heartbeat
+- 
+  The High Availability Linux Projectが開発したもので、アクティブ・スタンバイクラスタを提供する基本的な機能を提供する。
+
+- 機能
+  - フェールオーバーとフェールバック
+  - 稼働監視
+  - 共有リソース管理
+  - サービス監視
+
+- 
+  http://linux-ha.org/wiki/Heartbeat
+
+** BigData
+
+*** BigQuery
+- 
+  ビッグデータの分析に使われるcloudサービス。
+
+** Memory
+*** memcached
+- 
+  a general-purpose distributed memory caching system.
+  汎用の分散型メモリキャッシュシステム。
+
+** Log
+*** Fluentd
+*** Elasticsearch
+*** Kibana
+- 
+  Elastic社のログ解析/可視化ツール。
+  基本的にElasticsearchとセットで使われる。
+
+** Chat
+*** idobata
+*** Slack
 ** Ruby
 *** Library
 **** Rack
@@ -194,10 +280,10 @@
 - 汎用HTTPサーバフレームワーク
   単純なHTTP Webサーバの機能を提供するRubyのライブラリ。
   
-
 **** Mongrel
 
 **** Thin
+**** Passenger
 ** Python
 
 *** Library
@@ -234,6 +320,11 @@
 **** Twisted
 
 **** TurboGears
+** Perl
+*** Web Server
+**** Starlet
+**** Starman
+**** Monoceros
 ** PHP
 *** Library
 **** PSGI

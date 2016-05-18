@@ -1,16 +1,71 @@
 * Infrastructure
-
 ** Server
+*** Structure
+**** Proxy プロキシ
+- 
+  内部のクライアントと外部のサーバの間に立って要求を代理で処理する。
+  以前は回線速度を補うための処置として利用されていたが、同目的では最近は利用されない。
+  セキュリティ上の
 
+**** Reverse Proxy リバースプロキシ
+- 
+  クライアントとWebサーバの間に立って要求を代理で処理する。
+  外部クライアントからの接続要求を内部サーバへ中継する機能。
+  Webサーバはリバースプロキシへ応答を返す。
+
+**** Application アプリケーション
+**** Database データベース
+**** Sorry
 ** OS
 
 ** Network
 
+*** Glossary
+**** Contents Delivery Network, CDN
+- 
+  ユーザのネットワーク位置に応じた最適な配布ポイントを指示することで、
+  大容量のコンテンツをスムーズにユーザに配信できるようにする。
+
+** Database
+*** Relational
+**** Oracle
+- 
+  
+
+**** SQL Server
+- 
+  [[file:./SQLServer.org][SQLServer.org]]
+
+**** MySQL
+- 
+  [[file:./MySQL.org][MySQL.org]]
+
+**** PostgreSQL
+- 
+  [[file:./PostgreSQL.org][PostgreSQL.org]]
+
+*** NoSQL
+- 
+  [[file:./NoSQL.org][NoSQL.org]]
+
+*** Link
+- [[http://yuuki.hatenablog.com/entry/architecture-of-database-connection][Webシステムにおけるデータベース接続アーキテクチャ - ゆううきブログ]]
+*** Glossary
+**** 垂直分割
+- 
+  列ごとに（またはテーブル単位で）分割
+
+**** 水平分割
+- 
+  行ごとに分割
+
+**** sharding データベースシャーディング
+- 
+  shard -> 「破片」といったような意味
+
 ** Storage
 
-
 ** Operation
-
 *** Monitoring
 - 監視目的
   - セキュリティ監視
@@ -18,7 +73,6 @@
   - ネットワーク監視
   - サービス監視
   - パフォーマンス/リソース監視
-
 
 **** 死活監視
 - 
@@ -30,3 +84,13 @@
   CPU、メモリ、ディスク、ネットワークなど、OSやハードウェアのリソース使用状況を収集する。
 
 *** Security
+** Performance
+*** Glossary
+**** Throughput
+- 単位時間にどれだけ理できるか
+
+**** Latency
+- 処理にかかる時間
+** Link
+- [[http://yuuki.hatenablog.com/entry/large-scale-infrastructure][はてなで大規模サービスのインフラを学んだ - ゆううきブログ]]a
+- [[http://blog.harukasan.jp/entry/2014/09/11/181006][インターン生向け講義で発表しました#pixiv - BLOG::はるかさん]]
