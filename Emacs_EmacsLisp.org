@@ -550,7 +550,6 @@ replace-match
   Distance between tab stops, in columns.
   Automatically bocomes buffer-local when set.
   
-
 **** files
 ***** auto-mode-alist
 - 
