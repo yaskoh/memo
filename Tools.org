@@ -241,6 +241,8 @@
 - 
   ビッグデータの分析に使われるcloudサービス。
 
+** Testing
+*** JUnit
 ** Memory
 *** memcached
 - 
