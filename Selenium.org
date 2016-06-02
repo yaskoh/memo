@@ -1,5 +1,9 @@
 * Selenium
 ** Selenium WebDriver
+*** About
+- 起動
+  java -jar selenium-server-standalone-*.jar
+
 *** Architecture
 - 
   各種ブラウザごとにドライバが用意されており、
@@ -63,6 +67,8 @@
   ◆Browser
 
 ** Selenium IDE
+- 
+  Firefoxプラグイン。
 
 ** History
 - [[http://blog.trident-qa.com/2013/05/so-many-seleniums/][Selenium何とかっていうツールがやたら色々あるのはどういうわけなのか - 品質向上ブログ]]
@@ -79,7 +85,7 @@
 *** Selenium IDE
 - 
   ユーザのブラウザ操作を記録して、そこからSeleniumのスクリプトを生成するFirefoxプラグイン。
-
+  
 *** WebDriver
 - 
   2006年、GoogleのSimon Stewartが開発着手。

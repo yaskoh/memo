@@ -130,7 +130,8 @@
 ****** mpm_winnt
 ****** mpm_netware
 ****** mpm_os2
-***** mod_rewrite
+***** Etc1
+****** mod_rewrite
 - 
   Provides a rule-based rewriting engine to rewrite requested URLs on the fly.
 - 
@@ -145,6 +146,12 @@
   - .htaccessに設定する
     処理が遅くなるので、httpd.conf推奨。
 
+***** Etc2
+****** mod_jk
+- 
+  Tomcat redirector module.
+- 
+  https://tomcat.apache.org/connectors-doc/webserver_howto/apache.html
 ***** link
 - http://httpd.apache.org/docs/2.4/mod/
 **** Settings
@@ -236,7 +243,6 @@
   http://linux-ha.org/wiki/Heartbeat
 
 ** BigData
-
 *** BigQuery
 - 
   ビッグデータの分析に使われるcloudサービス。
@@ -258,6 +264,10 @@
 ** Chat
 *** idobata
 *** Slack
+** Java
+- 
+  [[file:./Java.org][Java.org-Tools]]
+
 ** Ruby
 *** Library
 **** Rack
@@ -285,7 +295,6 @@
 **** Thin
 **** Passenger
 ** Python
-
 *** Library
 **** WSGI
 - Web Server Gateway Interface
@@ -343,5 +352,30 @@
 - 
   http://googleresearch.blogspot.tw/2016/05/announcing-syntaxnet-worlds-most.html?m=1
   https://github.com/tensorflow/models/tree/master/syntaxnet
+
+** Posix互換
+*** Cygwin
+- 
+  互換性レイヤーなしでバイナリを作ることをサポートしていない、とのこと。
+  Red Hatの従業員が一部開発に従事しているらしい。
+
+*** Msys2
+- 
+  mingwビルドチームのAlexey Pavlovによって始められたプロジェクトで、最新のCygwinをきちんと追跡している。
+  パッケージ管理ソフトのPacmanを移植している。
+
+- 
+  [[http://msys2.github.io/][MSYS2 installer]]
+  [[http://verifiedby.me/adiary/055][MSYS2を試してみる - kashiの日記]]
+  [[http://yaritakunai.hatenablog.com/entry/2015/11/07/201000][Windows上で動く最新のUnix環境、MSYS2について改めてまとめた - できないことはやりたくない]]
+  [[http://amekujira.seesaa.net/article/420665358.html][MSYS、MSYS2、Cygwin、msysgitの違い - 雨鯨のたそがれ]]
+
+*** MSYS
+- Minimal System
+  メンテナンスが追い付いていない模様
+
+*** MinGW
+- Minimalist GNU for Windows
+  GNUツールチェーンのWindows移植版。
 
 ** Undefined
