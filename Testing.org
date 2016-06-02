@@ -48,5 +48,3 @@
 - 
   A software attack on a computer system that looks for security weaknesses, potentially gaining access to the computer's features and data.
   
-
-*** 

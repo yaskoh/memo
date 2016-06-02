@@ -12,6 +12,11 @@
 **** version 1.0
 *** FreeBSD license
 *** BSD
+*** Common Public License (CPL)
+- 
+  IBM‚Ìì‚Á‚½IBM Public License(IPL)‚ğ”Ä—p“I‚É‚µ‚½‚à‚ÌB
+
+*** Eclipse Public License (EPL)
 ** Link
 - [[http://www.gnu.org/licenses/license-list.en.html][Various Licenses and Comments about Them - GNU Operating System]]
 ** Memo

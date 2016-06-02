@@ -58,3 +58,7 @@
 
 - 
   http://www.glamenv-septzen.net/view/1119
+*** wheel
+- 
+  特権を持つユーザグループ
+  http://superuser.com/questions/191955/what-is-the-wheel-user-in-os-x

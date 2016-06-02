@@ -722,13 +722,26 @@
   |---------------+---------+--------------------------|
 
 
-
 ***** java.util.GregorianCalendar
 - 
   日付・時刻を扱うためのクラス。
 
+***** java.util.Date
+
+***** java.util.Calender
 **** Link
 - [[http://xfs.jp/3sx0wC][Java Platform, Standard Edition 8: API Specification]]
+
+*** Java SE 5.0
+
+**** static import
+- 
+  static変数やstaticメソッドをクラス名を指定せずに使用する機能。
+
+- 
+  import static packageName.className.staticVariables;
+  import static packageName.className.staticMethods;
+  import static packageName.className.*;
 
 ** Java Platform
 *** Edition
@@ -1107,10 +1120,23 @@
   Starts a java application.
   クラスファイルからクラスを読み込んで実行する。
 
-***** javac
+- -classpath classpath
+- -cp classpath
+  
 - 
+  https://docs.oracle.com/javase/jp/6/technotes/tools/windows/java.html
+
+***** javac
+- javac [options] [sourcefiles] [classes] [@argfiles]
   Reads Java class and interface definitions and compiles them into bytecode and class files.
   .javaファイルから.classファイルを作成する。
+
+- -cp path / -classpath path
+  ユーザーのクラスファイルおよび注釈プロセッサやソースファイルの検索場所を指定する。
+  クラスパスは、Java実行環境がクラスおよび他のソースファイルを検索するパス。
+
+- 
+  https://docs.oracle.com/javase/jp/6/technotes/tools/windows/javac.html
 
 ***** jar
 - 
@@ -1223,6 +1249,43 @@
 - Java Message Serviceを実装したメッセージ関連のオープンソースのミドルウェア。
   http://activemq.apache.org/getting-started.html
 
+*** Eclipse
+
+**** Memo
+***** Java6をインストールしろ、と言われた時
+- [[http://stackoverflow.com/questions/19563766/eclipse-kepler-for-os-x-mavericks-request-java-se-6/19594116#19594116][Eclipse Kepler for OS X Mavericks request Java SE 6 - stackoverflow]]
+
+** Glossary
+*** Java applet
+- 
+  Webページの一部として埋め込まれてWebブラウザ上で実行されるもの。
+
+*** Java console
+- 
+  http://www.java.com/en/download/help/javaconsole.xml
+  https://www.java.com/en/download/help/disable_java_icon.xml
+
+*** JAR/WAR/EAR
+- いずれもJava仕様に準拠して定義されたZIP形式の圧縮ファイル。
+**** JAR
+- Java ARchive
+  クラスファイルや設定ファイル(XML形式のものなど)がまとめられている。
+  多くのクラスライブラリがこの形式で配布される。
+  MVCモデルでいうところのModelにあたる。
+
+**** WAR
+- Web Application Resources, Web Application Archive
+  J2EE仕様によってフォルダ構造が決められている。
+  MVCにおける"VC"の部分。
+  クラスファイル、設定ファイルのほか、JSPやHTMLも含まれる。
+  またweb.xmlが含まれ、Tomcatなどのアプリケーションサーバに配布すると、これを元にデプロイされる。
+
+**** EAR
+- Enterprise ARchive
+  J2EE仕様によってフォルダ構造が決められている。
+  複数のWARファイル、(EJB)JARファイルを含む。
+  application.xmlが含まれ、J2EEコンテナ（JBoss, WebSphereなど）に配布すると、これを元にデプロイされる。
+
 ** Memo
 *** リソース付きtry
 - 
@@ -1263,37 +1326,6 @@
 *** セキュリティ・プロンプトの復元
 - 
   セキュリティ・プロンプトの復元により、非表示にしたプロンプトが再表示される。
-
-*** Glossary
-**** Java applet
-- 
-  Webページの一部として埋め込まれてWebブラウザ上で実行されるもの。
-
-**** Java console
-- 
-  http://www.java.com/en/download/help/javaconsole.xml
-  https://www.java.com/en/download/help/disable_java_icon.xml
-
-**** JAR/WAR/EAR
-- いずれもJava仕様に準拠して定義されたZIP形式の圧縮ファイル。
-***** JAR
-- Java ARchive
-  クラスファイルや設定ファイル(XML形式のものなど)がまとめられている。
-  多くのクラスライブラリがこの形式で配布される。
-  MVCモデルでいうところのModelにあたる。
-
-***** WAR
-- Web Application Resources, Web Application Archive
-  J2EE仕様によってフォルダ構造が決められている。
-  MVCにおける"VC"の部分。
-  クラスファイル、設定ファイルのほか、JSPやHTMLも含まれる。
-  またweb.xmlが含まれ、Tomcatなどのアプリケーションサーバに配布すると、これを元にデプロイされる。
-
-***** EAR
-- Enterprise ARchive
-  J2EE仕様によってフォルダ構造が決められている。
-  複数のWARファイル、(EJB)JARファイルを含む。
-  application.xmlが含まれ、J2EEコンテナ（JBoss, WebSphereなど）に配布すると、これを元にデプロイされる。
 
 *** temp
 **** 文字列の連結
