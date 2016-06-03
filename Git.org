@@ -1,7 +1,5 @@
-* git
-
-** command
-
+* Git
+** Command
 *** git help
 - <verb>
   <verb>コマンドのヘルプを確認する。
@@ -385,7 +383,12 @@ SSHは両方可能。
   テストスクリプトを投げ、テスト結果からgood/badを判断する。
   正常は0, スキップは125, 終了はそれ以外の正数値（普通は1)
 
-** memo
+** Memo
+*** Initialize Setting
+- git config --global user.name "your name"
+- git config --global user.email "your.email@domain.com"
+- git config --list  // check your settings
+
 *** ~N
 - 
   ~(チルダ)は親コミットの相対参照を行う場合に使用する。
