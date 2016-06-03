@@ -17,9 +17,8 @@
 **** Database データベース
 **** Sorry
 ** OS
-
+*** Posix
 ** Network
-
 *** Glossary
 **** Contents Delivery Network, CDN
 - 
@@ -85,6 +84,12 @@
 
 *** Security
 ** Performance
+*** Memory
+**** Linux
+***** Link
+- [[http://www.math.kobe-u.ac.jp/~kodama/tips-free-memory.html][Linux のメモリー管理(メモリ－が足りない？,メモリーリークの検出/防止) - K.Kodama's page]]
+- [[http://www.atmarkit.co.jp/ait/articles/0810/01/news134.html][減り続けるメモリ残量！ 果たしてその原因は!(1/3) - @IT]]
+
 *** Glossary
 **** Throughput
 - 単位時間にどれだけ理できるか

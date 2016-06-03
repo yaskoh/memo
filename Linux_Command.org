@@ -328,6 +328,10 @@
   ユーザ情報を表示する。
   ただし、最近はセキュリティの強化のためfingerを通さないよう設定している場合が多い。
 
+*** free
+- 
+  
+- -t
 *** ftp
 - ftp [-options] [host]
   
@@ -892,18 +896,147 @@
   '\n'を入れないと改行されない。
 
 *** ps
+**** About
 - 
+  displays information about selection of the active processes.
   実行中のプロセスを表示する。
-- -a
-  自分以外のユーザのプロセスも表示する
-- -x
-  制御端末のないプロセスの情報も表示する
-- -u
-  プロセスのユーザ情報を表示
-- -e
+
+- 
+  accepts several kinds of options:
+  1. Unix options, which may be grouped and must be preceded by a dash.
+  2. BSD options, which may be grouped and must not be used with a dash.
+  3. GNU long options, which are preceded by two dashes.
+  
+  Options of different types may be freely mixed, but conflicts can appear.
+
+- 
+  - Standard(Unix)
+    ps -e
+    ps -ef
+    ps -ely
+  - BSD
+    ps ax
+    ps aux
+
+***** Items
+******* PID
+- プロセス番号
+******* TTY
+- 端末名
+******* TIME
+- プロセスの総実行時間
+******* CMD
+- 実行しているコマンド
+**** Unix
+***** -e
+- Select all processes. Identical to -A.
   全てのプロセスを表示する。
-- -f
-  プロセスの親子関係を表示する
+***** -f
+- プロセスの親子関係を表示する
+***** -u
+- -uユーザ
+  指定されたユーザ名（ユーザID）に対応するプロセスのみ表示する
+***** -A
+- Select all processes. Identical to -e.
+
+**** BSD
+***** a
+- 自分以外のユーザのプロセスも表示する
+***** f
+- プロセスの親子関係をツリー状に表示する
+***** l
+- ロングフォーマット・詳細情報を表示する
+****** Items
+******* F
+- 現在の状態を表す16新フラグ
+******** 00
+- 終了している。
+******** 01
+- システムプロセス。常にメモリー上にある。
+******** 02
+- 親プロセスからトレースされている。
+******** 04
+- 親プロセスからトレースされて、停止している
+******** 08
+- シグナルで起動できない
+******** 10
+- メモリー上にあり、イベント終了までロックされている
+******** 20
+- スワップできない
+******* PPID
+******* RI
+******* NI
+******* WCHAN
+***** r
+- 実行中のプロセスのみ表示する
+***** u
+- プロセスのユーザ情報を表示
+****** Items
+******* USER
+- プロセスの所有ユーザ
+******* %CPU
+- CPUの占有率
+******* %MEM
+- 実メモリでの占有率
+******* SIZE
+- 仮想分も含めた使用サイズ(KByte)
+******* VSZ
+
+******* RSS
+- 実メモリ上の使用サイズ(KByte)
+******* STAT
+- プロセスの状態
+******** 1文字目
+********* R
+- Runnable, 実行可能
+- 稼働中
+********* S
+- 一時停止中
+- 20秒未満のsleep状態
+********* D
+- 停止不可能で一時停止
+- ディスク（あるいは他の割り込み不可能な短期間の）待ち状態
+********* T
+- 終了処理中
+- stop状態
+********* Z
+- ゾンビプロセス
+********* W
+- 実メモリになく、スワップアウトしている
+********* N
+- nice値
+******** 2文字目以降
+********* +
+- 制御端末のフォアグラウンドプロセスグループに属している
+********* >
+- CPUのスケジュール優先度があげられている
+********* <
+- メモリ要求に対するソフトリミットが設定されており、現在そのリミットを超えている。
+********* A
+- ランダムなページスワップを要求
+********* E
+- 終了しようとしている
+********* L
+- 実メモリ中にロックされたページを持っている
+********* N
+- スケジューリング優先度が下げられている
+********* S
+- FIFOページスワップを要求した
+********* s
+- セッションリーダ
+********* V
+- vforkの間、一時中断されている
+********* W
+- スワップアウトされている
+********* X
+- トレースされているかデバッグされている
+******* START
+- プロセスの開始時間
+******* COMMAND
+- 実行コマンドとパス
+***** x
+- 制御端末のないプロセスの情報も表示する
+**** GNU long
 
 *** pstree
 - [ pid | user ]
@@ -953,6 +1086,7 @@
 
 *** rmdir
 
+*** sar
 *** scp
 - scp [[user@]sourcehost1:]filename1 ... [[user@]desthost2:]filename2
   データコピーを安全に行う。
@@ -1314,7 +1448,6 @@
   removes files which haven't been accessed for a period of time
   recursively removes files which haven't been accessed for a given time.
 
-
 *** trap
 - 
   システム割り込み時の処理を設定する。
@@ -1440,6 +1573,7 @@
   Format: User Host=(Permisson) Command
   ex) root ALL=(ALL) ALL
 
+*** vmstat
 *** w
 - 
   ログインユーザ名とその利用状況を表示する。

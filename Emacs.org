@@ -579,3 +579,4 @@
 - [[http://www.gnu.org/software/emacs/manual/html_mono/emacs.html][The Emacs Editor]]
 - [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]
 - [[http://d.hatena.ne.jp/o0cocoron0o/20100424/1272116442][Emacs 基本コマンド一覧 - Cocoron's memo]]
+- [[http://emacsrocks.com/][emacsrocks]]

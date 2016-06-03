@@ -744,18 +744,313 @@
   import static packageName.className.*;
 
 ** Java Platform
-*** エディション
+*** Edition
 **** Java SE
 - 
   Java Platform, Standard Edition。
   汎用的な用途に使われる。
 
+***** Package
+****** General
+******* java.lang
+******* java.io
+******* java.nio
+******* java.math
+******* java.net
+******* java.txt
+******* java.util
+****** Special
+******* java.applet
+******* java.beans
 **** Java EE
 - 
   Java Platform, Enterprise Edition。
-  Java SEに加え、多層クライアントサーバの大規模システムを開発するための、
-  さまざまなAPIが追加されている。
+  Java SEに加え、多層クライアントサーバの大規模システムを開発するための、さまざまなAPIが追加されている。
+  企業用機能セット。
+  Java EE自体は仕様であるため、各社がライセンスを受け実装し、販売などをしている。
 
+***** API
+****** javax.servlet.*
+****** javax.faces.*
+****** javax.ejb.*
+***** Architecture
+****** 関係
+- 
+  Servletの上にJSPが存在し、その上にJSP STLが存在する関係。
+
+***** Functions
+****** Java Servlet
+- 
+  MVCでいうところのControllerに該当。
+
+  クライアントを受け付ける。
+  1つのServletから生成されたスレッドはメモリ空間を共有する。
+
+  処理を簡単にいうと、
+  1. クライアントからリクエストを受け
+  2. リクエストに応じた処理を行い
+  3. クライアントへレスポンスを返す
+
+- 
+  最初の呼び出しのみインスタンス化され、それ以降はスレッドが生成されるのみ。
+  スレッド同氏はメモリ空間を共有する。
+
+- 
+  HttpServletやGenericServletが存在する
+
+******* Life cycle
+- 最初にインスタンス生成が要求された場合のみ、インスタンス化する。
+  その際initが呼び出され初期化処理が行われる
+  2回目以降はinitは呼び出されない。
+- GetまたはPostが要求されると、doGet, doPostメソッドが呼び出さえっる。
+  HttpServletRequestのgetParameterを使い、ブラウザで入力された値を取得し、要求に応じる。
+- 消滅は明示的に行わず、管理コンソールの停止指示や、サーバ地震の停止の前に呼び出される。
+  
+****** JSP
+- JavaServer Pages
+  MVCでいうところのViewに相当。
+  HTML内にJavaのコードを埋め込んでおき、Webサーバで動的にWebページを生成してクライアントに返す技術。
+  サーブレットの機能の一つとして実装されており、Servletに書き換えられて実行される。
+  同種の技術にPHP、ASP.NETなど。
+- 
+  「Ajaxの羽根飾りのついたHTMLの仮面をかぶったServlet」
+  Servletの上に乗った仕様であり実装。Servletに翻訳された後コンパイルされる。
+  動的なコンテンツの作成が可能。
+
+- 
+  登場当時はHTMLにJavaコードを書ける、ということで飛びついた場合も多かったが、
+  現在はJavaコードを極力書かないのが流儀となっている。
+
+- 
+  JSPの中でメソッドを宣言しない場合、processRequestメソッドの内部をコーディングしていることと同じ。
+  <%! int a = 0 %>のように変数を宣言するとフィールド変数となり、メモリの奪い合いが起きる。
+
+******* scope
+******** application
+- 型：ServletContext
+  コンテキストルート配下で構成されるアプリケーションを指す。
+  Tomcatでいうwebapps配下に配置するwarファイル。
+  「Java EE 5 Tutorial」のWebモジュール構造に従うと、Assembly Rootが該当。
+
+******** session
+- 型：HttpSession
+  セッションの間、クライアント同士を隔離する範囲がsessionスコープ。
+  Servletのフィールド変数と異なり、sessionに変数を定義すると、このような状況を回避できる。
+  ただし、すべてのオブジェクトをセッションに入れると、非常に重いアプリケーションとなるので、
+  他のスコープに格納することも検討する。
+  
+******** request
+- 
+  クライアントからWebコンポーネントに要求が送られる間のみ保持されるスコープ。
+  1回のリクエスト内で保持されるのがrequestスコープ。
+
+******** page
+- 
+  JSP pageのこと。processRequestメソッドに相当するメソッドを記述するのと同義。
+  JSPはServletのメソッドを記述していることになるため、そこで定義したものがローカル変数となる。
+  JSP内部のみからアクセスできる範囲。
+
+******* 構造
+******** Tag
+- HTMLの中に特殊タグを記述可能。
+- 
+  |------------------+----------------------+-----------------------------------|
+  | 名称             | タグ                 | 説明                              |
+  |------------------+----------------------+-----------------------------------|
+  | ディレクティブ   | <%@ ディレクティブ > | 処理時の属性をWebコンテナに伝える |
+  | 宣言             | <%! 宣言 %>          | JSPで使用する変数やメソッドを宣言する |
+  | スクリプトレット | <% Javaコード %>     | タグ内にJavaのコードを自由に記述する |
+  | 式              | <%= 式 %>           | 式の評価結果をHTML内に出力する    |
+  | アクション       | <jsp:アクション名>   | JSPでよく行う処理をタグで簡潔に記述する |
+  | コメント         | <%-- コメント --%>   | JSPとしてのコメントを記述する                  |
+  |------------------+----------------------+-----------------------------------|
+
+********* Directive ディレクティブ
+********** page
+- 
+  JSP pageのこと。
+  JSPそのものに関する処理の仕方をコンテナに伝えるもの。
+  <%@ page page_directive_attr_list %>
+  
+- 例
+  <%@ page buffer="32kb" autoFlush="true" %>
+
+*********** page_directive_attr_list
+************ language
+************ extends
+************ import
+- 
+  java.lang.*, javax.servlet.*, javax.servlet.jsp.*, javax.servlet.http.*以外のクラスを使用する場合に指定する。
+
+************ session
+- 
+  "true"の場合javax.servlet.http.HttpSessionが使える。
+
+************ buffer
+- 
+  "none"の場合、JSPで処理される度にクライアントに結果が送られる。
+  "none"以外はkbで指定する。デフォルトは8kb。
+************ autoFlush
+************ isThreadSafe
+************ isErrorPage
+************ errorPage
+************ contentType
+************ pageEncoding
+************ isELIgnored
+************ deferredSyntaxAllowedAsLiteral
+************ trimDirectiveWhitespaces
+********** taglib
+- 
+  カスタムタグを使用できるようにするための設定を行う
+  
+  <% taglib (uri="tagLibraryURI" | targdir="tagDir") prefix="tagPrefix" %>
+
+*********** attr
+************ uri
+- 
+  taglib-uriの要素内容を指定する。
+  TLD(tag library descriptor)の名前を検索するために使われる。
+
+************ tagdir
+- 
+  JSP2.0から導入された属性で、タグファイルのディレクトリを指定する。
+
+************ prefix
+- 
+  <myPrefix:myTag>のように記述する。
+
+- myPrefixに以下は使用できない。
+  - jsp:
+  - jspx:
+  - java:
+  - javax:
+  - servlet:
+  - sun:
+  - sunw:
+
+********** include
+- 
+  テキストファイルやその他のJSPファイルをインクルードする。
+  インクルードは、JSPからServletに変換する際に行われる。
+  
+- 
+  翻訳時にfile属性で指定したリソースに置き換えてくれとJSPコンテナに指示を出すもの。
+  pageディレクティブのimport属性は累積的な指定ができるが、その他は矛盾を起こす可能性があり、注意する必要がある。
+  矛盾がある場合は翻訳時にエラーとなる。
+  
+- 
+  属性はfileのみ。
+  <%@ include file="relativeURLspec" %>
+
+********* Expression Language, EL式, 式言語
+- 
+  JSFにおいても独自に定義されていたが、JSP 2.1, JSF 1.2で一つの仕様(Unified EL, 統合式言語)に統合され、
+  EL 3.0ではJSPから独立したJava EE 7の仕様の一つとなっている。
+  
+  式言語では演算の結果だけでなくオブジェクトのプロパティの値も返すことができる。
+  
+- 構文
+  ${expr}
+  
+********* スクリプティング要素
+- 
+  式言語がJSP 2.0で取り入られたため、機能的に重なる部分が多くなり、どちらを採用するかはプロジェクト判断、という位置づけとなっている。
+********** 宣言
+- 
+  フィールドで定義されるため、同期化に注意する必要がある。
+
+- 変数宣言
+  <%! int i = 0; %>
+- メソッド宣言
+  <%! public boolean isAdult(int age) {boolean adult = false; if (age >= 20) return true; } %>
+
+********** スクリプトレット
+- 
+  <% if (age >= 20) {%> 成人 <% } else {%> 未成年 <% } %>
+
+********** 式
+- 
+  演算結果やオブジェクトの戻り値などの値を返す。
+  式言語は翻訳時にString型に変換するが、式では型変換してくれない。
+
+  <%= employee.getName() >
+
+********* アクション
+- 
+  サーバ側のJavaロジックを呼び出すもの。
+
+********** 種類
+*********** jsp:include
+*********** jsp:param
+*********** jsp:forward
+*********** jsp:plugin
+*********** jsp:fallback
+*********** jsp:getProperty
+*********** jsp:setProperty
+*********** jsp:useBean
+- 例
+  <jsp:useBean id="employee" class="jp.kawakubo.Employee" scope="session" />
+
+- 
+  Javabeanとしてインスタンスできない場合、classでなくtypeで指定する。
+  抽象クラス、インターフェース、publicでもなくかつ引数が存在するコンストラクタを持つクラスの場合、typeで指定する。
+  クラスが.serファイルに存在する場合、beanNameで指定する。
+
+  scope属性をしえ亭可能。
+
+  bodyでjsp:setPropertyアクションを指定すると、クラスからインスタンス化する際、setPropertyで指定したプロパティに値が設定される。
+
+********* JSTL
+- JavaServer Pages Standard Tag Library, JSP標準タグライブラリ
+  Webアプリケーションで多用されるであろうアクションをあらかじめ提供することで、
+  同じアクションを重複して開発することを回避し、可読性や生産性を高めるためのもの。
+
+********** Core (prefix : c)
+- 
+  主にJSP自体の記述を簡単にするための機能が集められている。
+  変数の設定・削除、例外の補足、制御ロジックなど。
+
+********** XML (prefix : x)
+*********** XMLコアアクション
+- <x:parse>
+  XMLを解析する
+- <x:out>
+  XPath式の評価結果を出力する
+- <x:set>
+  XPath式への評価結果を変数へ設定する
+
+*********** XMLフロー制御アクション
+- 
+  条件式にXPath式を使用するフロー制御アクション。
+- <x:if>
+- <x:choose>
+- <x:when>
+- <x:x:otherwise>
+- <x:forEach>
+
+*********** XML変換アクション
+- <x:transform>
+  XSLTシートを使用してXML文書を変換する。
+
+********** i18n / Internationalization (prefix : fmt)
+- 
+  字コードのエンコーディング。
+
+********** SQL (prefix : sql)
+- 
+  JSP pageからデータベース操作できる機能が集められている。
+
+********** Function (prefix : fn)
+- 
+  主に文字列操作を行う機能が集められている。
+
+****** Java Beans
+- 
+  MVCとしての利用では、Modelに相当すると位置づけられる。
+  再利用可能なソフトウェアコンポーネント、またはその技術。
+
+****** JSF
+- JavaServer Faces
 **** Java ME
 - 
   Java Platform, Micro Edition。
@@ -763,7 +1058,6 @@
   機器の種類に応じ、ライブラリのいくつかの異なるセット（プロファイル）を規定している。
 
 *** 配布形態
-
 **** Java Runtime Environment(JRE)
 - 
   Javaを実行するために必要なソフトウェア。
@@ -865,42 +1159,92 @@
 - JavaServer Faces
 **** Apache Wicket
 **** Apache Struts
-*** JBoss
-**** 概要
+*** Web container
+- 
+  Java EEアーキテクチャのコンポーネント規約を実装するソフトウェア。
+  
+**** Tomcat
+***** 概要
+- 
+  ServletやJSPを実行するためのWebコンテナ。
+  Apache License 2.0を採用。
+  現在はApache Software FoundationのApache Tomcat Projectで開発されている。
+  以前はJakartaプロジェクト内で開発されていた。
+  
+  静的コンテンツのHTTPサーバとしても使えるので単体で用いることもできる。
+  また、別のHTTPサーバがHTTPリクエストを受け、必要に応じてサーブレットコンテナにリクエストを渡す、という構成でHTTPサーバと連携させて用いることもできる。
+  ただし、別HTTPサーバと連携させるとAdvanced IOなど一部機能が使えなくなる。
+  Apacheととモジュール連携を行う場合mod_jkを配布している。mod_proxy_ajpモジュールを用いる方法もある。
+
+  EJBはサポートしていないらしい（2010年情報、最新未確認だがおそらく同様）。
+
+***** 機能
+****** Servlet
+****** JSP
+****** JDBC接続プール
+**** JBoss
+- 
+  Java EEアプリケーションサーバ。
+  オープンソース版についてはWildFlyという名称となっている。
+  
+  ライセンスはLGPLである。
+  JBoss Inc.をRed Hatが買収したため、現在はRed Hatが運営を行っている。
+
+***** 概要
 - 
   Javaのオープンソース・フレームワーク群。
   EJBを動かすもの、というのが基本。
 
-***** TomcatでなくJbossを選ぶ理由
+****** TomcatでなくJbossを選ぶ理由
 - [[http://nekop.hatenablog.com/entry/20110421/1303372984][TomcatでなくJBossを選ぶ○○の理由 - nekop's blog]]
 
-**** 機能
-***** JavaEE
-****** JTAトランザクションマネージャ
+***** 機能
+****** JavaEE
+******* JTAトランザクションマネージャ
+******* EJB
+******* MDB
+******* JPA
+******* JMS
+******* JCA
+******* JAX-WS
+****** JBoss固有
+******* JMX
+******* log4jを用いたログ基盤
+******* 分散キャッシュなどの各種クラスタリングサービス
+***** Projects
+****** Wildfly
+****** JBoss Web
+****** JBoss ESB
+****** JBoss Messaging
+****** JBoss Tools
+****** Hibernate
+**** GlassFish
+- 
+  サン（オラクル）を中心のコミュニティで開発された、Java EE準拠のアプリケーションサーバの名称。
+  以前は商用サポートも行っていたが、v4.0で廃止され、以降は参照実装としての位置づけになっている。
+
+- 
+  [[http://www.coppermine.jp/docs/programming/2014/01/the-end-of-glassfish.html][GlassFishの落日 - Programming Studio]]
+  [[https://blogs.oracle.com/yosshi/entry/glassfish_%E3%81%A8_tomcat_%E3%81%AE%E9%81%95%E3%81%84_part][GlassFishとTomcatの違い Part3 - 寺田 佳央 (Yoshio Terada)]]
+  
+***** 機能
+****** Servlet
+****** JSP
 ****** EJB
-****** MDB
-****** JPA
-****** JMS
-****** JCA
-****** JAX-WS
-***** JBoss固有
-****** JMX
-****** log4jを用いたログ基盤
-****** 分散キャッシュなどの各種クラスタリングサービス
-**** Projects
-***** Wildfly
-***** JBoss Web
-***** JBoss ESB
-***** JBoss Messaging
-***** JBoss Tools
-***** Hibernate
-*** Tomcat
-**** 機能
-***** Servlet
-***** JSP
-***** JDBC接続プール
-*** EJB
-*** Seasar2
+****** JMS(Java Message Service)
+****** JNDI(JavaNaming and Directory Interface)
+****** JBI(Java Business Integration)
+****** ORB(Object Request Brocker)
+**** WebSphere Application Server
+**** JBoss
+*** Application Server
+**** Oracle WebLogic Server
+*** IDE
+**** Eclipse
+**** IntelliJ Idea
+**** NetBeans
+*** Framework
+**** Seasar2
 *** Apache ActiveMQ
 - Java Message Serviceを実装したメッセージ関連のオープンソースのミドルウェア。
   http://activemq.apache.org/getting-started.html

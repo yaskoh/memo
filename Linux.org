@@ -53,6 +53,9 @@
   プロセス間通信に使うファイル。FIFO。
 - UNIX domain socket
 
+** Kernel
+- [[file:./Linux_Kernel.org][Linux_Kernel.org]]
+
 ** Directory Structure
 *** / (FHS)
 - 
@@ -533,9 +536,14 @@
   現在マウントされているデバイス一覧。
   手動でマウントしたものなど、mountコマンドに
 
+*** /etc/hosts
 *** /etc/sysconfig/iptables
 - 
   iptables, setting of firewalls.
+
+*** /etc/sysconfig/network
+- 
+  接続するネットワークに関する定義を記述する
 
 *** /proc/cpuinfo
 - cpuの情報が含まれている
@@ -556,6 +564,14 @@
 - メモリーの情報が含まれている
   メモリサイズなど調べられる。
 
+*** /proc/buddyinfo
+- primarily for diagnosing memmory fragmentation issue.
+  Using the buddy algorithm, each column represents the number of pages of a certain order (a certain size) that are available at any given time.
+  
+- DMA(direct memory access)32の領域を
+  http://esupport.trendmicro.com/solution/ja-jp/1105158.aspx?print=true
+
+*** /proc/slabinfo
 *** /var/spool/mail
 - 
   mailbox. mails that have sent is saved here temporary.
@@ -576,6 +592,17 @@
 - 
   logged cron executed
 
+** Services
+*** /etc/init.d/network
+- 
+  /sbin/serviceの起動スクリプト
+
+- command
+  - start
+  - stop
+  - restart
+  - status
+  
 ** Environment Variables
 - 
   see list with "printenv"
@@ -603,14 +630,22 @@
 
 ** Distributions
 *** Debian
+**** Debian
 
-*** Ubuntu
+**** Ubuntu
 
-*** CentOS
+*** Red Hat
+**** CentOS
 
-*** RHEL
+**** RHEL
+- 
+  [[https://access.redhat.com/ja/node/16476][Red Hat Enterprise Linux のリリース日と収録カーネルの一覧 - redhat]]
 
-*** CoreOS
+*** Slackware
+*** Etc
+**** CoreOS
+**** Arch
+**** Gentoo
 ** Package Management
 *** apt
 **** aptitude
@@ -657,6 +692,27 @@
   but aren't sure of it's name.
 
 *** rpm
+- 
+  RPM Package Manager
+
+**** Installing, upgrading, and removing packages
+- -i, --install
+
+- -U, --upgrade
+
+- -F, --freshen
+
+- -e, --erase
+
+**** General options
+- -v
+  Print verbose information
+
+**** Install and upgrade options
+- -h, --hash
+  Print 50 hash marks as the package archive is unpacked.
+  
+*** packman
 ** Memo
 *** アクセス権の補助フラグ
 **** suid
@@ -1456,4 +1512,65 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   |       8 | System administration commands and daemons                       |
   |---------+------------------------------------------------------------------|
 
+*** VSS, RSS, PSS, USS
+**** VSS(VSZ)
+- virtual set size
+  プロセスがアクセスできるアドレスの総和で、
+  mallocして書き込まれていないメモリなど、まだ使用していない領域も含む。
+**** RSS
+- resident set size
+  実際に使用しているRAMの層メモリ量。
+  プロセスが使用しているものと、共有ライブラリが使用しているものを合計し算出している。
+  共有ライブラリはプロセス数と関係なく一度しか読み込まれないため、誤解を招くことがある。
+
+**** PSS
+- proportional set size
+  共有ライブラリを適切なサイズに分割し算出する点でRSSと異なる。
+  3つのプロセスが30ページの共有ライブラリを用いている場合、各プロセスのPSSに10ページ分計上される。
+  キルした場合に正しい指標でなくなる。
+
+**** USS
+- unique set size
+  プロセスに完全に一意であるようなプライベートなメモリ使用量。
+
+**** Link
+- [[http://gntm-mdk.hatenadiary.com/entry/2015/01/21/231258][VSS RSS PSS USS の説明 - Meblog]]
+*** Gentoo Installation Temporary
+**** Block devices
+- /dev/sd*
+  SCSI and Serial ATA drives are both labeled /dev/sd*;
+  even IDE drives are labeled /dev/sd* with the newer libata framowork in the kernel.
+  with old device framework, then the first IDE drive is /dev/hda.
+
+**** Partiton tables
+- 
+  full disk block devices are split up in smaller, more manageable block devices.
+  On x86, these are called partitions.
+  There are two standard paritioning technologies in use: MBR and GPT
+
+***** MBR
+- Master Boot Record
+  using 32-bit identifiers for the start sector and length of hte partitons.
+  
+- Type
+  - primary
+    it stored information in the master boot record itself.
+    master boot record is a very small, usually 512 bytes, location at the very beginning of the disk.
+    Due to small spaces, only four primary partitons are supported.
+  - extended
+    it can contain logical partitons.
+  - logical
+    it can be contained in a extended partition.
+  - all
+    each partitons is limited to 2 TB in size.
+    MBR setup does not provide any backup-MBR.
+
+***** GPT
+- GUID Partition Table
+  using 64-bit identifiers for the partitions.
+  the size of a partition is bounded by almost 8ZB.
+  
+  When a system's software interface between os and farmware is UEFI (Instead of BIOS), GPT is almost mandatory.
+  having a backup GPT at the end of the disk. carring CRC32 checksums to detect errors.
+   
 

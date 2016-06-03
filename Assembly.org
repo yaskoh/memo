@@ -1,9 +1,8 @@
 * Assembly
-
-** レジスタ
-
-*** 汎用レジスタ(GBR)
-**** 汎用レジスタ
+** Memo x86(?)
+*** Register レジスタ
+**** 汎用レジスタ(GBR)
+***** 汎用レジスタ
 - 
   |------+------+------+-----+------------------+----------------------------|
   | 31-0 | 15-0 | 15-8 | 7-0 | 名称             | 用途                       |
@@ -18,7 +17,7 @@
   nH,nLが8bitで両者を合わせたものがnX（16bit）
   X, EはExtendから。
 
-**** インデックスレジスタ
+***** インデックスレジスタ
 - 
   |------+------+--------------------------------+------------------------------------------------|
   | 31-0 | 15-0 | 名称                           | 用途                                           |
@@ -27,7 +26,7 @@
   | EDI  | DI   | デスティネーションインデックス | 同上                                           |
   |------+------+--------------------------------+------------------------------------------------|
 
-**** ポインタレジスタ
+***** ポインタレジスタ
 - 
   |------+------+------------------+----------------------------------------|
   | 31-0 | 15-0 | 名称             | 用途                                   |
@@ -36,7 +35,7 @@
   | ESP  | SP   | スタックポインタ | スタックを格納するアドレスのオフセット |
   |------+------+------------------+----------------------------------------|
 
-*** セグメントレジスタ
+**** セグメントレジスタ
 - 
   |------+----------------------+------------------------------------------------------|
   | 15-0 | 名称                 | 用途                                                 |
@@ -47,7 +46,7 @@
   | ES   | エクストラセグメント | 追加のデータを読み書きするアドレスのセグメントを指す |
   |------+----------------------+------------------------------------------------------|
 
-*** ステータス・制御レジスタ
+**** ステータス・制御レジスタ
 - 
   |--------+-------+----------------------------+----------------------------------------|
   | 31-0   | 15-0  | 名称                       | 用途                                   |
@@ -72,104 +71,101 @@
   | 12-13 | IOPL | I/O特権レベルフィールド |
   |-------+------+-------------------------|
 
-
-** 命令
-
+*** 命令
+**** move
 - move dest,src
-    (.COMはセグメントレジストが全て同じ値)
+  (.COMはセグメントレジストが全て同じ値)
 
-- ソフトウェア割り込み
-    int
-        ソフトウェア割り込み
-        "int 21h"がファンクションコール
-        AHの内容で実行値が変わる。
-        AHに4Chが入っている時にint 21hを動かすと終了する。
+**** int
+- 
+  ソフトウェア割り込み
+  "int 21h"がファンクションコール
+  AHの内容で実行値が変わる。
+  AHに4Chが入っている時にint 21hを動かすと終了する。
 
-
-- 即値の転送
-    mov ah,10     10進数
-    mov ah,10h    16進数
-    mov ah,10o    8進数
-    mov ah,10b    2進数
-    mov ah,'A'    文字コード
-    mov ax,offset DATA    DATAという変数のアドレス
-
-
-- 直接アドレス法
-
-    mov DATA,al        変数に書き込む
-    mov [1000h],al    アドレスに書き込む
-
-    メモリ  レジストリと違い大きさが分からないため大きさを書く
-    mov byte ptr DATA, 0 (byte ptr)
-    mov word ptr DATA, 0 (word ptr)
-    or
-    mov DATA, byte ptr 0
-    mov DATA, word ptr 0
-    (コンパイラによって書き方が違う)
-
-- 間接アドレス法(メモリのアドレスをレジスタを使って指定)
-
-    mov bx,offset DATA
-    mov byte ptr [bx], 0
-    or
-    mov [bx], byte ptr 0
-    mov [byte ptr bx], 0
-
-    ワード以上だと逆順に格納
-    mov [1000h],word ptr 1234h ⇒ 34h(1000h), 12h(1001h)
-    mov [1000h],dword ptr 12345678h ⇒ 78h(1000h), 56h(1001h), 34h(1000h), 12h(1000h)
+**** mov 即値の転送
+- 
+  mov ah,10     10進数
+  mov ah,10h    16進数
+  mov ah,10o    8進数
+  mov ah,10b    2進数
+  mov ah,'A'    文字コード
+  mov ax,offset DATA    DATAという変数のアドレス
 
 
-- 疑似命令
-    CPUでなくアセンブラに伝える命令を「疑似命令」という。
-    DB    byte
-    DW    word
-    DD    dword
+***** 直接アドレス法
+- 
+  mov DATA,al        変数に書き込む
+  mov [1000h],al    アドレスに書き込む
 
+  メモリ  レジストリと違い大きさが分からないため大きさを書く
+  mov byte ptr DATA, 0 (byte ptr)
+  mov word ptr DATA, 0 (word ptr)
+  or
+  mov DATA, byte ptr 0
+  mov DATA, word ptr 0
+  (コンパイラによって書き方が違う)
 
-- 足し算
+****** 間接アドレス法(メモリのアドレスをレジスタを使って指定)
+- 
+  mov bx,offset DATA
+  mov byte ptr [bx], 0
+  or
+  mov [bx], byte ptr 0
+  mov [byte ptr bx], 0
 
-    ADD DEST,SRC (DEST←DEST+SRC)
-    ADC DEST,SRC
+  ワード以上だと逆順に格納
+  mov [1000h],word ptr 1234h ⇒ 34h(1000h), 12h(1001h)
+  mov [1000h],dword ptr 12345678h ⇒ 78h(1000h), 56h(1001h), 34h(1000h), 12h(1000h)
 
-    AAA
-        桁超えをしたものを補正してくれる
+**** 疑似命令
+- 
+  CPUでなくアセンブラに伝える命令を「疑似命令」という。
+  DB    byte
+  DW    word
+  DD    dword
 
+**** ADD 足し算
+- 
+  ADD DEST,SRC (DEST←DEST+SRC)
+  ADC DEST,SRC
 
-- 引き算
-    SUB DEST,SRC
-    SBB DEST,SRC    (キャリーフラグつき)
+  AAA
+    桁超えをしたものを補正してくれる
 
+**** SUB 引き算
+- 
+  SUB DEST,SRC
+  SBB DEST,SRC    (キャリーフラグつき)
 
-- かける
-    MUL SRC        符号なし
-    IMUL SRC    符号付き
-        AX        AL×SRC
-        DX:AX    AX×SRC
-        EDX:EAX    EAX×SRC
+**** MUL, IMUL かける
+- MUL SRC        符号なし
+- IMUL SRC    符号付き
+  AX        AL×SRC
+  DX:AX    AX×SRC
+  EDX:EAX    EAX×SRC
 
-- わる
-    DIV SRC
-    IDIV SRC
-        AX÷SRC→余AH, 商AL
-        DX:AX÷SRC→余DX, 商AX
-        EDX:EAX÷SRC→余EDX, 商EAX
+**** DIV, IDIV わる
+- DIV SRC
+- IDIV SRC
+  AX÷SRC→余AH, 商AL
+  DX:AX÷SRC→余DX, 商AX
+  EDX:EAX÷SRC→余EDX, 商EAX
 
+**** INC, DEC
+- 
+  1足す（引く）
 
-- INC, DEC
-    1足す（引く）
+**** JMP DEST
+- DESTに移行する
+  short, near, farがある。
 
+**** CMP SRC1,SRC2
+- 
+  比較
+  SRC1 - SRC2のフラグのみ残る
 
-- JMP DEST
-    DESTに移行する
-    short, near, farがある。
-
-- CMP SRC1,SRC2
-    比較
-    SRC1 - SRC2のフラグのみ残る
-
-
+**** JMP系
 JCXZ DEST
 JECXZ DEST
     条件分岐。CX(ECX)が0のときジャンプ。
@@ -182,7 +178,8 @@ LOOPZ, LOOPE SRC
 LOOPNZ, LOOPNE SRC
     ZF=0ならジャンプ
 
-- サブルーチン
+**** サブルーチン
+- 
     CALL
     RET
         SS:SPを2増やしてcall, 2減らしてret
@@ -199,7 +196,8 @@ LOOPNZ, LOOPNE SRC
     PUSHF,POPF        FLAGS
     PUSHFD,POPFD    EFLAGS
 
-- 論理
+**** 論理
+- 
     AND DEST,SRC
     OR DEST,SRC
     XOR DEST,SRC
@@ -209,20 +207,22 @@ LOOPNZ, LOOPNE SRC
     TEST SRC1,SRC2
         論理積(ANDと同じ)、結果が保持されずフラグのみ持つ
 
-- シフト
+**** シフト
+- 
     SHR DEST,COUNT
     SHL DEST,COUNT
     SAR DEST,COUNT
     SAL DEST,COUNT
         算術（最上位ビットが保存）
 
-- ローテート
+**** ローテート
+- 
     RCL, RCR キャリーフラグ込み
     ROL, ROR キャリーフラグは溢れ分
 
 
-
-- ストリング命令
+**** ストリング命令
+- 
     読み出しは[DS:SI]
     書き出しは[ES:DI]
     レジスタはEAX,AX,ALのみ
@@ -246,7 +246,8 @@ LOOPNZ, LOOPNE SRC
     CMPS?
         [DS:SI]と[ES:DI]の比較
 
-- 入出力
+**** 入出力
+- 
     Memory Mapped I/O
         メモリ空間の一部を制御用の空間に
     I/O Mapped I/O
@@ -262,8 +263,8 @@ LOOPNZ, LOOPNE SRC
     OUTS?
         ストリング命令用
 
-
-- 他
+**** 他
+- 
     LEA DEST,SRC
         SRCの実行アドレスを計算し、DESTに代入
     XCHG DEST1,DEST2
@@ -271,8 +272,8 @@ LOOPNZ, LOOPNE SRC
     NOP
         何もしない。あとで書くための場所の確保とか。
 
-
-- 割り込み
+**** 割り込み
+- 
     トラップ
         INT
     フォルト
@@ -280,8 +281,38 @@ LOOPNZ, LOOPNE SRC
     アボート
         例外。0除算などで発生。
 
+** Assembler アセンブラ
+*** MASM Microsoft Macro Assembler
+- 
+  インテルのx86 CPU用にマイクロソフトが開発したアセンブラ
+  「命令 書き込み先 読み込み先」の順で書かれる。GASと逆。
 
-** メインフレーム
+*** nas Netwide Assembler
+- 
+  MASMと互換性の高いx86 CPU用アセンブラ
+
+*** TASM Turbo Assembler
+- 
+  ボーランドが開発していたMASMと互換性の高いx86 CPU用アセンブラ
+
+*** gas GNUアセンブラ
+- 
+  x86, 680x0, SPARC, VAXなど各種CPU用のアセンブラ
+  
+*** COMET II
+*** CASL
+- 
+  情報処理技術者試験用に作られたアセンブリ言語。
+
+*** as
+- 
+  UNIX用のアセンブラ
+
+*** HLASM / IBM High Level Assembler
+- 
+  IBM系メインフレーム用のアセンブラ。
+  MainFrame。
+  
 - 
   1-8 ラベル
   10- 命令
@@ -305,20 +336,19 @@ LOOPNZ, LOOPNE SRC
   END命令を使う。
   END命令はプログラムの実行開始位置を指定することもできる。
   
-*** アセンブラ命令
-
-**** CSECT, END
+**** アセンブラ命令
+***** CSECT, END
 - 
   CSECTが制御セクション（プログラム）の開始、ENDが終了を示す。
   1つのソースプログラム内に複数のCSECTを持つこともできるが、
   CSECT単位にプログラムメンバーを分けて作成し、リンケージエディタでまとめるほうがわかりやすい。
 
-**** EQU
+***** EQU
 - 
   式や数値に名前をつけるために使う。
   レジスター番号の表記によく使われる。
 
-**** USING, DROP
+***** USING, DROP
 - 
   ベースレジスタの設定・解除を行う。
   ベースレジスタは、プログラム内で分岐先やデータフィールドを名前で指し示す際に、
@@ -333,7 +363,7 @@ LOOPNZ, LOOPNE SRC
   USING LABELA,8とすると、LABELAがベースアドレスでベースレジスタは8番。
   USING *,12とすると、USING命令を書いたところがベースアドレスでベースレジスタは12。
 
-**** DC, DS, ORG
+***** DC, DS, ORG
 - 
   定数又は変数の定義を行う。
   一般にDC命令は定数、DS命令は変数を定義するものと理解されるが、CPUは定数と変数を区別しない。
@@ -357,8 +387,7 @@ LOOPNZ, LOOPNE SRC
   | V      | 4byte | 外部モジュールの入口点アドレスを定義する |      |
   |--------+-------+------------------------------------------+------|
 
-
-**** TITLE, PRINT, SPACE, EJECT
+***** TITLE, PRINT, SPACE, EJECT
 - 
   アセンブルリストの制御に使われる命令。
 
@@ -382,7 +411,7 @@ LOOPNZ, LOOPNE SRC
   改ページを行う。
   SPACEおよびEJECT命令自体は印刷されない。
 
-**** SAVE, RETURN
+***** SAVE, RETURN
 - 
   SAVEマクロ命令は、制御が上位モジュールから渡されたとき
   そのときのレジスターを上位モジュールの保管域に保管する。
@@ -390,7 +419,7 @@ LOOPNZ, LOOPNE SRC
   RETURNマクロ命令は、制御を上位モジュールに返す。
   そのときに、保管されたレジスタの復元や戻りコードを設定する。
 
-**** BASR, BAS, BALR, BAL
+***** BASR, BAS, BALR, BAL
 - 
   BASはBranch And Save。
   第2オペランドで指定されたアドレスへ分岐する。
@@ -399,6 +428,6 @@ LOOPNZ, LOOPNE SRC
   
   BAL/BALR(Branch And Link)は昔の命令。
 
-*** Link
+**** Link
 - [[http://www.arteceed.net/?cat=12]['S/370アセンブラー講座' Category - 「メインフレーム・コンピュータ」で遊ぼう]]
 - [[http://homepage1.nifty.com/ttakao/370asm/index.html][OS/390アセンブラハンドブック]]
