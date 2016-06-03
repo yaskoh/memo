@@ -3,7 +3,6 @@
 - 
   Complex Instruction Set Computer。
   RISCが出現した時に、従来のISA（命令セットアーキテクチャ）は複雑である、として名付けられた。
-  
 
 *** x86
 **** Generation

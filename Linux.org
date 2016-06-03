@@ -1535,3 +1535,42 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 
 **** Link
 - [[http://gntm-mdk.hatenadiary.com/entry/2015/01/21/231258][VSS RSS PSS USS の説明 - Meblog]]
+*** Gentoo Installation Temporary
+**** Block devices
+- /dev/sd*
+  SCSI and Serial ATA drives are both labeled /dev/sd*;
+  even IDE drives are labeled /dev/sd* with the newer libata framowork in the kernel.
+  with old device framework, then the first IDE drive is /dev/hda.
+
+**** Partiton tables
+- 
+  full disk block devices are split up in smaller, more manageable block devices.
+  On x86, these are called partitions.
+  There are two standard paritioning technologies in use: MBR and GPT
+
+***** MBR
+- Master Boot Record
+  using 32-bit identifiers for the start sector and length of hte partitons.
+  
+- Type
+  - primary
+    it stored information in the master boot record itself.
+    master boot record is a very small, usually 512 bytes, location at the very beginning of the disk.
+    Due to small spaces, only four primary partitons are supported.
+  - extended
+    it can contain logical partitons.
+  - logical
+    it can be contained in a extended partition.
+  - all
+    each partitons is limited to 2 TB in size.
+    MBR setup does not provide any backup-MBR.
+
+***** GPT
+- GUID Partition Table
+  using 64-bit identifiers for the partitions.
+  the size of a partition is bounded by almost 8ZB.
+  
+  When a system's software interface between os and farmware is UEFI (Instead of BIOS), GPT is almost mandatory.
+  having a backup GPT at the end of the disk. carring CRC32 checksums to detect errors.
+   
+

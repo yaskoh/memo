@@ -375,6 +375,15 @@
   Without special variable types, perl need by functions to execute objects numerically or alphabetically.
   when numeric, 99 < 100. when alphabetic, 100 lt 99.
 
+*** use, require
+- use
+  use only after Perl 5.
+  evaluate while compiling
+
+- require
+  all versions available.
+  evaluate when executing
+  
 ** DocMemo
 *** perlintro memo
 - http://perldoc.perl.org/perlintro.html
