@@ -7,6 +7,10 @@
   In Debian, this command works as an interactive way of user adding.
   CentOS or Fedora, this command may not exist, or just a link to "useradd" command.
 
+*** alias
+- 
+  別名をつける。
+
 *** apropos
 - 
   show result searched from summaries and command names.
@@ -568,6 +572,15 @@
 ***** ip monitor (mo)
 **** Link
 - [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][ip COMMAND CHEAT SHEET]]
+
+*** ipcs
+- IPCリソース情報の表示。
+  
+- -i
+  後続のidで指定されたリソースの情報だけが出力される。
+  
+*** ipcrm
+- メッセージキュー、セマフォ集合、共有メモリIDを削除する。
 
 *** iptables
 - iptables
@@ -1474,6 +1487,12 @@
 *** tzselect
     タイムゾーンを選択する。
 
+*** umask
+- 
+  The user file-creation mask is set to mode.
+  If mode begins with a digit, it is interpreted as an octal numbers;
+  otherwise it is interpreted as a symbolic mode mask similar to that accepted by chmod.
+
 *** umount / unmount
 - 
   unmount file systems
@@ -1528,6 +1547,8 @@
   shellを設定する。
 - -g 
   主グループを設定する。
+- -G
+  主でないグループを設定する。複数設定可。
 - -m, --create-home
   ホームディレクトリが存在しない場合に作成する。
 - -k, --skel
@@ -1634,10 +1655,29 @@
   send a message to another user
   to communicate with other users.
 
+*** xauth
+*** xhost
+- 
+  "xhost +host_name"とすると、host_nameからもXサーバにアクセス可能となる。
+  "xhost +"とすると全てのホスト（世界中）からアクセス可能となり、スクリーンショットを取ったりプログラムを表示・キーストロークを盗むことが可能となるので、xauthを使う方が望ましい。
+  
 *** xz / unxz
 
 *** zip / unzip
 
+** BASH BUILTINS
+*** bash
+*** :
+*** .
+*** [
+*** alias
+*** bg
+*** bind
+*** break
+*** builtin
+*** caller
+*** cd
+*** command
 ** Link
 - [[http://ss64.com/bash/][An A-Z Index of the Bash command line for Linux.]]
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230573/?ST=oss&rt=nocnt][Linuxコマンド集 INDEX （機能別） - ITpro]]

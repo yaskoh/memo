@@ -5,6 +5,14 @@
   ホストシステム（コンピュータ）と他のネットワーク機器やストレージ機器を接続するハードウェアである。
   主にSCSI、ファイバーチャネル、シリアルATAを接続するデバイスを流石、IDE、Ethernet、Firewire、USBなどを接続するデバイスもホストバスアダプタと呼ぶ。
 
+*** IOPS
+- Input/Output per Second
+  ディスクが1秒当たりに処理できるI/Oアクセスの数。
+  I/O処理に係る時間は、平均アクセス時間とデータ転送時間を足した数字であり、
+  これが1秒間に何回実行できるかがIOPS。
+- 
+  [[http://itpro.nikkeibp.co.jp/article/lecture/20070104/258117/?rt=nocnt][Part4 IOPSを理解する - サーバー選択の基礎]]
+  
 ** Memo
 *** GPU, FPGA
 - http://www.atmarkit.co.jp/ait/articles/1604/25/news021.html

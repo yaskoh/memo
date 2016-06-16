@@ -1,9 +1,41 @@
 * Database
+** Design
+*** 手順
+**** 永続化（格納）するデータを決定する
+**** 異なるデータ間要素の関連（リレーションシップ）の集まりを決定する
+**** 論理構造を重ね合わせる
+*** 概念設計
+- 
+  
+*** 論理設計
+*** 物理設計
+- インデックスやキーなどのテーブル定義決定
+- データ容量、ディスク容量見積もり
+- テーブル配置、スペース定義
+- パフォーマンスなどの最適実装の検討
+- DDL作成
+*** 運用設計
+*** Link
+- [[http://gihyo.jp/dev/feature/01/database/0001][第1回 データベース設計とは - 初めてのデータベース設計]]
+- [[http://www.insight-tec.com/mailmagazine/ora3/vol291.html][Oracle新人のRACインストール その１ - Insight Technology]]
+- [[http://nippondanji.blogspot.jp/2013/12/db.html][DB設計の難しさ - 漢のコンピュータ道]]
+  - リレーショナルモデルの適用範囲は狭い。
+  - リレーショナルモデルの適用範囲は「表」。
+  - リレーショナルは「正規化」と「直行性」を利用してやる。
+  - リレーショナルモデルで扱えないデータをうまく扱う方法を考えるのが難しい。
 
 ** Log
-*** �_�����M���O�ƕ������M���O
+*** 論理ロギングと物理ロギング
 - 
-  �_�����M���O�́ASQL�����x���ŕύX�������Ǘ�����B
-  �������M���O�́A�ύX���������f�[�^�u���b�N���o�C�i���C���[�W�ŕۑ�����B
+  論理ロギングは、SQL文レベルで変更履歴を管理する。
+  物理ロギングは、変更があったデータブロックをバイナリイメージで保存する。
   
-  MySQL�̃o�C�i�����O�͑O�ҁAInnoDB���O�͌�ҁB
+  MySQLのバイナリログは前者、InnoDBログは後者。
+** Performance
+- 
+  DBMS, 特にOLTPでは、ディスクのIOPSが重要と言われている。
+  
+** Glossary
+*** OLTP
+- OnLine Transaction Processing
+  

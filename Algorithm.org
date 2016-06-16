@@ -13,3 +13,7 @@
 **** Polynomial
 *** Euclidean Algorithm
 **** 
+** Memory
+*** LRU
+- Least Recently Used
+  最近使われていないデータからキャッシュアウトする。
