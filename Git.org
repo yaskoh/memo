@@ -432,6 +432,11 @@ SSHは両方可能。
   チェックアウトを選ぶ場合は、
   git checkout <code> file
 
+*** .gitignore
+- 
+  *はフォルダを跨がない。"/*/"は/test/local/には当てはまらず、/test/のみ当てはまる。
+  **はフォルダを跨ぐ。"/**/"は/test/, /test/local/, /test/local/bin/すべてに当てはまる。
+  
 ** Link
 - [[https://www.atlassian.com/ja/git/tutorial][Gitチュートリアル Atlassian]]
 
