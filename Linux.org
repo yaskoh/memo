@@ -1609,3 +1609,9 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   /etc/sysconfig/network-scripts/ifcfg-...などのONBOOT項目が"no"になっている場合、起動されていないので、
   "yes"とし再起動をかける。
   [[http://oki2a24.com/2015/05/27/resolve-dns-error-of-centos-6-in-virtualbox/][【CentOS 6】yum が DNS 名前解決できないエラーで使えない問題を解決【OSインストール後】 - oki2a24]]
+*** フルパスでls -R
+- 
+  再帰的でなければ、なければls -dでOK。
+  -dと-Rが併用できないため、サブディレクトリを含めたい場合はfindと組み合わせる。
+  例) ls -l $(find . -type f)
+  [[http://orebibou.com/2014/10/ls%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%83%95%E3%83%AB%E3%83%91%E3%82%B9%E8%A1%A8%E7%A4%BA%E3%82%92%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/][lsコマンドでフルパス表示をする方法 - 俺的備忘録 〜なんかいろいろ〜]]

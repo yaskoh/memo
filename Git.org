@@ -437,6 +437,17 @@ SSHは両方可能。
   *はフォルダを跨がない。"/*/"は/test/local/には当てはまらず、/test/のみ当てはまる。
   **はフォルダを跨ぐ。"/**/"は/test/, /test/local/, /test/local/bin/すべてに当てはまる。
   
+*** 普通にrmしたファイルをcommitに乗せる
+- git rm <file>
+  ファイルを消してしまって実体がいない場合でも、
+  git rmで対象を削除、stageに乗せることができる。
+  ただし既にファイルがない場合、globが効かないので*などで補完してくれない。
+
+- git add -u
+  削除コミット以外も含め一旦stagingに乗せる場合。
+  その後不要なファイルはstagingから落とせばよい。
+  (unstageはgit reset HEAD <file>...)
+
 ** Link
 - [[https://www.atlassian.com/ja/git/tutorial][Gitチュートリアル Atlassian]]
 

@@ -433,6 +433,12 @@
 - grep [OPTIONS] [-e PATTERN | -f FILE} [FILE...] 
   searches the named input FILEs for lines containing a match to the given PATTERN.
 
+- -a, --text, --binary-files=text
+  Process a binary file as if it were text
+
+- -v, --invert-match
+  to select non-matching lines.
+
 - -E, --extended-repex
   interpret pattern as an extended regular expression (ERE).
 
