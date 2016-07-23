@@ -753,11 +753,13 @@
 ***** Package
 ****** General
 ******* java.lang
+******** java.lang.ref
+******** java.lang.reflect
 ******* java.io
 ******* java.nio
 ******* java.math
 ******* java.net
-******* java.txt
+******* java.text
 ******* java.util
 ****** Special
 ******* java.applet
@@ -1151,6 +1153,106 @@
 - 
   (Experimental) Lists the instrumented Java Virtual Machines (JVMs) on the target system.
 
+** API
+*** Java SE 8
+**** java
+***** java.io
+****** Interface
+******* Closable
+******* DataInput
+******* DataOutput
+****** Class
+******* BufferedInputStream
+******* BufferedOutputStream
+******* BufferedReader
+******* BufferedWriter
+******* ByteArrayInputStream
+******* ByteArrayOutputStream
+******* Console
+******* File
+******* FileDescripter
+******* FileInputStream
+******* FileOutputStream
+******* FileReader
+******* FileWriter
+****** Exception
+******* IOException
+****** Error
+******* IOError
+***** java.lang
+****** Interface
+****** Class
+****** Enum
+****** Exception
+****** Error
+****** Annotation
+***** java.lang.annotation
+****** Interface
+****** Enum
+****** Exception
+****** Error
+****** Annotation
+***** java.lang.invoke
+****** Interface
+****** Class
+****** Exception
+***** java.lang.ref
+****** Class
+***** java.lang.reflect
+****** Interface
+****** Class
+****** Exception
+****** Error
+***** java.math
+***** java.net
+***** java.nio
+***** java.nio.charset
+***** java.nio.charset.spi
+***** java.nio.file
+***** java.nio.file.spi
+***** java.nio.channels
+***** java.nio.channels.spi
+***** java.security
+***** java.security.acl
+***** java.security.cert
+***** java.security.interfaces
+***** java.security.spec
+***** java.security.zip
+***** java.text
+***** java.text.spi
+***** java.time
+***** java.time.format
+***** java.time.chrono
+***** java.time.temporal
+***** java.time.zone
+***** java.util
+***** java.util.function
+***** java.util.regex
+***** java.util.stream
+***** java.util.concurrent
+***** java.util.concurrent.atomic
+***** java.util.concurrent.locks
+***** java.util.logging
+***** java.util.spi
+**** javax
+***** javax.annotation
+***** javax.imageio
+***** javax.imageio.event
+***** javax.imageio.metadata
+***** javax.imageio.pulgins.bmp
+***** javax.imageio.pulgins.jpeg
+***** javax.imageio.imagio.spi
+***** javax.imageio.imagio.stream
+***** javax.crypto
+**** org
+***** org.w3c.dom
+***** org.w3c.dom.bootstrap
+***** org.w3c.dom.events
+***** org.w3c.dom.ls
+***** org.w3c.dom.views
+***** org.xml.sax
+***** org.xml.sax.ext
+***** org.xml.sax.helpers
 ** Tools
 *** Web Application Framework
 **** Spring
@@ -1286,6 +1388,9 @@
   複数のWARファイル、(EJB)JARファイルを含む。
   application.xmlが含まれ、J2EEコンテナ（JBoss, WebSphereなど）に配布すると、これを元にデプロイされる。
 
+** Link
+- [[http://docs.oracle.com/javase/8/docs/api/][Java™ Platform, Standard Edition 8 API Specification]]
+- [[http://docs.oracle.com/javase/jp/8/docs/api/][Java(tm) Platform, Standard Edition 8 API仕様]]
 ** Memo
 *** リソース付きtry
 - 
