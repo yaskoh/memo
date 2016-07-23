@@ -195,35 +195,40 @@
 ****** UNDO表領域
 - 
   ロールバック情報の格納にのみ使用する特別な表領域。
-  
 
-****** bigfile表領域
-- 
-  単一で非常に大きいデータファイル（最大40億ブロック）を持つ可能性がある表領域。
-  従来のsmallfile表領域は複数のデータファイルを格納できるが、各データファイルは大きくない。
-****** 領域管理方法
-******* ローカル管理表領域
+****** ローカル管理表領域
 - 
   表領域によるエクステント管理。
   各データファイルのビットマップが保持され、ビットマップを使用して、使用済領域と空き領域が追跡される。
   Oracle8iより提供。デフォルト。
   EXTENT MANAGEMENT句にLOCALを指定する。
-- 
-  エクステント管理は、AUTOALLOCATEがデフォルト。UNIFORMを指定して均一エクステントによる管理も可能。
+
+- Extent Management
+  AUTOALLOCATE, UNIFORMが選択可能。
+  AUTOALLOCATEがデフォルト。UNIFORMを指定して均一エクステントによる管理も可能。
   さまざまなサイズのオブジェクトが表領域に含まれ、異なるサイズの多数のエクステントが必要と予測される場合、AUTOALLOCATEを選択する。
   エクステントの数とサイズが正確に予測できる場合はUNIFORMを選択する。SIZEを指定しない場合はデフォルトで1MBとなる。
 
-******** 一次表領域
+****** ディクショナリ管理表領域
+- 
+  データ・ディクショナリによる表領域管理。
+  領域の使用率の追跡をSQLディクショナリ表に依存する従来の方法で管理する表領域。
+- 
+  10gからシステム領域を含みすべての領域に対してローカル表領域がデフォルトとなっている。
+  システム表領域をローカル管理領域で作成するとディクショナリ管理表領域は作成できなくなるため、
+  10g以降は通常のデータベース作成ではディクショナリ管理表領域は作成できない。
+
+****** 一時表領域
 - 
   Oracle7.3より提供された表領域の種類。
   セッションの間のみ存続する一時データが格納される。
   中間ソート結果、一時表と一時索引、一時LOB、一時Bツリーを格納するために使用する。
   一時表領域が明示的に割り当てられていないユーザは、デフォルト一時表領域（新規インストールではTEMP）を使用する。
-
-******* ディクショナリ管理表領域
+  
+****** bigfile表領域
 - 
-  データ・ディクショナリによる表領域管理。
-  領域の使用率の追跡をSQLディクショナリ表に依存する従来の方法で管理する表領域。
+  単一で非常に大きいデータファイル（最大40億ブロック）を持つ可能性がある表領域。
+  従来のsmallfile表領域は複数のデータファイルを格納できるが、各データファイルは大きくない。
 
 **** セグメント
 **** エクステント
@@ -295,6 +300,10 @@
 - 
   dbcaを起動する。
 
+**** expdp
+- 
+  Data Pump。
+**** impdp
 **** lsnrctr
 - start
   デフォルトのリスナーを起動する
@@ -307,6 +316,11 @@
   ログオンを行わずにsqlplusを起動
 ** SQL言語
 *** 擬似列
+**** ROWNUM
+- 
+  問い合わせによって戻される各行について、表や結合処理された行の集合からOracleが行を選択する順序を示す番号を戻す。
+  つまり、選択される最初の行のROWNUMは1、2番目の行のROWNUMは2、となる。
+  
 *** 要素
 **** データ型
 ***** 組み込み
@@ -408,6 +422,7 @@
 *** 条件
 *** SQL文
 **** Object
+***** CONTEXT
 ***** DATABASE
 ****** ALTER
 ******* startup_clauses
@@ -428,6 +443,69 @@
   汎用的なデータベースを作成する。
   この分を実行すると、指定した既存のデータファイル上のデータがすべて消去される。
   
+***** DATABASE LINK
+***** FUNCTION
+- PL/SQL
+****** CREATE
+- CREATE (OR REPLACE) FUNCTION
+  - (schema.) function name
+    - RETURN datatype
+      ファンクションの戻り値のデータ型を指定する。
+******* parallel_enable_clause
+- PARALLEL_ENABLE 
+  - ( (PARITION argument BY ... ) )
+
+- 
+  パラレル問い合わせ操作のパラレル実行サーバーからファンクションを実行できることを示す。
+  パッケージ変数などのセッション状態は使用しないようにする。
+******* AGGREGATE USING
+- AGGREGATE USING (schema.)implementation_type
+  集計ファンクションまたは行のグループを評価して単一行を戻すファンクションとして使用する。
+  
+****** ALTER
+****** DROP
+***** INDEX
+***** PACKAGE
+- PL/SQL
+****** CREATE
+****** DROP
+- DROP PACKAGEは、データベースから仕様と本体の両方を削除する。
+
+****** ALTER
+***** PACKAGE BODY
+****** CREATE
+****** DROP
+- 本体のみを削除する。
+
+***** PROCEDURE
+- PL/SQL
+****** CREATE
+- CREATE (OR REPLACE) PROCEDURE plsql_source
+****** ALTER
+****** DROP
+***** ROLE
+****** CREATE
+***** SEQUENCE
+****** CREATE
+- CREATE SEQUENCE (schema.) sequence
+  
+****** ALTER
+****** DROP
+***** SYNONYM
+****** CREATE
+- CREATE [OR REPLACE] [PUBLIC] SYNONYM syn_name FOR schema_name.object_name;
+- OR REPLACE
+  同名のシノニムが存在した場合でも構わず上書きする場合に指定する
+- PUBLIC
+  パブリックシノニムを作成する場合に指定
+
+****** DROP
+- DROP [PUBLIC] SYNONYM syn_name;
+
+****** RENAME
+- RENAME old_syn_name TO new_syn_name
+- PUBLICはRENAME不可。
+
 ***** TABLE
 ****** CREATE
 ******* segment_attributes_clause
@@ -498,10 +576,6 @@
 - NOLOGGING
   REDOログ記録をOFFに変更する
 ***** TABLESPACE
-****** ALTER
-- 例
-  - データファイルの追加
-    ALTER TABLESPACE DAT01 ADD DATAFILE 'home/db/DAT01_02.dbf' size 2000M;
 ****** CREATE
 ******* permanent_tablespace
 - BLOCKSIZE
@@ -535,7 +609,8 @@
     一次表領域のすべてのエクステントはサイズが均一であるため、このキーワードは一次表領域ではオプション扱い。
     ただし、SIZEを指定する場合はUNIFORMを指定する必要がある。
     UNDO領域に指定することはできない。
-  
+    - SIZE size_clause | 
+
 ******* segment_management
 - SEGEMNT SPACE MANAGEMENT
   - AUTO
@@ -543,6 +618,26 @@
   - MANUAL
     空きリストを使用して表領域のセグメントにある空き領域を管理できる。
     この設定は使用せず、AUTOを利用することを強く勧める。
+******* file_specification
+- datafile_tempfile_spec | redo_log_file_spec
+******** datafile_tempfile_spec
+- 'filename | ASM filename ' 
+  - SIZE size_clause | 
+    - REUSE |
+      - autoextend_clause |
+
+- SIZE句
+  ファイルのサイズをバイト単位で指定する。K,M,G,Tを使用して単位の指定も可能。
+- REUSE
+  既存ファイルの再利用を可能にする。filenameを指定しない限り、指定不可。
+******** redo_log_file_spec
+******** autoextend_clause
+- AUTOEXTEND
+  - OFF | ON (NEXT size_clause | ) (maxsize_clause | )
+****** ALTER
+- 例
+  - データファイルの追加
+    ALTER TABLESPACE DAT01 ADD DATAFILE 'home/db/DAT01_02.dbf' size 2000M;
 
 ****** DROP
 - DROP TABLESPACE tablespace
@@ -556,23 +651,10 @@
     - CASCADE CONSTRAINTS
       tablespaceに含まれる表の主キーまたは一意キーを参照する、tablespace外のすべての参照整合性制約を削除する。
       
-***** ROLE
-****** CREATE
-***** SYNONYM
-****** CREATE
-- CREATE [OR REPLACE] [PUBLIC] SYNONYM syn_name FOR schema_name.object_name;
-- OR REPLACE
-  同名のシノニムが存在した場合でも構わず上書きする場合に指定する
-- PUBLIC
-  パブリックシノニムを作成する場合に指定
-
-****** DROP
-- DROP [PUBLIC] SYNONYM syn_name;
-
-****** RENAME
-- RENAME old_syn_name TO new_syn_name
-- PUBLICはRENAME不可。
-
+***** TRIGGER
+- PL/SQL
+***** TYPE
+- PL/SQL
 ***** USER
 ****** CREATE
 ****** ALTER
@@ -583,6 +665,8 @@
 ****** DROP
 - DROP USER user
   - CASCADE
+
+***** VIEW
 **** Etc
 ***** DELETE
 ***** GRANT
@@ -642,6 +726,9 @@
 ******** EDITION
 ********* CREATE ANY EDITION
 ********* DROP ANY EDITION
+******** その他
+********* SELECT_CATALOG_ROLE
+********* UNLIMITED TABLESPACE
 ****** Object Privileges
 - L1
   - object_privilege
@@ -660,23 +747,33 @@
 
 ***** REVOKE
 ** PL/SQL
-*** PL/SQLパッケージ
-**** DBMS_ADVISOR
-- 
-  データベース・サーバー・コンポーネントに関するパフォーマンス問題を特定および解決する一連のエキスパート・システムであるアドバイザのサーバー管理スイートに含まれる。
-- 
-  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_advis.htm#CIHIGAED
+*** 言語要素
+**** カーソルFOR LOOP文
+- 指定されたカーソルが戻す行の型のレコード変数として暗黙的にループ索引を宣言し、カーソルをオープンする。
+  反復される度に、結果セットから行をフェッチしてレコードに入れる。フェッチする行がなくなるとカーソルがクローズされる。
+***** cursor_for_loop_statement
+- FOR record IN ... LOOP statement END LOOP label;
 
-**** DBMS_SQLTUNE
+**** EXECUTE IMMEDIATE文
+- 動的SQLを一度の操作で作成して実行する。
+*** 仕様
+**** 制御文
+**** コレクション・レコード
+**** 静的SQL
+**** 動的SQL
+**** サブプログラム
 - 
-  オンデマンドでSQLをチューニングするためのインターフェース。
-
-- 
-  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_sqltun.htm#CHDGAJCI
-
-**** DBMS_ROWID
-- ROWIDに関する情報を取得できる。
-  https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/d_rowid.htm
+  繰り返し起動できる名前付きPL/SQLブロック。
+  
+***** サブプログラムの分類
+****** ネストしたサブプログラム
+- PL/SQLブロック内で作成される
+****** パッケージ・サブプログラム
+- パッケージ内で作成される
+****** スタンドアロン・サブプログラム
+- スキーマレベルで作成される。
+**** トリガー
+**** パッケージ
 ** SQL*Plus
 - 入力
   次の3タイプのコマンドが入力可能。
@@ -689,8 +786,60 @@
   - セミコロン(;)を入力する
   - 1行にスラッシュ(/)のみを1つ入力する
   - 空白行を入力する
+*** Scriptの使用
+**** 変数
+***** 置換変数
+****** &置換変数
+- &VARNAME、で指定の値に置き換えられ、SQL実行される。
+  例: where deptno = &deptno
+- VERIFY変数
+  OFFにすると、置換変数の置き換え前後の値が表示されなくなる。
+  例: SET VERIFY OFF
+  
+
+****** &&置換変数
+- &&変数は、SQL実行後も値が保持される。
+  対して、&置換変数で置き換えられた値はSQL実行後に破棄される。
+  DEFINEコマンドで確認し、UNDEFINEコマンドで破棄する。
+
+****** 無効化
+- 置換変数を無効にする
+  SET DEFINE OFF
+- 置換変数を他の文字に変更することなども可能(SET ESCAPE c)。
+***** バインド変数
+- 
+  SQL*PlusとPL/SQLの双方で参照できる変数。
+  PL/SQLに値を渡したり、結果を受け取ったりできる。
+  "var[iable] 変数名 型"で宣言する。
+  
+- PL/SQL
+  変数名の前に:(コロン)を付けて参照したり値を格納できる。
+  :count:=3;
+  
+- SQL*Plus
+  PRINTコマンドで出力可能。
+
+*** Variables
+- SQL*Plusに影響するパラメータ・環境変数
+**** LD_LIBRARY_PATH
+**** LOCAL
+**** NLS_LANG
+- グローバリゼーション機能を指定する環境変数。
+  NLSはNational Language Supportの略。
+  "language_territory.charset"を指定する。
+  例: JAPANESE_JAPAN.UTF8, AMERICAN_AMERICA.UTF8
+
+**** ORACLE_HOME
+**** ORACLE_PATH
+**** ORACLE_SID
+**** PATH
+**** SQLPATH
 *** Commands
 **** CONNECT
+
+**** DEFINE
+- DEF[INE] [variable] | [variable = text]
+  ユーザ変数または事前定義変数を指定し、その変数にCHAR値を割り当てたり、1つまたはすべての変数の値および変数型を表示する。
 
 **** DESCRIBE
 - DESC[RIBE] objectx
@@ -705,6 +854,13 @@
   textを画面上表示する
   
 **** SET
+***** SET DEF[INE] {&|c|ON|OFF}
+- 置換変数の接頭辞として使用する文字を、cに設定する。
+  ONまたはOFFによって、置換をするかどうかを設定する。ONを設定するとデフォルトの"&"へボトル。
+***** SET ESC[APE] {\|c|ON|OFF}
+- エスケープ文字として使用する文字を定義する。
+  OFFを指定するとエスケープ文字の定義が解除される。ONを指定すると、使用可能となり、設定値はデフォルトの"\"に戻る。
+  
 ***** SET LIN[ESIZE]
 - 1行に表示する文字の合計数を設定する。
 ***** SET PAGES[IZE]
@@ -741,69 +897,129 @@
   MOUNTまたはOPENと同時には指定できない。
   その後変更する場合は、alter database mount; alter database open;など。
 
+**** VARIABLE
+- VAR[IABLE] [variable [type]]
+  引数なしでVARIABLEを指定すると、セッション内で宣言されているすべての変数が表示される。
+  変数名のみを指定すると、その変数が表示される。
+  
+  ストアドプロシージャに対するパラメータとして使用される。また、無名PL/SQLブロックの中で直接参照できる。
+
+*** Restriction
+- 
+  |----------------------+------------|
+  | 項目                 | 制限       |
+  |----------------------+------------|
+  | ユーザー名           | 30バイト   |
+  | 置換変数名の長さ     | 30バイト   |
+  | 置換変数値の長さ     | 240文字    |
+  | コマンドラインの長さ | 2500文字   |
+  | 最大PAGESIZE         | 50,000行   |
+  | 合計行幅             | 32,767文字 |
+  | 最大ページ数         | 99,999     |
+  |----------------------+------------|
+
+- 
+  [[http://docs.oracle.com/cd/E16338_01/server.112/b56314/apa.htm][A SQL*Plusの制限 - SQL*Plus®ユーザーズ・ガイドおよびリファレンス リリース11.2]]
+
+*** Arguments
+- 
+  ファイル名の後にスペースを挟んで引数を列挙する。
+  内部では&1, &2などの形で受け取れる。
+  
+- 
+  [[http://www.shift-the-oracle.com/sqlplus/tutorial/sqlplus-script-parameter.html][SQL*Plus の実行スクリプトをパラメータ付きで起動する - SHIFT the Oracle]]
+
 *** Link
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/toc.htm][目次 - SQL*Plusユーザーズ・ガイドおよびリファレンスリリース11.2]]
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/ch_twelve001.htm#BACDBGBC][SQL*Plusコマンド一覧 - SQL*Plusユーザーズ・ガイドおよびリファレンスリリース11.2]]
 ** Reference
 *** 初期化パラメータ
 *** 静的データ・ディクショナリ・ビュー
-**** ALL_CONSTRAINTS
+**** ALL
+***** ALL_CONSTRAINTS
 - 現行のユーザがアクセスできる表の制約定義を示す。
-- CO
+- CONSTRAINT_TYPE
   - C : Constraint 表でのチェック制約
   - P : Primary Key
   - U : Unique Key
   - R : 参照整合性
   - V : ビューでのチェック・オプション付
-  - O
-  - H
-  - F
-  - S
-**** ALL_COL_COMMENTS
+  - O : ビューで読み取り先勝
+  - H : ハッシュ式
+  - F : REF列を含む制約
+  - S : サプリメンタル・ロギング
+***** ALL_COL_COMMENTS
 - 現行のユーザーがアクセスできる表およびビューの列についてのコメントを示す。
-**** ALL_INDEXES
+***** ALL_DB_LINKS
+***** ALL_DIRECTORIES
+- 現在のユーザがアクセスできるディレクトリをすべて示す。
+***** ALL_INDEXES
 - 現在のユーザがアクセスできる表の索引を示す。
-**** ALL_TAB_COMMENTS
+***** ALL_SEQUENCES
+***** ALL_SOURCE
+- 現行のユーザがアクセスできるストアド・オブジェクトのテキスト・ソースを示す。
+***** ALL_TAB_COMMENTS
 - 現行のユーザがアクセスできる表およびビューのコメントを示す。
-**** DBA_COL_COMMENTS
+**** DBA
+***** DBA_COL_COMMENTS
 - データベース内のすべての表及びビューについてのコメントを示す。
-**** DBA_DATA_FILES
+***** DBA_CONSTRAINTS
+- データベース内の制約定義をすべて示す。
+***** DBA_DATA_FILES
 - データベース・ファイルを示す。
-**** DBA_EXTENTS
+***** DBA_DB_LINKS
+- テータベース内のデータベース・リンクをすべて示す。
+***** DBA_DIRECTORIES
+- データベース内のディレクトリをすべて示す。
+***** DBA_EXTENTS
 - データベース内のすべての表領域内のセグメントを含むエクステントを示す。
-**** DBA_FREE_SPACE
+***** DBA_FREE_SPACE
 - データベース内のすべての表領域の使用可能エクステントを示す。
   tablespaceが表示されない場合は、使用可能エクステントがないということらしい。
   
-**** DBA_INDEXES
+***** DBA_INDEXES
 - データベース内の索引をすべて示す。
-**** DBA_ROLE_PRIVS
+***** DBA_ROLE_PRIVS
 - データベース内のすべてのユーザおよびロールに付与されたロールを表示する
-**** DBA_SEGMENTS
+***** DBA_SEGMENTS
 - データベース内のすべてのセグメントに割り当てられた記憶域を示す。
-**** DBA_SYS_PRIVS
-- 
-  ユーザ、またはロールに付与されあtシステム権限。
-
-**** DBA_TAB_COMMENTS
+***** DBA_SEQUENCES
+- データベース内の順序をすべて示す。
+***** DBA_SOURCE
+- データベース内のすべてのストアド・オブジェクトのテキスト・ソースを示す。
+***** DBA_SYS_PRIVS
+- ユーザ、またはロールに付与されたシステム権限。
+***** DBA_TAB_COMMENTS
 - データベース内のすべての表およびビューについてのコメントを示す。
-**** DBA_TAB_PRIVS
-**** DBA_TABLES
+***** DBA_TAB_COLUMNS
+- データベース内すべての表、ビューおよびクラスタの列を示す。
+  
+***** DBA_TAB_PRIVS
+***** DBA_TABLES
 - データベース内のリレーショナル表をすべて示す。
-**** DBA_TABLESPACES
+***** DBA_TABLESPACES
 - データベース内の表領域をすべて示す。
-**** DBA_USERS
+***** DBA_USERS
 - データベース内のユーザーをすべて示す。
-**** USER_COL_COMMENTS
-**** USER_CONSTRAINTS
+**** USER
+***** USER_COL_COMMENTS
+***** USER_CONSTRAINTS
 - 現在のユーザが所有する表の制約定義をすべて示す。
-**** USER_INDEXES
+***** USER_DB_LINKS
+- 現在のユーザーが所有するデータベース・リンクを示す。
+***** USER_INDEXES
 - 現行のユーザが所有する索引を示す
-**** USER_ROLE_PRIVS
-**** USER_SEGMENTS
-**** USER_SYS_PRIVS
-**** USER_TAB_COMMENTS
-**** USER_TAB_PRIVS
+***** USER_ROLE_PRIVS
+***** USER_SEGMENTS
+***** USER_SEQUENCES
+***** USER_SOURCE
+***** USER_SYS_PRIVS
+***** USER_TAB_COMMENTS
+***** USER_TAB_PRIVS
+**** ETC
+***** DATABASE_EXPORT_OBJECTS
+***** SCHEMA_EXPORT_OBJECTS
+***** TABLE_EXPORT_OBJECTS
 *** 動的パフォーマンスビュー
 **** V$DATABASE
 - 現在接続しているインスタンスのDBID、チェックポイントなどが取得できる。
@@ -813,6 +1029,34 @@
 - オプション製品のインストール状況
 **** V$PWFILE_USERS
 - パスワードファイル認証にエントリされている（SYSDBAまたはSYSOPERシステム権限がある）ユーザの一覧
+*** PL/SQLパッケージ
+**** DBMS_ADVISOR
+- 
+  データベース・サーバー・コンポーネントに関するパフォーマンス問題を特定および解決する一連のエキスパート・システムであるアドバイザのサーバー管理スイートに含まれる。
+- 
+  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_advis.htm#CIHIGAED
+
+**** DBMS_SQLTUNE
+- 
+  オンデマンドでSQLをチューニングするためのインターフェース。
+
+- 
+  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_sqltun.htm#CHDGAJCI
+
+**** DBMS_ROWID
+- ROWIDに関する情報を取得できる。
+  https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/d_rowid.htm
+**** TimesTen
+***** UTL_RECOMP
+- 
+****** RECOMP_PARALLELプロシージャ
+- 
+  特定のスキーマ内の無効なオブジェクトまたはデータベース内のすべての無効なオブジェクトを、パラレルに再コンパイルする。
+  TimesTenでパラレル実行される再コンパイル・スレッドの数は常に1つなので、SERIALとの違いは事実上ない。
+****** RECOMP_SERIALプロシージャ
+- 
+  特定のスキーマ内またはデータベース内の無効なオブジェクトを再コンパイルする。
+
 ** Interface
 *** SQL*Plus
 - 
@@ -1023,6 +1267,91 @@
 - 
   http://www.oracle.com/technetwork/jp/developer-tools/sql-developer/downloads/index.html
 
+*** Oracle Data Pump
+**** About
+- 
+  10gより導入された。
+  従来のエクスポート/インポート(exp/impコマンド)と目的は同じく論理バックアップの取得で、データベース間のデータ移動を可能とする。
+  従来のexp/impは基本的にユーティリティ側で処理されるが、Data Pumpはデータベースサーバー側でジョブとして管理・処理され、
+  「パフォーマンス向上」と「管理性の向上」が得られる。
+
+**** Architecture
+- 
+  1) コマンドライン・クライアント expdp/impdp
+  2) PL/SQLパッケージ DBMS_DATAPUMP (Data Pump API)
+  3) PL/SQLパッケージ DBMS_METADATA (メタデータAPI)
+
+**** 利用例
+- 
+  - 事前準備
+    - Directoryの作成
+      create or replace directory TEST_DIR as '/home/test';
+    - Directoryの権限付与
+      grant read, write on directory TEST_DIR to SCOTT;
+  - EXPDP
+    ex) expdp scott/tiger directory=test_dir tables=emp
+  - IMPDP
+    ex) impdp scott/tiger directory=test_dir dumpfile=exp.dmp tables=emp
+        impdp scott/tiger directory=test_dir dumpfile=exp.dmp sqlfile=ddl.sql
+
+**** Options
+***** MODE
+****** FULL 全体エクスポート・モード
+- FULL=Yでデータベース全体を指定
+****** SCHEMAS スキーマ・モード
+- スキーマ名を指定
+****** TABLESPACES 表領域モード
+- 表領域名を指定
+****** TABLES 表モード
+- テーブル名を指定
+****** TRANSPORT トランスポータブル表領域モード
+***** FILTER
+****** Data filter
+- 
+  Use "QUERY" or "SAMPLE" parameter.
+
+****** Metadata filter
+- 
+  Use "EXCLUDE" or "INCLUDE" parameter.
+
+***** Export
+****** ESTIMATE_ONLY
+- ESTIMATE_ONLY=yで、領域の見積もりのみ実施
+***** Import
+****** SQLFILE
+- SQL DDLの書き込み先ファイルを指定する。import。
+***** Both
+****** CONTENT
+- CONTENT=ata_only
+  表のデータのみ
+- CONTENT=metadata_only
+  表の定義のみ
+- CONTENT=all(default)
+  表のデータと定義の両方
+****** DUMPFILE
+- ダンプファイル名を指定する。デフォルトは"EXPDAT.DMP"
+****** EXCLUDE
+- default : null
+  一部のオブジェクトを除く。
+
+- object_type
+  以下で有効な値を確認可能。
+  - 全体モード : DATABASE_EXPORT_OBJECTS
+  - スキーマモード : SCHEMA_EXPORT_OBJECTS
+  - 表および表領域モード : TABLE_EXPORT_OBJECTS
+  
+****** INCLUDE
+- default : 
+****** LOGFILE
+- ログファイル名を指定する。デフォルトは"export.log","import.log"
+****** NOLOGFILE
+- NOLOGFILE=yでログファイルの出力を行わない
+**** Link
+- 
+  [[http://otndnld.oracle.co.jp/products/database/oracle11g/pdf/datapump11g2007_quickstart.pdf][Oracle Data Pump クイック・スタート - Oracle ホワイト・ペーパー]]
+  [[https://blogs.oracle.com/oracle4engineer/entry/data_pumpexpdpimpdp][Data Pump(expdp/impdp)の使い方～エクスポート／インポート、データ移動、論理バックアップ - オラクルエンジニア通信]]
+  [[http://docs.oracle.com/cd/E16338_01/server.112/b56303/part_dp.htm][Oracle Data Pump - Oracle® Databaseユーティリティ 11gリリース2 (11.2)]]
+
 ** Error
 *** ORA-00942
 - 該当の表またはビューが存在しない場合や、表やビューに対するアクセス権限が不足している場合に発生する。
@@ -1138,6 +1467,29 @@
   削除コマンドは存在しないので、空文字で上書きすることとなる。
   COMMENT ON COLUMN table.column is '';
 
+*** 出力行を抑制する
+- 
+  rownum擬似列を利用する。
+  where rownum = 1とすると、1行のみ出力できる。行頭を見たい場合に利用している。
+  where rownum < 11など、使い道
+  
+*** 明示カーソルと暗黙カーソル、カーソルFOR LOOP
+- [[http://www.shift-the-oracle.com/plsql/cursor-loop.html][明示カーソルと暗黙カーソル - SHIFT the Oracle]]
+- [[http://www.istudy.ne.jp/training/serial/plsql/010.html][第10回 「カーソルFORループ文」 - PL/SQLを使ってみよう！ iStudy]]
+
+*** ProcedureとFunctionの違い
+- 
+  戻り値(RETURN句)の有無。
+  ファンクションはプロシージャと異なり、SELECT expr FROM..のような形で含められる。
+
+*** デフォルトパスワード
+- 
+  SYS : CHANGE_ON_INSTALL
+  SYSTEM : MANAGER
+
+- 
+  [[http://otndnld.oracle.co.jp/document/products/oracle11g/111/doc_dvd/server.111/E05760-03/dba.htm#403635][DBAのセキュリティと権限の概要 - Oracle Database 管理者ガイド 11gリリース1（11.1）]]
+
 ** Glossary
 *** Oracle ASM
 - Oracle Automatic Storage Management
@@ -1159,12 +1511,24 @@
   1ユーザは1スキーマを必ず所有し、デフォルトで自動的にユーザ名と同じスキーマ名が割り当てられる。
   ユーザなしのスキーマ、スキーマなしのユーザは作成できない。
   
-*** シノニム
+*** SYNONYM シノニム
 *** TNS
 - Transparent Network Substrate
   データベースの接続や複数ノード間のメッセージのやり取りを単一の共通インターフェースで提供している技術。
   Oracle Net Foundationレイヤーに組み込まれている。
   
+*** DIRECTORY ディレクトリ
+- 
+  コンピュータの物理的なディレクトリをSQLやPL/SQLに直接指定することがないように、Oracle城で別名を付けて管理する。
+  物理ディレクトリを変更したくなった場合に、SQLやPL/SQLを変更しなくても済む。
+  [[http://q.hatena.ne.jp/1093325780][Oracleのディレクトリオブジェクトは何のために存在していますか。どのようなときにどう使うと便利なのですか？ - 人力検索はてな]]
+
+*** 引用識別子/非引用識別子
+- 
+  非引用識別子は大/小文字が区別されず、すべて大文字として解析される。
+  引用識別子は大/小文字が区別される。
+  [[http://otndnld.oracle.co.jp/document/products/oracle11g/111/doc_dvd/server.111/E05750-03/sql_elements.htm#57456][スキーマオブジェクト名および修飾子 - Oracle Database SQL言語リファレンス 11g リリース1（11.1）]]
+
 ** Link
 *** Install
 - [[http://docs.oracle.com/cd/E16338_01/install.112/b56277/toc.htm][Oracle® Databaseクイック・インストレーション・ガイド 11gリリース2 (11.2) for Linux x86-64]]
@@ -1178,6 +1542,7 @@
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/toc.htm][SQL*Plus®ユーザーズ・ガイドおよびリファレンスリリース11.2]]
   
 *** PL/SQL
+- [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56260/toc.htm][Oracle® Database PL/SQL言語リファレンス 11gリリース2 (11.2)]]
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/toc.htm][Oracle® Database PL/SQLパッケージおよびタイプ・リファレンス 11g リリース2(11.2)]]
 *** Reference
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/toc.htm][Oracle® Databaseリファレンス 11gリリース2 (11.2)]]

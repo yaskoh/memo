@@ -46,11 +46,20 @@
 *** IF
 - 
   
+*** INDEX
+- INDEX(array,row_num,[column_num])
+- INDEX(reference,row_num,[column_num],[area_num])
+
 *** LEN
 - 
   セルの文字数を数える。
   [[https://support.office.com/ja-jp/article/%E3%82%BB%E3%83%AB%E5%86%85%E3%81%AE%E6%96%87%E5%AD%97%E6%95%B0%E3%82%92%E6%95%B0%E3%81%88%E3%82%8B-1be151d7-5b8f-4186-87b9-7b0318583163][セル内の文字数を数える - Office]]
 
+*** LOWER
+- LOWER(文字列)
+  文字を小文字に変換する
+*** MATCH
+- 
 *** MID
 - 書式
   MID(文字列、開始位置、文字数）
@@ -58,6 +67,9 @@
 - 
   "文字列"の"開始位置"から"文字数"分だけ文字を取得する。
 
+*** PROPER
+- PROPER(文字列)
+  先頭の文字、および記号の次の文字を大文字に変換、その他を小文字とする。
 *** SUBSTITUTE
 - 書式
   SUBSTITUTE(対象文字列、検索文字、置き換え文字、[置換対象])
@@ -67,6 +79,9 @@
   "置換対象"は、複数の検索文字がヒットする場合、左から何番目を置き換えるか指定する。
 
 *** SUM
+*** UPPER
+- UPPER(文字列)
+  文字を大文字に変換する
 *** VLOOKUP
 - VLOOKUP(検索値,範囲,列番号[,検索方法])
   
@@ -115,6 +130,7 @@
 
 *** オートフィルタ設定解除(Alt,D,F,S)
 *** 右クリックメニューを出す(Shift+F10)
+*** ワークシート名の変更(Alt,O,H,R)
 *** Link
 - [[http://matome.naver.jp/odai/2134702837577488501][Excelで役立つ10のショートカットキー]]
 
@@ -171,3 +187,38 @@
 - 
   カーソルキーで画面がスクロールしてしまう場合は、Scroll Lockとなっている。
 
+*** 数式を使って数字として扱う方法
+- 
+  =数式*1とすると、文字列が数字に変換される。
+  [[https://love-guava.com/excel-string-numerical-value-change/][Excel（エクセル）で文字列と数値を変換する方法。知っとくと地味に便利ですよ！ - ラブグアバ]]
+*** 再計算を自動で行わない
+- 
+  数式->計算方法の設定->手動、を選択。
+  Select FORMULAS->Calculation Options->Manual
+  [[http://ameblo.jp/sugoikaizen/entry-12031805139.html][Excelがいちいち再計算で止まってしまう現象を止める方法 - エクセルセミナー研修のすごい改善～Excel社員研修と業務効率化]]
+
+*** 高速vlookup
+- 
+  大体以下のような感じ。
+  =IF(INDEX(Sheet1!$A$2:$A$200001,MATCH($A2,Sheet1!$A$2:$A$200001,1),1)=$A2,VLOOKUP($A2,Sheet1!$A$2:$B$200001,2,TRUE),NA())
+  INDEX,MATCHをTRUEで近似値で行い、それが元値と一致した場合のみvlookupで近似値計算。
+  近似値計算の方が早いため。ただし対象を昇順に並べておく必要あり。
+  別にINDEX, MATCHを二回やってもよいと思われる。
+
+  [[http://excel-ubara.com/excel3/EXCEL019.html][【奥義】大量データでの高速VLOOKUP - エクセルの神髄]]
+
+*** シート名の変更
+- ショートカット : Alt,O,H,R
+- シートをダブルクリック
+*** ワークシートの再表示(unhide)
+- 
+  基本的に大したショートカットもない。
+  Alt->H->O->U->Hでメニューバーをたどることはできる。
+  （Home, Format, Hide & Unhide, Unhide sheet)
+
+- 一括再表示
+  VBAを使うし。
+  - 例)
+    For Each Sh In ActiveWorkbook.Sheets
+        Sh.Visible = True
+    Next Sh

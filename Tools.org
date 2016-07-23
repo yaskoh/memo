@@ -16,11 +16,14 @@
 - 
   [[file:./Compiler.org][Compiler.org]]
 
+** Shell
+*** GNU Readline
+- キーバインドを設定する。
+  デフォルト設定ファイルは~/.inputrc。
 ** Lexical Analyzer
 *** lex/flex
 - 
   [[file:./Compiler.org][Compiler.org]]
-
 
 ** Database
 *** HeidiSQL

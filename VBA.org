@@ -1,18 +1,147 @@
 * VBA
 ** Language
 - [[https://msdn.microsoft.com/en-us/library/office/gg264383.aspx][Visual Basic for Applications language reference for Office 2013 - Dev Center]]
+- [[https://msdn.microsoft.com/ja-jp/library/office/gg264383.aspx][Office VBA 言語リファレンス - Dev Center]]
 
-** Applications
-*** Excel
-**** About
-***** Object Model
-- 
-  主なものは、Application、Workbook、Worksheet、Range。
+*** Constants
+*** DataType
+**** Byte
+**** Boolean
+**** Integer
+**** Long
+**** LongLong
+**** LongPtr
+**** Single
+**** Double
+**** Currency
+**** Decimal
+**** Data
+**** Object
+**** String(可変長)
+**** String(固定長)
+**** Variant(数値)
+**** Variant(文字)
+*** Directive
+**** #Const
+**** #If...Then...#Else
   
-**** Statement
-- [[http://officetanaka.net/excel/vba/statement/index.htm][VBAのステートメント - officeTANAKA]]
+*** Functions / 関数
+- [[http://officetanaka.net/excel/vba/function/index.htm][VBAの関数 - officeTANAKA]]
+  （Application毎に違いがあれば移行する）
 
-***** Call
+**** MsgBox
+- MsgBox(prompt [,bottuns] [,title] [,helpfile,context])
+  - prompt : 表示するメッセージを指定
+  - button : ボタンの種類やタイプなどを指定する
+  - title : タイトルバーに表示する文字列を指定する。
+  - helpfile : [ヘルプ]ボタンから開くヘルプファイルを指定する。
+- 
+  ダイアログボックスにメッセージとボタンを表示し、どのボタンが押されたかを示す整数型の数値を返す。
+
+***** buttons
+- 
+  |--------------------+------+----------------------------------------------------------------------------------------------------------------------------|
+  | 定数               |   値 | 内容                                                                                                                       |
+  |--------------------+------+----------------------------------------------------------------------------------------------------------------------------|
+  | vbOKOnly           |    0 | [OK]ボタンのみを表示します                                                                                                 |
+  | vbOKCancel         |    1 | [OK]ボタンと[キャンセル]ボタンを表示します                                                                                 |
+  | vbAbortRetryIgnore |    2 | [中止]、[再試行]、および[無視]の３つのボタンを表示します                                                                   |
+  | vbYesNoCancel      |    3 | [はい]、[いいえ]、および[キャンセル]の３つのボタンを表示します                                                             |
+  | vbYesNo            |    4 | [はい]ボタンと[いいえ]ボタンを表示します                                                                                   |
+  | vbRetryCancel      |    5 | [再試行]ボタンと[キャンセル]ボタンを表示します                                                                             |
+  | vbCritical         |   16 | 警告メッセージアイコンを表示します                                                                                         |
+  | vbQuestion         |   32 | 問い合わせメッセージアイコンを表示します                                                                                   |
+  | vbExclamation      |   48 | 注意メッセージアイコンを表示します                                                                                         |
+  | vbInformation      |   64 | 情報メッセージアイコンを表示します                                                                                         |
+  | vbDefaultButton1   |    0 | 第1ボタンを標準ボタンにします                                                                                              |
+  | vbDefaultButton2   |  256 | 第2ボタンを標準ボタンにします                                                                                              |
+  | vbDefaultButton3   |  512 | 第3ボタンを標準ボタンにします                                                                                              |
+  | vbDefaultButton4   |  768 | 第4ボタンを標準ボタンにします                                                                                              |
+  | vbApplicationModal |    0 | アプリケーションモーダルに設定します。メッセージボックスに応答するまで、現在選択中のアプリケーションの実行を継続できません |
+  | vbSystemModal      | 4096 | システムモーダルに設定します。メッセージボックスに応答するまで、すべてのアプリケーションが中断されます                     |
+  |--------------------+------+----------------------------------------------------------------------------------------------------------------------------|
+
+***** return value
+- 
+  |----------+----+------------------------------|
+  | 定数     | 値 | 説明                         |
+  |----------+----+------------------------------|
+  | vbOK     |  1 | [OK]ボタンが押された         |
+  | vbCancel |  2 | [キャンセル]ボタンが押された |
+  | vbAbort  |  3 | [中止]ボタンが押された       |
+  | vbRetry  |  4 | [再試行]ボタンが押された     |
+  | vbIgnore |  5 | [無視]ボタンが押された       |
+  | vbYes    |  6 | [はい]ボタンが押された       |
+  | vbNo     |  7 | [いいえ]ボタンが押された     |
+  |----------+----+------------------------------|
+
+**** Right
+- Right(string,length)
+  - string : 元の文字列
+  - length : 抜き出す文字数
+
+- 
+  string文字列の右端から、length分文字列を取得し返す。
+
+**** Mid
+- 
+
+**** StrConv
+- 用法
+  StrConv(string, conversion)
+
+- conversion
+  |--------------+----+----------------------------|
+  | 定数         | 値 | 内容                       |
+  |--------------+----+----------------------------|
+  | vpUpperCase  |  1 | 大文字に変換               |
+  | vbLowerCase  |  2 | 小文字に変換               |
+  | vbProperCase |  3 | 各文字の先頭を大文字に変換 |
+  | vbWide       |  4 | 半角文字を全角に変換       |
+  | vbNarrow     |  8 | 全角文字を半角に変換       |
+  |--------------+----+----------------------------|
+  
+- 
+  "string"で指定した文字列に、conversionで指定した変換を行う。
+*** Objects
+*** Operators
+**** 算術演算子
+***** ^
+***** *
+***** /
+***** \
+***** Mod
+***** +
+***** -
+**** 比較演算子
+***** ComparisonOperator
+****** <
+****** <=
+****** >
+****** >=
+****** =
+****** <>
+***** Is
+***** Like
+**** 連結演算子
+***** &
+***** +
+**** 論理演算子
+***** AND
+***** Eqv
+***** Imp
+***** Not
+***** OR
+***** Xor
+**** =
+- 代入演算子
+**** AddressOf
+- 指定されたプロシージャのアドレスを渡す単項演算子。
+*** Properties
+*** Statements
+- [[https://msdn.microsoft.com/ja-jp/library/office/jj692812.aspx][ステートメント - Visual Basic 言語リファレンス - Dev Center]]
+
+**** Call
 - 
   他のSubプロシージャやFunctionプロシージャなどを呼び出して制御を渡す。
 
@@ -31,116 +160,145 @@
      ex) ×:rc = myFunction 123
          ○:rc = myFunction(123)
 
-***** Dim
+**** Dim
 - 
   変数を宣言する
 
-***** End
+**** Do ... Loop
+- About
+  条件がTrueの間、一連のステートメントを繰り返し実行する。
+
+- Statement
+  - Do [{While | Until} condition]
+    [statements]
+    [Exit Do]
+    [statements]
+    Loop
+  - Do
+    [statements]
+    [Exit Do]
+    [statements]
+    Loop [{While | Until} condition]
+
+**** End
 - 
   プロシージャまたはブロックを終了する
 
-***** For Each ... Next
+**** For Each ... Next
 - 
   コレクションや配列の各要素に対してstatementsを実行する。
 
-***** For ... Next
-- 
-  引数startで指定した値から、引数endえ指定した値までstatementを繰り返す
+**** For ... Next
+- About
+  引数startで指定した値から、引数endで指定した値までstatementを繰り返す
 
-***** Function
+- Statement
+  For counter = start To end [Step step]
+  [statements]
+  [Exit For]
+  [statements]
+  Next [counter]
+  
+**** Function
 - 
   Functionプロシージャ（戻り値あり）を作成する
 
-***** If ... Then ... Else
+**** If ... Then ... Else
 - 
   条件を評価して、条件付きの実行を行うステートメント
+  If ... Thenで始まり、End Ifで終わる。
+  ElseIf, Elseも使用可能。
 
-***** Private
+- 例
+    If a < 5 Then
+        MsgBox a & "は５より小さい"
+    ElseIf a = 5 Then
+        MsgBox a & "は５です"
+    Else
+        MsgBox a & "は５より大きい"
+    End If
+
+**** Private
 - 
   プライベート変数を宣言する。プライベート変数は、宣言されたモジュール内のみ参照できる。
 
-***** Sub
+**** Sub
 - 
   Subプロシージャを作成する。
 
-***** With
+**** With
 - 
-  
-**** Functions / 関数
-- [[http://officetanaka.net/excel/vba/function/index.htm][VBAの関数 - officeTANAKA]]
 
-***** Mid
+** Applications
+*** Excel
+**** About
+***** Object Model
 - 
+  主なものは、Application、Workbook、Worksheet、Range。
   
-
-***** StrConv
-- 用法
-  StrConv(string, conversion)
-
-- conversion
-  |--------------+----+----------------------------|
-  | 定数         | 値 | 内容                       |
-  |--------------+----+----------------------------|
-  | vpUpperCase  |  1 | 大文字に変換               |
-  | vbLowerCase  |  2 | 小文字に変換               |
-  | vbProperCase |  3 | 各文字の先頭を大文字に変換 |
-  | vbWide       |  4 | 半角文字を全角に変換       |
-  | vbNarrow     |  8 | 全角文字を半角に変換       |
-  |--------------+----+----------------------------|
-  
-- 
-  "string"で指定した文字列に、conversionで指定した変換を行う。
-
 **** Property
 ***** Format
 ***** Value
 **** Object
+- [[https://msdn.microsoft.com/ja-jp/library/ff194068.aspx][オブジェクトモデル (Excel VBA リファレンス)]]
 - [[http://www.vba-ie.net/object/index.html][ExcelのVBAで利用したオブジェクト一覧 - VBAのIE制御入門]]
 
 ***** Application
 - 
   Excelアプリケーション全体を表す。
 
+***** ListObject
+****** Member
+******* Method
+******* Property
+******** Name
+- ListObjectオブジェクトの名前を表す文字列の値を取得または設定する。
+***** ListObjects
+***** Range
+- セル、行、列、1つ以上のセル範囲を含む選択範囲、または3-D範囲を表す。
+****** Member
+- [[https://msdn.microsoft.com/ja-jp/library/ff197454.aspx][Rangeメンバー(Excel) - Developer Network]]
+
+******* Method
+******** Insert
+- 
+  ワークシートまたはマクロシートの指定された範囲に、空白のセルまたはセル範囲を挿入する。
+  指定された範囲にあったセルはシフトされる。
+
+******* Property
+******** Text
+- 
+  オブジェクトのテキストを取得または設定する。値の取得のみ可能。文字列型を使用する。
+
+******** Value
+- Value(RangeValueDataType)
+  指定されたセル範囲の値を表すバリアント型(Variant)の値を設定する。値の取得および設定が可能。
+
 ***** Workbook
 
 ***** Workbooks(Collection)
 
 ***** Worksheet
+****** Member
+******* Event
+******* Method
+******* Property
+******** Cells
+- Cells
+  ワークシートのすべてのセルを表すRangeオブジェクトを返す。
+******** Columns
+- 
+  作業中のワークシートのすべての列を表すRangeオブジェクトを返す。
+  
+******** ListObjects
+- ListObjects
+  ワークシート内に複数あるListObjectオブジェクトから成る1つのコレクションを返す。
+******** Range
+- Range(Cell1, Cell2)
+  セルまたはセル範囲を表すRangneオブジェクトを返す。
 
 ***** Worksheets(Collection)
 
-***** Range
-
-***** ByValとByRef
-- 
-  何もつけない場合、ByRef(参照渡し)として定義されている。
-  値渡しをしたい場合は明示的にByVal、としなくてはならない。
-  出来る限りつけておくのが良い。
-
-***** subとfunction
-- 
-  functionは戻り値を返す。subはsubroutineの略で戻り値は返さない。
-
-***** 複数の値をプロシージャに渡す
-- 
-  複数の値を引数として渡す場合は、以下のどちらかの対応が必要。
-  - Callステートメントをつける
-  - 括弧を除いて平文で渡す
-  
-  括弧は、引数の演算処理のためのものなので、複数引数には対応していない、とのこと。
-  ちなみに以下は正常となる。
-  ex) MsgBox ("お元気ですか？"+"これでよろしいですか？"), vbOKOnly
-  - [[http://www.atmarkit.co.jp/ait/articles/1503/17/news039.html][コンパイルエラーにならない関数の使い方 - @IT]]
-  
-***** 代入
-- 
-  オブジェクトに値を代入するときは、Set A = B、という形で"Set"が必要。
-  値であれば、A = Bとすると代入できる。
-
-***** GUIDの作成
-- 
-  Mid$(CreateObject("Scriptlet.TypeLib").GUID, 2, 36)
-  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBAでGUIDを作成する]]
 
 *** Powerpoint
 **** Object Model
@@ -248,3 +406,46 @@
 
 *** Outlook
 ** Memo
+*** ByValとByRef
+- 
+  何もつけない場合、ByRef(参照渡し)として定義されている。
+  値渡しをしたい場合は明示的にByVal、としなくてはならない。
+  出来る限りつけておくのが良い。
+
+*** subとfunction
+- 
+  functionは戻り値を返す。subはsubroutineの略で戻り値は返さない。
+
+*** 複数の値をプロシージャに渡す
+- 
+  複数の値を引数として渡す場合は、以下のどちらかの対応が必要。
+  - Callステートメントをつける
+  - 括弧を除いて平文で渡す
+  
+  括弧は、引数の演算処理のためのものなので、複数引数には対応していない、とのこと。
+  ちなみに以下は正常となる。
+  ex) MsgBox ("お元気ですか？"+"これでよろしいですか？"), vbOKOnly
+  - [[http://www.atmarkit.co.jp/ait/articles/1503/17/news039.html][コンパイルエラーにならない関数の使い方 - @IT]]
+  
+*** 代入
+- 
+  オブジェクトに値を代入するときは、Set A = B、という形で"Set"が必要。
+  値であれば、A = Bとすると代入できる。
+
+*** GUIDの作成
+- 
+  Mid$(CreateObject("Scriptlet.TypeLib").GUID, 2, 36)
+  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBAでGUIDを作成する]]
+
+
+*** 配列
+- 
+  変数名の後に括弧()を付けると配列として扱うことができる。
+
+  要素数を指定しないで動的配列として扱うこともできるが、
+  要素数が決まらない場合は要素にアクセスが出来ない。
+  ReDimを行い要素数を確定させるが、その際に要素のデータは削除されてしまう。
+  Preserveキーワードを付けると、格納さえれているデータを保持したまま配列の要素数を再定義可能。
+  [[http://officetanaka.net/excel/vba/variable/08.htm][動的配列 - Office TANAKA]]
+  
+

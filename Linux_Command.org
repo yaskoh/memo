@@ -408,6 +408,24 @@
 - quit, q
   gdbの終了する
 
+*** glob
+- 
+  パス名をglobする
+
+- Wildcard match
+  - ? : あらゆる単一の文字にマッチする。
+  - * : あらゆる文字列にマッチする。空も次にもマッチする。
+  - 文字クラス
+    - "[...]"
+      続く最初の文字が"!"以外であれば、ブラケット内のいずれかの文字にマッチする。
+      最初の文字が"!"であれば補集合となる。
+      - "]" : ブラケットの直後に置くことで、指定文字に含まれる
+      - "-" : 範囲指定。ブラケット内最初か最後に置くことで、指定文字に含む。
+- pathname
+  '/'は'?'や'*'にはマッチせず、陽に'/'文字を含むことはできない。
+  
+      
+
 *** global
 - 説明
   ソースコードの関数定義等に素早くアクセスできるようにする。
@@ -543,11 +561,30 @@
   Report Central Processing Unit(CPU) statistics and input/output statistics for devices,
   paritions and network filesystems.
 
+- [interval]
+  set interval to show
+
+- -n
+  Display the network filesystem (NFS) report.
+
 - -x
   Display extended statistics.
 
-- [interval]
-  set interval to show
+
+**** Status
+
+***** -x
+- rrpm/s : マージされた読み込みIO要求。この値が大きいほどディスクの性能を引き出せている。
+- wrpm/s : マージされた書き込みIO要求。この値が大きいほどディスクの性能を引き出せている。
+- r/s : 秒間読み込みIO要求回数。この数値が大きいほど多くの要求をこなしている。低く保つようにすべき値。
+- w/s : 秒間書き込みIO要求回数。この数値が大きいほど多くの要求をこなしている。低く保つようにすべき値。
+- rsec/s : 読み込まれたセクタ数。IOによって実際に読み込まれたデータサイズで、真のディスク性能指標として考えられるべき値。
+- wsec/s : 書き込まれたセクタ数。IOによって実際に読み込まれたデータサイズで、真のディスク性能指標として考えられるべき値。
+- avgrq-sz : 一つの要求の平均セクタサイズ。
+- avgqu-sz : IOキューの長さの平均。
+- await : 要求を発行する平均時間間隔。
+- svctm : 要求に対する平均レスポンスタイム。値が安定していることが非常に重要。サービスタイム。
+- %util : 使用率（ビジー率）
 
 *** ip
 - ip [ OPTIONS ] OBJECT { COMMAND | help }
@@ -649,6 +686,16 @@
 - +F
   display added lines like tail -f.
   Ctrl+F change mode to this mode from normal mode, and Ctrl-c 
+
+- mulit files
+  - :n
+    move next file
+  - :p
+    move previous file
+  - :x
+    move first file
+  - :d
+    remove current file on the list
   
 *** ldd
 - 
@@ -1211,7 +1258,10 @@
 *** source
 - 
   "source filename"で、filenameで指定されたスクリプトファイルを実行する。
-  ファイルの内容を、自分で手で打っていくのと同じ
+  ファイルの内容を、自分で手で打っていくのと同じ。
+  
+  子プロセスの変数を親プロセスで使う場合に利用することができる。
+
 
 *** split
 - 
@@ -1391,6 +1441,9 @@
 
   - STRING1 = STRING2
     the strings are equal
+
+  - STRING1 != STRING2
+    the strings are not equal
 
 - Integer
   - INTEGER1 -eq INTEGER2
@@ -1601,6 +1654,46 @@
   ex) root ALL=(ALL) ALL
 
 *** vmstat
+- vmstat (options) [interval [times]]
+  システム内の情報を表示するコマンド。
+
+- Options
+  - -f
+    fork数を表示する
+  - -n
+    ヘッダを一度だけ表示する
+  - -s
+    書く情報を詳しい上毛名と共に表示する
+  - -d
+    ディスクに関する統計を表示する
+  - -S 単位
+  
+**** Status
+***** オプションなし
+- procs : アクティブなプロセスに関する統計
+  - r : 実行待ち状態にあるプロセス数
+  - b : 割り込み不可能なスリープ状態にあるプロセス数
+  - w : スワップアウトされており、実行可能なプロセス数
+- memory : メモリーの使用量と仕様可能量に関するデータ
+  - swpd : 仮想メモリ―量
+  - free : 空きメモリ―量(Kバイト)
+  - buff : バッファとして用いられているメモリー量(Kバイト)
+  - cache
+- swap : スワップに関する統計
+  - si : ディスクからスワップインしているメモリー量(Kバイト/秒)
+  - so : ディスクにスワップしているメモリー量(Kバイト/秒)
+- iO : デバイスとの転送量
+  - bi : ブロック・デバイスから受け取ったブロック数(ブロック/秒)
+  - bo : ブロック・デバイスから送られたブロック数(ブロック/秒)
+- system : システム全体の割り込みおよびコンテキストの切替レート
+  - in : 毎秒の割り込み回数
+  - cs : 毎秒のコンテキスト・スイッチ回数
+- cpu : CPUの使用量の割合
+  - us : ユーザー時間
+  - sy : システム時間
+  - id : アイドル時間
+  - wa : IO待ち時間
+
 *** w
 - 
   ログインユーザ名とその利用状況を表示する。

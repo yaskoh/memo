@@ -41,6 +41,10 @@
   疑わしいことに警告を出す。
   実際には、内部の$^W変数を有効にするだけ。
   
+*** -0
+- -0[digits]
+  入力レコードセパレータ($/)を8進数で示す。digitsを指定しないとヌル文字がセパレータとなる。
+  
 *** Link
 - [[http://perldoc.jp/docs/perl/5.6.1/perlrun.pod][perlrun]]
 - [[http://blog.layer8.sh/ja/2012/04/16/35881/][Perlコマンド実行時のオプション一覧 - LAYER8]]
@@ -296,17 +300,25 @@
 ***** m
 - 
   Treat string as multiple lines. 
-  That is, change"^" and "$" from matching the start of the string's first line and the end of its last line to matching the start and end of each line within the string.
+  That is, change "^" and "$" from matching the start of the string's first line and the end of its last line
+  to matching the start and end of each line within the string.
+
+- 
+  マルチラインモード。実際に行うのは、^と$を入力の最初と最後にマッチさせるよう変更させるのみ。
 
 ***** s
 - 
   Treat string as single line.
   That is, change "." to match any character whatsoever, even a newline, which normally it would not match.
 
+- 
+  シングルラインモード。.(dot)を改行にもマッチさせるように変更する。
+
 ***** i
 - 
   Do case-insensitive paattern matching.
   大文字と小文字を区別しない。
+
 ***** x
 - 
   フリーフォームの正規表現。
@@ -330,6 +342,7 @@
 ***** p
 - 
   Preserve the string matched such that ${^PREMATCH}, ${^MATCH}, and ${^POSTMATCH} are available for use after matching.
+
 ***** n
 - 
   Prevent the grouping metahcaracters () from capturing.
@@ -384,6 +397,13 @@
   all versions available.
   evaluate when executing
   
+*** 複数行に渡る置換
+- 
+  1. Option -0
+     本来一行ずつ読み込むところ、セパレータをnullに変更してファイル全体で読み込み処理をする。
+  2. modifire s(single line mode, '/s')
+     .を改行文字にもマッチさせるように変更する。.*などで改行にもマッチするようになる。
+     
 ** DocMemo
 *** perlintro memo
 - http://perldoc.perl.org/perlintro.html

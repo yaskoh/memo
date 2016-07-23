@@ -1,12 +1,557 @@
 * Python
+** Tutorial
+
 ** Language
+*** Parser
+**** line structure
+***** logical line
+***** physical line
+***** Comments
+- 
+  ハッシュ"#"から始まり、同じ物理行の末端で終わる。
+***** encoding declaration
+***** 明示的な行継続
+***** 非明示的な行継続
+***** 空行
+***** インデント
+***** トークン間の空白
+**** Token
+**** Identifier
+**** Keyword
+**** Literal
+***** Strings literal
+***** Concatenation
+***** Number literal
+***** Integer literal
+***** float literal
+***** imaginary literal
+***** operator
+***** delimiter
+*** Data model
+**** Object, Value, Type
+**** Layer
+**** Method name
+**** Co-routine
+*** Exec model
+**** Program Structure
+**** Naming and binding
+**** Exceptions
+*** Import System
+**** importlib
+**** Package
+**** Search
+**** Load
+**** path based finder
+*** Expression
+**** Arithmetic conversion
+**** Atom
+**** Primary
+**** Awati expression
+**** power operator
+**** unary arithmetic and bitwise operation
+**** binary arithmetic operation
+**** shifting operation
+**** binary bitwise operation
+**** comparing
+**** boolean operaiton
+**** Conditional Expressions
+**** lambda
+**** list of expressions
+**** evaluate order
+**** primarity of operand
+*** Simple statement
+**** expression statement 式文
+**** assignment statement
+**** assert
+**** pass
+**** del
+**** return
+**** yield
+**** raise
+**** break
+**** continue
+**** import
+- 
+  import          ::= "import" module ["as" name] ( "," module ["as" name] )*
+                      | "from" relative_module "import" identifier ["as" name]
+                      ( "," identifier ["as" name] )*
+                      | "from" relative_module "import" "(" identifier ["as" name]
+                      ( "," identifier ["as" name] )* ["," ")"
+                      | "from" module "import" "*"
+  module          ::= (identifier ".")* identifier
+  relative_module ::= "."* module
+  name            ::= identifier
+
+- 基本の実行ステップ
+  1. モジュールを見つけ出し、必要であればロードし初期化する
+  2. import文が現れるスコープのローカル名前空間で名前を定義する。
+
+- from形式での手順
+  1. from節で指定されたモジュールを見つけ出し、必要であればロードし初期化する
+  2. import節で指定されたそれぞれの識別子に対し以下の処理を行う
+     1. インポートされたモジュールがその識別子名の属性を持っているかを確認する
+     2. 持っていなかった場合はその識別子名でサブモジュールのインポートを試み、再度その属性がインポートされたモジュールにあるか確認する
+     3. 属性が見つからない場合はImportErrorを送出
+     4. 属性が見つかった場合は、as節があるならそこの名前、そうでないなら属性名を使って、その値への参照がローカル名前空間に保存される
+
+**** global
+**** nonlocal
+*** Compound statement
+**** if
+**** while
+**** for
+**** try
+- 
+  try_stmt  ::= try1_stmt | try2_stmt
+  try1_stmt ::= "try" ":" suite
+                ("except" [expression ["as" identifier]] ":" suite) +
+                ["else" ":" suite]
+                ["finally" ":" suite]
+  try2_stmt ::= "try" ":" suite
+                "finally" ":" suite
+**** with
+**** function defenition
+- 
+  funcdef        ::=
+  decorators     ::=
+  decorator      ::=
+  dotted_name    ::=
+  parameter_list ::= 
+  parameter      ::=
+  defparameter   ::=
+  funcname       ::=
+
+- 
+  ユーザ定義関数オブジェクトを定義する、実行可能な分。
+  関数定義を実行すると、現在のローカルな名前空間で関数名を関数オブジェクトに束縛する。
+  
+**** class defenition
+- 
+  classdef    ::=
+  inheritance ::=
+  classname   ::=
+
+- 
+  クラスオブジェクトを定義する、実行可能な文。
+  
+
+**** co-routine
+*** Top Level
 ** Library
+*** Standard Library
+**** built-in
+***** Function
+****** abs()
+****** all()
+****** any()
+****** open()
+- open(name[, mode[, buffering]]
+  ファイルを開いて、fileオブジェクトを返す。開けない場合IOErrorが送出される。
+  nameは開きたい名前で、modeはファイルをどのようにして開くかを指定する。
+
+  - mode
+    - r
+    - w
+    - a : 追加書き込み
+    - b : バイナリファイルを開く場合
+    - r+
+    - w+
+    - a+
+****** print()
+- print(*objects, sep='', end='\n', file=sys.stdout)
+  object(複数でも可)をsepで区切りながらストリームfileに表示し、最後にendを表示する。
+  sep, end, fileが与えられる場合、キーワード変数として与えられる必要がある。
+
+***** Non-essential Function
+***** Constant
+***** Type
+****** Truth Value Testing
+****** Boolean Operations
+****** Comparisons
+****** Numeric Types
+******* Bitwise Operations on Integer
+******* Aditional Methods on Integer
+******* Additional Methods on Float
+****** Iterator Types
+****** Sequence Types
+- str, unicode, list, tuple, bytearray, buffer, xrange
+******* String Method
+******** str.split()
+- str.split([sep[, maxsplit]])
+  sepを単語の境界として文字列を単語に分解し、分割された単語からなるリストを返す。
+  
+****** Set Types
+****** Mapping Types
+****** File Object
+- 
+  Cのstdioパッケージを使って実装されており、組み込み関数のopen()で生成することができる。
+  
+******* Methods
+******** file.close()
+******** file.flush()
+******** file.read()
+- file.read([size])
+  最大でsizeバイトをファイルから読み込む。
+  size引数が負であるか省略された場合、EFに到達するまでのすべてのデータを読み込む。
+******** file.readline()
+******** file.readlines()
+******** file.seek()
+- file.seek(offset[, whence])
+  ファイルの現在位置を設定する。
+
+- whence
+  - 0, os.SEEK_SET
+    絶対位置指定。デフォルト。
+  - 1, os.SEEK_CUR
+    現在のファイル位置から相対的にseekする
+  - 2, os.SEEK_END
+    ファイルの末端から相対的にseekする
+******** file.write()
+- file.write(str)
+  文字列をファイルに書き込む。戻り値はない。
+******** file.name
+- 
+  ファイルオブジェクトがopen()を使って生成された時のファイルの名前。
+******** file.mode
+- 
+  ファイルのI/Oモード。
+  Version 2.6で追加。
+****** memoryview type
+****** Context Manager Types
+****** Other Built-in Types
+******* Modules
+******* Classes, Class Instances
+******* Functions
+******* Methods
+******* Code Objects
+******* Type Objects
+******* The Null Object
+******* The Ellipsis Object
+******* Boolean Values
+******* Internal Objects
+***** Exception
+**** 文字列処理
+***** re
+- 正規表現操作
+  正規表現マッチング操作を提供
+****** Syntax
+****** Module Contents
+******* re.compile()
+- re.compile(pattern, flag=0)
+  正規表現パターンを正規表現オブジェクトにコンパイルする。
+
+******* re.search()
+- re.search(pattern, string, flags=0)
+  string全体を走査して、正規表現patternがマッチを発生する最初の位置を探して、対応するMatchObjectインスタンスを返す。
+  もし文字列内にマッチする位置がない場合Nneを返す。
+******* re.match()
+- re.mathch(pattern, string, flags=0)
+  stringの先頭で0個以上の文字が正規表現patternとマッチすれば、MatchObjectインスタンスを返す。
+****** re.RegexObject
+- class re.RegexObject
+******* Methods
+******** search()
+****** re.MatchObject
+******* Methods
+******** expand()
+- expand(template0
+
+******** start(), end()
+- start([group]), end([group])
+  groupとマッチした部分文字列の先頭と末尾のインデックスを返す。
+  マッチしたサブ文字列は"m.string[m.start(g):m.end(g)]"で
+***** difflib
+- 差分の計算を助ける
+
+****** class difflib.SequenceMatcher
+
+****** class difflib.Differ
+
+******* compare
+****** class difflib.HtmlDiff
+**** データ型
+**** 数値と数学モジュール
+**** ファイルとディレクトリへのアクセス
+***** glob
+- Unix形式のパス名のパターン展開
+****** glob
+- glob.glob(pathname)
+  pathnameにマッチする空の可能性のあるパス名のリストを返す。
+****** iglob
+- glob.iglob(pahtname)
+
+**** データの永続化
+**** データ圧縮とアーカイブ
+**** ファイルフォーマット
+**** 暗号関連のサービス
+**** 汎用オペレーティングシステムサービス
+***** os
+****** Process Parameters
+****** File Object Creation
+****** File Descriptor Operations
+****** Files and Directories
+******* os.chdir()
+- os.chdir(path)
+  現在の作業ディレクトリをpathに設定する。
+  環境 : Unix, Windows
+******* os.getcwd()
+- 
+  現在の作業ディレクトリを表す文字列を返す。
+  環境 : Unix, Windows
+******* os.listdir()
+- os.listdir(path)
+  pathで指定されたディレクトリ内のエントリ名が入ったリストを返す。
+  利用できる環境 : Unix, Windows
+****** Process Management
+****** Miscellaneaus System Information
+****** Miscellaneaus Function
+**** 並列実行
+***** subprocess
+- サブプロセス管理
+****** run()
+**** プロセス間通信とネットワーク
+**** インターネット上のデータの操作
+**** 構造化マークアップツール
+**** インターネットプロトコルとサポート
+***** urllib
+- URLを扱うモジュール群
+***** urllib.request
+- URLを開くための拡張可能なライブラリ
+  
+****** 関数
+******* urllib.request.urlopen(url,data=None, ...)
+******* urllib.request.install_opener(opener)
+******* urllib.request.build_opener([handler, ...[)
+***** urllib.response
+***** urllib.parse
+***** urllib.error
+- 
+  urllib.requestによってなげられる例外を定義している。基底クラスはURLError。
+
+
+****** exception urllib.error.URLError
+- 
+  ハンドらが何らかの問題に遭遇した場合、この例外（もしくは派生した例外）を創出する。
+  OSErrorのサブクラス。
+
+- reason
+  エラーの理由。メッセージ文字列あるいは他の例外インスタンス。
+
+****** exception urllib.error.HTTPError
+- 
+  例外であると同時に、例外ではないfile-likeな戻り値を返す関数(urlopen()の戻り値と同じ)。
+  URLErrorのサブクラス。
+- code
+  HTTPステータスコード。
+- reason
+  通常エラーの説明文
+- headers
+  HTTPErrorの原因となったHTTPリクエストのHTTPレスポンスヘッダ。
+
+**** マルチメディアサービス
+**** 国際化
+**** プログラムのフレームワーク
+**** Tkを用いたグラフィカルユーザインターフェース
+**** 開発ツール
+**** デバッグとプロファイル
+**** ソフトウェア・パッケージと配布
+**** Pythonランタイムサービス
+***** sys
+- システムパラメータと関数
+****** sys.argv
+- 
+  Pythonスクリプトに渡されたコマンドライン引数のリスト。
+  argv[0]はスクリプトの名前となるが、フルパスかどうかはOSによる。
+
+****** sys.stdin, sys.stdout sys.stderr
+- 
+  インタープリタの標準入力・標準出力・標準エラー出力に対応するファイルオブジェクト。
+  stdinはスクリプトの読み込みを除く全ての衆力処理で使用され、input()やraw_input()もstdinから読み込む。
+
+****** sys__stdin__, sys.__stdout__, sys.__stderr__
+- 
+  それぞれ起動時のstdin, stdout, stderrの値を保持する。終了処理時に利用される。
+
+**** カスタムPythonインタプリタ
+**** 制限実行
+**** モジュールのインポート
+**** Python言語サービス
+**** Pythonコンパイラパッケージ
+**** 各種サービス
+**** MSWin固有
+**** Usix固有
+**** MacOSX固有
+*** Beautiful Soup
 ** Python 2.x
+*** Tutorial
+**** 実行
+- python
+- python <program-name>
+- python -c <command-name> [arg] ...
+
+**** ソースコードの文字コード
+- 
+  # -*- coding: encoding -*-
+**** 文字列
+- immutable
+  変更不可能。
+- slice
+  word[0:2]
+**** 制御フロー
+***** if
+- 
+  - 例
+    if x < 0: 
+        x = 0;
+    elif x == 0:
+        print 'Zero'
+    else:
+        print 'More'
+
+***** for
+- 
+  - 例
+    for w in words:
+        print w, len(w)
+    
+***** range
+- 
+  - 例
+    range(0, 10, 3)
+    
+***** break, continue, else
+- 
+  ループにelseが存在する。ループが終了した際に実行されるが、breakで抜けた場合は実行されない。
+  continueは次のイテレーションを実行する
+  - 例
+    for n in range(2, 10):
+        for x in range(2, n):
+            if n % x == 0:
+                print n, 'equals', x, '*', n/x
+                break
+        else:
+            print n, 'is a prime number'
+    
+***** pass
+- 
+  何もしない。構文上何か書かなければいけない時に書く。
+  - 例
+    class MyEmptyClass:
+        pass
+
+***** 関数定義
+- 
+  def fib(n):
+      definition
+  
+****** default argument
+- 
+  - 例
+    - def ask_ok(prompt, retries=4, complaint='Yes or no, please!'):
+          (def)
+****** keyword argument
+- 
+  kwarg=valueという形式のキーワード引数を使って呼び出すことができる。
+  - 例
+    - def parrot(voltage, stage='a stiff', action='voom', type='Norweign Blue'):
+          (def)
+      
+****** unpack
+- 
+  *演算子を使ってリストやタプルから引数をアンパックする。
+  **オペレータを使って辞書でもキーワード引数を渡すことができる。
+  - 例
+    args = [3, 6]
+    range(*args)
+****** lambda
+- 
+  - 例
+    def make_incrementor(n):
+        return lambda x: x + n
+
+*** Command line
+- -?, -h, --help
+  オプションの使い方を出力する。
+- -V, --version
+  バージョン番号を表示する。
+- -i
+  実行後にインタラクティブモードに入る。
+- -c <command-name>
+- -m <module-name>
+*** Environmental variables
+**** PYTHONHOME
+**** PYTHONPATH
 *** Language
 **** Parser
+***** line structure
+****** logical line
+****** physical line
+****** Comments
+- 
+  ハッシュ"#"から始まり、同じ物理行の末端で終わる。
+****** encoding declaration
+****** 明示的な行継続
+****** 非明示的な行継続
+****** 空行
+****** インデント
+****** トークン間の空白
+***** Token
+***** Identifier
+***** Keyword
+***** Literal
+****** Strings literal
+****** Concatenation
+****** Number literal
+****** Integer literal
+****** float literal
+****** imaginary literal
+****** operator
+****** delimiter
+
 **** Data model
 **** Exec model
 **** Expression
+***** Arithmetic conversion
+***** Atom
+***** Primary
+***** Awati expression
+***** power operator
+- power ::= await ["**" u_expr]
+****** **
+***** unary arithmetic and bitwise operation
+- u_expr ::= power | "-" u_expr | "+" u_expr" | "~" u_expr
+****** -
+****** +
+****** ~ 反転
+- 整数引数をビット単位反転(bitwise invert)したものを与える。
+***** binary arithmetic operation
+- m_expr ::= u_expr | m_expr "*" u_expr | m_expr "@" m_expr |
+             m_expr "//" u_expr | m_expr "/" u_expr | m_expr "%" u_expr
+- a_expr ::= m_expr | a_expr "+" m_expr | a_ekpr "-" m_expr
+****** *
+- multiplication 乗算
+
+****** @
+- 行列の乗算
+
+****** /
+- division 除算
+****** //
+- floor division 切り捨て除算
+  除算にfloorを適用したもの。
+****** %
+- modulo 剰余
+****** +
+****** -
+***** shifting operation
+***** binary bitwise operation
+***** comparing
+***** boolean operaiton
+***** Conditional Expressions
+***** lambda
+***** list of expressions
+***** evaluate order
+***** primarity of operand
 **** Simple statement
 **** Compound statement
 ***** if
@@ -221,6 +766,20 @@
 ***** MSWin固有
 ***** Usix固有
 ***** MacOSX固有
+** Style
+*** PEP 8
+- インデントは空白4つを使い、タブは使わない。
+- ソースコードの幅が79文字を超えないように行を折り返すこと
+- 関数やクラスや関数内の大きめのコードブロックの区切りに空行を使う
+- 可能なら、コメントは行に独立で書く
+- docstringを使う
+- 演算子の前後とコンマの後には空白を入れ、括弧内のすぐ内側には空白を入れないこと
+- クラスや関数には一貫性のある名前を付ける。
+  CamelCaseをクラス名に使い、lower_case_with_underscoresを関数名やメソッドに使う。
+- 風変わりなエンコーディングは使わない
+**** Link
+- https://www.python.org/dev/peps/pep-0008/
+
 ** pip
 - 
   Pythonにおけるパッケージ管理システム。
@@ -312,4 +871,27 @@ copyはshutil(shutil.copy, shutil.copytree, shutil.copyfile等)、
 *** コメントアウト
 - #
   (あとで文法に移してください)
+  
+*** 前回表示結果
+- 
+  "_"に格納されている。
+  - 例
+    >>>price=100.50
+    >>>price * tax
+    12.5624
+    >>>price + _
+    113.9625 # 前回の値が足されている。
+
+*** 外部プログラムの実行
+- 
+  subprocessの利用を推奨。
+  - 例
+    import subprocess
+    subprocess.call('ls')
+
+- 
+  osやcommandsモジュールは推奨されていない。
+  - 例
+    os.system('ls')
+    commands.getstatusoutput('ls')
   

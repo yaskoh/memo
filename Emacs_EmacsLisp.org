@@ -439,6 +439,10 @@ lsh, ash（論理シフト、算術シフト）
   Return t if OBJECT is nil.
   alias for 'null'
 
+**** sort
+***** sort-lines
+- (sort-lines REVERSE BEG END)
+  Sort lines in region alphabetically
 **** 移動系
 ・移動系
 bobp, eobp
@@ -730,6 +734,11 @@ replace-match
 *** 文字コードの表し方
 - ?
   ?aで、aの文字コード97を表す。
+
+*** テキストをソートする
+- 
+  M-x sort-lines。
+  C-u M-x sort-linesで逆順にソート。
 
 ** BookMemo_Tmp
 *** やさしいEmacs-Lisp講座メモ
