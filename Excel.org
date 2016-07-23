@@ -10,12 +10,38 @@
   条件となる数値が1の場合値1、2の場合値2、...が返る。
   29以下までしか定義できない。
 
+*** COUNT
+- COUNT(範囲)
+  数値データのセルを数える
+*** COUNTA
+- COUNTA(範囲)
+  未入力セル以外を数える。
+*** COUNTBLANK
+- COUNTBLANK(範囲)
+  空白のセルを数える
+*** COUNTIF
+- COUNTIF(範囲,検索条件)
+  検索条件に合うセルを数える。
+*** COUNTIFS
+- COUNTIF(範囲1,検索条件1,範囲2,検索条件2,...)
+  複数条件を設定してcountを行うことができる。
 *** EXACT
 - 
   2つのテキスト文字列を比較し、同じであればTRUE、それ以外の場合はFALSEを返す。
 
 - ex
   EXACT(text1, text2)
+
+*** FIND
+- FIND(検索文字列, 対象, [開始位置])
+  指定された文字列を他の文字列の中で検索し、最初に現れる位置を左端から数え、その番号を返す。
+  FIND関数は1バイト文字セットを使う言語での使用を意図したもので、FINDB関数は2バイト文字セットを使う言語での使用を前提としている。
+  - FIND関数では、規定言語の設定に関係なく、1バイト文字も2バイト文字も、各文字が常に1つとして数えられる。
+  - FINDB関数では、DBCSをサポートする言語のへ週を有効にした後でその言語を規定の言語として設定した場合に、各2バイト文字が2つとして数えられる。
+    それ以外の場合は各文字は1つとして数えられる。
+
+- 例
+  =LEFT(A1,FIND("(",A1)-1)
 
 *** IF
 - 
@@ -40,6 +66,13 @@
   "対象文字列"中の"検索文字"を"置き換え文字"に変換する。
   "置換対象"は、複数の検索文字がヒットする場合、左から何番目を置き換えるか指定する。
 
+*** SUM
+*** VLOOKUP
+- VLOOKUP(検索値,範囲,列番号[,検索方法])
+  
+- 検索方法
+  FALSE, 0と入力すると、完全一致するデータのみを探す。
+  TRUE, 1, 省略した場合は検索地未満の最大値が返される。（昇順に並んでいない場合適切に帰らない）
 *** WEEKDAY
 - 
   与えられたシリアル値(日付)に対し、何曜日を表しているかを表す数字を返す。
@@ -134,150 +167,7 @@
   Dataタブの配下に、グループ化の設定ができる。
   [Alt]+[Shift]+[→]でグループ化、[Alt]+[Shift]+[←]でグループ解除ができる。
 
-* VBA
-- [[https://msdn.microsoft.com/en-us/library/office/gg264383.aspx][Visual Basic for Applications language reference for Office 2013 - Dev Center]]
-
-** 概要
-
-*** Object Model
+*** スクロールロック
 - 
-  主なものは、Application、Workbook、Worksheet、Range。
-  
+  カーソルキーで画面がスクロールしてしまう場合は、Scroll Lockとなっている。
 
-** Statement
-- [[http://officetanaka.net/excel/vba/statement/index.htm][VBAのステートメント - officeTANAKA]]
-
-*** Call
-- 
-  他のSubプロシージャやFunctionプロシージャなどを呼び出して制御を渡す。
-
-  下記にプロシージャに関して、幾つかの使用規則を記す。
-  1. 通常のSubプロシージャは、Callステートメントを省略することも可能。
-     ex) ○:Call myFunction(123)
-         ○:myFunction 123
-  2. Callを省略する場合、引数を括弧で囲まない。Callを使う場合は囲む。
-     ex) ×:myFunction(123)
-         ○:myFunction 123
-         ○:Call myFunction(123)
-         ×:Call myFunction 123
-  3. Callでは返り値を受け取れない。
-     ex) ×:rc = Call myFunction(123)
-  4. 返り値を受け取る場合、Callを使わないが、括弧は必要となる。
-     ex) ×:rc = myFunction 123
-         ○:rc = myFunction(123)
-
-*** Dim
-- 
-  変数を宣言する
-
-*** End
-- 
-  プロシージャまたはブロックを終了する
-
-*** For Each ... Next
-- 
-  コレクションや配列の各要素に対してstatementsを実行する。
-
-*** For ... Next
-- 
-  引数startで指定した値から、引数endえ指定した値までstatementを繰り返す
-
-*** Function
-- 
-  Functionプロシージャ（戻り値あり）を作成する
-
-*** If ... Then ... Else
-- 
-  条件を評価して、条件付きの実行を行うステートメント
-
-*** Private
-- 
-  プライベート変数を宣言する。プライベート変数は、宣言されたモジュール内のみ参照できる。
-
-*** Sub
-- 
-  Subプロシージャを作成する。
-
-*** With
-- 
-  
-** Functions / 関数
-- [[http://officetanaka.net/excel/vba/function/index.htm][VBAの関数 - officeTANAKA]]
-
-*** Mid
-- 
-  
-
-*** StrConv
-- 用法
-  StrConv(string, conversion)
-
-- conversion
-  |--------------+----+----------------------------|
-  | 定数         | 値 | 内容                       |
-  |--------------+----+----------------------------|
-  | vpUpperCase  |  1 | 大文字に変換               |
-  | vbLowerCase  |  2 | 小文字に変換               |
-  | vbProperCase |  3 | 各文字の先頭を大文字に変換 |
-  | vbWide       |  4 | 半角文字を全角に変換       |
-  | vbNarrow     |  8 | 全角文字を半角に変換       |
-  |--------------+----+----------------------------|
-  
-- 
-  "string"で指定した文字列に、conversionで指定した変換を行う。
-
-** Property
-*** Format
-*** Value
-** Object
-- [[http://www.vba-ie.net/object/index.html][ExcelのVBAで利用したオブジェクト一覧 - VBAのIE制御入門]]
-
-*** Application
-- 
-  Excelアプリケーション全体を表す。
-
-*** Workbook
-
-*** Workbooks(Collection)
-
-*** Worksheet
-
-*** Worksheets(Collection)
-
-*** Range
-
-** memo
-
-*** ByValとByRef
-- 
-  何もつけない場合、ByRef(参照渡し)として定義されている。
-  値渡しをしたい場合は明示的にByVal、としなくてはならない。
-  出来る限りつけておくのが良い。
-
-*** subとfunction
-- 
-  functionは戻り値を返す。subはsubroutineの略で戻り値は返さない。
-
-*** 複数の値をプロシージャに渡す
-- 
-  複数の値を引数として渡す場合は、以下のどちらかの対応が必要。
-  - Callステートメントをつける
-  - 括弧を除いて平文で渡す
-  
-  括弧は、引数の演算処理のためのものなので、複数引数には対応していない、とのこと。
-  ちなみに以下は正常となる。
-  ex) MsgBox ("お元気ですか？"+"これでよろしいですか？"), vbOKOnly
-  - [[http://www.atmarkit.co.jp/ait/articles/1503/17/news039.html][コンパイルエラーにならない関数の使い方 - @IT]]
-  
-*** 代入
-- 
-  オブジェクトに値を代入するときは、Set A = B、という形で"Set"が必要。
-  値であれば、A = Bとすると代入できる。
-
-*** GUIDの作成
-- 
-  Mid$(CreateObject("Scriptlet.TypeLib").GUID, 2, 36)
-  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBAでGUIDを作成する]]
-
-
-  

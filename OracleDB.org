@@ -1,0 +1,1183 @@
+* Oracle Database
+** About
+- 
+  オブジェクトおよびXML機能を使用するリレーショナルデータベース。
+
+- 構成
+  - ホストコンピュータ上のOracleソフトウェア
+  - 物理ファイルの集合であるデータベース
+  - Oracleインスタンス
+    - バックグラウンド・プロセス
+    - 共有メモリ―領域
+  - サーバープロセス
+  - Oracle Net / Oracle Netリスナー
+
+** History/Version
+*** Oracle V2(1979)
+- 
+  トランザクションの概念はないが、SQLを使用できた。
+  Version1が存在しないのは、洗練されたDBであることを印象付けるための営業戦略と言われる。
+
+*** Oracle version 3(1983)
+*** Oracle 4(1984)
+*** Oracle 5.0(1985)
+*** Oracle 6.0(1988)
+*** Oracle7 7.0(1992)
+- 
+  最終バージョンは7.3.4。
+  パラレルクエリー、完全制約性、ストアドプロシージャ、データベーストリガ、
+  テータベースリンク、レプリケーションなどがサポート。
+
+*** Oracle8 8.0(1997)
+- 
+  オブジェクト指向やマルチメディアに対応。
+  パーティショニング機能とカラム型LOB(BLOB型、CLOB型)がサポート。
+  ROWIDの仕様変更により大容量のデータをサポート。
+  最終バージョンは8.1.7。
+  
+
+**** Oracle 8i(R8.1.5～)(1999)
+- 
+  Java仮想マシンなどを組み込む。
+  iはinternetの略。
+
+*** Oracle 9i Database(2001)
+- 
+  RAC(Real Application Clusters)が目玉。
+  最終バージョンは9.2.0.8。
+  XMLの入出力など、400もの新しい特徴を有す。
+
+*** Oracle Database 10g(2003)
+- 
+  グリッド・コンピューティングを目指し、グリッド技術を応用。
+  gはGridの略とされる。
+
+*** Oracle Database 11g(2007)
+*** Oracle Database 12c(2013)
+- 
+  cはCloudの略とされる。
+
+** Architecture
+*** Process
+**** About
+- 
+  Oracleでは複数のプロセスが実行されている。
+  またWindows上では、複数プロセスでなくマルチスレッドによる動作となる。
+  
+- 
+  MTSと呼ばれる構成にしない限り、Oracleクライアント1つに対して、サーバープロセスが1つ対応する。
+
+**** Server Process
+- 
+  原則的には、SQLの結果を返すために必要なことを行う。
+
+**** Background Process
+- 
+  原則的には、SQLの結果を返すために必要なこと以外を行う。
+
+- 例
+  - ora_dbwX(0や1)_XXXXXX(SID)
+    データベースライター。データをディスクに書く。
+  - ora_lgwr_XXXXXX(SID)
+    ログライター。ログをディスクに書く。
+  - ora_pmon_XXXXXX(SID)
+    ピーモン。プロセスを監視し、プロセス障害を見つけた場合に掃除する。
+  - ora_arcX(0や1)_XXXXXX(SID)
+    アーカイバ。ログデータをアーカイブ（長期保存のため別ファイルとして保存）する。
+
+*** Memory
+**** Cache
+- 
+  どのプロセスからも見ることができるメモリをキャッシュとしている。
+  OSの共有メモリの機能を使っている。
+
+***** Buffer Cache
+- 
+  書き込み用データもキャッシュに保存される。
+  DBWRが定期的に変更済みデータをディスクに保存している。
+  
+- 
+  フルスキャンデータはキャッシュヒットする可能性も少なく、他のデータも追い出してしまうため、
+  Oracleでは大きな表であればバッファキャッシュに長時間留めないようにする。
+  そのため、一般にフルスキャンしたデータはバッファキャッシュに載っていない、と考える。
+
+**** PGA
+- Program Global Area
+  共有でないメモリの一部。
+**** SGA
+- System Global Area
+  共有領域。
+  便利だが競合が起こるため、ロックによる排他制御が必要で、性能トラブル等が起きやすい原因となっている。
+
+*** Block
+- 
+  データを管理する単位。
+  I/Oの単位やバッファキャッシュはブロック単位で管理されている。
+  OSのブロックとは異なり、Oracle独自のブロック。
+  
+  ブロックサイズは2KB, 4KB, 8KB, 16KB, 32KBといったサイズから選べる。
+
+**** 構造
+- ブロックヘッダ
+  管理用の領域。データの先頭部分に格納される。
+- データ
+  ブロックの後ろから順に格納する。
+  DELETEにより空いた領域を詰めなおすことはしない。
+  
+*** Optimizer
+**** Cost Base
+- 
+  処理時間やI/O回数が最小になると考えられる処理を最上するアルゴリズム。
+  コストとは、処理に必要と思われる時間、もしくはリソース使用量のこと。
+
+***** Analyze
+- 
+  9i R2までは管理者が定期的、もしくは事前に行っておくことが推奨されていたが、
+  10gからはOracleが自動的に行ってくれる。
+
+- 統計情報
+  - SQL文の情報
+  - 表やインデックスの統計情報
+  - パラメータの情報
+  - システム統計情報
+    - 1作業あたりにかかる時間の目安
+    - oracle 10gからのデフォルト情報。
+    - CPUのクロック、
+**** Rule Base
+- 
+  10g以降はサポートしていない。
+
+*** Status
+**** OPEN
+- 稼働状態。
+**** MOUNT
+- データファイルなどにアクセスできる状態。
+- OPEN : データファイルのチェックなどをする
+  alter database open
+  データファイルを開いて簡単にチェックをしたり、一部のバックグラウンドプロセスを起動したりしている。
+
+**** NOMOUNT
+- バックグラウンドプロセスと共有メモリが存在する状態。インスタンスが起動した状態。
+- MOUNT : 制御ファイルを読み込む
+  alter database mount
+  初期化パラメータに記述されている制御ファイルのパスを使用して、制御ファイルを開いて中身を読む。
+  REDOログファイルやデータファイルの位置を把握する。
+  なお、場所を知るだけなのでファイルが無くてもこの時点ではエラーにならない。
+
+**** SHUTDOWN
+- 停止状態。
+- NOMOUNT : パラメータを読み込み、バックグラウンドプロセスの起動や共有メモリを確保する
+  startup (nomount)
+*** Logical Volume
+**** 表領域
+***** 種類
+****** SYSTEM表領域
+- 
+  SYSTEMという表領域。データベース作成時に自動的に作成される。
+  データベースのオープン中は常にオンラインになっている。
+
+******* データ・ディクショナリ
+- 
+  SYSTEM表領域にはデータ・ディクショナリ表が必ず含まれる。
+  データファイル1に格納される。
+
+******* PL/SQLプロ恨むユニット
+- 
+  ストアドPL/SQLプログラム・ユニットのために格納されるデータは、すべてSYSTEM表領域にある。
+
+****** SYSAUX表領域
+- 
+  SYSTEM表領域の補助表領域。
+  多数のデータベース・コンポーネントで、デフォルトのデータ格納場所としてSYSAUX表領域が使用される。
+  そのため、データベースの作成時またはアップグレード時に必ずSYSAUX表領域が作成される。
+  SYSTEM表領域に常駐しないデータベース・メタデータの集中格納場所となる。
+
+****** UNDO表領域
+- 
+  ロールバック情報の格納にのみ使用する特別な表領域。
+  
+
+****** bigfile表領域
+- 
+  単一で非常に大きいデータファイル（最大40億ブロック）を持つ可能性がある表領域。
+  従来のsmallfile表領域は複数のデータファイルを格納できるが、各データファイルは大きくない。
+****** 領域管理方法
+******* ローカル管理表領域
+- 
+  表領域によるエクステント管理。
+  各データファイルのビットマップが保持され、ビットマップを使用して、使用済領域と空き領域が追跡される。
+  Oracle8iより提供。デフォルト。
+  EXTENT MANAGEMENT句にLOCALを指定する。
+- 
+  エクステント管理は、AUTOALLOCATEがデフォルト。UNIFORMを指定して均一エクステントによる管理も可能。
+  さまざまなサイズのオブジェクトが表領域に含まれ、異なるサイズの多数のエクステントが必要と予測される場合、AUTOALLOCATEを選択する。
+  エクステントの数とサイズが正確に予測できる場合はUNIFORMを選択する。SIZEを指定しない場合はデフォルトで1MBとなる。
+
+******** 一次表領域
+- 
+  Oracle7.3より提供された表領域の種類。
+  セッションの間のみ存続する一時データが格納される。
+  中間ソート結果、一時表と一時索引、一時LOB、一時Bツリーを格納するために使用する。
+  一時表領域が明示的に割り当てられていないユーザは、デフォルト一時表領域（新規インストールではTEMP）を使用する。
+
+******* ディクショナリ管理表領域
+- 
+  データ・ディクショナリによる表領域管理。
+  領域の使用率の追跡をSQLディクショナリ表に依存する従来の方法で管理する表領域。
+
+**** セグメント
+**** エクステント
+**** Oracleデータ・ブロック
+***** PCTFREE
+- 既存の行を更新する場合に備えて、空き領域として確保される割合の最小値。
+  "20"と設定した場合、挿入に対して80%使用可能で、20%は更新のために保持される。
+***** PCTUSED
+- 新しい行をブロックに追加するときに、行データとオーバーヘッドに使用できるブロックの割合の最小値。
+  PCTFREEで指定した限界値までブロックが満たされると、その割合がPCTUSEDの値を下回るまで、そのブロックを新しい行の挿入に使用できない。
+*** Physical Volume
+**** データファイル
+**** 制御ファイル
+**** REDOログ・ファイル
+**** アーカイブ・ログ・ファイル
+**** パラメータ・ファイル
+**** アラートファイル
+**** トレース・ログ・ファイル
+**** バックアップ・ファイル
+** Setting
+*** files
+**** initXXXX.ora
+***** DB_CACHE_SIZE
+- 
+  バッファキャッシュのサイズを設定するパラメータ。
+
+***** DB_BLOCK_BUFFERS
+- 
+  DB_CACHE_SIZEより古くから使われていたパラメータ。
+  特に事情がなければDB_CACHE_SIZEを使う。
+   
+**** network(folder)
+***** admin
+****** listener.ora
+- 
+  listenerの情報を記載する。
+****** tnsname.ora
+- 
+  接続識別子の情報を記載する。
+
+*** set
+**** shmsys:~
+- 
+  shmから始まるものが共有メモリの設定
+  
+**** semsys:~
+- 
+  semから始まるものがセマフォの設定。
+
+*** variables
+**** ORACLE_BASE
+- 
+  ex) /u01/app/oracle(UNIX)
+**** ORACLE_HOME
+- 必須項目
+  インストールされているディレクトリを指定
+  ex) ORACLE_BASE/product/11.2.0/db_1
+**** ORACLE_SID
+- 必須項目
+  初期化パラメータのファイル名に、この関数で指定されている名前が含まれる
+**** PATH
+- 必須項目
+  ex) $ORACLE_HOME
+**** Link
+- [[http://www.shift-the-oracle.com/config/oracle-environment-variable.html][NLS_LANG、ORACLE_HOME、ORACLE_SID などの設定 - SHIFT the Oracle]]
+** Command
+*** bin
+**** dbca
+- 
+  dbcaを起動する。
+
+**** lsnrctr
+- start
+  デフォルトのリスナーを起動する
+- status
+  
+**** tnsping
+- tns用のping。
+**** sqlplus
+- /nolog
+  ログオンを行わずにsqlplusを起動
+** SQL言語
+*** 擬似列
+*** 要素
+**** データ型
+***** 組み込み
+****** CHAR
+- 
+  固定長の文字列を指定する。
+
+****** NCHAR
+****** NVARCHAR2
+****** VARCHAR2
+- 
+  変長のデータ型。
+
+****** VARCHAR
+- 
+  使用せず、VARCHAR2を使用する。
+  現在はVARCHAR2と同様の動きをするが、今後異なる比較せマンティクスで比較される別の可変長文字列のデータ型に変更予定。
+
+****** NUMBER
+- NUMBER(p, s)
+  固定小数点数。
+  0と、絶対値が1.0×10^(-130)以上1.0×10^126未満の範囲にある正と負の値を格納する。
+
+- p:精度(precision)
+  最大有効桁数。
+
+- s:位取り(scale)
+  小数点から最下位有効桁までの桁数。
+
+****** FLOAT
+****** DATE
+- 
+  日付および時刻の情報を格納するために使用する。
+
+****** RAW, LONG RAW
+- バイナリデータまたはバイト列。
+  LONG RAW列はBLOBへ変換することを推奨。
+****** BLOB
+****** CLOB
+***** ROWID
+****** ROWID
+****** UROWID
+***** XML
+***** Spatial
+**** リテラル
+***** テキスト・リテラル
+***** 数値リテラル
+****** 整数
+****** NUMBER/浮動小数点
+***** 日時リテラル
+***** 期間リテラル
+**** NULL
+**** コメント
+***** ヒント
+**** データベース・オブジェクト
+***** スキーマ・オブジェクト
+***** 非スキーマ・オブジェクト
+*** 演算子
+**** SQL演算子
+- 優先順位
+  - +, -(単項演算子), PRIOR, CONNECT_BY_ROOT
+  - *, /
+  - +, -(バイナリ演算子), ||
+**** 算術演算子
+- +, -(単項演算子)
+- +, -(バイナリ演算子)
+- *, /(バイナリ演算子)
+  
+**** 連結演算子
+- ||
+  文字列およびCLOBデータを連結する
+  
+**** 階層問い合わせ演算子
+- PRIOR
+- CONNECT_BY_ROOT
+**** 集合演算子
+- UNION
+- UNION ALL
+- INTERSECT
+- MINUS
+
+**** MULTISET
+*** ファンクション
+**** COALESCE
+- COALESCE(expr1, ...)
+  式リストの最初のNULLでないexprを戻す。2つ以上の指揮を指定する必要がある。
+  全てのexprがNULLの場合はNULLを返す。
+  
+**** CONCAT
+- 
+  2つの引数を連結して返す。
+
+**** NVL
+- NVL(expr1, expr2)
+  expr1がNULLの場合、expr2を消す。
+  expr1, expr2には任意のデータ型を持つことができる。
+
+*** 式
+*** 条件
+*** SQL文
+**** Object
+***** DATABASE
+****** ALTER
+******* startup_clauses
+- 
+  データベースをマウントおよびオープンしてアクセス可能にする。
+
+- MOUNT
+  - (STANDBY | CLONE) DATABASE
+- OPEN
+******* recovery_clauses
+******* alter_datafile_clause
+- DATAFILE
+  - (filename | filenumber)
+    - RESIZE size_clause
+
+****** CREATE
+- CREATE DATABASE
+  汎用的なデータベースを作成する。
+  この分を実行すると、指定した既存のデータファイル上のデータがすべて消去される。
+  
+***** TABLE
+****** CREATE
+******* segment_attributes_clause
+- physical_attributes_clause
+- TABLESPACE tablespace
+  表領域を指定する。
+- logging_clause
+  表、および制約のために必要な索引、パーティションまたはLOBの記憶特性を、
+  REDOログファイルに記録する(LOGGING)かしないか(NOLOGGING)を指定する。
+  - LOGGING
+  - NOLOGGING
+  - FILESYSTEM_LIKE_LOGGING
+******* physical_attributes_clause
+- PCTFREE
+  データブロックに、更新のために残しておく領域の割合。デフォルトは10。0から99の正の整数。
+- PCTUSED
+  デフォルトは40。0から99の正の整数。
+- INITRANS
+  各データブロックに割り当てられる、同時実行トランザクション・エントリの初期数。
+  値の範囲は1から255で、デフォルトは1。通常は変更せずデフォルトで使用するようにする。
+- MAXTRANS
+  同時実行可能な同時実行更新トランザクションの最大数を決定する。以前のリリースのパラメータ。
+  現在は非推奨。
+******* storage_clause
+- STORAGE
+  - INITIAL
+    オブジェクトの第1エクステントのサイズを指定する。
+  - FREELISTS
+    最小値（デフォルト）は1。
+  - FLEELIST GROUPS
+    最小値（デフォルト）は1。
+  - BUFFER_POOL
+    - KEEP
+    - RECYCLE
+    - DEFAULT
+******* table_compression
+- 概要
+  ヒープ構成表に対してのみ有効。
+  ディスク使用量を削減するためにデータ・セグメントを圧縮するかどうかを指定できる。
+  COMPRESSを指定すると、表の圧縮が使用可能となる。
+  NOCOMPRESSを指定すると、表の圧縮が使用禁止となる。デフォルトはNOCOMPRESS。
+
+- COMPRESS
+  - BASIC
+  - FOR
+    - OLTP
+    - QUERY | ARCHIVE
+      - LOW | HIGH
+- NOCOMPRESS
+****** ALTER
+- ALTER TABLE
+  - (schema.)table
+******* add
+- 
+  - PKの作成
+    ADD [CONSTRAINT primary_key_name] PRIMARY KEY (col1, col2, ..) ;
+    PK名を省略した場合、PK_tablenameとなる模様。
+******* drop_constraint_clause
+- PRIMARY KEY
+- UNIQUE
+- 
+  - PKの削除
+    - ALTER TABLE table_name DROP PRIMARY KEY;
+    - ALTER TABLE table_name DROP CONSTRAINT primary_key_name;
+******* log
+- LOGGING
+  REDOログ記録をONに変更する
+- NOLOGGING
+  REDOログ記録をOFFに変更する
+***** TABLESPACE
+****** ALTER
+- 例
+  - データファイルの追加
+    ALTER TABLESPACE DAT01 ADD DATAFILE 'home/db/DAT01_02.dbf' size 2000M;
+****** CREATE
+******* permanent_tablespace
+- BLOCKSIZE
+  非標準ブロックサイズを指定する場合に使用する。
+- ONLINE | OFFLINE
+  表形式がオンラインまたはオフラインのいずれかであるかを決定できる。
+  - ONLINE : 表領域にアクセス権限があるユーザに対し、作成直後の表領域を使用可能にする。デフォルト。
+  - OFFLINE : 作成直後の表領域を使用禁止にできる。
+
+******* temporary_tablespace
+- 
+  ローカル管理一時表領域を作成できる。
+  一時表領域は、セッションの存続期間中にのみ保持される一時データを格納できるデータベース内の領域割り当て。
+  一次データとは、一次表などのユーザ生成スキーマ・オブジェクト、またはハッシュ結合およびソート操作で一次領域などのシステム生成データ。
+
+- TEMPORARY TABLESPACE tablespace
+  ソート処理専用の一時表領域として作成する。
+
+  - TEMPFILE file_specification
+
+******* undo_tablespace
+- UNDO TABLESPACE tablespace
+  UNDO表領域を作成する。自動UNDO管理モードでデータベースを実行する場合、ロールバック・セグメントの代わりにUNDO表領域を使用してUNDO領域を管理する。
+  
+******* extent_management
+- EXTENT MANAGEMENT LOCAL
+  - AUTOALLOCATE
+    表領域がシステム管理される。
+  - UNIFORM
+    表領域をSIZEバイトの均一のエクステントで管理できる。デフォルトは1MB。
+    一次表領域のすべてのエクステントはサイズが均一であるため、このキーワードは一次表領域ではオプション扱い。
+    ただし、SIZEを指定する場合はUNIFORMを指定する必要がある。
+    UNDO領域に指定することはできない。
+  
+******* segment_management
+- SEGEMNT SPACE MANAGEMENT
+  - AUTO
+    ビットマップを使用して表領域のセグメントにある空き領域を管理できる。
+  - MANUAL
+    空きリストを使用して表領域のセグメントにある空き領域を管理できる。
+    この設定は使用せず、AUTOを利用することを強く勧める。
+
+****** DROP
+- DROP TABLESPACE tablespace
+  - INCLUDING CONTENTS
+    表領域の中のすべてのデータベース・オブジェクトを削除できる。
+    表領域がから出ない場合にこの句を省略した場合、エラーがもどされ、表領域は削除されない。
+    - AND DATAFILES
+      関連するOSファイルも削除できる。
+    - KEEP DATAFILES
+      OSファイルはそのままにしておく。
+    - CASCADE CONSTRAINTS
+      tablespaceに含まれる表の主キーまたは一意キーを参照する、tablespace外のすべての参照整合性制約を削除する。
+      
+***** ROLE
+****** CREATE
+***** SYNONYM
+****** CREATE
+- CREATE [OR REPLACE] [PUBLIC] SYNONYM syn_name FOR schema_name.object_name;
+- OR REPLACE
+  同名のシノニムが存在した場合でも構わず上書きする場合に指定する
+- PUBLIC
+  パブリックシノニムを作成する場合に指定
+
+****** DROP
+- DROP [PUBLIC] SYNONYM syn_name;
+
+****** RENAME
+- RENAME old_syn_name TO new_syn_name
+- PUBLICはRENAME不可。
+
+***** USER
+****** CREATE
+****** ALTER
+- DEFAULT ROLE
+  ログイン時にデフォルトによってユーザに付与されるロールを指定する。
+  GRANT文を使用してユーザに付与されているロール、またはCREATE ROLE権限を持つユーザが作成したロールのみ指定可能。
+
+****** DROP
+- DROP USER user
+  - CASCADE
+**** Etc
+***** DELETE
+***** GRANT
+****** System Privileges
+- L1
+  - ALL PRIVILEGES
+  - role
+  - system_privilege
+- L2
+  - TO grantee_clause
+
+******* システム権限
+******** アドバイザ・フレームワーク権限
+********* ADVISOR
+- PL/SQLパッケージ(DBMS_ADVISORやDBMSSQLTUNEなど)を介したアドバイザ・フレームワークへのアクセス。
+********* ADMINISTER SQL TUNING SET
+********** ADMINISTER SQL TUNING SET
+- DBMS_SQLTUNEパッケージを介した、権限受領者が所有するSQLチューニング・セットの作成、削除、選択（読み取り）およびロード（書き込み）
+********** ADMINISTER ANY SQL TUNING SET
+********* SQL PROFILE
+********** CREATE ANY SQL PROFILE 
+********** ALTER ANY SQL PROFILE
+********** DROP ANY SQL PROFILE
+******** CLUSTER
+********* CREATE CLUSTER
+********* CREATE ANY CLUSTER
+********* ALTER ANY CLUSTER
+********* DROP ANY CLUSTER
+******** CONTEXT
+********* CREATE ANY CONTEXT
+********* DROP ANY CONTEXT
+******** データリダクション
+********* EXEMPT REDACTION POLICY
+******** データベース
+********* ALTER DATABASE
+********* ALTER SYSTEM
+********* AUDIT SYSTEM
+******** DATABASE LINK
+********* CREATE DATABASE LINK
+********* CREATE PUBLIC DATABASE LINK
+********* ALTER DATABASE LINK
+********* ALTER PUBLIC DATABASE LINK
+********* DROP PUBLIC DATABASE LINK
+******** DEBUG
+********* DEBUG CONNECT SESSION
+********* DEBUG ANY PROCEDURE
+******** DICTIONARY
+********* ANALYZE ANY DICTIONARY
+******** DIMENSION
+********* CREATE DIMENSION
+********* CREATE ANY DIMENSION
+********* ALTER ANY DIMENSION
+********* DROP ANY DIMENSION
+******** DICTIONARY
+********* CREATE ANY DICTIONARY
+********* DROP ANY DICTIONARY
+******** EDITION
+********* CREATE ANY EDITION
+********* DROP ANY EDITION
+****** Object Privileges
+- L1
+  - object_privilege
+  - ALL [PRIVILEGES]
+- L2
+  - on_object_clause
+    - TO grantee_clause
+- OPTION
+  - WITH HIERARCHY OPTION
+  - WITH GRANT OPTION
+  
+****** grantee_clause
+- user [IDENTIFIED BY password]
+- role
+- PUBLIC
+
+***** REVOKE
+** PL/SQL
+*** PL/SQLパッケージ
+**** DBMS_ADVISOR
+- 
+  データベース・サーバー・コンポーネントに関するパフォーマンス問題を特定および解決する一連のエキスパート・システムであるアドバイザのサーバー管理スイートに含まれる。
+- 
+  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_advis.htm#CIHIGAED
+
+**** DBMS_SQLTUNE
+- 
+  オンデマンドでSQLをチューニングするためのインターフェース。
+
+- 
+  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_sqltun.htm#CHDGAJCI
+
+**** DBMS_ROWID
+- ROWIDに関する情報を取得できる。
+  https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/d_rowid.htm
+** SQL*Plus
+- 入力
+  次の3タイプのコマンドが入力可能。
+  - SQLコマンド
+  - PL/SQLブロック
+  - SQL*Plusコマンド
+  
+*** SQLコマンドの終了
+- 
+  - セミコロン(;)を入力する
+  - 1行にスラッシュ(/)のみを1つ入力する
+  - 空白行を入力する
+*** Commands
+**** CONNECT
+
+**** DESCRIBE
+- DESC[RIBE] objectx
+  表、ビュー、ファンクション、プロシージャの定義を表示する。
+
+**** HOST
+- 
+  続けてOSのコマンドを入力することで、OSのコマンドを実行可能。
+
+**** PROMPT
+- PRO[MPT] [text]
+  textを画面上表示する
+  
+**** SET
+***** SET LIN[ESIZE]
+- 1行に表示する文字の合計数を設定する。
+***** SET PAGES[IZE]
+- 各出力ページの行数を設定する。
+  0に設定すると、ヘッダ、ブレーク、タイトル、初期空白行およびその他の情報をすべて費用時にできる。
+**** SHUTDOWN
+- 
+  接続の終了を待つ。
+
+- transactional
+  トランザクションが終わるまで待つ。
+  トランザクションが終わったら接続を切る。
+
+- immediate
+  接続終了をまたず、コミットされていないデータは失われる。
+  変更済みデータはデータファイルに書き込まれる。
+
+- abort
+  接続終了をまたず、コミットされていないデータは失われる。
+  変更済みデータはデータファイルに書き込まれない。
+**** SPOOL
+**** STARTUP
+- 
+  SQL*Plusを起動する
+
+- MOUNT dbname
+  オープンしないでマウントする。
+
+- OPEN
+  マウントおよびオープンする。
+
+- NOMOUNT
+  停止状態からNOMOUNT状態になる。
+  MOUNTまたはOPENと同時には指定できない。
+  その後変更する場合は、alter database mount; alter database open;など。
+
+*** Link
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/toc.htm][目次 - SQL*Plusユーザーズ・ガイドおよびリファレンスリリース11.2]]
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/ch_twelve001.htm#BACDBGBC][SQL*Plusコマンド一覧 - SQL*Plusユーザーズ・ガイドおよびリファレンスリリース11.2]]
+** Reference
+*** 初期化パラメータ
+*** 静的データ・ディクショナリ・ビュー
+**** ALL_CONSTRAINTS
+- 現行のユーザがアクセスできる表の制約定義を示す。
+- CO
+  - C : Constraint 表でのチェック制約
+  - P : Primary Key
+  - U : Unique Key
+  - R : 参照整合性
+  - V : ビューでのチェック・オプション付
+  - O
+  - H
+  - F
+  - S
+**** ALL_COL_COMMENTS
+- 現行のユーザーがアクセスできる表およびビューの列についてのコメントを示す。
+**** ALL_INDEXES
+- 現在のユーザがアクセスできる表の索引を示す。
+**** ALL_TAB_COMMENTS
+- 現行のユーザがアクセスできる表およびビューのコメントを示す。
+**** DBA_COL_COMMENTS
+- データベース内のすべての表及びビューについてのコメントを示す。
+**** DBA_DATA_FILES
+- データベース・ファイルを示す。
+**** DBA_EXTENTS
+- データベース内のすべての表領域内のセグメントを含むエクステントを示す。
+**** DBA_FREE_SPACE
+- データベース内のすべての表領域の使用可能エクステントを示す。
+  tablespaceが表示されない場合は、使用可能エクステントがないということらしい。
+  
+**** DBA_INDEXES
+- データベース内の索引をすべて示す。
+**** DBA_ROLE_PRIVS
+- データベース内のすべてのユーザおよびロールに付与されたロールを表示する
+**** DBA_SEGMENTS
+- データベース内のすべてのセグメントに割り当てられた記憶域を示す。
+**** DBA_SYS_PRIVS
+- 
+  ユーザ、またはロールに付与されあtシステム権限。
+
+**** DBA_TAB_COMMENTS
+- データベース内のすべての表およびビューについてのコメントを示す。
+**** DBA_TAB_PRIVS
+**** DBA_TABLES
+- データベース内のリレーショナル表をすべて示す。
+**** DBA_TABLESPACES
+- データベース内の表領域をすべて示す。
+**** DBA_USERS
+- データベース内のユーザーをすべて示す。
+**** USER_COL_COMMENTS
+**** USER_CONSTRAINTS
+- 現在のユーザが所有する表の制約定義をすべて示す。
+**** USER_INDEXES
+- 現行のユーザが所有する索引を示す
+**** USER_ROLE_PRIVS
+**** USER_SEGMENTS
+**** USER_SYS_PRIVS
+**** USER_TAB_COMMENTS
+**** USER_TAB_PRIVS
+*** 動的パフォーマンスビュー
+**** V$DATABASE
+- 現在接続しているインスタンスのDBID、チェックポイントなどが取得できる。
+**** V$INSTANCE
+- 現行インスタンスの状態を表す。
+**** V$OPTION
+- オプション製品のインストール状況
+**** V$PWFILE_USERS
+- パスワードファイル認証にエントリされている（SYSDBAまたはSYSOPERシステム権限がある）ユーザの一覧
+** Interface
+*** SQL*Plus
+- 
+  SQLを実行するためのインターフェイスユーティリティ。
+  アプリケーションから呼ぶことはほとんどなく、人手によるデータベースの管理をするために使う。
+
+*** JDBC
+- Java Database Connectivity
+*** ODBC
+- Java Dataase Connectivity
+*** OO4O
+- Oracle Object For Ole
+*** Pro*C
+- 
+  Oracle向けC言語コンパイラ。
+
+** Manage
+*** ユーザ分類
+**** データベース管理者
+***** タスク
+****** データベース・サーバ・ハードウェアの評価
+****** Oracle Databaseソフトウェアのインストール
+****** データベースの計画
+****** データベースの作成とオープン
+****** データベースのバックアップ
+****** システムユーザの登録
+****** データベース設計の実装
+****** 実行データベースのバックアップ
+****** データベースのパフォーマンス・チューニング
+****** パッチのダウンロードとインストール
+****** 追加ホストのロール・アウト
+**** セキュリティ管理者
+**** ネットワーク管理者
+**** アプリケーション管理者
+**** データベースユーザ
+*** 管理ロードマップ
+**** インスタンスの起動
+**** ネットワーク環境構成
+**** 記憶域構造の核にｎ
+**** メモリー管理
+**** ユーザ管理
+**** スキーマ・オブジェクトの管理
+**** バックアップ・リカバリの実行
+**** リカバリ設定の構成
+**** データベースの監視およびチューニング
+**** 問題の調査、報告、解決
+**** ソフトウェアの管理
+*** SQLの発行
+- SQL*Plus
+- Oracle Enterprise Manager
+- SQL Developer
+
+** Installation
+*** Class
+**** Desktop Class
+- ラップトップコンピュータ用。
+**** Server Class
+- 拡張構成オプションにアクセスする必要がある場合、このクラスを選択する。
+*** Install Type
+**** Enterprise Edition
+- 完全な機能。
+  ミッションクリティカル、OLTP、データウェアハウス環境。
+**** Standard Edition
+- ワークグループや部門レベル、もしくは中小企業用。
+**** Standard One Edition
+- ワークグループ、部門、もしくはWebアプリケーションに最適。
+**** Personal Edition
+- Windowsのみ。
+  Enterprise Editionと同様のソフトウェアだが、シングル環境のユーザ開発環境とデプロイメントkン今日のみサポート。
+*** 拡張インストール
+**** 製品の言語
+**** データベース構成タイプ
+- 汎用目的/トランザクション処理
+- データ・ウェアハウス
+**** データベース構成オプション
+**** データベース管理オプション
+- 
+  Oracle Enterprise Managerを使用して、集中管理するかローカル管理するかを指定する。
+**** リカバリ・オプション
+**** スキーマ・パスワード
+**** オペレーティング・システム・グループ
+*** Install Log
+**** 2016/6/11 11c
+- http://docs.oracle.com/cd/E16338_01/install.112/b56277/toc.htm
+  
+- 6 カーネルパラメータの値が結構違う。とりあえずスルーします。
+  /etc/sysctl.confを編集する、とのこと。
+  ⇒結局10で怒られたので編集した。
+
+- 7 DISPLAYの設定をして、xhostが利用できるようにしたが、
+  今回は色々変更した後で、別に変更しなければ接続できたことに気付いた。
+  ⇒oracleでxhost localhost、でOK?
+  ⇒違う。rootでxhost local:userを設定。
+  oracleユーザでDISPLAYを規定値":0.0"に戻した後、runinstallerを実行。
+
+- 10 
+  - emailは入力せず。クリティカルイッシューでメールよこさんぞ、と言われる。
+  - Skip software updateとしてしまう。
+  - Createする
+  - Server Classを選択
+  - RACにしようとしたら怒られる。Singleに。
+  - Typical Installを行う。
+  - 詳細
+    - Oracle base : /oracle/app/oracle
+    - Software location : /oracle/app/oracle/product/11.2.0/dbhome_1
+    - Storage Type : File System
+      - Database file location : /oracle/app/oracle/oradata
+    - Database edition : Enterprise Edition
+    - OSDBA Group : dba
+    - Global database name : orcl.localdomain
+    - Password : yasutake
+  - Inventory
+    - Directory : /home/oracle/app/oraInventory
+    - Group : oinstall
+  - Prerequisite Check
+    - Passせず。
+      - Phisical Memory
+      - OS Kernel Parameters
+        - semmsl
+        - semmns
+        - semmni
+        - shmmni
+        - ip_local_port_range
+      - Package
+        - elfutils-libelf-devel-0.97
+        - gcc-c++-3.4.5(x86_64)
+        - libstdc++-devel-3.4.6(x86_64)
+        - pdksh-5.2.14
+    - 以下についてIgnore
+      - Checks
+        - Hard Limit maximum open file descriptors : 65536 -> 4096
+        - Hard Limit maximum user processes : 16384 -> 5110
+        - Soft Limit maximum user processes : 2047 -> 1024
+        - Package : pdksh-5.2.14
+  - rootで以下を実行しろ、とのこと。
+    - /home/oracle/app/oracInventory/orainstRoot.sh
+    - /home/oracle/app/oracle/product/11.2.0/dbhome_1/root.sh
+  - current home is not registered in the central inventory on this system. OK? -> Yes
+**** 2016/6/14
+- パスが/home/oracleになっていたため再作成。
+  - plcn.localhost
+  - デフォルトのユーザはSYSTEM、だった。
+***** DBCA
+- General
+- test.local_domain
+- local management
+- すべてyasutake(SYS, SYSTEM, DBSNMP, SYSMAN)
+
+** Tools
+*** Oracle Universal Installer(OUI)
+- Install用ユーティリティ
+*** Oracle Database Configuration Assistant(DBCA)
+- テンプレートからデータベースを作成したり、独自のデータベースを作成するユーティリティ。
+**** データベース作成
+***** 起動
+- shellより"dbca"
+***** Templates
+- General, Data Warehouseなどから選択
+***** Identification
+- Global Database Nameを指定
+***** Management Option
+- Enterprise Managerで管理するか否か設定する。
+  集中管理かローカル管理かを選択する。
+***** Credentials
+- パスワードなどを指定する
+***** File Locations
+- テンプレートの位置
+- すべてに対して共通の位置。指定が必要。
+- Oracle Managed Files。
+***** Recovery Configuration
+-
+***** Content
+- サンプルスキーマ
+- カスタムスクリプト
+***** Parameters
+- Memory
+- Sizing
+- Character Sets
+  - AL32UTF8は、Oracleで使用しているUTF-8エンコードの名前。
+- Connection Mode
+  - Dedicated Server Mode 専用サーバー・モード
+    各ユーザ・プロセスで専用のサーバ・プロセスが使用できる。
+    クライアント総数が50以下など、少ないと予想される場合にこのオプションを指定する。
+  - Shared Server Mode 共用サーバー・モード
+    リソース・プールを複数のクライアント接続で共有できる。
+***** Storage
+***** Create
+**** DB構成変更
+**** DB削除
+**** テンプレート管理
+***** タイプ
+****** シード
+- 
+  拡張子：.dbc
+  既存のデータベース（シード・データベース）の構造および物理データファイルの両方が含まれる。
+  
+****** 非シード
+- .dbt
+*** Database Upgrade Assistant
+- 既存のDBを新しいリリースのDBへアップグレードする際に使うツール
+*** Oracle Enterprise Manager Database Control
+- Webベースのインターフェース。
+  インストール、データベースを作成（アップグレード）してネットワークを構成すると使用可能に。
+*** Oracle SQL Developer
+- GUIツール。
+  $ORACLE_HOME/sqldeveloper中に、sqldeveloper.shがあるので起動。
+  xが利用できる必要がある。
+- 
+  http://www.oracle.com/technetwork/jp/developer-tools/sql-developer/downloads/index.html
+
+** Error
+*** ORA-00942
+- 該当の表またはビューが存在しない場合や、表やビューに対するアクセス権限が不足している場合に発生する。
+*** ORA-00972
+- 識別子が長すぎる。
+  列名、テーブル名は30文字までとのこと。
+*** ORA-01031
+- 権限が不足している。
+  ユーザの権限等を見直す必要がある。
+
+*** ORA-01659
+- 
+  十分な容量がありません。
+
+*** ORA-22868
+- LOB列のセグメントがあるが、表セグメントは異なる表領域にある
+  削除しようとした表領域には、表のLOB列のセグメントがあるが、表セグメントがない。
+  表を削除してから、表領域の削除を再実行する必要がある。
+  
+** Memo
+*** 他システムとの違い
+**** 空文字/Null
+- 
+  可変長文字列において空文字列とNULLを区別しない。
+  （正確には空文字列がNULLとして扱われる）
+
+**** 比較演算子
+- 
+  通常の演算子として認識されず、WHERE句の中でしか利用できない
+
+**** FROM句
+- 
+  表を必要としないSQLでも、必ず何らかの表を参照するFROM句を書かなければならない。
+
+**** マルチバイト文字
+- 
+  テーブル名や列名、その別名にマルチバイト文字を使用する場合必ず""で囲む必要がある。
+  困難なため、実際には英数字および記号（_ $ #）のみを使用することが推奨される。
+*** DUAL表
+- 
+  1列しか存在しない特別な表。
+  SYSDATEやUESRなど、表を適用せずとも値を返す演算に対してSELECTを行う場合に使われる。
+  VARCHAR2(1)のDUMMYという列があり、レコード値は'X'となっている。
+
+- 
+  Oracle 10gでは、DUAL表そのものは存在しているものの、最適化により実際にはアクセスしないようになっている。
+
+*** RAC
+- Oracle Real Application Clusters
+  
+*** 読み込み時の情報
+**** sequential read
+- 
+  ランダムアクセス時。
+  単一ブロック読み込みのため、読み込んだデータが（1ブロックなので当然）メモリ上で連続する。
+  そのため、"sequential"と表示される。
+
+**** scattered read
+- 
+  シーケンシャル読み込み時。
+  複数ブロックを読み込み、それらは連続していないので、"scattered"と表示される。
+*** インスタンス
+- 
+  Oracleでは、管理の単位として「インスタンス」という用語を用いる。
+  意味は「バックグラウンドプロセス群＋共有メモリ」のこと。
+  データベースを管理しているもの、というイメージであり、データベースそのものではない。
+  通常インスタンスとデータベースは1:1で対応するが、RACを使用している場合は異なる。
+*** インスタンスリカバリ
+- 
+  abrotオプションでshutdownした場合には変更済みデータを書き込まず終了するが、
+  REDOログファイルのデータを使用して、データを復旧させる。
+  この作業を「インスタンスリカバリ」という。
+  この作業は、起動時にOracleが勝手に行う。
+  Oracleが異常終了した場合もインスタンスリカバリが行われる。
+  ただし、キャッシュ上の変更済みデータが失われただけでなく、データファイルが存在しないなどのファイルに関する障害がある場合は、
+  本格的な復旧作業が必要。
+  
+*** sqlplusでヒストリ利用
+- 
+  "readline-devel"を入れて、rlwrapというツールを使ってwrapする。
+  
+- 
+  [[http://utopia.knoware.nl/~hlub/uck/rlwrap/][rlwrap]]
+  [[http://d.hatena.ne.jp/yohei-a/20101021/1287677679][sqlplus で bash みたいにヒストリを呼び出したりできたらいいな - ablog]]
+
+*** 実行スクリプトファイルを指定してSQL*Plusを起動
+- 
+  スペースを入れて、@xxx.sqlを指定する。
+  スペースを入れない場合はネットサービス名となる。
+  ex) sqlplus rivus/rivus_pass@orcl_net @go.sql
+- 
+  [[http://www.shift-the-oracle.com/sqlplus/tutorial/sqlplus-script.html][SQL*Plus を実行スクリプトファイルを指定して起動する - SHIFT the Oracle]]
+
+*** インスタンスの状態確認
+- 
+  以下のコマンドで確認する。
+  select STATUS from v$instance;
+  ⇒
+  shutdown : エラー(ORA-01034: ORACLE not available)
+  nomount  : STARTED
+  mount    : MOUNTED
+  open     : open
+
+- 
+  [[http://ooltcloud.expressweb.jp/201212/article_18230921.html][【Oracle】データベースの状態の変更と確認方法 - オールトの雲]]
+
+*** PLUSTRACEロール
+- PLUSTRACEロールの作成方法
+  @$ORACLE_HOME/sqlplus/admin/plustrce.sql
+  
+*** コメントの削除
+- 
+  削除コマンドは存在しないので、空文字で上書きすることとなる。
+  COMMENT ON COLUMN table.column is '';
+
+** Glossary
+*** Oracle ASM
+- Oracle Automatic Storage Management
+  データベースファイルの配置とネーミングを自動的に管理する。
+  多数のディスクを持つ華僑では、管理が簡単になり、パフォーマンスが向上する。
+  
+*** SID
+- System Identifier
+  システム識別子。インスタンスを区別するために使用する一意の識別子。
+
+*** グローバルデータベース名
+- 
+  その他のデータベースと一意に識別されるデータベースの完全名。
+  database_name.database_domainの形式。
+
+*** Schema スキーマ
+- 
+  データの論理構造の集合。
+  1ユーザは1スキーマを必ず所有し、デフォルトで自動的にユーザ名と同じスキーマ名が割り当てられる。
+  ユーザなしのスキーマ、スキーマなしのユーザは作成できない。
+  
+*** シノニム
+*** TNS
+- Transparent Network Substrate
+  データベースの接続や複数ノード間のメッセージのやり取りを単一の共通インターフェースで提供している技術。
+  Oracle Net Foundationレイヤーに組み込まれている。
+  
+** Link
+*** Install
+- [[http://docs.oracle.com/cd/E16338_01/install.112/b56277/toc.htm][Oracle® Databaseクイック・インストレーション・ガイド 11gリリース2 (11.2) for Linux x86-64]]
+- [[http://docs.oracle.com/cd/E16338_01/install.112/b56273/rev_precon_db.htm#BGECJCJI][Oracle® Databaseインストレーション・ガイド 11gリリース2 (11.2) for Linux]]
+*** 管理
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56301/toc.htm][Oracle® Database管理者ガイド 11gリリース2 (11.2)]]
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56320/toc.htm][Oracle® Database 2日でデータベース管理者 11gリリース2(11.2)]]
+*** SQL言語
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56299/toc.htm][Oracle® Database SQL言語リファレンス 11gリリース2]]
+*** SQL*Plus
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/toc.htm][SQL*Plus®ユーザーズ・ガイドおよびリファレンスリリース11.2]]
+  
+*** PL/SQL
+- [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/toc.htm][Oracle® Database PL/SQLパッケージおよびタイプ・リファレンス 11g リリース2(11.2)]]
+*** Reference
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/toc.htm][Oracle® Databaseリファレンス 11gリリース2 (11.2)]]

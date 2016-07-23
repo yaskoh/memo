@@ -49,7 +49,6 @@
   SNMPではBER(Basic Encoding Rule)、
   RPCではXDR(eXternal Data Representation)を用いる。
   
-
 **** Session
 ***** About
 - 
@@ -1476,7 +1475,7 @@
 
 *** Error correction
 *** Application
-** Organisation
+** Organization
 *** IETF
 - The Internet Enineering Task Force, インターネット技術特別調査委員会
 

@@ -46,9 +46,25 @@
   Insert->Hyperlink
   [[https://support.office.com/ja-jp/article/%E3%83%8F%E3%82%A4%E3%83%91%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%AF%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B-459946fe-0747-4474-84e8-273d734466fe#bm2][ハイパーリンクを作成する - Office]]
 
+**** Use VB Macro
+- 
+  Ribbon: FILE -> Options
+  PowerPoint Opitions: Customize Ribbon -> Developer(Checked)
+
+- 
+  VBAは利用可能だが、Macroの記録は廃止されている模様。
+  
+**** Slide Master
+- 
+  
+- 
+  [[https://support.office.com/ja-jp/article/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89-%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%A8%E3%81%AF-d8d1c49d-d6f1-4b83-a4e7-34311a11b546][スライドマスターとは - Office]]
+  [[http://office-powerpoint.com/powerpoint-design/ppt046.html][PowerPointスライドマスターで一括変更 - パワーポイントの使い方]]
+  [[http://allabout.co.jp/gm/gc/436828/][パワポのスライドマスター再入門 (基本編) - All About デジタル]]
+  [[http://thepopp.com/understand-slidemaster-which-is-the-core-of-powerpoint/][パワーポイントの神髄、スライドマスタとレイアウトを理解する - the power of powerpoint]]
+
 ** Outlook
 *** memo
-
 **** 条件付書式
 - 
   [表示]タブ、[現在のビュー]、[ビューの設定]、[ビューの詳細設定]、[条件付書]
@@ -65,3 +81,5 @@
   別名で保存すると、ファイルサイズが縮小される。
   [[http://crossmodelife.com/2014/03/07/5390/][肥大化したMS Projectのファイルサイズを縮小する方法 - Cross Mode Life]]
 
+** VBA
+- [[file./VBA.org][VBA.org]]

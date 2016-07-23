@@ -545,6 +545,36 @@
 - 
   接続するネットワークに関する定義を記述する
 
+*** /etc/sysconfig/network-scripts/ifcfg-(eth0,and so on)
+- (RHEL?)インターフェース設定ファイル
+  個々のネットワークデバイスのソフトウェアインターフェースを制御する。
+  どのインターフェースをアクティブにして、どのように設定するかを決定する。
+  通常ifcfg-[name]と命名される。[name]は設定ファイルが制御するデバイスの名前。
+  [[https://access.redhat.com/documentation/ja-JP/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/s1-networkscripts-interfaces.html][9.2.インターフェース設定ファイル - redhat カスタマーポータル]]
+- BONDING_OPTS=(parameter)
+- BOOTPROTO=(protocol)
+- BROADCAST=(address)
+- DEVICE=(name)
+- DHCP_HOSTNAME=(name)
+- DNS[1,2]=(address)
+- ETHTOOL_OPTS=(option)
+- HOTPLUG=(answer)
+- HWADDR=(MAC-address)
+- IPADDR=(address)
+- LINKDELAY=(time)
+- MACADDR=(MAC-address)
+- MASTER=(bondinterface)
+- NETMASK=(mask)
+- NETWORK=(address)
+- NM_CONTROLLED=(answer)
+- ONBOOT=(answer)
+  - yes:ブート時にアクティブにされる必要がある
+  - no:ブート時にアクティブにされる必要はない
+- PEERDNS=(answer)
+- SLAVE=(answer)
+- SRCADDR=(address)
+- USERCTL(answer)
+
 *** /proc/cpuinfo
 - cpuの情報が含まれている
   コア数など調べることができる。
@@ -1573,4 +1603,15 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   When a system's software interface between os and farmware is UEFI (Instead of BIOS), GPT is almost mandatory.
   having a backup GPT at the end of the disk. carring CRC32 checksums to detect errors.
    
-
+*** network接続ができない場合
+- (RHEL, CENTOS)
+  vmwareなどにosを入れてyum update、など打った際に、ネットワークにつながっておらずDNSエラーが起こる場合がある。
+  /etc/sysconfig/network-scripts/ifcfg-...などのONBOOT項目が"no"になっている場合、起動されていないので、
+  "yes"とし再起動をかける。
+  [[http://oki2a24.com/2015/05/27/resolve-dns-error-of-centos-6-in-virtualbox/][【CentOS 6】yum が DNS 名前解決できないエラーで使えない問題を解決【OSインストール後】 - oki2a24]]
+*** フルパスでls -R
+- 
+  再帰的でなければ、なければls -dでOK。
+  -dと-Rが併用できないため、サブディレクトリを含めたい場合はfindと組み合わせる。
+  例) ls -l $(find . -type f)
+  [[http://orebibou.com/2014/10/ls%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%83%95%E3%83%AB%E3%83%91%E3%82%B9%E8%A1%A8%E7%A4%BA%E3%82%92%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/][lsコマンドでフルパス表示をする方法 - 俺的備忘録 〜なんかいろいろ〜]]
