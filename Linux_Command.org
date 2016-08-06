@@ -1,5 +1,13 @@
 * Linux Commands
 ** Commands
+*** !
+- !!
+  直前に実行したコマンドを再実行する。
+- !num
+  historyで表示される番号を実行する。
+- ![char]
+  最後に実行した[char]に当てはまるコマンドを実行する。
+  
 *** adduser
 - 
   Create a new user or update default new user information.
@@ -318,6 +326,30 @@
   用法: find [option] [path...] [expression]
   用法：find [path] [condition] [action]
 
+**** Options
+- symbolic link
+  - -P
+    Never follow symbolic links.
+  - -L
+    Follow symbolic links.
+  - -H
+    Do not follow symbolic links, except while processing the command line arguments.
+
+- debug
+  - -D
+    - help
+    - tree
+    - stat
+    - opt
+    - rates
+
+- level
+  - -Olevel
+    - 0
+    - 1
+    - 2
+    - 3
+**** Expressions
 - -name
   ファイル名を検索、パターンマッチ可。
 - -exec

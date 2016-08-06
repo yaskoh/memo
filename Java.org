@@ -782,6 +782,7 @@
 
 ***** Functions
 ****** Java Servlet
+******* About
 - 
   MVCでいうところのControllerに該当。
 
@@ -809,6 +810,7 @@
 - 消滅は明示的に行わず、管理コンソールの停止指示や、サーバ地震の停止の前に呼び出される。
   
 ****** JSP
+******* About
 - JavaServer Pages
   MVCでいうところのViewに相当。
   HTML内にJavaのコードを埋め込んでおき、Webサーバで動的にWebページを生成してクライアントに返す技術。
@@ -826,6 +828,10 @@
 - 
   JSPの中でメソッドを宣言しない場合、processRequestメソッドの内部をコーディングしていることと同じ。
   <%! int a = 0 %>のように変数を宣言するとフィールド変数となり、メモリの奪い合いが起きる。
+
+- 
+  自らでコンパイル作業が必要ない。コンテナが自動的に処理を行う。
+  サーブレットは自前でコンパイルしたclassファイルを実行する。
 
 ******* scope
 ******** application
@@ -1046,13 +1052,77 @@
 - 
   主に文字列操作を行う機能が集められている。
 
-****** Java Beans
+****** Java Beans (EJB)
 - 
   MVCとしての利用では、Modelに相当すると位置づけられる。
   再利用可能なソフトウェアコンポーネント、またはその技術。
 
+  ビジネス層に関しては基本的にEJBを使う。
+  CDIと通常のJavaクラス(POJO:Plain Old Java Object)によって作ることも可能だが、
+  EJBにはトランザクションを制御する機能が備わっているので、これを使った方が信頼性の高いアプリケーションを簡単に作れる。
+
+******* Component
+******** Session Bean
+- 
+  クライアント・サーバ間やシステム間のやり取りを通じて実行するビジネスロジックを実装するためのEJBコンポーネント。
+  以下の種類がある。
+  - Stateless Session Bean
+  - Stateful Session Bean
+  - Singleton Session Bean
+******** Message Driven Bean
+- 
+  メッセージ・サーバからの要求に応じてビジネスロジックを実行するEJBコンポーネント。
+  メッセージングを介したシステム連携を行う場合に作成する。
+
+******** Entity Bean
+- 
+  データベースへのデータ永続化に使用するEJBコンポーネント。
+  道央の機能を実現する技術としてJPAが導入されたため、現在は非推奨扱い。
+
 ****** JSF
 - JavaServer Faces
+  高機能なユーザインターフェースを効率的に作るためのWebアプリケーションフレームワーク。
+
+******* 要素
+******** FacesServlet (Controller)
+- 
+  クライアントとのやり取りの窓口の役割を果たす。
+  リクエストを受け取ると適切なコンポーネントに処理を受け渡し、処理結果をクライアントに送り返す。
+
+******** Facelets (XMTML)
+- 
+  画面の構成要素を記述する。XHTML内にJSFのタグを記述すると、そおｎタグに対応したコンポーネントが必要な処理を行う。
+  画面レイアウトと、ユーザーが画面の構成要素（ボタンやリスト、フォームなど）
+
+******** Maneged Bean
+- 
+  画面遷移やビジネスロジックの呼び出し、入出力値の管理などを行うコンポーネント。
+
+****** JPA
+- Java Persistence API
+  データベースへのアクセスなど永続化相の処理の開発にはJPAを使う。
+  RDBMSのテーブルに格納されているレコードをJavaオブジェクトとして扱えるようにしてくれるO/Rマッピングフレームワーク。
+  なお、JDBCではSELECT文やUPDATE文をJavaプログラム内に書くのでRDBの知識が必要となるが、
+  JPAを使う場合そういったコードを書く必要はない。
+  
+  JavaEEだけでなく、JavaSEでも使用可能。
+
+****** CDI
+- Container Dependency Injection
+  DI(Dependency Injection、依存性の注入)機能を備えたDIフレームワーク。
+  各層のコンポーネントを柔軟に結びつける役割を果たす。
+  プレゼンテーション層のJSFからビジネス層のEJBコンポーネントを呼び出すといった、層をまたいだコンポーネント間アクセスの方法を標準化している。
+  
+  またCDIはオブジェクトのライフサイクル（寿命）を管理する機能を備えており、
+  たとえばあるセッションだけで有効なオブジェクトや、あるリクエストだけで有効なオブジェクトなど、
+  オブジェクトの有効期間を指定して生成することができる。
+  
+****** JAX-RS
+***** Link
+- [[https://docs.oracle.com/javaee/7/tutorial/index.html][The Java EE Tutorial - Java Platform, Enterprise Edition 7]]
+- [[https://netbeans.org/kb/trails/java-ee_ja.html][Java EEおよびJava Webの学習 - NetBeans]]
+- [[http://qiita.com/tkxlab/items/3c0d4073defacb1215f5][JavaEEをはじめよう！ - Qiita]]
+
 **** Java ME
 - 
   Java Platform, Micro Edition。
@@ -1284,6 +1354,33 @@
 ****** Servlet
 ****** JSP
 ****** JDBC接続プール
+***** Folder
+****** %CATALINA_HOME%
+******* bin
+******* conf
+******** web.xml
+- 
+- servlet/init-param
+  param-name:listingsのparam-value:trueとすると、フォルダにアクセスした際に配下のファイルが一覧として見えるようになる。
+  セキュリティ上、Tomcat 6.0以降この値がTrueとなりデフォルトで表示されなくなった。
+
+******* lib
+******* webapps
+- 
+  ユーザが作成したアプリケーションを格納するためのデフォルトのアプリケーションフォルダ。
+  .warファイルを配下に置いておくと、アプリケーションが自動的に展開する。
+
+***** Environmental Variables
+- CATALINA_HOME
+  Tomcatフォルダを配置した場所を設定する。
+ 
+***** Tools
+****** Tomcat Manager
+- 
+  現在のアプリケーションの状態を確認し、アプリケーションの配置や起動・終了などをブラウザ画面から確認できる。
+  インストール時に設定したユーザ名/パスワードが必要。
+  http://localhost:8080/manager/html
+  
 **** JBoss
 - 
   Java EEアプリケーションサーバ。
@@ -1351,12 +1448,80 @@
 - Java Message Serviceを実装したメッセージ関連のオープンソースのミドルウェア。
   http://activemq.apache.org/getting-started.html
 
-*** Eclipse
+*** Editor
+**** Eclipse
 
-**** Memo
-***** Java6をインストールしろ、と言われた時
+***** Memo
+****** Java6をインストールしろ、と言われた時
 - [[http://stackoverflow.com/questions/19563766/eclipse-kepler-for-os-x-mavericks-request-java-se-6/19594116#19594116][Eclipse Kepler for OS X Mavericks request Java SE 6 - stackoverflow]]
 
+*** GUI
+**** JavaFX
+- 
+  Java仮想マシンで動作する立地インターネットアプリケーション(RIA)のGUIライブラリ。
+  JavaSE7 Update2以降に標準搭載されている。
+  Swingと異なり、FXMLと呼ばれるXMLとCSSを併用してデザインを記述する。
+
+***** History
+- JavaFX 1
+  2008/12/4リリース。JavaFX Scriptというプログラム言語を用いて開発する仕組みだった。
+- JavaFX 2
+  2011/10/10リリース。
+  JavaFX Scriptを廃止し、普通のJava APIに置き換えることで、JRuby, Groovyなどでも利用可能となる。
+- JavaFX 8
+  - Java8からバージョン番号を揃え、JavaFX 8となった。
+  
+**** Swing
+- 
+  JavaのGUIツールキット。AWTを拡張したもの。
+  AWTはOSのウィンドウシステムに準じたデザインになるのに対し、SwingはJavaプログラム上で描画されるので、より柔軟な設計が可能となる。
+  
+- 
+  [JFrame]に部品(コンポーネント)を張り付けていく。
+
+**** Abstract Window Toolkit, AWT
+- 
+  Java独自のプラットフォーム非依存ウィンドウシステム、UI、ウィジェットツールキット。
+  現在はJava Foundation Classes(JFC)に含まれ、GUIを提供する標準APIの一部となっている。
+
+*** JDBC(temp)
+- 
+  Java Database Connectivityの略と言われているが、実際には名称であり略称でないとのこと。
+  RDBMSへ接続する機能を標準化・抽象化している。
+  JavaSDKに同梱されているが、規格はJavaSDKとは独立して行われている。
+
+  java.sqlインターフェースを介して実装されている。
+
+**** JDBC Driver
+
+***** Type1 : JDBC-ODBCブリッジ・ドライバ
+- 
+  JDBCからのクエリー要求をODBCを経由して受け渡し、データベースとアクセスするもの。
+  ODBCドライバが必須であり、ハードウェアとOSに依存する。
+  Java7では非推奨となり、Java8では標準から削除された。
+
+***** Type2 : ネイティブ・ブリッジ・ドライバ
+- 
+  JDBCからのクエリ要求をOS上のDDLや専門ライブラリに受け渡し、そこからデータベースにアクセスするもの。
+  Type1に比べて階層が薄く高速化が期待できTCP/IPに依存しない利点があるが、ハードウェアとOSに依存する。
+- 
+  Oracleの場合、Oracle Call Interface(OCI)ドライバ。
+  
+***** Type3 : ネット・プロトコル・ドライバ
+- 
+  JDBCからのクエリー要求をJavaで記述されたドライブ内で独自のプロトコルに変換し
+
+***** Type4 : ネイティブ・プロトコル・ドライバ
+- 
+  Oracleの場合、Thinドライバ。
+***** サーバー側Thinドライバ
+***** サーバー側内部ドライバ
+** Settings
+*** Environmental Variables
+**** CLASSPATH
+- 
+  クラス検索パスの設定を行う。
+  実行時に"-classpath"オプションを指定しない場合、はCLASSPATH環境変数を用いることになる。
 ** Glossary
 *** Java applet
 - 
@@ -1387,6 +1552,26 @@
   J2EE仕様によってフォルダ構造が決められている。
   複数のWARファイル、(EJB)JARファイルを含む。
   application.xmlが含まれ、J2EEコンテナ（JBoss, WebSphereなど）に配布すると、これを元にデプロイされる。
+
+*** POJO
+- Plain Old Java Object、普通のJava。
+*** コンテナ
+- 
+  JSP&サーブレットコンテナ。
+  JSP&サーブレットを実行する環境という意味で、アプリケーションサーバとも呼ばれる。
+  WebLogicやJRun、Tomcatなどが該当する。
+
+**** Tomcat
+- バージョン関係
+  |--------+-----+--------------|
+  | Tomcat | JSP | サーブレット |
+  |--------+-----+--------------|
+  |    7.x | 2.2 |          3.0 |
+  |    6.x | 2.1 |          2.5 |
+  |    5.x | 2.0 |          2.4 |
+  |    4.x | 1.2 |          2.3 |
+  |    3.x | 1.1 |          2.2 |
+  |--------+-----+--------------|
 
 ** Link
 - [[http://docs.oracle.com/javase/8/docs/api/][Java™ Platform, Standard Edition 8 API Specification]]
@@ -1525,3 +1710,53 @@
 - 
   定数修飾子
   キーワードとして定義されているが、実際に使われるケースはない。
+**** アノテーション annotation
+- 
+  JavaSE 5から追加された。
+
+***** 分類
+- マーカーアノテーション
+- 単一値アノテーション
+  1つのデータを持つアノテーション
+- フルアノテーション
+  少なくとも2つ以上のデータを持つアノテーション
+- メタアノテーション
+  
+***** 種類
+****** 標準
+******* @Override
+- 
+  スーパークラスのメソッドをオーバーライドする、という注釈をつけたいときに使用する。
+
+******* @Deprecated
+- 
+  クラスやメソッドが非推奨であるという注釈を付けたいときに使用する。
+
+******* @SuppressWaring
+- 
+  コンパイル時の警告を抑制する。
+
+******* @Target
+- 
+  アノテーションが利用可能なプログラム要素を定義する
+
+******* @Retention
+- 
+  アノテーションの保持ルールを決める
+
+****** javadoc
+******* @author
+******* @param
+******* @return
+******* @exception
+******* @version
+******* @see
+******* @deprecated
+****** jUnit
+******* @Test
+******* @Before
+******* @AFter
+******* @BeforeClass
+******* @AfterClass
+***** 定義
+- @interface命令

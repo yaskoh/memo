@@ -1,5 +1,91 @@
 * MySQL
-** memo
+** ClientProgram
+*** mysql
+**** About
+- MySQLコマンド行実行ツール
+**** Options
+- https://dev.mysql.com/doc/refman/5.6/ja/mysql-command-options.html
+***** --help, -?
+- --help, -?
+  ヘルプメッセージを出して終了する
+  
+***** --password, -p
+- --password[=password], -p[password]
+  サーバに接続する際に使用するパスワード。
+  短いオプションを使用する場合は間にスペースは置かない。
+
+***** --user, -u
+- --user=user_name, -u user_name
+  サーバへの接続時に使用するMySQLユーザ名
+**** mysqlCommand
+- 
+  mysql自身が解釈するコマンド。
+  mysql>プロンプトでhelpまたは\hと入力するとリストを確認可能。
+***** List
+****** ? (\?)
+****** clear (\c)
+- clear command
+****** connect (\r)
+****** edit (\e)
+****** exit (\q)
+- Exit mysql. Same as quit.
+****** help (\h)
+****** quit (\q)
+****** source (\.)
+****** status (\s)
+****** system (\!)
+****** tee (\T)
+*** mysqladmin
+- mysqladmin [options] command [command-arg] [command [command-arg]]
+  管理操作を実行するためのクライアント。
+
+**** Command
+***** create db_name
+***** debug
+***** drop db_name
+***** extended-status
+***** flush-hosts
+***** flush-logs
+***** kill id, id, ...
+***** password new-password
+***** ping
+- サーバが使用可能かどうかをチェックする。
+  サーバーが稼働中の場合はmysqladminのリターンステータスは0となり、稼働していない場合は1となる。
+***** processlist
+- アクティブなサーバースレッドのリストを表示する。
+***** shutdown
+- サーバーを停止する。
+***** variables
+- サーバーシステム変数とその値を表示する
+***** version
+- サーバーからのバージョン情報を表示する。
+**** Option
+***** --password, -p
+- --password[=password], -p[password]
+  サーバーに接続する際に使用するパスワード。
+
+***** --user, -u
+- --user=user_name, -u user_name
+  サーバーの接続時に使用するMySQLユーザー名。
+
+*** mysqlcheck
+*** mysqldump
+*** mysqlimport
+*** mysqlshow
+*** mysqlslap
+** SQL
+*** Language Structure
+*** DataType
+*** Function, Operator
+*** Statement
+*** Information Schema
+** Storage Engine
+*** InnoDB
+*** Alternative
+** Settings
+*** Environmental Variables
+**** PATH
+** Memo
 *** バイナリログ
 - 
   バイナリログは論理ロギング。
@@ -86,4 +172,5 @@
   - [[http://yu-ya45.hatenablog.com/entry/2013/06/23/193204][CentOS6.4でMySQLのポートを変更するときにはまった - 個人プログラマーの備忘録！]]
 
 ** Link
+- [[https://dev.mysql.com/doc/refman/5.6/ja/][MySQL 5.6 リファレンスマニュアル - MySQL]]
 - [[http://www.rackspace.com/knowledge_center/article/installing-mysql-server-on-centos][Installing MySQL Server on CentOS - Rackspace Support Network]]

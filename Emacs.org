@@ -126,6 +126,8 @@
 **** C-M-x : eval-defun
 *** yasnippet
 **** C-i : yas-expand-from-trigger-key
+*** org-mode
+**** C-c ^ : org-sort
 ** Command
 *** etc
 **** keyboard-quit
@@ -289,6 +291,12 @@
 **** shell
 **** term
 **** eshell
+*** indent.el
+**** indent-region
+- (indent-region START END &optional COLUMN)
+  
+*** org-mode
+**** org-sort
 ** Variables
 *** files
 **** auto-mode-alist
@@ -414,6 +422,13 @@
 - 
   Tag
   ex) html, then tab
+**** Tramp-mode
+- TRAMP(Transparent Remote Access, Multiple Protocols)
+  winではあまりうまくいっていないので、どうにかしたい。
+- Link
+  [[https://www.emacswiki.org/emacs/TrampMode][Tramp Mode - EmacsWiki]]
+  [[http://yo.eki.do/notes/tramp-mode][Emacs:まだターミナルで消耗してるの？ - 葉月夜堂]]
+
 ** Library
 *** cl-lib
 - GNU Emacs Common Lisp Emulation
@@ -575,6 +590,8 @@
   (expt 2 n)で扱える最大のnがビット幅。超えると0が帰ってくる。
   手持ちのemacsは64bit版のため、60で正、61で負の値が返ってきたあと、62以降は0となる。
 
+*** 並び替え
+- org-sort(C-c ^)
 ** Link
 - [[http://www.gnu.org/software/emacs/manual/html_mono/emacs.html][The Emacs Editor]]
 - [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]
