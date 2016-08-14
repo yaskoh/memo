@@ -249,10 +249,17 @@
 *** Simple statement
 - 単一の論理行内に納められる文。
 **** expression statement 式文
-**** assignment statement
+**** assignment statement 代入文
 - syntax
   - assignment_stmt ::= (target_list "=")+ (expression_list | yield_expression)
   - target_list ::= target ("," target)* [","]
+
+- 
+  代入文は式のリストを評価し、得られた単一の結果オブジェクトをターゲット(target)のリストに対し左から右へと代入していく。
+  式のリストは単一の式でもカンマで区切られた式リストでもよい。後者はタプルとなる。
+  
+  代入はターゲット(リスト)の形式に従って形式に従って再帰的に行われる。
+  
 ***** Augumented assignment statement
 - 累積代入文は、二項演算と代入分を組み合わせて一つの文にしたもの。
 - syntax
@@ -1242,9 +1249,6 @@
 - [[https://pip.pypa.io/en/latest/index.html][pip]]
 - [[http://tdoc.info/blog/2014/01/15/pip.html][pipの使い方(2014/1バージョン) - そこはかとなく書くよん。]]
 
-** Link
-- [[http://docs.python.jp/2/tutorial/][Pythonチュートリアル 2]]
-- [[http://docs.python.jp/3.5/index.html][Python 3.5.1 ドキュメント]]
 ** Glossary
 *** Mutable, Immutable
 - Mutable
@@ -1256,6 +1260,11 @@
 *** Container
 - 他のオブジェクトに対する参照をもつオブジェクト。
   Tuple, List, Dictionaryなど。
+** Link
+- [[http://docs.python.jp/3.5/index.html][Python 3.5.1 ドキュメント]]
+- [[https://docs.python.org/3/index.html][Python 3.5.2 documentation]]
+- [[http://docs.python.jp/2/tutorial/][Pythonチュートリアル 2]]
+- [[http://d.hatena.ne.jp/dplusplus/20100126/p1][Python基礎文法最速マスター - LazyLife@Diary]]
 ** Memo
 *** old
 - osでよく使うコマンド
@@ -1304,10 +1313,6 @@ copyはshutil(shutil.copy, shutil.copytree, shutil.copyfile等)、
         for line in open(file, 'r'):
             print line
 
-*** コメントアウト
-- #
-  (あとで文法に移してください)
-  
 *** 前回表示結果
 - 
   "_"に格納されている。

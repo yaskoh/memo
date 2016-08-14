@@ -1,4 +1,108 @@
 * CSS
+** Specification
+*** About
+*** Note
+**** CSS Snapshot 2010
+- Completed
+**** CSS Snapshot 2015
+- Stable
+***** Definition
+***** W3C Process
+- Working Draft, WD
+- Candidate Recommendation, CR
+- Reccomendation, REC
+***** CSS Levels
+- CSS Level 1
+  Obsolete.
+- CSS Level 2
+- CSS Level 3
+  CSS Level 3 uses CSS2.1 spec as its core, and builds on Level 2 module by module.
+  Each module adds functionality and/or replaces part of the CSS 2.1 spec.
+- CSS Level 4 and beyond
+  There is no CSS Level 4.
+  CSS as the language has no longer levels, and independent modules can reach level 4 or beyond.
+***** Link
+- [[https://momdo.github.io/css-2015/][CSS Snapshot 2015 日本語訳]]
+*** Completed
+**** CSS Level 2 Revison 1
+***** Syntax and basic data types
+***** Selectors
+***** Assigning property values, Cascading, and Inheritance
+***** Media types
+***** Box model
+***** Visual formatting model
+***** Visual effects
+***** Generated content, automatic numbering, and lists
+***** Paged media
+***** Colors and Backgrounds
+***** Fonts
+***** Text
+***** Tables
+***** User interfaces
+**** CSS Level 1
+**** CSS Color Level3
+- REC 2011/6/7
+**** CSS Namespaces
+- REC 2011/9/29
+**** Selectors Level 3
+- REC 2011/9/29
+
+**** Media Queries
+- REC 2011/6/19
+**** CSS Style Attributes
+- REC 2013/11/7
+
+*** Stable
+**** CSS Backgrounds and Borders Level 3
+**** CSS Conditional Rules Level 3
+**** CSS Multi-column Layout
+**** CSS Values and Units Level 3
+**** CSS Cascading and Inheritance Level 3
+*** Testing
+**** CSS Image Values and Replaced Content Level 3
+**** CSS Speech
+**** CSS Flexible Box Layout
+**** CSS Text Decoration Module Level 3
+**** CSS Fonts Level 3
+**** CSS Writing Modes Level 3
+**** CSS Shapes Level 1
+**** CSS Masking Level 1
+**** CSS Counter Styles Level 3
+**** CSS Fragmentation Level 3
+**** Compositing and Blending Level 1
+**** CSS Syntax Level 3
+**** CSS Basic User Interface Level 3
+**** Geometry Interfaces Module Level 1
+**** CSS Cascading and Inheritance Level 4
+***** Importing Style Sheets
+***** Shorthand Properties
+***** Value Processing
+****** Declared Values
+****** Cascaded Values
+****** Specified Values
+****** Computed Values
+****** Used Values
+****** Actual Values
+***** Filtering
+***** Cascading
+***** Defaulting
+****** Initial Values
+****** Inheritance
+****** Explicit Defaulting
+******* initial : Resetting a Property
+******* inherit : Explicit Inheritance
+******* unset : Erasing All Declarations
+******* revert : Rolling Back The Cascade
+- user-agent origin
+- user origin
+- author origin
+***** Changes
+*** Refining
+**** CSS Cascaing Variables
+- CR
+**** CSS Will Change Level 1
+- CR
+**** CSS Level 2 Revision 2
 ** Properties
 *** Foundamentals
 **** box
@@ -554,10 +658,6 @@
 **** :after
 *** 擬似要素
 
-** comment
-- 
-  /* ... */ でコメントアウトできる。
-
 ** Memo
 *** 記述箇所
 - 
@@ -582,8 +682,11 @@
     background:red;
   }
 
-*** prolog
-**** Media Query メディアクエリ
+*** Comment
+- 
+  /* ... */ でコメントアウトできる。
+
+*** Media Query メディアクエリ
 - 
   CSS3の機能。
   メディアタイプとメディア特性を利用して、スタイルシートの適応条件を決定する式。
@@ -610,7 +713,6 @@
 - Link
   [[https://www.w3.org/TR/css3-mediaqueries/][Media Queries - W3C]]
   
-
 ** SASS
 - 
   SCSSというフォーマットに対応。
@@ -661,5 +763,9 @@
 *** Link
 - [[http://sass-lang.com/documentation/file.SASS_REFERENCE.html][SASS_REFERENCE]]
 ** Link
+- [[https://www.w3.org/Style/CSS/][Cascading Style Sheets home page - W3C]]
+- [[https://www.w3.org/Style/CSS/read][Understanding the CSS Specifications - W3C]]
+
+- [[http://momdo.s35.xrea.com/web-html-test/CSS3-ja/][CSS3の日本語訳集]]
 - [[http://www.htmq.com/style/index.shtml][スタイルシートリファレンス（目的別） - HTMLクイックリファレンス]]
 - [[http://www.htmq.com/css3/index.shtml][CSS3リファレンス - HTMLクイックリファレンス]]
