@@ -1,8 +1,359 @@
 * HTML
-** Format
-*** DOCTYPE
-**** <!DOCTYPE html>
-**** HTML5 Structure
+** HTML5
+*** Specification
+**** Common infrastructure 共通インフラ
+- 適合クラス、アルゴリズム、定義、および残りの使用の共通部分
+***** Common microsyntaxes
+****** Common parser idioms
+****** Boolean attributes
+****** Keywords and enumerated attributes
+****** Number
+******* Signed integers
+******* Non-negative integers
+******* Floating-point numbers
+******* Percentages and lengths
+******* Lists of integers
+******* Lists of dimensions
+****** Dates and times
+******* Months
+******* Dates
+******* Yearless dates
+******* Times
+******* Floating dates and times
+******* Time zones
+******* Global dates and times
+******* Weeks
+******* Durations
+******* Vaguer moments in time
+****** Colors
+****** Space-separated tokens
+****** Comma-separated tokens
+****** References
+****** Media queries
+**** Semantics, structure, and APIs of HTML documents
+***** Documents
+- 
+  HTMLユーザエージェントにおいてすべてのXMLおよびHTML文書は、Documentオブジェクトによって表される。
+  
+****** Document Object
+***** Elements
+****** Content models
+******* Kinds of content
+******** Metadata content
+- Elements
+  - base, link, meta, noscript, script, style, template, title
+- 
+  見栄えまたは後のコンテンツの振る舞いを設定する、または他の文書との関係を設定する、または他の"帯域外の"情報を運搬するコンテンツ。
+******** Flow content
+- Elements
+  - a, abbr, address, area(map要素の子孫の場合), article, aside, audio, b, bdi, bdo, blockquote,
+    br, button, canvas, cite, code, data, datalist, del, dfn, div, dl, em, embed, fieldset, figure, footer, form,
+    h1, h2, h3, h4, h5, h6, header, hr, i, iframe, img, input, ins, kbd, keygen, label, main, map, mark,
+    math, meter, nav, noscript, object, ol, output, p, pre, progress, q, ruby, s, samp, script, section,
+    select, small, span, strong, sub, sup, svg, table, template, textarea, time, u, ul, var, video, wbr, Text
+- 
+  文書及びアプリケーションのbodyで使用される多くの要素。
+******** Sectioning content
+- Elements
+  - article, aside, nav, section
+- 
+  見出しおよびフッターの範囲を定義するコンテンツ。
+******** Heading content
+- Elements
+  - h1, h2, h3, h4, h5, h6
+- 
+  セッションのヘッダーを定義する。
+******** Phrasing content
+- Elements
+  - a, abbr, area(map要素の子孫の場合), audio, b, bdi, bdo, br, button, canvas, cite, code, data,
+    datalist, del, dfn, em, embed, i, iframe, img, input, ins, kbd, keygen, label, map, mark, math, meter,
+    noscript, object, output, progress, q, ruby, s, samp, script, select, small, span, strong, sub, sup, svg,
+    template, textarea, time, u, var, video, wbr, Text
+- 
+  文書のテキストおよび段落内レベルでそのテキストをマークアップする要素。
+
+******** Embedded content
+- Elements
+  - audio, canvas, embed, iframe, img, math, object, svg, video
+- 
+  他のリソースから文書に取り込むコンテンツか、文書へ挿入される他の語彙由来のコンテンツ。
+  
+******** Interactive content
+- Elements
+  - a, audio(controls属性が存在する場合), button, embed, iframe, img(usemap属性が存在する場合), 
+    input(type属性がhidden状態でない場合), keygen, label, object(usemap属性が存在する場合),
+    select, textarea, video(controls属性が存在する場合)
+- 
+  ユーザーとの交流を意図するコンテンツ。
+******** Etc
+********* Palpable content
+- Elements
+  - a, abbr, address, article, aside, audio(control属性が存在する場合), b, bdi, bdo, blockquote,
+    button, canvas, cite, code, data, dfn, div, dl(要素の子が少なくとも1つの名前-値グループを含む場合),
+    em, embed, fieldset, figure, footer, form, h1, h2, h3, h4, h5, h6, header, i, iframe, img,
+    input(type属性がhidden状態でない場合), ins, kdb, keygen, label, main, map, mark, math,
+    meter, nav, object, ol(要素の子が少なくとも1つli要素を含む場合), output, p, pre, progress, q,
+    ruby, s, samp, section, select, small, span, strong, sub, sup, svg, table, textarea, time, u, 
+    ul(要素の少なくとも1つli要素を含む場合), var, video, 要素内の空白文字でないText
+- 
+  「明白・明瞭な」コンテンツ、という意味。
+  フローコンテンツかフレージングコンテンツは、パルパブルコンテンツを内容に持つべきである、
+********* Script-supporting elements
+- Elements
+  - script, template
+- 
+  自分自身で何も表さない（レンダリングされない）が、たとえばユーザに機能を提供するために、スクリプトをサポートするために使用される。
+  
+********* Sectioning root
+****** Global attributes
+******* id
+******* title
+******* lang, xml:lang
+******* translate
+******* xml:base
+******* dir
+******* class
+******* style
+****** WAI-ARIA
+- 
+  ARIA
+  詳細については別ドキュメント等参照。
+******* ARIA Role Attrilubet
+- 
+  すべてのHTML要素はARIA roleが指定された属性を持って良い。
+******* ARIA State and Property Attribute
+- 
+  すべてのHTML要素は、ARIAステートおよびプロパティー属性を指定させても良い。
+**** HTML elements
+***** Root element
+****** html
+- 
+  - Category : なし
+  - Contexts
+    As the root element of a document.
+  - Contents model : 
+    head要素、続いてbody要素
+  - Content attributes :
+    Global attirbutes
+    manifest
+  - Tag omission
+  - Allowed ARIA role
+  - Allowed ARIA state and property
+***** Document metadata
+****** head
+- 
+  - Category : なし
+   
+****** title
+****** base
+****** link
+****** meta
+****** style
+***** Sections
+****** body
+****** article
+****** nav
+****** aside
+****** h#(1-6)
+****** header
+****** footer
+****** address
+***** Grouping content
+****** p
+****** hr
+****** pre
+****** blockquote
+****** ol
+****** ul
+****** li
+****** dl
+****** dt
+****** dd
+****** figure
+****** figcaption
+****** div
+****** main
+***** Text-level semantics
+****** a
+****** em
+****** strong
+****** small
+****** s
+****** cite
+****** q
+****** dfn
+****** abbr
+****** adat
+****** time
+****** code
+****** var
+****** samp
+****** kbd
+****** sub, sup
+****** i
+****** b
+****** u
+****** mark
+****** ruby
+****** rb
+****** rt
+****** rtc
+****** rp
+****** bdi
+****** bdo
+****** span
+****** br
+****** wbr
+***** Edits
+****** ins
+****** del
+***** Embedded content
+****** img
+****** iframe
+****** embed
+****** object
+****** param
+****** video
+****** audio
+****** source
+****** track
+****** map
+****** area
+***** Links
+****** Link type
+******* alternate
+******* author
+******* bookmark
+******* help
+******* icon
+******* license
+******* nofollow
+******* noreferrer
+******* prefetch
+******* search
+******* stylesheet
+******* tag
+******* sequential type
+******** next
+******** prev
+***** Tabular data
+****** table
+****** caption
+****** colgroup
+****** col
+****** tdoby
+****** thead
+****** tfoot
+****** tr
+****** td
+****** th
+***** Forms
+****** form
+****** label
+****** input
+****** button
+****** select
+****** datalist
+****** optgroup
+****** option
+****** textarea
+****** keygen
+****** output
+****** progress
+****** meter
+****** fieldset
+****** legend
+***** Scripting
+****** script
+****** noscript
+****** template
+****** canvas
+**** Loading Web pages
+**** Web application APIs
+**** User interaction
+**** HTML syntax
+**** XHTML syntax
+**** Rendering
+** DOM
+*** Link
+- [[https://dom.spec.whatwg.org/][DOM Living Standard]]
+- [[DOM Standard ("DOM4") 日本語訳]]
+- [[https://www.w3.org/TR/dom/][W3C DOM4 - W3C]]
+** Web IDL
+- Web IDL can be used to describe interfaces that are intended to be implemented in web browesrs.
+  
+*** Interface definition language
+**** Interfaces
+***** Constants
+***** Attributes
+***** Operations
+***** Special operations
+****** Legacy callers
+****** Stringifiers
+****** Indexed properties
+****** Named properties
+***** Static operations
+***** Overloading
+**** Dictionaries
+**** Exceptions
+**** Enumerations
+**** Callback functions
+**** Typedefs
+**** Implements statements
+**** Objects implementing interfaces
+**** Type
+***** any
+***** boolean
+***** byte
+***** octet
+***** short
+***** unsigned short
+***** long
+***** unsigned long
+***** long long
+***** unsigned long long
+***** float
+***** unrestricted float
+***** double
+***** unrestricted double
+***** DOMString
+***** object
+***** Interface types
+***** Dictionary types
+***** Enumeration types
+***** Callback function types
+***** Nullable types - T?
+***** Sequences - sequence<T>
+***** Arrays - T[]
+***** Union types
+***** Date
+*** IDL grammer
+- https://www.w3.org/TR/WebIDL/#prod-Definitions
+**** Definitons
+**** Definition
+**** CallbackOrInterface
+**** CallbackRestOrInterface
+**** Interface
+**** Partial
+**** PartialDefinition
+**** PartialInterface
+**** InterfaceMembes
+*** Link
+- [[https://www.w3.org/TR/WebIDL/][Web IDL - W3C]]
+- [[http://domes.lingua.heliohost.org/webapi-intro/webidl1.html][Web IDL入門]]
+** WAI-ARIA
+- 
+*** Link
+- [[https://www.w3.org/TR/wai-aria/][Accessible Rich Internet Applications (WAI-ARIA) 1.0 - W3C]]
+- [[https://rawgit.com/w3c/aria-in-html/master/index.html][Using WAI-ARIA in HTML]]
+- [[https://www.w3.org/TR/html-aria/][ARIA in HTML - W3C]]
+- [[https://momdo.github.io/html-aria/][ARIA in HTML 日本語訳]]
+- [[http://website-usability.info/2014/04/entry_140415.html][WAI-ARIAの基礎知識 - Website Usability Info]]
+** old
+*** Format
+**** DOCTYPE
+***** <!DOCTYPE html>
+***** HTML5 Structure
 - HTML5
   <!DOCTYPE html>
   <html>
@@ -10,15 +361,15 @@
     <body> ~ </body>
   </html>
 
-*** html
-**** head
-***** meta
-****** properties
-******* charset
+**** html
+***** head
+****** meta
+******* properties
+******** charset
 - ex
   <meta charset="utf-8">
 
-******* viewport
+******** viewport
 - ex
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   (googleなど↓とのこと)
@@ -27,44 +378,44 @@
 - 
   http://qiita.com/ryounagaoka/items/045b2808a5ed43f96607
 
-***** title
+****** title
 - page title
-***** link
-****** properties
-******* rel
+****** link
+******* properties
+******** rel
 - link type
 - css
   rel="stylesheet"
 
-******* href
+******** href
 - link file
 - css
   href="stylesheet.css"
 
-***** style
+****** style
 
-***** base
-**** body
-***** Sections
-****** <header>
+****** base
+***** body
+****** Sections
+******* <header>
 - new in html5
 − header
-****** <aside>
+******* <aside>
 - new in html5
 - sidebar
-****** <article>
+******* <article>
 - new in html5
 - main contents
-****** <footer>
+******* <footer>
 - new in html5
 - footer
 
-****** <section>
+******* <section>
 - new in html5
-****** <nav>
+******* <nav>
 - new in html5
 
-***** <div>
+****** <div>
 - 
   defines a division or a section in an HTML document.
   the tag is used to group block-elements to format them with CSS.
@@ -72,21 +423,21 @@
 - 
   block element
 
-***** <span>
+****** <span>
 - 
   inline element
   use for applying styles in a part of a line.
 
-***** <script>
-***** <noscript>
+****** <script>
+****** <noscript>
 
-***** <h1> to <h6>
+****** <h1> to <h6>
 - 
   見出し
 
-***** <hr>
-***** <!-->
-***** <p> paragraph
+****** <hr>
+****** <!-->
+****** <p> paragraph
 - 
   defiens a paragraph.
 
@@ -97,8 +448,8 @@
 - class
   <p class="name">
 
-***** <br> line breaks
-***** <a>
+****** <br> line breaks
+****** <a>
 - 
   link, anchor.
 
@@ -115,73 +466,73 @@
   - title
     - additional / advisory information, expand on the meaning of the link.
 
-***** <img>
+****** <img>
 - 
   image
 
-****** <map>
-****** <area>
-***** <table>
-****** <tr>
+******* <map>
+******* <area>
+****** <table>
+******* <tr>
 - row
-******* <th>
+******** <th>
 − header
-******* <td>
+******** <td>
 - data
-****** <thead>
-****** <tbody>
-****** <tfoot>
-***** <ol>
+******* <thead>
+******* <tbody>
+******* <tfoot>
+****** <ol>
 - 
   ordered list
 
-***** <ul>
+****** <ul>
 - 
   unordered list
 
-***** <li>
+****** <li>
 - 
   elements in the list.
 
-***** <form>
-******   <input>
+****** <form>
+*******   <input>
 - 
   type="text", "password", "radio", "checkbox", "submit"
 
-******   <label>
-******   <fieldset>
+*******   <label>
+*******   <fieldset>
 - 
   group related elements in a form. draws a box around the related elements.
-*******     <legend> caption of fieldset
+********     <legend> caption of fieldset
 
-***** <textarea>
-***** <select>
+****** <textarea>
+****** <select>
 - 
   drop-down list
 
-***** <datalist>
-****** <optgroup>
+****** <datalist>
+******* <optgroup>
 - 
   group of option
 
-******* <option>
+******** <option>
 - 
   drop-down list elements
 
-***** <button>
-***** <keygen>
+****** <button>
+****** <keygen>
 - 
   key-pair generator
 
-***** <output>
+****** <output>
 - 
   result of a calculation
 
-***** <Iframe>
+****** <Iframe>
 - 
   Inline Frame
 
-*** FormattingTags
+**** FormattingTags
 - <b>
 - <strong>
 - <i>
@@ -193,89 +544,95 @@
 - <del>
 - <mark>
     
-*** ComputerOutputTags
+**** ComputerOutputTags
 - <code> computer code
 - <kbd> keyboard text
 - <samp> sample
 - <var> variable
 - <pre>
     
-*** Citations,Quotations,DefinitionTags
+**** Citations,Quotations,DefinitionTags
 - <abbr> abbreviation or acronym
 - <address> contact information
 - <bdo> text direction(Bi-Directional Override)
 - <cite> title of a work
 - <dfn> defines a definition term
 
-** html5 tags
+*** html5 tags
 − http://www.htmq.com/html5/index.shtml
 
-*** Document type definition
-**** <!DOCTYPE html>
-*** Root element
-**** <html>
-*** Document metadata
-**** <head>
-**** <title>
-**** <base>
-**** <link>
-**** <meta>
-**** <style>
-*** Scripting
-**** <script>
-**** <noscript>
-*** Sections
-**** <body>
-**** <h1>-<h6>
-**** <section>
+**** Document type definition
+***** <!DOCTYPE html>
+**** Root element
+***** <html>
+**** Document metadata
+***** <head>
+***** <title>
+***** <base>
+***** <link>
+***** <meta>
+***** <style>
+**** Scripting
+***** <script>
+***** <noscript>
+**** Sections
+***** <body>
+***** <h1>-<h6>
+***** <section>
 - new in html5
-**** <nav>
+***** <nav>
 - new in html5
-**** <header>
+***** <header>
 - new in html5
 − header
-**** <aside>
+***** <aside>
 - new in html5
 - sidebar
-**** <article>
+***** <article>
 - new in html5
 - main contents
-**** <footer>
+***** <footer>
 - new in html5
 - footer
-**** <address>
+***** <address>
 
-*** Grouping content
-*** Text-level semantics
-*** Edits
-*** Embedded content
-*** Tabular data
-*** Forms
-*** Interactive elements
-** Symbol
-*** Entities
-    &nbsp;       non-breaking space
-    &lt;     <   less than
-    &gt;     >   greater than
-    &cent;
-    &pound;
-    &yen;
-    &euro;
-    &copy;       copyright
-    &reg;        registered trademark
+**** Grouping content
+**** Text-level semantics
+**** Edits
+**** Embedded content
+**** Tabular data
+**** Forms
+**** Interactive elements
+*** Symbol
+**** Entities
+     &nbsp;       non-breaking space
+     &lt;     <   less than
+     &gt;     >   greater than
+     &cent;
+     &pound;
+     &yen;
+     &euro;
+     &copy;       copyright
+     &reg;        registered trademark
 
-*** Symbols
-    &forall;
-    &part;
-    &exist;
-    &empty;
-    &nabla;
-    ...
-    &larr;   ©   leftwards arrow
-    &uarr;   ª   upwards arrow
-    &larr;   ¨   rightwards arrow
-    &larr;   «   downwards arrow
-    
+**** Symbols
+     &forall;
+     &part;
+     &exist;
+     &empty;
+     &nabla;
+     ...
+     &larr;   ©   leftwards arrow
+     &uarr;   ª   upwards arrow
+     &larr;   ¨   rightwards arrow
+     &larr;   «   downwards arrow
+     
+** Glossary
+*** WHATWG
+- Web Hypertext Application Technology Working Group
+  HTMLの開発やその関連技術に興味を持つ人々のコミュニティー。
+  Apple, Mozilla, Operaによって設立された。
+*** IDL
 ** Memo
 - Use lower case
 
@@ -296,5 +653,13 @@
   Outside area
 
 ** Link
+- [[https://html.spec.whatwg.org/multipage/][HTML Living Standard]]
+- [[https://www.w3.org/TR/html5/][HTML5 - W3C]]
+- [[https://momdo.github.io/html5/Overview.html][HTML5日本語訳 - W3C]]
+- [[https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5][HTML5 - MDN]]
+- [[https://developer.mozilla.org/ja/docs/Web/HTML/HTML5][HTML5(日本語訳) - MDN]]
 - [[http://www.ituore.com/entry/html-css-basic][HTMLとCSSの基本をサルでもわかるようにまとめてみようと思う。 - いつ俺]]
 - [[http://www.htmq.com/html5/index.shtml][HTML5リファレンス - HTMLクイックリファレンス]]
+
+- [[http://jtdan.com/spec/][W3C仕様書などのまとめ【保存版】 - W3C]]
+- [[http://alistapart.com/article/readspec][How to Read W3C Specs - A LIST APART]]

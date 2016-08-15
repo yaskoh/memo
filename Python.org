@@ -1,6 +1,36 @@
 * Python
 ** Tutorial
+** Command
+*** python
+- usage
+  python [-bBdEhilOqsSuvVWx?] [-c command | -m module-name | script | -] [args]
 
+- -c <command>
+- -m <module-name>
+- -
+  標準入力(sys.stdin)からコマンドを読み込む。
+- <script>
+  script内のPythonコードを実行する。
+
+- -?, -h, --help
+  全コマンドラインオプションの短い説明を出力する。
+- -V, --version
+  Pythonのバージョンを表示する
+*** Environmental variables
+**** PYTHONHOME
+- 標準Pythonライブラリの場所を変更する。
+**** PYTHONPATH
+- モジュールファイルのデフォルトの検索パスを追加する。
+**** PYTHONSTARTUP
+- この変数が読み込み可能なファイル名の場合、対話モードで最初のプロンプトが表示される前にそのファイルのPythonコマンドが実行される。
+**** PYTHONPTIMIZE
+**** PYTHONDEBUG
+**** PYTHONINSPECT
+**** PYTHONUNBUFFERED
+**** PYTHONVERBOSE
+**** PYTHONCASEOK
+**** PYTHONDONTWRITEBYTECODE
+**** PYTHONHASHSEED
 ** Language
 *** Parser
 **** line structure
@@ -10,26 +40,141 @@
 - 
   ハッシュ"#"から始まり、同じ物理行の末端で終わる。
 ***** encoding declaration
+- 
+  スクリプトの一行目か二行目にあるコメントが正規表現"coding[=:]\s*([-\w.]+)"にマッチする場合、コメントはエンコード宣言として処理される。
+  推奨系は以下。
+  - Emacs : # -*- coding: <encoding-name> -*-
+  - vim:fleeencoding=<coding-name>
 ***** 明示的な行継続
 ***** 非明示的な行継続
 ***** 空行
-***** インデント
+***** Indent インデント
 ***** トークン間の空白
 **** Token
-**** Identifier
-**** Keyword
-**** Literal
-***** Strings literal
-***** Concatenation
-***** Number literal
-***** Integer literal
-***** float literal
-***** imaginary literal
-***** operator
-***** delimiter
+***** Identifier
+- 
+****** reserved
+***** Keyword
+- 
+  False, None, True
+  and, as, assert, break, class, continue
+  def, del, elif, else, except, finally
+  for, from, global, if, import, in, is,
+  lambda, nonlocal, not, or, pass, raise, return,
+  try, while, whithe, yield, pass, raise
+
+***** Literal
+****** Strings literal
+- 
+  - stringliteral ::= [stringprefix](shortstring | longstring)
+  - stringprefix ::= "r" | "u" | "R" | "U"
+  - shortstring ::= "'" shortstringitem* "'" | '"' shortstringitem* '"'
+  - longstring ::= "'''" longstringitem* "'''" | '"""' longstringitem* '"""'
+
+****** Concatenation
+****** Number literal
+******* Integer literal
+******* Iloat literal
+******* Imaginary literal
+- imagnumber ::= (floatnumber|intpart) ("j"|"J")
+- ex)
+  3.14j 10J
+***** Operator
+- 
+  +, -, *, **, /, //, %, @, <<, >>, &, |,
+  ^, ~, <, >, <=, >=, ==, !=
+
+***** Delimiter
+- 以下は文法上のデリミタとして働く
+  ( ) [ ] { } , : . ; @ = ->
+  += -= *= /= //= %= @= &= |= ^= >>= <<= **=
+  
+- 他のトークンの一部として特殊な意味を持っていたり、字句解析にとって重要な意味を持つ。
+  ' " # \
+
+- 以下はPythonでは使われておらず、文字列リテラルやコメントの外部にある場合、無条件でエラーとなる。
+  $ ? `
+
+***** NEWLINE
+***** INDENT
+***** DEDENT
 *** Data model
 **** Object, Value, Type
-**** Layer
+**** The standard type hierarchy
+***** None
+- 単一の値のみを持つ。この値を持つオブジェクトはただ一つしか存在しない。
+  組み込み名"None"でアクセスされる。
+***** NotImplemented
+- 単一の値のみを持つ。この値を持つオブジェクトはただ一つしか存在しない。
+  組み込み名"NotImplemented"でアクセスされる。
+***** Ellipsis
+- 単一の値のみを持つ。この値を持つオブジェクトはただ一つしか存在しない。
+  リテラル"..."または組み込み名"Ellipsis"でアクセスされる。
+***** numbers.Number
+****** numbers.Integral
+******* Integers (int)
+******* Booleans (bool)
+****** numbers.Real (float)
+****** numbers.Complex (complex)
+***** Sequence
+- 有限の順序集合(ordered set)を表現する。
+  要素は非負の整数でインデクス化されている。
+****** Immutable sequence
+******* String
+******* Tuple
+******* Byets
+****** Mutable sequence
+******* Lists
+******* Byte Arrays
+***** Set types
+- 順序のない、ユニークで不変なオブジェクトの有限集合を表見する。
+****** Sets
+- 可変な集合型。set()コンストラクタで作成され、後からadd()などのいくつかのメソッドで変更できる。
+****** Frozen sets
+- 不燃あ集合型。frozenset()コンストラクタによって生成される。
+***** Mapping
+- 任意のインデクス集合でインデクスされた、オブジェクトからなる有限の集合を表す。
+****** Dictionary
+- ほぼ任意のインデクスされたオブジェクトからなる有限の集合を表す。
+***** Callable type
+- 関数呼び出し操作を行うことができる型。
+****** User-defined functions
+******* Special attributes
+******** __doc__
+******** __name__
+******** __qualname__
+****** Instance methods
+- クラス、クラスインスタンスと任意の呼び出し可能オブジェクト（通常はユーザ定義関数）を結びつける。
+****** Generator functions
+- yield文を使う関数もしくはメソッドをジェネレータ関数と呼ぶ。
+  そのような関数が呼び出された時は常に、関数の本体を実行するのに使えるイテレータオブジェクトを返す。
+****** Coroutine functions
+- async defを使用して定義された関数やメソッドをコルーチン関数(coroutine function)と呼ぶ。
+****** Built-in functions
+- C関数へのラッパ。len()やmath.sin()など。
+****** Built-in methods
+- 実際には組み込み関数を別の形で隠蔽したもの。
+****** Classes
+****** Class instances
+- Instances of arbitrary classes can be made callable by defining a __call__() method in their class.
+  任意のクラスのインスタンスは、クラスで__call__()メソッドを定義することで呼び出し可能となる。
+***** Module
+***** Custom classes
+***** Class instances
+***** I/O objects (file objects)
+- file objectは開かれたファイルを表す。
+***** Internal types
+****** Code objects
+- バイトコンパイルされた実行可能なPythonコード（バイトコード・bytecode）を表現する。
+  関数オブジェクトとの違いは、関数オブジェクトは関数のグローバル変数に対し明示的な参照を持っているのに対し、
+  コードオブジェクトにはコンテキストがないということ。
+****** Frame objects
+- 実行フレーム(execution frame)を表す。実行フレームはトレースバックオブジェクト内に出現する。
+  
+****** Traceback objects
+****** Slice objects
+****** Static method objects
+****** Class metod objects
 **** Method name
 **** Co-routine
 *** Exec model
@@ -45,38 +190,112 @@
 *** Expression
 **** Arithmetic conversion
 **** Atom
+***** Identifiers
+***** Literals
+***** Parenthesized forms
+***** Displays for lists, sets and dicts
+****** Listed explicitly
+******* List displays
+******* Set displays
+******* Dictionary displays
+****** Comprehension
+- syntax
+  - comprehension ::= expression comp_for
+  - comp_for ::= "for" target_list "in" or_test [comp_iter]
+  - comp_iter ::= comp_for | comp_if
+  - comp_if ::= "if" expression_nocond [comp_iter]
+- computed via a set of looping and filtering instructions
+- ex
+  - [ i for i in range(10) ]
+  - a,b,c = [ False for i in range(3) ]
+
+***** Generator expressions
+***** Yield expressions
 **** Primary
 **** Awati expression
 **** power operator
-**** unary arithmetic and bitwise operation
-**** binary arithmetic operation
+**** Unary arithmetic and bitwise operations
+***** -
+***** +
+***** ~
+- bitwise invert ビット単位反転
+  xのビット単位反転は"-(x+1)"として定義されている。
+**** Binary arithmetic operations
+***** *
+***** //
+- floor division 切り捨て徐算
+  
+***** /
+***** %
+***** @
+- 行列の遠山に対し使用される。Pythonの組み込み型はこの演算子を実装していない。
+***** +
+***** -
 **** shifting operation
 **** binary bitwise operation
 **** comparing
 **** boolean operaiton
-**** Conditional Expressions
+**** Conditional Expressions 条件式
+- 
+  条件式、しばしば三項演算子、とも。もっとも優先度が低いPyhonの演算。
+  "x if C else y"はCを評価し、trueの場合xが評価され値が返る。それ以外はyが評価され返る。
+
 **** lambda
+- syntax
+  lambda_expr ::= "lambda" [parameter_list]: expression
 **** list of expressions
 **** evaluate order
 **** primarity of operand
 *** Simple statement
+- 単一の論理行内に納められる文。
 **** expression statement 式文
-**** assignment statement
+**** assignment statement 代入文
+- syntax
+  - assignment_stmt ::= (target_list "=")+ (expression_list | yield_expression)
+  - target_list ::= target ("," target)* [","]
+
+- 
+  代入文は式のリストを評価し、得られた単一の結果オブジェクトをターゲット(target)のリストに対し左から右へと代入していく。
+  式のリストは単一の式でもカンマで区切られた式リストでもよい。後者はタプルとなる。
+  
+  代入はターゲット(リスト)の形式に従って形式に従って再帰的に行われる。
+  
+***** Augumented assignment statement
+- 累積代入文は、二項演算と代入分を組み合わせて一つの文にしたもの。
+- syntax
+  - augmented_assignment_stmt ::= augtarget augop (expression_list | yield_expression)
+  - augtarget
+  - augop ::= "+=" | "-=" | "*=" | "@=" | "/=" | "//=" | "%=" | "**=" | ">>=" | "<<=" | "&=" | "^=" | "!="
 **** assert
+- syntax
+  assert_stmt ::= "assert" expression ["," expression]
 **** pass
+- syntax
+  pass_stmt ::= "pass"
+  ヌル操作。構文的には文が必要だが、コードとしては何も実行したくない場合のプレースホルダとして有用。
 **** del
+- syntax
+  del_stmt ::= "del" target_list
+- 
+  オブジェクトの削除。各々のターゲットを左から右へ順に再起的に削除する。
+  
 **** return
+- syntax
+  return_stmt ::= "return" [expression_list]
 **** yield
+- syntax
+  yield_stmt ::= yield_expression
+- 
+  意味はyield expressionと同じ。yield文を用いるとyield式文で必要な確固を省略できる。
+  
 **** raise
 **** break
 **** continue
 **** import
 - 
   import          ::= "import" module ["as" name] ( "," module ["as" name] )*
-                      | "from" relative_module "import" identifier ["as" name]
-                      ( "," identifier ["as" name] )*
-                      | "from" relative_module "import" "(" identifier ["as" name]
-                      ( "," identifier ["as" name] )* ["," ")"
+                      | "from" relative_module "import" identifier ["as" name] ( "," identifier ["as" name] )*
+                      | "from" relative_module "import" "(" identifier ["as" name] ( "," identifier ["as" name] )* ["," ")"
                       | "from" module "import" "*"
   module          ::= (identifier ".")* identifier
   relative_module ::= "."* module
@@ -97,9 +316,31 @@
 **** global
 **** nonlocal
 *** Compound statement
+- 複合文には他の文（のグループ）が入る。
+  中に入っている他の文の実行の制御に何らかのやり方で影響を及ぼす。
 **** if
+- syntax
+  if_stmt ::= "if" expression ":" suite
+              ( "elif" expression ":" suite )*
+              ["else" ":" suite]
+
 **** while
+- syntax
+  while_stmt ::= "while" expression ":" suite
+                 ["else" ":" suite]
+
+- 
+  式の値が真である間、実行を繰り返す。
+  式が偽であれば、else節がある場合にはそれを実行し、ループを終了する。
+
 **** for
+- syntax
+  for_stmt ::= "for" target_list "in" expression_list ":" suite
+               ["else" ":" suite]
+
+- 
+  シーケンス（文字列、タプルまたはリスト）や、その他の反復可能なオブジェクト(iterable object)内の要素に渡って反復処理を行うために使われる。
+
 **** try
 - 
   try_stmt  ::= try1_stmt | try2_stmt
@@ -134,8 +375,10 @@
 - 
   クラスオブジェクトを定義する、実行可能な文。
   
-
 **** co-routine
+***** co-routine function definition
+***** async for
+***** async with
 *** Top Level
 ** Library
 *** Standard Library
@@ -144,6 +387,47 @@
 ****** abs()
 ****** all()
 ****** any()
+****** chr(i)
+- Unicodeコードポイントが整数iである文字を表す文字列を返す。ord()の逆。
+****** dir()
+- dir([object])
+  引数がない場合、現在のローカルスコープにある名前のリストを返す。
+  引数がある場合、そのオブジェクトの有効な属性のリストを返そうと試みる。
+  
+****** enumerate()
+- enumerate(iterable, start=0)
+  erumerateオブジェクトを返す。
+  iterableは、シーケンスかiteratorか、あるいはイテレーションをサポートするその他のオブジェクトでなければならない。
+  
+****** help()
+- help([obeject])
+  組み込みヘルプシステムを起動する。
+  引数が与えられていない場合、インタプリタコンソール上で起動する。
+  
+****** input()
+- input([prompt])
+  引数promptが存在すれば、それが末尾の改行を除いて標準出力に書き出される。
+  次に、関数から1行を読み込み、文字列に変換して返す。
+- 例）
+  
+****** list()
+- class list([iterable])
+  実際には関数でなくミュータブルなシーケンス型。
+****** map()
+- map(function, iterable, ...)
+  functionを、結果を返しならがiterableのすべての要素に適用するイテレータを返す。
+
+****** max()
+- 
+  max(iterable, *[, key, default])
+  max(arg1, arg2, *args[, key])
+- 
+  iterableの中で最大の要素、または2つ以上の引数の中で最大のものを返す。
+
+****** print()
+- print(*objects, sep='', end='\n', file=sys.stdout)
+  object(複数でも可)をsepで区切りながらストリームfileに表示し、最後にendを表示する。
+  sep, end, fileが与えられる場合、キーワード変数として与えられる必要がある。
 ****** open()
 - open(name[, mode[, buffering]]
   ファイルを開いて、fileオブジェクトを返す。開けない場合IOErrorが送出される。
@@ -157,31 +441,124 @@
     - r+
     - w+
     - a+
-****** print()
-- print(*objects, sep='', end='\n', file=sys.stdout)
-  object(複数でも可)をsepで区切りながらストリームfileに表示し、最後にendを表示する。
-  sep, end, fileが与えられる場合、キーワード変数として与えられる必要がある。
-
+****** ord(c)
+- 1文字のUnicode文字を表す文字列に対し、その文字のUnicodeコードポイントを表す整数を返す。chr()の逆。
+****** range()
+- range(stop)
+- range(start, stop[, step])
+  実際には関数でなくイミュータブルなシーケンス型。
+****** round()
+- round(number[, ndigits])
+  numberを小数点以下ndigits桁に丸めた浮動小数点数の値を返す。
+  ndigitsが省略された場合、入力に最近節の整数を返す。
+  偶数を選ぶ方に丸められる。（例：0.5と-0.5は0, 1.5は2に丸められる）
+****** type()
+- class type(name, bases, dict)
+  引数が1つだけの場合、objectの型を返す。返り値は型オブジェクトで、一般にobjcet.__class__によって返されるのと同じオブジェクト。
+  
+****** zip(*iterables)
+- それぞれのイテラブルから集めたイテレータを作る。
+  この関数はタプルのイテレータを返し、そのi番目のタプルは引数シーケンスまたはイテラブルそれぞれのi番目の要素を含む。
 ***** Non-essential Function
 ***** Constant
+****** False
+****** True
+****** none
+****** NotImplemented
+****** Ellipsis
+****** __debug__
+****** Constants added by site module
+******* quit
+******* exit
+******* copyright
+******* license
+******* credit
 ***** Type
 ****** Truth Value Testing
 ****** Boolean Operations
+- and, or, not
+******* and
+- x and y
+  xが偽ならx, そうでなければy
+******* or
+- x or y
+  xが偽ならy, そうでなければx
+******* not
+- not x
+  xが偽ならTrue、そうでなければFales
 ****** Comparisons
 ****** Numeric Types
+- int, float, complex
 ******* Bitwise Operations on Integer
 ******* Aditional Methods on Integer
 ******* Additional Methods on Float
 ****** Iterator Types
 ****** Sequence Types
-- str, unicode, list, tuple, bytearray, buffer, xrange
-******* String Method
-******** str.split()
-- str.split([sep[, maxsplit]])
-  sepを単語の境界として文字列を単語に分解し、分割された単語からなるリストを返す。
+- basically: list, tuple, range
+******* Sequence Operations
+******** x in s
+******** x not in s
+******** s + t
+******** s * n, n * s
+******** s[i]
+******** s[i:j]
+******** s[i:j:k]
+******** len(s)
+******** min(s)
+******** max(s)
+******** s.index(x0,i0,j[[)
+******** s.count(x)
+******* Type
+******** Immutable
+******** Mutable
+******* Basic Sequences
+******** List
+******** Tuple
+******** Range
+******* Text Sequences
+- str
+******** Class
+- 
+  - class str(object='')
+  - class str(object=b'', encoding='utf-8', erros='strict')
+- 
+  objectの文字列版を返す。objectが与えられなかった場合、空文字が返される。
   
+******** Methods
+********* str.capitalize()
+********* str.casefold()
+********* str.center(width[, fillchar])
+********* str.count(sub[, start[, end]])
+********* str.find(sub[, start[, end]])
+********* str.isalnum()
+- 文字列中のすべての文字が英数字で、かつ1文字以上あるなら真を、そうでなければ偽を返す。
+********* str.isdecimal()
+********* str.isdigit()
+- 文字列中のすべての文字が数字で、かつ1文字以上あるなら真を、そうでなければ偽を返す。
+  数字は、十進数字と、互換上付き数字のような特殊操作を必要とする数字を含む。
+********* str.isidentifier()
+********* str.islower()
+- 文字列中の大小文字の区別のある文字すべてが小文字で、かつ大小文字の区別のある文字が1文字以上あるなら真を、そうでなければ偽を返す。
+********* str.isnumeric()
+- 文字列中のすべての文字が数を表す文字で、かつ1文字以上あるなら真を、そうでなければ偽を返す。
+  数を表す文字は、数字とUnicodeの数値プロパティを持つすべての文字を含む。
+********* str.isprintable()
+********* str.isspace()
+********* str.istitle()
+********* str.isupper()
+- 文字列中の大小文字の区別のある文字すべてが大文字で、かつ大小文字の区別のある文字が1文字以上あるなら真を、そうでなければ偽を返す。
+********* str.join(iterable)
+- イテラブルiterable中の文字列を結合した文字列を返す。
+  セパレータは、このメソッドを提供する文字列。
+********* str.lower()
+******* Binary Sequences
+- bytes, bytearray, memoryview
+******** bytes
+******** bytearray
 ****** Set Types
+- set, frozenset
 ****** Mapping Types
+- dict
 ****** File Object
 - 
   Cのstdioパッケージを使って実装されており、組み込み関数のopen()で生成することができる。
@@ -229,8 +606,37 @@
 ******* The Ellipsis Object
 ******* Boolean Values
 ******* Internal Objects
+****** Special Attributes
+******* ojbect.__dict__
+- オブジェクトの（書き込み可能な）属性を保存するために使われる辞書またはその他のマッピングオブジェクト。
+******* instance.__class__
+- クラスインスタンスが属しているクラス。
+******* class.__bases__
+- クラスオブジェクトの基底クラスのタプル
+******* class.__name__
+- クラスまたは型の名前。
+******* class.__qualname__
+- クラスまたほ型のqualified name。
+******* class.__mro__
+- メソッドの解決寺に基底クラスを探索するときに考慮されるクラスのタプル
+******* class.mro()
+- クラスのインスタンス化時に呼ばれ、結果は__mro__に格納される。
+  メタクラスによって、そのインスタンスのメソッド解決の順序を上書きされる可能性がある。
+******* class.__subclasses__()
+- それぞれのクラスは、それ自身の直接のサブクラスへの弱参照を保持する。
+  それらの山椒のうち、生存しているもののリストを返す。
 ***** Exception
 **** 文字列処理
+***** string
+****** Const
+******* string.ascii_letters
+- ascii_lowercaseとascii_uppercaseを合わせたもの。
+******* string.ascii_lowercase
+- 小文字'abcdefghijklmnopqrstuvwxyz'。
+******* string.ascii_uppercase
+- 大文字'ABCDEFGHIJKLMNOPQRSTUVWXYZ'。
+******* string.digits
+******* string.hexdigits
 ***** re
 - 正規表現操作
   正規表現マッチング操作を提供
@@ -270,6 +676,21 @@
 ******* compare
 ****** class difflib.HtmlDiff
 **** データ型
+***** collections
+- 汎用の組み込みコンテナdict, list, setおよびtupleに代わる、特殊なコンテナデータ型を実装している。
+
+****** Classes
+******* class collections.defaultdict([default_factory[, ...]])
+******* class collections.Counter([iterable-or-mapping])
+- 
+  ハッシュ可能なオブジェクトをカウントするdictのサブクラス。
+  要素を辞書のキーとして保存し、そのカウントを辞書の値として保存する。
+******** Methods
+********* elements()
+- それぞれの要素を、そのカウント分の回数だけ繰り返すイテレータを返す。
+********* most_common([n])
+- 最も多いn要素を、カウントが多いものから少ないものまで順に並べたリストを返す。
+********* subtract([iterable-or-mapping])
 **** 数値と数学モジュール
 **** ファイルとディレクトリへのアクセス
 ***** glob
@@ -363,6 +784,8 @@
   Pythonスクリプトに渡されたコマンドライン引数のリスト。
   argv[0]はスクリプトの名前となるが、フルパスかどうかはOSによる。
 
+****** sys.exit([arg])
+- Pythonを終了する。exit()はSystemExitを送出するので、捕捉可能。
 ****** sys.stdin, sys.stdout sys.stderr
 - 
   インタープリタの標準入力・標準出力・標準エラー出力に対応するファイルオブジェクト。
@@ -372,6 +795,15 @@
 - 
   それぞれ起動時のstdin, stdout, stderrの値を保持する。終了処理時に利用される。
 
+****** sys.version
+- 
+  インタプリタのバージョン番号の他、ビルド番号や使用コンパイラなどの情報を示す文字列。
+  この文字列はPython対話型インタプリタが起動した時に表示される。
+  バージョン情報はここから抜きださずに、version_infoおよびplatformが提供する関数を使う。
+****** sys.version_info
+- 
+  バージョン情報を表す5個のタプル : major, minor, micro, releaselevel, serialが表示される。
+  
 **** カスタムPythonインタプリタ
 **** 制限実行
 **** モジュールのインポート
@@ -817,9 +1249,22 @@
 - [[https://pip.pypa.io/en/latest/index.html][pip]]
 - [[http://tdoc.info/blog/2014/01/15/pip.html][pipの使い方(2014/1バージョン) - そこはかとなく書くよん。]]
 
+** Glossary
+*** Mutable, Immutable
+- Mutable
+  値を変更できるオブジェクト。
+  dictやlistなど。
+- Immutable
+  生成後に値を変更できないオブジェクト。
+  数値型、文字列型、タプル型のインスタンスなど
+*** Container
+- 他のオブジェクトに対する参照をもつオブジェクト。
+  Tuple, List, Dictionaryなど。
 ** Link
-- [[http://docs.python.jp/2/tutorial/][Pythonチュートリアル 2]]
 - [[http://docs.python.jp/3.5/index.html][Python 3.5.1 ドキュメント]]
+- [[https://docs.python.org/3/index.html][Python 3.5.2 documentation]]
+- [[http://docs.python.jp/2/tutorial/][Pythonチュートリアル 2]]
+- [[http://d.hatena.ne.jp/dplusplus/20100126/p1][Python基礎文法最速マスター - LazyLife@Diary]]
 ** Memo
 *** old
 - osでよく使うコマンド
@@ -868,10 +1313,6 @@ copyはshutil(shutil.copy, shutil.copytree, shutil.copyfile等)、
         for line in open(file, 'r'):
             print line
 
-*** コメントアウト
-- #
-  (あとで文法に移してください)
-  
 *** 前回表示結果
 - 
   "_"に格納されている。
