@@ -340,7 +340,7 @@
 **** InterfaceMembes
 *** Link
 - [[https://www.w3.org/TR/WebIDL/][Web IDL - W3C]]
-kk- [[http://domes.lingua.heliohost.org/webapi-intro/webidl1.html][Web IDL入門]]
+- [[http://domes.lingua.heliohost.org/webapi-intro/webidl1.html][Web IDL入門]]
 ** WAI-ARIA
 - 
 *** Link
