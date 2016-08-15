@@ -1,5 +1,11 @@
 * Linux Commands
 ** Commands
+*** .
+- 
+  identical to the source function.
+  sourceと同様、カレントシェルで実行が行われる。
+  shではsourceがない場合があるようなので、.を利用する。
+  
 *** !
 - !!
   直前に実行したコマンドを再実行する。
@@ -33,6 +39,22 @@
   ジョブをバックグラウンドで実行するよう切り替える。
 
 *** bzip2 / bunzip2
+*** cat
+- 
+  Concatenate FILES(s), or standard input, to standard output.
+- -A, --show-all
+  equivalent to -vET
+- -e
+  equivalent to -vE
+- -E, --show-ends
+  display $ at end of each line
+- -t
+  equivalent to -vT
+- -T, --show-tabs
+  display TAB characters as ^I
+- -v, --show-nonprinting
+  use ^ and M- notation, except for LFD and TAB
+
 *** chgrp
 
 *** chkconfig
@@ -457,7 +479,6 @@
   '/'は'?'や'*'にはマッチせず、陽に'/'文字を含むことはできない。
   
       
-
 *** global
 - 説明
   ソースコードの関数定義等に素早くアクセスできるようにする。
@@ -549,6 +570,7 @@
 - -x, --xhtml
   XHTML形式で表示する
 
+*** iconv
 *** id
 - 
   ユーザIDやグループIDを表示する。
@@ -1294,7 +1316,6 @@
   
   子プロセスの変数を親プロセスで使う場合に利用することができる。
 
-
 *** split
 - 
   ファイルを分割する。
@@ -1809,6 +1830,55 @@
 *** caller
 *** cd
 *** command
+*** compgen
+*** complete
+*** compopt
+*** continue
+*** declare
+*** dirs
+*** disown
+*** echo
+*** enable
+*** eval
+*** exec
+*** exit
+*** export
+*** false
+*** fc
+*** fg
+*** getopts
+*** hash
+*** help
+*** history
+*** jobs
+*** kill
+*** let
+*** local
+*** logout
+*** mapfile
+*** popd
+*** printf
+*** pushd
+*** pwd
+*** read
+*** readonly
+*** return
+*** set
+*** shift
+*** shopt
+*** source
+*** suspend
+*** test
+*** times
+*** trap
+*** true
+*** type
+*** typeset
+*** ulimit
+*** umask
+*** unalias
+*** unset
+*** wait
 ** Link
 - [[http://ss64.com/bash/][An A-Z Index of the Bash command line for Linux.]]
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230573/?ST=oss&rt=nocnt][Linuxコマンド集 INDEX （機能別） - ITpro]]

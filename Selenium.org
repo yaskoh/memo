@@ -1,109 +1,216 @@
 * Selenium
 ** Selenium WebDriver
 *** About
-- ‹N“®
+- èµ·å‹•
   java -jar selenium-server-standalone-*.jar
 
 *** Architecture
 - 
-  Šeíƒuƒ‰ƒEƒU‚²‚Æ‚Éƒhƒ‰ƒCƒo‚ª—pˆÓ‚³‚ê‚Ä‚¨‚èA
-  ‚»‚ê‚ç‚Ìƒhƒ‰ƒCƒo‚ÍJSON Wire Protocol‚Æ‚¢‚¤Selenium‚ª’è‹`‚µ‚Ä‚¢‚éRESTful API‚É‘Î‰‚µ‚Ä‚¢‚éB
+  å„ç¨®ãƒ–ãƒ©ã‚¦ã‚¶ã”ã¨ã«ãƒ‰ãƒ©ã‚¤ãƒãŒç”¨æ„ã•ã‚Œã¦ãŠã‚Šã€
+  ãã‚Œã‚‰ã®ãƒ‰ãƒ©ã‚¤ãƒã¯JSON Wire Protocolã¨ã„ã†SeleniumãŒå®šç¾©ã—ã¦ã„ã‚‹RESTful APIã«å¯¾å¿œã—ã¦ã„ã‚‹ã€‚
 
 - 
-  ŸHTTP Client, Client Library (Java, Ruby, Python, C#, Perl, PHP, Javascript(Node.js))
-    ª 
+  â—†HTTP Client, Client Library (Java, Ruby, Python, C#, Perl, PHP, Javascript(Node.js))
+    â†‘ 
     JSON Wire Protocol
-    «
-  ŸBrowser Drivers (Firefox Driver, Chrome Drive, IE Driver, etc.)
-    ª
-    ƒuƒ‰ƒEƒU‚ÌŠg’£‹@”\AOSƒlƒCƒeƒBƒu‹@”\
-    «
-  ŸBrowser
+    â†“
+  â—†Browser Drivers (Firefox Driver, Chrome Drive, IE Driver, etc.)
+    â†‘
+    ãƒ–ãƒ©ã‚¦ã‚¶ã®æ‹¡å¼µæ©Ÿèƒ½ã€OSãƒã‚¤ãƒ†ã‚£ãƒ–æ©Ÿèƒ½
+    â†“
+  â—†Browser
 
-*n*** Drivers
+**** Drivers
 - 
-  Šeƒhƒ‰ƒCƒo‚É‚æ‚Á‚ÄŒ`®‚â‘€ì•û–@‚Í‚³‚Ü‚´‚ÜB
+  å„ãƒ‰ãƒ©ã‚¤ãƒã«ã‚ˆã£ã¦å½¢å¼ã‚„æ“ä½œæ–¹æ³•ã¯ã•ã¾ã–ã¾ã€‚
 
-***** Firefoxƒhƒ‰ƒCƒo
+***** Firefoxãƒ‰ãƒ©ã‚¤ãƒ
 - 
-  Firefox‚ÌŠg’£‹@”\
+  Firefoxã®æ‹¡å¼µæ©Ÿèƒ½
 
-***** Chromeƒhƒ‰ƒCƒo
+***** Chromeãƒ‰ãƒ©ã‚¤ãƒ
 - 
-  Àsƒtƒ@ƒCƒ‹iƒoƒCƒiƒŠj
+  å®Ÿè¡Œãƒ•ã‚¡ã‚¤ãƒ«ï¼ˆãƒã‚¤ãƒŠãƒªï¼‰
   http://chromedriver.storage.googleapis.com/index.html
 
 **** Selenium Server
 - 
-  “Á’è‚Ìƒhƒ‰ƒCƒo‚É‘Î‰‚µ‚Ä‚¢‚È‚¢ƒ‰ƒCƒuƒ‰ƒŠ‚Ìê‡ASelenium Server‚ğ—˜—p‚·‚é•K—v‚ª‚ ‚éB
-  Node.js‚Ì2.44.0‚Å‘Î‰‚µ‚Ä‚¢‚é‚Ì‚ÍFirefox‚ÆChrome‚Ì‚İ‚È‚Ì‚ÅA‚»‚Ì‘¼‚Ìƒuƒ‰ƒEƒU‚ğ—˜—p‚µ‚½‚¢ê‡‚È‚ÇB
+  ç‰¹å®šã®ãƒ‰ãƒ©ã‚¤ãƒã«å¯¾å¿œã—ã¦ã„ãªã„ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®å ´åˆã€Selenium Serverã‚’åˆ©ç”¨ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ã€‚
+  Node.jsã®2.44.0ã§å¯¾å¿œã—ã¦ã„ã‚‹ã®ã¯Firefoxã¨Chromeã®ã¿ãªã®ã§ã€ãã®ä»–ã®ãƒ–ãƒ©ã‚¦ã‚¶ã‚’åˆ©ç”¨ã—ãŸã„å ´åˆãªã©ã€‚
   
-  Selenium Server‚ÍJava‚Å‘‚©‚ê‚½ƒT[ƒo[‚ÅAƒNƒ‰ƒCƒAƒ“ƒg‚Æƒhƒ‰ƒCƒo‚Ì’†ŒpƒT[ƒo‚Æ‚µ‚ÄU‚é•‘‚¤‚½‚ßA
-  ƒNƒ‰ƒCƒAƒ“ƒgƒ‰ƒCƒuƒ‰ƒŠ‚ªƒhƒ‰ƒCƒo‚ÌŠÇ—‚ğ‚·‚é•K—v‚ª‚È‚­‚È‚éB
+  Selenium Serverã¯Javaã§æ›¸ã‹ã‚ŒãŸã‚µãƒ¼ãƒãƒ¼ã§ã€ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã¨ãƒ‰ãƒ©ã‚¤ãƒã®ä¸­ç¶™ã‚µãƒ¼ãƒã¨ã—ã¦æŒ¯ã‚‹èˆã†ãŸã‚ã€
+  ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒãƒ‰ãƒ©ã‚¤ãƒã®ç®¡ç†ã‚’ã™ã‚‹å¿…è¦ãŒãªããªã‚‹ã€‚
   
-  Œö®ƒ‰ƒCƒuƒ‰ƒŠ‚ª—pˆÓ‚³‚ê‚Ä‚¢‚È‚¢Œ¾Œê‚Å‚ÍƒT[ƒhƒp[ƒeƒBƒNƒ‰ƒCƒAƒ“ƒg‚ª‘½”ŒöŠJ‚³‚ê‚Ä‚¢‚é‚ªA
-  Selenium Server‚Ì—˜—p‚ğ‘O’ñ‚Æ‚µ‚Ä‚¢‚éê‡‚ª‘½‚¢B
+  å…¬å¼ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒç”¨æ„ã•ã‚Œã¦ã„ãªã„è¨€èªã§ã¯ã‚µãƒ¼ãƒ‰ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆãŒå¤šæ•°å…¬é–‹ã•ã‚Œã¦ã„ã‚‹ãŒã€
+  Selenium Serverã®åˆ©ç”¨ã‚’å‰æã¨ã—ã¦ã„ã‚‹å ´åˆãŒå¤šã„ã€‚
 
 - 
-  Ÿ‚ÌƒRƒ}ƒ“ƒh‚Å‹N“®‚·‚éB
+  æ¬¡ã®ã‚³ãƒãƒ³ãƒ‰ã§èµ·å‹•ã™ã‚‹ã€‚
   java -jar selenium-server-standalone-xxx.jar
 
 - Download
   http://www.seleniumhq.org/download/
 
 - 
-  ŸHTTP Client, Client Library (Java, Ruby, Python, C#, Javascript(Node.js))
-    ª 
+  â—†HTTP Client, Client Library (Java, Ruby, Python, C#, Javascript(Node.js))
+    â†‘ 
     JSON Wire Protocol
-    «
-  ŸSelenium Server
-    ª 
+    â†“
+  â—†Selenium Server
+    â†‘ 
     JSON Wire Protocol
-    «
-  ŸBrowser Drivers (Firefox Driver, Chrome Drive, IE Driver, etc.)
-    ª
-    ƒuƒ‰ƒEƒU‚ÌŠg’£‹@”\AOSƒlƒCƒeƒBƒu‹@”\
-    «
-  ŸBrowser
+    â†“
+  â—†Browser Drivers (Firefox Driver, Chrome Drive, IE Driver, etc.)
+    â†‘
+    ãƒ–ãƒ©ã‚¦ã‚¶ã®æ‹¡å¼µæ©Ÿèƒ½ã€OSãƒã‚¤ãƒ†ã‚£ãƒ–æ©Ÿèƒ½
+    â†“
+  â—†Browser
 
+*** Setting up
+**** Python
+- pip install selenium
+**** Java
+**** C#
+**** Ruby
+**** Perl
+**** JS
+*** API
+**** Python
+- version 2.53.6
+***** selenium
+****** common
+******* selenium.common.exceptions
+******** exception TimeoutException
+- TimeoutException(msg=None, screeen=None, stacktrace=None)
+  Thrown when a command does not complete in enough time.
+******** exception WebDriverException
+- WebDriverException(msg=None, screen=None, stacktrace=None)
+  Base webdriver exception.
+****** webdriver
+******* android
+******* blackberry
+******* chrome
+******** selenium.webdriver.chrome.options
+******** selenium.webdriver.chrome.remote_connection
+******** selenium.webdriver.chrome.service
+******** selenium.webdriver.chrome.webdriver
+******* common
+******** html5
+********* selenium.webdriver.common.html5.application_cache
+******** selenium.webdriver.common.action_chains
+******** selenium.webdriver.common.alert
+******** selenium.webdriver.common.by
+********* class By
+- By(object)
+  Set of supported locator strategies.
+******** selenium.webdriver.common.desired_capabilities
+******** selenium.webdriver.common.keys
+******** selenium.webdriver.common.proxy
+******** selenium.webdriver.common.service
+******** selenium.webdriver.common.touch_actions
+******** selenium.webdriver.common.util
+******* edge
+******* firefox
+******** selenium.webdriver.firefox.extension_connection
+******** selenium.webdriver.firefox.firefox_binary
+******** selenium.webdriver.firefox.firefox_profile
+******** selenium.webdriver.firefox.options
+******** selenium.webdriver.firefox.remote_connection
+******** selenium.webdriver.firefox.service
+******** selenium.webdriver.firefox.webdriver
+********* class WebDriver
+- WebDriver(RemoteWebDriver)
+********** methods
+*********** quit
+********** properties
+*********** firefox_profile
+*********** set_context
+******** selenium.webdriver.firefox.__init__
+******* ie
+******* opera
+******* phantomjs
+******* remote
+******* safari
+******* support
+******** selenium.webdriver.support.abstract_event_listener
+******** selenium.webdriver.support.color
+******** selenium.webdriver.support.event_firing_webdriver
+******** selenium.webdriver.support.events
+******** selenium.webdriver.support.expected_conditions
+********* title_contains
+******** selenium.webdriver.support.select
+******** selenium.webdriver.support.ui
+********* Select (import from .select)
+********* WebDriverWait (import from .wait)
+******** selenium.webdriver.support.wait
+********* class WebDriverWait
+******* selenium.webdriver.__init__
+******** Firefox(import WebDriver from .firefox.webdriver)
+******** FirefoxProfile(import from .firefox.fireprofile)
+******** Chrome(import WebDriver from .chrome.webdriver)
+******** ChromeOptions(import Options from .chrome.options)
+******** Ie(import WebDriver from .ie.webdriver)
+******** Edge(import WebDriver from .edge.webdriver)
+******** Opera(import WebDriver from .opera.webdriver)
+******** Safari(import WebDriver from .safari.webdriver)
+******** BlackBerry(import WebDriver from .blackberry.webdriver)
+******** PhantomJS(import WebDriver from .phantomjs.webdriver)
+******** Android(import WebDriver from .android.webdriver)
+******** Remote(import WebDriver from .remote.webdriver)
+******** DesiredCapabilities(import .common.desired_capabilities)
+******** ActionChains(import .common.action_chains)
+******** TouchActions(import .common.touch_actions)
+******** Proxy(import .common.proxy)
+****** selenium.selenium
+******* class selenium(builtins.object)
+- 
+  Defines an object that runs Selenium commands
+******** Element Locators
+******** Element Filters
+******** String-match Patterns
+******** Methods
+********* __init__
+- __init__(self, host, port, browserStartCommand, browserURL, http_timeout=90)
+********* add_CustomRequestHeader
+- add_CustomRequestHeader(self, key, value)
 ** Selenium IDE
 - 
-  Firefoxƒvƒ‰ƒOƒCƒ“B
+  Firefoxãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã€‚
 
 ** History
-- [[http://blog.trident-qa.com/2013/05/so-many-seleniums/][Selenium‰½‚Æ‚©‚Á‚Ä‚¢‚¤ƒc[ƒ‹‚ª‚â‚½‚çFX‚ ‚é‚Ì‚Í‚Ç‚¤‚¢‚¤‚í‚¯‚È‚Ì‚© - •i¿ŒüãƒuƒƒO]]
+- [[http://blog.trident-qa.com/2013/05/so-many-seleniums/][Seleniumä½•ã¨ã‹ã£ã¦ã„ã†ãƒ„ãƒ¼ãƒ«ãŒã‚„ãŸã‚‰è‰²ã€…ã‚ã‚‹ã®ã¯ã©ã†ã„ã†ã‚ã‘ãªã®ã‹ - å“è³ªå‘ä¸Šãƒ–ãƒ­ã‚°]]
 
 *** Selenium Core
 - 
-  Œ´Œ^‚ÍA2004”N‚É•ÄThoughtWorksĞ‚Å“­‚¢‚Ä‚¢‚½Jason Huggins‚É‚æ‚èì‚ç‚ê‚½Ğ“àŒü‚¯ƒc[ƒ‹B
+  åŸå‹ã¯ã€2004å¹´ã«ç±³ThoughtWorksç¤¾ã§åƒã„ã¦ã„ãŸJason Hugginsæ°ã«ã‚ˆã‚Šä½œã‚‰ã‚ŒãŸç¤¾å†…å‘ã‘ãƒ„ãƒ¼ãƒ«ã€‚
 
 *** Selenium RC (Remote Control)
 - 
-  Selenium 1‚Æ‚àB
-  ƒRƒ}ƒ“ƒh‚ğSelenese‚Æ‚¢‚¤B
+  Selenium 1ã¨ã‚‚ã€‚
+  ã‚³ãƒãƒ³ãƒ‰ã‚’Seleneseã¨ã„ã†ã€‚
   
 *** Selenium IDE
 - 
-  ƒ†[ƒU‚Ìƒuƒ‰ƒEƒU‘€ì‚ğ‹L˜^‚µ‚ÄA‚»‚±‚©‚çSelenium‚ÌƒXƒNƒŠƒvƒg‚ğ¶¬‚·‚éFirefoxƒvƒ‰ƒOƒCƒ“B
+  ãƒ¦ãƒ¼ã‚¶ã®ãƒ–ãƒ©ã‚¦ã‚¶æ“ä½œã‚’è¨˜éŒ²ã—ã¦ã€ãã“ã‹ã‚‰Seleniumã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’ç”Ÿæˆã™ã‚‹Firefoxãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã€‚
   
 *** WebDriver
 - 
-  2006”NAGoogle‚ÌSimon Stewart‚ªŠJ”­’…èB
-  ƒuƒ‰ƒEƒU‘€ì‚ğJavaScript‚Å‚È‚­Aƒuƒ‰ƒEƒU‚ÌŠg’£‹@”\‚âOSƒlƒCƒeƒBƒu‚Ì‹@”\‚ğg‚Á‚Äs‚¤d‘g‚İB
-  ‚»‚Ì‚½‚ßSelenium Server‚Ì‚æ‚¤‚È’†ŒpƒT[ƒo‚à•s—v‚Æ‚È‚éB
+  2006å¹´ã€Googleã®Simon StewartãŒé–‹ç™ºç€æ‰‹ã€‚
+  ãƒ–ãƒ©ã‚¦ã‚¶æ“ä½œã‚’JavaScriptã§ãªãã€ãƒ–ãƒ©ã‚¦ã‚¶ã®æ‹¡å¼µæ©Ÿèƒ½ã‚„OSãƒã‚¤ãƒ†ã‚£ãƒ–ã®æ©Ÿèƒ½ã‚’ä½¿ã£ã¦è¡Œã†ä»•çµ„ã¿ã€‚
+  ãã®ãŸã‚Selenium Serverã®ã‚ˆã†ãªä¸­ç¶™ã‚µãƒ¼ãƒã‚‚ä¸è¦ã¨ãªã‚‹ã€‚
 
 - https://w3c.github.io/webdriver/webdriver-spec.html
 
 *** Selenium WebDriver
 - 
-  2011/7, Selenium RC‚ÆWebDriver‚ğ“‡‚µ‚½‚à‚ÌB
-  ‚Ç‚¿‚ç‚ÌƒRƒ}ƒ“ƒh‚àg‚¦‚é‚ªAWebDriver‚ÌƒRƒ}ƒ“ƒh‚ª—D‚ê‚Ä‚¢‚é‚Ì‚ÅA‚»‚¿‚ç‚ğ—˜—p‚·‚é‚Ì‚ª—Ç‚¢B
-  Selenium 2 ‚Æ‚àB
+  2011/7, Selenium RCã¨WebDriverã‚’çµ±åˆã—ãŸã‚‚ã®ã€‚
+  ã©ã¡ã‚‰ã®ã‚³ãƒãƒ³ãƒ‰ã‚‚ä½¿ãˆã‚‹ãŒã€WebDriverã®ã‚³ãƒãƒ³ãƒ‰ãŒå„ªã‚Œã¦ã„ã‚‹ã®ã§ã€ãã¡ã‚‰ã‚’åˆ©ç”¨ã™ã‚‹ã®ãŒè‰¯ã„ã€‚
+  Selenium 2 ã¨ã‚‚ã€‚
 *** Selenium Builder
 - 
-  FirefoxŠg’£B
-  Selenium IDE‚ÍSelenium RC‚Ì‹@”\‚µ‚©—˜—p‚Å‚«‚È‚¢‚Ì‚ÅA
-  Selenium WebDriver‚Ì‹@”\‚ğ—˜—p‚Å‚«‚éSelenium Builder‚ÌŠJ”­‚ªŠˆ”­B
+  Firefoxæ‹¡å¼µã€‚
+  Selenium IDEã¯Selenium RCã®æ©Ÿèƒ½ã—ã‹åˆ©ç”¨ã§ããªã„ã®ã§ã€
+  Selenium WebDriverã®æ©Ÿèƒ½ã‚’åˆ©ç”¨ã§ãã‚‹Selenium Builderã®é–‹ç™ºãŒæ´»ç™ºã€‚
 
 ** Memo
 *** JSON Wire Protocol
@@ -111,4 +218,11 @@
 
 ** Link
 - [[http://www.seleniumhq.org/][SeleniumHQ]]
-- [[https://app.codegrid.net/entry/selenium-1][“ü–åASelenium - CodeGrid]]
+- [[https://app.codegrid.net/entry/selenium-1][å…¥é–€ã€Selenium - CodeGrid]]
+
+*** API
+- [[http://stackoverflow.com/questions/5644868/webdriver-selenium-2-api-documentation][WebDriver (Selenium 2) API documentation - stackoverflow]]
+- [[http://seleniumhq.github.io/selenium/docs/api/py/api.html][Selenium Documentation (Python)]]
+
+*** Python
+- [[http://selenium-python.readthedocs.io/#][Selenium with Python]]

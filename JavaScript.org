@@ -258,11 +258,12 @@
 ** Edition
 *** 5
 *** 5.1
-*** 6
+*** 6, 2015
 - 2015/6/17公開
   
-*** 7
+*** 2016(7)
 - 策定中
+  基本的には、ES6(2015)のバグ修正。加えて、2016/1にStage4となっているProposalが入る。
 
 ** 外部Tool
 *** 分類
@@ -552,8 +553,9 @@
   管理者ツールを立ち上げて、consoleを利用する。
   
 ** Link
+- [[http://www.ecma-international.org/publications/standards/Ecma-262.htm][Standard ECMA-262 - ecma INTERNATIONAL]]
 - [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]
   [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]
 − [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference][JavaScript reference - MDN]] 
   [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference][JavaScriptリファレンス - MDN]]
-
+- [[http://speakingjs.com/][Speaking JavaScript: An In-Depth Guide for Programmers]]

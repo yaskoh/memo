@@ -907,8 +907,10 @@
 - 
   ANSI Cに準拠している場合に1を返す。
 
-** memo
-*** ANSI C
+** Link
+- [[http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf][ISO/IEO 9899:1999]]
+** Memo
+*** C standard
 - K&R
   K&R Cは1978年に出版された本がもとになったもの。
 - ANSI C(C89)
@@ -916,9 +918,11 @@
   K&Rに曖昧な点があったため、ISOとANSIが規格化を進めた。
 - C99
   99年に改訂された企画はC99と呼ぶ。
+  ISO/IEO 9899:1999(E)
+  
 - C11(C2011)
   2011年の改訂版はC2011(C11)。
-  
+  ISO/IEO 9899:2011
 *** ファイルディスクリプタとFILE
 - 
   FILEは生のストリームにバッファ機能を追加する層で、

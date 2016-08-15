@@ -1,1 +1,115 @@
 * Go
+** Packages
+*** Standard library
+**** fmt
+** Command
+*** go
+- go command [arguments]
+  a tool for managing Go source code.
+**** commands
+***** build
+- compile packages and dependencies
+***** clean
+- remove object files
+***** doc
+***** env
+***** fix
+***** fmt
+***** generate
+***** get
+***** install
+***** list
+***** run
+***** test
+***** tool
+***** version
+***** vet
+*** cgo
+- 
+  Cgo enables the creation of Go packages that call C code.
+  
+*** cover
+*** fix
+*** fmt
+- 
+  Fmt formats Go packages, it is also abailable as an indippendent gofmt command with more general options.
+*** godoc
+*** vet
+*** yacc
+** Language Specification
+*** Notation
+- The syntax is specified using Extended Backus-Naur Form (EBNF)
+  - Production  = production_name "=" [ Expression ] "." .
+  - Expression  = Alternative { "|" Alternative } .
+  - Alternative = Term { Term } .
+  - Term        = production_name | token [ "..." token ] | Group | Option | Repetition .
+  - Group       = "(" Expression ")" .
+  - Option      = "[" Expression "]" .
+  - Repetition  = "{" Expression "}" .
+
+- operators
+  Productions are expressions constructed from terms and following operators.
+  - |  alternation
+  - () grouping
+  - [] option (0 or 1 times)
+  - repetition (0 to n times)
+
+*** Lexical elements
+**** Comments
+- // : Line comments
+- /* ... */ : General commetns
+**** Tokens
+- 
+***** Semicolons
+***** Identifiers
+***** Keywords
+***** Operators and Delimiters
+***** Literals
+****** Integer literals
+****** Floating-point literals
+****** Imaginary literals
+****** Rune literals
+****** String literals
+*** Constans
+*** Variables
+*** Type
+**** Method sets
+**** Boolean types
+**** Numeric types
+**** String types
+**** Array types
+**** Slice types
+**** Struct types
+**** Pointer types
+**** Function types
+**** Interface types
+**** Map types
+**** Channel types
+*** Blocks
+*** Declarations and scope
+*** Expressions
+*** Statements
+**** Terminating statements
+**** Empty statements
+**** Labeled statements
+**** Expression statements
+**** Send statements
+**** IncDec statements
+**** Assignments
+**** If statements
+**** Switch statements
+**** For statemens
+**** Go statemetns
+**** Select statements
+**** Return statements
+**** Break statements
+**** Continue statements
+**** Goto statements
+**** Fallthrough statements
+**** Defer statements
+*** Built-in functions
+*** Packages
+*** Errors
+** Link
+- [[https://golang.org/][The Go Programming Language]]
+

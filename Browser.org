@@ -113,6 +113,117 @@
   Conkeror is a keyboard-oriented, highly-customizable, highly-extensible web browser based on Mozilla,XULRunner,
   written mainly in JavaScript, and inspired by exceptional software such as Emacs and vi.
 
+*** Konqueror
+- 
+  KDEデスクトップ環境の中核として開発されたファイルビューアとしての機能を提供するウェブブラウザおよびファイルマネージャ。
+  
+*** PhantomJS
+- 
+  
+** Web browser engine
+- HTML rendering engine, layout engine
+  a program that renders marked up content(such as HTML, XML, image files, etc) and formatting information (such as CSS, XSL, etc).
+  ウェブページ記述用言語で書かれたデータを解釈し、実際に画面に表示する文字や画像などの配置を計算するプログラム。
+*** Blink
+- 
+  Googleなどが開発するHTMLレンダリングエンジン。
+  2013/4/3にWebKitからWebKitから分岐した。
+**** Browsers
+- Google Chrome
+- Opera
+- Android
+*** Trident
+- IEに搭載されているHTMLレンダリングエンジンの名称で、ライブラリファイルの名称からMSHTMLとも呼ばれている。
+  IE4.0から導入されている。
+  Win版はupdateを重ねているが、Mac版では5.0移行Tasmanに置き換えられた。
+**** Browsers
+- Internet Explorer
+
+*** Tasman
+- MSのMacintosh Business Unitが開発したエンジン。
+  
+*** EdgeHTML
+- 
+  Microsoftが開発したプロプライエタリなレンダリングエンジン。
+  Tridentからフォークし、レガシーな機能を削除しWeb標準を重視し、最新ブラウザとの互換性が確保されている。
+  
+**** Browsers
+- Microsoft Edge
+*** Gecko
+- 
+  Netscapeシリーズ6以降およびMozillaソフトウェアのために開発されたオープンソースのHTMLレンダリングエンジン群の総称。
+  
+**** Browsers
+- Firefox
+- Camino
+- SeaMonkey
+
+*** Servo
+- 
+  Mozilla‘の研究によって開発されている実験的なウェブブラウザ用レイアウトエンジン。
+  
+*** KHTML
+- used in KDE's Konqueror web browser and wath tha basis for WebKit
+  KDEプロジェクトにより開発されているHTMLレンダリングエンジン。
+  Konquerorのために開発された。
+  
+**** Browsers
+- Konqueror
+*** WebKit
+- 
+  Appleが中心となって開発されているオープンソースのHTMLレンダリングエンジン群の総称。
+  HTML、CSS、JavaScript、SVG、MathMLなどを解釈する。
+  元々Safariのレンダリングエンジンとして、KHTMLをフォークして開発された。
+**** Browsers
+- Safari
+- OmniWeb
+
+*** Presto
+**** Browsers
+
+** JavaScript Engine
+*** Google V8 JavaScript Engine
+- Googleが開発するオープンソースのJIT Virtual Machine型JavaScript実行エンジン。
+- [[https://developers.google.com/v8/intro][Chrome V8]]
+  
+  
+**** Browsers
+- Google Chrome
+- Android Browser
+*** JavaScriptCore
+- 
+  built-in JavaScript engine for WebKit.
+- 
+  [[https://trac.webkit.org/wiki/JavaScriptCore][JavaScritCore]]
+*** SpiderMonkey
+- 
+  SpiderMonkey is Mozilla's JavaScript engine written in C/C++.
+  It is used in various Mozilla products, including Firefox, and is available under the MPL2.
+- [[https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey][SpiderMonkey - MDN]]
+*** Chakra
+- JavaScript engine developed by Microsoft for IE9.
+  
+** Etc
+*** CG Libraries
+**** Skia
+- 
+  Googleが開発している、C++で書かれたオープンソースの2次元コンピュータグラフィックスライブラリ。
+  Skia.inc.が開発していたが、2005年にGoogleが買収、その後修正BSDライセンスとしてオープンソースライブラリとなった。
+
+***** 利用
+- Mozilla Firefox
+- Google Chrome
+- Android
+- Google Chrome OS
+- Blink
+*** Build Tool
+**** GYP
+- 自動ビルドツール。Googleにより作成された。
+  Chromiumウェブブラウザをビルドするために統合開発環境のプロジェクトファイルを生成するオープンライセンスソフトウェア。
+  BSDライセンス。
+
+** Link
+- [[http://www.html5rocks.com/ja/tutorials/internals/howbrowserswork/][ブラウザの仕組み:最新ウェブブラウザの内部構造 - HTML5 ROCKS]]
 ** Memo
 *** Font
 **** EmbeddedOpenType

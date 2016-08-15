@@ -488,20 +488,70 @@
 
 **** MULTISET
 *** ファンクション
-**** COALESCE
+**** 単一行ファンクション
+***** 数値ファンクション
+****** ABS
+****** CEIL
+****** EXT
+****** FLOOR
+****** MOD
+****** POWER
+****** ROUND
+****** SQRT
+***** 文字値を戻す文字ファンクション
+****** CONCAT
+- 
+  2つの引数を連結して返す。
+
+****** REGEXP_REPLACE
+- REGEXP_REPLACE ( source_char, pattern [, replace_string[, position[, occurrence[, match_param]]]])
+  正規表現パターンで文字列を検索できるようにREPLACEの機能を拡張したもの。
+****** REGEXP_SUBSTR
+- REGEXP_SUBSTR ( source_char, pattern [, position[, occurrence[, match_param[, subexpr]]]])
+  正規表現パターンで文字列を検索できるようにSUBSTRの機能を拡張したもの。
+****** REPLACE
+- REPLACE (char, search_string[, replacement_string] )
+  replacement_stringを変換してcharを戻す。
+****** SUBSTR
+- {SUBSTR | SUBSTRB | SUBSTRC | SUBSTR2 | SUBSTR4} (char, position[, substring_length])
+  charのpositionの文字からsubstring_length文字分の文字列を抜き出して戻す。
+****** TRIM
+***** 数値を戻す文字ファンクション
+****** LENGTH
+****** REGEXP_COUNT
+***** キャラクタ・セット・ファンクション
+***** 日時ファンクション
+****** ADD_MONTHS
+****** CURRENT_DATE
+****** CURRENT_TIMESTAMP
+****** LAST_DAY
+****** NEXT_DAY
+****** ROUND
+***** 一般的な比較ファンクション
+****** GREATEST
+****** LEAST
+***** 変換ファンクション
+****** CAST
+****** TO_CHAR
+******* TO_CHAR(文字)
+******* TO_CHAR(日時)
+***** ラージオブジェクトファンクション
+***** 階層ファンクション
+***** データ・マイニング・ファンクション
+***** XMLファンクション
+***** エンコーディングおよびデコーディング・ファンクション
+***** NULL関連ファンクション
+****** COALESCE
 - COALESCE(expr1, ...)
   式リストの最初のNULLでないexprを戻す。2つ以上の指揮を指定する必要がある。
   全てのexprがNULLの場合はNULLを返す。
   
-**** CONCAT
-- 
-  2つの引数を連結して返す。
-
-**** NVL
+****** NVL
 - NVL(expr1, expr2)
   expr1がNULLの場合、expr2を消す。
   expr1, expr2には任意のデータ型を持つことができる。
 
+***** 環境ファンクションおよび識別子ファンクション
 *** 式
 *** 条件
 *** SQL文
@@ -784,21 +834,32 @@
       - LOW | HIGH
 - NOCOMPRESS
 ****** ALTER
-- ALTER TABLE
-  - (schema.)table
-******* add
+- ALTER TABLE [schema.]table options enable_disables;
+******* options
+******** alter_table_properties
+********* RENAME TO new_table_name
+******** column_clauses
+******** constraint_clauses
+******** alter_table_partitioning
+******** alter_external_table
+******** move_table_clause
+******* enable_disables
+******** enable_disable_clause
+******** [ENABLE|DISABLE] [TABLE LOCK | ALL TRIGGERS]
+******* memo
+******** add
 - 
   - PKの作成
     ADD [CONSTRAINT primary_key_name] PRIMARY KEY (col1, col2, ..) ;
     PK名を省略した場合、PK_tablenameとなる模様。
-******* drop_constraint_clause
+******** drop_constraint_clause
 - PRIMARY KEY
 - UNIQUE
 - 
   - PKの削除
     - ALTER TABLE table_name DROP PRIMARY KEY;
     - ALTER TABLE table_name DROP CONSTRAINT primary_key_name;
-******* log
+******** log
 - LOGGING
   REDOログ記録をONに変更する
 - NOLOGGING
@@ -1481,6 +1542,14 @@
 ***** ALL_TAB_COMMENTS
 - 現行のユーザがアクセスできる表およびビューのコメントを示す。
 **** DBA
+***** DBA_AUTOTASK_CLIENT
+- 7日間および30日間の各自動メンテナンスタスクに対する統計データを示す。
+***** DBA_AUTOTASK_OPERATION
+- 各クライアントの自動メンテナンス・タスク操作をすべて示す。
+***** DBA_AUTOTASK_TASK
+- 現在および過去の自動メンテナンス・タスクに関する情報を示す。
+***** DBA_AUTOTASK_WINDOW_CLIENTS
+- MAINTENANCE_WINDOW_GROUPに属するウィンドウを、各メンテナンス・タスクのウィンドウのステータスEnabledまたはDisabledとともに示す。
 ***** DBA_COL_COMMENTS
 - データベース内のすべての表及びビューについてのコメントを示す。
 ***** DBA_CONSTRAINTS
@@ -1653,23 +1722,35 @@
 *** 事前定義ユーザ
 **** 事前定義された管理アカウント
 ***** ANONYMOUS
+- Oracle XML DBへおHTTPアクセスを許可するアカウント。
+  EPG(Embedded PL/SQL Gateway)をデータベースにインストールするときに、APEX_PUBLIC_USERアカウントの代わりに使用される。
 ***** CTXSYS
+- Oracle Textを管理するためのアカウント。
 ***** DBSNMP
 - データベースの監視及び管理を行うためにOracle Enterprize ManagerのManagement Agentのコンポーネントによって使用されるアカウント。
 ***** EXFSYS
 - Rules Manager機能およびExpression Filter機能と関連頭消されるEXFSYSスキーマにアクセスするために内部で使用されるアカウント。
+  (どちらの機能も12cで終了)
 ***** LBACSYS
 - Oracle Label Security(OLS)を管理するためのアカウント。Label Securityオプションをインストールするときのみ作成される。
 ***** MDSYS
 - Oracle SpatialおよびOracle Multimedia Locator管理者アカウント。
 ***** MGMT_VIEW
+- Oracle Enterprise Manager Database Controlで使用されるアカウント。
+  
 ***** OLAPSYS
+- OLAPカタログ(CWMLite)を所有するアカウント。非推奨だが下位互換のために保持されている。
 ***** ORDDATA
+- Oracle Multimedia DICOMのデータモデルが含まれている。
 ***** OWBSYS
 ***** ORDPLUGINS
+- Oracle Multimediaユーザ。Oracleおよびサード・パーティに提供されたプラグインはこのスキーマにインストールされている。
 ***** ORDSYS
+- Oracle Multimedia管理者アカウント。
 ***** OUTLN
 ***** SI_INFORMTN_SCHEMA
+- SQL/MM Still Image Standard向けの情報ビューを保持しているアカウント。
+  
 ***** SYS
 - データベース管理タスクの実行に使用されるアカウント。
 ***** SYSMAN
@@ -1682,17 +1763,28 @@
 ***** WKSYS
 ***** WKPROXY
 ***** WMSYS
+- Oracle Workspace Managerのメタデータ情報の格納に使用されるアカウント。
 ***** XDB
+- Oracle XML DBデータおよびメタデータの保存に使用されるアカウント。
 **** 事前定義された非管理アカウント
 ***** APEX_PUBLIC_USER
+- Oracle Database Application Expressのアカウント。
+  データベース・アクセス記述子(DAD)でデータベースに接続するために使用するOracleのスキーマの指定に使用する。
 ***** DIP
+- 
+  Oracle Directory Integration and Provisioning(DIP)のアカウント。
+  
 ***** FLOWS_040100
 ***** FLOWS_FILES
 ***** MDDATA
 ***** ORACLE_OCM
+- Oracle Configuration Managerと使用するアカウント。
+  現在のインスタンスの構成情報をMy Oracle Supportと関連付けることができる。
 ***** SPATIAL_CSW_ADMIN_USR
 ***** SPATIAL_WFS_ADMIN_USR
 ***** XS$NULL
+- セッション内にユーザーが存在しないことを表す内部アカウント。
+  ユーザーでないため、Oracle Databaseインスタンスによってのみアクセスできる。権限はない。
 **** 事前定義されたサンプル・スキーマ・ユーザアカウント
 ***** BI
 - サンプルスキーマに含まれるBI(Business Intelligence)スキーマを所有するアカウント。
@@ -1711,6 +1803,20 @@
 ***** SH
 - SH(Sales)スキーマを管理するためのアカウント。
   ビジネス上の決断を容易にするビジネス戦略を格納
+**** その他
+***** APPQOSSYS
+- Oracle Quality of Service Managementで必要なすべてのデータおよびメタデータの格納および管理に使用される。
+  
+***** TSMSYS
+- 透過的なセッション移行(Transparent Session Migration: TSM)に使用されるアカウント。
+***** PERFSTAT
+- Oracle Statspackに関するユーザ。
+**** 旧資料参照
+***** DMSYS
+- データマイニングアカウント。
+  10gまでは存在したが、11gには存在せず、代わりにSYSを使うこととなる。
+  [[http://docs.oracle.com/cd/E18283_01/datamine.112/e16807/upgrade_odm.htm][6 Upgrading Oracle Data Mining - Oracle® Data Mining Administrator's Guide 11g Release 2 (11.2)]]
+
 **** Link
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56296/tdpsg_user_accounts.htm#BABGEGFI][Oracle Databaseから提供される事前定義されるユーザー・アカウント - Oracle® Database 2日でセキュリティ・ガイド 11g リリース2(11.2)]]
 
@@ -1824,101 +1930,21 @@
 - local management
 - すべてyasutake(SYS, SYSTEM, DBSNMP, SYSMAN)
 ** Tools
-*** Oracle Universal Installer(OUI)
-- Install用ユーティリティ
-*** Oracle Database Configuration Assistant(DBCA)
-- テンプレートからデータベースを作成したり、独自のデータベースを作成するユーティリティ。
-**** データベース作成
-***** 起動
-- shellより"dbca"
-***** Templates
-- General, Data Warehouseなどから選択
-***** Identification
-- Global Database Nameを指定
-***** Management Option
-- Enterprise Managerで管理するか否か設定する。
-  集中管理かローカル管理かを選択する。
-***** Credentials
-- パスワードなどを指定する
-***** File Locations
-- テンプレートの位置
-- すべてに対して共通の位置。指定が必要。
-- Oracle Managed Files。
-***** Recovery Configuration
--
-***** Content
-- サンプルスキーマ
-- カスタムスクリプト
-***** Parameters
-- Memory
-- Sizing
-- Character Sets
-  - AL32UTF8は、Oracleで使用しているUTF-8エンコードの名前。
-- Connection Mode
-  - Dedicated Server Mode 専用サーバー・モード
-    各ユーザ・プロセスで専用のサーバ・プロセスが使用できる。
-    クライアント総数が50以下など、少ないと予想される場合にこのオプションを指定する。
-  - Shared Server Mode 共用サーバー・モード
-    リソース・プールを複数のクライアント接続で共有できる。
-***** Storage
-***** Create
-**** DB構成変更
-**** DB削除
-**** テンプレート管理
-***** タイプ
-****** シード
-- 
-  拡張子：.dbc
-  既存のデータベース（シード・データベース）の構造および物理データファイルの両方が含まれる。
-  
-****** 非シード
-- .dbt
+*** Automatic Workload Repository(AWR)
+- 自動ワークロード・リポジトリ
+  Oracle Databaseの稼働状況とワークロード情報のスナップショットを自動的に収集/管理する機能。
+  10gより提供された機能。
 *** Database Upgrade Assistant
 - 既存のDBを新しいリリースのDBへアップグレードする際に使うツール
-*** Oracle Enterprise Manager Database Control
-- Webベースのインターフェース。
-  インストール、データベースを作成（アップグレード）してネットワークを構成すると使用可能に。
-
-*** Enterprise Manager Grid Control
--
-**** Components
-***** Oracle Management Agent
-- 管理エージェント
-***** Oracle Management Service
-- OMS
-***** Oracle Management Repository
-- 管理リポジトリ
-***** Console
-*** Enterprise Manager Cloud Control
-- 
-  OracleおよびOracle以外のテクノロジを実行するシステムを含むITインフラストラクチャ全体に対し、
-  集中化された監視機能、管理機能およびライフ・サイクル管理機能を提供するシステム管理ソフトウェア。
+*** Oracle Application Express
+- Oracle APEX
+  Oracle DatabaseのためのWebアプリケーション開発ツール。
   
-**** Components
-
-***** Oracle Management Agent
-- 管理エージェント
-  組み込まれたソフトウェア・コンポーネントで、Enterprise Managerシステムで管理対象外ホストを管理対処ホストに変換する。
-  プラグインと連携することにより、管理対象ホスト上で実行されているターゲットを監視する。
-
-***** Oracle Management Service
-- OMC
-  管理エージェントおよびプラグインと連携し、ターゲットを検出して、その監視及び管理を行い、
-  将来の分析のために収集した情報をリポジトリ内に格納するWebベースのアプリケーション。
+*** Oracle Configuration Manager
+- クライアントの構成情報の収集と、この情報のOracleリポジトリへのアップロードに使用される。
+*** Oracle Data Mining(ODM)
+- Oracleデータベースにデータ・マイニング機能を組み込む。
   
-***** Oracle Management Repository
-- 管理リポジトリ
-  管理リポジトリは、管理エージェントが収集したすべての情報が保存される場所。
-  
-***** Plugins
-***** Console
-*** Oracle SQL Developer
-- GUIツール。
-  $ORACLE_HOME/sqldeveloper中に、sqldeveloper.shがあるので起動。
-  xが利用できる必要がある。
-- 
-  http://www.oracle.com/technetwork/jp/developer-tools/sql-developer/downloads/index.html
-
 *** Oracle Data Pump
 **** About
 - 
@@ -2003,15 +2029,109 @@
   [[http://otndnld.oracle.co.jp/products/database/oracle11g/pdf/datapump11g2007_quickstart.pdf][Oracle Data Pump クイック・スタート - Oracle ホワイト・ペーパー]]
   [[https://blogs.oracle.com/oracle4engineer/entry/data_pumpexpdpimpdp][Data Pump(expdp/impdp)の使い方～エクスポート／インポート、データ移動、論理バックアップ - オラクルエンジニア通信]]
   [[http://docs.oracle.com/cd/E16338_01/server.112/b56303/part_dp.htm][Oracle Data Pump - Oracle® Databaseユーティリティ 11gリリース2 (11.2)]]
-*** Oracle Rules Manager
-- EXF
-  アプリケーション開発者が条件式をリレーショナル表の1つ以上の列に格納し、索引を付けて評価できるようにするRules Managerのコンポーネント。
-  12cでサポートが終了。
+*** Oracle Database Configuration Assistant(DBCA)
+- テンプレートからデータベースを作成したり、独自のデータベースを作成するユーティリティ。
+**** データベース作成
+***** 起動
+- shellより"dbca"
+***** Templates
+- General, Data Warehouseなどから選択
+***** Identification
+- Global Database Nameを指定
+***** Management Option
+- Enterprise Managerで管理するか否か設定する。
+  集中管理かローカル管理かを選択する。
+***** Credentials
+- パスワードなどを指定する
+***** File Locations
+- テンプレートの位置
+- すべてに対して共通の位置。指定が必要。
+- Oracle Managed Files。
+***** Recovery Configuration
+-
+***** Content
+- サンプルスキーマ
+- カスタムスクリプト
+***** Parameters
+- Memory
+- Sizing
+- Character Sets
+  - AL32UTF8は、Oracleで使用しているUTF-8エンコードの名前。
+- Connection Mode
+  - Dedicated Server Mode 専用サーバー・モード
+    各ユーザ・プロセスで専用のサーバ・プロセスが使用できる。
+    クライアント総数が50以下など、少ないと予想される場合にこのオプションを指定する。
+  - Shared Server Mode 共用サーバー・モード
+    リソース・プールを複数のクライアント接続で共有できる。
+***** Storage
+***** Create
+**** DB構成変更
+**** DB削除
+**** テンプレート管理
+***** タイプ
+****** シード
+- 
+  拡張子：.dbc
+  既存のデータベース（シード・データベース）の構造および物理データファイルの両方が含まれる。
+  
+****** 非シード
+- .dbt
+*** Oracle Database Quality of Service Management
+- Oracle Database QoS Management
+  システム全体のワークロード・リクエストを監視する自動化されたポリシーベースの製品。
+  アプリケーション間で共有されるリソースを監視し、システム構成を調整して、アプリケーションの実行をビジネスに必要なパフォーマンス・レベルに維持する。
+*** Oracle Directory Integration and Provisioning Server
+- Oracle DIP
+  
+*** Oracle Enterprise Manager
+**** Database Control
+- 
+  Webベースのインターフェース。
+  インストール、データベースを作成（アップグレード）してネットワークを構成すると使用可能に。
+**** Cloud Control
+- 
+  OracleおよびOracle以外のテクノロジを実行するシステムを含むITインフラストラクチャ全体に対し、
+  集中化された監視機能、管理機能およびライフ・サイクル管理機能を提供するシステム管理ソフトウェア。
+  
+***** Components
+
+****** Oracle Management Agent
+- 管理エージェント
+  組み込まれたソフトウェア・コンポーネントで、Enterprise Managerシステムで管理対象外ホストを管理対処ホストに変換する。
+  プラグインと連携することにより、管理対象ホスト上で実行されているターゲットを監視する。
+
+****** Oracle Management Service
+- OMC
+  管理エージェントおよびプラグインと連携し、ターゲットを検出して、その監視及び管理を行い、
+  将来の分析のために収集した情報をリポジトリ内に格納するWebベースのアプリケーション。
+  
+****** Oracle Management Repository
+- 管理リポジトリ
+  管理リポジトリは、管理エージェントが収集したすべての情報が保存される場所。
+  
+****** Plugins
+****** Console
+**** Grid Control
+-
+***** Components
+****** Oracle Management Agent
+- 管理エージェント
+****** Oracle Management Service
+- OMS
+****** Oracle Management Repository
+- 管理リポジトリ
+****** Console
+
 *** Oracle Expression Filter
 - RUL
   Expression FilterとObject Relationalの機能を使用して、特殊な目的のルールエンジンの機能を提供する。
   12cでサポートが終了。
+*** Oracle Identity Management
+- 
+  アプリケーションとディレクトリ(サード・パーティのLDAPディレクトリを含む)をOracle Internet Directoryに統合して、管理作業にかかる時間とコストを削減できる。
 
+*** Oracle Internet Directory
+- Oracleコンポーネントとサード・パーティのアプリケーションによって、ユーザIDおよび資格情報が格納され、アクセスされるリポジトリ。
 *** Oracle Label Security
 - 
   データベース表に対して行レベルのセキュリティを提供する。
@@ -2024,10 +2144,49 @@
 ****** Compartment
 ****** Group
 ***** Policy
-*** Recovery Manager
-- https://docs.oracle.com/cd/E16338_01/backup.112/b56269/toc.htm
+*** Oracle Locator
+- Oracle Spatialで使用可能な主要な機能およびサービスを提供する。
+  通常、インターネットおよびワイヤレス・サービス・ベースのアプリケーションおよびパートナ・ベースのGISソリューションをサポートする貯めに必要な、重要な機能を提供する。
+*** Oracle Multimedia
+- イメージ、オーディオ、ビデオまたは疎オン他の異機種間メディアデータを、他の企業情報と統合したフォーマットで格納、管理および検索する機能。
+*** Oracle Multimedia DICOM
+- Digital Imaging and Communications in Medicine(DICOM)は医用画像の標準規格。
+  
 *** Oracle Net Services
 - https://docs.oracle.com/cd/E16338_01/network.112/b56288/toc.htm
+*** Oracle Rules Manager
+- EXF
+  アプリケーション開発者が条件式をリレーショナル表の1つ以上の列に格納し、索引を付けて評価できるようにするRules Managerのコンポーネント。
+  12cでサポートが終了。
+*** Oracle Spatial
+- Oracleのファンクションとプロシージャを統合した製品で、空間データの格納、アクセスおよび分析を短時間で効率的に処理することを目的としている。
+*** Oracle Statsack
+- 
+  パフォーマンス上の問題点を診断するツール。
+  Oracle 8iから提供されている。
+  10gでは自動ワークロードリポジトリ(AWR)が提供されたため、マニュアルから削除されているが、能自体は存続している。
+*** Oracle SQL Developer
+- GUIツール。
+  $ORACLE_HOME/sqldeveloper中に、sqldeveloper.shがあるので起動。
+  xが利用できる必要がある。
+- 
+  http://www.oracle.com/technetwork/jp/developer-tools/sql-developer/downloads/index.html
+
+*** Oracle Text
+- 
+  全文検索およびドキュメント分類のためのエンジン。
+  検索対象の文書の「本文」そのものを検索対象とする。
+
+*** Oracle Universal Installer(OUI)
+- Install用ユーティリティ
+*** Oracle Workspace Manager
+- 作業領域を作成し、バージョンが異なる表の行の値を、異なる作業領域に簡単にグループ化できるインフラストラクチャを提供する。
+  ユーザは、古いデータを保持しながら、更新するデータの新しいバージョンを作成することができる。
+*** Oracle XML DB
+- XMLデータの格納、生成、アクセス、検索、検証、変換、拡張および索引付などの高パフォーマンスの処理に関連する一連のOracle Databaseテクノロジー。
+  SQLとXMLの両方のデータ・モデルの相互運用を可能にすることで、ネイティブなXMLサポートを提供する。
+*** Recovery Manager
+- https://docs.oracle.com/cd/E16338_01/backup.112/b56269/toc.htm
 ** Error
 *** ORA-00942
 - 該当の表またはビューが存在しない場合や、表やビューに対するアクセス権限が不足している場合に発生する。
@@ -2070,6 +2229,9 @@
 - Transparent Network Substrate
   データベースの接続や複数ノード間のメッセージのやり取りを単一の共通インターフェースで提供している技術。
   Oracle Net Foundationレイヤーに組み込まれている。
+  
+*** Database Access Descriptor
+- データベースアクセス記述子
   
 *** DIRECTORY ディレクトリ
 - 
@@ -2275,3 +2437,8 @@
 - 
   リスナーは、同一リスナーで複数SIDを設定できるし、逆に複数リスナーで一つのSIDを見るように設定することも可能。
   ポートとインスタンスを接続するために存在するのみ、比較的それぞれ自由で疎結合。
+*** 自動メンテナンスタスク
+- 機能
+  - 自動オプティマイザ機能
+  - 自動セグメント・アドバイザ
+  - 自動SQLチューニング・アドバイザ
