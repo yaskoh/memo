@@ -274,6 +274,9 @@
 - Vue.js
 
 **** Virtual DOM
+***** About
+- 
+  [[http://qiita.com/mizchi/items/4d25bc26def1719d52e6][なぜ仮想DOMという概念が俺達の魂を震えさせるのか - Qiita]]
 ***** React
 ***** Flux
 **** DOM操作
@@ -316,6 +319,12 @@
 - QUnit
 - Jasmine
 
+**** WebComponents
+***** About
+- [[https://www.w3.org/standards/techs/components#w3c_all][WEB COMPONENTS CURRENT STATUS - W3C]]
+- [[http://postd.cc/the-state-of-web-components/][Web Componentsの現状 - POSTD]]
+- [[http://www.h2.dion.ne.jp/~defghi/webc/webc.htm][Web Copmonetsの基本的な使い方・まとめ]]
+- [[http://www.h2.dion.ne.jp/~defghi/webc/webc.htm][Web開発者に革命をもたらす!「Web Components」超入門 - LIG.inc]]
 *** jQuery
 - 
   容易に記述できるようにするためのJavaScriptライブラリ。
@@ -559,3 +568,5 @@
 − [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference][JavaScript reference - MDN]] 
   [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference][JavaScriptリファレンス - MDN]]
 - [[http://speakingjs.com/][Speaking JavaScript: An In-Depth Guide for Programmers]]
+
+- [[http://qiita.com/mizchi/items/3bbb3f466a3b5011b509][春からはじめるモダンJavaScript / ES2015 - Qiita]]

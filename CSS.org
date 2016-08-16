@@ -39,6 +39,9 @@
 ***** Text
 ***** Tables
 ***** User interfaces
+***** Link
+- [[https://www.w3.org/TR/CSS2/][Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification - W3C]]
+- [[http://momdo.s35.xrea.com/web-html-test/spec/CSS21/cover.html][Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification 日本語訳 - W3C]]
 **** CSS Level 1
 **** CSS Color Level3
 - REC 2011/6/7
@@ -103,6 +106,23 @@
 **** CSS Will Change Level 1
 - CR
 **** CSS Level 2 Revision 2
+***** Syntax and basic data types
+***** Selectors
+***** Assigning property values, Cascading, and Inheritance
+***** Media types
+***** Box model
+***** Visual formatting model
+***** Visual effects
+***** Generated content, automatic numbering, and lists
+***** Paged media
+***** Colors and Backgrounds
+***** Fonts
+***** Text
+***** Tables
+***** User interfaces
+***** Link
+- [[https://www.w3.org/TR/CSS22/][Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification - W3C]]
+- [[https://momdo.github.io/css2/Overview.html][Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification 日本語訳 - W3C]]
 ** Properties
 *** Foundamentals
 **** box
@@ -658,6 +678,55 @@
 **** :after
 *** 擬似要素
 
+** SASS
+- 
+  SCSSというフォーマットに対応。
+  ネスト、変数の使用、ミックスインに対応。
+
+*** ネスト
+- 共通のパターンがある場合にネスト可能。(子孫セレクタのみ？)
+  ex)
+    .center {
+      text-align: center;
+    }
+    .center h1 {
+      margin-bottom: 10px;
+    }
+    ⇒
+    .center {
+      text-align: center;
+      h1 {
+        margin-bottom: 10px;
+      }
+    }
+
+- 親属性を参照する必要がある場合は&を使う。
+  ex)
+    #logo {
+      float: left;
+      ...
+    }
+    #logo:hover {
+      color: #fff;
+      ...
+    }
+    ⇒
+    #logo {
+      float: left;
+      ...
+      &:hover {
+        color: #fff;
+        ...
+      }
+    }
+
+*** 変数 
+- 
+  ドルマーク($)を使って変数を定義できる。
+  （ちなみにLESSでは@マークを使っている。）
+
+*** Link
+- [[http://sass-lang.com/documentation/file.SASS_REFERENCE.html][SASS_REFERENCE]]
 ** Memo
 *** 記述箇所
 - 
@@ -713,55 +782,11 @@
 - Link
   [[https://www.w3.org/TR/css3-mediaqueries/][Media Queries - W3C]]
   
-** SASS
+*** ベンダープレフィックス
 - 
-  SCSSというフォーマットに対応。
-  ネスト、変数の使用、ミックスインに対応。
+  ブラウザベンダーが独自の拡張機能を実装するとき、または草案段階の仕様を先行実装する場合に付ける識別子のこと。  
+- [[http://scene-live.com/page.php?page=43][【CSS3】ベンダープレフィックスとは？ - SCENE LIVE]]
 
-*** ネスト
-- 共通のパターンがある場合にネスト可能。(子孫セレクタのみ？)
-  ex)
-    .center {
-      text-align: center;
-    }
-    .center h1 {
-      margin-bottom: 10px;
-    }
-    ⇒
-    .center {
-      text-align: center;
-      h1 {
-        margin-bottom: 10px;
-      }
-    }
-
-- 親属性を参照する必要がある場合は&を使う。
-  ex)
-    #logo {
-      float: left;
-      ...
-    }
-    #logo:hover {
-      color: #fff;
-      ...
-    }
-    ⇒
-    #logo {
-      float: left;
-      ...
-      &:hover {
-        color: #fff;
-        ...
-      }
-    }
-
-*** 変数 
-- 
-  ドルマーク($)を使って変数を定義できる。
-  （ちなみにLESSでは@マークを使っている。）
-
-*** Link
-- [[http://sass-lang.com/documentation/file.SASS_REFERENCE.html][SASS_REFERENCE]]
 ** Link
 - [[https://www.w3.org/Style/CSS/][Cascading Style Sheets home page - W3C]]
 - [[https://www.w3.org/Style/CSS/read][Understanding the CSS Specifications - W3C]]

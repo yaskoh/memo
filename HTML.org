@@ -109,6 +109,10 @@
 ******* id
 ******* title
 ******* lang, xml:lang
+- 
+  要素のコンテンツに対する基本言語およびテキストを含むあらゆる要素の属性に対して指定する。
+  その値は妥当なBCP47言語タグまたは空も次である必要がある。
+
 ******* translate
 ******* xml:base
 ******* dir
@@ -128,27 +132,113 @@
 ***** Root element
 ****** html
 - 
+  HTML文書のルートを表す。
+  ルートのhtml要素にlang属性を指定することが推奨される。
+******* Def
+- 
   - Category : なし
   - Contexts
     As the root element of a document.
   - Contents model : 
     head要素、続いてbody要素
   - Content attributes :
-    Global attirbutes
-    manifest
+    グローバル属性
+    manifest : アプリケーションキャッシュマニフェスト
   - Tag omission
   - Allowed ARIA role
   - Allowed ARIA state and property
+
 ***** Document metadata
 ****** head
 - 
+  Documentに関するメタデータの集まり。
+******* Def
+- 
   - Category : なし
-   
+ 
 ****** title
+- 
+  文書のタイトルまたは名前を表す。
+
+******* Def
+- 
+  - Category : Metadata
+  - Contexts : 他のtitle要素を含まないhead要素内。
+  - Content attributes : Global attributes
+  - Tag omission : どちらも省略不可
+
 ****** base
+- 
+  相対URLを解決する目的で文書の規定URLを指定、および次に続くハイパーリンクのためにデフォルトでブラウジングコンテキストの名前の指定を許可数r。。
+  href属性またはtarget属性のいずれか、あるいはその両方を持たなければならない。
+
+******* Def
+- 
+  - Category : Metadata
+  - Contexts : 他のbase要素を含まないhead要素内
+  - Contents model : 空
+  - Content attributes :
+    グローバル属性
+    href : 文書基底URL
+    target : ハイパーリンクナビゲーションおよびフォーム送信に対するブラウジングコンテキスト
+  - Tag omission : 終了タグなし
+  
 ****** link
+- 
+  著者が文書を他のリソースとリンクするのを可能にする。
+  リンクの宛先はhref属性によって与えられ、これは存在し、妥当なURLを含まなければならない。
+
+******* Def
+- 
+  - Category : Metadata
+  - Contexts :
+    - メタデータが期待される場所
+    - head要素の子であるnoscript要素内。
+  - Content attributes :
+    - グローバル属性
+    - href : ハイパーリンクのアドレス
+    - crossorigin : 要素がcrossorigin要求を処理する方法
+    - rel : ハイパーリンクと宛先のリソースを含む文書の関係
+    - media : 受け入れ可能なメディア
+    - hreflang
+    - type
+    - sizes
 ****** meta
+- 
+  title, base, link, style, script要素を用いて表現できない様々な種類のメタデータを表す。
+  name、http-equiv、charset属性のうち1つを正確に指定しなければならない。
+
+******* Def
+- 
+  - Category : Metadata
+  - Contexts :
+    - charset属性が存在する場合、またはhttp-equivの属性がエンコード宣言状態にある場合 : head要素内
+    - http-equiv属性が存在するが、エンコード宣言状態でない場合 : head要素内、もしくはhead要素配下noscript要素内
+    - name属性が存在する場合 : メタデータコンテンツが期待される場所
+  - Content attributes :
+    - グローバル属性
+    - name : メタデータ名
+    - http-equiv : プラグマディレクティブ
+    - content : 要素の値
+    - charset : 文字エンコーディング宣言
+  - Tag omission :
+    終了タグなし
 ****** style
+******* Def
+- 
+  - Category : Metadata
+  - Contexts :
+    - メタデータコンテンツが期待される場所
+    - head要素配下のnoscript要素内
+  - Contents model : type属性の値に依存。
+  - Content attributes :
+    - グローバル属性
+    - media : 受け入れ可能なメディア
+    - type : 埋め込みリソースタイプ
+    - title : 特別なセマンティックを持つ。代替スタイルシート設定名
+  - Tag omission:
+    省略不可
+
 ***** Sections
 ****** body
 ****** article
@@ -210,6 +300,30 @@
 ***** Embedded content
 ****** img
 ****** iframe
+- 
+  ネストされたブラウジングコンテキストを表す。
+  
+******* Def
+- Category :
+  - Flow
+  - Phrasing
+  - Embedded
+  - Interactive
+  - Pulpable
+- Contexts : Embeddedが期待される場所
+- Contents model :
+  文で与えられる要件に適合しているテキスト
+- Content attributes :
+  - グローバル属性
+  - src : リソースのアドレス
+  - srcdoc : iframe内で描画する文書
+  - name : ネストされたブラウジングコンテキスト名
+  - sandbox : ネストされたコンテンツのセキュリティールール
+  - width : 横
+  - height : 縦
+- Tag omission
+  省略不可
+
 ****** embed
 ****** object
 ****** param
@@ -340,6 +454,7 @@
 **** InterfaceMembes
 *** Link
 - [[https://www.w3.org/TR/WebIDL/][Web IDL - W3C]]
+- [[https://triple-underscore.github.io/WebIDL-ja.html][Web IDL (Second Edition) - 日本語訳]]
 - [[http://domes.lingua.heliohost.org/webapi-intro/webidl1.html][Web IDL入門]]
 ** WAI-ARIA
 - 
@@ -632,7 +747,6 @@
 - Web Hypertext Application Technology Working Group
   HTMLの開発やその関連技術に興味を持つ人々のコミュニティー。
   Apple, Mozilla, Operaによって設立された。
-*** IDL
 ** Memo
 - Use lower case
 
@@ -652,13 +766,32 @@
 - 
   Outside area
 
+*** manifest
+- 
+  アプリケーションキャッシュを有効にするには、ドキュメントのhtmlタグにmanifest属性を含める。
+  manifest属性はキャッシュ対象にするすべてのウェブアプリケーションのページに含める必要がある。
+  
+- 
+  [[http://www.html5rocks.com/ja/tutorials/appcache/beginner/][アプリケーション キャッシュ を初めて使う - html5rocks]]
+
+*** 言語タグ、BCP 47
+- 
+  言語タグの構文はIETFの"BCP 47"で定義されている。
+  BCPは"Best Current Practice"の略。更新時に番号が変化するRFCに対して永続的な名前を与える。
+  最新のRFCはRFC5646。
+  
+- 
+  [[https://www.w3.org/International/questions/qa-choosing-language-tags][Choosing a Language Tag - W3C]]
+  [[http://www.rfc-editor.org/rfc/rfc5646.txt][Request for Comments : 5646]]
+  [[https://www.w3.org/International/articles/language-tags/index.ja][HTMLとXMLにおける言語タグ - W3C]]
+
 ** Link
 - [[https://html.spec.whatwg.org/multipage/][HTML Living Standard]]
 - [[https://www.w3.org/TR/html5/][HTML5 - W3C]]
 - [[https://momdo.github.io/html5/Overview.html][HTML5日本語訳 - W3C]]
 - [[https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5][HTML5 - MDN]]
 - [[https://developer.mozilla.org/ja/docs/Web/HTML/HTML5][HTML5(日本語訳) - MDN]]
-- [[http://www.ituore.com/entry/html-css-basic][HTMLとCSSの基本をサルでもわかるようにまとめてみようと思う。 - いつ俺]]
+
 - [[http://www.htmq.com/html5/index.shtml][HTML5リファレンス - HTMLクイックリファレンス]]
 
 - [[http://jtdan.com/spec/][W3C仕様書などのまとめ【保存版】 - W3C]]

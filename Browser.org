@@ -224,6 +224,14 @@
 
 ** Link
 - [[http://www.html5rocks.com/ja/tutorials/internals/howbrowserswork/][ブラウザの仕組み:最新ウェブブラウザの内部構造 - HTML5 ROCKS]]
+*** Browser実装対応状況
+- [[http://caniuse.com/][Can I Use?]]
+- [[http://fmbip.com/litmus/][HTML5 & CSS3 Support - findmebyIP.com]]
+
+- [[https://developer.microsoft.com/en-us/microsoft-edge/platform/status/][Platform status - Microsoft Edge]]
+- [[https://www.chromestatus.com/features][Chrome Platform Status]]
+- [[https://developer.apple.com/library/mac/releasenotes/General/WhatsNewInSafari/Introduction/Introduction.html][What's New in Safari - Mac Developer Library]]
+
 ** Memo
 *** Font
 **** EmbeddedOpenType
@@ -256,16 +264,3 @@
 - Link
   [[http://freesoft.tvbok.com/youtube_f/method/browser_jp.html][ブラウザやＯＳの言語をチェックする (逆に日本語以外にする裏技) - ぼくんちのTV別館]]
   [[http://memorva.jp/internet/pc/browser_language.php][ブラウザの言語設定 - 日本語が表示されない・英語が表示される - MEMORVA]]
-*** Link(merging)
-- [[http://caniuse.com/][Can I Use?]]
-- [[http://fmbip.com/litmus/][HTML5 & CSS3 Support - findmebyIP.com]]
-
-- [[https://developer.microsoft.com/en-us/microsoft-edge/platform/status/][Platform status - Microsoft Edge]]
-- [[https://www.chromestatus.com/features][Chrome Platform Status]]
-- [[https://developer.apple.com/library/mac/releasenotes/General/WhatsNewInSafari/Introduction/Introduction.html][What's New in Safari - Mac Developer Library]]
-
-*** ベンダープレフィックス
-- 
-  ブラウザベンダーが独自の拡張機能を実装するとき、または草案段階の仕様を先行実装する場合に付ける識別子のこと。
-  
-- [[http://scene-live.com/page.php?page=43][【CSS3】ベンダープレフィックスとは？ - SCENE LIVE]]
