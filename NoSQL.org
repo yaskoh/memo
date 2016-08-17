@@ -147,9 +147,6 @@
 **** Neo4j
 
 ** Link
+- [[https://medium.baqend.com/nosql-databases-a-survey-and-decision-guidance-ea7823a822d#.x7otznnfv][NoSQL Databases: a Survey and Decision Guidance]]
 - [[http://dev.classmethod.jp/event/dbtechsowcase-tokyo-2015-e-22/][(レポート)NoSQLの必要性と主要プロダクト比較]]
-
-
-
-
 

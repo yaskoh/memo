@@ -1,6 +1,158 @@
 * JavaScript
-** Grammer 文法
-*** Fundamentals Memo
+** Specification
+*** ECMAScript 2016
+**** data Types and values
+*** ES5.1
+**** Lexical Conventions
+**** Type
+**** Type Conversion and Testing
+**** Expressions
+***** Primary Expressions
+***** Left-Hand-Side Expressions
+***** Postfix Expressions
+***** Unary Operators
+***** Multiplicative Operators
+***** Additive Operators
+***** Bitwise Shift Operators
+***** Relational Operators
+***** Equility Operators
+***** Binary Bitwise Operators
+***** Binary Logical Operators
+***** Conditional Operator
+***** Assignment Operators
+***** Comma Operator
+**** Statements
+***** Block
+***** Variable Statement
+***** Empty Statement
+***** Expression Statement
+***** The if Statement
+****** if
+***** Iteration Statement
+****** do-while
+****** while
+****** for
+****** for-in
+***** continue
+***** break
+***** return
+***** with
+***** switch
+***** throw
+***** try
+***** debugger
+**** Function
+**** Objects
+**** Link
+- [[http://www.ecma-international.org/ecma-262/5.1/index.html][ECMAScript Language Specification (5.1 Edition)]]
+- [[http://www.webzoit.net/hp/it/internet/homepage/script/ecmascript/ecma262_51/contents/][ECMAScript 5.1 邦訳 - webzoit.net]]
+***** Global
+***** Object
+***** Function
+***** Array
+***** String
+***** Boolean
+***** Number
+***** Math
+***** Date
+***** RegExp
+***** Error
+***** JSON
+**** Error
+*** JavaScript(MDN)
+**** Global Objects グローバルオブジェクト
+***** Value propeties
+***** Function properties
+***** Fundamental objects
+****** Object
+****** Function
+****** Boolean
+****** Symbol
+****** Error
+******* EvalError
+******* InternalError
+******* RangeError
+******* ReferenceError
+******* SyntaxError
+******* TypeError
+******* URIError
+***** Numbers and dates
+****** Number
+****** Math
+******* 
+****** Date
+***** Text processing
+****** String
+****** RegExp
+***** Indexed collections
+****** Array
+***** Keyed collections
+****** Map
+****** Set
+****** WeakMap
+****** WeakSet
+***** Vector collections
+****** SIMD
+***** Structured data
+****** ArrayBuffer
+****** DataView
+****** JSON
+***** Control abstraction objects
+****** Promise
+****** Generator
+****** GeneratiorFunction
+***** Reflection
+****** Reflect
+****** Proxy
+***** Internationalization
+****** Intl
+***** Other
+****** arguments
+**** Statements 文
+***** Control flow
+***** Declarations
+***** Functions and classes
+***** Iterations
+***** Others
+**** Expressions and operators 式と演算子
+**** Functions 関数
+**** Classes クラス
+**** Etc
+**** Web APIs
+- https://developer.mozilla.org/en-US/docs/Web/API
+***** Console
+****** Methods
+******* Console.log()
+- 
+  Output a message to the Web Console.
+
+***** History
+- The History interface allows to manipulate the browser session history,
+  that is the pages visited in the tab or frame that can current page is loaded in.
+
+****** Methods
+
+******* Properties
+******** History.length
+******** History.satte
+******* Methods
+******** History.back()
+- 
+  Goes to the previous page is session history.
+  The same action as when the user clicks the browser's Back button.
+  Equivalent to history.go(-1).
+
+******** History.forward()
+- 
+  Goes to the next page in session history.
+  Equivalent to history.go(1).
+
+******** History.go()
+- 
+  Loads a page from session history, identified by its relative location to the current page.
+
+*** Grammer 文法
+**** Fundamentals Memo
 - 文の終了は;(Semicolomn)
 - 文字列は"か'で囲む
 - コメントは//から。
@@ -10,115 +162,27 @@
 - 連想配列は、var key = { };
 - user["name"]と、user.nameは同じ。
 
-*** Global Objects グローバルオブジェクト
-**** Value propeties
-**** Function properties
-**** Fundamental objects
-***** Object
-***** Function
-***** Boolean
-***** Symbol
-***** Error
-****** EvalError
-****** InternalError
-****** RangeError
-****** ReferenceError
-****** SyntaxError
-****** TypeError
-****** URIError
-**** Numbers and dates
-***** Number
-***** Math
-****** 
-***** Date
-**** Text processing
-***** String
-***** RegExp
-**** Indexed collections
-***** Array
-**** Keyed collections
-***** Map
-***** Set
-***** WeakMap
-***** WeakSet
-**** Vector collections
-***** SIMD
-**** Structured data
-***** ArrayBuffer
-***** DataView
-***** JSON
-**** Control abstraction objects
-***** Promise
-***** Generator
-***** GeneratiorFunction
-**** Reflection
-***** Reflect
-***** Proxy
-**** Internationalization
-***** Intl
-**** Other
-***** arguments
-*** Statements 文
-**** Control flow
-**** Declarations
-**** Functions and classes
-**** Iterations
-**** Others
-*** Expressions and operators 式と演算子
-*** Web APIs
-- https://developer.mozilla.org/en-US/docs/Web/API
-**** Console
-***** Methods
-****** Console.log()
-- 
-  Output a message to the Web Console.
+**** Obsolete
+***** Types Values, variables, literals
+****** 値
+******* 数値
 
-**** History
-- The History interface allows to manipulate the browser session history,
-  that is the pages visited in the tab or frame that can current page is loaded in.
+******* 論理値
 
-***** Methods
+******* 文字列
 
-****** Properties
-******* History.length
-******* History.satte
-****** Methods
-******* History.back()
-- 
-  Goes to the previous page is session history.
-  The same action as when the user clicks the browser's Back button.
-  Equivalent to history.go(-1).
+******* null
 
-******* History.forward()
-- 
-  Goes to the next page in session history.
-  Equivalent to history.go(1).
+******* undefined
 
-******* History.go()
-- 
-  Loads a page from session history, identified by its relative location to the current page.
-
-*** Obsolete
-**** Types Values, variables, literals
-***** 値
-****** 数値
-
-****** 論理値
-
-****** 文字列
-
-****** null
-
-****** undefined
-
-***** Variables 変数
-****** 名前
+****** Variables 変数
+******* 名前
 - 
   識別子はアルファベット、アンダースコア(_)、ドル記号($)から始まらなければいけない。
   続く文字は数字(0-9)も使用できる。
   大文字・小文字を区別する。
 
-****** Scope スコープ
+******* Scope スコープ
 - グローバル（大域）変数
   関数の外側で宣言すると、どのコードからも使用できる。
 - ローカル（局所）変数
@@ -126,134 +190,130 @@
 - ブロック文
   ブロックを内包しているコードに局所化される。
 
-***** 定数
+****** 定数
 - 
   constキーワードを用いて、読み取り専用の定数を作成できる。
 
-***** Literals リテラル
-****** 配列リテラル
+****** Literals リテラル
+******* 配列リテラル
 
-****** 真偽値リテラル
+******* 真偽値リテラル
 
-****** 整数
+******* 整数
 
-****** 浮動小数点数リテラル
+******* 浮動小数点数リテラル
 
-****** オブジェクトリテラル
+******* オブジェクトリテラル
 
-****** 文字列リテラル
+******* 文字列リテラル
 
-****** Unicode
+******* Unicode
 
-***** Data structuer and types
-**** Expressions and Operators 式と演算子
-***** 式
+****** Data structuer and types
+***** Expressions and Operators 式と演算子
+****** 式
 - 算術式
 - 文字列式
 - 論理式
 - オブジェクト式
 
-***** 演算子
+****** 演算子
 
-****** 代入演算子
+******* 代入演算子
 
-****** 比較演算子
+******* 比較演算子
 
-****** 算術演算子
+******* 算術演算子
 
-****** ビット演算子
+******* ビット演算子
 
-****** 論理演算子
+******* 論理演算子
 
-****** 文字列演算子
+******* 文字列演算子
 
-****** 特殊演算子
+******* 特殊演算子
 
-**** 正規表現
-**** Control flow 条件式
-***** ブロック文
+***** 正規表現
+***** Control flow 条件式
+****** 条件文
 
-***** 条件文
+******* if...else
 
-****** if...else
+******* switch
 
-****** switch
+****** ループ文
 
-***** ループ文
+******* for
 
-****** for
+******* do...while
 
-****** do...while
+******* while
 
-****** while
+******* label
 
-****** label
+******* break
 
-****** break
+******* continue
 
-****** continue
+****** オブジェクト操作文
 
-***** オブジェクト操作文
+******* for...in
 
-****** for...in
+******* for each...in
 
-****** for each...in
+****** コメント
 
-***** コメント
+****** 例外処理分
 
-***** 例外処理分
+******* throw
 
-****** throw
+******* try...catch
 
-****** try...catch
+******** catchブロック
 
-******* catchブロック
+******** finallyブロック
 
-******* finallyブロック
+**** W3C
+***** Syntax
+****** Loop
+******* for(;;)
+******* for( in )
+******* while()
+******* do...while()
+******* break
+******* continue
+******* try, catch, throw
 
-**** 関数
+***** Function
+****** Popup
+******* alert
+******* confirm
+******* prompt
 
-*** W3C
-**** Syntax
-***** Loop
-****** for(;;)
-****** for( in )
-****** while()
-****** do...while()
-****** break
-****** continue
-****** try, catch, throw
+***** Event
+****** onload
+****** onunload
+****** onfocus
+****** onblur (when losing focus)
+****** onchange
+****** onsubmit
+****** onmouseover
+****** onmouseout
 
-**** Function
-***** Popup
-****** alert
-****** confirm
-****** prompt
+***** Object
+****** Document
+****** String
+******* length
+******* toUpperCase()
+****** Date
+****** Array
+****** Boolean
+****** Math
+****** RegExp
+****** Navigator
 
-**** Event
-***** onload
-***** onunload
-***** onfocus
-***** onblur (when losing focus)
-***** onchange
-***** onsubmit
-***** onmouseover
-***** onmouseout
-
-**** Object
-***** Document
-***** String
-****** length
-****** toUpperCase()
-***** Date
-***** Array
-***** Boolean
-***** Math
-***** RegExp
-***** Navigator
-
-**** Developer Tool
-***** Ctrl-Shift-J or F12
+***** Developer Tool
+****** Ctrl-Shift-J or F12
 
 ** Edition
 *** 5
@@ -495,6 +555,7 @@
 **** Link
 - [[http://jquery.com/][jQuery]]
 
+** Glossary
 ** Memo
 *** 標準スクリプト言語の指定
 - 
@@ -563,10 +624,12 @@
   
 ** Link
 - [[http://www.ecma-international.org/publications/standards/Ecma-262.htm][Standard ECMA-262 - ecma INTERNATIONAL]]
+
 - [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]
-  [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]
+- [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]
 − [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference][JavaScript reference - MDN]] 
-  [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference][JavaScriptリファレンス - MDN]]
+- [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference][JavaScriptリファレンス - MDN]]
+
 - [[http://speakingjs.com/][Speaking JavaScript: An In-Depth Guide for Programmers]]
 
 - [[http://qiita.com/mizchi/items/3bbb3f466a3b5011b509][春からはじめるモダンJavaScript / ES2015 - Qiita]]

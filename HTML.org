@@ -379,6 +379,29 @@
 ****** legend
 ***** Scripting
 ****** script
+******* Def
+- 
+  - Category :
+    - Metadata
+    - Flow
+    - Phrasing
+    - Script support
+  - Contexts :
+    - メタデータが期待される場所
+    - フレージングコンテンツが期待される場所
+    - スクリプトサポート要素が期待される場所
+  - Contents model :
+    - src属性が存在しない場合、type属性の値に依存するが、スクリプトの内容制限に一致しなければならない。
+    - src属性が存在する場合、要素は空またはスクリプト文書を含むだけでなくスクリプトの内容制限に一致するかのいずれかでなければならない。
+  - Content attributes :
+    - グローバル属性
+    - src : リソースのアドレス
+    - type : 埋め込みリソースタイプ
+    - charset : 外部スクリプトリソースの文字エンコーディング
+      デファルトはtext/javascript。
+    - async : 非同期的にスクリプトを実行する
+    - defer : スクリプトの実行を延期する
+    - crossorigin : 要素がcrossorigin要求を処理する方法
 ****** noscript
 ****** template
 ****** canvas
