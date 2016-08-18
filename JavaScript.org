@@ -62,7 +62,23 @@
 *** JavaScript(MDN)
 **** Global Objects グローバルオブジェクト
 ***** Value propeties
+****** Infinity
+****** NaN
+****** undefined
+****** null literal
 ***** Function properties
+****** eval()
+****** isFinite()
+****** isNaN()
+****** parseFloat()
+****** parseInt()
+****** decodeURI()
+****** decodeURIComponent()
+****** encodeURI()
+****** encodeURIComponent()
+****** uneval() - nonstandard
+****** escape() - deprecated
+****** unescape() - deprecated
 ***** Fundamental objects
 ****** Object
 ****** Function
@@ -86,6 +102,14 @@
 ****** RegExp
 ***** Indexed collections
 ****** Array
+******* Int8Array
+******* Uint8Array
+******* Uint8ClampedArray
+******* Int16Array
+******* Int32Array
+******* Uint32Array
+******* Float32Array
+******* Float64Array
 ***** Keyed collections
 ****** Map
 ****** Set
@@ -93,6 +117,8 @@
 ****** WeakSet
 ***** Vector collections
 ****** SIMD
+******* SIMD.Float32x4
+******* 
 ***** Structured data
 ****** ArrayBuffer
 ****** DataView
@@ -151,38 +177,49 @@
 - 
   Loads a page from session history, identified by its relative location to the current page.
 
-*** Grammer 文法
-**** Fundamentals Memo
+** Grammer 文法
+*** Fundamentals Memo
 - 文の終了は;(Semicolomn)
 - 文字列は"か'で囲む
-- コメントは//から。
-- 変数定義はvarをつける
+- コメントは、一文は//、複数行は/* */。
+- 変数
+  - 宣言はvar, let(ブロックスコープ), const(定数)。
+    何も付与しないと常にグローバル変数として遷延される。
+  - ES6以前にはブロック文のスコープがない。
+    ブロックスコープを利用するにはletを利用する。
+  - 変数の巻き上げ(hoisting)が行われる。
+  - グローバル変数は、実際にはグローバルオブジェクト(Webページではwindow)のプロパティ。
+    window.varでアクセス可能。
+- データ型
+  - 6つのプリミティブ型とオブジェクト型の7つの型が定義されている。
+    - Boolean, null, undefined, Number, String, Symbol, およびObject。
+
 - 演算の省略形として、+=, ++なども使用可能。
 - 配列は、var names = [a, b, c, ...]; という形式。
 - 連想配列は、var key = { };
 - user["name"]と、user.nameは同じ。
 
-**** Obsolete
-***** Types Values, variables, literals
-****** 値
-******* 数値
+*** Obsolete
+**** Types Values, variables, literals
+***** 値
+****** 数値
 
-******* 論理値
+****** 論理値
 
-******* 文字列
+****** 文字列
 
-******* null
+****** null
 
-******* undefined
+****** undefined
 
-****** Variables 変数
-******* 名前
+***** Variables 変数
+****** 名前
 - 
   識別子はアルファベット、アンダースコア(_)、ドル記号($)から始まらなければいけない。
   続く文字は数字(0-9)も使用できる。
   大文字・小文字を区別する。
 
-******* Scope スコープ
+****** Scope スコープ
 - グローバル（大域）変数
   関数の外側で宣言すると、どのコードからも使用できる。
 - ローカル（局所）変数
@@ -190,130 +227,130 @@
 - ブロック文
   ブロックを内包しているコードに局所化される。
 
-****** 定数
+***** 定数
 - 
   constキーワードを用いて、読み取り専用の定数を作成できる。
 
-****** Literals リテラル
-******* 配列リテラル
+***** Literals リテラル
+****** 配列リテラル
 
-******* 真偽値リテラル
+****** 真偽値リテラル
 
-******* 整数
+****** 整数
 
-******* 浮動小数点数リテラル
+****** 浮動小数点数リテラル
 
-******* オブジェクトリテラル
+****** オブジェクトリテラル
 
-******* 文字列リテラル
+****** 文字列リテラル
 
-******* Unicode
+****** Unicode
 
-****** Data structuer and types
-***** Expressions and Operators 式と演算子
-****** 式
+***** Data structuer and types
+**** Expressions and Operators 式と演算子
+***** 式
 - 算術式
 - 文字列式
 - 論理式
 - オブジェクト式
 
-****** 演算子
+***** 演算子
 
-******* 代入演算子
+****** 代入演算子
 
-******* 比較演算子
+****** 比較演算子
 
-******* 算術演算子
+****** 算術演算子
 
-******* ビット演算子
+****** ビット演算子
 
-******* 論理演算子
+****** 論理演算子
 
-******* 文字列演算子
+****** 文字列演算子
 
-******* 特殊演算子
+****** 特殊演算子
 
-***** 正規表現
-***** Control flow 条件式
-****** 条件文
+**** 正規表現
+**** Control flow 条件式
+***** 条件文
 
-******* if...else
+****** if...else
 
-******* switch
+****** switch
 
-****** ループ文
+***** ループ文
 
-******* for
+****** for
 
-******* do...while
+****** do...while
 
-******* while
+****** while
 
-******* label
+****** label
 
-******* break
+****** break
 
-******* continue
+****** continue
 
-****** オブジェクト操作文
+***** オブジェクト操作文
 
-******* for...in
+****** for...in
 
-******* for each...in
+****** for each...in
 
-****** コメント
+***** コメント
 
-****** 例外処理分
+***** 例外処理分
 
-******* throw
+****** throw
 
-******* try...catch
+****** try...catch
 
-******** catchブロック
+******* catchブロック
 
-******** finallyブロック
+******* finallyブロック
 
-**** W3C
-***** Syntax
-****** Loop
-******* for(;;)
-******* for( in )
-******* while()
-******* do...while()
-******* break
-******* continue
-******* try, catch, throw
+*** W3C
+**** Syntax
+***** Loop
+****** for(;;)
+****** for( in )
+****** while()
+****** do...while()
+****** break
+****** continue
+****** try, catch, throw
 
-***** Function
-****** Popup
-******* alert
-******* confirm
-******* prompt
+**** Function
+***** Popup
+****** alert
+****** confirm
+****** prompt
 
-***** Event
-****** onload
-****** onunload
-****** onfocus
-****** onblur (when losing focus)
-****** onchange
-****** onsubmit
-****** onmouseover
-****** onmouseout
+**** Event
+***** onload
+***** onunload
+***** onfocus
+***** onblur (when losing focus)
+***** onchange
+***** onsubmit
+***** onmouseover
+***** onmouseout
 
-***** Object
-****** Document
-****** String
-******* length
-******* toUpperCase()
-****** Date
-****** Array
-****** Boolean
-****** Math
-****** RegExp
-****** Navigator
+**** Object
+***** Document
+***** String
+****** length
+****** toUpperCase()
+***** Date
+***** Array
+***** Boolean
+***** Math
+***** RegExp
+***** Navigator
 
-***** Developer Tool
-****** Ctrl-Shift-J or F12
+**** Developer Tool
+***** Ctrl-Shift-J or F12
 
 ** Edition
 *** 5
@@ -556,6 +593,27 @@
 - [[http://jquery.com/][jQuery]]
 
 ** Glossary
+*** hoisting 巻き上げ
+- 
+  関数内で宣言されたローカル変数は、すべてその関数の先頭で宣言されたものとみなされる。
+  したがって、関数で使用されるローカル変数は、関数の先頭で宣言を行うようにすることで、間違いを視覚的に減らす。
+
+- ex
+  var myname = "global";
+  function func(){
+    console.log(myname); // -> undefined
+    myname = "local";
+    console.log(myname); // -> "local"
+  }
+  ↓(以下と同じと解釈される)
+  var myname = "global";
+  function func(){
+    var myname;
+    console.log(myname); // -> undefined
+    myname = "local";
+    console.log(myname); // -> "local"
+  }
+
 ** Memo
 *** 標準スクリプト言語の指定
 - 
@@ -625,10 +683,13 @@
 ** Link
 - [[http://www.ecma-international.org/publications/standards/Ecma-262.htm][Standard ECMA-262 - ecma INTERNATIONAL]]
 
-- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]
-- [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]
-− [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference][JavaScript reference - MDN]] 
-- [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference][JavaScriptリファレンス - MDN]]
+- MDN
+  - [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]
+  - [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]
+  − [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference][JavaScript reference - MDN]] 
+  - [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference][JavaScriptリファレンス - MDN]]
+  - [[https://developer.mozilla.org/ja/docs/Web/JavaScript/JavaScript_technologies_overview][JavaScript技術概説 - MDN]]
+  - [[https://developer.mozilla.org/ja/docs/Web/API][Web APIインターフェース - MDN]]
 
 - [[http://speakingjs.com/][Speaking JavaScript: An In-Depth Guide for Programmers]]
 

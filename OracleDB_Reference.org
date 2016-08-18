@@ -1,0 +1,269 @@
+* OracleDB Reference
+** Reference
+*** 初期化パラメータ
+**** AUDIT_FILE_DEST
+- Type:文字列
+  AUDIT_TRAIL初期化パラメータがos, xmlまたはxml,extendedに指定されている場合に監査証跡が書き込まれるOSディレクトリを指定する。
+**** AUDIT_TRAIL
+- Type:文字列, Default:none
+  データベースの監査を使用可能または使用禁止にする
+- value
+  - none
+    標準監査を使用禁止にする。
+  - os
+    すべての監査レコードをOSファイルに書き込む。
+  - db
+    OSの監査証跡に常に書き込まれるレコードを除いて、監査レコードをデータベース監査証跡(SYS.AUD$表内)に書き込む。
+  - db, extended
+    dbのすべてのアクションを実行し、SYS.AUD$表が利用できる場合はこの表のSQLBINDおよびSQLTEXT CLOB列にデータを移入する。
+  - xml
+    XML形式でOS監査レコードファイルに書き込む。
+  - xml, extended
+    xmlのすべてのアクションを実行し、監査証跡にSQLテキストおよびSQLバインド情報が含まれる。
+**** BACKGROUND_DUMP_DEST
+- ALERTログおよびバックグラウンド・トレースの格納場所
+  バックグラウンド・プロセス(LGWR, DBWnなど)のデバッグ・トレース・ファイルが書き込まれるパス名を指定する。
+**** COMPATIBLE
+- Type:文字列, 変更不可
+  Oracleとの互換性を保つ必要があるリリースを指定する。
+**** CONTROLL_FILES
+- 制御ファイル名のリスト
+**** DB_BLOCK_BUFFERS
+- 
+  DB_CACHE_SIZEより古くから使われていたパラメータ。
+  特に事情がなければDB_CACHE_SIZEを使う。
+   
+**** DB_BLOCK_SIZE
+- 標準ブロックサイズ
+**** DB_CACHE_SIZE
+- バッファキャッシュのサイズを設定するパラメータ。
+**** DB_DOMAIN
+- Type:文字列, 変更不可
+  分散システムまたはその一部の場合、この値を設定する必要がある。
+**** DB_NAME
+- データベース名
+**** DDL_LOCK_TIMEOUT
+- DDLの対象がロックされていた場合の待ち時間を指定する。
+
+**** DIAGNOSTIC_DEST
+- Type:文字列, 変更:ALTER SYSTEM
+  各インスタンスの診断が専用のディレクトリに配置され、専用ディレクトリはDIAGNOSTIC_DESTの初期化パラメータによって指定する。
+  ディレクトリ構造は、<diagnostic_dest>/diag/rdbms/<dbname>/<instance>
+  上記は自動診断リポジトリ(ADR)ホームと呼ばれ、以下のファイルが配置される。
+  - トレース・ファイル : <adr-home>/trace配下に配置
+  - アラート・ログ : <adr-home>/alert配下に配置
+  - コア・ファイル : <adr-home>/cdump配下に配置
+  - インシデント・ファイル : <adr-home>/incident/<incdir#>に配置。各重大エラーが発生した場合。
+**** DISPATCHERS
+- Type:文字列
+  共有サーバ・アーキテクチャ内のディスパッチャ・プロセスを構成する。
+**** FIXED_DATE
+- システム日時を一時的に変更する際に設定する
+**** INSTANCE_NAME
+- インスタンス名
+**** JAVA_POOL_SIZE
+**** LARGE_POOL_SIZE
+**** LOCAL_LISTENER
+- Type:文字列, Default:(ADDRESS = (PROTOCOL=TCP)(HOST=hostname)(PORT=1521))
+**** NLS_LANGUAGE
+- Type:文字列, Default:OSのNLS_LANGから導出される
+  データベースのデフォルト言語を指定する。
+  メッセージ、曜日名、月名、AD、BC、a.m.、p.m.の記号およびデフォルトのソート・メカニズムに使用される。
+**** NLS_LENGTH_SEMANTICS
+**** NLS_TERRITORY
+- Type:文字列, Default:OS依存
+  日と週の順序付けについて地域別規則に従う場合のその地域の名前を指定する。
+**** OPEN_CURSORS
+- Type:整数, Default:50, Range:0-65535
+  1つのセッションで同時にオープンできるカーソルの最大数。
+**** PGA_AGGREGAET_TARGET
+- Type:大整数, Default:10MBもしくはSGAサイズの20%の大きい方, Range:10MB - 4096GB-1
+  インスタンスに接続されたすべてのサーバー・プロセスが使用できるターゲット集計PGAメモリーを指定する。
+**** PROCESSES
+- Type:整数, Default:100, Range:6以上
+  Oracleに同時に接続できるOSのユーザー・プロセスの最大数を指定する。
+**** REMOTE_LOGIN_PASSWORDFILE
+- Type:文字列, Defaut:exclusive
+  Oracleがパスワードファイルを確認するかどうかを指定する。
+- Value
+  - shared
+    1つ以上のデータベースがパスワードファイルを使用可能。
+  - exclusive
+    1つのデータベースのみがパスワードファイルを使用可能。
+  - none
+    パスワードファイルは無視される。
+**** SERVICE_NAME
+**** SGA_MAX_SIZE
+- 最大SGAメモリサイズ(BYTE)
+**** SGA_TARGET
+- Type:大整数, Syntax: SGA_TARGET = integer[K|M|G], Default:0, Range:64MB以上
+  全てのSGAコンポーネントの合計サイズ(Byte)を指定する。
+  この値が設定されると、次のメモリー・プールのサイズが自動的に設定される。
+  - バッファキャッシュ(DB_CACHE_SIZE), 共有プール(SHARED_POOL_SIZE), ラージ・プール(LARGE_POOL_SIZE),
+    Javaプール(JAVA_POOL_SIZE), Streamsプール(STREAMS_POOL_SIZE)
+  
+**** SHARED_POOL_SIZE
+- システムグローバル領域(SGA)内の共有プールのサイズ(BYTE)
+**** SPFILE
+- サーバー・パラメータ・ファイルのパス
+**** UNDO_TABLESPACE
+- Type:文字列, Default:データベース内の最初に使用可能なUNDO表領域
+  インスタンスの起動時に使用するUNDO表領域。
+**** USER_DUMP_SIZE
+- ユーザートレースの格納場所
+*** 静的データ・ディクショナリ・ビュー
+**** ALL
+***** ALL_CONSTRAINTS
+- 現行のユーザがアクセスできる表の制約定義を示す。
+- CONSTRAINT_TYPE
+  - C : Constraint 表でのチェック制約
+  - P : Primary Key
+  - U : Unique Key
+  - R : 参照整合性
+  - V : ビューでのチェック・オプション付
+  - O : ビューで読み取り先勝
+  - H : ハッシュ式
+  - F : REF列を含む制約
+  - S : サプリメンタル・ロギング
+***** ALL_COL_COMMENTS
+- 現行のユーザーがアクセスできる表およびビューの列についてのコメントを示す。
+***** ALL_DB_LINKS
+***** ALL_DIRECTORIES
+- 現在のユーザがアクセスできるディレクトリをすべて示す。
+***** ALL_INDEXES
+- 現在のユーザがアクセスできる表の索引を示す。
+***** ALL_SEQUENCES
+***** ALL_SOURCE
+- 現行のユーザがアクセスできるストアド・オブジェクトのテキスト・ソースを示す。
+***** ALL_TAB_COMMENTS
+- 現行のユーザがアクセスできる表およびビューのコメントを示す。
+**** DBA
+***** DBA_AUTOTASK_CLIENT
+- 7日間および30日間の各自動メンテナンスタスクに対する統計データを示す。
+***** DBA_AUTOTASK_OPERATION
+- 各クライアントの自動メンテナンス・タスク操作をすべて示す。
+***** DBA_AUTOTASK_TASK
+- 現在および過去の自動メンテナンス・タスクに関する情報を示す。
+***** DBA_AUTOTASK_WINDOW_CLIENTS
+- MAINTENANCE_WINDOW_GROUPに属するウィンドウを、各メンテナンス・タスクのウィンドウのステータスEnabledまたはDisabledとともに示す。
+***** DBA_COL_COMMENTS
+- データベース内のすべての表及びビューについてのコメントを示す。
+***** DBA_CONSTRAINTS
+- データベース内の制約定義をすべて示す。
+***** DBA_DATA_FILES
+- データベース・ファイルを示す。
+***** DBA_DB_LINKS
+- テータベース内のデータベース・リンクをすべて示す。
+***** DBA_DIRECTORIES
+- データベース内のディレクトリをすべて示す。
+***** DBA_EXTENTS
+- データベース内のすべての表領域内のセグメントを含むエクステントを示す。
+***** DBA_FREE_SPACE
+- データベース内のすべての表領域の使用可能エクステントを示す。
+  tablespaceが表示されない場合は、使用可能エクステントがないということらしい。
+  
+***** DBA_INDEXES
+- データベース内の索引をすべて示す。
+***** DBA_ROLE_PRIVS
+- データベース内のすべてのユーザおよびロールに付与されたロールを表示する
+***** DBA_SEGMENTS
+- データベース内のすべてのセグメントに割り当てられた記憶域を示す。
+***** DBA_SEQUENCES
+- データベース内の順序をすべて示す。
+***** DBA_SOURCE
+- データベース内のすべてのストアド・オブジェクトのテキスト・ソースを示す。
+***** DBA_SYS_PRIVS
+- ユーザ、またはロールに付与されたシステム権限。
+***** DBA_TAB_COMMENTS
+- データベース内のすべての表およびビューについてのコメントを示す。
+***** DBA_TAB_COLUMNS
+- データベース内すべての表、ビューおよびクラスタの列を示す。
+  
+***** DBA_TAB_PRIVS
+***** DBA_TABLES
+- データベース内のリレーショナル表をすべて示す。
+***** DBA_TABLESPACES
+- データベース内の表領域をすべて示す。
+***** DBA_USERS
+- データベース内のユーザーをすべて示す。
+**** USER
+***** USER_COL_COMMENTS
+***** USER_CONSTRAINTS
+- 現在のユーザが所有する表の制約定義をすべて示す。
+***** USER_DB_LINKS
+- 現在のユーザーが所有するデータベース・リンクを示す。
+***** USER_INDEXES
+- 現行のユーザが所有する索引を示す
+***** USER_ROLE_PRIVS
+***** USER_SEGMENTS
+***** USER_SEQUENCES
+***** USER_SOURCE
+***** USER_SYS_PRIVS
+***** USER_TAB_COMMENTS
+***** USER_TAB_PRIVS
+**** ETC
+***** DATABASE_EXPORT_OBJECTS
+***** SCHEMA_EXPORT_OBJECTS
+***** TABLE_EXPORT_OBJECTS
+*** 動的パフォーマンスビュー
+**** About
+- V$ビュー
+  実際の動的パフォーマンスビューは接頭辞V_$であり、それらのビューのパブリックシノニムに接頭辞V$が付いている。
+  基本的にV$のみにアクセスするようにする。
+- GV$ビュー
+  ほとんどすべてのV$ビューに対し、対応するGV$ビューがある。
+**** V$DATABASE
+- 現在接続しているインスタンスのDBID、チェックポイントなどが取得できる。
+**** V$INSTANCE
+- 現行インスタンスの状態を表す。
+**** V$OPTION
+- オプション製品のインストール状況
+**** V$PWFILE_USERS
+- パスワードファイル認証にエントリされている（SYSDBAまたはSYSOPERシステム権限がある）ユーザの一覧
+*** イベント
+*** PL/SQLパッケージ
+**** DBMS_ADVISOR
+- 
+  データベース・サーバー・コンポーネントに関するパフォーマンス問題を特定および解決する一連のエキスパート・システムであるアドバイザのサーバー管理スイートに含まれる。
+- 
+  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_advis.htm#CIHIGAED
+
+**** DBMS_SQLTUNE
+- 
+  オンデマンドでSQLをチューニングするためのインターフェース。
+
+- 
+  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_sqltun.htm#CHDGAJCI
+**** DBMS_ASSET
+***** Subprograms
+****** ENQUOTE_NAME
+- 文字列リテラルを開始一重引用符と終了一重引用符で囲む。
+****** SCHEMA_NAME
+- 入力文字列が既存のスキーマ名であることを検証する。
+**** DBMS_AUTO_TASK_ADMIN
+- AUTOTASK機能へのインターフェースを提供する。
+  
+***** Subprograms
+****** DISABLE
+- AUTOTASKが、指定したクライアントまたは操作による要求を実行しないようにする。
+****** ENABLE
+- 以前に使用禁止にしたクライアント、操作、ターゲット・タイプまたは個々のターゲットをAUTOTASKコントロールの基で使用可能にする。
+**** DBMS_ROWID
+- ROWIDに関する情報を取得できる。
+  https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/d_rowid.htm
+**** TimesTen
+***** UTL_RECOMP
+- データベース内の無効なPL/SQLモジュール、無効なビュー、索引タイプおよび演算子を再コンパイルする。
+****** RECOMP_PARALLELプロシージャ
+- 
+  特定のスキーマ内の無効なオブジェクトまたはデータベース内のすべての無効なオブジェクトを、パラレルに再コンパイルする。
+  TimesTenでパラレル実行される再コンパイル・スレッドの数は常に1つなので、SERIALとの違いは事実上ない。
+****** RECOMP_SERIALプロシージャ
+- 
+  特定のスキーマ内またはデータベース内の無効なオブジェクトを再コンパイルする。
+
+** Link
+- [[file:./OracleDB.org][OracleDB.org]]
+*** Reference
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/toc.htm][Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
+
