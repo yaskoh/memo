@@ -3,13 +3,14 @@
 *** GoogleChrome
 **** Developer Tool
 - 要素の検証
-
 ***** Kind
 ****** Elements
 ****** Console
 - 
   Javascriptの実行ができる。
 
+- 改行
+  改行の入力はShift+Enter
 ****** Sources
 - JSのデバッグ
 - http://postd.cc/javascript-debugging-tips-and-tricks/

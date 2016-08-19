@@ -59,6 +59,8 @@
 ***** Error
 ***** JSON
 **** Error
+*** DOM
+- [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
 *** JavaScript(MDN)
 **** Global Objects グローバルオブジェクト
 ***** Value propeties
@@ -143,37 +145,111 @@
 **** Expressions and operators 式と演算子
 **** Functions 関数
 **** Classes クラス
-**** Etc
-**** Web APIs
-- https://developer.mozilla.org/en-US/docs/Web/API
-***** Console
+**** DOM
+- [[https://developer.mozilla.org/ja/docs/DOM/DOM_Reference][DOMリファレンス - MDN]]
+***** window
+- [[https://developer.mozilla.org/ja/docs/Web/API/Window][window - MDN]]
+****** Property
+******* Window.console
+******* Window.document
+- 指定ウィンドウが含む文書への参照を返す
+******* Window.history
+- historyオブジェクトへの参照を返す
+******* Window.location
+- windowオブジェクトのロケーション、または現在のURLを取得/設定
+******* Window.status
+- ブラウザ下部のステータスバーのテキストを取得/設定
+****** Method
+******* Window.alert()
+- 警告ダイアログを表示
+******* Window.close()
+- カレントウィンドウを閉じる
+******* Window.find()
+- ウィンドウ内で文字列を検索する
+****** Event handler
+******* WindowTimers.clearInterval()
+- 
+  setIntervalを使用して設定された繰り返し動作をキャンセルする。
+  ex: window.clearInterval(intervalID)
+******* WindowTimers.setInterval()
+- 
+  一定の遅延間隔を置いて関数を繰り返し呼び出す。
+  ex: intervalId = window.setInterval(animate, 500)
+******* WindowTimers.setTimeout()
+****** Constractor
+***** document
+****** Properties
+******* Extension for HTML document
+******** Document.cookie
+- 
+  documentのcookieのセミコロンで区切られたリストを返すか、一つのcookieを設定する。
+
+******** Document.location
+- 
+  現在のdocumentのURIを返す。
+
+******** Document.readyState
+- 
+  読み込み中の場合"loading",
+  パースが完了したがサブリソースが読み込み中の場合"inactivate",
+  サブリソースの読み込みも完了した時点で"complete"となる。
+
 ****** Methods
-******* Console.log()
+******* Document.getElementsByClassName()
+- 
+  引数で与えられたclass名を持つエレメント群のリストを返す。
+  
+******* Document.getElementsByTagName()
+- 
+  引数で与えられたタグ名を持つエレメント群のリストを返す。
+
+******* document.getElementById(String id)
+- 
+  特定のidを持つエレメントへのオブジェクト参照を返す。
+
+******* document.querySelector(String selector)
+
+******* document.querySelectorAll(String selector)
+******* Extentions for HTML document
+******** document.close()
+- 書き込み用のドキュメントストリームを閉じる
+******** document.open()
+- 書き込み用のドキュメントストリームを開く
+******** document.write(String text)
+- ドキュメントにテキストを書き込む
+******** document.writeln(String text)
+- ドキュメントにテキスト行を書き込む
+**** Etc
+***** Web APIs
+- https://developer.mozilla.org/en-US/docs/Web/API
+****** Console
+******* Methods
+******** Console.log()
 - 
   Output a message to the Web Console.
 
-***** History
+****** History
 - The History interface allows to manipulate the browser session history,
   that is the pages visited in the tab or frame that can current page is loaded in.
 
-****** Methods
-
-******* Properties
-******** History.length
-******** History.satte
 ******* Methods
-******** History.back()
+
+******** Properties
+********* History.length
+********* History.satte
+******** Methods
+********* History.back()
 - 
   Goes to the previous page is session history.
   The same action as when the user clicks the browser's Back button.
   Equivalent to history.go(-1).
 
-******** History.forward()
+********* History.forward()
 - 
   Goes to the next page in session history.
   Equivalent to history.go(1).
 
-******** History.go()
+********* History.go()
 - 
   Loads a page from session history, identified by its relative location to the current page.
 
@@ -637,24 +713,6 @@
 
   Math.pow(x,y) // xのyべき乗
 
-*** DOM
-**** window
-
-- setInterval
-    一定の遅延間隔を置いて関数を繰り返し呼び出す。
-    ex: intervalId = window.setInterval(animate, 500)
-
-- clearInterval
-    setIntervalを使用して設定された繰り返し動作をキャンセルする。
-    ex: window.clearInterval(intervalID)
-
-***** document
-
-- readyState
-    読み込み中の場合"loading",
-    パースが完了したがサブリソースが読み込み中の場合"inactivate",
-    サブリソースの読み込みも完了した時点で"complete"となる。
-
 *** 条件付コメント
 - 
   IEのバージョン5からバージョン9まででサポートされている構文。
@@ -682,6 +740,7 @@
   
 ** Link
 - [[http://www.ecma-international.org/publications/standards/Ecma-262.htm][Standard ECMA-262 - ecma INTERNATIONAL]]
+- [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
 
 - MDN
   - [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]
