@@ -152,7 +152,7 @@
   Loads a page from session history, identified by its relative location to the current page.
 
 *** Grammer 文法
-**** Fundamentals Memo
+**** Fundamentals
 - 文の終了は;(Semicolomn)
 - 文字列は"か'で囲む
 - コメントは//から。
@@ -161,6 +161,7 @@
 - 配列は、var names = [a, b, c, ...]; という形式。
 - 連想配列は、var key = { };
 - user["name"]と、user.nameは同じ。
+- データ型 : 
 
 **** Obsolete
 ***** Types Values, variables, literals
