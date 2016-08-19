@@ -59,10 +59,28 @@
 ***** Error
 ***** JSON
 **** Error
+*** DOM
+- [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
 *** JavaScript(MDN)
 **** Global Objects グローバルオブジェクト
 ***** Value propeties
+****** Infinity
+****** NaN
+****** undefined
+****** null literal
 ***** Function properties
+****** eval()
+****** isFinite()
+****** isNaN()
+****** parseFloat()
+****** parseInt()
+****** decodeURI()
+****** decodeURIComponent()
+****** encodeURI()
+****** encodeURIComponent()
+****** uneval() - nonstandard
+****** escape() - deprecated
+****** unescape() - deprecated
 ***** Fundamental objects
 ****** Object
 ****** Function
@@ -86,6 +104,14 @@
 ****** RegExp
 ***** Indexed collections
 ****** Array
+******* Int8Array
+******* Uint8Array
+******* Uint8ClampedArray
+******* Int16Array
+******* Int32Array
+******* Uint32Array
+******* Float32Array
+******* Float64Array
 ***** Keyed collections
 ****** Map
 ****** Set
@@ -93,6 +119,8 @@
 ****** WeakSet
 ***** Vector collections
 ****** SIMD
+******* SIMD.Float32x4
+******* 
 ***** Structured data
 ****** ArrayBuffer
 ****** DataView
@@ -117,73 +145,147 @@
 **** Expressions and operators 式と演算子
 **** Functions 関数
 **** Classes クラス
-**** Etc
-**** Web APIs
-- https://developer.mozilla.org/en-US/docs/Web/API
-***** Console
+**** DOM
+- [[https://developer.mozilla.org/ja/docs/DOM/DOM_Reference][DOMリファレンス - MDN]]
+***** window
+- [[https://developer.mozilla.org/ja/docs/Web/API/Window][window - MDN]]
+****** Property
+******* Window.console
+******* Window.document
+- 指定ウィンドウが含む文書への参照を返す
+******* Window.history
+- historyオブジェクトへの参照を返す
+******* Window.location
+- windowオブジェクトのロケーション、または現在のURLを取得/設定
+******* Window.status
+- ブラウザ下部のステータスバーのテキストを取得/設定
+****** Method
+******* Window.alert()
+- 警告ダイアログを表示
+******* Window.close()
+- カレントウィンドウを閉じる
+******* Window.find()
+- ウィンドウ内で文字列を検索する
+****** Event handler
+******* WindowTimers.clearInterval()
+- 
+  setIntervalを使用して設定された繰り返し動作をキャンセルする。
+  ex: window.clearInterval(intervalID)
+******* WindowTimers.setInterval()
+- 
+  一定の遅延間隔を置いて関数を繰り返し呼び出す。
+  ex: intervalId = window.setInterval(animate, 500)
+******* WindowTimers.setTimeout()
+****** Constractor
+***** document
+****** Properties
+******* Extension for HTML document
+******** Document.cookie
+- 
+  documentのcookieのセミコロンで区切られたリストを返すか、一つのcookieを設定する。
+
+******** Document.location
+- 
+  現在のdocumentのURIを返す。
+
+******** Document.readyState
+- 
+  読み込み中の場合"loading",
+  パースが完了したがサブリソースが読み込み中の場合"inactivate",
+  サブリソースの読み込みも完了した時点で"complete"となる。
+
 ****** Methods
-******* Console.log()
+******* Document.getElementsByClassName()
+- 
+  引数で与えられたclass名を持つエレメント群のリストを返す。
+  
+******* Document.getElementsByTagName()
+- 
+  引数で与えられたタグ名を持つエレメント群のリストを返す。
+
+******* document.getElementById(String id)
+- 
+  特定のidを持つエレメントへのオブジェクト参照を返す。
+
+******* document.querySelector(String selector)
+
+******* document.querySelectorAll(String selector)
+******* Extentions for HTML document
+******** document.close()
+- 書き込み用のドキュメントストリームを閉じる
+******** document.open()
+- 書き込み用のドキュメントストリームを開く
+******** document.write(String text)
+- ドキュメントにテキストを書き込む
+******** document.writeln(String text)
+- ドキュメントにテキスト行を書き込む
+**** Etc
+***** Web APIs
+- https://developer.mozilla.org/en-US/docs/Web/API
+****** Console
+******* Methods
+******** Console.log()
 - 
   Output a message to the Web Console.
 
-***** History
+****** History
 - The History interface allows to manipulate the browser session history,
   that is the pages visited in the tab or frame that can current page is loaded in.
 
-****** Methods
-
-******* Properties
-******** History.length
-******** History.satte
 ******* Methods
-******** History.back()
+
+******** Properties
+********* History.length
+********* History.satte
+******** Methods
+********* History.back()
 - 
   Goes to the previous page is session history.
   The same action as when the user clicks the browser's Back button.
   Equivalent to history.go(-1).
 
-******** History.forward()
+********* History.forward()
 - 
   Goes to the next page in session history.
   Equivalent to history.go(1).
 
-******** History.go()
+********* History.go()
 - 
   Loads a page from session history, identified by its relative location to the current page.
 
-*** Grammer 文法
-**** Fundamentals
+** Grammer 文法
+*** Fundamentals Memo
 - 文の終了は;(Semicolomn)
 - 文字列は"か'で囲む
-- コメントは//から。
-- 変数定義はvarをつける
+- コメントは、一文は//、複数行は/* */。
+- 変数
+  - 宣言はvar, let(ブロックスコープ), const(定数)。
+    何も付与しないと常にグローバル変数として遷延される。
+  - ES6以前にはブロック文のスコープがない。
+    ブロックスコープを利用するにはletを利用する。
+  - 変数の巻き上げ(hoisting)が行われる。
+  - グローバル変数は、実際にはグローバルオブジェクト(Webページではwindow)のプロパティ。
+    window.varでアクセス可能。
+- データ型
+  - 6つのプリミティブ型とオブジェクト型の7つの型が定義されている。
+    - Boolean, null, undefined, Number, String, Symbol, およびObject。
+
 - 演算の省略形として、+=, ++なども使用可能。
 - 配列は、var names = [a, b, c, ...]; という形式。
 - 連想配列は、var key = { };
 - user["name"]と、user.nameは同じ。
 - データ型 : 
 
-**** Obsolete
-***** Types Values, variables, literals
-****** 値
-******* 数値
-
-******* 論理値
-
-******* 文字列
-
-******* null
-
-******* undefined
-
-****** Variables 変数
-******* 名前
+*** Obsolete
+**** Types Values, variables, literals
+***** Variables 変数
+****** 名前
 - 
   識別子はアルファベット、アンダースコア(_)、ドル記号($)から始まらなければいけない。
   続く文字は数字(0-9)も使用できる。
   大文字・小文字を区別する。
 
-******* Scope スコープ
+****** Scope スコープ
 - グローバル（大域）変数
   関数の外側で宣言すると、どのコードからも使用できる。
 - ローカル（局所）変数
@@ -191,130 +293,86 @@
 - ブロック文
   ブロックを内包しているコードに局所化される。
 
-****** 定数
-- 
-  constキーワードを用いて、読み取り専用の定数を作成できる。
+**** Control flow 条件式
+***** 条件文
 
-****** Literals リテラル
-******* 配列リテラル
+****** if...else
 
-******* 真偽値リテラル
+****** switch
 
-******* 整数
+***** ループ文
 
-******* 浮動小数点数リテラル
+****** for
 
-******* オブジェクトリテラル
+****** do...while
 
-******* 文字列リテラル
+****** while
 
-******* Unicode
+****** label
 
-****** Data structuer and types
-***** Expressions and Operators 式と演算子
-****** 式
-- 算術式
-- 文字列式
-- 論理式
-- オブジェクト式
+****** break
 
-****** 演算子
+****** continue
 
-******* 代入演算子
+***** オブジェクト操作文
 
-******* 比較演算子
+****** for...in
 
-******* 算術演算子
+****** for each...in
 
-******* ビット演算子
+***** コメント
 
-******* 論理演算子
+***** 例外処理分
 
-******* 文字列演算子
+****** throw
 
-******* 特殊演算子
+****** try...catch
 
-***** 正規表現
-***** Control flow 条件式
-****** 条件文
+******* catchブロック
 
-******* if...else
+******* finallyブロック
 
-******* switch
+*** W3C
+**** Syntax
+***** Loop
+****** for(;;)
+****** for( in )
+****** while()
+****** do...while()
+****** break
+****** continue
+****** try, catch, throw
 
-****** ループ文
+**** Function
+***** Popup
+****** alert
+****** confirm
+****** prompt
 
-******* for
+**** Event
+***** onload
+***** onunload
+***** onfocus
+***** onblur (when losing focus)
+***** onchange
+***** onsubmit
+***** onmouseover
+***** onmouseout
 
-******* do...while
+**** Object
+***** Document
+***** String
+****** length
+****** toUpperCase()
+***** Date
+***** Array
+***** Boolean
+***** Math
+***** RegExp
+***** Navigator
 
-******* while
-
-******* label
-
-******* break
-
-******* continue
-
-****** オブジェクト操作文
-
-******* for...in
-
-******* for each...in
-
-****** コメント
-
-****** 例外処理分
-
-******* throw
-
-******* try...catch
-
-******** catchブロック
-
-******** finallyブロック
-
-**** W3C
-***** Syntax
-****** Loop
-******* for(;;)
-******* for( in )
-******* while()
-******* do...while()
-******* break
-******* continue
-******* try, catch, throw
-
-***** Function
-****** Popup
-******* alert
-******* confirm
-******* prompt
-
-***** Event
-****** onload
-****** onunload
-****** onfocus
-****** onblur (when losing focus)
-****** onchange
-****** onsubmit
-****** onmouseover
-****** onmouseout
-
-***** Object
-****** Document
-****** String
-******* length
-******* toUpperCase()
-****** Date
-****** Array
-****** Boolean
-****** Math
-****** RegExp
-****** Navigator
-
-***** Developer Tool
-****** Ctrl-Shift-J or F12
+**** Developer Tool
+***** Ctrl-Shift-J or F12
 
 ** Edition
 *** 5
@@ -326,7 +384,7 @@
 - 策定中
   基本的には、ES6(2015)のバグ修正。加えて、2016/1にStage4となっているProposalが入る。
 
-** 外部Tool
+** Tools
 *** 分類
 **** MVC
 - Backbone.js
@@ -557,6 +615,27 @@
 - [[http://jquery.com/][jQuery]]
 
 ** Glossary
+*** hoisting 巻き上げ
+- 
+  関数内で宣言されたローカル変数は、すべてその関数の先頭で宣言されたものとみなされる。
+  したがって、関数で使用されるローカル変数は、関数の先頭で宣言を行うようにすることで、間違いを視覚的に減らす。
+
+- ex
+  var myname = "global";
+  function func(){
+    console.log(myname); // -> undefined
+    myname = "local";
+    console.log(myname); // -> "local"
+  }
+  ↓(以下と同じと解釈される)
+  var myname = "global";
+  function func(){
+    var myname;
+    console.log(myname); // -> undefined
+    myname = "local";
+    console.log(myname); // -> "local"
+  }
+
 ** Memo
 *** 標準スクリプト言語の指定
 - 
@@ -579,24 +658,6 @@
       Math.ceil(Math.random * 10)  // 0以上10以下の自然数を取得、気持ち0含まない。
 
   Math.pow(x,y) // xのyべき乗
-
-*** DOM
-**** window
-
-- setInterval
-    一定の遅延間隔を置いて関数を繰り返し呼び出す。
-    ex: intervalId = window.setInterval(animate, 500)
-
-- clearInterval
-    setIntervalを使用して設定された繰り返し動作をキャンセルする。
-    ex: window.clearInterval(intervalID)
-
-***** document
-
-- readyState
-    読み込み中の場合"loading",
-    パースが完了したがサブリソースが読み込み中の場合"inactivate",
-    サブリソースの読み込みも完了した時点で"complete"となる。
 
 *** 条件付コメント
 - 
@@ -625,11 +686,15 @@
   
 ** Link
 - [[http://www.ecma-international.org/publications/standards/Ecma-262.htm][Standard ECMA-262 - ecma INTERNATIONAL]]
+- [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
 
-- [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]
-- [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]
-− [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference][JavaScript reference - MDN]] 
-- [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference][JavaScriptリファレンス - MDN]]
+- MDN
+  - [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide][JavaScript Guide - MDN]]
+  - [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide][JavaScriptガイド - MDN]]
+  − [[https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference][JavaScript reference - MDN]] 
+  - [[https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference][JavaScriptリファレンス - MDN]]
+  - [[https://developer.mozilla.org/ja/docs/Web/JavaScript/JavaScript_technologies_overview][JavaScript技術概説 - MDN]]
+  - [[https://developer.mozilla.org/ja/docs/Web/API][Web APIインターフェース - MDN]]
 
 - [[http://speakingjs.com/][Speaking JavaScript: An In-Depth Guide for Programmers]]
 
