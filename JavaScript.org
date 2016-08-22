@@ -24,7 +24,27 @@
 **** Statements
 ***** Block
 ***** Variable Statement
+****** 構文
+- Variable Statement : 
+    var Variable DeclarationList ;
+- Variable Declaration List :
+    Variable Declaration
+    Variable DeclarationList, VariableDeclaration
+- VariableDeclarationListNoIn :
+    VariableDeclarationNoIn
+    VariableDeclarationListNoIn, VariableDeclarationNoIn
+- VariableDeclaration :
+    Identifier Initialiseropt
+- VariableDeclarationNoIn :
+    Identifier VariableDeclarationNoInopt
+- Initialiser :
+    = AssignmnetExpression
+- InitialiserNoIn :
+    = AssignmnetExpressionNoIn
+
 ***** Empty Statement
+****** 構文
+- ;
 ***** Expression Statement
 ***** The if Statement
 ****** if
@@ -61,198 +81,338 @@
 **** Error
 *** DOM
 - [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
-*** JavaScript(MDN)
-**** Global Objects グローバルオブジェクト
-***** Value propeties
-****** Infinity
-****** NaN
-****** undefined
-****** null literal
-***** Function properties
-****** eval()
-****** isFinite()
-****** isNaN()
-****** parseFloat()
-****** parseInt()
-****** decodeURI()
-****** decodeURIComponent()
-****** encodeURI()
-****** encodeURIComponent()
-****** uneval() - nonstandard
-****** escape() - deprecated
-****** unescape() - deprecated
-***** Fundamental objects
-****** Object
-****** Function
-****** Boolean
-****** Symbol
-****** Error
-******* EvalError
-******* InternalError
-******* RangeError
-******* ReferenceError
-******* SyntaxError
-******* TypeError
-******* URIError
-***** Numbers and dates
-****** Number
-****** Math
-******* 
-****** Date
-***** Text processing
-****** String
-****** RegExp
-***** Indexed collections
-****** Array
-******* Int8Array
-******* Uint8Array
-******* Uint8ClampedArray
-******* Int16Array
-******* Int32Array
-******* Uint32Array
-******* Float32Array
-******* Float64Array
-***** Keyed collections
-****** Map
-****** Set
-****** WeakMap
-****** WeakSet
-***** Vector collections
-****** SIMD
-******* SIMD.Float32x4
-******* 
-***** Structured data
-****** ArrayBuffer
-****** DataView
-****** JSON
-***** Control abstraction objects
-****** Promise
-****** Generator
-****** GeneratiorFunction
-***** Reflection
-****** Reflect
-****** Proxy
-***** Internationalization
-****** Intl
-***** Other
-****** arguments
-**** Statements 文
-***** Control flow
-***** Declarations
-***** Functions and classes
-***** Iterations
-***** Others
-**** Expressions and operators 式と演算子
-**** Functions 関数
-**** Classes クラス
-**** DOM
+*** XMLHttpRequest
+- [[https://xhr.spec.whatwg.org/][XMLHttpRequest - Living Standard]]
+** JavaScript(MDN)
+*** Global Objects グローバルオブジェクト
+**** Value propeties
+***** Infinity
+***** NaN
+***** undefined
+***** null literal
+**** Function properties
+***** eval()
+***** isFinite()
+***** isNaN()
+***** parseFloat()
+***** parseInt()
+***** decodeURI()
+***** decodeURIComponent()
+***** encodeURI()
+***** encodeURIComponent()
+***** uneval() - nonstandard
+***** escape() - deprecated
+***** unescape() - deprecated
+**** Fundamental objects
+***** Object
+***** Function
+***** Boolean
+***** Symbol
+***** Error
+****** EvalError
+****** InternalError
+****** RangeError
+****** ReferenceError
+****** SyntaxError
+****** TypeError
+****** URIError
+**** Numbers and dates
+***** Number
+***** Math
+****** 
+***** Date
+**** Text processing
+***** String
+***** RegExp
+**** Indexed collections
+***** Array
+****** Int8Array
+****** Uint8Array
+****** Uint8ClampedArray
+****** Int16Array
+****** Int32Array
+****** Uint32Array
+****** Float32Array
+****** Float64Array
+**** Keyed collections
+***** Map
+***** Set
+***** WeakMap
+***** WeakSet
+**** Vector collections
+***** SIMD
+****** SIMD.Float32x4
+****** 
+**** Structured data
+***** ArrayBuffer
+***** DataView
+***** JSON
+**** Control abstraction objects
+***** Promise
+***** Generator
+***** GeneratiorFunction
+**** Reflection
+***** Reflect
+***** Proxy
+**** Internationalization
+***** Intl
+**** Other
+***** arguments
+*** Statements 文
+**** Control flow 制御フロー
+***** Block ブロック
+- 0個以上の文をグループ化するのに使う。波括弧で囲む。
+***** break
+- 現在実行中のループ、switchによる分岐、あるいはラベル文を終了し、その終了した文に続く文へとプログラムの制御を移行する。
+***** continue
+- 現在実行中のループ、またはラベル付きループで現在反復している文の実行を終了し、そのループの実行を次の反復から継続する。
+***** Empty 空文
+- 文が必要ないがJavaScriptの文法上1つの文が必要な場合に用いる。
+- 構文
+  ;
+***** if...else
+- 与えられた条件が真の場合はある文を実行する。条件が偽の場合はまた別の文を実行できる。
+***** switch
+- ある式を評価し、式の値をケース節と照らし合わせ、ケース節に関連付けられた文を実行する。
+- 構文
+  switch (expression) {
+    case value1:
+      // statement
+      [break;]
+    case value2:
+      // statement
+      [break;]
+    ...
+    case valueN:
+      // statement
+      [break;]
+    default:
+      // statement
+      [break;]
+  }
+***** throw
+***** try...catch
+**** Declarations
+***** var
+- 変数を宣言し、その変数を初期化することもできる。
+***** let
+- ブロックスコープを持つ局所変数を宣言し、その変数をある値に初期化することもできる。
+  (ES6以降)
+***** const
+- 読み取り専用の名前付き定数を宣言する。
+  (ES6以降)
+**** Functions and classes
+***** function
+***** function*
+***** return
+***** class
+**** Iterations
+***** do...while
+***** for
+***** for...in
+***** for...of
+***** while
+**** Others
+***** debugger
+***** export
+***** import
+***** label
+*** Expressions and operators 式と演算子
+**** Primary expressions
+***** this
+***** function
+***** class
+***** function*
+***** yield
+***** yield*
+***** []
+***** {}
+***** /ab+c/i
+***** ()
+**** Left-hand-side expressions
+***** Property accessors
+***** new
+***** new.target
+***** super
+***** ...obj
+**** Increment and decrement
+***** A++
+***** A--
+***** ++A
+***** --A
+**** Unary operators
+***** delete
+***** void
+***** typeof
+- 与えられたオブジェクトの型を判別する
+***** +
+***** -
+***** -
+***** !
+**** Arithmetic operators
+***** +
+***** -
+***** /
+***** *
+***** %
+***** **
+**** Relational operators
+***** in
+***** instanceof
+***** <
+***** >
+***** <=
+***** >=
+**** Equality operators
+***** ==
+***** !=
+***** ===
+***** !==
+**** Bitwise shift operators
+***** <<
+***** >>
+***** >>>
+**** Binary bitwise operators
+***** &
+***** |
+***** ^
+**** Binary logical operators
+***** &&
+***** ||
+**** Conditional (ternary) operator
+***** (condition ? ifTrue : ifFalse)
+**** Assignment operators
+***** =
+***** *=
+***** /=
+***** %=
+***** +=
+***** -=
+***** <<=
+***** >>=
+***** >>>=
+***** &=
+***** ^=
+***** |=
+***** [a, b] = [1, 2]
+***** {a, b} = {a:1, b:2}
+**** Comma operator
+***** ,
+*** Functions 関数
+**** arguments
+**** Arrow functions
+**** Default parameters
+**** Rest parameters
+*** Classes クラス
+*** DOM
 - [[https://developer.mozilla.org/ja/docs/DOM/DOM_Reference][DOMリファレンス - MDN]]
-***** window
+**** window
 - [[https://developer.mozilla.org/ja/docs/Web/API/Window][window - MDN]]
-****** Property
-******* Window.console
-******* Window.document
+***** Property
+****** Window.console
+****** Window.document
 - 指定ウィンドウが含む文書への参照を返す
-******* Window.history
+****** Window.history
 - historyオブジェクトへの参照を返す
-******* Window.location
+****** Window.location
 - windowオブジェクトのロケーション、または現在のURLを取得/設定
-******* Window.status
+****** Window.status
 - ブラウザ下部のステータスバーのテキストを取得/設定
-****** Method
-******* Window.alert()
+***** Method
+****** Window.alert()
 - 警告ダイアログを表示
-******* Window.close()
+****** Window.close()
 - カレントウィンドウを閉じる
-******* Window.find()
+****** Window.find()
 - ウィンドウ内で文字列を検索する
-****** Event handler
-******* WindowTimers.clearInterval()
+***** Event handler
+****** WindowTimers.clearInterval()
 - 
   setIntervalを使用して設定された繰り返し動作をキャンセルする。
   ex: window.clearInterval(intervalID)
-******* WindowTimers.setInterval()
+****** WindowTimers.setInterval()
 - 
   一定の遅延間隔を置いて関数を繰り返し呼び出す。
   ex: intervalId = window.setInterval(animate, 500)
-******* WindowTimers.setTimeout()
-****** Constractor
-***** document
-****** Properties
-******* Extension for HTML document
-******** Document.cookie
+****** WindowTimers.setTimeout()
+***** Constractor
+**** document
+***** Properties
+****** Extension for HTML document
+******* Document.cookie
 - 
   documentのcookieのセミコロンで区切られたリストを返すか、一つのcookieを設定する。
 
-******** Document.location
+******* Document.location
 - 
   現在のdocumentのURIを返す。
 
-******** Document.readyState
+******* Document.readyState
 - 
   読み込み中の場合"loading",
   パースが完了したがサブリソースが読み込み中の場合"inactivate",
   サブリソースの読み込みも完了した時点で"complete"となる。
 
-****** Methods
-******* Document.getElementsByClassName()
+***** Methods
+****** Document.getElementsByClassName()
 - 
   引数で与えられたclass名を持つエレメント群のリストを返す。
   
-******* Document.getElementsByTagName()
+****** Document.getElementsByTagName()
 - 
   引数で与えられたタグ名を持つエレメント群のリストを返す。
 
-******* document.getElementById(String id)
+****** document.getElementById(String id)
 - 
   特定のidを持つエレメントへのオブジェクト参照を返す。
 
-******* document.querySelector(String selector)
+****** document.querySelector(String selector)
 
-******* document.querySelectorAll(String selector)
-******* Extentions for HTML document
-******** document.close()
+****** document.querySelectorAll(String selector)
+****** Extentions for HTML document
+******* document.close()
 - 書き込み用のドキュメントストリームを閉じる
-******** document.open()
+******* document.open()
 - 書き込み用のドキュメントストリームを開く
-******** document.write(String text)
+******* document.write(String text)
 - ドキュメントにテキストを書き込む
-******** document.writeln(String text)
+******* document.writeln(String text)
 - ドキュメントにテキスト行を書き込む
-**** Etc
-***** Web APIs
+*** Web APIs
 - https://developer.mozilla.org/en-US/docs/Web/API
-****** Console
-******* Methods
-******** Console.log()
+**** Console
+***** Methods
+****** Console.log()
 - 
   Output a message to the Web Console.
 
-****** History
+**** History
 - The History interface allows to manipulate the browser session history,
   that is the pages visited in the tab or frame that can current page is loaded in.
 
-******* Methods
+***** Methods
 
-******** Properties
-********* History.length
-********* History.satte
-******** Methods
-********* History.back()
+****** Properties
+******* History.length
+******* History.satte
+****** Methods
+******* History.back()
 - 
   Goes to the previous page is session history.
   The same action as when the user clicks the browser's Back button.
   Equivalent to history.go(-1).
 
-********* History.forward()
+******* History.forward()
 - 
   Goes to the next page in session history.
   Equivalent to history.go(1).
 
-********* History.go()
+******* History.go()
 - 
   Loads a page from session history, identified by its relative location to the current page.
 
+**** XMLHttpRequest
+*** Etc
 ** Grammer 文法
 *** Fundamentals Memo
 - 文の終了は;(Semicolomn)
