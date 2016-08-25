@@ -369,12 +369,10 @@
         deleted when unmounting or rebooting
 
 ** System calls
-- 
-  [[file:./Linux_Functions.org][Linux_Functions.org]]
+- [[file:./Linux_Functions.org][Linux_Functions.org]]
 
 ** Commands
-- 
-  [[file:./Linux_Command.org][Linux_Command.org]]
+- [[file:./Linux_Command.org][Linux_Command.org]]
 
 ** Boot Process
 *** Switch
@@ -447,6 +445,8 @@
 **** launchd
 ** Files
 *** /dev/pts/number
+*** /etc/crontab
+- cronのメイン設定ファイル
 *** /etc/inittab
 - 
   being read by init process for the first time system starting.
@@ -610,6 +610,8 @@
 - how to clear
   cat /dev/null > /var/spool/mail/root
 
+*** /var/spool/cron/(user)
+- ユーザの自動タスク設定ファイル
 *** /var/log/messages
 - 
   standard kernel / OS log
@@ -623,6 +625,7 @@
   logged cron executed
 
 ** Services
+*** /etc/init.d/crond
 *** /etc/init.d/network
 - 
   /sbin/serviceの起動スクリプト
@@ -1634,3 +1637,50 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 - Linux daemon
   [[http://linux.die.net/man/8/watchdog][watchdog(8) - Linux man page]]
   
+*** cron設定
+**** crondの確認、起動
+- 確認
+  /etc/init.d/crond status
+- 起動
+  /etc/init.d/crond start
+**** cronの設定ファイル
+- 設定ファイル
+  - /var/spool/cron/user : ユーザの自動タスク設定ファイル
+  - /etc/crontab : 自動タスクのメイン設定ファイル。以下のフォルダ配下を実行するための設定も入っている。
+  - /etc/cron.hourly : 毎時実行される自動タスクを配置するディレクトリ
+  - /etc/cron.daily : 毎日実行される自動タスクを配置するディレクトリ
+  - /etc/cron.monthly : 毎月実行される自動タスクを配置するディレクトリ
+  - /etc/cron.weekly : 毎週実行される自動タスクを配置するディレクトリ
+  - /etc/cron.cron.d : 上記以外の自動タスクを配置するディレクトリ
+  - /etc/cron.deny : 利用を拒否するユーザ名を設定
+  - /etc/cron.allow : 利用を許可するユーザ名を設定
+**** crontabコマンド
+- オプション
+  - -e : ファイルを対話的に編集する
+  - -l : ファイルの内容を表示する
+  - -r : ファイルを削除する
+  - -u user : userで指定したユーザのcrontabファイルを走査の対象とする。rootのみが利用可能。
+**** crontabファイルの設定
+- フォーマット
+  - /var/spool/cron/user
+    分 時 日 月 曜日 コマンド
+  - /etc/crontab他
+    分 時 日 月 曜日 ユーザ コマンド
+- 設定範囲
+  |----------+-------------------------------|
+  | 分       | 0~59                          |
+  | 時       | 0~23                          |
+  | 日       | 1~31                          |
+  | 月       | 1~12 or jan~dec               |
+  | 曜日     | 0~7(0,7は共に日曜) or sun~sat |
+  | コマンド | コマンドを記述                |
+  |----------+-------------------------------|
+- 設定方法
+  |--------+------------+--------------------------------------------------------------|
+  | リスト | 0,15,30,45 | 分の場合、15分ごとに処理を実行する                           |
+  | 範囲   | 1-5        | 曜日の場合、月-金に処理を行う                                |
+  | 共存   | 1,3,7-9    | 時間の場合、1,3,7,8,9時に処理を行う                          |
+  | 間隔値 | 1-5/2      | 時間の場合、1,3,5に処理を行う。/の後の時間間隔で処理をする。 |
+  |--------+------------+--------------------------------------------------------------|
+**** Link
+- [[https://www.express.nec.co.jp/linux/distributions/knowledge/system/crond.html][cronの設定ガイド]]

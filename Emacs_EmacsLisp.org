@@ -790,6 +790,6 @@ replace-match
 - http://ichiroc.hatenablog.com/entry/2013/09/10/080525
   
 ** Link
-- [[https://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp]]
+- [[https://www.gnu.org/software/emacs/manual/elisp.html][GNU Emacs Lisp Reference Manual]]
 - [[https://www.gnu.org/software/emacs/manual/eintr.html][An Introduction to Programming in Emacs Lisp]]
 - [[http://d.hatena.ne.jp/rubikitch/20100201/elispsyntax][Emacs Lisp基礎文法最速マスター]]

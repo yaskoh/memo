@@ -294,15 +294,54 @@
 ***** &=
 ***** ^=
 ***** |=
-***** [a, b] = [1, 2]
-***** {a, b} = {a:1, b:2}
+***** [a, b] = [1, 2],  {a, b} = {a:1, b:2} 
+- Destructurning assignment, 分割代入
+  配列かオブジェクトからデータをおtり出して別個の変数に代入することを可能にする構文。
+
+****** Syntax
+- 前提: var a, b, rest
+- [a, b] = [1, 2]
+- [a, b, ...rest] = [1, 2, 3, 4, 5]
+- ({a, b} = {a:1, b:2})
+- ({a, b, ...rest} = {a:1, b:2, c:3, d:4})
+  ※Firefox 47a01では未実装
+  
 **** Comma operator
 ***** ,
 *** Functions 関数
 **** arguments
-**** Arrow functions
+**** Arrow functions アロー関数
+- 
+  匿名関数。function式と比べてより短い構文を持ち、thisの値を語彙的に束縛数r。
+  
+***** 構文
+- (param1, param2, ..., paramN) => { statements }
+- expression
+  - (param1, param2, ..., paramN) => expressoin
+    // => { return expression; } と等価
+- 引数が一つの場合、()は任意
+  - singleParam => { statements }
+  - (singleParam) => { statements }
+- 引数を取らない場合、()は必須
+  - () => { statements }
+
+- Objectリテラル式を返す場合、本体を()で囲む
+  - params => ({foo: bar})
+- restとデフォルト引数
+  - (param1, param2, ...rest) => { statements }
+  - (param1 = defaultValue1, param2, ..., paramN = defaultValueN) => { statements}
+- 分割代入
+  - var f = ([a, b] = [1, 2], {x: c} = {x: a + b}) => a + b + c;
 **** Default parameters
-**** Rest parameters
+**** Rest parameters 残余引数
+- 
+  不特定多数の引数を配列として表す。
+  関数の最後の名前付き引数に"..."の前置辞を付けると、実際に関数に渡された残りの引数による要素の配列となる。
+  
+***** Syntax
+- function(a, b, ...theArgs) {
+    // ...
+  }
 *** Classes クラス
 *** DOM
 - [[https://developer.mozilla.org/ja/docs/DOM/DOM_Reference][DOMリファレンス - MDN]]
@@ -412,6 +451,55 @@
   Loads a page from session history, identified by its relative location to the current page.
 
 **** XMLHttpRequest
+***** Methods
+****** abort()
+- リクエストが既に送信されている場合、リクエストを中止する。
+****** open()
+- def
+  void open(
+    DOMString method,
+    DOMString url,
+    optional boolean async,
+    optional DOMString user,
+    optional DOMString password
+  );
+- argment
+  - method : 使用するHTTPメソッド。"GET", "POST", "PUT", "DELETE"など。
+  - url : リクエストを送信するURL
+  - async : 非同期で操作を実行するかを示す、オプションの真偽値。
+  - user : 認証を目的として使用される、ユーザー名のオプション。
+  - password : 認証を目的として使用される、パスワードのオプション。
+
+- リクエストを初期化する。
+****** send()
+- 
+  リクエストを送信する。非同期リクエストの場合、メソッドはリクエストを送信して間もなく返る。
+  同期リクエストの場合はレスポンスが到着するまで返らない。
+
+***** Properties
+****** XMLHttpRequest.onreadystatechange
+- readyState属性が変更する都度呼び出されるEventHandler。
+****** XMLHttpRequest.readyState
+- 
+  リクエストの状態をunsigned short型の値で返す。
+  
+- 
+  |-------+------------------+------------------------------------------------------------|
+  | value | state            | expression                                                 |
+  |-------+------------------+------------------------------------------------------------|
+  |     0 | UNSENT           | open()がまだ呼び出されていない                             |
+  |     1 | OPENED           | send()がまだ呼び出されていない                             |
+  |     2 | HEADERS_RECEIVED | send()が呼び出され、ヘッダーとステータスが通った。         |
+  |     3 | LOADING          | ダウンロード中。responseTextは断片的なデータを保持している |
+  |     4 | DONE             | 一連の動作が完了した                             |
+  |-------+------------------+------------------------------------------------------------|
+  
+****** XMLHttpRequest.responseText
+- リクエストに対するテキスト形式でのレスポンスを含むDOMStringを返す。
+  リクエストの失敗または未送信の場合はnullとなる。
+****** XMLHttpRequest.state
+***** Event
+****** onreadystatechange
 *** Etc
 ** Grammer 文法
 *** Fundamentals Memo
@@ -582,7 +670,7 @@
 - [[http://pepabo.github.io/docs/frontend/standard/javascript-and-altjs.html][JavaScriptとaltJS - pepabo.github.io]]
 
 **** ServerSide
-- Node
+- Node.js
 - Rhino
 
 **** Transpile
@@ -594,6 +682,15 @@
 - 
   [[https://html5experts.jp/kyo_ago/16979/][Babelで始める！モダンJavaScript開発 - HTML5 Experts.js]]
 
+**** Package Management
+- npm
+- bower
+  ブラウザ環境のためのパッケージ管理ツール。ブラウザ版npmのようなもの。
+**** Module system
+- Browserify
+- RequireJS
+- WebPack
+  CommonJSとAMDの両方のスタイルを同時にサポートするのが特徴。
 **** Test
 - QUnit
 - Jasmine
@@ -673,7 +770,7 @@
 - this
   イベントが起こった要素を取得できる。クォートでは囲まない。
 
-**** Method メソッド
+**** API
 ***** Ajax
 ***** CSS
 ****** .css()
@@ -774,6 +871,219 @@
 **** Link
 - [[http://jquery.com/][jQuery]]
 
+*** node.js
+**** v4.5.0
+***** Command
+- node [options] [v8 options] [script.js | -e "script"] [arguments]
+****** Options
+******* -v, --version
+- Print node's version
+******* -h, --help
+- Print node command line options.
+******* -e, --eval "script"
+- Evaluate the following argument as JavaScript.
+******* -p, --print "script"
+- Identical to -e but prints the result.
+****** Environmental Variables
+******* NODE_PATH=path[:...]
+****** Link
+- [[https://nodejs.org/dist/latest-v4.x/docs/api/cli.html][Command Line Options - Node.js]]
+***** Global Objects
+****** Class:Buffer
+****** __dirname
+****** __filename
+****** clearImmediate(immediateObject)
+****** clearInterval(intervalObject)
+****** clearTimeout(timeoutObject)
+****** console
+- <Object>
+  Used to print to stdout and stderr.
+  
+****** exports
+- 
+  A reference to the "module.exports".
+
+****** global
+- <Object> The global namespace object
+  In browsers, the top-level scope is the global scope.
+  In Node.js, the top-level scope is not the global scope, and variables inside an Node.js module will be local to that module.
+****** module
+- <Object>
+  A reference to the current module.
+  In particular "module.exports" is used for defining what module exports and makes available through "require()".
+  "module" isn't actually a global but rather local to each module.
+
+****** process
+- <Object>
+  The process object.
+****** require()
+- <Function>
+  To reqire modules.
+  "require" isn't actually a global but rather local to each module.
+****** setImmediate(callback[,arg][, ...])
+****** setInterval(callback, delay[, arg][, ...])
+****** setTimeout(callback, delay[, arg][, ...])
+****** Link
+- [[https://nodejs.org/dist/latest-v4.x/docs/api/globals.html][Globals - Node.js]]
+***** Core Modules
+****** Assert
+****** Console
+******* Class:Console
+******** new Console(stdout[, stderr])
+******** consle.assert(value[, mesage][, ...])
+******** console.dir(obj[, options])
+******** console.error([data][, ...])
+******** console.info([data][, ...])
+******** console.log([data][, ...])
+******** console.time(label)
+******** console.timeEnd(label)
+******** console.trace(mesage[, ...])
+******** console.warn([data][, ...])
+****** HTTP
+******* Class:http.Agent
+******* Class:http.ClientRequest
+******* Class:http.Server
+******* Class:http.ServerResponse
+******* Class:http.IncomingMessage
+******* http.METHODS
+******* http.STATUS_CODES
+******* http.createClient([port][,host])
+******* http.createServer([requestListener])
+- Returns a new instance of http.Server.
+  The "requestListener" is a function which is automatically added to the 'request' event.
+******* http.get(options[,callback])
+******* http.globalAgent
+******* http.request(options[, callback])
+****** Net
+******* Class:net.Server
+- The class inherits from net.Srever and has some additional events
+******** Event:'checkContinue'
+******** Event:'clientError'
+******** Event:'connect'
+******** Event:'connection'
+******** Event:'request'
+******** Event:'upgrade'
+******** server.close([callback])
+******** server.listen(handle[,callback])
+******** server.listen(path[,callback])
+******** server.listen(port[,callback])
+******** server.listen(handle[,callback])
+******** server.listen(handle[,callback])
+******* Class:net.Socket
+**** Link
+- [[https://nodejs.org/en/][node.js]]
+***** v4.5.0
+- [[https://nodejs.org/dist/latest-v4.x/docs/api/cli.html#cli_command_line_options][Command Line Options - Node.js v4.5.0 Documentation]]
+
+***** Tutorial
+- http://www.nodebeginner.org/index-jp.html
+- http://rfs.jp/sb/javascript/node
+- http://libro.tuyano.com/index2?id=1115003
+- http://sakuratan.biz/archives/3101
+
+*** npm
+- node package manager
+**** CLI Commands
+-
+***** npm
+- Synopsis
+  npm <command> [args]
+
+***** access
+***** install
+- 
+  Install a package
+
+- Alias
+  npm i
+
+- Synopsis
+  npm install (with no args, in package dir)
+
+****** arguments
+******* --dry-run
+******* -f, --force
+******* -g, --global
+- 
+  npm to install the package globally rather than locally.
+
+**** Link
+- [[https://www.npmjs.com/][npm]]
+- [[https://docs.npmjs.com/][docs - npm]]
+
+*** Modules
+**** browserify
+- browser-side require() the node way
+**** EJS
+- テンプレートエンジン
+***** Docs
+****** Options
+****** Tags
+- <%  : 'Scriptlet' tag, for control-flow, no output
+- <%= : Outputs the value into the template (HTML escaped)
+- <%- : Outputs the unescaped value into the template
+- <%# : Comment tag, no execution, no output
+- <%% : Outputs a literal '<%'
+- %>  : Plain ending tag
+- -%> : Trim-mode ('newline slurp') tag, trims following newline
+****** Includes
+***** Link
+- [[http://ejs.co/][EJS]]
+**** Express
+- Fast, unopinionated, minimalist web framowork for Node.js
+  軽量フレームワーク。
+***** 4.x API
+****** express()
+- Creates an Express aplication.
+  express() function is a top-level function exported by the express module.
+- Usage
+  var express = require('express');
+  var app = express();
+******* Methods
+******** express.static(root, [options])
+- only built-in midleware function in Express.
+  It serves static files and is based on serve-static.
+******** express.Router([options])
+- Creates a new router object
+- Usage
+  var router = express.Router([options]);
+****** Application
+- The app object convertionally denotes the Express application.
+  Create it by calling the top-level express() function exported by the Express module
+******* Properties
+******* Events
+******* Methods
+******** app.get(name)
+******** app.get(path, callback [,callback ....])
+- Routes HTTP GET requests to the specified path with specified callback functions.
+******** app.listen(port, [hostname], [backlog], [callback])
+- Binds and listens for connections on the specified host and port.
+****** Request
+******* Properties
+******* Methods
+****** Response
+******* Properties
+******* Methods
+****** Router
+******* Methods
+***** License
+- Apache License, version 2.0
+***** Link
+- [[http://expressjs.com/][Express]]
+**** Socket.io
+*** Babel
+*** React
+**** Link
+- [[https://facebook.github.io/react/docs/getting-started-ja-JP.html][QUICK START(日本語)]]
+*** AngularJS
+**** Link
+- [[https://angularjs.org/][AngularJS]]
+- [[http://js.studio-kingdom.com/angularjs/guide/introduction][AngularJS入門 - js STUDIO]]
+*** React
+-
+**** Link
+- [[https://facebook.github.io/react/docs/getting-started-ja-JP.html][始めてみましょう - React]]
+
 ** Glossary
 *** hoisting 巻き上げ
 - 
@@ -796,6 +1106,42 @@
     console.log(myname); // -> "local"
   }
 
+*** Data typeデータ型
+**** Primitive プリミティブ型
+***** Boolean
+***** null
+***** undefine
+***** Number
+***** String
+***** Symbol
+**** Object
+*** Literal
+**** Arary literal
+**** Boolean literal
+**** Floating-point literals
+**** Integers
+**** Object literals
+- 
+  プロパティ名とそれに関連付けられたオブジェクトの値との0個以上の組が波括弧{}で囲まれたもの。
+
+- ex)
+  var car = { myCar: "Saturn", getCar: carTypes("Honda"), special: sales };
+
+**** RegExp literals
+**** String literals
+*** API仕様
+**** CommonJS
+- サーバサイドを開発するために生まれた標準APIの仕様で、元はServerJSという名前だった。
+  その後他の分野に適用可能と考えCommonJSに改めた。
+  モジュール機能が定義されており、require関数を使い、exportsとmoduleオブジェクトを利用する。
+**** AMD
+- Asynchronous Module Definition
+  モジュールの非同期定義に関するAPI仕様。
+  モジュールとそのモジュールに依存する他のモジュールの両方を非同期に読み込めるようモジュール定義がされている。
+  元々はCommonJSで策定が進められていたが、後に切り離された。
+**** UMD
+- Universal Module Definition
+  CommonJSとAMDの両方を含めたモジュール定義で、このフォーマットによりクライアントとサーバの両方の環境で動作するモジュールを定義できる。
 ** Memo
 *** 標準スクリプト言語の指定
 - 
@@ -859,3 +1205,5 @@
 - [[http://speakingjs.com/][Speaking JavaScript: An In-Depth Guide for Programmers]]
 
 - [[http://qiita.com/mizchi/items/3bbb3f466a3b5011b509][春からはじめるモダンJavaScript / ES2015 - Qiita]]
+
+- [[http://www.slideshare.net/yuka2py/javascript-23768378][最強オブジェクト指向言語 JavaScript 再入門！ - SlideShare]]

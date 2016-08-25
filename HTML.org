@@ -199,10 +199,12 @@
     - href : ハイパーリンクのアドレス
     - crossorigin : 要素がcrossorigin要求を処理する方法
     - rel : ハイパーリンクと宛先のリソースを含む文書の関係
+      ex) stylesheet
     - media : 受け入れ可能なメディア
     - hreflang
     - type
     - sizes
+
 ****** meta
 - 
   title, base, link, style, script要素を用いて表現できない様々な種類のメタデータを表す。
@@ -363,14 +365,110 @@
 ****** th
 ***** Forms
 ****** form
+- 
+  処理のためにサーバーに送信できる編集可能な値を表すことができる一部。
+******* Def
+- 
+  - Category : Flow, Pulpable
+  - Contents model : フローコンテンツ、ただしform要素の子孫を除く。
+  - Content attributes :
+    - グローバル属性
+    - accept-charset : フォーム送信に使用する文字エンコーディング
+    - action : フォーム送信に使用するURL
+    - autocomplete : フォーム内のコントロールのオートフィル機能に対するデフォルト設定
+    - encrypt : フォーム送信に使用する文字円コーディングを設定するフォームデータ
+    - method : フォーム送信に使用するHTTPメソッド
+    - name
+    - novalidate
+    - target : フォーム送信に対するブラウジングコンテキスト
+  - Tag omission : 省略不可
+
 ****** label
 ****** input
+******* Def
+- 
+  - Category : 
+    - フローコンテンツ
+    - フレージングコンテンツ
+    - type属性がHiddenでない場合 : 
+      - インタラクティブコンテンツ
+      - 記載、ラベル付可能、送信可能、
+    - type属性がHiddenである場合 :
+  - Content attributes :
+    - グローバル属性 :
+    - disabled : フォームコントロールが無効であるかどうか
+    - form : form要素とコントロールを関連付ける
+    - name : フォーム送信およびform.elements APIで使用するフォームコントロール名
+    - size : コントロールのサイズ
+    - type : フォームコントロールの種類
+    - value : フォームコントロールの値
+  - Tag omission :
+    - 終了タグなし
+
+******* Type
+******** Hidden
+- type=hidden
+******** Text
+- type=text
+******** Search
+- type=search
+******** Telephone
+- type=tel
+******** URL
+- type=url
+******** E-mail
+- type=email
+******** Password
+- type=password
+******** Date
+- type=date
+******** Time
+- type=time
+******** Number
+- type=number
+******** Range
+- type=range
+******** Color
+- type=color
+******** Checkbox
+- type=checkbox
+******** Radio Button
+- type=radio
+******** File Upload
+- type=file
+******** Submit Button
+- type=submit
+******** Image Button
+- type=image
+******** Reset Button
+- type=reset
+******** Button
+- type=button
 ****** button
 ****** select
 ****** datalist
 ****** optgroup
 ****** option
 ****** textarea
+******* Def
+- 
+  - Category :
+    - Flow
+    - Phrasing
+    - Interactive
+    - 記載、ラベル付可能、送信可能、リセット可能、および再関連付け可能フォーム関連要素
+    - Palpable
+  - Contexts : フレージングコンテンツが期待される場所
+  - Contents model : Text
+  - Content attributes :
+    - グローバル属性
+    - autocomplete
+    - autofocus
+    - cols : 行あたりの最大文字数
+    - name : フォーム送信およびform.elements APIで使用するフォームコントロール名
+    - rows : 表示する行数
+  - Tag omissions : 省略不可
+    
 ****** keygen
 ****** output
 ****** progress
@@ -402,6 +500,7 @@
     - async : 非同期的にスクリプトを実行する
     - defer : スクリプトの実行を延期する
     - crossorigin : 要素がcrossorigin要求を処理する方法
+
 ****** noscript
 ****** template
 ****** canvas

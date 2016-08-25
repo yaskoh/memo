@@ -127,6 +127,7 @@
   
 - -p
   
+*** crontab
 *** cut
 - 
   特定の文字で区切られた項目を分割する。
@@ -1201,6 +1202,14 @@
 - 
   関数の実行を終了する。
   数字を指定して終了ステータスを返すことが出来る。
+
+*** run-parts
+- 
+  run scripts or programs in a directory.
+  
+- 
+  cronで使われている。
+  またdebian系とRHEL系で動きが違うとのこと。
 
 *** rm
 - 

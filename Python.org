@@ -506,7 +506,8 @@
 ******** len(s)
 ******** min(s)
 ******** max(s)
-******** s.index(x0,i0,j[[)
+******** s.index(x[, i[, j]])
+- s中でxが最初に出現するインデックスを、i移行からjまでの範囲で返す。
 ******** s.count(x)
 ******* Type
 ******** Immutable
@@ -530,6 +531,8 @@
 ********* str.center(width[, fillchar])
 ********* str.count(sub[, start[, end]])
 ********* str.find(sub[, start[, end]])
+- 文字列のスライスs[start:end]に部分文字列subが含まれる場合、その最小のインデックスを返す。
+  subが見つからなかった場合-1を返す。
 ********* str.isalnum()
 - 文字列中のすべての文字が英数字で、かつ1文字以上あるなら真を、そうでなければ偽を返す。
 ********* str.isdecimal()
@@ -551,6 +554,25 @@
 - イテラブルiterable中の文字列を結合した文字列を返す。
   セパレータは、このメソッドを提供する文字列。
 ********* str.lower()
+********* str.lstrip([chars])
+- 文字列の先頭の文字を除去したコピーを返す。charsは除去される文字の集合を指定する文字列。
+  charsが省略されるかNoneの場合、空白文字が除去される。
+********* str.replace(old, new[, count])
+- 文字列をコピーし、現れる部分文字列old全てをnewに置換して返す。
+  countが指定されている場合、先頭からcount個のoldだけを置換する。
+  
+********* str.rfind(sub[, start[, end]])
+********* str.rindex(sub[, start[, end]])
+********* str.rsplit(sep=None, maxsplit=-1)
+********* str.rstrip([chars])
+********* str.split(sep=None, maxsplit=-1)
+- 
+  文字列を、sepをデリミタ文字列として区切った単語のリストを返す。
+  maxsplitが与えられていれば、最大でmaxsplit回分割される。
+********* str.strip([chars])
+- 
+  文字列の先頭および末尾部分を除去したコピーを返す。charsは除去される文字の集合を指定する文字列。
+  charsが省略されるかNoneの場合、空白文字が除去される。
 ******* Binary Sequences
 - bytes, bytearray, memoryview
 ******** bytes
@@ -676,6 +698,40 @@
 ******* compare
 ****** class difflib.HtmlDiff
 **** データ型
+***** datetime
+- 基本的な日付型および時間型
+  日付や時間データを簡単な方法と複雑な方法の両方で操作するためのクラスを提供している。
+  
+****** Datatype
+******* class datetime.date
+******* class datetime.time
+******* class datetie.datetime
+- dateオブジェクトおよびtimeオブジェクトのすべての情報が入っている単一のオブジェクト。
+******** Class Method
+********* classmethod datemite.today()
+- 現在のローカルなdateteimeをtzinfoがNoneであるものとして返す。
+********* classmethod datemite.now(tz=None)
+- 現在のローカルな日付および時刻を返す。
+
+******** Properties
+********* datetime.min
+********* datemite.max
+********* datetime.year
+********* datetime.month
+********* datetime.day
+********* datetime.hour
+********* datetime.minute
+********* datetime.second
+******** Instance Method
+********* datetime.date()
+********* datetime.time()
+********* datetime.tmietz()
+********* datetime.strftime(format)
+- 明示的な書式化文字列で制御された、日付および時刻を表現する文字列を返す。
+- ex)
+  datetime.now().strftime('%Y%m%d%H%M%S')
+******* class datetime.timedelta
+- 経過時間、すなわち二つの日付や時刻間の差を表す
 ***** collections
 - 汎用の組み込みコンテナdict, list, setおよびtupleに代わる、特殊なコンテナデータ型を実装している。
 
@@ -719,10 +775,42 @@
 - 
   現在の作業ディレクトリを表す文字列を返す。
   環境 : Unix, Windows
+******* os.chmod()
+- os.chmod(path, mode)
+  pathのモードを数値modeに変更する。
+******* os.chown()
+- os.chown(path, uid, gid)
+  pathの所有者(owner)idとグループidを、数値uidおよびgidに変更する。
 ******* os.listdir()
 - os.listdir(path)
   pathで指定されたディレクトリ内のエントリ名が入ったリストを返す。
   利用できる環境 : Unix, Windows
+******* os.mkdir()
+- os.mkdir(path[, mode])
+  数値で指定されたモードmodeをもつディレクトリpathを作成する。
+******* os.mkdirs()
+- os.makedirs(path[, mode])
+  再帰的なディレクトリ作成関数。中間の全てのディレクトリを作成する。
+
+******* os.remove()
+- os.remove(path)
+  pathを削除する。
+******* os.removedirs()
+- os.removedirs(path)
+  再帰的なディレクトリ削除関数。
+******* os.rename()
+- os.rename(src, dst)
+  ファイルまたはディレクトリsrcをdstに名前変更する。
+******* os.renames()
+- os.renames(old, new)
+  再帰的にディレクトリやファイル名を変更する関数。
+******* os.rmdir()
+- os.rmdir(path)
+  ディレクトリpathを削除する。
+******* os.walk()
+- os.walk(top[, topdown=True[, onerror=None[, followlinks=False]]]
+  ディレクトリツリー以下のファイル名を、ツリーをトップダウンもしくはボトムアップに走査することで生成する。
+  topを根に持つディレクトリツリーに含まれる、各ディレクトリ(top含む)から、タプル(dirpath, dirnames, filenames)を生成する。
 ****** Process Management
 ****** Miscellaneaus System Information
 ****** Miscellaneaus Function
@@ -775,6 +863,80 @@
 **** Tkを用いたグラフィカルユーザインターフェース
 **** 開発ツール
 **** デバッグとプロファイル
+***** pdb
+- Pythonデバッガ
+  対話型ソースコードデバッガーを定義する。
+****** Debugger command
+******* h(elp)
+- h(elp) [command]
+  引数を指定しない場合、利用できるコマンドの一覧が表示される。
+  引数としてcommandが与えられた場合、そのコマンドのヘルプが表示される。
+******* w(here)
+- 
+  スタックの底にあるもっとも新しいフレームとともにスタックトレースをプリントする。
+******* d(own)
+- d(own) [count]
+  スタックフレーム内で現在のフレームをcountレベル（デフォルトは1）新しいフレーム方向に移動する。
+******* u(p)
+- u(p) [count]
+  スタックフレーム内で現在のフレームをcountレベル（デフォルトは1）新しいフレーム方向に移動する。
+
+******* b(reak)
+******* tbreak
+******* cl(ear)
+******* disable
+******* enable
+******* ignore
+******* condition
+******* commands
+******* s(tep)
+- 
+  現在の行を実行し、最初に実行可能なものが現れたときに（呼び出された関数の中化、現在の関数の次の行で）停止する。
+******* n(ext)
+- 
+  現在の関数の次の行に達するか、あるいは関数が返るまで実行を継続する。
+  stepとの違いは、stepが呼び出さ荒れ田関数の内部で停止するのに対し、nextは関数を実行後現在の関数内の次の行で停止する。
+******* unt(il)
+******* r(eturn)
+- 
+  現在の関数が返るまで実行を継続する。
+******* c(ont(inue))
+- 
+  ブレークポイントに出会うまで、実行を継続する。
+******* j(ump)
+******* l(ist)
+******* ll
+******* a(rgs)
+******* p
+- p expression
+  現在のコンテキストにおいて、expressionを評価し、その値をプリントする。
+******* pp
+- pp expressoion
+  pコマンドに似ているが、式の値以外は、pprintモジュールを使用して"pretty-print"される。
+******* whatis
+- whatis expression
+  式の型を表示する。
+******* source
+******* display
+- display [expression]
+  式の値が変更されていれば表示する。
+  式を指定しない場合、現在のフレームのすべての式を表示する。
+******* undisplay
+******* interact
+******* alias
+******* unalias
+******* !
+******* run
+- run [args ...]
+  デバッグ中のプログラムを再実行する。
+******* restart
+- restart [args ...]
+  デバッグ中のプログラムを再実行する。runの別名。
+  
+******* q(uit)
+- 
+  デバッガを終了する。
+
 **** ソフトウェア・パッケージと配布
 **** Pythonランタイムサービス
 ***** sys
