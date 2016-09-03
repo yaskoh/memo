@@ -11,49 +11,56 @@
 
 **** Baffer Error
 
-**** Certification�EPassword Management
+**** Certification・Password Management
 
 **** CSRF / Cross-Site Request Forjery
-- �菇
-  1. �U���҂��A�U���p��Web�y�[�W���쐬��WWW��Ɍ��J����B
-  2. ��O�҂��A�U���p��Web�y�[�W�ɃA�N�Z�X����B
-  3. ��O�҂́A�U���҂��p�ӂ����C�ӂ�HTTP���N�G�X�g�𑗐M��������B
-  4. ���M������ꂽHTTP���N�G�X�g�ɂ���āA�U���҂̈Ӑ}�������삪�s����B
+- 手順
+  1. 攻撃者が、攻撃用のWebページを作成しWWW上に公開する。
+  2. 第三者が、攻撃用のWebページにアクセスする。
+  3. 第三者は、攻撃者が用意した任意のHTTPリクエストを送信させられる。
+  4. 送信させられたHTTPリクエストによって、攻撃者の意図した操作が行われる。
 
-- �΍�
-  - ���p��
-    ���O�A�E�g�����ăZ�b�V������j�����Ă����΁A�F�ؒi�K�̎葱�������ۂ����̂Ŕ�Q���}������B
-  - Web�T�C�g�쐬�ґ�
-    - Form��Get����ۂɁA�Í��_�I�[�������l(nonce)���ACookie�l�܂��̓Z�b�V�����A
-      �����form��hidden�l�Ƃ��Ĕ��s���AHTTP POST���ɂ��̗��҂̒l�̓��ꐫ�����؂�����@������B
-    - HTTP Referer���擾���ƍ����邱�ƂŁA�O������̕s��POST�𔻕ʂ���B
-      ��O�҃T�C�g����AReferer���U������POST�𑗐M���邱�Ƃ͕s�\�B
+- 対策
+  - 利用者
+    ログアウトをしてセッションを破棄しておけば、認証段階の手続きが拒否されるので被害が抑えられる。
+  - Webサイト作成者側
+    - FormをGetする際に、暗号論的擬似乱数値(nonce)を、Cookie値またはセッション、
+      およびformのhidden値として発行し、HTTP POST時にその両者の値の同一性を検証する方法がある。
+    - HTTP Refererを取得し照合することで、外部からの不正POSTを判別する。
+      第三者サイトから、Refererを偽造したPOSTを送信することは不可能。
 
 **** Session Fixation
-- �菇
-  1. �U���҂����炩����Web�T�C�g����Cookie�Ƃ��ėL���ȃZ�b�V����ID���擾����B
-  2. ���̌テ�[�U���U���҂̎d�|�������ӂ�Web�T�C�g�ɃA�N�Z�X�����ہA
-     ���O�Ɏ�ɓ��ꂽ�Z�b�V����ID�����̃��[�U�̃u���E�U�ɋ����I�ɃZ�b�g����B
-  3. ���̌��O�҂�Web�T�C�g�ɃA�N�Z�X���邱�ƂŁA�Z�b�V����ID�ƃ��[�U��񂪕R�t�����A
-     �U���҂����[�U����R�t�����Z�b�V����ID�����R�Ɋ��p�ł��Ă��܂��B
+- 手順
+  1. 攻撃者があらかじめWebサイトからCookieとして有効なセッションIDを取得する。
+  2. その後ユーザが攻撃者の仕掛けた悪意のWebサイトにアクセスした際、
+     事前に手に入れたセッションIDをそのユーザのブラウザに強制的にセットする。
+  3. その後第三者がWebサイトにアクセスすることで、セッションIDとユーザ情報が紐付けられ、
+     攻撃者がユーザ情報を紐付いたセッションIDを自由に活用できてしまう。
   
-- ����
-  Web�T�[�o�����s���A�A�N�Z�X���邽�тɒl���u���E�U������o���̂����������A
-  �u���E�U�������Ă����Z�b�V����ID���A�����̔��s���Ă��Ȃ��ɂ�������炸�A
-  �����L���ȃZ�b�V����ID�Ƃ��ċ����Ă��܂��T�[�o������ꍇ�A���ƂȂ�B
+- 原因
+  Webサーバが発行し、アクセスするたびに値をブラウザが送り出すのが原則だが、
+  ブラウザが送ってきたセッションIDが、自分の発行していないにもかかわらず、
+  それを有効なセッションIDとして許可してしまうサーバがある場合、問題となる。
 
 **** ARP spoofing
-- ARP�X�v�[�t�B���O (ARP cache poisoning, ARP poison routing)
-  ARP�v���g�R���̉������U�����邱�Ƃɂ��ALAN��ŒʐM�@��̂Ȃ肷�܂����s���Z�@�B
+- ARPスプーフィング (ARP cache poisoning, ARP poison routing)
+  ARPプロトコルの応答を偽装することにより、LAN上で通信機器のなりすましを行う技法。
 
 **** IP spoofing
 
 **** DNS spoofing
-- DNS�U��, DNS cache poisoning
+- DNS偽装, DNS cache poisoning
 *** Attack
 **** smurf
 - 
-  ���M��IP�A�h���X���U�����āA����l�b�g���[�N�̃u���[�h�L���X�g�A�h���X���ɑ�ʂ̃G�R�[���N�G�X�g�𑗂����B
+  送信元IPアドレスを偽装して、相手ネットワークのブロードキャストアドレス宛に大量のエコーリクエストを送りつける。
+*** Malware
+**** Ransomware
+**** Viruses
+**** Trojan horses
+**** Rootkits
+**** Backdoors
+**** Evasion
 
 ** Defences
 *** Security Tools or Systems
@@ -64,58 +71,41 @@
   OpenPGP:RFC4880
 *** Cryptography
 **** Cryptograhic hash function
-- �Í��w�I�n�b�V���֐�
+- 暗号学的ハッシュ関数
 
-***** �A���S���Y��
+***** アルゴリズム
 - MD5
 - SHA-1
 - SHA-256
 
-** Glossary
-*** nonce
-- 
-  number used once�̂��ƂŁA1�񂾂��g����ԍ��A�Ƃ����Ӗ��B
-  �����^�C���g�[�N���Ƃ��Ă΂��B
-  
-*** http referer
-- 
-  HTTP�w�b�_��1�ŁA1�̃E�F�u�y�[�W�܂��̓��\�[�X���猩�āA
-  ����Ƀ����N���Ă���E�F�u�y�[�W�⃊�\�[�X�̃A�h���X���w���B
-  ���t�@�����Q�Ƃ��邱�ƂŁA�ǂ����炻�̃y�[�W�ɗv���������̂���m�邱�Ƃ��ł��A
-  �v�����[�V������Z�L�����e�B�̖ړI�Ŏg�����Ƃ��ł���B
-** Malware
-*** Ransomware
-*** Viruses
-*** Trojan horses
-*** Rootkits
-*** Backdoors
-*** Evasion
+*** Authentication
 
+*** Authorization
 ** SSO
-*** �F�؃N�b�L�[
+*** 認証クッキー
 - 
-  Web�͖{���X�e�[�g���X�����A�u���E�U����ăN�b�L�[��`�B���邱�Ƃɂ��A��Ԃ����L����d�|����񋟂���B
-  �`�B�͈͂������F�؃h���C�����ɐ�������Ă���B
+  Webは本来ステートレスだが、ブラウザを介してクッキーを伝達することにより、状態を共有する仕掛けを提供する。
+  伝達範囲が同じ認証ドメイン内に制限されている。
   
 *** PMI
 - Privilege Management Infrastructure
   
 *** SAML
 - Security Assertion Markup Language
-  XML���x�[�X�ɂ����A�قȂ�C���^�[�l�b�g�h���C���ԂŃ��[�U�F�؂��s�����߂�XML���x�[�X�ɂ����W���K�i�B
-  2002�N�ɍ���A2005�N�Ƀo�[�W����2.0�B
+  XMLをベースにした、異なるインターネットドメイン間でユーザ認証を行うためのXMLをベースにした標準規格。
+  2002年に策定、2005年にバージョン2.0。
   
-  �N�b�L�[��p�����A�N�b�L�[�̏_����p�����A�N�b�L�[�̎��X�P�[���r���e�B�̐����ƃZ�L�����e�B�����������邱�Ƃ�ڎw���Đ݌v���ꂽ�B
+  クッキーを用いず、クッキーの柔軟性を継承し、クッキーの持つスケーラビリティの制限とセキュリティ問題を解決することを目指して設計された。
 
-  �Z�L�����e�B�������̂��߂�XML�x�[�X�̃t���[�����[�N�B
+  セキュリティ情報交換のためのXMLベースのフレームワーク。
 
 **** Authentication Assertion
-- �F�؏��`�B�T�[�r�X
+- 認証情報伝達サービス
 **** Authorization Assertion
-- �������̓`�B
+- 属性情報の伝達
   
 **** Authorization Decision Assertion
-- �A�N�Z�X������̓`�B
+- アクセス制御情報の伝達
 
 **** XACML
 - eXtensible Access Control Markup Language
@@ -132,12 +122,31 @@
 
 - http://www.atmarkit.co.jp/ait/articles/0210/02/news002.html
 
+** Glossary
+*** nonce
+- 
+  number used onceのことで、1回だけ使われる番号、という意味。
+  ワンタイムトークンとも呼ばれる。
+  
+*** http referer
+- 
+  HTTPヘッダの1つで、1つのウェブページまたはリソースから見て、
+  それにリンクしているウェブページやリソースのアドレスを指す。
+  リファラを参照することで、どこからそのページに要求が来たのかを知ることができ、
+  プロモーションやセキュリティの目的で使うことができる。
+
+*** Authentication/Authorization 認証・認可
+- Authentication 認証
+  本人確認。
+- Authorization 認可
+  特定のリソースへのアクセス権限の付与
+
 ** Memo
 *** News
-**** Ransomware�΍�(2015/11/11)
+**** Ransomware対策(2015/11/11)
 - 
-  �����T���E�F�A���҈Ђ�U����Ă���B
-  �Z�L�����e�B�΍�Ƃ��ẮA�o�b�N�A�b�v����邱�Ƃ��A���݈�ԏd�v�B
+  ランサムウェアが猛威を振るっている。
+  セキュリティ対策としては、バックアップを取ることが、現在一番重要。
 
 - 
 ** Link

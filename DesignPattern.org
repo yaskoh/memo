@@ -10,7 +10,6 @@
 
 ** GoF
 *** Creational
-
 **** Singleton
 - 
   あるクラスについて、インスタンスが単一であることを保証する。
@@ -38,7 +37,6 @@
   再利用時には注意が必要。
 
 *** Structual
-
 **** Composite
 - 
   木構造を伴う再起的なデータ構造を表すことができる。
@@ -61,7 +59,6 @@
   Decoratorクラスが、デコレータのチェーンの次のComponentクラスの参照を持つ。
 
 *** Behavioral
-
 **** Template Method
 - 
   ある処理の大まかなアルゴリズムをあらかじめ決めておいて、
@@ -98,5 +95,10 @@
 - 
   構文解析のために、文法規則を反映するクラス構造を作る。
   ドメインに特化した言語を実装する。
+** GoF以外
+*** Object Pool
+- オブジェクトの生成・破棄を回避するギミック。
+  オブジェクトの生成・破棄はパフォーマンスへの影響が比較的大きいため。
+- [[https://thinkit.co.jp/article/934/1][Object Poolパターン - Think IT]]
 ** Link
 - [[http://www.happiese.com/system/dpattern.html][デザインパターンを読み解く]]

@@ -369,6 +369,29 @@
 - Use
   subname();
 
+** Specification
+*** Perl5 Reference
+**** Syntax
+**** Data types
+**** Subroutine function
+**** Operator
+**** Functions
+***** last
+- exit block prematurely
+- syntax
+  - last LABEL
+  - last EXPR
+  - last
+- 
+  The last command is like the break statement in C (as used in loops);
+  
+***** split
+- split up a string using a regexp delimiter
+- syntax
+  - split /PATTERN/,EXPR,LIMIT
+  - split /PATTERN/,EXPR
+  - split /PATTERN/
+  - split
 ** Memo
 *** Interactive mode
 - 

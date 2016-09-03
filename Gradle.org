@@ -1,0 +1,4 @@
+* Gradle
+** Link
+- [[https://gradle.org/][Gradle]]
+- [[http://gradle.monochromeroad.com/docs/userguide/userguide.html][Gradle User Guide(–|–ó”Å)]]

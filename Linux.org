@@ -664,8 +664,12 @@
 ** Shells
 *** bash
 *** csh
+*** fish
+- [[http://fishshell.com/][fish shell]]
+- [[http://fishshell.com/docs/current/tutorial.html][fish tutorial]]
 *** tcsh
 *** zsh
+- [[http://www.zsh.org/][Welcome to Zsh]]
 - [[file:./Zsh.org][Zsh.org]]
 
 ** Distributions
