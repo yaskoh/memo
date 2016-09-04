@@ -765,11 +765,18 @@
 ****** Header
 - 
   
-
 ***** FTP
 - File Transfer Protocol
   
 ***** HTTP
+****** Specification
+******* HTML 1.1
+******** RFC7230 - Message Syntax and Routing
+******** RFC7231 - Semantics and Content
+******** RFC7232 - Conditional Requests
+******** RFC7233 - Range Requests
+******** RFC7234 - Caching
+******** RFC7235 - Authentication
 ****** Status
 ******* Informational 1xx
 
@@ -797,6 +804,7 @@
 ******** 500 Internal Server Error
 
 ****** Link
+- [[https://triple-underscore.github.io/RFC723X-ja.html][Hytertext Transfer Protocol (HTTP/1.1) - RFC 7230 〜 7235 - 日本語訳]]
 - https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 
 ***** IMAP
@@ -992,7 +1000,6 @@
 ****** RTT
 - Round Trip Time、往復遅延時間
   
-
 ***** UDP
 - User Datagram Protocol
   制御を行わないが、スループットの低下が起こらない。

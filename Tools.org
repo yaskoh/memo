@@ -16,15 +16,15 @@
 - 
   [[file:./Compiler.org][Compiler.org]]
 
-** Shell
-*** GNU Readline
-- キーバインドを設定する。
-  デフォルト設定ファイルは~/.inputrc。
 ** Lexical Analyzer
 *** lex/flex
 - 
   [[file:./Compiler.org][Compiler.org]]
 
+** Shell
+*** GNU Readline
+- キーバインドを設定する。
+  デフォルト設定ファイルは~/.inputrc。
 ** Database
 *** HeidiSQL
 - http://celtislab.net/archives/20130826/heidisql%E3%81%A7mysql%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%B8%E6%8E%A5%E7%B6%9A%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
@@ -167,6 +167,7 @@
 **** Settings
 ***** httpd.conf
 ***** .htaccess
+- this files provide a way to make configuration changes on a per-directory basis.
 **** Command
 ***** httpd
 ****** -k
