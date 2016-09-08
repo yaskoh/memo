@@ -1,0 +1,7 @@
+* Unix
+** Specification
+*** POSIX
+- [[http://pubs.opengroup.org/onlinepubs/9699919799/][IEEE Std 1003.1-2013]]
+*** SUS, Single UNIX Specification
+** Link
+- [[http://www.catb.org/esr/writings/taoup/html/][The Art of Unix Programming]]

@@ -303,6 +303,7 @@
   - Stateless Session Bean
   - Stateful Session Bean
   - Singleton Session Bean
+
 ***** Message Driven Bean
 - 
   メッセージ・サーバからの要求に応じてビジネスロジックを実行するEJBコンポーネント。
@@ -352,6 +353,21 @@
   オブジェクトの有効期間を指定して生成することができる。
   
 *** JAX-RS
+** Glossary
+*** Deployment Descriptor, DD
+- デプロイメント記述子
+  アプリケーションまたはモジュールに対する構成オプションおよびコンテナー・オプションを指定するXMLファイル。
+**** web.xml
+- Webモジュール(WARファイル)の設定情報
+**** ejb-jar.xml
+- EJBモジュール(EJB-JARファイル)の設定情報
+**** application.xml
+- Webアプリケーション(EARファイル)の設定情報
+**** application-client.xml
+- クライアント・アプリケーション(クライアントJARファイル)の設定情報
+**** webservices.xml
+**** ra.xml
+- リソース・アダプタ・モジュール(RARファイル)の設定ファイル
 ** Link
 - [[https://docs.oracle.com/javaee/7/tutorial/index.html][The Java EE Tutorial - Java Platform, Enterprise Edition 7]]
 - [[https://netbeans.org/kb/trails/java-ee_ja.html][Java EEおよびJava Webの学習 - NetBeans]]

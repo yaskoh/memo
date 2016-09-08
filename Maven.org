@@ -15,7 +15,7 @@
 **** Lifecycle
 - [[https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html#Lifecycle_Reference][Lifecycle Reference - Apache Maven Project]]
 ***** default
-****** validaet
+****** validate
 ****** initialize
 ****** generate-sources
 ****** process-sources

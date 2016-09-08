@@ -127,6 +127,103 @@
 ** API
 *** Java SE 8
 **** java
+***** java.lang
+- Provides classes that are fundamental to the design of the Java programming language.
+****** Interface
+****** Class
+******* Boolean
+******* Byte
+******* Character
+******* Character.Subset
+******* Character.UnicodeBlock
+******* Class<T>
+******* ClassLoader
+******* ClassValue<T>
+******* Compiler
+- Compiler class is provided to support Java-tonative-code compilers and related services.
+******* Double
+******* Enum<E extends Enum<E>>
+******* Float
+******* InheritableThreadLocal<T>
+******* Integer
+******* Long
+******* Math
+******* Number
+******* Object
+******* Package
+******* Process
+******* ProcessBuilder
+******* ProcessBuilder.Redirect
+******* Runtime
+******* RuntimePermission
+******* SecurityManager
+******* Short
+******* StackTraceElement
+******* StrictMath
+******* String
+******* StringBuffer
+******* StringBuilder
+******* System
+- The System class contains several useful class fields and methods.
+******** Field
+******** Method
+********* getProperties()
+- static Properties
+********** Keys
+- 
+  |-------------------------------+------------------------------------|
+  | Key                           | Description                        |
+  |-------------------------------+------------------------------------|
+  | java.version                  | Java Runtime Environmental version |
+  | java.vendor                   |                                    |
+  | java.vendor.url               |                                    |
+  | java.home                     |                                    |
+  | java.vm.specification.version |                                    |
+  | java.vm.specification.vendor  |                                    |
+  | java.vm.specification.name    |                                    |
+  | java.vm.version               |                                    |
+  | java.vm.vendor                |                                    |
+  | java.vm.name                  |                                    |
+  | java.specification.version    |                                    |
+  | java.specification.vendor     |                                    |
+  | java.specification.name       |                                    |
+  | java.class.version            |                                    |
+  | java.class.path               |                                    |
+  | java.library.path             |                                    |
+  | java.io.tmpdir                |                                    |
+  | java.compiler                 |                                    |
+  | java.ext.dirs                 |                                    |
+  | os.name                       | Operating system name              |
+  | os.arch                       |                                    |
+  | os.version                    |                                    |
+  | file.separator                |                                    |
+  | path.separator                |                                    |
+  | line.separator                |                                    |
+  | user.name                     | User's account name                |
+  | user.home                     | User's home directory              |
+  | user.dir                      | User's current working directory   |
+  |-------------------------------+------------------------------------|
+  
+********* getProperty(String key)
+- static String
+- Gets the system property indicated by the specified key.
+********* getProperty(String key, String def)
+- static String
+- Gets the system property indicated by the specified key.
+******* Therad
+******* ThreadGroup
+******* ThreadLocal<T>
+******* Throwable
+- The Throwable class is the superclass of all errors and exceptions in the Java language.
+******* Void
+****** Enum
+****** Exception
+******* Exception
+- The class Exception and its subclasses are a form of Throwable that indicates conditions that a reasonable application want to catch.
+****** Error
+******* Error
+- An Error is a subclass of Throwable that indicates serious problems that a reasonable application should not try to catch.
+****** Annotation
 ***** java.io
 ****** Interface
 ******* Closable
@@ -156,13 +253,6 @@
 ******* IOException
 ****** Error
 ******* IOError
-***** java.lang
-****** Interface
-****** Class
-****** Enum
-****** Exception
-****** Error
-****** Annotation
 ***** java.lang.annotation
 ****** Interface
 ****** Enum
@@ -182,6 +272,10 @@
 ****** Error
 ***** java.math
 ***** java.net
+****** Interfaces
+****** Class
+****** Enum
+****** Exception
 ***** java.nio
 ***** java.nio.charset
 ***** java.nio.charset.spi
@@ -277,7 +371,155 @@
 *** Web container
 - 
   Java EEアーキテクチャのコンポーネント規約を実装するソフトウェア。
+
+**** Oracle WebLogic Server
+***** Installation
+- UNIX
+  java -jar fmw_12.2.1.~_wls_generic.jar
+- Window
+  java -jar fmw_12.2.1.~_wls_generic.jar
+- [[http://docs.oracle.com/middleware/12211/lcm/WLSIG/toc.htm][Fusion Middleware Installing and Configuring Oracle WebLogic Server and Coherence - ORACLE]]
+***** Domain Structure
+- ドメインディレクトリ（ディレクトリ名=ドメイン名）
+****** autodeploy
+- 自動デプロイメントディレクトリ（開発モード用）
+****** bin
+- 起動・停止スクリプトetc
+******* stratWebLogic.sh(cmd)
+- 管理サーバ起動スクリプト
+******* startManageWebLogic.sh(cmd)
+- 管理対象サーバ起動スクリプト
+****** common
+****** config
+- コンフィグレーションディレクトリ
+******* config.xml
+****** console-ext
+****** init-info
+- ドメインの初期化情報
+****** lib
+****** nodmanager
+- ノートマネージャ・ホームディレクトリ
+****** resources
+****** security
+- セキュリティファイル
+****** servers
+- サーバローカルディレクトリ
+***** Server Status
+****** SHUTDOWN
+- 構成されているが、非アクティブになっている。
+****** STARTING
+- 起動コマンドの結果としてSHUTDOWN状態からSTANDBY状態に遷移する。
+  クライアント・リクエストも管理リクエストも受け付けることができない。
+****** STANDBY
+- 通常のリスニング・ポートがクローズされているためリクエストを処理しない。
+  管理ポートはオープンされており、RUNNNING状態またはSHUTDOWN状態に遷移させるライフサイクル・コマンドを受け付ける。
+  ホット・バックアップとして待機させておくことができる。
+****** ADMIN
+- 起動して実行状態にあるが、受け付けるのは管理操作のみとなり、ユーザーはサーバーおよびアプリケーション・レベルの管理タスクを実行できる。
+  - 管理コンソールが使用できる
+  - サーバー・インスタンスはadminロールのユーザーからのリクエストを受け付ける
+  - アプリケーションはADMIN状態でアクティブ化される。
+  - JDBC, JMS, JTAの各サブシステムの管理操作が実行可能。
+  - デプロイメント・再デプロイメントは許可される。
+  - ClusterServiceはアクティブで、他のクラスタ・メンバーからのハートビートおよび通知をリスニングする。
+****** RESUMING
+- STANDBY状態またはADMIN状態からRUNNING状態への移動に必要な処理を実行している。遷移状態。
+****** RUNNING
+- 完全に機能しており、クライアントにサービスを提供し、クラスタの正規メンバーとして機能できる。
+****** SUSPENDING
+- ADMIN状態への移動に必要な処理を実行する。
+  サブシステムおよびサービスを順に中断し、進行中のアプリケーション作業の事前に定義済みの部分を完了する。
+****** FORCE_SUSPENDING
+- ADMIN状態への移動に必要な処理を実行する。
+  処理中の作業を正常に中断しない。
+****** SHUTTING_DOWN
+- サブシステムおよびサービスの中断を完了し、アプリケーション・リクエストも管理リクエストも受け付けない。
+****** FAILED
+- メモリー不足例外やアプリケーション・スレッドのスタック状態の結果として、あるいはいくつかの重要なサービスが機能しなくなった場合に、サーバー・インスタンスで障害が発生することがある。
+****** FAILED_NOT_RESTARTABLE
+***** Management Console 管理コンソール
+- 管理サーバだけにデプロイされる管理用Webアプリケーション
+- Access
+  http://hostname:port/console
+  https://hostname:port/console
+  デフォルトポートは7001
+***** Glossary
+****** WLST
+- WebLogic Scripting Tool
+***** Link
+****** 12.2.1.1.0
+- [[http://docs.oracle.com/middleware/12211/wls/index.html][Oracle WebLogic Server 12.2.1.1.0]]
+
+- [[http://docs.oracle.com/middleware/12211/cross/referencedocs.htm][Reference and APIs 12.2.1.1.0]]
+- [[http://docs.oracle.com/middleware/12211/wls/WLAPI/toc.htm][Java API Reference for Oracle WebLogic Server]]
+- [[http://docs.oracle.com/middleware/12211/wls/WLTAG/toc.htm][JSP Tags Reference for ORacle Weblogic Server]]
+- [[https://docs.oracle.com/middleware/1221/wls/ADMRF/index.html][Command Reference for Oracle WebLogic Server]]
+
+****** 12.2.1
+- [[http://docs.oracle.com/cd/E72987_01/wls/index.html][Oracle WebLogic Server 12.2.1 - ORACLE Help Center]]
+- [[http://docs.oracle.com/cd/E72987_01/wls/INTRO/toc.htm][Oracle® Fusion Middleware Oracle WebLogic Serverの理解 12c(12.2.1)]]
+- [[http://docs.oracle.com/cd/E72987_01/wls/START/toc.htm][Oracle® Fusion Middleware Oracle WebLogic Serverサーバーの起動と停止の管理 12c (12.2.1)]]
+- [[http://docs.oracle.com/cd/E72987_01/wls/ADMRF/toc.htm][Oracle® Fusion Middleware Oracle WebLogic Serverコマンド・リファレンス 12c (12.2.1)]]
+
+****** Slide
+- [[http://www.slideshare.net/OracleMiddleJP/20140527-wlstudy-startjee1handsout][Java EE & WebLogic Server入門: はじめてのJava EEアプリケーション開発シリーズ： 第1回 - SlideShare]]
+- [[http://www.slideshare.net/OracleMiddleJP/20141218-wlstudy-wlsbasichandsout][Oracle WebLogic Server 12.1.3入門 - SlideShare]]
+- [[http://www.slideshare.net/OracleMiddleJP/20130821-wlstudy-jeeapphandsout][Java EE アプリケーションをWebLogic Serverで動かしてみよう - SlideShare]]
+
+**** JBoss, Wildfly
+- 
+  Java EEアプリケーションサーバ。
+  オープンソース版についてはWildFlyという名称となっている。
   
+  ライセンスはLGPLである。
+  JBoss Inc.をRed Hatが買収したため、現在はRed Hatが運営を行っている。
+
+***** 概要
+- 
+  Javaのオープンソース・フレームワーク群。
+  EJBを動かすもの、というのが基本。
+  もとはEJBoss(Enterprise JavaBeans Open Source Software)という名前あったが、商標の関係によりJBossとなった。
+
+****** TomcatでなくJbossを選ぶ理由
+- [[http://nekop.hatenablog.com/entry/20110421/1303372984][TomcatでなくJBossを選ぶ○○の理由 - nekop's blog]]
+
+***** 機能
+****** JavaEE
+******* JTAトランザクションマネージャ
+******* EJB
+******* MDB
+******* JPA
+******* JMS
+******* JCA
+******* JAX-WS
+****** JBoss固有
+******* JMX
+******* log4jを用いたログ基盤
+******* 分散キャッシュなどの各種クラスタリングサービス
+***** Projects
+****** Wildfly
+****** JBoss Web
+****** JBoss ESB
+****** JBoss Messaging
+****** JBoss Tools
+****** Hibernate
+**** GlassFish
+- 
+  サン（オラクル）を中心のコミュニティで開発された、Java EE準拠のアプリケーションサーバの名称。
+  以前は商用サポートも行っていたが、v4.0で廃止され、以降は参照実装としての位置づけになっている。
+
+- 
+  [[http://www.coppermine.jp/docs/programming/2014/01/the-end-of-glassfish.html][GlassFishの落日 - Programming Studio]]
+  [[https://blogs.oracle.com/yosshi/entry/glassfish_%E3%81%A8_tomcat_%E3%81%AE%E9%81%95%E3%81%84_part][GlassFishとTomcatの違い Part3 - 寺田 佳央 (Yoshio Terada)]]
+  
+***** 機能
+****** Servlet
+****** JSP
+****** EJB
+****** JMS(Java Message Service)
+****** JNDI(JavaNaming and Directory Interface)
+****** JBI(Java Business Integration)
+****** ORB(Object Request Brocker)
 **** Tomcat
 ***** 概要
 - 
@@ -323,64 +565,8 @@
   現在のアプリケーションの状態を確認し、アプリケーションの配置や起動・終了などをブラウザ画面から確認できる。
   インストール時に設定したユーザ名/パスワードが必要。
   http://localhost:8080/manager/html
-  
-**** JBoss
-- 
-  Java EEアプリケーションサーバ。
-  オープンソース版についてはWildFlyという名称となっている。
-  
-  ライセンスはLGPLである。
-  JBoss Inc.をRed Hatが買収したため、現在はRed Hatが運営を行っている。
-
-***** 概要
-- 
-  Javaのオープンソース・フレームワーク群。
-  EJBを動かすもの、というのが基本。
-
-****** TomcatでなくJbossを選ぶ理由
-- [[http://nekop.hatenablog.com/entry/20110421/1303372984][TomcatでなくJBossを選ぶ○○の理由 - nekop's blog]]
-
-***** 機能
-****** JavaEE
-******* JTAトランザクションマネージャ
-******* EJB
-******* MDB
-******* JPA
-******* JMS
-******* JCA
-******* JAX-WS
-****** JBoss固有
-******* JMX
-******* log4jを用いたログ基盤
-******* 分散キャッシュなどの各種クラスタリングサービス
-***** Projects
-****** Wildfly
-****** JBoss Web
-****** JBoss ESB
-****** JBoss Messaging
-****** JBoss Tools
-****** Hibernate
-**** GlassFish
-- 
-  サン（オラクル）を中心のコミュニティで開発された、Java EE準拠のアプリケーションサーバの名称。
-  以前は商用サポートも行っていたが、v4.0で廃止され、以降は参照実装としての位置づけになっている。
-
-- 
-  [[http://www.coppermine.jp/docs/programming/2014/01/the-end-of-glassfish.html][GlassFishの落日 - Programming Studio]]
-  [[https://blogs.oracle.com/yosshi/entry/glassfish_%E3%81%A8_tomcat_%E3%81%AE%E9%81%95%E3%81%84_part][GlassFishとTomcatの違い Part3 - 寺田 佳央 (Yoshio Terada)]]
-  
-***** 機能
-****** Servlet
-****** JSP
-****** EJB
-****** JMS(Java Message Service)
-****** JNDI(JavaNaming and Directory Interface)
-****** JBI(Java Business Integration)
-****** ORB(Object Request Brocker)
 **** WebSphere Application Server
-**** JBoss
-*** Application Server
-**** Oracle WebLogic Server
+
 *** IDE
 **** Eclipse
 ***** Memo
@@ -524,6 +710,16 @@
 *** 関数型インターフェース
 - 大雑把に言って、定義されている抽象メソッドが1つだけあるインターフェース。
   staticメソッドや絵フォルトメソッドは含まれていても構わない。
+*** OUI, Oracle Universal Installer
+*** JavaBeans
+- コンポーネントを進めるため、いくつかのルールに従って作られているJavaのクラス。
+  現実的には、「JSPで使用する、プロパティを持つクラス」が一般的な受け入れられ方。
+- 特徴
+  - クラス名末尾がBean : 慣例。
+  - プロパティ : 
+  - 永続化 : java.io.Serializableインターフェースを実装
+  - 引数なしのコンストラクタ
+- [[http://www.wakhok.ac.jp/~tomoharu/web2004/text/index_c4.html][JavaBeansとJSP - JavaによるWebアプリケーション入門]]
 ** Link
 - [[http://docs.oracle.com/javase/specs/][Java Language and Virtual Machine Specification - ORACLE]]
 - [[http://docs.oracle.com/javase/8/docs/api/][Java™ Platform, Standard Edition 8 API Specification]]

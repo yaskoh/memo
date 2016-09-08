@@ -116,6 +116,30 @@
 - StaticImportOnDemandDeclaration:
   import static TypeName . * ;
 *** Classes
+**** Class Declaration
+**** Class Members
+**** Field Declarations
+**** Method Declarations
+***** Formal Parameters
+***** Method Signature
+***** Method Modifiers
+***** Generic Methods
+***** Method Result
+***** Method Throws
+****** About
+- A throws clause is used to declare any checked exception classes that the statements in a method or constructor body can throw.
+****** Def
+- Throws:
+  throws ExceptionTypeList
+- ExceptionTypeList:
+  ExceptionType {, ExceptionType}
+- ExceptionType:
+  ClassType
+  TypeVariable
+  
+***** Method body
+***** Inheritance, Overriding, Hiding
+**** Member Type Declarations
 *** Interfaces
 **** Annotation Types
 ***** Predefined Annotation Types
@@ -143,6 +167,12 @@
   
 *** Arrays
 *** Exceptions
+**** Kinds
+- An exception is represented by an instance of the class Throwable (a direct subclass of Object) or one of its subclasses.
+- Exception : the superclass of all the exceptions from which ordinary programs may wish to recover.
+- RuntimeException : a direct subclass of Exception.
+  It's the superclass of all the exceptions which may be thrown for many reasons during expression evaluation, but from which recovery may still be possible.
+- Error : the superclass of all the exceptions from which ordinary programs are not ordinarily expected to recover.
 *** Execution
 *** Binary Compatibility
 *** Blocks and Statementns
@@ -960,3 +990,5 @@
   import static packageName.className.*;
 
 
+** Link
+- [[http://docs.oracle.com/javase/specs/jls/se8/html/index.html][The Java Language Spcification (Java SE 8 Edition)]]

@@ -1,0 +1,21 @@
+* .NET Framework
+** Version
+*** .NET Framework 4.6 and 4.5
+**** Class Library
+- [[https://msdn.microsoft.com/ja-jp/library/mt472912(v=vs.110).aspx]]
+*** .NET Framework 3.5
+*** .NET Framework 3.0
+*** .NET Framework SDK 2.0
+*** .NET Framework 1.1
+*** .NET Framework 1.0
+
+** Memo
+*** 互換性(tmp)
+- [[https://blogs.msdn.microsoft.com/jpvsblog/2015/04/06/net-framework-3/][.NET Frameworkの各バージョン同士の関係 - Developer]]
+- 1.0 -> 1.1
+- https://msdn.microsoft.com/ja-jp/library/cc825629.aspx
+- https://msdn.microsoft.com/ja-jp/library/cc825633.aspx
+- https://msdn.microsoft.com/ja-jp/library/cc825671.aspx
+** Link
+- [[https://msdn.microsoft.com/ja-jp/library/aa139615.aspx][.NET開発 - Developer Network]]
+- [[https://msdn.microsoft.com/ja-jp/library/cc948946.aspx][.NET開発(1.0含む) - Developer Network]]
