@@ -461,10 +461,16 @@
 - [[http://docs.oracle.com/cd/E72987_01/wls/START/toc.htm][Oracle® Fusion Middleware Oracle WebLogic Serverサーバーの起動と停止の管理 12c (12.2.1)]]
 - [[http://docs.oracle.com/cd/E72987_01/wls/ADMRF/toc.htm][Oracle® Fusion Middleware Oracle WebLogic Serverコマンド・リファレンス 12c (12.2.1)]]
 
-****** Slide
+****** Tmp
+******* Slide
 - [[http://www.slideshare.net/OracleMiddleJP/20140527-wlstudy-startjee1handsout][Java EE & WebLogic Server入門: はじめてのJava EEアプリケーション開発シリーズ： 第1回 - SlideShare]]
 - [[http://www.slideshare.net/OracleMiddleJP/20141218-wlstudy-wlsbasichandsout][Oracle WebLogic Server 12.1.3入門 - SlideShare]]
 - [[http://www.slideshare.net/OracleMiddleJP/20130821-wlstudy-jeeapphandsout][Java EE アプリケーションをWebLogic Serverで動かしてみよう - SlideShare]]
+
+******* Deploy
+- [[http://alctail.sakura.ne.jp/tip/linux_kannrenn/weblogic/][Weblogic10.3を使ってみる - この世果てのしっぽの方]]
+- [[https://blogs.oracle.com/wlc/entry/weblogic_c122][【後編】インストールからアプリケーションの配備まで - WebLogic Channel]]
+- [[http://www.oracle.com/technetwork/jp/ondemand/application-grid/wls11g-handson-1034-354365-ja.pdf][意外と簡単!? WebLogic Serverのインストールと運用 - ORACLE]]
 
 **** JBoss, Wildfly
 - 

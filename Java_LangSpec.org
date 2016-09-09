@@ -76,6 +76,10 @@
 - AdditionalBound:
   & InterfaceType
 **** Parameterized Types
+**** Variables
+***** final
+- A final variable may only be assigned to once.
+  
 *** Conversions and Contexts
 *** Names
 *** Packages
@@ -119,6 +123,17 @@
 **** Class Declaration
 **** Class Members
 **** Field Declarations
+***** Field modifiers
+****** Def
+- FieldModifier:
+  (one of)
+  Anntation public protected private
+  static final transient volatile
+****** static Fields
+****** final Fields
+- A field can be declared final. Both class and instance variables may be declared final.
+****** transient Fields
+****** volatile Fields
 **** Method Declarations
 ***** Formal Parameters
 ***** Method Signature
@@ -988,7 +1003,6 @@
   import static packageName.className.staticVariables;
   import static packageName.className.staticMethods;
   import static packageName.className.*;
-
 
 ** Link
 - [[http://docs.oracle.com/javase/specs/jls/se8/html/index.html][The Java Language Spcification (Java SE 8 Edition)]]
