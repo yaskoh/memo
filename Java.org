@@ -246,6 +246,20 @@
 ******* File
 ******* FileDescripter
 ******* FileInputStream
+- FileInputStreamは、ファイルシステム内のァイルから入力バイトを取得する。
+  どのファイルが有効であるかはホスト環境に依存する。
+  イメージデータなどのrawバイトのストリームを読み込む時に使用する。
+******** Constracotrs
+********* FileInputStream(File file)
+- ファイルシステム内のfileで指定される実際のファイルへの接続を開くことにより、FileInputStreamを作成する。
+********* FileInputStream(FileDescriptor fdObj)
+- 実際のファイルへの既存の接続を表すファイル記述子fdObjを使用してFileImputStreamを作成する
+********* FileInputStream(String name)
+- パス名nameで指定される実際のファイルへの接続を開くことにより、FileInputStreamを作成する。
+******** Methods
+********* available()
+********* close()
+********* finalize()
 ******* FileOutputStream
 ******* FileReader
 ******* FileWriter
@@ -272,8 +286,51 @@
 ****** Error
 ***** java.math
 ***** java.net
+****** About
+- ネットワークアプリケーションを実装するためのクラスを提供する。
+  大きく分けて低レベルAPIと高レベルAPIの2つの部分に分けられる。
+- 低レベルAPI:次の抽象概念を扱う
+  - アドレス:IPアドレスのような、ネットワーク上の識別子
+  - ソケット:基本的な双方向データ通信メカニズム
+  - インターフェース:ネットワーク・インターフェースを記述する
+- 高レベルAPI:次の抽象概念を扱う
+  - URI:Universal Resource Identifier
+  - URL:Universal Resource Locator
+  - 接続:URLによって参照されるリソースへの接続を表す
 ****** Interfaces
 ****** Class
+******* ClientHandler
+******* DatagramSocket
+- データグラム・パケットを送受信するためのソケット
+******* ServerSocket
+- サーバー・ソケットを実装する。
+  ネットワーク経由で要求が送られてくるのを待ち、要求に基づいていくつかの操作を実行する。
+  実際の処理はSocketImplクラスのインスタンスによって実行される。
+  アプリケーションは、ソケット実装を作成するソケット・ファクトリを変更することでローカル・ファイアウォールに適したソケットを作成するようにアプリケーション自体を構成することができる。
+- 
+  - extends Object
+  - implements Closeable
+  
+******** Constractors
+********* ServerSocket()
+- アンバウンドのサーバーソケットを作成する
+********* ServerSocket(int port)
+- 指定されたポートにバインドされたサーバー・ソケットを作成する
+********* ServerSocket(int port, int backlog)
+- サーバー・ソケットを作成し、指定された
+********* ServerSocket(int port, int backlog, InetAddress bindAddr)
+******* Socket
+- クライアント・ソケットを実装する。
+******* SocketAddress
+- プロトコルに関連付けられていないソケット・アドレスを表す
+******* SocketImpl
+- 実際にソケットを実装するすべてのクラスに共通のスーパークラス。
+******** Fields
+******** Constrator
+********* SocektImpl()
+******** Methods
+******* URI
+******* URL
 ****** Enum
 ****** Exception
 ***** java.nio

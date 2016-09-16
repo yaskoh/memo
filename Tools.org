@@ -292,6 +292,7 @@
 *** idobata
 *** Slack
 
+** C
 ** Java
 - 
   [[file:./Java.org][Java.org-Tools]]

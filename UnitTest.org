@@ -285,8 +285,24 @@
 ******** 標準的な振る舞いを検証
 ******** 例外の送出を検証
 ******** コンストラクタを検証
+****** API
+******* org.hamcrest
+******* org.hamcrest.core
+******* org.junit
+******* org.junit.experimental
+******* org.junit.matchers
+******* org.junit.rules
+******* org.junit.runner
+******* org.junit.runner.manipulation
+******* org.junit.runner.notification
+******* org.junit.runners
+******* org.junit.runners.model
+******* org.junit.runners.parameterized
+******* org.junit.validator
 ****** Link
 - http://junit.org/junit4/
+- [[http://junit.org/junit4/javadoc/latest/index.html][JUnit 4.12 API]]
+- [[https://github.com/junit-team/junit4/wiki][Wiki junit4 - github]]
 ** TestNG
 ** Memo
 *** 4 Phase Test

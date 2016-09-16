@@ -1,0 +1,4 @@
+* C++
+** Memo
+*** Standard C++
+- ISO/IEC 14822:1998

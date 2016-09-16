@@ -1,4 +1,229 @@
 * C
+** Specification
+*** C A REFERENCE MANUAL
+- [[https://savedparadigms.files.wordpress.com/2014/09/harbison-s-p-steele-g-l-c-a-reference-manual-5th-ed.pdf][C A REFERENCE MANUAL Fifth Edition (pdf)]]
+**** Lexical Elements
+***** Characetr Set
+****** Characters
+- defined in the Basic Latin block of ISO/IEC 10646:
+  1. the 52 Latin capital and small letters
+  2. the 10 digits
+  3. the SPACE
+  4. the horizontal tab(HT), vertical tab(VT), and form feed(FF) control characters
+  5. the 29 grapihc characters and their official names
+     |------+----------------------|
+     | Char | Name                 |
+     |------+----------------------|
+     | !    | EXCLAIMATION MARK    |
+     | #    | NUMBER SIGN          |
+     | %    | PERCENT SIGN         |
+     | ^    | CIRCUMFLEX ACCENT    |
+     | &    | AMPERSAND            |
+     | *    | ASTERISK             |
+     | (    | LEFT PARENTHESIS     |
+     | _    | LOWLINE              |
+     | )    | RIGHT PARENTHEIS     |
+     | -    | HIPHEN-MINUS         |
+     | +    | PLUS SIGN            |
+     | =    | EQUALS SIGN          |
+     | ~    | TILDA                |
+     | [    | LEFT SQUARE BRACKET  |
+     | ]    | RIGHT SQUARE BRACKET |
+     | '    | APOSTROPHE           |
+     | ｜   | VERTICAL LINE        |
+     | \    | REVERSE SOLIDUS      |
+     | ;    | SEMICOLON            |
+     | :    | COLON                |
+     | "    | QUOTAITON MARK       |
+     | {    | LEFT CURLY BRACKET   |
+     | }    | RIGHT CURLY BRACKET  |
+     | ,    | COMMA                |
+     | .    | FULL STOP            |
+     | <    | LESS-THAN SIGN       |
+     | >    | GREATER-THAN SIGN    |
+     | /    | SOLIDUS              |
+     | ?    | QUESTION MARK        |
+     |------+----------------------|
+
+****** Execution Character Set
+****** Whitespace and Line Termination
+****** Character Encoding
+****** Trigraphs
+****** Multibyte and Wide Characters
+***** Comments
+****** /* */
+- bigen with /* and ends with */.
+****** //
+- from C99
+  commentt, up to the next line break
+***** Tokens
+
+***** Operators and Separators
+- 
+  |-------------------------------+------------------------------------|
+  | Token class                   | Tokens                             |
+  |-------------------------------+------------------------------------|
+  | Simple operations             | ! % ^ & * - + = ~ ｜ . < > / ?     |
+  | Compound assignment operators | ＋= -= *= /= %= <<= >>= &= ^= ｜=  |
+  | Ohter compound operators      | -> ++ -- << >> <= >= == !+ && ｜｜ |
+  | Separator characters          | ( ) [ ] { } , ; : ...              |
+  | Alternate token spellings     | <% %> <: :> %: %:%:                |
+  |-------------------------------+------------------------------------|
+  
+***** Identifiers
+***** Keywords
+- Keywords
+  auto break case char const continue default do double
+  else enum extern float for goto if int long register
+  return short signed sizeof static struct switch typedef union unsigned void volatile while
+
+- new keywords in C99 (not reserved in C++)
+  _Bool _Complex _Imaginary inline restrict
+
+- iso646.h
+  Identifiers in iso646.h are reserved in C++, and might to wish to treat as reserved macros.
+  - list
+    and and_eq bitand bitor compl not not_eq or or_eq xor xor eq
+****** Predefined Identifiers
+- 
+***** Constants
+****** def
+- constants:
+  - integer-constant
+  - floating-constant
+  - character-constant
+  - string-constant
+****** Integer Constants
+******* def
+- integer-constant:
+  - decimal-constant integer-suffix(opt)
+  - octal-constant integer-suffix(opt)
+  - hexadecimal-constant integer-suffix(opt)
+- deciaml-constant:
+  - nonzero-digit
+  - decimal-constant digit
+- octal-constant:
+  - 0
+  - octal-constant octal-digit
+- hexadecimal-constant:
+  - 0x hex-digit
+  - 0X hex-digit
+  - hexadecimal-constant hex-digit
+- digit : one of 
+  0 1 2 3 4 5 6 7 8 9
+- nonzero-digit: one of
+  1 2 3 4 5 6 7 8 9
+- octal-digit: one of
+  0 1 2 3 4 5 6 7
+- hex-digit: one of
+  0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f
+- integer-suffix:
+  - long-suffix unsigned-suffix(opt)
+  - long-long-suffix unsigned-suffix(opt)
+  - unsigned-suffix long-suffix(opt)
+  - unsigned-suffix long-long-suffix(opt)
+- long-suffix: one of
+  l L
+- long-long-suffix: one of
+  ll LL
+
+****** Floating-Point Constants
+****** Character Constants
+****** String Constants
+****** Escape Characters
+****** Character Escape Codes
+****** Numeric Espace Codes
+***** C++ Compatibility
+**** C Preprocessor
+- lines beginning with the character #.
+***** Preprocessor Commads
+- original
+  - #define
+  - #undef
+  - #include
+  - #if
+  - #ifdef
+  - #ifndef
+  - #else
+  - #endif
+  - #line
+- Not original but common now
+  - #elif
+  - defined
+- New in standard C
+  - #operator
+  - ##operator
+  - #pragma
+  - #error
+***** Preprocessor Lexical Convention
+****** Objectlike Macro Definitions
+****** Defining Macros with Parameters
+****** Rescanning of Macro Expressions
+****** Predefined Macros
+- 
+  |--------------------------+-------|
+  | Macro                    | Value |
+  |--------------------------+-------|
+  | __LINE__                 |       |
+  | __FILE__                 |       |
+  | __DATE__                 |       |
+  | __TIME__                 |       |
+  | __STDC__                 |       |
+  | __STDC_VERSION__         |       |
+  | __STDC_HOSTED__          |       |
+  | __STDC_IEC_559__         |       |
+  | __STDC_IEC_559_COMPLEX__ |       |
+  | __STDC_ISO_10646__       |       |
+  |--------------------------+-------|
+
+****** Undefining and Redefining Macros
+- #undef name
+***** Definition and Replacement
+***** File Inclusion
+****** def
+- #include < h-car-sequence >
+- #include " q-char-sequence "
+- #include preprocessor-tokens
+- h-char-sequence:
+  any sequence of characters except > and end-of-line
+- q-char-sequence:
+  any sequence of characters except " and end-of-line
+- preprocessor-tokens:
+  - any sequence of C tokens - or non-whitespace characters
+    that cannot be interpreted as tokens - that does not begin with < or "
+***** Condition Compilation
+****** #if, #else, #endif
+****** #elif
+****** #ifdef, #ifndef
+****** Constant Expressions
+****** defined
+***** Explicit Line Numbering
+****** #line
+***** Pragma Directive
+***** Error Directive
+***** C++ Compatibility
+**** Declarations
+***** Organization of Declarations
+***** Terminology
+****** External Names
+******* external
+****** Compile-Time Names
+***** Storage Class and Function Specifiers
+***** Type Specifiers and Qualifiers
+***** Declarators
+***** Initializers
+***** Implicit Declarations
+***** External Names
+***** C++ Compatibility
+**** Types
+**** Conversions and Representations
+**** Expressions
+**** Statements
+**** Functions
+*** C11
+*** C99
+*** ANSI C, C89
+*** GNU C
 ** standard C library
 - 
   標準Cライブラリ。
@@ -28,10 +253,16 @@
   #include <ctype.h>
   int isalpha(int ch);
 
-*** error.h
+*** errno.h
 
+*** fenv.h
+- added in C99
 *** float.h
 
+*** inttypes.h
+- added in C99
+*** iso646.h
+- added in Amendment 1 to C89
 *** limits.h
 
 *** locale.h
@@ -57,8 +288,11 @@
   void va_end(va_list ap);
   void va_copy(va_list dest, va_list src);
 
+*** stdbool.h
 *** stddef.h
 
+*** stdint.h
+- added in C99
 *** stdio.h
 - 概要
   ストリームおよびファイルの操作に関する型・マクロ・関数の宣言定義
@@ -545,6 +779,8 @@
 - def
   size_t strspn(const char *str, const char *accept);
 
+*** tgmath.h
+- added in C99
 *** time.h
 **** localtime(3), gmtime(3)
 - 
@@ -636,6 +872,10 @@
   | %%   |              | '%'                                             |
   |------+--------------+-------------------------------------------------|
 
+*** wchar.h
+- added in Amendment 1 to C89
+*** wctype.h
+- added in Amendment 1 to C89
 ** library
 *** conio.h
 
@@ -907,22 +1147,197 @@
 - 
   ANSI Cに準拠している場合に1を返す。
 
+** Compiler
+*** clang
+*** GCC, GNU Compiler Collection
+- [[https://www.gnu.org/software/gcc/][GCC, the GNU Compiler Collection]]
+**** Specifications
+***** 6.2
+****** Supported Language
+******* C
+******* C++
+******* Objective-C
+******* Objective-C++
+******* java
+******* Fortran
+******* Ada
+******* Go
+****** Options
+- [[https://gcc.gnu.org/onlinedocs/gcc-6.2.0/gcc/Option-Index.html#Option-Index][Option Index]]
+- [[https://gcc.gnu.org/onlinedocs/gcc-6.2.0/gcc/Option-Summary.html#Option-Summary][3.1 Option Summary]]
+******* About
+- Compilation can involve up to four stages: preprocessing, compilation proper, assembly, and linking, always in that order.
+******** Suffix, Extentions
+********* file.c
+- C source code that must be preprocessed.
+********* file.i
+- C source code that should not be preprocessed
+********* file.ii
+- C++ source code that should not be preprocessed
+********* file.m
+- Objective-C source code. Note taht you must link with the libobjc library to make an Objective-C program work.
+********* file.mi
+- Objective-C source code that should not pe preprocessed.
+********* file.mm, file.M
+********* file.mii
+********* file.h
+- C, C++, Objective-C or Objective-C++ header file to be turned into a precompiled header(default)
+********* file.cc, file.cp, file.cxx, file.cpp, file.CPP, file.c++, file.C
+********* file.M
+********* file.mii
+********* file.hh, file.H, file.hp, file.hxx, file.hpp, file.HPP, file.h++, file.tcc
+********* file.f, file.for, file.ftn
+********* file.F, file.FOR, file.fpp, file.FPP, file.FTN
+********* file.f90, file.f95, file.f03, file.f08
+********* file.F90, file.F95, file.F03, file.F08
+********* file.go
+- Go source code.
+********* file.ads
+********* file.adb
+********* file.s
+- Assembler code.
+********* file.S, file.sx
+- Assembler code that must be preprocesed.
+********* other
+- An object file to be fed straight into linking. Any file name with no recognized suffix is treated this way.
+******* Overall Optoins
+******** -c
+- Compile or assemble the source files, but do not link.
+  By default, the object file name for a source file is made by replacing the suffix '.c' '.i' '.s', etc., with '.o'.
+******** -S
+- Stop after the stage of compilation proper, do not assemble.
+******** -E
+- Stop after the preprocessing stage; do not run the compiler proper.
+******** -o 'file'
+- Place output in file 'file'.
+******** -x 'language'
+******** -x none
+- Turn off any specification of a language, so that subsequent files are handled according to their file name suffixes
+******** -v
+- Print the commands executed to run the stages of compilation.
+******** -###
+******** --help[='class'[,...]]
+******** --target-help
+******** --version
+- Display the version number and copyrights of the invoked GCC.
+******* C Language Options
+******* C++ Language Options
+******* Warning Options
+******** -Wall
+- This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid, even in conjunction with macros.
+
+- -Wall turns on the following warning flags:
+  - -Waddress
+  - -Warray-bounds=1 (only with -02)
+  - -Wbool-compare
+  - -Wc++11-compat
+  - -Wc++14-compat
+  - -Wchar-subscripts
+  - -Wcomment
+  - -Wenum-compare (in C/ObjC; this is on by default in C++)
+  - Wformat
+  - Wimplicit (C and Objective-C only)
+    ...
+******* Debugging Options
+******** -g
+******* Optimization Options
+******** -O, -O1
+- Optimize.
+  Optimizing compilation takes somewhat more time, and alot of more memory for a large furction.
+  The compiler tries to reduce code size and execution time, without performing any optimizations that take a great deal of compilation time.
+
+- -O turnes on the following optimization flags:
+  - -fauto-inc-dec
+  - -fbranch-coount-reg
+  - -fcombine-stack-adjustments
+  - -fcompare-elim
+  - -fcprop-registers
+  - -fdce
+  - -fdefer-pop
+  - -fdelayed-branch
+    ...
+******** -O2
+- Optimize even more.
+  GCC performs nearly all supported optimizations that do not involve a space-speed trade off.
+******** -O3
+- Optimize yet more.
+******** -O0
+- Reduce compilation time and make debugging produce the executed results.
+******** -Os
+******** -Og
+******* Program Instrumentation Options
+******* Preprocessor OPtions
+******* Assembler Options
+******* Linker Options
+******** -l'library' -l 'library'
+- Search the library named 'library' when linking.
+******* Directory Options
+******** -I'dir'
+- Add the directory 'dir' to the head of the list of directories to be searched for header files.
+******** -L'dir'
+- Add directory 'dir' to the list of directories to be searched for -l.
+******* Machine-Dependent Options
+******** ARM
+******** Darwin
+******** GNU/Linux
+******** IA-64
+******** SPARC
+******** System V
+******** VMS
+******** x86
+******** x86 Windows
+**** Link
+- [[https://gcc.gnu.org/onlinedocs/][GCC online documentation]]
+*** Microsoft Visual C++
+*** C++ Builder
+- 前身はBorland C/C++。更に前身はTurbo C/C++。
 ** Link
 - [[http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf][ISO/IEO 9899:1999]]
+- [[https://savedparadigms.files.wordpress.com/2014/09/harbison-s-p-steele-g-l-c-a-reference-manual-5th-ed.pdf][C A REFERENCE MANUAL Fifth Edition (pdf)]]
+- [[https://www.gnu.org/software/gnu-c-manual/][The GNU C Reference Manual]]
+- [[https://www.gnu.org/software/libc/manual/][The GNU C Library]]
 ** Memo
 *** C standard
-- K&R
-  K&R Cは1978年に出版された本がもとになったもの。
-- ANSI C(C89)
+**** K&R, Traditional C
+- K&R Cは1978年に出版された本がもとになったもの。
+**** ANSI C, C89, Standard C(1989)
+- 
   ANSI Cといえば、89年に規定されたものを言うのが普通(C89)。
   K&Rに曖昧な点があったため、ISOとANSIが規格化を進めた。
-- C99
+  - The addition of a truly standard Library
+  - New preprocessor commands and features
+  - Function prototypes, which let you specify hte argument types in a function feclaration
+  - Some new keywords, including const, volatile, and signed.
+  - Wide characters, wide strings, and multibyte characters.
+  - Many smaller changes and clarifications to conversion rules, declarations, and type checking.
+**** C95, C89 with Amendment 1, Stadard C(1995)
+- new features
+  - three new standard library headers: iso646.h, wctype.h, wchar.h
+  - several new tokens and macros
+  - some new formatting codes for the printf/scanf family of functions
+  - a large number of new functions, some types, consonants for multibyte and wide characters.
+**** C99, Standard C(1999)
+- 
   99年に改訂された企画はC99と呼ぶ。
   ISO/IEO 9899:1999(E)
-  
+- new features
+  - complex arithmetic
+  - extentions to the integer types, including a longer standard type
+  - variable-length arrays
+  - a Boolean type
+  - better support for non-English character sets
+  - better support for floating point types, including math functions for all types
+  - C++ style comments (//)
+
 - C11(C2011)
   2011年の改訂版はC2011(C11)。
   ISO/IEO 9899:2011
+*** Clean C
+- the common subset of the Standard C and C++ languages.
+  the code can be compiled either as a C program or a C++ program.
+- example consideration:
+  - Clean C programs must use function prototypes. Old-stype declarations are not perimtted in C++.
+  - Clean C programs must avoid using names that are reserved words in C++, like class and virtual.
 *** ファイルディスクリプタとFILE
 - 
   FILEは生のストリームにバッファ機能を追加する層で、
