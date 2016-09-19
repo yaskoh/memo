@@ -159,6 +159,8 @@
 ******* SecurityManager
 ******* Short
 ******* StackTraceElement
+******** Constructors
+******** Methods
 ******* StrictMath
 ******* String
 ******* StringBuffer
@@ -166,7 +168,18 @@
 ******* System
 - The System class contains several useful class fields and methods.
 ******** Field
+********* err
+- static PrintStream err
+  The "standard" error output stream.
+********* in
+- static InputStream in
+  The "standard" input stream.
+********* out
+- static PrintStream out
+  The "standard" output stream.
 ******** Method
+********* console
+- static Console console()
 ********* getProperties()
 - static Properties
 ********** Keys
@@ -214,7 +227,15 @@
 ******* ThreadGroup
 ******* ThreadLocal<T>
 ******* Throwable
+- public class Throwable extends Object implements Serializable
 - The Throwable class is the superclass of all errors and exceptions in the Java language.
+******** Constructors
+******** Methods
+********* getStackTrace
+- public StackTraceElement[] getStackTrace()
+- 
+  Provides programmatic access to the stack trace information printed by printStackTrace().
+  Returns an array of stack trace elements, each representing one stack frame.
 ******* Void
 ****** Enum
 ****** Exception
@@ -246,6 +267,7 @@
 ******* File
 ******* FileDescripter
 ******* FileInputStream
+- public class FileInputStream extends InputStream
 - FileInputStreamは、ファイルシステム内のァイルから入力バイトを取得する。
   どのファイルが有効であるかはホスト環境に依存する。
   イメージデータなどのrawバイトのストリームを読み込む時に使用する。
@@ -260,9 +282,64 @@
 ********* available()
 ********* close()
 ********* finalize()
+********* read()
+- public int read() throws IOException
+- Reads a byte of data from this input stream. This method blocks if no input is yet available.
+- Returns
+  the next byte of data, or -1 if end of the file is reached.
 ******* FileOutputStream
+******** Constractors
+********* FileOutputStream(File file)
+********* FileOutputStream(File file, boolean append)
+********* FileOutputStream(FileDescriptor fdObj)
+********* FileOUtputStream(String name)
+- Creats a file output stream to write to the file with the specified name.
+********* FileOUtputStream(String name, boolean append)
+******** Methods
+********* 
 ******* FileReader
 ******* FileWriter
+******* InputStream
+- public abstract class InputStream extends Object implements Closeable
+- This abstract class is the superclass of all classes representing an input stream of bytes.
+******** Constructors
+********* InputStream()
+******** Methods
+********* write(byte[] b)
+- Writes b.length bytes from the specified byte array to this output stream.
+********* write(byte[] b, int off, int len)
+********* write(int b)
+******* OutputStream
+- public abstract class OutputStream extends Object implements Closeable, Flushable
+******** Constructors
+********* OutputStream()
+******** Methdos
+********* read()
+- abstract int read()
+********* read(byte[] b)
+- reads some number of bytes from the input stream and stores them into the buffer array b.
+********* read(byte[] b, int off, int len)
+******* PrintStream
+******** Def
+- java.lang.Object > java.io.OutputStream > java.io.FilterOutputStream > java.io.PrintStream
+- Implemented Interfaces:
+  Closeable, Flushable, Appendable, AutoCloseable
+- 
+******** Constructors
+********* PrintStream(File file)
+********* PrintStream(File file, String csn)
+********* PrintStream(OutputStream out)
+********* PrintStream(OutputStream out, boolean autoFlush)
+********* PrintStream(OutputStream out, boolean autoFlush, String encoding)
+********* PrintStream(String fileName)
+- Creates a new print stream, without automatic line flushing, with the specified line name.
+********* PrintStream(String fileName, String csn)
+- Creates a new print stream, without automatic line flushing, with the specified line name and charset.
+******** Methods
+********* println(char x)
+********* println(char[] x)
+********* println(String x)
+- Prints a String and then terminate the line.
 ****** Exception
 ******* IOException
 ****** Error
@@ -319,8 +396,33 @@
 ********* ServerSocket(int port, int backlog)
 - サーバー・ソケットを作成し、指定された
 ********* ServerSocket(int port, int backlog, InetAddress bindAddr)
+******** Methods
+********* accept()
+- public Socket accept() throws IOException
+  Listens for a connection to be made to this socket and accepts it.
+- Returns:
+  the new Socket
+- Throws:
+  - IOException
+  - SecurityExceptoin
+  - SocketTimeoutException
+  - IllegalBlockingModeException
+
 ******* Socket
+******** Def
+- public class Socket extends Object implements Closeable
+- java.langObject
+- Implemented Interfaces:
+  Closeable, AutoCloseable
 - クライアント・ソケットを実装する。
+******** Constructors
+******** Methods
+********* getInputStream()
+- InputStream getInputStream()
+  Returns an input stream for this socket.
+********* getOutputStream()
+- OutputStream getOutputStream()
+  Returns an output stream for this socket.
 ******* SocketAddress
 - プロトコルに関連付けられていないソケット・アドレスを表す
 ******* SocketImpl
@@ -834,6 +936,14 @@
 - ex)
   package abc.def, file abc/def/main.classの場合、
   その上のフォルダで"java abc.def.main"と実行する。
+*** 例外
+- チェック例外・非チェック例外
+  - チェック例外(Exception) : 例外が発生した場合にcatch節で補足し処理するか、throws句を記述しないとコンパイルエラーが発生するため、例外発生時の対処をプログラムで矯正される例外。
+  - 非チェック例外(RuntimeException) : 通常、例外が発生した灰にcatch節やthrow区で対応しない/してはならない例外。
+- 発生状況別
+  - 論理例外 : アプリケーションで論理的に発生しうる例外。補足して処理する。
+  - システム例外 : システムが正常に動作する条件が整っていない場合や、連携する外部アプリケーションのエラーに起因する例外。アプリケーションで処理しない/処理しても意味がない。
+  - プログラムエラー : コーデイングの間違い、連携するAPIの使用方法の間違いなど。本来的に発生しない者なので、対処しても意味がないエラー。
 *** temp
 **** 文字列の連結
 - 

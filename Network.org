@@ -772,39 +772,195 @@
 ****** Specification
 ******* HTML 1.1
 ******** RFC7230 - Message Syntax and Routing
+********* Architecture
+********* Message Fromat
+********** Def 
+- HTTP-message = start-line
+                 *( header-field CRLF )
+                 CRLF
+                 [ message-body ]
+********** Start Line
+- start-line = request-line / status-line (depends on requests / responses)
+*********** Request Line
+************ Def
+- request-line = method SP request-target SP HTTP-version CRLF
+*********** Status Line
+************ Def
+- status-line = HTTP-version SP status-code SP reason-phrase CRLF
+- status-code = 3DIGIT
+- reason-phrase = *( HTAB / SP / VCHAR / obs-text )
+********** Header Fields
+*********** Def
+- header-field = field-name ":" OWS field-value OWS
+
+- field-name = token
+- field-value = *( field-content / obs-fold )
+- field-content = field-vchar [ 1*(SP / HTAB ) field-vchar ]
+- field-vchar = VCHAR / obs-text
+
+- obs-fold = CRLF 1*( SP / HTAB )
+
+*********** Field Extensibility
+*********** Field Order
+*********** Whitespace
+- OWS : optional whitespace
+- RWS : required whitespace
+- BWS : "bad" whitespace
+*********** Field Parsing
+*********** Field Limits
+*********** Field Value Components
+********** MessageBody
+*********** Transfer-Encoding
+*********** Content-Length
+*********** Message Body Length
+********** Handling Incomplete Messages
+********** Message Parsing Robustness
+********* Transfer Coding
+********* Message Routing
+********* Connection Management
+********* ABNF List Extension
+********* IANA Considerations
+********* Security Considerations
 ******** RFC7231 - Semantics and Content
+********* Representations
+********* Request Methods
+********** Method Definitions
+*********** GET
+*********** HEAD
+*********** POST
+*********** PUT
+*********** DELETE
+*********** CONNECT
+*********** OPTIONS
+*********** TRACE
+********* Request Header Fields
+********** Controles
+*********** Excpect
+*********** Max-Forwards
+*********** Cache-Control (Defined in RFC7234)
+*********** Host (Defined in RFC7230)
+*********** Pragma (Defined in RFC7234)
+*********** Range (Defined in RFC7233)
+*********** TE (Defined in RFC7230)
+********** Conditionals
+*********** If-Match (Defined in RFC7232)
+*********** If-None-Match (Defined in RFC7232)
+*********** If-Modified-Since (Defined in RFC7232)
+*********** If-Unmodified-Since (Defined in RFC7232)
+*********** If-Range (Defined in RFC7233)
+********** Content Negotiation
+*********** QUality Values
+*********** Accept
+*********** Accept-Charset
+*********** Accept-Encoding
+*********** Accept-Language
+********** Authentication Credentials
+*********** Authorization (Defined in RFC7235)
+*********** Proxy-Authorization (Defined in RFC7235)
+********** Request Context
+*********** Form
+*********** Referer
+*********** User-Agent
+********* Response Status Codes
+********** Informational 1xx
+*********** 100 Continue
+*********** 101 Switching Protocols
+********** Successful 2xx
+*********** 200 OK
+*********** 201 Created
+*********** 202 Accepted
+*********** 203 Non-Authoritative Information
+*********** 204 No Content
+*********** 205 Reset Content
+*********** 206 Partial Content (Defined in RFC 7233)
+********** Redirection 3xx
+*********** 300 Multiple Choices
+*********** 301 Moved Permanently
+*********** 302 Found
+*********** 303 See Other
+*********** 304 Not Modified (Defined in RFC 7232)
+- document has not been modified.
+*********** 305 Use Proxy
+*********** 306 (Unused)
+*********** 307 Temporary Redirect
+********** Client Error 4xx
+*********** 400 Bad Request
+*********** 401 Unauthorized (Defined in RFC 7235)
+*********** 402 Payment Required
+*********** 403 Forbiden
+*********** 404 Not Found
+*********** 405 Method Not Allowed
+*********** 406 Not Acceptable
+*********** 407 Proxy Authentication Required (Defined in RFC 7235)
+*********** 408 Request Timeout
+*********** 409 Conflict
+*********** 410 Gone
+*********** 411 Length Required
+*********** 412 Precondition Failed (Defined in RFC 7232)
+*********** 413 Payload Too Large
+*********** 414 URI Too Long
+*********** 415 Unsupported Media Type
+*********** 416 Range Not Satisfiable (Defined in RFC 7233)
+*********** 417 Expectation Failed
+*********** 426 Upgrade Required
+********** Server Erorr 5xx
+*********** 500 Internal Server Error
+*********** 501 Not Implemented
+*********** 502 Bad Gateway
+*********** 503 Service Unavailable
+*********** 504 Gateway Timeout
+*********** 505 HTTP Version Not Supported
+********* Response Header Fields
+********** Control Data
+*********** Origination Date
+************ Date/Time Formats
+************ Date
+- Def
+  - Date = HTTP-date
+- Exapmle
+  - Date: Tue, 15 Nov 1994 08:12:31 GMT
+*********** Location
+- Def
+  Location = URI-reference
+*********** Retry-After
+- Def
+  Retry-After = HTTP-date / delay-seconds
+*********** Vary
+*********** Age (Defined in RFC7234)
+*********** Cache-Control (Defined in RFC7234)
+*********** Expires (Defined in RFC7234)
+*********** Warning (Defined in RFC7234)
+********** Validator Header Fields
+*********** ETag (Defined in RFC7232)
+*********** Last-Modified (Defined in RFC7232)
+********** Authentication Challenges
+*********** WWW-Authenticate (Defined in RFC7235)
+*********** Proxy-Authenticate (Defined in RFC7235)
+********** Response Context
+*********** Allow
+*********** Server
+- Def
+  Server = product *( RWS ( product / comment ))
+- Example
+  Server: CERN/3.0 libwww/2.17
+*********** Accept-Ranges (Defined in RFC7233)
+********* IANA Considerations
+********* Security Considerations
 ******** RFC7232 - Conditional Requests
 ******** RFC7233 - Range Requests
 ******** RFC7234 - Caching
 ******** RFC7235 - Authentication
-****** Status
-******* Informational 1xx
-
-******* Successful 2xx
-
-******** 200 OK
-
-******** 204 No Content
-
-******* Redirection 3xx
-******** 302 Found
-
-******** 304 Not Modified
-- 
-  document has not been modified.
-
-******* Client Error 4xx
-
-******** 403 Forbiden
-
-******** 404 Not Found
-
-******* Server Erorr 5xx
-
-******** 500 Internal Server Error
-
 ****** Link
 - [[https://triple-underscore.github.io/RFC723X-ja.html][Hytertext Transfer Protocol (HTTP/1.1) - RFC 7230 〜 7235 - 日本語訳]]
+
+- [[https://tools.ietf.org/html/rfc7230][RFC7230 HTTP/1.1 Message Syntax and Routing]]
+- [[https://tools.ietf.org/html/rfc7231][RFC7231 HTTP/1.1 Semantics and Content]]
+- [[https://tools.ietf.org/html/rfc7232][RFC7232 HTTP/1.1 Conditional Requests]]
+- [[https://tools.ietf.org/html/rfc7233][RFC7233 HTTP/1.1 Range Requests]]
+- [[https://tools.ietf.org/html/rfc7234][RFC7234 HTTP/1.1 Caching]]
+- [[https://tools.ietf.org/html/rfc7235][RFC7235 HTTP/1.1 Authentication]]
+
+- [[https://www.w3.org/Protocols/rfc2616/rfc2616.html][RFC2616 Hypertext Transfer Protocol -- HTTP/1.1]]
 - https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html
 
 ***** IMAP

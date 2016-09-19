@@ -171,8 +171,22 @@
 - http://httpd.apache.org/docs/2.4/mod/
 **** Settings
 ***** httpd.conf
+****** TypesConfig
+- mimeタイプと拡張子の組み合わせを設定するファイルパスの指定
+  デファルトで設定されたファイル名はmime.types
+****** AddType
+- MIMEタイプを追加する。
+  例 : AddType MIMEタイプ 拡張子
+****** CustomLog
+- ログファイルの位置を設定する。
+  例 : CustomLog ログファイルの場所 ログファイルのフォーマット
+  
 ***** .htaccess
 - this files provide a way to make configuration changes on a per-directory basis.
+***** mime.types
+- MIMEタイプと拡張子の組み合わせを設定する。
+  httpd.confファイル中の"TypesConfig"でパスを設定している。
+  httpd.confファイル内で、AddTypeを行いMIMEタイプを追加することも可能。
 **** Command
 ***** httpd
 ****** -k
@@ -263,8 +277,14 @@
 - 
   ビッグデータの分析に使われるcloudサービス。
 
+** CI
+*** Jenkins
+*** TravisCI
+*** CircleCI
+*** Wercker
 ** Testing
 *** JUnit
+- [[file:UnitTest.org][UnitTest.org]]
 ** Memory
 *** valgrid
 - programming tool for memory debuging, memory leak detection, and profiling.
