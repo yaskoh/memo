@@ -1,0 +1,5 @@
+* Architecture
+** Link
+- [[https://coderwall.com/p/vmsa0g/10-papers-every-programmer-should-read-at-least-twice-with-links][10 Papers Every Programmer Should Read at Least Twice (with links!) by Michael Feathers - Coderwall]]
+- [[http://rgoarchitects.com/wiki/pmwiki.php?n=Main.ArchPapers][Papers software architects should read at least twice - Pmwiki]]
+- [[http://blog.fogus.me/2011/09/08/10-technical-papers-every-programmer-should-read-at-least-twice/][10 Technical Papers Every Programmer Should Read (At Least Twice) - Send More Paramedics]]
