@@ -1,6 +1,68 @@
 * Java
 ** Language Specification
 - [[file:Java_LangSpec.org][Java_LangSpec.org]]
+** History
+*** Java 8
+**** ラムダ式（クロージャ）
+**** ForEachメソッド、メソッド参照
+**** Stream API
+**** Optionalクラス
+**** インターフェースのデフォルトメソッド
+**** 新Time API
+**** Link
+- [[http://www.oracle.com/technetwork/jp/java/javase/overview/8-compatibility-guide-2156366-ja.html][JDK 8の互換性ガイド - ORACLE]]
+- [[http://qiita.com/Usek/items/8f689d9ad59c0c441626][今更人に聞けないJava5からの新機能(Java SE 8) - Qiita]]
+*** Java 7
+**** NIO2
+**** Fork/Join Framework
+**** try-with-resources
+**** ダイヤモンド記法
+- Example
+  List<String> l = new ArrayList<>()
+**** 例外のマルチキャッチ
+- Example
+  try {
+      ...
+  } catch(IOException | ClassNotFoundException e) {
+      //IOException or ClassNotFoundException
+  }
+**** switchの文字列使用
+- Example
+  switch (test) {
+  case "a": case "b":
+      System.out.println("a or b");
+      break;
+  case "test":
+      ...
+  default:
+      ...
+  }
+**** Link
+- [[http://www.oracle.com/technetwork/java/javase/compatibility-417013.html][Java SE 7 and JDK 7 Compatibility - ORACLE]]
+- [[http://qiita.com/Usek/items/3b0ae76a08d2f1678884][今更人に聞けないJava5からの新機能(Java SE 7) - Qiita]]
+*** Java 6
+**** Link
+- [[http://www.oracle.com/technetwork/java/javase/compatibility-137541.html][Compatibility - ORACLE]]
+*** Java 5.0
+**** Genericsの追加
+**** ワイルドカード
+**** Autoboxingの追加
+**** enumの追加
+**** 拡張For文の追加
+- 配列もしくはIterableインターフェースを実装したクラスのオブジェクトに適用可能。
+**** Annotation
+**** Concurrency Utilities
+**** 可変長引数
+**** static import
+**** Link
+- [[http://qiita.com/Usek/items/3ff30e7a1a87ba64cb58][今更人に聞けないJava5からの新機能(J2SE 5.0) - Qiita]]
+*** Java 1.4
+*** Java 1.3
+*** Java 1.2
+*** Java 1.1
+*** Java 1.0
+*** Link
+- [[https://risaiku.net/archives/1764/][昔のソースコードのリファクタリングでJava 15年間の歴史(Java 1.3～Java 8)を一気に把握！ - risaiku リサイク]]
 ** Java Platform
 *** Edition
 **** Java SE
@@ -890,6 +952,8 @@
 - [[http://docs.oracle.com/javase/8/docs/api/][Java™ Platform, Standard Edition 8 API Specification]]
 - [[http://docs.oracle.com/javase/jp/8/docs/api/][Java(tm) Platform, Standard Edition 8 API仕様]]
 - [[http://docs.oracle.com/javase/tutorial/java/index.html][The Java Tutorials]]
+
+- [[http://www.jpcert.or.jp/java-rules/][Java セキュアコーディングスタンダード CERT/Oracle 版 - JPCERT]]
 ** Memo
 *** リソース付きtry
 - 

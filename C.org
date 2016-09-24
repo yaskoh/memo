@@ -1296,6 +1296,9 @@
 - [[https://savedparadigms.files.wordpress.com/2014/09/harbison-s-p-steele-g-l-c-a-reference-manual-5th-ed.pdf][C A REFERENCE MANUAL Fifth Edition (pdf)]]
 - [[https://www.gnu.org/software/gnu-c-manual/][The GNU C Reference Manual]]
 - [[https://www.gnu.org/software/libc/manual/][The GNU C Library]]
+
+- [[http://www.jpcert.or.jp/sc-rules/][CERT C コーディングスタンダード - JPCERT]]
+
 ** Memo
 *** C standard
 **** K&R, Traditional C

@@ -1,61 +1,34 @@
 * Vagrant
-** command
-*** ssh
+** command line interface
+*** box
+**** add [box-name] [box-url]
+- Boxを追加する
+
+**** list
+- Boxが追加されたことを確認する
+
+**** outdated
+**** remove [box-name]
+- いらなくなったBoxの削除を行う
+
+**** package
+**** update
+*** connect
+*** distroy
 - 
-  仮想マシンにssh接続する
+  仮想マシンを廃棄する
+
+*** global-status
+*** halt
+- 
+  仮想マシンをシャットダウンする
 
 *** init
 - 
   仮想マシンの定義ファイルを作成する
   vagrant init [box-name] [box-url]
 
-*** distroy
-- 
-  仮想マシンを廃棄する
-
-*** up
-- 
-  仮想マシンを起動する
-
-*** halt
-- 
-  仮想マシンをシャットダウンする
-
-*** reload
-- 
-  仮想マシンを再起動する
-
-*** suspend
-- 
-  仮想マシンを一時中断する
-
-*** resume
-- 
-  一時停止(suspend)からの復帰
-
-*** status
-- 
-  仮想マシンの状態を確認する
-
-*** ssh-config
-- 
-  仮想マシンのSSH情報を確認する
-
-*** provision
-- 
-  プロビジョニングを行う。
-
-*** box
-
-- add [box-name] [box-url]
-  Boxを追加する
-
-- list
-  Boxが追加されたことを確認する
-
-- remove [box-name]
-  いらなくなったBoxの削除を行う
-
+*** login
 *** package
 - 
   作業中のマシンをBox化する
@@ -73,12 +46,50 @@
   - off
   - rollback
 
+*** port
+*** powershell
+*** provision
+- 
+  プロビジョニングを行う。
+
+*** rdp
+*** reload
+- 
+  仮想マシンを再起動する
+
+*** resume
+- 
+  一時停止(suspend)からの復帰
+
+*** share
+*** snapshot
+*** ssh
+- 
+  仮想マシンにssh接続する
+
+*** ssh-config
+- 
+  仮想マシンのSSH情報を確認する
+
+*** status
+- 
+  仮想マシンの状態を確認する
+
+*** suspend
+- 
+  仮想マシンを一時中断する
+
+*** up
+- 
+  仮想マシンを起動する
+
 *** version
 - 
   show the version of Vagrant installed on my computer.
-  
-** network
-
+** vagrantfile
+** boxes
+** provisioning  
+** networking
 *** 種類
 - プライベートネットワーク
   ホストOSとゲストOS間でのみ通信が行える。
@@ -107,8 +118,10 @@
 - 内部ネットワーク
 - ホストオンリーアダプタ
 - 汎用アダプタ
-
 ** setting
+*** environment variables
+**** VAGRANT_HOME
+- vagrantのホームディレクトリ
 *** node
 - 
   一台でなく、複数ノードを設定できる。
@@ -148,3 +161,6 @@
   Vagrantfileが設置されているフォルダ、
   および/vagrantが共有フォルダとして使用できる。
 
+** link
+- [[https://www.vagrantup.com/docs/][VAGRANT DOCUMENTATION]]
+- [[https://atlas.hashicorp.com/boxes/search][Vagrant Boxes - Atlas]]

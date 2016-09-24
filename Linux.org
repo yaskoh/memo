@@ -446,7 +446,68 @@
 - -h, --hash
   Print 50 hash marks as the package archive is unpacked.
   
-*** packman
+*** pacman
+- Package manager on Arch, and MSYS2
+**** Synopsis
+- pacman <operation> [option] [targets]
+**** Operations
+***** -D, --database
+- Operate on the package database.
+***** -Q, --query
+- Query the package database.
+  This operation allws you to view installed package and their files, as well as meta-information about individual packages.
+***** -R, --remove
+- Remove package(s) from the system.
+***** -S, --sync
+- Synchronize packages.
+***** -T, --deptest
+- Check dependencies; this is useful in scripts such as makepkg tocheck installed packages.
+***** -U, --upgrade
+- Upgrade or add package(s) to the system and instal the required dependencies from sync repositories.
+***** -F, --files
+- Query the files database. This operation allows you to look for packages owing certain files or display files owned by certain packages.
+***** -V, --version
+***** -h, --help
+**** Options
+***** Options
+****** -b, --dbpath <path>
+****** -r, --root <paht>
+****** -v, --verbose
+****** --arch <arch>
+***** Transaction Options (apply to -S, -R and -U)
+***** Upgrade Options (apply to -S and -U)
+***** Query Options
+****** -c, --changelog
+- View the ChangeLog of a package if it exists.
+****** -l, --list
+- List all files owned by a geven package.
+  Multiple packages can be specified on the command line.
+****** -u, --upgrades
+- Restrict or filter output to packages that are out-of-date on the local system.
+***** Remove Options
+****** -c, --cascade
+- Remove all target packages, as well as all packages that depend on one or more target packages.
+****** -r, --recursive
+- Remove each target specified including all of their dependencies.
+***** Sync Options
+****** -y, --refresh
+- Download a fresh copy of the master package database from the server(s) defined in pacman.conf.
+  This should typically be used each time you use --sysupgrade or -u.
+****** -u, --sysupgrade
+- Upgrades all packages that are out-of-date.
+  Each currently-installed package will be examined and upgraded if a newer package exists.
+***** Database Options
+***** File Options
+****** -y, --refresh
+****** -l, --list
+- List the files owned by the queried package.
+****** -s, --search
+****** -x, --regex
+****** -o, --owns
+****** -q, --quiet
+**** Link
+- [[https://www.archlinux.org/pacman/pacman.8.html][pacman(8) Manual Page]]
+- [[https://wiki.archlinuxjp.org/index.php/Pacman][pacman - archlinux]]
 ** Memo
 *** アクセス権の補助フラグ
 **** suid

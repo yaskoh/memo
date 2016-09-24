@@ -434,10 +434,102 @@
 ***** フォント
 - フォントをここに置くと適用される。
 *** Registry
+**** Structure
+***** HKEY_CLASSES_ROOT
+- HKCR
+  HKEY_LOCAL_MACHINE\Softwareのサブキー。
+  エクスプローラを使用してファイルを開くときに正しいプログラムを起動するための情報が格納される。
+***** HKEY_CURRENT_USER
+- HKCU
+  現在ログオンしているユーザの構成情報のルートが格納されている。
+  現在ログオンしているユーザのフォルダ、画面の色、コントロールパネル設定などが格納される。
+  HKEY_USERSのサブキー。
+***** HKEY_LOCAL_MACHINE
+- HKLM
+  コンピュータに固有の構成情報が格納される。
+****** SOFTWARE
+****** SYSTEM
+******* CurrentControlSet
+******** Control
+********* Keyboard Layout
+********* Keyboard Layouts
+
+***** HKEY_USERS
+- HKU
+  コンピュータ上に読み込まれた有効なユーザプロファイルがすべて格納される。
+***** HKEY_CURRENT_CONFIG
+- 
+  システムの起動時にローカルコンピュータにより使用されるハードウェアプロファイルに関する情報が格納されている。
+**** Type
+- REG_BINARY
+  バイナリ値
+- REG_SZ
+  文字列値。改行を含まない固定長文字列
+- REG_EXPAND_SZ
+  展開可能な文字列値。環境変数で展開される文字列(%~%)
+- REG_MULTI_SZZ
+  複数行文字列。改行を含む文字列
+- REG_DWORD
+  DWORD(32bit)値。32bit符号なし整数値
+- REG_QWORD
+  QWORD(64bit)値。64bit符号なし整数値
+**** Tips
+***** Dvorak
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\00000411
+  KBDJPN.DLL -> KBDDV.DLL
+***** caps<->ctrl
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout\Scancode Map(なければ作成)
+- 値のデータ
+  00 00 00 00 00 00 00 00
+  03 00 00 00 1D 00 3A 00
+  3A 00 1D 00 00 00 00 00 
+  
+- 内容
+  00 00 00 00 : header version[4byte]
+  00 00 00 00 : flags[4byte]
+  03 00 00 00 : エントリ数、terimnate含む
+  3A 00 1D 00 : 3A 00 -> 1D 00
+  1D 00 3A 00 : 1D 00 -> 3A 00
+  00 00 00 00 : terminate
+
+- Keycode(106 keyboard)
+  - ESC : 00 01
+  - TAB : 00 0F
+  - CapsLock : 00 3A
+  - 左Shift : 00 2A
+  - 右Shift : 00 36
+  - 左Alt : 00 38
+  - 右Alt : E0 38
+  - 左Ctrl : 00 1D
+  - 右Ctrl E0 1D
+   
+- Link
+  [[http://uguisu.skr.jp/Windows/winCaps.html][「Caps」と「Ctrl」の入れ替え]]
+**** Link
+- [[https://support.microsoft.com/ja-jp/kb/256986][上級ユーザー向けの Windows レジストリ情報 - Microsoft]]
+- [[http://www.akadia.com/services/windows_registry_tutorial.html][Windows Registry Tutorial]]
+- 
 ** DOS
 *** DOSエクステンダー
 *** DPMI
-** memo
+** Tools
+*** MSYS2
+**** pacman
+- [[file:Linux.org][Linux.org(PackageManagement/pacman参照)]]
+**** Memo
+***** PATHを引き継ぐ
+- Windowsの環境変数"MSYS2_PATH_TYPE"にinheritを設定すると、設定が引き継がれる。
+  [[http://chirimenmonster.github.io/2016/05/09/msys2-path.html][MSYS2でPATHが引き継がれない - めもらんだむ]]
+**** Link
+- [[https://msys2.github.io/][MSYS2 installer]]
+*** Cygwin
+**** Command
+***** Cygutils
+****** cygstart
+- start a program or open a file or URL
+  
+** Link
+** Memo
 *** ACL
 - 
   アクセス制御リスト(Access Control List)。
@@ -469,6 +561,8 @@
   [[http://blogs.technet.com/b/meacoex/archive/2011/08/15/reset-your-windows-sever-2008-r2-domain-controller-administrator-password.aspx][Reset your Windows Server 2008 / R2 Domain Controller administrator password - MEA Center of Expertise]]
   [[http://level69.net/archives/752][Windows Server 2012のパスワードを初期化しよう。- 技術的な何か。]]
   
+*** コントロールパネルをコマンドから開く
+- [[http://pasofaq.jp/windows/admintools/cpllist7.htm][コントロールパネルのコマンド一覧(Windows 7)]]
 *** Thumbs.db
 - 
   エクスプローラで縮小表示を行うと、画像や写真データの縮小イメージが格納されたThumbs.dbが作成される。
@@ -569,20 +663,16 @@
 
 *** (聞いた話メモ)
 - 
-  
-- 
   ntoskrnl.exe
   カーネル本体
 
 - 
   Hardware abstraction の下にBIOSがいる。
   
-
 - 
   Ntdll.dll
   Kernel32.dll
   Win32
-
 
 - 
   起動プロセス

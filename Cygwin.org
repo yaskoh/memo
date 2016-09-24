@@ -1,7 +1,0 @@
-* Cygwin
-** Command
-*** Cygutils
-**** cygstart
-- start a program or open a file or URL
-  
-  
