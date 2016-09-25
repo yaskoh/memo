@@ -1,0 +1,56 @@
+* Memo
+** Priority
+- Webapplication
+  - Web Server
+  - Security
+  - JS
+    - SPA
+  - Rails
+
+- Java
+  - JavaEE
+  - JUnit
+    - Jenkins
+      - Ansible
+      - Docker
+        - CoreOS
+          - Linux
+            - Kernel
+              - CPU
+            - API
+        - Gentoo
+        - LFS
+  - Effective Java
+  - Design Pattern
+
+- C
+  - Makefile
+
+- Bacics
+  - Algorithm
+  - Machine Learring
+    - Linear algebra
+      - Mathematics
+  - Lanugage(Compiler)
+  - OS
+  - SICP
+  - Infra
+    - Network
+  - Security
+  - Design
+
+- Language
+  - Go
+  - Rust
+  - Haskell
+
+** Lang
+- Use
+  - Python
+
+- Learn
+  - JS
+  - C++
+  - Go
+  - Rust
+  - Elixir
