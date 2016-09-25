@@ -1,4 +1,15 @@
 * C++
 ** Memo
 *** Standard C++
-- ISO/IEC 14822:1998
+- C++17 : 2017年予定
+- C++14 : ISO/IEC 14882:2014 (2014/12/15)
+- C++11 : ISO/IEC 14882:2011 (2011/9/1)
+- C++TR1 : ISO/IEC 14882:2007 (2007/11/15)
+- C++03 : ISO/IEC 14882:2003 (2003/10/16)
+- C++98 : ISO/IEC 14882:1998 (1998/9/1)
+
+** Link
+- [[https://isocpp.org/std/the-standard][The Standard - THE C++ PROGRAMMING LANGUAGE]]
+
+- [[http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4296.pdf][(Afetr 2014)N4296 Working Draft, Standard for Programming Language C++ / 2014-11/19]]
+- [[http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3337.pdf][(After 2011)N3337 Working Draft, Standard for Programming Laguage C++ / 2012-01-16]]

@@ -915,11 +915,17 @@
 *********** Origination Date
 ************ Date/Time Formats
 ************ Date
+- Requrements
+  - the sender SHOULD generate its field value
+  - An origin serever MUST NOT send a Data header field if it does not have a approximate time.
+    An origin server MAY send a Data header field if the response is in the 1xx or 5xx class of status code.
+    An origin server MUST send a Date header field in all other class.
 - Def
   - Date = HTTP-date
 - Exapmle
   - Date: Tue, 15 Nov 1994 08:12:31 GMT
 *********** Location
+- Requirements
 - Def
   Location = URI-reference
 *********** Retry-After
@@ -939,6 +945,8 @@
 ********** Response Context
 *********** Allow
 *********** Server
+- Requirements
+  - An origin server MAY generate a Server field in its responses.
 - Def
   Server = product *( RWS ( product / comment ))
 - Example
@@ -947,7 +955,52 @@
 ********* IANA Considerations
 ********* Security Considerations
 ******** RFC7232 - Conditional Requests
+********* Validation
+********** Last-Modified
+- Def
+  Last-modiified = HTTP-date
+- Example
+  Last-Modified: Tue, 15 Nov 1994 12:45:26 GMT
+*********** Generation
+- An origin server SHOULD send Last-Modified for any selected representation
+********** ETag
+- About
+  a response provided the current entity-tag for the selected representation
+- Def
+  - ETag = entity-tag
+  - entity-tag = [ weak ] opaque-tag
+  - weak = %x57.2F;"W/",case-sensitive
+  - opaque-tag = DQUOTE *etagc DQUOTE
+  - etagc = %x21 / %23-7E / obs-text
+*********** Generation
+- An origin server SHOULD send an ETag for any selected representation
+********* Precondition Header Fields
+********** If-Match
+********** If-None-Match
+********** If-Modified-Since
+********** If-Unmodified-Since
+********** If-Range
+********* Status Code Definitions
+********** 304 Not Modified
+********** 412 Precondition Failed
+********* Evaluation
+********* Precedence
+********* IANA Considerations
+********* Security Considerations
 ******** RFC7233 - Range Requests
+********* Range Units
+********** Byte Ranges
+********** Other Range Units
+********** Accept-Ranges
+- Def
+  - Accept-Ranges = acceptable-ranges
+  - acceptable-ranges = 1#range-unit / "none"
+********* Range Requests
+********** Range
+********** If-Range
+********* Responses to a Range Request
+********* IANA Considerations
+********* Security Considerations
 ******** RFC7234 - Caching
 ******** RFC7235 - Authentication
 ****** Link

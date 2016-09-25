@@ -1,5 +1,224 @@
 * C
 ** Specification
+*** C11
+**** Language
+***** Notation
+***** Concepts
+***** Conversions
+****** Arithmetic operands
+******* Boolean, characters, integers
+******* Boolean
+******* Signed and unsigned integers
+******* Real floating and integer
+******* Real floating types
+******* Complex types
+******* Real and
+****** Other operands
+***** Lexical elements
+****** About
+******* Syntax
+- token:
+  - keyword
+  - identifier
+  - constant
+  - string-literal
+  - punctuator
+- preprocessing-token:
+  - header-name
+  - identifier
+  - pp-number
+  - character-constant
+  - string-literal
+  - punctuator
+****** Keywords
+******* Syntax
+- keyword: one of
+  auto break case char const continue default do double else enum extern float for goto
+  if inline int long register restrict return short signed sizeof static struct switch typedef union
+  unsigned void volatile while _Alignas _Alignof _Atomic _Bool _Complex _Generic _Imaginary _Noreturn _Static_assert _Thread_local
+****** Identifiers
+******* General
+******* Predefined identifiers
+****** Universal character names
+****** Constants
+******* Integer constants
+******* Floating constants
+******* Enumeration constants
+******* Character constants
+****** String literals
+****** Punctuators
+****** Preprocessing numbers
+***** Expressions
+****** Primary expresions
+****** Postfix operators
+******* Arary subscripting
+******* Function calls
+****** Unary operatiors
+****** Cast operators
+****** Multiplicative operators
+****** Additive operators
+****** Bitwise shift operators
+****** Relational operators
+****** Equality operators
+****** Bitwise AND operator
+****** Bitwise OR operator
+****** Logical AND operator
+****** Logical OR operator
+****** Conditional operator
+****** Assignment operators
+****** Comma operator
+***** Constant expressions
+***** Declarations
+****** Syntax
+- declaration:
+  - declaration-specifiers init-declarator-list(opt) ;
+- declaration-specifiers:
+  - storage-class-specifier declaration-specifiers(opt)
+  - type-specifier declaration-specifiers(opt)
+  - type-qualifier declaration-specifiers(opt)
+  - function-specifier declaration-specifiers(opt)
+- init-declaratior-list:
+  - init-declarator
+  - init-declarator-list , init-declarator
+- init-declarator:
+  - declarator
+  - declarator = initializer
+
+****** Storage-class specifiers
+******* Syntax
+- storage-class-specifier:
+  - typedef
+  - extern
+  - static
+  - auto
+  - register
+******* Semantics
+******** typedef
+******** register
+- the register specifier suggests that access to the object be as fast as possible.
+- The implementation may treat any regster declaration simply as an auto declaration.
+******** extern
+****** Type specifiers
+******* Syntax
+- type-specifier:
+  - void
+  - char
+  - short
+  - int
+  - long
+  - float
+  - double
+  - signed
+  - unsigned
+  - _Bool
+  - _Complex
+  - struct-or-union-specifier
+  - enum-specifier
+  - typedef-name
+******* Constraints
+- At least one type specifier shall be given in the declaration specifiers in each declaration, and in the specifier-qualifier list in each struct declaration and type name.
+******* Semantics
+******* Structure and union specifiers
+******** Syntax
+- struct-or-union-specifier:
+  - struct-or-union identifier(opt) { struct-declaration-list }
+  - struct-or-union identifier
+- struct-or-union:
+  - struct
+  - union
+- struct-declaration-list:
+  - struct-declaration
+  - struct-declaration-list struct-declaration
+- specifier-qualifier-list:
+  - type-specifier specifier-qualifier-list(opt)
+  - type-qualifier specifier-qualifier-list(opt)
+- struct-declarator-list:
+  - struct-declarator
+  - struct-declarator-list , struct-declarator
+- struct-decalrator:
+  - declarotor
+  - declarator(opt) : constant-expression
+******* Enumeration specifiers
+******** Syntax
+- enum-specifier:
+  - enum identifier(opt) { enumerator-list }
+  - enum identifier(opt) { enumerator-list , }
+  - enum identifier
+- enumerator-list:
+  - enumerator
+  - enumerator-list , enumerator
+- enumerator:
+  - enumeration-constant
+  - enumeration-constant = constant-expression
+****** Type qualifiers
+******* Syntax
+- type-qualifier:
+  - const
+  - restrict
+  - volatile
+******* Constraints
+- Types other than pointer types derived from object or incomplete types shall not be restrict-qualified.
+******* Semanticts
+******** const
+******** restrict
+******** volatile
+****** Function specifiers
+******* Syntax
+- function-specifier:
+  - inline
+******* Constraints
+- Function specifiers shall be used only in the declaration of an identifier for a function.
+****** Declarators
+******* Syntax
+****** Type names
+****** Type definitions
+****** Initialization
+***** Statements and blocks
+****** Syntax
+- statement:
+  - labeled-statement
+  - compound-statement
+  - expression-statement
+  - selection-statement
+  - iteration-statement
+  - jump-statement
+****** Labeled statements
+****** Compound statement
+****** Expression and null statements
+****** Selection statements
+******* The if statement
+******* The switch statement
+****** Iteration statements
+******* The while statement
+******* The do statement
+******* The for statement
+****** Jump statements
+******* The goto statement
+******* The continue statement
+******* The break statement
+******* The return statement
+***** External definitions
+****** Function definitions
+****** External object definitions
+***** Preprocessing directives
+****** About
+******* Syntax
+- preprocessing-file:
+  - group(opt)
+- group:
+****** Coditional inclusions
+****** Source file inclusion
+****** Macro replacement
+****** Line control
+****** Error directive
+****** Pragma directive
+****** Null directive
+****** Predefined macro names
+****** Pragma operator
+***** Future language directions
+*** C99
+*** ANSI C, C89
+*** GNU C
 *** C A REFERENCE MANUAL
 - [[https://savedparadigms.files.wordpress.com/2014/09/harbison-s-p-steele-g-l-c-a-reference-manual-5th-ed.pdf][C A REFERENCE MANUAL Fifth Edition (pdf)]]
 **** Lexical Elements
@@ -220,11 +439,7 @@
 **** Expressions
 **** Statements
 **** Functions
-*** C11
-*** C99
-*** ANSI C, C89
-*** GNU C
-** standard C library
+** Standard C library
 - 
   標準Cライブラリ。
   /libの中のファイルらしい。
@@ -876,7 +1091,7 @@
 - added in Amendment 1 to C89
 *** wctype.h
 - added in Amendment 1 to C89
-** library
+** Libraries
 *** conio.h
 
 **** getche()
@@ -1292,8 +1507,10 @@
 *** C++ Builder
 - 前身はBorland C/C++。更に前身はTurbo C/C++。
 ** Link
-- [[http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf][ISO/IEO 9899:1999]]
+- [[http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf][ISO/IEC 9899:201x Programming languages - C - N1570 (C11 final draft)]]
+- [[http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1256.pdf][ISO/IEC 9899:TC3 N1256]]
 - [[https://savedparadigms.files.wordpress.com/2014/09/harbison-s-p-steele-g-l-c-a-reference-manual-5th-ed.pdf][C A REFERENCE MANUAL Fifth Edition (pdf)]]
+
 - [[https://www.gnu.org/software/gnu-c-manual/][The GNU C Reference Manual]]
 - [[https://www.gnu.org/software/libc/manual/][The GNU C Library]]
 
