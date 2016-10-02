@@ -16,6 +16,15 @@
 - 
   [[file:./Compiler.org][Compiler.org]]
 
+** Parser
+*** SintyaxNet
+- 
+  neural models of syntax.
+
+- 
+  http://googleresearch.blogspot.tw/2016/05/announcing-syntaxnet-worlds-most.html?m=1
+  https://github.com/tensorflow/models/tree/master/syntaxnet
+
 ** Lexical Analyzer
 *** lex/flex
 - 
@@ -277,11 +286,26 @@
 - 
   ビッグデータの分析に使われるcloudサービス。
 
+** Browser
+*** Firefox
+**** XUL
+- XML User Interface Language, ずーる
+  Mozilaアプリケーションを作成するためのユーザインターフェースマークアップ言語。
+
+*** Chrome
+
+** Web Tools
+*** Google Analytics
+**** Link
+- [[https://www.google.com/intl/ja_jp/analytics/][Google Analytics]]
+- [[https://developers.google.com/analytics/][Googleアナリティクス]]
+- [[https://liginc.co.jp/web/seo/107795][Googleアナリティクスの用語の意味と基本的な使い方をおさえよう - LIG INC.]]
 ** CI
 *** Jenkins
 *** TravisCI
 *** CircleCI
 *** Wercker
+
 ** Testing
 *** JUnit
 - [[file:UnitTest.org][UnitTest.org]]
@@ -311,6 +335,7 @@
 ** Chat
 *** idobata
 *** Slack
+
 
 ** C
 ** Java
@@ -389,19 +414,6 @@
 - 
   PHP版WSGI
 
-** Firefox
-*** XUL
-- XML User Interface Language, ずーる
-  Mozilaアプリケーションを作成するためのユーザインターフェースマークアップ言語。
-
-** Parser
-*** SintyaxNet
-- 
-  neural models of syntax.
-
-- 
-  http://googleresearch.blogspot.tw/2016/05/announcing-syntaxnet-worlds-most.html?m=1
-  https://github.com/tensorflow/models/tree/master/syntaxnet
 
 ** Posix互換
 *** Cygwin

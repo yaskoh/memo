@@ -1,4 +1,52 @@
 * Testing
+** Standard
+*** ISO/IEC 29119
+- Its purpose is to define an internationally agreed set of standards to support software testing.
+  This standards replace a number of existing software testing standards:
+  - IEEE 829 Test Documentation
+  - IEEE 1008 Unit Testing
+  - BS 7925-1 Vocabulary of Terms in Software Testing
+  - BS 7925-2 Software Component Testing Standard
+**** ISO/IEC/IEEE 29119-1:Consepts & Definitions
+**** ISO/IEC/IEEE 29119-2:Test Processes
+**** ISO/IEC/IEEE 29119-3:Test Documentation
+**** ISO/IEC/IEEE 29119-4:Test Techniques
+**** ISO/IEC/IEEE 29119-5:Keyword Driven Testing
+**** Link
+- [[http://www.softwaretestingstandard.org/][The International Software Testing Standard - ISO/IEC/IEEE 29119 Software Testing]]
+*** IEEE 829-2008
+**** Master Test Plan(MTP)
+**** テスト計画書
+***** 識別番号
+***** 参考資料
+***** はじめに
+***** テストアイテム
+***** テスト対象機能
+***** 非テスト対象機能
+***** アプローチ
+***** テスト合否判定基準
+***** テスト中止再開基準
+***** テスト成果物
+***** テスト作業タスクと担当
+***** テスト環境
+***** 責任範囲
+***** 人員計画、トレーニング
+***** スケジュール
+***** リスクと対策
+***** 承認
+**** Level Test Plan(LTP)
+**** Level Test Design(LTD)
+**** Level Test Case(LTC)
+**** Level Test Procedure(LTCr)
+**** Level Test Log(LTL)
+**** Anomaly Report(AR)
+**** Level Interim Test Status Report(LITSR)
+**** Level Test Report(LTR)
+**** Master Test Report(MTR)
+**** Link
+- [[http://www.fit.vutbr.cz/study/courses/ITS/public/ieee829.html][TEST PLAN OUTLINE (IEEE 829 Format)]]
+- [[http://h50146.www5.hpe.com/products/software/hpsoftware/bto/pdfs/alm1_6.pdf][テストマネジメント虎の巻 第六回]]
+- [[http://kazu5.exblog.jp/3014629/][IEEE829標準規格のドキュメント - 和子の毎日ヘロヘロ記録]]
 ** UnitTest
 *** Link
 - [[http://code.tutsplus.com/articles/the-beginners-guide-to-unit-testing-what-is-unit-testing--wp-25728][The Beginner’s Guide to Unit Testing: What Is Unit Testing? - envatotuts+]]
@@ -48,3 +96,10 @@
 - 
   A software attack on a computer system that looks for security weaknesses, potentially gaining access to the computer's features and data.
   
+** Memo
+*** 検討事項
+- [[http://h50146.www5.hpe.com/products/software/hpsoftware/bto/pdfs/alm1_6.pdf][テストマネジメント虎の巻 第六回]]
+**** テスト範囲
+**** テスト環境
+**** テストのやり方
+** Link

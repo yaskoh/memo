@@ -88,6 +88,7 @@
   show the version of Vagrant installed on my computer.
 ** vagrantfile
 ** boxes
+- ~/.vagrant.d/boxes
 ** provisioning  
 ** networking
 *** 種類
@@ -121,7 +122,8 @@
 ** setting
 *** environment variables
 **** VAGRANT_HOME
-- vagrantのホームディレクトリ
+- vagrantのホームディレクトリ。
+  ~/.vagrant.d
 *** node
 - 
   一台でなく、複数ノードを設定できる。

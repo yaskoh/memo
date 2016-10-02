@@ -1,5 +1,4 @@
 * Mainframe
-
 ** Command
 *** Function
 - 
@@ -91,47 +90,6 @@
   リリース。確保した領域で、使わないものを解放する。
 
 - BROWSE
-
-** 用語
-*** ISPF
-- 
-  Interactive System Productivity Facility
-  IBMメインフレームOS環境のツールセットの一つ。
-  スクリーンエディタを含むユーザインターフェース。
-
-*** LPA
-- 
-  Link Pack Area。
-  OSの中核以外のシステム常駐モジュールが配置される仮想記憶内の領域の1つ。
-
-*** NIP
-- 
-  Nucleus Initalization Program。エルパ。
-  OSの中核部分を初期設定するためのプログラム。
-
-*** PSW
-- 
-  Program Status Word
-  CPUの各種状態を表すフラグビットや、次に実行すべき命令の仮想記憶アドレスを持つ、特殊なレジスタ。
-  
-*** SNA
-- 
-  Systems Network Architecture
-  IBMが1974年に作ったコンピュータネットワーク・アーキテクチャ。
-  更にはそれに基づいたプロトコルスタック。
-
-*** TSO
-- 
-  Time Sharing Option。
-  MVSやOS/390,z/OSのようなIBMメインフレームのOSで使われる、
-  相互対話式のコマンドラインインタープリタ。
-  単独で使われる場合は稀で、通常ISPFを通して用いられる。合わせてTSO/ISPFと称する。
-
-*** VTAM
-- 
-  Virtual Telecommunications Access Method。
-  メインフレームで使用されるIBMの通信ソフトウェア。
-  SNAの実装。
 ** Hercules
 *** 概要
 - 
@@ -234,7 +192,7 @@
    Herculesコンソールで、"STOP"コマンドを入力する。
 7. "QUIT"コマンドで、仮想H/W装置の電源OFFを行う。
 
-** memo
+** Memo
 *** IBM
 **** History
 - シリーズ/マシン
@@ -255,3 +213,50 @@
     - OS/390
     - z/OS
 
+** Glossary
+*** ISPF
+- 
+  Interactive System Productivity Facility
+  IBMメインフレームOS環境のツールセットの一つ。
+  スクリーンエディタを含むユーザインターフェース。
+
+*** LPA
+- 
+  Link Pack Area。
+  OSの中核以外のシステム常駐モジュールが配置される仮想記憶内の領域の1つ。
+
+*** NIP
+- 
+  Nucleus Initalization Program。エルパ。
+  OSの中核部分を初期設定するためのプログラム。
+
+*** PSW
+- 
+  Program Status Word
+  CPUの各種状態を表すフラグビットや、次に実行すべき命令の仮想記憶アドレスを持つ、特殊なレジスタ。
+  
+*** SNA
+- 
+  Systems Network Architecture
+  IBMが1974年に作ったコンピュータネットワーク・アーキテクチャ。
+  更にはそれに基づいたプロトコルスタック。
+
+*** TSO
+- 
+  Time Sharing Option。
+  MVSやOS/390,z/OSのようなIBMメインフレームのOSで使われる、
+  相互対話式のコマンドラインインタープリタ。
+  単独で使われる場合は稀で、通常ISPFを通して用いられる。合わせてTSO/ISPFと称する。
+
+*** VTAM
+- 
+  Virtual Telecommunications Access Method。
+  メインフレームで使用されるIBMの通信ソフトウェア。
+  SNAの実装。
+
+*** VSAM
+- Virtual Storage Access Method
+- メインフレームなどのOSで用いられる、外部記憶装置のファイル編成法の一つ。
+** Link
+- [[http://www.arteceed.net/][「メインフレーム・コンピュータ」で遊ぼう]]
+- [[http://www.arteceed.net/?cat=12]['S/370アセンブラー講座' Category - 「メインフレーム・コンピュータ」で遊ぼう]]

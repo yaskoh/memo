@@ -167,6 +167,7 @@
 - [[http://fontawesome.io/][Font Awesome]]
 - [[https://h2ham.net/font-awasome][楽して便利！Webアイコンフォント『Font Awesome』の使い方と活用 Tips - HAM MEDIA MEMO]]
 
+*** 
 ** Link
 - [[https://developer.mozilla.org/en-US/Learn][Learning web development - MDN]]
 

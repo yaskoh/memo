@@ -1,4 +1,70 @@
 * Ansible
+** Document
+*** Introduction
+**** Installation
+**** Getting Started
+**** Inventory
+**** Dynamic Inventory
+**** Patterns
+**** Introduction To Ad-Hoc Commands
+**** Configuration file
+**** BSD Support
+**** Windows Support
+**** Networking Support
+*** Quickstart Video
+*** Playbooks
+**** Intro to Playbooks
+**** Playbook Roles and Include Statements
+**** Variables
+**** Jinja2 filters
+**** Jinja2 tests
+**** Conditionals
+**** Loops
+**** Blocks
+**** Strategies
+**** Best Practices
+*** Playbooks:Special Topics
+**** Become
+**** Accelerated Mode
+**** Asynchronous Actions and Polling
+**** Check Mode
+**** Playbook Debugger
+**** Delegation, Rolling Updates, and Local Actions
+**** Setting the Environment
+**** Error Handling In Playbooks
+**** Advanced Syntax
+**** USing Lookups
+**** Prompts
+**** Tag
+**** Vault
+**** Start and Stop
+**** Directives Glossary
+*** About Modules
+**** Introduction
+**** Core Modules
+**** Extra Modules
+**** Common Return Values
+**** Internal use
+*** Module Index
+**** All Modules
+**** (ry
+*** Detailed Guides
+**** Amazon Web Services Guide
+**** Azure
+**** Rackspace
+**** Google Cloud Platform
+**** (ry
+*** Developer Information
+**** Ansible Architecture
+**** Developing Modules
+**** Developing Plugins
+**** Developing Dynamic Inventory Sources
+**** Pyhton API
+**** Developing the Ansible Core Engine
+**** Helping Tseting PRs
+**** Releases
+*** Glossary
+*** YAML Syntax
 ** Commands
 *** ansible
 - 
@@ -333,7 +399,7 @@
   サービスの設定ファイルテンプレートをj2形式でおく。
   すべてPlaybookで書くよりも、テンプレートファイルを使用したほうが簡単のため。
 
-** memo
+** Memo
 *** host key
 - 
   1.2.1以降のバージョンでは、ホストキーのチェックがデフォルトで実行される。
@@ -344,6 +410,9 @@
   以下でもよい。
     $ export ANSIBLE_HOST_KEY_CHECKING=False
 
+*** 基本構成
+- inventry
+- playbook
 ** Link
 - [[http://docs.ansible.com/index.html?&__hssc=5198188.3.1418180787182&__hstc=5198188.e8669720ecb31fe0cfe4fb1c00202864.1418180787181.1418180787181.1418180787181.1&hsCtaTracking=496f9732-2003-4e8a-9c72-9ad8d37a1c12%7Ccb31b05e-278e-4dd4-8a4f-0a6eba410cef][Ansible Documentation]]
 - [[http://techblog.clara.jp/2014/06/ansible_no1-how_to_install/][Ansible(1)概要とインストール方法について - CLARA ONLINE TECHBLOG]]
