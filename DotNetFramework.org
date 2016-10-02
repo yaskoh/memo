@@ -16,6 +16,19 @@
 - https://msdn.microsoft.com/ja-jp/library/cc825629.aspx
 - https://msdn.microsoft.com/ja-jp/library/cc825633.aspx
 - https://msdn.microsoft.com/ja-jp/library/cc825671.aspx
+*** 4.5à»è„Ç≈ÇÃsort algorithmÇÃïœçX
+- over 4.5
+  - This method uses the introspective sort (introsort) algorithm as follows:
+    - If the partition size is fewer than 16 elements, it uses an insertion sort algorithm.
+    - If the number of partitions exceeds 2 * LogN, where N is the range of the input array, it uses a Heapsort algorithm.
+    - Otherwise, it uses a Quicksort algorithm.
+    [[https://msdn.microsoft.com/en-us/library/afwbytk2(v=vs.110).aspx][Array.Sort Method - Developer Network]]
+
+- under 4.0
+  - This method uses Array.Sort, which uses the QuickSort algorithm.
+    This implementation performs an unstable sort; that is, if two elements are equal, their order might not be preserved.
+    In contrast, a stable sort preserves the order of elements that are equal.
+
 ** Link
 - [[https://msdn.microsoft.com/ja-jp/library/aa139615.aspx][.NETäJî≠ - Developer Network]]
 - [[https://msdn.microsoft.com/ja-jp/library/cc948946.aspx][.NETäJî≠(1.0ä‹Çﬁ) - Developer Network]]
