@@ -1439,3 +1439,5 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   |--------+------------+--------------------------------------------------------------|
 **** Link
 - [[https://www.express.nec.co.jp/linux/distributions/knowledge/system/crond.html][cronの設定ガイド]]
+** Link
+- [[http://qiita.com/kenju/items/7f9f0ee6a5e2e09596d3][Linuxに関わる人が一度は読むべきStackOverflowまとめ - Qiita]]

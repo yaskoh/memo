@@ -102,6 +102,7 @@
 *** 探索
 *** ゲーム戦略
 *** 機械学習
+- [[file:MachineLearning.org][MachineLearning]]
 *** Deep Learning 深層学習
 *** 知識表現
 *** エキスパートシステム
