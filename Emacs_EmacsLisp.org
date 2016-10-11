@@ -1,4 +1,151 @@
 * Emacs-Lisp
+** Manual
+*** Lisp Data Types
+**** Printed Representation
+- Objects are printed in hash notation, #< and >.
+  Hash notation cannot be read, so the Lisp reader signals the error "invalid-read-sytax" whenever it encounters '#<'.
+**** Comments
+- ; Semicolon
+  Semicolon starts a comment if it is not within a string or character contant.
+**** Programming Tyes
+***** Integer Type
+- Numbers without fractional parts
+  The range of values for an integer depends on the machine.
+  The minimum range is -536,870,912 to 536,870,911 (30 bits; -2**29 to 2**29-1) but many machines provide a wider range.
+***** Floating-Point Type
+- Numbers with fractional parts and with a large range.
+***** Character Type
+- The representation of letters, numbers and control characters
+****** Basic Char Syntax
+****** General Escape Syntax
+****** Ctl-Char Syntax
+****** Meta-Char Syntax
+****** Other Char Bits
+***** Symbol Type
+- A multi-use object that refers to a function, variable, or property list, and has a unique indentity.
+***** Sequence Type
+- Both lists and arrays are classified as sequences.
+***** Cons Cell Type
+- Cons cells, and lists (wihch are made from cons cells).
+***** Array Type
+- Arrays include strings and vectors.
+***** String Type
+****** Syntax for Strings
+****** Non-ASCII in Strings
+****** Nonprinting Characters
+****** Text Props and Strings
+***** Char-Table Type
+***** Bool-Vector Type
+***** Hash Table Type
+***** Function Type
+***** Macro Type
+***** Primitive Function Type
+***** Byte-Code Type
+***** Autoload Type
+***** Finalizer Type
+**** Editing Types
+***** Buffer Type
+- The basic object of editing
+***** Marker Type
+- A position in a buffer
+***** Window Type
+- Buffers are displayed in windows
+***** Frame Type
+- Windows subdivide frames
+***** Terminal Type
+- A terminal device displays frames
+***** Window Configuration Type
+- Recording the way a frame is subdivided.
+***** Frame Configuration Type
+- Recording the status of all frames
+***** Process Type
+- A subprocess of Emacs running on the underlying OS
+***** Stream Type
+- Receive or send characters.
+***** Keymap Type
+- What function a keeystroke invokes
+***** Overlay Type
+- How an overlay is represented
+***** Font Type
+- Fonts for displaying text
+**** Circular Objects
+- '#n=' and '#n#'
+  
+**** Type Predicates
+***** Predicates
+- atom
+**** Equality Predicates
+*** Numbers
+**** Integer Basics
+**** Float Basics
+**** Predicates on Numbers
+**** Comparison of Numbers
+**** Numeric Conversions
+**** Numeric Conversions
+**** Arithmetic Operations
+**** Rounding Operations
+**** Bitwise Operations
+**** Math Functions
+**** Random Numbers
+*** Strings and Characters
+**** Basics
+**** Predicates for Strings
+**** Creating Strings
+**** Modifying Strings
+**** Text Comparision
+**** String Conversion
+**** Formatting Strings
+**** Case Conversion
+**** Case Tables
+*** Lists
+**** Cons Cells
+**** List-related Predicates
+**** List Elements
+**** Building Lists
+**** List Variables
+**** Modifying Lists
+**** Sets And Lists
+**** Association Lists
+**** Property Lists
+*** Sequences Arrays Vectors
+*** Hash Tables
+*** Symbols
+*** Evaluation
+*** Control Structures
+*** Variables
+*** Functions
+*** Macros
+*** Customization
+*** Loading
+*** Byte Compilation
+*** Debugging
+*** Read and Print
+*** Minibuffers
+*** Command Loop
+*** Keymaps
+*** Modes
+*** Documentation
+*** Files
+*** Backups and Auto-Saving
+*** Buffers
+*** Windows
+*** Frames
+*** Positions
+*** Markers
+*** Text
+*** Non-ASCII Characters
+*** Searching and Matching
+*** Syntax Tables
+*** Abbrevs
+*** Processes
+*** Display
+*** System Interface
+*** Packaging
+*** Appendices
+**** GNU Emacs Internals
+**** Standard Errors
+**** Standard Keymaps
+**** Standard Hooks
 ** Syntax
 *** Functions
 **** special-form-p

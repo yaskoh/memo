@@ -335,8 +335,28 @@
 ** Chat
 *** idobata
 *** Slack
-
-
+** TeX
+*** TeX Live
+- [[http://tug.org/texlive/doc/texlive-en/texlive-en.html][The TeX Live Guide - 2016]]
+*** mactex
+- [[http://www.tug.org/mactex/index.html][MacTeX]]
+- [[http://doratex.hatenablog.jp/entry/20160608/1465311609][MacTeX 2016 のインストール＆日本語環境構築法 (El Capitan 以前/以後両対応) - TeX Alchemist Online]]
+*** ghostscript
+*** dvipng
+- [[http://www.nongnu.org/dvipng/][dvipng]]
+*** libgd
+- [[https://libgd.github.io/][gdLibrary]]
+- [[https://libgd.github.io/manuals/2.2.3/files/preamble-txt.html][About LibGD 2.2.3]]
+*** kpathsea
+- Kpathsea is a library to do path searching.
+- [[http://tug.org/texinfohtml/kpathsea.html][Kpathsea: A library for path searching]]
+- [[http://tug.org/kpathsea/][Kpathsea]]
+** Package Management
+*** OSX
+**** brew
+**** MacPorts
+- [[https://www.macports.org/][The MacPorts Project Official Homepage]]
+**** Fink
 ** C
 ** Java
 - 
