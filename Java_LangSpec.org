@@ -121,23 +121,68 @@
   import static TypeName . * ;
 *** Classes
 **** Class Declaration
+***** Class Modifiers
+****** Def
+- ClassModifier:
+  (one of)
+  Annotation public protected private abstract static final strictfp
+****** abstract Classes
+****** final Classes
+****** strictfp Classes
+***** Generic Classes and Type Parameters
+***** Inner Classes and Enclosing Instances
+***** Superclasses and Subclasses
+***** Superinterfaces
+***** Class Body and Member Declarations
 **** Class Members
 **** Field Declarations
-***** Field modifiers
+***** Field Modifiers
 ****** Def
 - FieldModifier:
   (one of)
   Anntation public protected private
   static final transient volatile
 ****** static Fields
+- if the field is 'static', there exists exactly one incarnation of the field, no matter how many instances of the class may eventually be created.
 ****** final Fields
 - A field can be declared final. Both class and instance variables may be declared final.
 ****** transient Fields
+- transient variables is to indicate that they are not part of the persistent state of an object
 ****** volatile Fields
 **** Method Declarations
+***** Def
+- MethodDeclaration:
+  {MethodModifier} MethodHeader
+  MethodBody
+- MethodHeader:
+  Result MethodDeclarator [Throws]
+  TypeParameters {Annotation} Result MethodDeclarator [Throws]
+- MethodDeclarator:
+  Identifier ( [FormalParameterList] ) [Dims]
 ***** Formal Parameters
 ***** Method Signature
 ***** Method Modifiers
+****** Def
+- MethodModifier:
+  (one of)
+  Annotation public protected private 
+  abstract static final synchronized native strictfp
+****** abstract Methods
+- It introduces the method as member, providing its signature, result, and throws clause if any,
+  but does not provide implementation.
+  A method that is not abstract may be referred to as a "concrete" method.
+****** static Methods
+- it is called a "class method".  
+****** final Methods
+- prevent subclasses from overriding or hiding it.
+****** native Methods
+- It is implemented in platorm-dependent code, typically written in another programming language such as C.
+****** strictfp Methods
+- The effect of this modifier is to make all float or double expressions within the method body be explicitly FP-strict.
+****** synchronized Methods
+- This method acquires a monitor before it executes.
+  For a class (static) method, the monitor associated with the Class object for the method's class is used.
+  For an instance method, the monitor associated with this is used.
 ***** Generic Methods
 ***** Method Result
 ***** Method Throws
@@ -155,6 +200,15 @@
 ***** Method body
 ***** Inheritance, Overriding, Hiding
 **** Member Type Declarations
+**** Instance Initializers
+***** Def
+**** Static Iniitalizers
+- A static initializer declared in a class is executed when the class is initialized.
+***** Def
+- StaticInitialiver:
+  static Block
+**** Constructor Declarations
+**** Enum Types
 *** Interfaces
 **** Annotation Types
 ***** Predefined Annotation Types
@@ -189,6 +243,20 @@
   It's the superclass of all the exceptions which may be thrown for many reasons during expression evaluation, but from which recovery may still be possible.
 - Error : the superclass of all the exceptions from which ordinary programs are not ordinarily expected to recover.
 *** Execution
+**** Java Virtual Machine Startup
+**** Loading of Classes and Interfaces
+**** Linking of Clases and Interfaces
+**** Initialization of Classes and Interfaces
+- class
+  executing its static initializers and the initializers for static field (class variables) declared in the class.
+- interface
+  executing the initializers for fields (constants) declared in the interface.
+***** When Initialization Occurs
+***** Detailed Initialization Procedure
+**** Creation of New Class Instances
+**** Finalization of Class Instances
+**** Unloading of Classes and INterfaces
+**** Program Exit
 *** Binary Compatibility
 *** Blocks and Statementns
 **** The Empty Statement
@@ -237,6 +305,58 @@
   {VariableModifier} UnannType VariableDeclaratorId = Exprssion
 **** Unreachable
 *** Expressions
+**** Evaluation, Denotatio, and Result
+**** Forms of Expressions
+***** Def
+- Expression:
+  LambdaExpression
+  AssignmentExpression
+**** Type of an Experssion
+**** FP-strict Expressions
+**** Expressions and Run-Time Checks
+**** Normal and Abrupt Completion of Evaluation
+**** Evaluation Order
+**** Primary Expressions
+***** Def
+- Primary:
+  PrimaryNoNewArray
+  ArrayCreationExpression
+- PriamryNoNewArray:
+  Literal
+  ClassLiteral
+  this
+  TypeName . this
+  ( Expression )
+  ClassInstanceCreationExpression
+  FieldAccess
+  ArrayAccess
+  MethodInvocation
+  MethodReference
+
+***** Lexical Literals
+****** Def
+- Literal:
+  IntegerLiteral
+  FloatingPointLiteral
+  BooleanLiteral
+  CharacterLiteral
+  StringLiteral
+  NullLiteral
+***** Class Literal
+****** Def
+- ClassLiteral:
+  TypeName {[ ]} . class
+  NumericType {[ ]} . class
+  boolean {[ ]} . class
+  void . class
+***** this
+***** Qualified this
+***** Parenthesized Expressions
+**** Class Instance Creation Expressions
+**** Array Creation and Access Expressions
+**** Field Access Expressions
+**** Method Invocation Expressions
+**** Method Reference Expressions
 **** Postfix Expressions
 ***** ++
 ***** --
@@ -288,6 +408,19 @@
 **** Constant Expressions
 *** Definite Assignment
 *** Threads and Locks
+**** Synchronization
+***** synchronized statement
+***** synchronized method
+- it automatically performs alock action when it is invoked;
+  its body is not executed until the lock action has successfully completed.
+  If the method is an instance method, it locks the monitor associated with the nstance for which it was invoked.
+  If the method is static, it locks the monitor associated with the Class object that represents the class in which the method is defined.
+**** Wait Sets and Notification
+**** Sleep and Yield
+**** Memory Model
+**** final Field Semantics
+**** Word Tearing
+**** Non-Atomic Treatment of 'double' and 'long'
 *** Type Interface
 *** Syntax
 ** Memo

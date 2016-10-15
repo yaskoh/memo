@@ -293,6 +293,7 @@
 **** eshell
 *** indent.el
 **** indent-region
+- C-M-\
 - (indent-region START END &optional COLUMN)
   
 *** org-mode
@@ -592,6 +593,8 @@
 
 *** 並び替え
 - org-sort(C-c ^)
+*** インデント
+- C-M-\, indent-region
 ** Link
 - [[http://www.gnu.org/software/emacs/manual/html_mono/emacs.html][GNU Emacs manual]]
 - [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]

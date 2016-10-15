@@ -199,6 +199,32 @@
 ******* Character.Subset
 ******* Character.UnicodeBlock
 ******* Class<T>
+- public final class Class<T> extends Object implements Serializable, GenericDeclaration, Type, AnnotatedElement
+  Instances of the class "Class" represent classes and interfaces in a running Java application.
+  
+******** Methods
+********* forName(String className)
+- 
+  Returns the Class object associated with the class or interface with the given string name.
+********* getClasses()
+- 
+  Returns an array containing Class objects representing all the public classes and interfaces that are members of the class represented by this Class object.
+********* getField(String name)
+********* getFields()
+********* getInterfaces()
+********* getMethod(String name, Class<?>... parameter Types)
+********* getMethods()
+********* getModifiers()
+********* getName()
+- 
+  Returns the name of the entity represented by this Class object, as a String.
+********* getPackage()
+********* getSuperclass()
+********* getTypeName()
+********* isAnnotation()
+********* newInstance()
+- 
+  Creates a new instance of the class represented by this Class object.
 ******* ClassLoader
 ******* ClassValue<T>
 ******* Compiler
@@ -419,8 +445,35 @@
 ***** java.lang.ref
 ****** Class
 ***** java.lang.reflect
+- Provides classes and interfaces for obtaining reflective information about classes and objects.
+  Reflection allows programmatic access to information about the fields, methods and constructors of loaded classes,
+  and use of reflected fields, methods, and constructors to operate on their underlying counterparts, within security restrictions.
 ****** Interface
-****** Class
+****** Classes
+******* AccessibleObject
+- pulic class AccessibleObject extends Object implements AnntatedElement
+  This class is the base class for Field, Method and Constructor objcets.
+  It provides the ability to flag a reflected object as suppressing defult Java language access control checks when it is used.
+******** Constructors
+********* AccessibleObject()
+******** Methods
+******* Array
+******* Constructor<T>
+******* Executable
+******* Field
+- public final class Field extends AccessibleObject implements Member
+  providing information about, and dynamic access to, a single field of a class or an interface.
+  The reflected field may be a class (static) field or an instance field.
+******** Methods
+********* set(Object obj, Object value)
+- 
+  Sets the field represented by this Field object on the specified object argument to the specified new value.
+
+******* Method
+******* Modifier
+******* Parameter
+******* Proxy
+******* ReflectPermission
 ****** Exception
 ****** Error
 ***** java.math
@@ -520,6 +573,16 @@
 ***** java.util
 ****** Interfaces
 ******* Collection<E>
+******* Enumeration<E>
+- public interface Enumeration<E>
+  An object that implements the Enumeration interface generates a series of elements, one at a time.
+******** Methods
+********* hasMoreElements()
+- boolean hasMoreElements()
+  Tests if this enumeration contains more elements.
+********* nextElement()
+- E nextElement()
+  Returns the next element of this enumeration if this enumeration object has at least one more element to provide.
 ******* List<E>
 ******* Map<K,V>
 - キーを値にマッピングするオブジェクト
@@ -545,6 +608,37 @@
   implements Map<K,V>, Cloneable, Serializable
 ******** Constractor
 ******** Methods
+******* Locale
+- public final class Locale extends Object implements Cloneable, Serializable
+  This object represetns a specific geographical, political, or cultural region.
+******** Nested Classes
+******** Fields
+********* CANADA
+********* CANADA_FRENCH
+********* CHINA
+********* CHINESE
+********* ENGLISH
+********* FRANCE
+********* FRENCH
+********* GERMAN
+********* GERMANY
+********* ITALIAN
+********* ITALY
+********* JAPAN
+********* JAPANESE
+********* KOREA
+********* KOREAN
+********* PRC
+********* PRIVATE_USE_EXTENSION
+********* ROOT
+********* SIMPLIFIED_CHINESE
+********* TAIWAN
+********* TRADITIONAL_CHINESE
+********* UK
+********* UNICODE_LOCALE_EXTENSION
+********* US
+******** Constructors
+******** Methods
 ******* Objects
 - オブジェクトで操作するためのstaticユーティリティ・メソッドで構成されている
 ******** Methods
@@ -554,6 +648,25 @@
 - 指定されたオブジェクト参照がnullでないことを確認し、nullの場合はカスタマイズされたNullPointerExceptionをスローする。
 ********* requireNonNull(T obj, Supplier<String> messageSupplier)
 - 指定されたオブジェクト参照がnullでないことを確認し、nullの場合はカスタマイズされたNullPointerExceptionをスローする。
+******* ResourceBundle
+- public abstract class ResourceBundle extends Object
+  Resource bundles contain locale-specific objects.
+******** Nested Classes
+******** Fields
+******** Constructors
+********* ResourceBundle()
+- 
+  Sole constructor.
+******** Methods
+********* getBundle(String baseName)
+- static ResourceBundle getBundle(String baseName)
+  Gets a resource bundle using the specified base name, the default locale, and the caller's class loader.
+********* getBundle(String baseName, Locale locale)
+- static ResourceBundle getBundle(String baseName, Locale locale)
+  Gets resource bundle using the specified base name and locale, and the caller's class loader.
+********* getKeys()
+- abstract Enumeration<String> getKeys
+  Returns an enumeration of the keys
 ***** java.util.function
 ***** java.util.regex
 ***** java.util.stream
@@ -1008,6 +1121,12 @@
   - 論理例外 : アプリケーションで論理的に発生しうる例外。補足して処理する。
   - システム例外 : システムが正常に動作する条件が整っていない場合や、連携する外部アプリケーションのエラーに起因する例外。アプリケーションで処理しない/処理しても意味がない。
   - プログラムエラー : コーデイングの間違い、連携するAPIの使用方法の間違いなど。本来的に発生しない者なので、対処しても意味がないエラー。
+*** .class
+- クラス名.class、とすることでクラスが取得できる。
+  どこかのクラスメソッドかと思いきや、これはJavaのsyntaxに組み込まれていた。
+  Java 1.8 Specificationの「15.8.2 Class Literals」にある。
+  
+  ちなみにインスタンスからクラス名を取得するには、Object#getClass()で可。
 *** temp
 **** 文字列の連結
 - 
