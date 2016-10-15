@@ -1,0 +1,20 @@
+* Development
+- システム開発に関することを入れる。分類が難しい場合も多いので、ひとまずここに記載する運用でよい。
+** Software life cycle
+*** ISO/IEC/IEEE
+**** System and software engineering 29148
+- file:///C:/Users/yasutakk/Downloads/iso-iec-ieee-29148-2011.pdf
+**** 
+*** IEEE
+**** SQA - Software quality assurance IEEE 730
+**** SCM - Software configuration management IEEE 828
+**** STD - Software test documentation IEEE 829
+**** SRS - Software requirements specification IEEE 830
+**** V&V - Software verification and validation IEEE 1012
+**** SDD - Software design description IEEE 1016
+**** SPM - Software project management IEEE 1058
+**** SUD - Software user documentation IEEE 1063
+** SWEBOK
+- [[https://www.computer.org/web/swebok/v3][SWEBOK V3]]
+** Link
+- [[http://sysdev.sakura.ne.jp/category/development][システム開発の基礎 - エンジニア目線のシステム開発]]
