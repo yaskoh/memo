@@ -1,0 +1,12 @@
+* TeX
+** Kind
+*** LaTeX
+- [[https://web.archive.org/web/20080630005635/http://www.latex-project.org/index.html][LaTeX - A document preparation waybackmachine]]
+*** LaTeX 2e
+*** pLaTeX 2e
+** Expression
+- [[http://hooktail.sub.jp/nocategory/latexImpress/][LaTeXï\åªèW]]
+** Link
+- [[https://www.tug.org/index.html][TeX Users Group web site]]
+- [[https://texwiki.texjp.org/][TeX Wiki]]
+** Memo
