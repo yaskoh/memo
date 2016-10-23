@@ -251,6 +251,14 @@
 ******** Methods
 ******* StrictMath
 ******* String
+******** Methods
+********* indexOf(int ch)
+- public int indexOf(int ch)
+- 
+  Returns the index within this string of the first occurrence of the specified character.
+********* indexOf(int ch, int fromIndex)
+********* indexOf(String str)
+********* indexOf(String str, int fromIndex)
 ******* StringBuffer
 ******* StringBuilder
 ******* System
@@ -319,11 +327,17 @@
 - The Throwable class is the superclass of all errors and exceptions in the Java language.
 ******** Constructors
 ******** Methods
-********* getStackTrace
+********* getStackTrace()
 - public StackTraceElement[] getStackTrace()
 - 
   Provides programmatic access to the stack trace information printed by printStackTrace().
   Returns an array of stack trace elements, each representing one stack frame.
+********* printStackTrace()
+- public void printStackTrace()
+- 
+  Prints this throwable and its backtrace to the standard error stream.
+********* printStackTrace(PrintStream s)
+********* printStackTrace(PrintWriter s)
 ******* Void
 ****** Enum
 ****** Exception
@@ -677,6 +691,7 @@
 ***** java.util.spi
 **** javax
 ***** javax.annotation
+***** javax.crypto
 ***** javax.imageio
 ***** javax.imageio.event
 ***** javax.imageio.metadata
@@ -684,7 +699,28 @@
 ***** javax.imageio.pulgins.jpeg
 ***** javax.imageio.imagio.spi
 ***** javax.imageio.imagio.stream
-***** javax.crypto
+***** javax.naming
+****** Interfaces
+******* Context
+- public interface Context
+- 
+  This interface represents a naming context, which consists of a set of name-to-object bindings.
+******** Fields
+******** Methods
+****** Classes
+******* InitialContext
+- public class InitialContext extends Objcet implements Context
+- 
+  This class is the starting context for preforming naming operations.
+  
+******** Fields
+******** Constructors
+******** Methods
+********* lookup(Name name)
+- Retrieves the named object.
+********* lookup(String name)
+- Retrieves the named object.
+****** Exception
 **** org
 ***** org.w3c.dom
 ***** org.w3c.dom.bootstrap
@@ -967,29 +1003,37 @@
   java.sqlインターフェースを介して実装されている。
 
 **** JDBC Driver
-
-***** Type1 : JDBC-ODBCブリッジ・ドライバ
+***** 概要
+****** Type1 : JDBC-ODBCブリッジ・ドライバ
 - 
   JDBCからのクエリー要求をODBCを経由して受け渡し、データベースとアクセスするもの。
   ODBCドライバが必須であり、ハードウェアとOSに依存する。
   Java7では非推奨となり、Java8では標準から削除された。
 
-***** Type2 : ネイティブ・ブリッジ・ドライバ
+****** Type2 : ネイティブ・ブリッジ・ドライバ
 - 
   JDBCからのクエリ要求をOS上のDDLや専門ライブラリに受け渡し、そこからデータベースにアクセスするもの。
   Type1に比べて階層が薄く高速化が期待できTCP/IPに依存しない利点があるが、ハードウェアとOSに依存する。
 - 
   Oracleの場合、Oracle Call Interface(OCI)ドライバ。
   
-***** Type3 : ネット・プロトコル・ドライバ
+****** Type3 : ネット・プロトコル・ドライバ
 - 
   JDBCからのクエリー要求をJavaで記述されたドライブ内で独自のプロトコルに変換し
 
-***** Type4 : ネイティブ・プロトコル・ドライバ
+****** Type4 : ネイティブ・プロトコル・ドライバ
 - 
   Oracleの場合、Thinドライバ。
-***** サーバー側Thinドライバ
-***** サーバー側内部ドライバ
+****** サーバー側Thinドライバ
+****** サーバー側内部ドライバ
+***** DB
+****** Oracle
+- classes111.jar : JDK1.1
+- classes12.jar : JDK1.2~JDK1.3
+- ojdbc14.jar : JDK1.4~JDK5(JDK1.5)
+- ojdbc5.jar : JDK5(JDK1.5)
+- ojdbc6.jar : JDK6(JDK1.6)
+- ojdbc7.jar : JDK7(JDK1.7)
 ** Settings
 *** Environmental Variables
 **** CLASSPATH
@@ -1060,6 +1104,11 @@
   - 永続化 : java.io.Serializableインターフェースを実装
   - 引数なしのコンストラクタ
 - [[http://www.wakhok.ac.jp/~tomoharu/web2004/text/index_c4.html][JavaBeansとJSP - JavaによるWebアプリケーション入門]]
+*** JNDI
+- Java Naming and Directory Interface
+  ネーミング・サービス、ディレクトリー・サービスを扱うためのインターフェースを規定した仕様。
+- http://www.ne.jp/asahi/hishidama/home/tech/java/j2ee/jndi.html
+- [[http://www.ibm.com/developerworks/jp/websphere/library/was/was_jndi/][今さら人に訊けないJNDI - IBM developerWorks]]
 ** Link
 - [[http://docs.oracle.com/javase/specs/][Java Language and Virtual Machine Specification - ORACLE]]
 - [[http://docs.oracle.com/javase/8/docs/api/][Java™ Platform, Standard Edition 8 API Specification]]

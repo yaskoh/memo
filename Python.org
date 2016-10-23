@@ -993,7 +993,12 @@
 **** MSWin固有
 **** Usix固有
 **** MacOSX固有
-*** Beautiful Soup
+*** Other Libraries
+**** Beautiful Soup
+**** NumPy
+**** SciPy
+**** matplotlib
+**** scikit-learn
 ** Python 2.x
 - [[file:Python_2_Lang.org][Python_2_Lang.org]]
 ** Style
@@ -1010,43 +1015,87 @@
 **** Link
 - https://www.python.org/dev/peps/pep-0008/
 
-** pip
+** Tools
+*** anaconda
+**** Memo
+- 普通にanacondaをインストールすると、OSで設定しているpythonもすべて奪ってしまうとのこと。
+  Winなら問題ないかもしれないが、基本pyenvを使って入れるのが良さそう。
+- [[https://www.continuum.io/][ANACONDA]]
+- [[http://qiita.com/y__sama/items/5b62d31cb7e6ed50f02c][データサイエンティストを目指す人のpython環境構築 2016 - Qiita]]
+*** pip
 - 
   Pythonにおけるパッケージ管理システム。
-*** command
-**** help
+**** command
+***** help
 - 
   ex) pip help
       pip help install
 
-**** search
+***** search
 - 
   Python Package Index(pypi)にあるパッケージをsearchコマンドで検索可能。
 
-**** install
+***** install
 - 
   インストールを行う。
 
-**** freeze
+***** freeze
 - 
   書き出しておいたパッケージリストを全部インストールする。
 
-**** show
+***** show
 - 
   パッケージの詳細を確認できる。
 
-*** etc
-**** install
+**** etc
+***** install
 - 
   githubのget-pip.pyをパイプでpython呼び出しして実行した。
   ただし、pythonをzlib付でビルドしていないとだめらしく、
   configure時に"--with-zlib-dir=/usr/local/lib"とか付けた。
   [[https://github.com/pypa/pip/issues/1919][zipimport.ZipImportError#1919]]
 
-**** Link
+***** Link
 - [[https://pip.pypa.io/en/latest/index.html][pip]]
 - [[http://tdoc.info/blog/2014/01/15/pip.html][pipの使い方(2014/1バージョン) - そこはかとなく書くよん。]]
+*** pyenv
+**** commands
+- [[https://github.com/yyuu/pyenv/blob/master/COMMANDS.md][Command Reference - pyenv - git hub]]
+***** commands
+- Lists all available pyenv commands
+***** local
+***** global
+***** shell
+***** install
+- Usage :
+  pyenv install [-f] [-kvp]  <version>
+  pyenv install [-f] [-kvp]  <definition-file>
+  pyenv install -l|--list
 
+- -l, --list
+- -f, --force
+- -s, --skip-existing
+- -k, --keep
+- -v, --verbose
+- -p, --patch
+- -g, --debug
+
+***** uninstall
+***** rehash
+***** version
+***** versions
+***** which
+***** whence
+**** Environmental variables
+***** PYENV_VERSION
+***** PYENV_ROOT
+- default : ~/.pyenv
+  Defines the directory under which Python versions and shims reside.
+***** PYENV_DEBUG
+***** PYENV_HOOK_PATH
+***** PYENV_DIR
+**** Link
+- [[https://github.com/yyuu/pyenv][yyuu/pyenv - github]]
 ** Glossary
 *** Mutable, Immutable
 - Mutable

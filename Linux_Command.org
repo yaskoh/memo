@@ -1689,6 +1689,21 @@
 - ex)
   - useradd -d /user1 -m -g user1 user1
 
+*** userdel
+*** usermod
+- usermod [options] LOGIN
+  modify a user account
+- -a, --append
+  Add the user to the supplementary group(s)
+
+- -c, --comment COMMENT
+- -d, --home HOMEDIR
+- -g, --gid GROUP
+- -l, --login
+- -L, --lock
+- -p, --password
+- -s, --shell SHELL
+- -u, --uid UID
 *** vgdisplay
 - 
   display attributes of volume groups

@@ -1247,6 +1247,7 @@
   SQLとXMLの両方のデータ・モデルの相互運用を可能にすることで、ネイティブなXMLサポートを提供する。
 *** Recovery Manager
 - https://docs.oracle.com/cd/E16338_01/backup.112/b56269/toc.htm
+*** TKPROF
 ** Error
 *** ORA-00942
 - 該当の表またはビューが存在しない場合や、表やビューに対するアクセス権限が不足している場合に発生する。
@@ -1264,6 +1265,14 @@
   表を削除してから、表領域の削除を再実行する必要がある。
 
 ** Glossary
+*** ADR
+- Automatic Diagnostic Repository 自動診断レポジトリ
+  ログファイルなどのデータベースの状況管理や診断に使用するデータを一括で管理する。11gより。
+  ログファイルを含むすべての診断データを「ADR_BASE」と呼ばれる単一のディレクトリの配下に補完する。
+  ADR_BASEとADR_HOMEの場所は「V$DIAG_INFO」ビューで確認できる。
+- 
+  [[http://www.atmarkit.co.jp/ait/articles/0808/08/news143.html][11gからの新管理機構「ADR」を理解しよう (1/4) - @IT]]
+  [[http://cosol.jp/tech/detail/d3_adr_automatic_diagnostic_repository.shtml][Oracle Database 11gから導入されたADR ( 自動診断リポジトリ ) - 株式会社こーそる]]
 *** Oracle ASM
 - Oracle Automatic Storage Management
   データベースファイルの配置とネーミングを自動的に管理する。
@@ -1360,6 +1369,9 @@
 **** 行連鎖
 - 最初に行を挿入するとき、大きすぎて1つのデータ・ブロック内に収まらない場合、
   その行のデータは、セグメント用に確保された1つ以上のデータ・ブロックの連鎖に格納される。
+*** Flashback Query
+- 誤って変更したデータをもとに戻す場合などに、UNDOデータを参照してデータを復活させることができる。
+  http://output-place.blogspot.jp/2013/09/oracle.html
 ** Memo
 *** 他システムとの違い
 **** 空文字/Null
@@ -1495,6 +1507,42 @@
   - 自動オプティマイザ機能
   - 自動セグメント・アドバイザ
   - 自動SQLチューニング・アドバイザ
+*** フラッシュバッククエリ
+- 間違えて変更したものをUNDOデータから復活できる。
+  http://output-place.blogspot.jp/2013/09/oracle.html
+*** トレースの取得
+**** ALTER SESSION
+**** ログオントリガー
+**** ALTER SYSTEM
+**** DBMS_MONITOR
+- [[https://www.ashisuto.co.jp/db_blog/article/20160630_sqltrace.html][SQLトレースの取得方法まとめ（ケース別） - アシスト Database Support Blog]]
+*** キャッシュクリア
+- 共有プール(SHARED POOL)
+  ALTER SYSTEM FLUSH SHARED_POOL;
+  - SGAの「共有プール」上のすべてのデータをフラッシュする。
+    - 対象
+      - データディクショナリ
+      - SHARED SQL AREA
+      - SHARED PL/SQL AREA
+      - ストアド・サブプログラム
+      - トリガー
+      - （実行中のキャッシュは削除されない）
+- バッファキャッシュ(10g以降)
+  ALTER SYSTEM FLUSH BUFFER_CACHE;
+
+*** コンパイル
+- 単体
+  ALETR PROCEDURE procedure_name COMPILE;
+  ALTER PACKAGE package_name COMPILE [PACKAGE/BODY];
+- 全体 （スキーマ名を省略すると全スキーマを対象にINVALIDなオブジェクトをコンパイルする）
+  CALL UTL.RECOMP.RECOMP_SERIAL('schema_name');
+  or
+  EXECUTE UTL.RECOMP.RECOMP_SERIAL('schema_name');
+  or
+  EXECUTE DBMS_UTILITY.COMPILE_SCHEMA('schema_name');
+*** 実行履歴の確認
+- V$SQLのSQL_TEXT列を確認する。SQL_TEXTに入っているのは最初の1000文字で、CLOB型のSQL_FULLTEXTには全テキストが入っている。
+- V$SQLTEXTのSQL_TEXTを確認する。VARCHAR2(64)で、テキストの一部分。
 ** Link
 *** Oracle 11.2
 - [[http://docs.oracle.com/cd/E16338_01/nav/portal_booklist.htm][Oracle® Databaseオンライン・ドキュメント・ライブラリ 11g リリース2 (11.2) すべてのドキュメント]]
@@ -1510,7 +1558,6 @@
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56299/toc.htm][Oracle® Database SQL言語リファレンス 11gリリース2]]
 **** SQL*Plus
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/toc.htm][SQL*Plus®ユーザーズ・ガイドおよびリファレンスリリース11.2]]
-  
 **** PL/SQL
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56260/toc.htm][Oracle® Database PL/SQL言語リファレンス 11gリリース2 (11.2)]]
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/toc.htm][Oracle® Database PL/SQLパッケージおよびタイプ・リファレンス 11g リリース2(11.2)]]

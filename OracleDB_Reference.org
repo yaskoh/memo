@@ -214,10 +214,21 @@
   ほとんどすべてのV$ビューに対し、対応するGV$ビューがある。
 **** V$DATABASE
 - 現在接続しているインスタンスのDBID、チェックポイントなどが取得できる。
+**** V$DIAG_INFO
+- NAME=VALUEペアを使用して自動診断リポジトリ(ADR)機能の状態を示す。
+
 **** V$INSTANCE
 - 現行インスタンスの状態を表す。
 **** V$OPTION
 - オプション製品のインストール状況
+**** V$SQL
+- GROUP BY句のない共有SQL領域についての統計情報を示し、入力された元のSQLテキストの子ごとに1行ずつ実行する。
+  
+**** V$SQL_BIND_CAPTURE
+- SQLカーソルによって使用されたバインド変数に関する情報を示す。
+**** V$SQLTEXT
+- SGA内の共有SQLカーソルに属するSQL文のテキストを示す。
+  
 **** V$PWFILE_USERS
 - パスワードファイル認証にエントリされている（SYSDBAまたはSYSOPERシステム権限がある）ユーザの一覧
 *** イベント
@@ -227,13 +238,6 @@
   データベース・サーバー・コンポーネントに関するパフォーマンス問題を特定および解決する一連のエキスパート・システムであるアドバイザのサーバー管理スイートに含まれる。
 - 
   https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_advis.htm#CIHIGAED
-
-**** DBMS_SQLTUNE
-- 
-  オンデマンドでSQLをチューニングするためのインターフェース。
-
-- 
-  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_sqltun.htm#CHDGAJCI
 **** DBMS_ASSET
 ***** Subprograms
 ****** ENQUOTE_NAME
@@ -248,6 +252,39 @@
 - AUTOTASKが、指定したクライアントまたは操作による要求を実行しないようにする。
 ****** ENABLE
 - 以前に使用禁止にしたクライアント、操作、ターゲット・タイプまたは個々のターゲットをAUTOTASKコントロールの基で使用可能にする。
+**** DBMS_MONITOR
+- PL/SQLを使用して統計情報収集とSQLトレースを制御するためのパッケージ。
+***** Subprograms
+****** CLIENT_ID_STAT_DISABLE
+****** CLIENT_ID_STAT_ENABLE
+****** CLIENT_ID_TRACE_DISABLE
+****** CLIENT_ID_TRACE_ENABLE
+****** DATABASE_TRACE_DISABLE
+- データベース全体または特定のインスタンスに対するSQLトレースを無効にする。
+****** DATABASE_TRACE_ENABLE
+- データベース全体または特定のインスタンスに対するSQLトレースを有効にする。
+****** SESSION_TRACE_DISABLE
+- 指定されたデータベース・セッション識別子(SID)に対して有効にされたトレースをローカル・インスタンス上で無効にする。
+****** SESSION_TRACE_ENABLE
+- 指定されたデータベース・セッション識別子(SID)に対して有効にされたトレースをローカル・インスタンス上で有効にする。
+**** DBMS_PROFILER
+- 既存のPL/SQLアプリケーションをプロファイルし、パフォーマンスのボトルネックを識別するためのインターベースを提供する。
+***** Subprograms
+****** FLUSH_DATA
+****** GET_VERSION
+****** INTERNAL_VERSION_CHECK
+****** PAUSE_PROFILER
+****** RESUME_PROFILER
+****** START_PROFILER
+****** STOP_PROFILER
+**** DBMS_SQLTUNE
+- 
+  オンデマンドでSQLをチューニングするためのインターフェース。
+
+- 
+  https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_sqltun.htm#CHDGAJCI
+**** DBMS_TRACE
+- PL/SQLトレースを開始および停止するサブプログラムを提供する。
 **** DBMS_ROWID
 - ROWIDに関する情報を取得できる。
   https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/d_rowid.htm

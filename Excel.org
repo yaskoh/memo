@@ -75,13 +75,40 @@
 - 
   排他的論理和を計算する。
 *** 検索/行列関数
+**** ADDRESS
+**** AREAS
 **** CHOOSE
 - 
   一つ目の引数に入力された数値に応じて、第二引数以降のいずれかを返り値として返す関数。
   =choose(条件となる数値,値1,値2,...)
   条件となる数値が1の場合値1、2の場合値2、...が返る。
   29以下までしか定義できない。
-
+**** COLUMN
+**** COLUMNS
+**** FORMULATEXT
+**** GETPIVOTDATA
+**** HLOOPUP
+**** HYPERLINK
+**** INDEX
+- INDEX(array,row_num,[column_num])
+- INDEX(reference,row_num,[column_num],[area_num])
+**** INDIRECT
+- INDIRECT(参照文字列,[参照形式])
+- 指定される文字列への参照を返す。
+**** LOOKUP
+**** MATCH
+- 
+**** OFFSET
+**** ROW
+**** ROWS
+**** RTD
+**** TRANSPOSE
+**** VLOOKUP
+- VLOOKUP(検索値,範囲,列番号[,検索方法])
+  
+- 検索方法
+  FALSE, 0と入力すると、完全一致するデータのみを探す。
+  TRUE, 1, 省略した場合は検索地未満の最大値が返される。（昇順に並んでいない場合適切に帰らない）
 *** 数学/三角関数
 **** CEILING
 **** CEILING.MATH
@@ -115,22 +142,6 @@
 **** COUNTIFS
 - COUNTIF(範囲1,検索条件1,範囲2,検索条件2,...)
   複数条件を設定してcountを行うことができる。
-**** INDEX
-- INDEX(array,row_num,[column_num])
-- INDEX(reference,row_num,[column_num],[area_num])
-
-**** LOOKUP
-**** MATCH
-- 
-**** OFFSET
-**** ROW
-**** ROWS
-**** VLOOKUP
-- VLOOKUP(検索値,範囲,列番号[,検索方法])
-  
-- 検索方法
-  FALSE, 0と入力すると、完全一致するデータのみを探す。
-  TRUE, 1, 省略した場合は検索地未満の最大値が返される。（昇順に並んでいない場合適切に帰らない）
 *** 文字列関数
 **** EXACT
 - 
@@ -240,7 +251,7 @@
 - 
   「クロス集計」を行う機能。
   
-** memo
+** Memo
 *** シート名を取得する
 - 
   =RIGHT(CELL("filename",A1),LEN(CELL("filename",A1))-FIND("]",CELL("filename",A1)))
@@ -312,6 +323,10 @@
     For Each Sh In ActiveWorkbook.Sheets
         Sh.Visible = True
     Next Sh
+*** セルの参照を文字列で作成
+- INDIRECT関数を使う。
+  =INDIRECT(A4&"!B3")などとして使う。
+  A4にあるシート名の、B3セルの参照が取得できる。
 ** Link
 - [[https://support.office.com/ja-jp/article/Excel-%E9%96%A2%E6%95%B0-%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1%E3%83%99%E3%83%83%E3%83%88%E9%A0%86-b3944572-255d-4efb-bb96-c6d90033e188][Excel関数（アルファベット順） - Office]]
 - [[https://support.office.com/ja-jp/article/Excel-%E9%96%A2%E6%95%B0-%E6%A9%9F%E8%83%BD%E5%88%A5-5f91f4e9-7b42-46d2-9bd1-63f26a86c0eb][Excel関数（機能別） - Office]]

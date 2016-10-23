@@ -96,6 +96,31 @@
 
 **** Latency
 - 処理にかかる時間
+** Glossary
+*** Bare Metal ベアメタル
+**** Bare Metal
+- OSなどのソフトウェアを組み込んでいない、ハードディスクやンピュータのこと。
+  「むき出しの金属装置」といったニュアンス。
+
+**** Bare Metal Cloud
+- 仮想サーバの設計として、物理サーバ上にOS層を設けず、ハイパーバイザーを組み込み、
+  その上に直接仮想サーバを構築する技術をベアメタル方式、という。
+  これらの方式で提供されている仮想サーバをベアメタルサーバといい、
+  ベアメタルサーバで提供されているクラウドサービスを一般にベアメタルクラウドという。
+  
+*** Converged Infrastructure コンバージドインフラストラクチャ
+- 有名製品
+  VCE「Vblock」、シスコとNetApp「FlexPod」など。
+*** Hyperconverged Infrastructure ハイパーコンバージドインフラストラクチャ
+- 特徴
+  - 共有ストレージアレイを使わず、各サーバのローカルストレージを使う
+  - 複数台ネットワーク接続してクラスタ構成とする
+  - Software-Defined Storage機能により、ローカルストレージをスケールアウトストレージにする機能を備える
+- 有名
+  - Nutanix
+- http://cn.teldevice.co.jp/column/detail/id/98
+*** Software Defined Network SDN
+*** Software Defined Storage SDS
 ** Link
 - [[http://yuuki.hatenablog.com/entry/large-scale-infrastructure][はてなで大規模サービスのインフラを学んだ - ゆううきブログ]]a
 - [[http://blog.harukasan.jp/entry/2014/09/11/181006][インターン生向け講義で発表しました#pixiv - BLOG::はるかさん]]
