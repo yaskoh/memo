@@ -497,6 +497,10 @@
 - 指定したスクリプトのSQL*Plus文を実行する。
 **** /
 - 最後に実行されたSQLコマンドまたはSQLバッファに格納されているPL/SQLブロックを実行する。
+**** ;
+- バッファの内容を表示する。L(IST)と同様。
+**** !
+- unix系でのHO[ST]コマンド実行の短縮形。
 **** ACCEPT
 - 構文
   ACC[EPT] variable 
@@ -525,6 +529,39 @@
   - HIDE
     - 入力された応答が表示されない。
 
+**** APPEND
+- A[PPEND] text
+  textで指定したテキストをSQLバッファ内のカレント行の終わりに追加する。
+**** ARCHIVE LOG
+**** ATTRIBUTE
+**** BREAK
+**** BTITLE
+**** CHANGE
+- C[HANGE] sephcar old [sepchar [new [sepchar]]]
+  バッファ内のカレント行で最初に一致した文字列を変更する。
+**** CLEAR
+**** COLUMN
+- COL[UMN] [{column | expr} [option ...]]
+- options
+  - ALI[AS] alias
+  - CLE{AR}
+  - ENTMAP {ON|OFF}
+  - FOLD_A[FTER]
+  - FOLD_B[EFORE]
+  - FOR[MAT] format
+  - HEA[DING] text
+  - JUS[TIFY] {L[EFT] | C[ENTER] | R[IGHT]}
+  - LIKE {expr | alias}
+  - NEWL[INE]
+  - NEW_V[ALUE] variable
+  - NOPRI[NT] | PRI[NT]
+  - NUL[L] text
+  - OLD_V[ALUE] variable
+  - ON | OFF
+  - WRA[PPED]
+  - WOR[D_WRAPPED]
+  - TRU[NCATED]
+**** COMPUTE
 **** CONNECT
 - 
   指定したユーザ-名でOracle Databaseに接続する。
@@ -543,14 +580,36 @@
   - AS {SYSOPER|SYSDBA|SYSASM}
     AS句を使用すると、SYSOPER、SYSDBA、またはSYSASMシステム権限が付与されているユーザーによる特権付接続が可能。
 
+**** COPY
 **** DEFINE
 - DEF[INE] [variable] | [variable = text]
   ユーザ変数または事前定義変数を指定し、その変数にCHAR値を割り当てたり、1つまたはすべての変数の値および変数型を表示する。
 
+***** 事前定義変数
+****** _CONNECT_INDENTIFIER
+****** _DATE
+****** _EDITOR
+- EDITコマンドで使用されるエディタを指定する。
+****** _O_VERSION
+****** _O_RELEASE
+****** _PRIVILEGE
+****** _SQLPLUS_RELEASE
+****** _USER
+**** DEL
 **** DESCRIBE
 - DESC[RIBE] objectx
   表、ビュー、ファンクション、プロシージャの定義を表示する。
 
+**** DISCONNECT
+**** EDIT
+- ED[IT] [file_name[.ext]]
+  file_name[.ext]に指定したファイルの内容又はバッファの内容を対象として、OSのテキストエディタを起動する。
+**** EXECUTE
+**** EXIT
+**** GET
+**** HELP
+- HELP | ? [topic]
+  topicには、COLUMなどのSQL*Plusのヘルプトピックを指定する。
 **** HOST
 - HO[ST]
   続けてOSのコマンドを入力することで、OSのコマンドを実行可能。
@@ -561,10 +620,31 @@
   - $
     Windows系での短縮形。
 
+**** INPUT
+- I[NPUT] [text]
+  textの内容をバッファ内のカレント行の後に1行以上の新規コメントを追加する。
+  
+**** LIST
+- L[IST] [n|n m|n*|n LAST|*|* n|* LAST|LAST]
+  SQLバッファの1つ以上の行を表示する。
+  ";"でも同様。
+**** PASSWORD
+**** PAUSE
+**** PRINT
 **** PROMPT
 - PRO[MPT] [text]
   textを画面上表示する
   
+**** RECOVER
+**** REMARK
+**** REPFOOTER
+**** REPHEADER
+**** RUN
+- R[UN]
+  現在SQLバッファに格納されているSQLコマンドまたはPL/SQLブロックを表示して実行する。
+**** SAVE
+- SAV[E] [FILE] file_name[.ext] [CRE[ATE]] | REP[LACE] | APP[END]]
+  SQLバッファの内容を、OSのスクリプトに保存する。
 **** SET
 ***** SET DEF[INE] {&|c|ON|OFF}
 - 置換変数の接頭辞として使用する文字を、cに設定する。
@@ -586,6 +666,7 @@
 ***** SET VER[IFY] {ON|OFF}
 - 
   置換変数を値と置き換える前後に、SQL文またはPL/SQLコマンドのテキストをリスト表示するかどうかを制御する。
+**** SHOW
 **** SHUTDOWN
 - 
   接続の終了を待つ。
@@ -618,6 +699,7 @@
   - (指定なし)
     現行のスプール状態を表示する。
 
+**** START
 **** STARTUP
 - 
   SQL*Plusを起動する
@@ -651,6 +733,10 @@
       MOUNTまたはOPENと同時には指定できない。
       その後変更する場合は、alter database mount; alter database open;など。
 
+**** STORE
+**** TIMING
+**** TTITLE
+**** UNDEFINE
 **** VARIABLE
 - VAR[IABLE] [variable [type]]
   引数なしでVARIABLEを指定すると、セッション内で宣言されているすべての変数が表示される。
@@ -690,7 +776,8 @@
     - ROLLBACK
       終了前にROLLBACKを実行するようにする。
     - NONE
-      何の操作もしない。  
+      何の操作もしない。
+**** XQUERY
 *** Restriction
 - 
   |----------------------+------------|
@@ -778,6 +865,29 @@
 - Oracle Enterprise Manager
 - SQL Developer
 
+** Performance
+*** 概要
+*** パフォーマンス計画
+*** インスタンスのパフォーマンス最適化
+**** 自動パフォーマンス統計
+**** 自動パフォーマンス診断
+**** メモリの構成および使用方法
+**** I/O構成および設計
+**** オペレーティング・システム・リソースの管理
+**** パフォーマンス・ビューを使用したインスタンスのチューニング
+*** SQL文の最適化
+**** 問合せオプティマイザ
+**** EXPLAIN PLANの使用方法
+**** オプティマイザ統計の管理
+**** 索引およびクラスタの使用方法
+**** SQL計画の管理の使用方法
+**** SQLチューニングの概要
+**** 自動SQLチューニング
+**** SQLアクセス・アドバイザ
+**** オプティマイザ・ヒントの使用方法
+**** プラン・スタビリティの使用方法
+**** アプリケーション・トレース・ツールの使用方法
+**** 
 ** Security
 *** 事前定義ユーザ
 **** 事前定義された管理アカウント
@@ -1278,6 +1388,11 @@
   データベースファイルの配置とネーミングを自動的に管理する。
   多数のディスクを持つ華僑では、管理が簡単になり、パフォーマンスが向上する。
   
+*** SCN
+- System Change Number
+  システム変更番号
+- 現在のSCMを確認する : select bdms_flashback.get_system_change_number from dual;
+  
 *** SID
 - System Identifier
   システム識別子。インスタンスを区別するために使用する一意の識別子。
@@ -1468,7 +1583,7 @@
   削除コマンドは存在しないので、空文字で上書きすることとなる。
   COMMENT ON COLUMN table.column is '';
 
-*** 出力行を抑制する
+*** 結果の出力行数を抑制する
 - 
   rownum擬似列を利用する。
   where rownum = 1とすると、1行のみ出力できる。行頭を見たい場合に利用している。
@@ -1543,6 +1658,23 @@
 *** 実行履歴の確認
 - V$SQLのSQL_TEXT列を確認する。SQL_TEXTに入っているのは最初の1000文字で、CLOB型のSQL_FULLTEXTには全テキストが入っている。
 - V$SQLTEXTのSQL_TEXTを確認する。VARCHAR2(64)で、テキストの一部分。
+*** Flashback Technology
+- http://docs.oracle.com/cd/E16338_01/appdev.112/b56259/adfns_flashback.htm
+
+**** About
+**** Type
+***** アプリケーション開発機能
+****** Oracle Flashback Query
+****** Oracle Flashback Version Query
+****** Oracle Flashback Transaction Query
+****** DBMS_FLASHBACKパッケージ
+****** フラッシュバック・トランザクション
+****** フラッシュバック・データ・アーカイブ(Oracle Total Recall)
+***** データベース管理機能
+****** Oracle Flashback Table
+****** Orcale Flashback Drop
+****** Oracle Flashback Database
+**** Settings
 ** Link
 *** Oracle 11.2
 - [[http://docs.oracle.com/cd/E16338_01/nav/portal_booklist.htm][Oracle® Databaseオンライン・ドキュメント・ライブラリ 11g リリース2 (11.2) すべてのドキュメント]]
@@ -1553,6 +1685,7 @@
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56306/toc.htm][Oracle® Database概要 11gリリース2 (11.2)]]
 **** Manage
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56301/toc.htm][Oracle® Database管理者ガイド 11gリリース2 (11.2)]]
+- [[https://docs.oracle.com/cd/E16338_01/backup.112/b56269/toc.htm][Oracle Databaseバックアップおよびリカバリ・ユーザーズ・ガイド11g リリース2(11.2)]]
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56320/toc.htm][Oracle® Database 2日でデータベース管理者 11gリリース2(11.2)]]
 **** SQL言語
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56299/toc.htm][Oracle® Database SQL言語リファレンス 11gリリース2]]
@@ -1564,5 +1697,7 @@
 **** Reference
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/toc.htm][Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
   
+**** Performance
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56312/toc.htm][Oracle® Databaseパフォーマンス・チューニング・ガイド 11gリリース2 (11.2)]]
 *** Etc
 - [[http://luna.gonna.jp/oracle/index.html][オラクル ちょこっとリファレンス]]

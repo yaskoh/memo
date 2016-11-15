@@ -186,6 +186,15 @@
 - 
   (Experimental) Lists the instrumented Java Virtual Machines (JVMs) on the target system.
 
+** Warnings
+*** Comparing identical expressions
+- 同じものを比較。
+- 抑止：なし
+*** finally block does not cemplete normally
+- finally中にreturnやthrowなどを記述
+- 抑止：@Suppress Warnings("finally")
+*** Link
+- http://kidotaka.hatenablog.com/entry/20091122/1258922844
 ** API
 *** Java SE 8
 **** java
@@ -347,6 +356,12 @@
 ******* Error
 - An Error is a subclass of Throwable that indicates serious problems that a reasonable application should not try to catch.
 ****** Annotation
+******* Deprecated
+******* FunctionalInterface
+******* Override
+******* SafeVarargs
+******* SuppressWarnings
+- Indicates that the named compiler warnings should be suppressed in the annotated element.
 ***** java.io
 ****** Interface
 ******* Closable
@@ -367,6 +382,16 @@
 ******* ByteArrayOutputStream
 ******* Console
 ******* File
+******** Fields
+******** Constructor
+******** Methods
+********* toURI()
+- Constructs a file: URI that represents this abstract pathname.
+********* toURL()
+- Deprecated
+  the method does not automatically escape characters that are illegal in URLs.
+  it is recommended converting URI first(using toURI for example), then use URI.toURL.
+  (toURI.toURL)
 ******* FileDescripter
 ******* FileInputStream
 - public class FileInputStream extends InputStream
@@ -398,7 +423,6 @@
 - Creats a file output stream to write to the file with the specified name.
 ********* FileOUtputStream(String name, boolean append)
 ******** Methods
-********* 
 ******* FileReader
 ******* FileWriter
 ******* InputStream
@@ -562,6 +586,13 @@
 ******** Methods
 ******* URI
 ******* URL
+******* URLDecoder
+******** Methods
+********* decode(String s)
+- Deprecated.
+  The resulting string may vary depending on the platform's default encoding.
+  use decode(String, String) method to specify the encoding.
+********* decode (String s, String enc)
 ****** Enum
 ****** Exception
 ***** java.nio
@@ -572,6 +603,13 @@
 ***** java.nio.channels
 ***** java.nio.channels.spi
 ***** java.security
+- Provides the classes and interfaces for the security framework.
+****** Interfaces
+******* PrivilegedAction<T>
+- A computation to be performed with privileges enabled.
+****** Classes
+****** Enums
+****** Exceptions
 ***** java.security.acl
 ***** java.security.cert
 ***** java.security.interfaces
@@ -1162,34 +1200,30 @@
 - ex)
   package abc.def, file abc/def/main.classの場合、
   その上のフォルダで"java abc.def.main"と実行する。
-*** 例外
+*** Throwable、例外
+**** Error エラー
+**** Exceptoin 例外
 - チェック例外・非チェック例外
   - チェック例外(Exception) : 例外が発生した場合にcatch節で補足し処理するか、throws句を記述しないとコンパイルエラーが発生するため、例外発生時の対処をプログラムで矯正される例外。
-  - 非チェック例外(RuntimeException) : 通常、例外が発生した灰にcatch節やthrow区で対応しない/してはならない例外。
+  - 非チェック例外(RuntimeException) : 通常、例外が発生した際にcatch節やthrow区で対応しない/してはならない例外。
 - 発生状況別
   - 論理例外 : アプリケーションで論理的に発生しうる例外。補足して処理する。
   - システム例外 : システムが正常に動作する条件が整っていない場合や、連携する外部アプリケーションのエラーに起因する例外。アプリケーションで処理しない/処理しても意味がない。
   - プログラムエラー : コーデイングの間違い、連携するAPIの使用方法の間違いなど。本来的に発生しない者なので、対処しても意味がないエラー。
+
+**** Link
+- [[http://ebc-2in2crc.hatenablog.jp/entry/20120729/1343557350][Java のチェック例外と非チェック例外の考察まとめ - 全力で怠けたい]]
+
 *** .class
 - クラス名.class、とすることでクラスが取得できる。
   どこかのクラスメソッドかと思いきや、これはJavaのsyntaxに組み込まれていた。
   Java 1.8 Specificationの「15.8.2 Class Literals」にある。
   
   ちなみにインスタンスからクラス名を取得するには、Object#getClass()で可。
+*** varargs
+- 可変長引数を取れるようにするもの。
+  (そのうち文法に統合するなどしてください。@SafeVarargs, @SuppressWarningsとかも)
 *** temp
-**** 文字列の連結
-- 
-  +を使う
-
-**** 改行
-- 
-  \n
-
-**** 演算子とオペランド
-- 
-  演算を行う+や-などの記号を演算子(operator)、演算の対象となる式はオペランド(operand)という。
-  x + yのx, yオペランド。
-
 **** 修飾子
 ***** アクセス修飾子
 - 

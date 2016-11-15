@@ -1317,9 +1317,7 @@
   };
   
 *** Windows
-- [[https://msdn.microsoft.com/ja-jp/library/59ey50w6.aspx][C ランタイム ライブラリ リファレンス - Microsoft Developer Network]]]
-**** Win32基本型
-- [[http://www.wisdomsoft.jp/421.html][基本データ型と文字列 - WisdomSoft]]
+- [[file:./VisualC++.org][VisualC++]]
 ** syntax
 *** do { ... } while ();
 
@@ -1509,6 +1507,7 @@
 **** Link
 - [[https://gcc.gnu.org/onlinedocs/][GCC online documentation]]
 *** Microsoft Visual C++
+- [[file:./VisualC++.org][VisualC++]]
 *** C++ Builder
 - 前身はBorland C/C++。更に前身はTurbo C/C++。
 *** HP C
@@ -1522,6 +1521,9 @@
 - [[https://www.gnu.org/software/libc/manual/][The GNU C Library]]
 
 - [[http://www.jpcert.or.jp/sc-rules/][CERT C コーディングスタンダード - JPCERT]]
+
+*** 各種
+- [[https://www.grapecity.com/tools/support/powernews/column/][もう一度基礎からC言語 - PowerNews連載コラム GrapeCity]]
 
 ** Memo
 *** C standard
@@ -1619,11 +1621,16 @@
 - L long
 - U unsigned
 
-*** ビルド
+*** Build
 **** preprocess
 - 
   #includeや#ifdef等を処理する。
   gcc -Eとすると、プリプロセスだけ処理を行った結果が標準出力に出力される。
+
+- 
+  ソースコードに一定の規則に従って処理を加える。
+  コンパイルの前処理。#includeや#defineといったマクロの処理をする段階。
+  .cファイル、.hファイルが利用される。
 
 **** compile
 - 
@@ -1640,20 +1647,25 @@
   - COFF (Common Object File Format)
   - a.out (assembler output)
   
-  gcc cとして処理すると、アセンブルまでで処理を中断し、*.oというファイルが作成される。
+  gcc -cとして処理すると、アセンブルまでで処理を中断し、*.oというファイルが作成される。
 
 **** link
 - 
   オブジェクトファイル(*.o)から実行ファイルまたはライブラリ(*.a, *.so)を生成する。
-
-*** Library
-**** Static Library
 - 
+  複数のobjファイルを一つにまとめ、またlibファイルも統合することで実行ファイルを作成する。
+
+**** 参考
+- [[http://c-lang.sevendays-study.com/day7.html][第7日目：ファイル分割 - 一週間で身につくC言語の基本]]
+- [[http://www.geocities.jp/sugachan1973/doc/funto53.html][システム奮闘記:その53 プログラムで使う静的ライブラリ、共有ライブラリ C言語(libc,gcc)]]
+*** Library
+**** Static Library 静的ライブラリ
+- libxxx.a
   スタティックリンクに使うライブラリで、通常「*.a」となる。
   arというプログラムで作ったアーカイブファイルで、多くのオブジェクトファイルが含まれる。
 
-**** Dynamic Library
-- 
+**** Dynamic Library 共有ライブラリ
+- libxxx.so
   共有ライブラリはダイナミックリンクに使うライブラリで、ファイル名は通常「*.so」となる。
   「lib.so.6」のようにバージョン番号がつく場合もある。
   静的ライブラリと異なり全体が1つのオブジェクトファイルとして構成される。
@@ -1667,6 +1679,10 @@
   関数プロトタイプへの使用は任意。C++で関数名が変形されないするようにするには、extern "C"を使用する。
 
   宣言だけ行い、定義は行わないで済ます方法。
+
+  ファイル分割をした結果、グローバル変数が他ファイルで定義されているが、別ファイルでも利用したい場合などに、
+  二重に宣言をせず利用はできるようにするために存在する。
+
 *** incomplete type 不完全型
 - 
   オブジェクトを規定する型で、その大きさを確定するのに必要な情報が欠けたもの。

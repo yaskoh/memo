@@ -1,55 +1,8 @@
 * tmux
-
-** Command
-
-- ?
-  キー一覧の取得
-
-- c
-  新規ウィンドウの作成。
-  :new-window
-
-- [番号(0-9)]
-  ウィンドウの切替
-
-- n
-  次のウィンドウへ
-
-- p
-  前のウィンドウへ
-
-- w
-  現在のウィンドウの一覧
-
-- &
-  ウィンドウの削除
-
-- "
-  水平分割
-
-- %
-  垂直分割
-
-- o
-  ウィンドウの移動
-
-- q
-  分割ウィンドウの番号表示
-
-- q + [番号]
-  ペインの移動
-
-- x
-  現在のペインの削除
-
-- !
-  現在のペインを別ウィンドウへ
-
-** bind-key ?
-
-(bind-key ? の内容コピペ。
- ただしbind-keyの部分は削除。）
-
+** Commands
+- tmux [-2Cluv] [-c shell-command] [-f file] [-L socket-name] [-S socket-path] [command [flags]]
+** Key Bindings
+(Bind-key ?)
 - C-b        send-prefix
 - C-o        rotate-window
 - C-z        suspend-client
@@ -123,8 +76,47 @@
 - -r C-Down  resize-pane -D
 - -r C-Left  resize-pane -L
 - -r C-Right resize-pane -R
+*** Command(old)
+**** ?
+   キー一覧の取得
+**** c
+   新規ウィンドウの作成。
+   :new-window
+**** [番号(0-9)]
+   ウィンドウの切替
+**** n
+   次のウィンドウへ
+**** p
+   前のウィンドウへ
+**** w
+   現在のウィンドウの一覧
+**** &
+   ウィンドウの削除
+**** "
+   水平分割
+**** %
+   垂直分割
+**** o
+   ウィンドウの移動
+**** q
+   分割ウィンドウの番号表示
+**** q + [番号]
+   ペインの移動
+**** x
+   現在のペインの削除
+**** !
+   現在のペインを別ウィンドウへ
+
+** Settings
 ** Memo
 *** Copy/Paste
 - 
   (Windows)Shiftを押しながらマウスを動かす・右クリックすると、
   コピーやペースト等の操作ができる。
+*** Mouse
+- 
+  tmux 2.1からmouse設定が変更になった模様。
+  [[http://qiita.com/jyotti/items/70a3a8035d767f99f93d][tmux v2.1からmouse関連の設定が変わった - Qiita]]
+  [[https://github.com/NHDaly/tmux-better-mouse-mode][tmux-better-mouse-mode]]
+** Link
+- [[https://tmux.github.io/][tmux]]

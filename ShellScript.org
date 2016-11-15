@@ -158,6 +158,16 @@
     echo $i
   done
 
+****** memo
+******* make defined-times loop
+- using with "seq" command.
+- ex
+  - for i in `seq 1 N`
+******* operate some vars at once
+- enclosing some vars by double-quote(")
+- ex
+  for i in "a b c" "d e" "f g h i"; do echo $i; done;
+  ⇒a b c(\n)d e(\n)f
 ***** while statement
 - format
   while command-list

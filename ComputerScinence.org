@@ -1,4 +1,10 @@
 * Computer Science
+** Glossary
+*** Type safe
+- Œ^ˆÀ‘S«
+  http://postd.cc/what-is-type-safety/
+*** Memory safe
+- ƒƒ‚ƒŠˆÀ‘S«
 ** Memo
 *** Evaluation
 **** normal-order evaluation

@@ -113,6 +113,9 @@
 - ユーザートレースの格納場所
 *** 静的データ・ディクショナリ・ビュー
 **** ALL
+- 現在ユーザがアクセス可能
+***** ALL_CLUSTERS
+- 現在のユーザがアクセスできるすべてのクラスタを示す。
 ***** ALL_CONSTRAINTS
 - 現行のユーザがアクセスできる表の制約定義を示す。
 - CONSTRAINT_TYPE
@@ -132,12 +135,15 @@
 - 現在のユーザがアクセスできるディレクトリをすべて示す。
 ***** ALL_INDEXES
 - 現在のユーザがアクセスできる表の索引を示す。
+***** ALL_IND_PARTITIONS
+***** ALL_IND_STATISTICS
 ***** ALL_SEQUENCES
 ***** ALL_SOURCE
 - 現行のユーザがアクセスできるストアド・オブジェクトのテキスト・ソースを示す。
 ***** ALL_TAB_COMMENTS
 - 現行のユーザがアクセスできる表およびビューのコメントを示す。
 **** DBA
+- DB内全て
 ***** DBA_AUTOTASK_CLIENT
 - 7日間および30日間の各自動メンテナンスタスクに対する統計データを示す。
 ***** DBA_AUTOTASK_OPERATION
@@ -146,6 +152,7 @@
 - 現在および過去の自動メンテナンス・タスクに関する情報を示す。
 ***** DBA_AUTOTASK_WINDOW_CLIENTS
 - MAINTENANCE_WINDOW_GROUPに属するウィンドウを、各メンテナンス・タスクのウィンドウのステータスEnabledまたはDisabledとともに示す。
+***** DBA_CLUSTERS
 ***** DBA_COL_COMMENTS
 - データベース内のすべての表及びビューについてのコメントを示す。
 ***** DBA_CONSTRAINTS
@@ -164,6 +171,10 @@
   
 ***** DBA_INDEXES
 - データベース内の索引をすべて示す。
+***** DBA_IND_PARTITIONS
+- データベース内の索引パーティションをすべて示す。
+***** DBA_IND_STATISTICS
+- データベース内のすべての索引についてのオプティマイザ統計情報を示す。
 ***** DBA_ROLE_PRIVS
 - データベース内のすべてのユーザおよびロールに付与されたロールを表示する
 ***** DBA_SEGMENTS
@@ -179,7 +190,10 @@
 ***** DBA_TAB_COLUMNS
 - データベース内すべての表、ビューおよびクラスタの列を示す。
   
+***** DBA_TAB_COL_STATISTICS
+***** DBA_TAB_HISTOGRAMS
 ***** DBA_TAB_PRIVS
+***** DBA_TAB_STATISTICS
 ***** DBA_TABLES
 - データベース内のリレーショナル表をすべて示す。
 ***** DBA_TABLESPACES
@@ -187,6 +201,10 @@
 ***** DBA_USERS
 - データベース内のユーザーをすべて示す。
 **** USER
+- ユーザ所有
+***** USER_CLUSTERS
+- 現在のユーザが所有する全てのクラスタを示す
+  OWNER列を表示しない
 ***** USER_COL_COMMENTS
 ***** USER_CONSTRAINTS
 - 現在のユーザが所有する表の制約定義をすべて示す。
@@ -201,6 +219,9 @@
 ***** USER_SYS_PRIVS
 ***** USER_TAB_COMMENTS
 ***** USER_TAB_PRIVS
+***** USER_USERS
+- 現行のユーザを説明する。
+  現在ログインしているユーザを確認する場合などに便利。
 **** ETC
 ***** DATABASE_EXPORT_OBJECTS
 ***** SCHEMA_EXPORT_OBJECTS
@@ -252,6 +273,16 @@
 - AUTOTASKが、指定したクライアントまたは操作による要求を実行しないようにする。
 ****** ENABLE
 - 以前に使用禁止にしたクライアント、操作、ターゲット・タイプまたは個々のターゲットをAUTOTASKコントロールの基で使用可能にする。
+**** DBMS_FLASHBACK
+-
+***** Subprograms
+****** DISABLE
+- セッション全体においてフラッシュバックモードを無効化する。
+****** ENABLE_AT_SYSTEM_CHANGE_NUMBER
+****** ENABLE_AT_TIME
+****** GET_SYSTEM_CHANGE_NUMBER
+- 現在のSCNをOracleの数値タイプとして戻す。
+****** TRANSACTION_BLOCKOUT
 **** DBMS_MONITOR
 - PL/SQLを使用して統計情報収集とSQLトレースを制御するためのパッケージ。
 ***** Subprograms
@@ -303,4 +334,5 @@
 - [[file:./OracleDB.org][OracleDB.org]]
 *** Reference
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/toc.htm][Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
+- [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/toc.htm][Oracle® Database PL/SQLパッケージおよびタイプ・リファレンス 11g リリース2(11.2)]]
 
