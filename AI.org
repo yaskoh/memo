@@ -9,7 +9,7 @@
 **** ファジィ制御
 **** 進化的計算
 ** Field
-*** ニューラルネットワーク
+*** Neural Network ニューラルネットワーク
 **** About
 - 
   ニューロンをコンピュータ素子によるノードで表し、ノード間を信号線でつなぐことで作られる。
@@ -71,6 +71,7 @@
 **** Perceptron パーセプトロン
 - 
   Frank Rosenblattが考案したもっとも初歩的な階層型ネットワーク。
+  モデルはロジスティック回帰と等価。
 ***** 構造
 - 
   受容器(Sensory Unit)、連合器(Association Unit)、応答器(Response Unit)というノード階層からなる3層構造。
@@ -93,10 +94,22 @@
 
 - 線形分離可能性
   
-
 **** Hopfield Network ホップフィールドネットワーク
 - 
   
+**** 活性化関数
+***** ステップ関数
+- Def
+  h(x) = 1 (x > 0)
+  h(x) = 0 (x <= 0)
+***** sigmoid function シグモイド関数
+- Def
+  h(x) = 1 / 1 + exp(-x)
+***** ReLU関数
+- Rectified Linear Unit
+- Def
+  h(x) = x (x > 0)
+  h(x) = 0 (x <= 0)
 *** ファジィ
 *** 遺伝的アルゴリズム
 *** 探索

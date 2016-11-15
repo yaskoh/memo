@@ -186,6 +186,15 @@
 - 
   (Experimental) Lists the instrumented Java Virtual Machines (JVMs) on the target system.
 
+** Warnings
+*** Comparing identical expressions
+- 同じものを比較。
+- 抑止：なし
+*** finally block does not cemplete normally
+- finally中にreturnやthrowなどを記述
+- 抑止：@Suppress Warnings("finally")
+*** Link
+- http://kidotaka.hatenablog.com/entry/20091122/1258922844
 ** API
 *** Java SE 8
 **** java
@@ -251,6 +260,14 @@
 ******** Methods
 ******* StrictMath
 ******* String
+******** Methods
+********* indexOf(int ch)
+- public int indexOf(int ch)
+- 
+  Returns the index within this string of the first occurrence of the specified character.
+********* indexOf(int ch, int fromIndex)
+********* indexOf(String str)
+********* indexOf(String str, int fromIndex)
 ******* StringBuffer
 ******* StringBuilder
 ******* System
@@ -319,11 +336,17 @@
 - The Throwable class is the superclass of all errors and exceptions in the Java language.
 ******** Constructors
 ******** Methods
-********* getStackTrace
+********* getStackTrace()
 - public StackTraceElement[] getStackTrace()
 - 
   Provides programmatic access to the stack trace information printed by printStackTrace().
   Returns an array of stack trace elements, each representing one stack frame.
+********* printStackTrace()
+- public void printStackTrace()
+- 
+  Prints this throwable and its backtrace to the standard error stream.
+********* printStackTrace(PrintStream s)
+********* printStackTrace(PrintWriter s)
 ******* Void
 ****** Enum
 ****** Exception
@@ -333,6 +356,12 @@
 ******* Error
 - An Error is a subclass of Throwable that indicates serious problems that a reasonable application should not try to catch.
 ****** Annotation
+******* Deprecated
+******* FunctionalInterface
+******* Override
+******* SafeVarargs
+******* SuppressWarnings
+- Indicates that the named compiler warnings should be suppressed in the annotated element.
 ***** java.io
 ****** Interface
 ******* Closable
@@ -353,6 +382,16 @@
 ******* ByteArrayOutputStream
 ******* Console
 ******* File
+******** Fields
+******** Constructor
+******** Methods
+********* toURI()
+- Constructs a file: URI that represents this abstract pathname.
+********* toURL()
+- Deprecated
+  the method does not automatically escape characters that are illegal in URLs.
+  it is recommended converting URI first(using toURI for example), then use URI.toURL.
+  (toURI.toURL)
 ******* FileDescripter
 ******* FileInputStream
 - public class FileInputStream extends InputStream
@@ -384,7 +423,6 @@
 - Creats a file output stream to write to the file with the specified name.
 ********* FileOUtputStream(String name, boolean append)
 ******** Methods
-********* 
 ******* FileReader
 ******* FileWriter
 ******* InputStream
@@ -548,6 +586,13 @@
 ******** Methods
 ******* URI
 ******* URL
+******* URLDecoder
+******** Methods
+********* decode(String s)
+- Deprecated.
+  The resulting string may vary depending on the platform's default encoding.
+  use decode(String, String) method to specify the encoding.
+********* decode (String s, String enc)
 ****** Enum
 ****** Exception
 ***** java.nio
@@ -558,6 +603,13 @@
 ***** java.nio.channels
 ***** java.nio.channels.spi
 ***** java.security
+- Provides the classes and interfaces for the security framework.
+****** Interfaces
+******* PrivilegedAction<T>
+- A computation to be performed with privileges enabled.
+****** Classes
+****** Enums
+****** Exceptions
 ***** java.security.acl
 ***** java.security.cert
 ***** java.security.interfaces
@@ -677,6 +729,7 @@
 ***** java.util.spi
 **** javax
 ***** javax.annotation
+***** javax.crypto
 ***** javax.imageio
 ***** javax.imageio.event
 ***** javax.imageio.metadata
@@ -684,7 +737,28 @@
 ***** javax.imageio.pulgins.jpeg
 ***** javax.imageio.imagio.spi
 ***** javax.imageio.imagio.stream
-***** javax.crypto
+***** javax.naming
+****** Interfaces
+******* Context
+- public interface Context
+- 
+  This interface represents a naming context, which consists of a set of name-to-object bindings.
+******** Fields
+******** Methods
+****** Classes
+******* InitialContext
+- public class InitialContext extends Objcet implements Context
+- 
+  This class is the starting context for preforming naming operations.
+  
+******** Fields
+******** Constructors
+******** Methods
+********* lookup(Name name)
+- Retrieves the named object.
+********* lookup(String name)
+- Retrieves the named object.
+****** Exception
 **** org
 ***** org.w3c.dom
 ***** org.w3c.dom.bootstrap
@@ -967,29 +1041,37 @@
   java.sqlインターフェースを介して実装されている。
 
 **** JDBC Driver
-
-***** Type1 : JDBC-ODBCブリッジ・ドライバ
+***** 概要
+****** Type1 : JDBC-ODBCブリッジ・ドライバ
 - 
   JDBCからのクエリー要求をODBCを経由して受け渡し、データベースとアクセスするもの。
   ODBCドライバが必須であり、ハードウェアとOSに依存する。
   Java7では非推奨となり、Java8では標準から削除された。
 
-***** Type2 : ネイティブ・ブリッジ・ドライバ
+****** Type2 : ネイティブ・ブリッジ・ドライバ
 - 
   JDBCからのクエリ要求をOS上のDDLや専門ライブラリに受け渡し、そこからデータベースにアクセスするもの。
   Type1に比べて階層が薄く高速化が期待できTCP/IPに依存しない利点があるが、ハードウェアとOSに依存する。
 - 
   Oracleの場合、Oracle Call Interface(OCI)ドライバ。
   
-***** Type3 : ネット・プロトコル・ドライバ
+****** Type3 : ネット・プロトコル・ドライバ
 - 
   JDBCからのクエリー要求をJavaで記述されたドライブ内で独自のプロトコルに変換し
 
-***** Type4 : ネイティブ・プロトコル・ドライバ
+****** Type4 : ネイティブ・プロトコル・ドライバ
 - 
   Oracleの場合、Thinドライバ。
-***** サーバー側Thinドライバ
-***** サーバー側内部ドライバ
+****** サーバー側Thinドライバ
+****** サーバー側内部ドライバ
+***** DB
+****** Oracle
+- classes111.jar : JDK1.1
+- classes12.jar : JDK1.2~JDK1.3
+- ojdbc14.jar : JDK1.4~JDK5(JDK1.5)
+- ojdbc5.jar : JDK5(JDK1.5)
+- ojdbc6.jar : JDK6(JDK1.6)
+- ojdbc7.jar : JDK7(JDK1.7)
 ** Settings
 *** Environmental Variables
 **** CLASSPATH
@@ -1060,6 +1142,11 @@
   - 永続化 : java.io.Serializableインターフェースを実装
   - 引数なしのコンストラクタ
 - [[http://www.wakhok.ac.jp/~tomoharu/web2004/text/index_c4.html][JavaBeansとJSP - JavaによるWebアプリケーション入門]]
+*** JNDI
+- Java Naming and Directory Interface
+  ネーミング・サービス、ディレクトリー・サービスを扱うためのインターフェースを規定した仕様。
+- http://www.ne.jp/asahi/hishidama/home/tech/java/j2ee/jndi.html
+- [[http://www.ibm.com/developerworks/jp/websphere/library/was/was_jndi/][今さら人に訊けないJNDI - IBM developerWorks]]
 ** Link
 - [[http://docs.oracle.com/javase/specs/][Java Language and Virtual Machine Specification - ORACLE]]
 - [[http://docs.oracle.com/javase/8/docs/api/][Java™ Platform, Standard Edition 8 API Specification]]
@@ -1113,34 +1200,30 @@
 - ex)
   package abc.def, file abc/def/main.classの場合、
   その上のフォルダで"java abc.def.main"と実行する。
-*** 例外
+*** Throwable、例外
+**** Error エラー
+**** Exceptoin 例外
 - チェック例外・非チェック例外
   - チェック例外(Exception) : 例外が発生した場合にcatch節で補足し処理するか、throws句を記述しないとコンパイルエラーが発生するため、例外発生時の対処をプログラムで矯正される例外。
-  - 非チェック例外(RuntimeException) : 通常、例外が発生した灰にcatch節やthrow区で対応しない/してはならない例外。
+  - 非チェック例外(RuntimeException) : 通常、例外が発生した際にcatch節やthrow区で対応しない/してはならない例外。
 - 発生状況別
   - 論理例外 : アプリケーションで論理的に発生しうる例外。補足して処理する。
   - システム例外 : システムが正常に動作する条件が整っていない場合や、連携する外部アプリケーションのエラーに起因する例外。アプリケーションで処理しない/処理しても意味がない。
   - プログラムエラー : コーデイングの間違い、連携するAPIの使用方法の間違いなど。本来的に発生しない者なので、対処しても意味がないエラー。
+
+**** Link
+- [[http://ebc-2in2crc.hatenablog.jp/entry/20120729/1343557350][Java のチェック例外と非チェック例外の考察まとめ - 全力で怠けたい]]
+
 *** .class
 - クラス名.class、とすることでクラスが取得できる。
   どこかのクラスメソッドかと思いきや、これはJavaのsyntaxに組み込まれていた。
   Java 1.8 Specificationの「15.8.2 Class Literals」にある。
   
   ちなみにインスタンスからクラス名を取得するには、Object#getClass()で可。
+*** varargs
+- 可変長引数を取れるようにするもの。
+  (そのうち文法に統合するなどしてください。@SafeVarargs, @SuppressWarningsとかも)
 *** temp
-**** 文字列の連結
-- 
-  +を使う
-
-**** 改行
-- 
-  \n
-
-**** 演算子とオペランド
-- 
-  演算を行う+や-などの記号を演算子(operator)、演算の対象となる式はオペランド(operand)という。
-  x + yのx, yオペランド。
-
 **** 修飾子
 ***** アクセス修飾子
 - 

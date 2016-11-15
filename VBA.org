@@ -299,7 +299,6 @@
 
 ***** Worksheets(Collection)
 
-
 *** Powerpoint
 **** Object Model
 - [[https://msdn.microsoft.com/ja-jp/library/ff743835.aspx][オブジェクトモデル (PowerPoint VBA リファレンス) - Developer Network]]
@@ -437,7 +436,6 @@
   Mid$(CreateObject("Scriptlet.TypeLib").GUID, 2, 36)
   [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBAでGUIDを作成する]]
 
-
 *** 配列
 - 
   変数名の後に括弧()を付けると配列として扱うことができる。
@@ -449,3 +447,13 @@
   [[http://officetanaka.net/excel/vba/variable/08.htm][動的配列 - Office TANAKA]]
   
 
+*** Error
+**** オートメーションエラー(440)
+- CreateObjectしたIEオブジェクトを生成、操作、終了、破棄して何度も呼び出すと起こる場合がある。
+  1つを使いまわす場合には問題ない。
+  
+  本来あるはずのオブジェクトが掴めない、ということらしい。
+  ステップ実行であれば問題なく実行される場合が多い。
+
+- Excelアドインの「分析ツール(FUNCRES.XLAM)」を停止することで解決する場合もあるらしい。
+  http://excelfactory.net/excelboard/excelvba/excel.cgi?mode=all&namber=175963&rev=0

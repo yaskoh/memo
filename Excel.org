@@ -1,5 +1,5 @@
 * Excel
-** 関数
+** Functions 関数
 *** 互換性関数
 - より精度が高く、適切な名前を持つ新しい関数に置き換えられている。
 **** (obsolete)FLOOR
@@ -75,13 +75,40 @@
 - 
   排他的論理和を計算する。
 *** 検索/行列関数
+**** ADDRESS
+**** AREAS
 **** CHOOSE
 - 
   一つ目の引数に入力された数値に応じて、第二引数以降のいずれかを返り値として返す関数。
   =choose(条件となる数値,値1,値2,...)
   条件となる数値が1の場合値1、2の場合値2、...が返る。
   29以下までしか定義できない。
-
+**** COLUMN
+**** COLUMNS
+**** FORMULATEXT
+**** GETPIVOTDATA
+**** HLOOPUP
+**** HYPERLINK
+**** INDEX
+- INDEX(array,row_num,[column_num])
+- INDEX(reference,row_num,[column_num],[area_num])
+**** INDIRECT
+- INDIRECT(参照文字列,[参照形式])
+- 指定される文字列への参照を返す。
+**** LOOKUP
+**** MATCH
+- 
+**** OFFSET
+**** ROW
+**** ROWS
+**** RTD
+**** TRANSPOSE
+**** VLOOKUP
+- VLOOKUP(検索値,範囲,列番号[,検索方法])
+  
+- 検索方法
+  FALSE, 0と入力すると、完全一致するデータのみを探す。
+  TRUE, 1, 省略した場合は検索地未満の最大値が返される。（昇順に並んでいない場合適切に帰らない）
 *** 数学/三角関数
 **** CEILING
 **** CEILING.MATH
@@ -115,22 +142,6 @@
 **** COUNTIFS
 - COUNTIF(範囲1,検索条件1,範囲2,検索条件2,...)
   複数条件を設定してcountを行うことができる。
-**** INDEX
-- INDEX(array,row_num,[column_num])
-- INDEX(reference,row_num,[column_num],[area_num])
-
-**** LOOKUP
-**** MATCH
-- 
-**** OFFSET
-**** ROW
-**** ROWS
-**** VLOOKUP
-- VLOOKUP(検索値,範囲,列番号[,検索方法])
-  
-- 検索方法
-  FALSE, 0と入力すると、完全一致するデータのみを探す。
-  TRUE, 1, 省略した場合は検索地未満の最大値が返される。（昇順に並んでいない場合適切に帰らない）
 *** 文字列関数
 **** EXACT
 - 
@@ -192,37 +203,50 @@
 - 文字列を数値に変換する
 *** アドインでインストールされるユーザー定義関数
 *** Web関数
-** ショートカット
-*** 指定セルへジャンプ(Ctrl+G)
+*** Link
+- [[https://support.office.com/ja-jp/article/Excel-%E9%96%A2%E6%95%B0-%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1%E3%83%99%E3%83%83%E3%83%88%E9%A0%86-b3944572-255d-4efb-bb96-c6d90033e188][Excel関数（アルファベット順） - Office]]
+- [[https://support.office.com/ja-jp/article/Excel-%E9%96%A2%E6%95%B0-%E6%A9%9F%E8%83%BD%E5%88%A5-5f91f4e9-7b42-46d2-9bd1-63f26a86c0eb][Excel関数（機能別） - Office]]
+** Shortcuts ショートカット
+*** Frequently used
+**** 指定セルへジャンプ(Ctrl+G)
 - 
   Ctrl+Gでジャンプ用のサブウィンドウが開く。
   "E25"とか指定するとジャンプできる。
 
-*** 上のセルコピペ(Ctrl+D)
-- 
-  Ctrl+Dで上のセルをコピー。
+**** 上のセルコピペ(Ctrl+D)
+- Ctrl+Dで上のセルを下方向へコピー。
+**** 左のセルコピぺ(Ctrl+R)
+- Ctrl+Rで左のセルを右方向へコピー。
+**** 最後のコマンド・操作を繰り返す(Ctrl+Y)
+**** 行列の挿入(Ctrl+"+")
+**** 行列の削除(Ctrl+"-")
+**** 右クリックメニューを出す(Shift+F10)
 
-*** 左のセルコピぺ(Ctrl+R)
-- 
-  Ctrl+Rで左のセルをコピー。
-
-*** 値貼り付け(Alt,E,S,V)
+*** Ribbon
+**** 値貼り付け(Alt,E,S,V)
 - 
   値貼り付けを行う。
   Alt,E,Sで特別な方法で貼り付け。Vで方法としてValueを選択してくれる。
 
-*** フォーマット貼り付け(Alt,E,S,T)
-*** オートフィル(Alt,E,I,S)
+**** フォーマット貼り付け(Alt,E,S,T)
+**** オートフィル(Alt,E,I,S)
 - 
   オートフィル。連番を振れる。
 
-*** オートフィルタ設定(Alt,D,F,F)
+**** オートフィルタ設定(Alt,D,F,F)
 
-*** オートフィルタ設定解除(Alt,D,F,S)
-*** 右クリックメニューを出す(Shift+F10)
-*** ワークシート名の変更(Alt,O,H,R)
+**** オートフィルタ設定解除(Alt,D,F,S)
+**** ワークシート名の変更(Alt,O,H,R)
 *** Link
+- [[https://support.office.com/en-us/article/Excel-keyboard-shortcuts-and-function-keys-1798d9d5-842a-42b8-9c99-9b7213f0040f][Excel keyboard shortcuts and function keys - Office]]
+- [[https://support.office.com/ja-jp/article/Excel-%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89-%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88-%E3%83%95%E3%82%A1%E3%83%B3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3-%E3%82%AD%E3%83%BC-1798d9d5-842a-42b8-9c99-9b7213f0040f][Excel キーボード ショートカット - ファンクション キー - Office]]
+
 - [[http://matome.naver.jp/odai/2134702837577488501][Excelで役立つ10のショートカットキー]]
+- [[http://excel-hack.com/beginner/shortcutkey-list/][覚えると便利！124個のExcelショートカットキー一覧表 - Excel Hack]]
+- [[https://liginc.co.jp/life/useful-info/162348][エクセル（Excel）の便利なショートカットキーまとめ - LIG INC.]]
+
+- [[https://exceljet.net/keyboard-shortcuts][222 Excel keyboard shortcuts for PC and Mac - EXCELJET]]
+- [[https://exceljet.net/the-54-excel-shortcuts-you-really-should-know][The 54 Excel shortcuts you really should know - EXCELJET]]
 
 ** データベース機能
 *** テーブル
@@ -240,7 +264,9 @@
 - 
   「クロス集計」を行う機能。
   
-** memo
+** VBA
+- [[file:./VBA.org][VBA.org]]
+** Memo
 *** シート名を取得する
 - 
   =RIGHT(CELL("filename",A1),LEN(CELL("filename",A1))-FIND("]",CELL("filename",A1)))
@@ -312,6 +338,10 @@
     For Each Sh In ActiveWorkbook.Sheets
         Sh.Visible = True
     Next Sh
+*** セルの参照を文字列で作成
+- INDIRECT関数を使う。
+  =INDIRECT(A4&"!B3")などとして使う。
+  A4にあるシート名の、B3セルの参照が取得できる。
 ** Link
-- [[https://support.office.com/ja-jp/article/Excel-%E9%96%A2%E6%95%B0-%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1%E3%83%99%E3%83%83%E3%83%88%E9%A0%86-b3944572-255d-4efb-bb96-c6d90033e188][Excel関数（アルファベット順） - Office]]
-- [[https://support.office.com/ja-jp/article/Excel-%E9%96%A2%E6%95%B0-%E6%A9%9F%E8%83%BD%E5%88%A5-5f91f4e9-7b42-46d2-9bd1-63f26a86c0eb][Excel関数（機能別） - Office]]
+- [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
+- [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]

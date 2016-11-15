@@ -1,5 +1,11 @@
 * TeX
-
+** Kind
+*** LaTeX
+- [[https://web.archive.org/web/20080630005635/http://www.latex-project.org/index.html][LaTeX - A document preparation waybackmachine]]
+*** LaTeX 2e
+*** pLaTeX 2e
+** Expression
+- [[http://hooktail.sub.jp/nocategory/latexImpress/][LaTeX�\���W]]
 ** Install
 *** Mac
 - 基本的にはMacTeXのpkgをインストールすればOK。
@@ -17,6 +23,8 @@
 *** AUCTeX
 - https://texwiki.texjp.org/?AUCTeX
 ** Link
+- [[https://texwiki.texjp.org/][TeX Wiki]]
+- [[https://www.tug.org/index.html][TeX Users Group web site]]
 *** TeX Live
 - [[http://tug.org/texlive/doc/texlive-en/texlive-en.html][The TeX Live Guide - 2016]]
 *** mactex
@@ -32,3 +40,4 @@
 - Kpathsea is a library to do path searching.
 - [[http://tug.org/texinfohtml/kpathsea.html][Kpathsea: A library for path searching]]
 - [[http://tug.org/kpathsea/][Kpathsea]]
+

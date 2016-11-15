@@ -601,6 +601,20 @@
 *** TeXの設定
 - MacでTeXを使うために、PATH及びexec-pathを設定する必要がある。
   [[http://emacs.stackexchange.com/questions/18534/orgmode-mac-el-capitan-cant-find-latex][Orgmode + Mac (el capitan): can't find latex - (emacs)]]
+*** 検索機能
+- [[http://dev.ariel-networks.com/articles/emacs/part1/][「Emacsのトラノマキ」 連載第一回 「Emacsの検索機能を使いこなす」 - ありえるえりあ]]
+
+- M-x grep
+- lgrep
+- rgrep
+- grep-find
+
+**** Windowsでのgrep/find
+- Windowsでうまくgrepができない/結果がヒットしない
+- [[https://www.emacswiki.org/emacs/GrepMode][Grep Mode - EmacsWiki]]
+
+*** debug
+- [[http://dev.ariel-networks.com/articles/software-design-200802/elisp-debug/][Emacs Lisp デバッグ - ありえるえりあ]]
 ** Link
 - [[http://www.gnu.org/software/emacs/manual/html_mono/emacs.html][GNU Emacs manual]]
 - [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]

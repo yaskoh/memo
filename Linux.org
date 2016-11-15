@@ -1439,5 +1439,24 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
   |--------+------------+--------------------------------------------------------------|
 **** Link
 - [[https://www.express.nec.co.jp/linux/distributions/knowledge/system/crond.html][cronの設定ガイド]]
+*** 配列
+- http://shellscript.sunone.me/array.html
+- set
+  - array=("v1" "v2" "v3")
+  - array[1]=3
+- add
+  - array+=(1)
+  - array+=("a" "b" "c")
+- refer
+  - ${array[ind_num]} # select ind_num value
+  - ${array[@]} # select all values
+- length
+  - ${#array[*]}
+  - ${#array[@]}
+
+*** 指定行を取得する
+- cat text.txt | head -終了行 | tail -`expr 終了行 - 開始行 + 1`
+- sed -n '開始行,終了行p' ファイル名
+- [[http://linux.just4fun.biz/%E9%80%86%E5%BC%95%E3%81%8DUNIX%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E7%AF%84%E5%9B%B2%E3%81%AE%E8%A1%8C%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95.html][指定した範囲の行を取得する方法 - 逆引きUNIXコマンド]]
 ** Link
 - [[http://qiita.com/kenju/items/7f9f0ee6a5e2e09596d3][Linuxに関わる人が一度は読むべきStackOverflowまとめ - Qiita]]

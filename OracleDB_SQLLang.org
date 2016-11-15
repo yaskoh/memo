@@ -133,9 +133,14 @@
 ****** LEAST
 ***** 変換ファンクション
 ****** CAST
+****** SCN_TO_TIMESTAMP
+- SCN_TO_TIMESTAMP ( number )
+****** TIMESTAMP_TO_SCN
+- TIMESTAMP_TO_SCN ( timestamp )
 ****** TO_CHAR
 ******* TO_CHAR(文字)
 ******* TO_CHAR(日時)
+****** TO_TIMESTAMP
 ***** ラージオブジェクトファンクション
 ***** 階層ファンクション
 ***** データ・マイニング・ファンクション
@@ -157,7 +162,16 @@
 *** 条件
 *** SQL文
 **** Object
+***** CLUSTER
+- クラスタとは、1つ以上の表データが含まれているスキーマ・オブジェクトのこと。
+  結合処理のパフォーマンスを向上させるために使用されるデータ構造で、複数の表を結合した状態でデータベースに格納する。
+****** ALTER
+****** CREATE
+****** DROP
+****** TRUNCATE
 ***** CONTEXT
+***** CONSTRAINT[S]
+****** SET
 ***** DATABASE
 ****** ALTER
 ******* 構文
@@ -229,7 +243,15 @@
   RMAN> STARTUP FORCE MOUNT
   RMAN> SQL 'ALTER SYSTEM ENABLE RESTRICTED SESSION';
   RMAN> DROP DATABASE INCLUDING BACKUPS NOPROMPT;
+****** FLASHBACK
 ***** DATABASE LINK
+***** DIMENSION
+***** DISKGROUP
+***** EDITION
+***** FLASHBACK ARCHIVE
+****** ALTER
+****** CREATE
+****** DROP
 ***** FUNCTION
 - PL/SQL
 ****** CREATE
@@ -251,6 +273,10 @@
 ****** ALTER
 ****** DROP
 ***** INDEX
+***** INDEXTYPE
+***** LIBRARY
+***** MATERIALIZED VIEW
+***** OUTLINE
 ***** PACKAGE
 - PL/SQL
 ****** CREATE
@@ -341,6 +367,7 @@
 ****** DROP
 ***** ROLE
 ****** CREATE
+****** SET
 ***** SEQUENCE
 ****** CREATE
 - CREATE SEQUENCE (schema.) sequence
@@ -465,6 +492,8 @@
   REDOログ記録をONに変更する
 - NOLOGGING
   REDOログ記録をOFFに変更する
+****** FLASHBACK
+****** LOCK
 ***** TABLESPACE
 ****** CREATE
 ******* permanent_tablespace
@@ -542,6 +571,8 @@
     - CASCADE CONSTRAINTS
       tablespaceに含まれる表の主キーまたは一意キーを参照する、tablespace外のすべての参照整合性制約を削除する。
       
+***** TRANSACTION
+****** SET
 ***** TRIGGER
 - PL/SQL
 ***** TYPE
@@ -653,7 +684,26 @@
 - role
 - PUBLIC
 
+***** INSERT
+***** MERGE
+***** NOAUDIT
+***** PURGE
+***** RENAME
 ***** REVOKE
+***** ROLLBACK
+***** SAVEPOINT
+***** SELECT
+****** 構文
+******* subquery [for_update_clause] ;
+******* subquery
+******** {query_block | subquery { UNION [ALL] | INTERSECT | MINUS } subquery | ( subquery ) } [order_by_clause]
+******* query_block
+******** [subquery_factoring_clause] SELECT [hint] [ { ALL | DISTINCT | UNIQUE } ] select_list FROM
+******* flashback_query_clause
+******** VERSIONS BETWEN { SCN | TIMESTAMP } { expr | MINVALUE } AND { expr | MAXVALUE }
+******** AS OF { SCN | TIMESTAMP } expr
+- 特定のシステム変更番号(SCN)またはタイムスタンプでの問合せによって戻された行の
+***** UPDATE
 ** Link
 *** SQL言語
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56299/toc.htm][Oracle® Database SQL言語リファレンス 11gリリース2]]

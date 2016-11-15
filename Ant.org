@@ -110,6 +110,15 @@
 ****** Chown
 ****** Concat
 ****** Copy
+- Copies a files or Fileset to a new file or directory.
+******* Attributes
+- file
+- preservelastmodified
+- tofile
+- todir
+- overwrite
+- force
+- filtering
 ****** Delete
 ****** Mkdir
 ****** Move

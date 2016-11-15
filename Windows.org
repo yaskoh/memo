@@ -522,6 +522,8 @@
   [[http://chirimenmonster.github.io/2016/05/09/msys2-path.html][MSYS2でPATHが引き継がれない - めもらんだむ]]
 **** Link
 - [[https://msys2.github.io/][MSYS2 installer]]
+- [[https://sourceforge.net/p/msys2/wiki/Home/][MSYS2 - sourceforge]]
+- [[https://github.com/Alexpux/MSYS2-packages][Alexpux/MSYS2-packages - github]]
 *** Cygwin
 **** Command
 ***** Cygutils
@@ -529,6 +531,34 @@
 - start a program or open a file or URL
   
 ** Link
+** Environment Variables
+*** APPDATA
+*** LOCALLAPPDATA
+*** OS
+*** PATH
+*** ProgramFiles
+- %SystemDrive%\Program Files
+*** SystemDrive
+- ex) C:
+*** SystemRoot
+- ex)%SystemDrive%\Windows
+*** windir
+- ex)%SystemDrive%\Windows
+** Structure
+*** Windows(%systemroot%)
+**** system
+- 16bit時代のsystemファイル。
+**** System32
+- 32bit OSであれば32bit、64bit OSであれば64bit用のシステムファイル。
+**** SysWOW64
+- 64bit OSで32bit OSをエミュレーションする際に利用される、32bit用のシステムファイル。
+** Glossary
+*** WOW64
+- Windows 32-bit On Windows 64-bit
+  64bit版のWindowsで、Win32アプリケーションを実行する、エミュレーションレイヤー・サブシステム。
+  32bitのプログラムはシステムフォルダ(%systemroot%\System32)には直接アクセスできず、
+  自動的に%systemroot%\SysWOW64へリダイレクトされる動作となる。配下には32bitのバイナリが用意されている。
+  
 ** Memo
 *** ACL
 - 
@@ -661,6 +691,10 @@
 - 
   http://www.atmarkit.co.jp/ait/articles/0402/21/news005.html
 
+*** System32 / SysWOW64
+- System32には64bitプログラム用のファイル（現在使用しているもの）、
+  SysWOW64には32bitプログラムを動かすための32bitバイナリが入っている。
+  
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

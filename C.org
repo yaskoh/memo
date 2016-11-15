@@ -1092,25 +1092,26 @@
 *** wctype.h
 - added in Amendment 1 to C89
 ** Libraries
-*** conio.h
+*** Linux
+**** conio.h
 
-**** getche()
+***** getche()
 - 
   getchar()をインタラクティブに処理したい場合に使う。
 
-**** cprintf()
+***** cprintf()
 - 
   printf()関数と同様のはたらきだが、改行文字を(\n)を復帰改行に変換しない。
 
-**** cscanf()
+***** cscanf()
 - 
   scanf()と同様のはたらきをする
 
-*** unistd.h
+**** unistd.h
 - 
   Unix Standard Header File
 
-**** getopt(3)
+***** getopt(3)
 - 
   ショートオプションだけを認識するオプション解析API。
   UNIX系OSに古くから存在する。
@@ -1135,7 +1136,7 @@
   オプションがなくなった場合に-1を返す。
   オプションが存在する場合はオプションを返す。
 
-**** getcwd(3)
+***** getcwd(3)
 - 
   カレントディレクトリのパスを得る関数。
   自プロセスのカレントディレクトリをbufに書き込む。
@@ -1150,9 +1151,9 @@
   #include <unistd.h>
   char *getcwd(char *buf, size_t bufsize);
 
-*** getopt.h
+**** getopt.h
 
-**** getopt_long(3)
+***** getopt_long(3)
 - 
   glibcらしい。
 
@@ -1188,8 +1189,8 @@
   | val      | int   | flagsメンバで指定されたところに返す値                              |
   |----------+-------+--------------------------------------------------------------------|
 
-*** regex.h
-**** regex
+**** regex.h
+***** regex
 - 
   libcの正規表現API。
   実際どこにあるのかは知らない。
@@ -1220,8 +1221,8 @@
     文字列stringがパターンregに適合するなら0を返す。
     適合しなければ、定数REG_NOMATCHを返す。
 
-*** dirent.h
-**** opendir(3)
+**** dirent.h
+***** opendir(3)
 - 
   pathにあるディレクトリを読み込みのため開く。
   戻り値はDIRという型のポインタで、構造体ストリームを管理するための構造体。
@@ -1232,7 +1233,7 @@
 
   DIR *opendir(const char *path);
 
-**** readdir(3)
+***** readdir(3)
 - 
   ディレクトリストリームdからエントリを一つ読込み、エントリを返す。。
   struct direntはOSにより異なるが、Linuxにはエントリの名前を表す「char *d_name」が存在する。
@@ -1246,7 +1247,7 @@
 
   struct dirent *readdir(DIR *d);
 
-**** closedir(3)
+***** closedir(3)
 - 
   ディレクトリストリームdを閉じる関数。
 - def
@@ -1254,17 +1255,17 @@
   #include <dirent.h>
   int closedir(DIR *d);
 
-**** seekdir()
+***** seekdir()
 - 
   fseek()に相当するdir操作
 
-**** telldir()
+***** telldir()
 - 
   ftell()に相当するdir操作
 
-*** pwd.h
+**** pwd.h
 
-**** getpwuid(3), getpwnam(3)
+***** getpwuid(3), getpwnam(3)
 - 
   getpwuidは、ユーザ情報をユーザIDから検索する。
   getpwnamは、ユーザ情報をユーザ名から検索する。
@@ -1289,9 +1290,9 @@
       char *pw_shell;   /* シェル */
   };
 
-*** grp.h
+**** grp.h
 
-**** getgruid(3), getgrnam(3)
+***** getgruid(3), getgrnam(3)
 
 - 
   getgrgidは、グループ情報をグループIDから検索する。
@@ -1315,6 +1316,8 @@
       char **gr_mem;    /* グループのメンバ（ユーザ名のリスト */
   };
   
+*** Windows
+- [[file:./VisualC++.org][VisualC++]]
 ** syntax
 *** do { ... } while ();
 
@@ -1504,8 +1507,11 @@
 **** Link
 - [[https://gcc.gnu.org/onlinedocs/][GCC online documentation]]
 *** Microsoft Visual C++
+- [[file:./VisualC++.org][VisualC++]]
 *** C++ Builder
 - 前身はBorland C/C++。更に前身はTurbo C/C++。
+*** HP C
+- [[http://h50146.www5.hpe.com/products/software/oe/hpux/developer/document/pdfs/PDFHS03_028_01.pdf][GNU CCとHP Cの比較]]
 ** Link
 - [[http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf][ISO/IEC 9899:201x Programming languages - C - N1570 (C11 final draft)]]
 - [[http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1256.pdf][ISO/IEC 9899:TC3 N1256]]
@@ -1515,6 +1521,9 @@
 - [[https://www.gnu.org/software/libc/manual/][The GNU C Library]]
 
 - [[http://www.jpcert.or.jp/sc-rules/][CERT C コーディングスタンダード - JPCERT]]
+
+*** 各種
+- [[https://www.grapecity.com/tools/support/powernews/column/][もう一度基礎からC言語 - PowerNews連載コラム GrapeCity]]
 
 ** Memo
 *** C standard
@@ -1612,11 +1621,16 @@
 - L long
 - U unsigned
 
-*** ビルド
+*** Build
 **** preprocess
 - 
   #includeや#ifdef等を処理する。
   gcc -Eとすると、プリプロセスだけ処理を行った結果が標準出力に出力される。
+
+- 
+  ソースコードに一定の規則に従って処理を加える。
+  コンパイルの前処理。#includeや#defineといったマクロの処理をする段階。
+  .cファイル、.hファイルが利用される。
 
 **** compile
 - 
@@ -1633,20 +1647,25 @@
   - COFF (Common Object File Format)
   - a.out (assembler output)
   
-  gcc cとして処理すると、アセンブルまでで処理を中断し、*.oというファイルが作成される。
+  gcc -cとして処理すると、アセンブルまでで処理を中断し、*.oというファイルが作成される。
 
 **** link
 - 
   オブジェクトファイル(*.o)から実行ファイルまたはライブラリ(*.a, *.so)を生成する。
-
-*** Library
-**** Static Library
 - 
+  複数のobjファイルを一つにまとめ、またlibファイルも統合することで実行ファイルを作成する。
+
+**** 参考
+- [[http://c-lang.sevendays-study.com/day7.html][第7日目：ファイル分割 - 一週間で身につくC言語の基本]]
+- [[http://www.geocities.jp/sugachan1973/doc/funto53.html][システム奮闘記:その53 プログラムで使う静的ライブラリ、共有ライブラリ C言語(libc,gcc)]]
+*** Library
+**** Static Library 静的ライブラリ
+- libxxx.a
   スタティックリンクに使うライブラリで、通常「*.a」となる。
   arというプログラムで作ったアーカイブファイルで、多くのオブジェクトファイルが含まれる。
 
-**** Dynamic Library
-- 
+**** Dynamic Library 共有ライブラリ
+- libxxx.so
   共有ライブラリはダイナミックリンクに使うライブラリで、ファイル名は通常「*.so」となる。
   「lib.so.6」のようにバージョン番号がつく場合もある。
   静的ライブラリと異なり全体が1つのオブジェクトファイルとして構成される。
@@ -1660,6 +1679,10 @@
   関数プロトタイプへの使用は任意。C++で関数名が変形されないするようにするには、extern "C"を使用する。
 
   宣言だけ行い、定義は行わないで済ます方法。
+
+  ファイル分割をした結果、グローバル変数が他ファイルで定義されているが、別ファイルでも利用したい場合などに、
+  二重に宣言をせず利用はできるようにするために存在する。
+
 *** incomplete type 不完全型
 - 
   オブジェクトを規定する型で、その大きさを確定するのに必要な情報が欠けたもの。
@@ -1697,4 +1720,6 @@
     
     person_t p;
   
-    
+*** 拡張整数型
+- __int8, __int16, __int32, __int64
+  Microsoft C/C++が独自拡張で定義した予約語。

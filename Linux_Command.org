@@ -1232,11 +1232,29 @@
 
 *** screen
 
+*** seq
+- usage
+  - seq [OPTION]... LAST
+  - seq [OPTION]... FIRST LAST
+  - seq [OPTION]... FIRST INCREMENT LAST
+
+- about
+  Print numbers, from FIRST to LAST, in steps of INCREMENT.
+
+- options
+  - -f, --format=FROMAT
+    use printf style floating-point FORMAT
+  - -s, --separator=STRING
+    use STRING to separate numbers (default: \n)
+  - -w, --equal-width
+    equalize width by padding with leading zeros
+  - --help
+  - --version
+
 *** service
 - 
   指定されたLinuxデーモンの起動や停止、ステータスの確認を実行する。
   中身はシェルスクリプト。
-
 *** set
 - set [-options] [-o options]
   シェルのオプションを設定する。
@@ -1394,8 +1412,14 @@
 *** stty
 - 
   端末ラインの設定を変更・表示する
+
 - -a
   すべてのオプション設定の現在の状態を標準出力に書き出す
+
+- memo
+  デフォルトでCtrl-sにstop機能が割り当てられており、キー入力が受け付けられなくなる可能性がある。
+  Ctrl-qでstartとなるので、再度入力ができるようになる。
+  無効とするには、"stty stop undef"とする。
 
 *** su
 - 
@@ -1689,6 +1713,21 @@
 - ex)
   - useradd -d /user1 -m -g user1 user1
 
+*** userdel
+*** usermod
+- usermod [options] LOGIN
+  modify a user account
+- -a, --append
+  Add the user to the supplementary group(s)
+
+- -c, --comment COMMENT
+- -d, --home HOMEDIR
+- -g, --gid GROUP
+- -l, --login
+- -L, --lock
+- -p, --password
+- -s, --shell SHELL
+- -u, --uid UID
 *** vgdisplay
 - 
   display attributes of volume groups
