@@ -372,6 +372,9 @@
 - [[https://common-lisp.net/project/slime/][SLIME: The Superior Lisp Interaction Mode for Emacs]]
 
 *** Minor
+**** px
+- Preview inline latex in any mode
+  [[https://github.com/emacsmirror/px][px - github]]
 *** tmp
 **** shells
 ***** shell
@@ -595,6 +598,9 @@
 - org-sort(C-c ^)
 *** インデント
 - C-M-\, indent-region
+*** TeXの設定
+- MacでTeXを使うために、PATH及びexec-pathを設定する必要がある。
+  [[http://emacs.stackexchange.com/questions/18534/orgmode-mac-el-capitan-cant-find-latex][Orgmode + Mac (el capitan): can't find latex - (emacs)]]
 ** Link
 - [[http://www.gnu.org/software/emacs/manual/html_mono/emacs.html][GNU Emacs manual]]
 - [[https://www.emacswiki.org/emacs/SiteMap][EmacsWiki]]

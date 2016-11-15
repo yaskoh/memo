@@ -196,6 +196,25 @@
 
 *** ゼロデイ
 - バッチや対応策が準備される前に脆弱性を利用した攻撃コードが広まること
+*** 認証方法(DV,OV,EV)
+**** DV ドメイン認証型
+- ドメインの管理権限を元に発行される。SSL証明書の発行が可能。
+  人が介在しないので、他の認証に比べ相対的に
+  Let's encryptは現段階でDVのみ。将来的には価値が下がっていく可能性がある。
+**** OV 実在証明型
+- 
+**** EV EVタイプ
+- 
+  URLがグリーンで表示される。
+  DVとOVの違いが見た目で
+** Tools
+*** Burp Proxy
+- [[https://portswigger.net/burp/proxy.html][Burp Proxy - PORTSWIGGER]]
+*** FOCA
+- [[https://www.elevenpaths.com/labstools/foca/index.html][FOCA - Eleven Paths]]
+*** Evil FOCA
+- [[https://www.elevenpaths.com/labstools/evil-foca/index.html][Evil FOCA - Eleven Paths]]
+
 ** Memo
 *** Securityの6要素
 **** 3大要素(CIA)
@@ -265,6 +284,8 @@
 **** 踏み台
 **** ウィルス感染
 *** News
+**** DigiNoater(2011)
+- オランダの認証局
 **** Ransomware対策(2015/11/11)
 - 
   ランサムウェアが猛威を振るっている。
@@ -273,3 +294,7 @@
 - 
 ** Link
 - [[http://d.hatena.ne.jp/Kango/][piyolog]] 
+- [[http://krebsonsecurity.com/][Krebs on Security]]
+- [[https://the01.jp/][THE ZERO/ONE]]
+- [[https://hackforums.net/index.php][Hack Forums]]
+- [[http://securityaffairs.co/wordpress/][security affairs]]

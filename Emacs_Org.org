@@ -385,6 +385,9 @@
   その後何を基準にソートするかminibufferで聞かれるので、答える。
 
 *** Latex
+- Command
+  - C-c C-x C-l : 数式画像のインライン表示
+  - C-c C-c     : 終了
 - 
   [[http://d.hatena.ne.jp/natsutan/20120721/1342838705][Emacsのorg-modeで数式をインライン表示する方法 - ぱたへね]]
 
