@@ -1,0 +1,34 @@
+* TeX
+
+** Install
+*** Mac
+- 基本的にはMacTeXのpkgをインストールすればOK。
+
+- [[http://doratex.hatenablog.jp/entry/20160608/1465311609][MacTeX 2016 のインストール＆日本語環境構築法 (El Capitan 以前/以後両対応) - TeX Alchemist Online]]
+- [[http://qiita.com/hideaki_polisci/items/3afd204449c6cdd995c9][El Capitan / SierraでTeX環境をゼロから構築する方法 - Qiita]]
+- [[http://doratex.hatenablog.jp/entry/20151008/1444310306][TeX界の El Capitan 迎撃戦記 - TeX Alchemist Online]]
+  
+** Tool
+*** TeXShop
+- TeXの総合環境。
+** Memo
+*** TeX Liveのアップデート
+- sudo tlmgr update --self --all
+*** AUCTeX
+- https://texwiki.texjp.org/?AUCTeX
+** Link
+*** TeX Live
+- [[http://tug.org/texlive/doc/texlive-en/texlive-en.html][The TeX Live Guide - 2016]]
+*** mactex
+- [[http://www.tug.org/mactex/index.html][MacTeX]]
+- [[http://doratex.hatenablog.jp/entry/20160608/1465311609][MacTeX 2016 のインストール＆日本語環境構築法 (El Capitan 以前/以後両対応) - TeX Alchemist Online]]
+*** ghostscript
+*** dvipng
+- [[http://www.nongnu.org/dvipng/][dvipng]]
+*** libgd
+- [[https://libgd.github.io/][gdLibrary]]
+- [[https://libgd.github.io/manuals/2.2.3/files/preamble-txt.html][About LibGD 2.2.3]]
+*** kpathsea
+- Kpathsea is a library to do path searching.
+- [[http://tug.org/texinfohtml/kpathsea.html][Kpathsea: A library for path searching]]
+- [[http://tug.org/kpathsea/][Kpathsea]]
