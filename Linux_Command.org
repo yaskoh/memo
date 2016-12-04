@@ -272,8 +272,12 @@
 
 *** echo
 - 
+  display a line of text
   メッセージを表示する
 
+- -n
+  do not output the trailing newline
+  
 *** env
 - 
   
@@ -375,12 +379,18 @@
 **** Expressions
 - -name
   ファイル名を検索、パターンマッチ可。
-- -exec
+
+- -exec (command, etc)
   検索後コマンドを実行する。
+  \;でコマンドの終端を表す。{}で引数として渡すことができる。
 
 - -empty
   空ファイルを対象とする
   ex) find . -empty
+
+- -type (type)
+  f : file
+  d : directory
 
 *** finger
 - 
@@ -540,6 +550,7 @@
 *** gtags
 - 
   tagを作成する。
+  Gnu globalと共にインストールする。
 
 *** gzip / gunzip
 - 
@@ -549,6 +560,11 @@
   圧縮された個々のファイルについて、以下のフィールドを列挙する。
   compresed size, uncompressed size, ratio, uncompresed_name
 
+*** hexdump
+- 
+  ascii, decimal, hexadecimal, octal dump
+
+- -C Canonical hex+ASCII display.
 *** history
 - 
   display the command history list with line numbers.
@@ -571,6 +587,17 @@
   XHTML形式で表示する
 
 *** iconv
+- convert text from one character encoding to another
+
+- Usage:
+  iconv [options] [-f from-encoding] [-t to-encoding] [inputfile]...
+
+- Options:
+  - -f from-encoding, --from-code=from-encoding
+  - -t to-encoding, --to-code=to-encoding
+  - -c
+    Silently discard characters that cannot be converted insteadof terminating when encountering such characters.
+
 *** id
 - 
   ユーザIDやグループIDを表示する。
@@ -733,6 +760,12 @@
   show listing of last logged in sures
   searches the file /var/log/wtmp and displays a list of all users logged in.
 
+*** ldconfig
+- configure dynamic linker run-time bindings
+  
+*** ldd
+- 
+  共有ライブラリの依存関係を表示する。
 *** less
 - 
   pager
@@ -750,10 +783,6 @@
     move first file
   - :d
     remove current file on the list
-  
-*** ldd
-- 
-  共有ライブラリの依存関係を表示する。
 
 *** ln
 - 
@@ -762,6 +791,9 @@
   シンボリックリンクの作成
 - -v, --verbose
 
+*** locale
+- Get locale-specific information.
+  
 *** locate
 - 
   ファイルを高速に検索する。
@@ -987,6 +1019,8 @@
   | TIME_WAIT   | コネクション終了後                   |
   |-------------+--------------------------------------|
   
+*** od
+- dump files in octal and other formats
 *** passwd
 - 
   ユーザパスワードを変更する。
@@ -1203,6 +1237,23 @@
   関数の実行を終了する。
   数字を指定して終了ステータスを返すことが出来る。
 
+*** rsync
+- Usage
+  - Local:
+    - rsync [OPTION...] SRC... [DEST]
+  - Access via remote shell:
+    - Pull:
+      rsync [OPTION...] [USER@]HOST:SRC... [DEST]
+    - Push:
+      rsync [OPTION...] SRC... [USER@]HOST:DEST
+  - Access via rsync daemon:
+    - Pull:
+      rsync [OPTION...] [USER@]HOST:SRC... [DEST]
+      rsync [OPTION...] rsync://[USER@]HOST[:PORT]/SRC... [DEST]
+    - Push:
+      rsync [OPTION...] SRC... [USER@]HOST:DEST
+      rsync [OPTION...] SRC... rsync://[USER@]HOST[:PORT]/[DEST]
+
 *** run-parts
 - 
   run scripts or programs in a directory.
@@ -1273,6 +1324,20 @@
 - -x xtrace
   Write each command to standard error befor it is executed. Useful for debugging.
 
+*** shopt
+- Bash built-in.
+- (no-option)
+  オプション一覧を表示
+- -s Options
+  set
+- -u Options
+  unset
+**** Options
+***** autocd
+***** expand_aliases
+- If set, aliases are expanded as described below under Aliases.
+**** Link
+- [[https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html][The Shopt Builtin - Bash Reference Manual]]
 *** sftp
 - 
   interactive file transfer program, similar to ftp.
@@ -1483,6 +1548,9 @@
     - -J
       tar + xz
 
+*** tc
+- 
+  show / 
 *** tcpdump
 - 
 
@@ -1747,6 +1815,8 @@
 - 
   edit /etc/group
 
+*** vim
+- [[file:Vim.org][Vim.org]]
 *** vipw
 - 
   edit /etc/password

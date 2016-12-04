@@ -5,6 +5,9 @@
   http://postd.cc/what-is-type-safety/
 *** Memory safe
 - メモリ安全性
+*** Liskov substitution principle リスコフの置換原理
+- オブジェクト指向プログラミングにおける派生型の定義の一種。
+  
 ** Memo
 *** Evaluation
 **** normal-order evaluation
