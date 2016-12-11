@@ -414,7 +414,13 @@
 ********* REEST alter_system_set_clause
 ***** TABLE
 ****** CREATE
-******* segment_attributes_clause
+******* 構文
+******** CREATE [ GLOBAL TEMPORARY ] TABLE [ scehma ] . table { relational_table | object_table | XMLType_table } ;
+******** relational_table
+********* [ ( relational properties ) ] [ ON COMMIT { DELETE | PRESERVE } ROWS ] [ physical_properties ] [ table_properties ]
+******** object_table
+******** XMLType_table
+******** segment_attributes_clause
 - physical_attributes_clause
 - TABLESPACE tablespace
   表領域を指定する。
@@ -424,7 +430,7 @@
   - LOGGING
   - NOLOGGING
   - FILESYSTEM_LIKE_LOGGING
-******* physical_attributes_clause
+******** physical_attributes_clause
 - PCTFREE
   データブロックに、更新のために残しておく領域の割合。デフォルトは10。0から99の正の整数。
 - PCTUSED
@@ -435,7 +441,7 @@
 - MAXTRANS
   同時実行可能な同時実行更新トランザクションの最大数を決定する。以前のリリースのパラメータ。
   現在は非推奨。
-******* storage_clause
+******** storage_clause
 - STORAGE
   - INITIAL
     オブジェクトの第1エクステントのサイズを指定する。
@@ -447,7 +453,7 @@
     - KEEP
     - RECYCLE
     - DEFAULT
-******* table_compression
+******** table_compression
 - 概要
   ヒープ構成表に対してのみ有効。
   ディスク使用量を削減するためにデータ・セグメントを圧縮するかどうかを指定できる。
@@ -579,6 +585,21 @@
 - PL/SQL
 ***** USER
 ****** CREATE
+-
+******* 構文
+******** CREATE USER user IDENTIFIED id_clause option_clause*
+******** id_clause
+********* BY password
+********* EXTERNALLY [ AS ' { certificate_DN | kerberos_principal_name } ' ]
+********* GLOBALLY [ AS ' [ directory_DN ] ' ]
+******** option_clause
+********* DEFAULT TABLESPACE tablespace
+********* TEMPORARY TABLESPACE { tablespace | tablespace_group_name }
+********* ( QUOTA { size_clause | UNLIMITED } ON tablespace ) *
+********* PROFILE profile
+********* PASSWORD EXPIRE
+********* ACCOUNT { LOCK | UNLOCK }
+********* ENABLE EDITIONS
 ****** ALTER
 - DEFAULT ROLE
   ログイン時にデフォルトによってユーザに付与されるロールを指定する。
@@ -587,7 +608,6 @@
 ******* 構文
 
 ******** ALTER USER {user options | user[, ...] proxy_clause}
-
 ******** options
 ********* IDENTIFIED BY password []
 ********* IDENTIFIED EXTERNALLY []
@@ -610,13 +630,6 @@
 ***** DELETE
 ***** GRANT
 ****** System Privileges
-- L1
-  - ALL PRIVILEGES
-  - role
-  - system_privilege
-- L2
-  - TO grantee_clause
-
 ******* システム権限
 ******** アドバイザ・フレームワーク権限
 ********* ADVISOR
@@ -637,9 +650,9 @@
 ******** CONTEXT
 ********* CREATE ANY CONTEXT
 ********* DROP ANY CONTEXT
-******** データリダクション
+******** DATA REDACTION
 ********* EXEMPT REDACTION POLICY
-******** データベース
+******** DATABASE
 ********* ALTER DATABASE
 ********* ALTER SYSTEM
 ********* AUDIT SYSTEM
@@ -649,41 +662,51 @@
 ********* ALTER DATABASE LINK
 ********* ALTER PUBLIC DATABASE LINK
 ********* DROP PUBLIC DATABASE LINK
-******** DEBUG
+******** DEBUGGING
 ********* DEBUG CONNECT SESSION
 ********* DEBUG ANY PROCEDURE
-******** DICTIONARY
+******** DICTIONARIES
 ********* ANALYZE ANY DICTIONARY
-******** DIMENSION
+******** DIMENSIONS
 ********* CREATE DIMENSION
 ********* CREATE ANY DIMENSION
 ********* ALTER ANY DIMENSION
 ********* DROP ANY DIMENSION
-******** DICTIONARY
+******** DICTIONARIES
 ********* CREATE ANY DICTIONARY
 ********* DROP ANY DICTIONARY
-******** EDITION
+******** EDITIONS
 ********* CREATE ANY EDITION
 ********* DROP ANY EDITION
+******** FLASHBACK DATA ARCHIVES
+******** INDEXES
+******** INDEXTYPES
+******** JOB SCHEDULER OBJECTS
+******** LIBRARIES
+******** MATERIALIZED VIEWS
+******** MINING MODEL
+******** OLAP CUBE
+******** OLAP CUBE MEASURE FOLDEL
 ******** その他
 ********* SELECT_CATALOG_ROLE
 ********* UNLIMITED TABLESPACE
 ****** Object Privileges
-- L1
-  - object_privilege
-  - ALL [PRIVILEGES]
-- L2
-  - on_object_clause
-    - TO grantee_clause
-- OPTION
-  - WITH HIERARCHY OPTION
-  - WITH GRANT OPTION
-  
-****** grantee_clause
-- user [IDENTIFIED BY password]
-- role
-- PUBLIC
+******* DIRECTORY
+******* EDITION
+******* INDEX
+******* 
+****** 構文
+******* GRANT [ grant_system_privileges | grant_object_privileges ] ;
 
+******* grant_system_privileges
+******** { system_privilege | role | ALL PRIVILEGES } ,* TO grantee_clause [ WITH ADMIN OPTION ]
+******* grant_object_privileges
+******** ( { object_privilege | ALL [PRIVILEGES ] } [ ( column ,* ) ] ) ,* on_object_clause TO grantee_clause [ WITH HIERARCHY OPTION ] [ WITH GRANT OPTION ]
+******* on_object_clause
+******* grantee_clause
+******** user [IDENTIFIED BY password]
+******** role
+******** PUBLIC
 ***** INSERT
 ***** MERGE
 ***** NOAUDIT
@@ -700,7 +723,7 @@
 ******* query_block
 ******** [subquery_factoring_clause] SELECT [hint] [ { ALL | DISTINCT | UNIQUE } ] select_list FROM
 ******* flashback_query_clause
-******** VERSIONS BETWEN { SCN | TIMESTAMP } { expr | MINVALUE } AND { expr | MAXVALUE }
+******** VERSIONS BETWEEN { SCN | TIMESTAMP } { expr | MINVALUE } AND { expr | MAXVALUE }
 ******** AS OF { SCN | TIMESTAMP } expr
 - 特定のシステム変更番号(SCN)またはタイムスタンプでの問合せによって戻された行の
 ***** UPDATE

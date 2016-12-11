@@ -559,6 +559,8 @@
   32bitのプログラムはシステムフォルダ(%systemroot%\System32)には直接アクセスできず、
   自動的に%systemroot%\SysWOW64へリダイレクトされる動作となる。配下には32bitのバイナリが用意されている。
   
+*** SafeSEH, SoftwareDEP
+- http://resemblances.click3.org/?p=1449
 ** Memo
 *** ACL
 - 
@@ -695,6 +697,8 @@
 - System32には64bitプログラム用のファイル（現在使用しているもの）、
   SysWOW64には32bitプログラムを動かすための32bitバイナリが入っている。
   
+*** アイコン画像作成
+- bmpで保存、拡張子を.icoとすればOK。
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

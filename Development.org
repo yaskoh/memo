@@ -16,5 +16,18 @@
 **** SUD - Software user documentation IEEE 1063
 ** SWEBOK
 - [[https://www.computer.org/web/swebok/v3][SWEBOK V3]]
+** Glossary
+*** COCOMO
+- constructive cost model
+  ソフトウェア開発の工数、開発期間の見積もり手法の一つ。
+  $y=ax^b$ として開発期間を求める。
+** Memo
+*** 標準工期の計算
+- 
+  COCOMOモデルを元に、JUASが求めた標準工期。
+  $D=2.4E^\frac{1}{3}$  (D:開発工期、E:工数)
+  [[https://www.juas.or.jp/servey/library/pdf/08swm_pr_dev.pdf][ユーザ企業SWM2008調査報告（開発プロジェクト） - JUAS]]
+  [[http://www.atmarkit.co.jp/news/200707/05/juas.html][最適な工期は「投入人月の立方根の2.4倍」、JUASが調査 - @IT]]
+
 ** Link
 - [[http://sysdev.sakura.ne.jp/category/development][システム開発の基礎 - エンジニア目線のシステム開発]]

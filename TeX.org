@@ -5,7 +5,12 @@
 *** LaTeX 2e
 *** pLaTeX 2e
 ** Expression
-- [[http://hooktail.sub.jp/nocategory/latexImpress/][LaTeX�\���W]]
+- [[http://hooktail.sub.jp/nocategory/latexImpress/][LaTeX表現集]]
+*** 分数
+- \frak{a}{x}
+*** 添え字
+- 上付 : x^2
+  
 ** Install
 *** Mac
 - 基本的にはMacTeXのpkgをインストールすればOK。

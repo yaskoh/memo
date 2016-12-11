@@ -21,7 +21,6 @@
 (「ふつうのLinux」p.27)
 
 *** アドレス空間の構造
-
 - テキスト領域
   機械語のプログラム
 - データ領域
@@ -227,6 +226,10 @@
   手動でマウントしたものなど、mountコマンドに
 
 *** /etc/hosts
+*** /etc/sysconfig/i18n
+- 
+  i18nはinternationalisationの略。
+  LANG設定などを行う。
 *** /etc/sysconfig/iptables
 - 
   iptables, setting of firewalls.
@@ -336,6 +339,17 @@
   ex) export LANG=en_US.UTF-8
   also you can use "export LANG=C"
   if you like to use Japanese, set ja_JP.UTF-8
+
+- Setting
+  /etc/sysconfig/i18n
+
+**** LC_ALL
+- 
+  ロケールに関する環境変数を一括で指定する。
+  ただし、個別の設定よりも優先順位が高いため、LC_TIMEなどの設定が反映されなくなる。
+  LC_ALLは定義せず、個別に変数を設定するのがよい場合もある。
+  [[http://d.hatena.ne.jp/kakurasan/20070711/p2][環境変数LC_ALLは未定義のほうがよい?ロケール用環境変数について - 試験運用中なLinux備忘録]]
+  
 *** HOSTNAME
 
 *** SHELL
@@ -344,12 +358,8 @@
 
 *** HOME
 
-*** LC_ALL
-- 
-  ロケールに関する環境変数を一括で指定する。
-  ただし、個別の設定よりも優先順位が高いため、LC_TIMEなどの設定が反映されなくなる。
-  LC_ALLは定義せず、個別に変数を設定するのがよい場合もある。
-  [[http://d.hatena.ne.jp/kakurasan/20070711/p2][環境変数LC_ALLは未定義のほうがよい?ロケール用環境変数について - 試験運用中なLinux備忘録]]
+*** LD_LIBRARY_PATH
+- 共有ライブラリ検索パス。
 
 ** Shells
 *** bash
@@ -370,7 +380,6 @@
 
 *** Red Hat
 **** CentOS
-
 **** RHEL
 - 
   [[https://access.redhat.com/ja/node/16476][Red Hat Enterprise Linux のリリース日と収録カーネルの一覧 - redhat]]
@@ -395,36 +404,40 @@
   interactive, rpm based, package manager.
   yumは内部でrpmを呼び出していて、rpmよりも高度。
   
-**** install
+**** command
+***** install
 - 
   install the latest version of a package or group packages while ensuring that all dependencies are satisfied.
 
 - -y
   answer "yes" to questions in the install message.
 
-**** update
+***** update
 - 
   If run without any packeages, update will update every currently installed package.
   
-**** upgrade
+***** upgrade
 
-**** remove
+***** remove
 
-**** list
+***** list
 - 
   find out which package provides some feature or file.
 
-**** info
+***** info
 - 
   show details.
 
-**** clean
+***** clean
 
-**** search
+***** search
 - 
   This is used to find packages when you know something about package
   but aren't sure of it's name.
 
+**** error
+***** cannot find a valid baseurl
+- [[http://nksg.org/archives/22][CentOS で yum がエラーを吐いてしまう - nksg.org]]
 *** rpm
 - 
   RPM Package Manager
@@ -1458,5 +1471,14 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 - cat text.txt | head -終了行 | tail -`expr 終了行 - 開始行 + 1`
 - sed -n '開始行,終了行p' ファイル名
 - [[http://linux.just4fun.biz/%E9%80%86%E5%BC%95%E3%81%8DUNIX%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89/%E6%8C%87%E5%AE%9A%E3%81%97%E3%81%9F%E7%AF%84%E5%9B%B2%E3%81%AE%E8%A1%8C%E3%82%92%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95.html][指定した範囲の行を取得する方法 - 逆引きUNIXコマンド]]
+*** バイナリの閲覧・編集
+- 閲覧
+  - hexdump -C file
+  - od file
+- 編集
+  - vi -b file
+    - :%!xxd 
+    - :%!xxd -r
+  - dd
 ** Link
 - [[http://qiita.com/kenju/items/7f9f0ee6a5e2e09596d3][Linuxに関わる人が一度は読むべきStackOverflowまとめ - Qiita]]

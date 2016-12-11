@@ -21,6 +21,11 @@
 
 ***** White Space
 ***** Comments
+****** About
+- There are two kinds of comments:
+  - /* text /*
+  - // text
+****** Def
 ***** Token
 ****** Identifiers
 ****** Keywords

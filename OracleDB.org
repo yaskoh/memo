@@ -1701,3 +1701,5 @@
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56312/toc.htm][Oracle® Databaseパフォーマンス・チューニング・ガイド 11gリリース2 (11.2)]]
 *** Etc
 - [[http://luna.gonna.jp/oracle/index.html][オラクル ちょこっとリファレンス]]
+- [[http://kagamihoge.hatenablog.com/entry/2014/01/03/180049][どのようにOracleを勉強してきたか - kagamihogeの日記]]
+- [[https://blogs.oracle.com/otnjp/entry/links_for_oracle_database_beginners][春からはじめる、春からやりなおす。これから学ぶOracle Database - Oracle Technology Network Japan Blog]]

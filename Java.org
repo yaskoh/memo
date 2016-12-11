@@ -1147,6 +1147,16 @@
   ネーミング・サービス、ディレクトリー・サービスを扱うためのインターフェースを規定した仕様。
 - http://www.ne.jp/asahi/hishidama/home/tech/java/j2ee/jndi.html
 - [[http://www.ibm.com/developerworks/jp/websphere/library/was/was_jndi/][今さら人に訊けないJNDI - IBM developerWorks]]
+*** Serializable
+- 
+  Serialize可能、直列可能、ということを保証するInterface。
+  直列可能、というのは、StreamやConnectionで操作可能、そのままファイルに出力できる、という程度の意味。
+  ObjectInputStream/ObjectOutputStreamクラスで、インスタンスをファイルに出力したり、ファイルから復元したりすることが可能。
+  [[http://d.hatena.ne.jp/daisuke-m/20100414/1271228333][難解なSerializableという仕様について俺が知っていること、というか俺の理解 - 都元ダイスケ IT-PRESS]]
+
+- serialVersionUID
+  クラスの構造が変わった場合に判断が付くようにするため、振るID。
+
 ** Link
 - [[http://docs.oracle.com/javase/specs/][Java Language and Virtual Machine Specification - ORACLE]]
 - [[http://docs.oracle.com/javase/8/docs/api/][Java™ Platform, Standard Edition 8 API Specification]]
