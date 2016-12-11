@@ -29,5 +29,7 @@
   [[https://www.juas.or.jp/servey/library/pdf/08swm_pr_dev.pdf][ユーザ企業SWM2008調査報告（開発プロジェクト） - JUAS]]
   [[http://www.atmarkit.co.jp/news/200707/05/juas.html][最適な工期は「投入人月の立方根の2.4倍」、JUASが調査 - @IT]]
 
+*** 生産性
+- [[http://blog.goo.ne.jp/xmldtp/e/513c525aa1b41929a7e8c49f66ba35b8][１人月あたり、何ステップ？１画面あたり、何人日でできる？の考え方 - ウィリアムのいたずらの開発日記]]
 ** Link
 - [[http://sysdev.sakura.ne.jp/category/development][システム開発の基礎 - エンジニア目線のシステム開発]]

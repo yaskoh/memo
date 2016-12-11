@@ -293,6 +293,8 @@
   returnと異なり、関数がどれだけネストしていても全体が終了される。
   数字を指定して終了ステータスを返すことが出来る。
 
+*** expect
+- programme dialogue with interactive programs
 *** export
 - export VAR
   set VAR as environment variables.
@@ -1681,6 +1683,14 @@
   removes files which haven't been accessed for a period of time
   recursively removes files which haven't been accessed for a given time.
 
+*** tr
+- translate or delete characters
+- Format
+  tr [OPTION]... SET1 [SET2]
+
+- Ex
+  - echo abcde | tr '[a-z]' '[A-Z]' -> ABCDE
+
 *** trap
 - 
   システム割り込み時の処理を設定する。
@@ -1705,7 +1715,8 @@
   alias, shell builtin, file, function, keywordがある。
 
 *** tzselect
-    タイムゾーンを選択する。
+- 
+  タイムゾーンを選択する。
 
 *** umask
 - 
@@ -1976,6 +1987,12 @@
 *** help
 *** history
 *** jobs
+- 実行中のジョブを表示する。
+  jobs [-lrs] [%jobid]
+
+- -l
+  プロセスIDも表示する
+
 *** kill
 *** let
 *** local

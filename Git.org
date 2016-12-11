@@ -1,11 +1,21 @@
 * Git
-** Command
-*** git help
+** Commands
+*** High-level / Procelain
+**** Main
+**** Ancillary
+**** Interactive with otehrs
+*** Low-level / Plumbing
+**** Manipulation
+**** Interrogation
+**** Synching repositories
+**** Internal helper
+*** tmp
+**** git help
 - <verb>
   <verb>コマンドのヘルプを確認する。
   同様のコマンドに、git <verb> --help, man git-<verb>がある。
 
-*** git init
+**** git init
 - 
   Gitリポジトリを新たに作成するコマンド。
   git initは本来中央リポジトリを作成する際に一度だけ使用するものであり、
@@ -15,14 +25,14 @@
   共有レポジトリは必ず--bareフラグを使用して作成する。
   ノンベアリポジトリにプッシュを行うと変更の誤書き込みを起こす可能性があるため。
 
-*** git clone
+**** git clone
 - 
   既存リポジトリのコピーを取得する
   git clone url [directory]
 - --depth n <url>
   直近のnコミットだけをダウンロード
 
-*** git config
+**** git config
 - 
   項目の設定を行う。
 
@@ -44,7 +54,7 @@
 - --global color.ui "auto"
   ユーザインターフェースを自動で色付けする。
 
-*** git add
+**** git add
 - 
   作業ディレクトリ内の変更をステージングエリアに追加するコマンド。
   git commitを実行するまでは変更が実際に記録されることはない。
@@ -60,7 +70,7 @@
 - i, --interactive
   インタラクティブにファイルを追加する。
 
-*** git commit
+**** git commit
 - 
   ステージされた変更をコミットする。
   SVNは差分を蓄積するが、Gitはスナップショットを取得する。
@@ -81,11 +91,11 @@
 - -c <commit>
   <commit>のメッセージを記入した状態でエディタが立ち上がる。
 
-*** git status
+**** git status
 - 
   ステージされたファイル、ステージされていないファイル、追跡対象外のファイル一覧を表示する。
 
-*** git log
+**** git log
 - 
   コミット履歴を表示する。
 
@@ -119,7 +129,7 @@
   コピーを検出する。
 
 
-*** git checkout
+**** git checkout
 - 
   ファイルのチェックアウト、コミットのチェックアウト、ブランチのチェックアウトの
   3つの異なる機能を有するコマンド。
@@ -145,12 +155,12 @@
   タグも指定可。
 
 
-*** git revert
+**** git revert
 - <commit>
   <commit>により加えられたすべての変更を元に戻す新しいコミットを生成し、
   それを現在のブランチに適用するコマンド。
 
-*** git reset
+**** git reset
 - 
   git resetコマンドを使用して元に戻ると、元の状態を復元する方法はない。
   そのため、ローカルな変更を元に戻す場合に限るべき。
@@ -166,7 +176,7 @@
 - --hard <commit>
   <commit>位置に戻し作業ディレクトリもあわせる。
 
-*** git clean
+**** git clean
 -
   追跡対象外のファイルを削除する。
   普通にrm等で削除してもよいが、利便性のために存在している。
@@ -179,7 +189,7 @@
   対象範囲を指定したパスに限定し、追跡対象外ファイルを削除する。
 
 
-*** git branch
+**** git branch
 - 
   ブランチの作成、一覧表示、リネーム、削除を行うコマンド。
   何も指定しない場合、リポジトリ内のブランチを一覧表示する。
@@ -203,7 +213,7 @@
 - v
   
 
-*** git merge
+**** git merge
 - 
   git branchで作成された独立な複数の開発ラインをひとつのブランチに統合するコマンド。
   以下では現在のブランチへのマージを行う。現在のブランチは更新され、ターゲットブランチはそのまま残る。
@@ -215,25 +225,25 @@
 - --squash
   他のブランチから持ってきたコミットを、1つのコミットに圧縮して登録する。
 
-*** git cherry-pick
+**** git cherry-pick
 - 
   別ブランチの1つのコミットだけを取得してマージする。
 - -n
   コミットを控えるので、連続適用することで、いくつかのコミットをチェリーピックできる。
 
 
-*** git rebase
+**** git rebase
 - <base>
   ブランチの基点となるコミットを別のコミットに移動する操作。
 - i <base>
   インタラクティブなベースセッション。
 
-*** git reflog
+**** git reflog
 reflogという機能が働いていて、ブランチの先端に対する更新の追跡が行われており、
 いかなるブランチからもタグからも参照されていない更新内容であっても戻ることができる。
 
 
-*** git remote
+**** git remote
 リモート接続。リンクではなくブックマークのようなもの。
 通常はHTTPプロトコルはリードオンリーで、プッシュが出来ない。
 SSHは両方可能。
@@ -252,22 +262,22 @@ SSHは両方可能。
 - prune <name>
   古くなったリモートリポジトリを取り除く
 
-*** git fetch
+**** git fetch
 - 
   変更をリモートリポジトリから取得するが、ローカルブランチにマージしない。
 
-*** git pull
+**** git pull
 - 
   変更を取得した後マージする
 
-*** git push
+**** git push
 - 
   変更をoriginリポジトリの対応するブランチに送信する。
 - --dry-run
   プッシュされる変更を確認する
 
 
-*** git diff
+**** git diff
 - 
   差分を表示する。オプションをつけない場合はステージされていない変更の表示。
   また、--cached / --stagedオプションをつけると、ステージされた変更の差分を表示する。
@@ -281,10 +291,10 @@ SSHは両方可能。
 - --stat <tag>
   統計情報を表示する。
 
-*** git show
+**** git show
 - 
   
-*** git blame
+**** git blame
 - <file>
   各行ごとに、最後に編集した情報が出力される。
 - L <start>,<end>
@@ -300,14 +310,14 @@ SSHは両方可能。
   ファイル間のコピーを検出できるようにする。
 
 
-*** git rm
+**** git rm
 追跡対象からファイルを削除し、作業ディレクトリからも除く。
 - --cached
   ステージ上からのみファイルを取り除く。
 - f
   すでにステージされた変更も含めて削除したい場合。
 
-*** git mv
+**** git mv
 - 
   ファイルを移動する。git mv <old> <new>
   実際は以下と一緒。
@@ -316,7 +326,7 @@ SSHは両方可能。
     git add file_to
 
 
-*** git tag
+**** git tag
 - 
   タグを表示する
 - <tagname>
@@ -330,7 +340,7 @@ SSHは両方可能。
 - -d <tagname>
   タグを削除する
 
-*** git archive
+**** git archive
 アーカイブを作成する。
 - <tree-ish>
   アーカイブするツリーやタグを指定する。HEADなど。
@@ -340,7 +350,7 @@ SSHは両方可能。
   格納フォルダを設定する。
 
 
-*** git submodule
+**** git submodule
 （サブモジュールは使い方がいまいち不明）
 - 
   サブモジュールを表示する
@@ -352,24 +362,24 @@ SSHは両方可能。
   サブモジュールを最新に更新する
 
 
-*** git gui
+**** git gui
 - 
   GUIで編集・確認ができる。らしい。
   見れたことはない。
 
-*** git mergetool
+**** git mergetool
 - 
   マージを行うためのツールを立ち上げる。
   設定されたmerge.toolの値を見に行く。
 
 
-*** git gc
+**** git gc
 - 
   リポジトリの大きさを圧縮する
 - --agressive
   デルタを一から再計算し、より強い最適化を実行する
 
-*** git bisect
+**** git bisect
 - 
   二分探索する
 - start
@@ -383,6 +393,18 @@ SSHは両方可能。
   テストスクリプトを投げ、テスト結果からgood/badを判断する。
   正常は0, スキップは125, 終了はそれ以外の正数値（普通は1)
 
+** Options
+*** --version
+*** --help
+*** -C <path>
+*** --exec-path[=<path>]
+** Evrironment Variables
+*** Git Repository
+**** GIT_INDEX_FILE
+**** GIT_INDEX_VERSION
+*** Git Commits
+*** Git Diffs
+*** other
 ** Memo
 *** Initialize Setting
 - git config --global user.name "your name"

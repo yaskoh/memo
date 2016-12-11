@@ -510,8 +510,68 @@
 - [[http://www.akadia.com/services/windows_registry_tutorial.html][Windows Registry Tutorial]]
 - 
 ** DOS
+*** Commands
+**** 内部コマンド
+***** chdir, cd
+***** cls
+
+***** copy
+***** date
+***** debug
+- Format
+  DEBUG [commandfile argument]
+- Options
+  - help / ?
+    使用方法の表示
+  - assemble / A [address]
+    入力したニーモニックコードをアセンブルし、指定アドレスへ格納する。
+  - compare / C range address
+  - dump / D range
+    メモリの指定範囲を16進ダンプする
+  - enter / E adresss [list]
+    指定アドレスから1バイトずつ16進入力する。
+  - fill / F range data
+  - go / G [=address] [breakpoint]
+    指定したアドレスからプログラムを実行し、ブレークポイントのアドレスに達すると中断する。
+  - proceed / P [=address] [step]
+    プログラムをステップごとに実行する
+  - quit / Q
+    デバッグコマンドを終了する。
+  - register / R [register]
+    引数なしでレジスタ値の表示
+    レジスタ名を引数として付けると、レジスタを変更できる
+  - unassemble / U [range]
+    逆アセンブルする。
+***** del, erase
+***** dir
+***** exit
+***** mkdir, md
+***** move
+***** prompt
+***** rd, rmdir
+***** rename
+***** set
+***** start
+***** time
+***** type
+- テキストファイルの内容を表示する
+**** 外部コマンド
+***** edit
+***** format
+***** mem
+***** more
+***** move
+***** sort
+***** xcopy
+**** Link
+- [[http://www.geocities.co.jp/SiliconValley-PaloAlto/2099/ms-dos.html][MS-DOSコマンド一覧表]]
+*** Settings
+**** FDCONFIG.SYS
+**** AUTOEXEC.EXE
 *** DOSエクステンダー
 *** DPMI
+*** Link
+- [[http://wiki.freedos.org/wiki/index.php/Main_Page][Main Page - FreeDOS]]
 ** Tools
 *** MSYS2
 **** pacman
@@ -530,7 +590,6 @@
 ****** cygstart
 - start a program or open a file or URL
   
-** Link
 ** Environment Variables
 *** APPDATA
 *** LOCALLAPPDATA

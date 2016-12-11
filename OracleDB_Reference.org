@@ -116,6 +116,8 @@
 - 現在ユーザがアクセス可能
 ***** ALL_CLUSTERS
 - 現在のユーザがアクセスできるすべてのクラスタを示す。
+***** ALL_CONS_COLUMNS
+- 現行のユーザがアクセスでき、また制約に指定されている列を示す。
 ***** ALL_CONSTRAINTS
 - 現行のユーザがアクセスできる表の制約定義を示す。
 - CONSTRAINT_TYPE
@@ -206,6 +208,8 @@
 - 現在のユーザが所有する全てのクラスタを示す
   OWNER列を表示しない
 ***** USER_COL_COMMENTS
+***** USER_CONS_COLUMNS
+- 現行のユーザが所有していて、また制約に指定されている列を示す。 
 ***** USER_CONSTRAINTS
 - 現在のユーザが所有する表の制約定義をすべて示す。
 ***** USER_DB_LINKS
@@ -222,9 +226,15 @@
 ***** USER_USERS
 - 現行のユーザを説明する。
   現在ログインしているユーザを確認する場合などに便利。
+**** SYNONYM
+***** SYN
+***** TABS
+- USER_TABELSのシノニム
 **** ETC
 ***** DATABASE_EXPORT_OBJECTS
 ***** SCHEMA_EXPORT_OBJECTS
+***** TAB
+- 互換性のために残している。非推奨
 ***** TABLE_EXPORT_OBJECTS
 *** 動的パフォーマンスビュー
 **** About

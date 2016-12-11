@@ -636,6 +636,7 @@
   textを画面上表示する
   
 **** RECOVER
+- https://docs.oracle.com/cd/E16338_01/server.112/b56314/ch_twelve033.htm#i2698238
 **** REMARK
 **** REPFOOTER
 **** REPHEADER
@@ -1355,7 +1356,7 @@
 *** Oracle XML DB
 - XMLデータの格納、生成、アクセス、検索、検証、変換、拡張および索引付などの高パフォーマンスの処理に関連する一連のOracle Databaseテクノロジー。
   SQLとXMLの両方のデータ・モデルの相互運用を可能にすることで、ネイティブなXMLサポートを提供する。
-*** Recovery Manager
+*** Recovery Manager / RMAN
 - https://docs.oracle.com/cd/E16338_01/backup.112/b56269/toc.htm
 *** TKPROF
 ** Error
@@ -1453,6 +1454,8 @@
 - PSE, Patch Set Exception
   別名個別パッチ。
   一つの不具合に対する修正パッチ。リリースタイミングは不定期。
+*** RMAN
+- Recovery Managerのこと。Toolも参照
 *** PROFILE
 - データベース・リソースの制限の集合。
   
@@ -1487,6 +1490,9 @@
 *** Flashback Query
 - 誤って変更したデータをもとに戻す場合などに、UNDOデータを参照してデータを復活させることができる。
   http://output-place.blogspot.jp/2013/09/oracle.html
+*** Snapshot
+- 現在"Materialized View"と呼ばれているものの、昔の呼び方。
+  
 ** Memo
 *** 他システムとの違い
 **** 空文字/Null
@@ -1675,6 +1681,18 @@
 ****** Orcale Flashback Drop
 ****** Oracle Flashback Database
 **** Settings
+*** 外部表
+- 外部のファイルを、あたかもテーブルが存在するかのようにアクセスすることができる。
+  
+- 
+  - http://www.shift-the-oracle.com/table/external-table-practice.html
+  - http://otn.oracle.co.jp/otn_pl/otn_tool/code_detail?n_code_id=203
+  - http://d.hatena.ne.jp/replication/20130408/1366426828
+*** テーブル一覧の表示
+- 古い方法（非推奨）
+  SELECT TNAME FROM TAB;
+- 普通の方法
+  SELECT TABLE_NAME FROM USER_TABLES;
 ** Link
 *** Oracle 11.2
 - [[http://docs.oracle.com/cd/E16338_01/nav/portal_booklist.htm][Oracle® Databaseオンライン・ドキュメント・ライブラリ 11g リリース2 (11.2) すべてのドキュメント]]

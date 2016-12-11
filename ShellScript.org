@@ -443,3 +443,7 @@
 - 
   use "source" command when calling files, and the contents of the called files are executed like just it typed on parent environmet.
   ex) source test.sh
+*** Return code of function
+- ファンクションのリターンコマンドは、数字のみしか返すことができない。
+  関数の戻り値として値を返したい場合、標準出力を行い戻り値を変数に代入したり、グローバル変数を使ったりするとよい。
+  [[http://shellscript.sunone.me/function.html][関数の使用方法 - シェルスクリプト リファレンス]]

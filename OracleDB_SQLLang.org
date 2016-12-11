@@ -40,6 +40,11 @@
 - 
   日付および時刻の情報を格納するために使用する。
 
+****** TIMESTAMP
+****** TIMESTAMP WITH TIME ZONE
+****** TIMESTAMP WITH LOCAL TIME ZONE
+****** INTERVAL YEAR TO MONTH
+****** INTERVAL DAY TO SECOND
 ****** RAW, LONG RAW
 - バイナリデータまたはバイト列。
   LONG RAW列はBLOBへ変換することを推奨。
@@ -56,7 +61,20 @@
 ****** 整数
 ****** NUMBER/浮動小数点
 ***** 日時リテラル
+****** DATE 日付リテラル
+- Format
+  DATE 'YYYY-MM-DD'
+  ex : DATE '2016-12-1'
+****** TIMESTAMP
+- Format
+  TIMESTAMP 'YYYY-MM-DD HH:MM:DD.x(*9:max)
+  
+  ex : TIMESTAMP '2016-12-1 12:00:00.123456789'
+****** TIMSETAMP WITH TIME ZONE
+****** TIMSETAMP WITH LOCAL TIME ZONE
 ***** 期間リテラル
+****** INTERVAL YEAR TO MONTH
+****** INTERVAL DAY TO SECOND
 **** NULL
 **** コメント
 ***** ヒント
@@ -124,10 +142,16 @@
 ***** 日時ファンクション
 ****** ADD_MONTHS
 ****** CURRENT_DATE
+- DATE型を返す
 ****** CURRENT_TIMESTAMP
+- DATETIME WITH ZONE型を返す
 ****** LAST_DAY
+****** LOCALTIMESTAMP
 ****** NEXT_DAY
 ****** ROUND
+****** SYSDATE
+****** SYSTIMESTAMP
+****** TO_TIMESTAMP
 ***** 一般的な比較ファンクション
 ****** GREATEST
 ****** LEAST
@@ -364,6 +388,9 @@
 ********* PASSWORD_LOCK_TIME [exr|UNLIMITED|DEFAULT]
 ********* PASSWORD_GRACE_TIME [exr|UNLIMITED|DEFAULT]
 ********* PASSWORD_VERIFY_FUNCTION [function|UNLIMITED|DEFAULT]
+****** DROP
+***** RESTORE POINT
+****** CREATE
 ****** DROP
 ***** ROLE
 ****** CREATE

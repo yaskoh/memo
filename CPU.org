@@ -382,6 +382,11 @@
 ***** Task
 ***** Paging
 ***** Security
+***** Memo
+****** はじめて読む486
+- [[https://github.com/tkmc/486][tkmg/486 - 『はじめて読む486』のサンプルプログラム集 - github]]
+- [[https://gist.github.com/k-takata/32e9954d503d67233d6e][k-tanaka/486-OpenWatcom.md - github]]
+- [[https://github.com/koron/486/releases][koron/486 - はじめて読む486 サンプルコード実験環境]]
 *** z/Architecture
 
 ** RISC
