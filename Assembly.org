@@ -220,7 +220,6 @@ LOOPNZ, LOOPNE SRC
     RCL, RCR キャリーフラグ込み
     ROL, ROR キャリーフラグは溢れ分
 
-
 **** ストリング命令
 - 
     読み出しは[DS:SI]
@@ -431,3 +430,8 @@ LOOPNZ, LOOPNE SRC
 **** Link
 - [[http://www.arteceed.net/?cat=12]['S/370アセンブラー講座' Category - 「メインフレーム・コンピュータ」で遊ぼう]]
 - [[http://homepage1.nifty.com/ttakao/370asm/index.html][OS/390アセンブラハンドブック]]
+*** OpenWatcom
+- 手動ビルド
+  - C:\WATCOM\owsetenv.bat
+  - wasm file.asm
+  - wcl -ecc -D__MSC__ test.c test.obj

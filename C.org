@@ -1512,6 +1512,9 @@
 - 前身はBorland C/C++。更に前身はTurbo C/C++。
 *** HP C
 - [[http://h50146.www5.hpe.com/products/software/oe/hpux/developer/document/pdfs/PDFHS03_028_01.pdf][GNU CCとHP Cの比較]]
+*** OpenWatcom
+**** Link
+- [[ftp://ftp.openwatcom.org/manuals/current/cguide.pdf][Open Watcom C/C++ User's Guide]]
 ** Link
 - [[http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf][ISO/IEC 9899:201x Programming languages - C - N1570 (C11 final draft)]]
 - [[http://www.open-std.org/jtc1/sc22/WG14/www/docs/n1256.pdf][ISO/IEC 9899:TC3 N1256]]
