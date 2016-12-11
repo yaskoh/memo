@@ -1,0 +1,34 @@
+* Oracle Reverse Lookup
+** 制約
+*** 制約の追加
+- ALTER TABLE table_name ADD CONSTRAINT const_name constraint(column_name);
+*** 制約の削除
+- ALETR TABLE table_name DROP CONSTRAINT const_name;
+*** 制約の有効/無効
+- ALTER TABLE table_name [ENABLE|DISABLE] CONSTRAINT const_name;
+*** NULL制約の変更
+- ALTER TABLE table_name MODIFY (column_name {NOT} NULL)
+** 日時
+*** 現在日時の取得
+- TIMESTAMP WITH ZONE
+  - CURRENT_TIMESTAMP
+  - SYSDATETIME
+- TIMESTAMP
+  - LOCALTIME
+- DATE
+  - CURRENT_DATE
+  - SYSDATE
+
+- 違い
+  - OSの現在日時
+    - SYSDATETIME, SYSDATE
+  - セッションのタイムゾーン
+    - CURRENT_TIMESTAMP, LOCALTIME, CURRENT_DATE
+
+*** リテラル表記
+- TIMESTAMP
+  TIMESTAMP 'YYYY-MM-DD HH:MM:DD.xx(max:9)'
+- DATE
+  DATE 'YYYY-MM-DD'
+- INTERVAL
+  
