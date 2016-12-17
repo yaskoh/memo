@@ -46,6 +46,69 @@
 **** Ancillary
 ***** Manipulators
 ****** git-config
+- You can query/set/replace/unset options with this command.
+- 項目の設定を行う。
+
+******* Options
+******** --replace-all
+******** --add
+******** -e, --edit
+- Opens an editor to modify the specified confige file; either --system, --global, or repository (default).
+- --global --edit
+  グローバルな設定ファイルをテキストエディタでひらくコマンド。
+******** --get
+******** --global
+- For writing options: write to global ~/.gitconfig file rather than the repository .git/config.
+- For reading options: read only from global ~/.gitconfig and $XDG_CONFIG_HOME/git/config rather than from all available files.
+******** --system
+- For writing options: write to system-wide $(prefix)/etc/gitconfig rather than the repository .git/config.
+******** --local
+- For writing options: write to the repository .git/config file. (Default behavior)
+******** -l, --list
+- List all variables set in config file, along with their values.
+******* Variables
+******** alias.*
+- Command aliases for the git command wrapper.
+- alias.<alias-name> <git-command>
+  Gitコマンドのショートカットを設定する。
+******** color.ui
+- This variable determines the default value for variables such as color.diff and color.grep that control the use of color per command family.
+- --global color.ui "auto"
+  ユーザインターフェースを自動で色付けする。
+
+******** core.editor
+- Commands such as commit and tag that lets you edit messages by lauching an editor uses the value of this variable
+- --system core.editor <editor>
+  git commandのようなコマンドを実行する際のエディタを指定する。
+******** core.fileMode
+- Tells Git if the executable bit of files in the working tree is tobe honored.
+- ファイルの権限・モードの設定。faleで無視する。
+******** user.email
+- Your email address to be recorded in any newly created commits.
+- user.email <email>
+  オーサーEメールアドレスを設定する。
+******** user.name
+- Your full name to be recorded in any newly created commits.
+- user.name <name>
+  コミットのオーサー名を設定する。
+******* Values
+- boolean
+  - true
+  - false
+- integer
+- color
+- pathname
+******* Files
+******** $(prefix)/etc/gitconfig
+- システム全体の設定ファイル
+******** $XDG_CONFIG_HOME/git/config
+- リポジトリ毎の設定ファイル
+******** ~/.gitconfig
+- ユーザ固有ファイル
+******** $GIT_DIR/config
+******* Environment
+******** GIT_CONFIG
+******** GIT_CONFIG_NOSYSTEM
 ****** git-remote
 ****** git-replace
 ***** Interrogators
@@ -211,28 +274,6 @@
   指定した<commit>のメッセージを指定してコミットする。
 - -c <commit>
   <commit>のメッセージを記入した状態でエディタが立ち上がる。
-
-**** git config
-- 
-  項目の設定を行う。
-
-- 設定ファイル
-  各リポジトリ ： <repo>/.git/config
-  ユーザ固有 ： ~/.gitconfig
-  システム全体 ： $(prefix)/etc/gitconfig
-
-- --global user.name <name>
-  現在のユーザが行う全てのコミットのオーサー名を設定する。
-- --global user.email <email>
-  オーサーEメールアドレスを設定する。
-- --global alias.<alias-name> <git-command>
-  Gitコマンドのショートカットを設定する。
-- --system core.editor <editor>
-  git commandのようなコマンドを実行する際のエディタを指定する。
-- --global --edit
-  グローバルな設定ファイルをテキストエディタでひらくコマンド。
-- --global color.ui "auto"
-  ユーザインターフェースを自動で色付けする。
 
 **** git fetch
 - 
@@ -437,7 +478,8 @@ SSHは両方可能。
 *** Initialize Setting
 - git config --global user.name "your name"
 - git config --global user.email "your.email@domain.com"
-- git config --list  // check your settings
+- git config --global core.filemode false  # ignore file mode like 755 and 644
+- git config --list  # check your settings
 
 *** ~N
 - 
