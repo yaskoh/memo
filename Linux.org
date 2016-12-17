@@ -380,6 +380,14 @@
 
 *** Red Hat
 **** CentOS
+***** Memo
+****** host名の変更
+- centos7
+  "/etc/hostname"を編集
+- centos6
+  "/etc/sysconfig/network"を編集
+- temporary
+  hostname newhostname.newdomainname
 **** RHEL
 - 
   [[https://access.redhat.com/ja/node/16476][Red Hat Enterprise Linux のリリース日と収録カーネルの一覧 - redhat]]
@@ -1480,5 +1488,9 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
     - :%!xxd 
     - :%!xxd -r
   - dd
+*** [と[[
+- "["はtestコマンド
+- "[["はシェルのキーワード
+- http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1389236638
 ** Link
 - [[http://qiita.com/kenju/items/7f9f0ee6a5e2e09596d3][Linuxに関わる人が一度は読むべきStackOverflowまとめ - Qiita]]
