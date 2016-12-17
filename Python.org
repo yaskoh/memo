@@ -393,7 +393,7 @@
 *** Top Level
 ** Library
 *** Standard Library
-**** built-in
+**** Built-in
 ***** Function
 ****** abs()
 ****** all()
@@ -659,7 +659,25 @@
 - それぞれのクラスは、それ自身の直接のサブクラスへの弱参照を保持する。
   それらの山椒のうち、生存しているもののリストを返す。
 ***** Exception
-**** 文字列処理
+****** Base classes
+******* exception BaseException
+******* exception Exception
+******* exception ArithmetricError
+******* exception BufferError
+******* exception LookupError
+****** Concrete exceptions
+******* Exceptions
+******** exception AssertionError
+******** exception ImportError
+******** exception MemoryError
+******** exception NameError
+******* OS exceptions
+******** exception FileExistsError
+******** exception FileNotFoundError
+- 要求されたファイルやディレクトリが存在しない場合に送出される。
+  "errno ENOENT"に対応。
+****** Warnings
+**** Text Processing Services / 文字列処理
 ***** string
 ****** Const
 ******* string.ascii_letters
@@ -708,7 +726,8 @@
 
 ******* compare
 ****** class difflib.HtmlDiff
-**** データ型
+**** Binary Data Services
+**** Data Types / データ型
 ***** datetime
 - 基本的な日付型および時間型
   日付や時間データを簡単な方法と複雑な方法の両方で操作するためのクラスを提供している。
@@ -758,8 +777,9 @@
 ********* most_common([n])
 - 最も多いn要素を、カウントが多いものから少ないものまで順に並べたリストを返す。
 ********* subtract([iterable-or-mapping])
-**** 数値と数学モジュール
-**** ファイルとディレクトリへのアクセス
+**** Numeric and Mathematical Moduels / 数値と数学モジュール
+**** Functional Programming Modules
+**** File and Directory Access / ファイルとディレクトリへのアクセス
 ***** glob
 - Unix形式のパス名のパターン展開
 ****** glob
@@ -768,11 +788,11 @@
 ****** iglob
 - glob.iglob(pahtname)
 
-**** データの永続化
-**** データ圧縮とアーカイブ
-**** ファイルフォーマット
-**** 暗号関連のサービス
-**** 汎用オペレーティングシステムサービス
+**** Data Persistence / データの永続化
+**** Data Compression ad Arhciving / データ圧縮とアーカイブ
+**** File Formats / ファイルフォーマット
+**** Cryptographic Services / 暗号関連のサービス
+**** Generic Operating System Services / 汎用オペレーティングシステムサービス
 ***** os
 ****** Process Parameters
 ****** File Object Creation
@@ -825,6 +845,7 @@
 ****** Process Management
 ****** Miscellaneaus System Information
 ****** Miscellaneaus Function
+***** io
 ***** time
 - 時刻データへのアクセスと変換
 ****** Methods
@@ -832,14 +853,55 @@
 - time.sleep(secs)
   与えられた秒数の間、呼び出したスレッドの実行を停止する。
   より精度の高い実行停止時間を指定するために、引数は浮動小数点にしてもよい。
-**** 並列実行
+***** errno
+- 標準のerrnoシステムシンボル
+****** errno.errorcode
+****** errno.EPERM
+****** errno.EINTR
+****** errno.EIO
+**** Concurrent Execution / 並列実行
 ***** subprocess
 - サブプロセス管理
 ****** run()
-**** プロセス間通信とネットワーク
-**** インターネット上のデータの操作
-**** 構造化マークアップツール
-**** インターネットプロトコルとサポート
+**** Interprocess Communication and Network / プロセス間通信とネットワーク
+**** Internet Data Handling / インターネット上のデータの操作
+***** email
+***** json
+****** Methods
+******* json.dump(obj, fp, ...)
+- 変換表を使い、objをJSON形式のfp(file-like object)へのストリームとして直列化する。
+  常にbyetsオブジェクトでなくstrオブジェクトを生成する。
+******* json.dumps(obj, ...)
+- 変換表を用い、objをJSON形式のstrオブジェクトに直列化する。
+******* json.load(fp, ...)
+- 変換表を用い、fpをPythonオブジェクトへ脱直列化する。
+******* json.loads(s, ...)
+- 変換表を用い、s(JSONドキュメントを含んでいるstrインスタンス)をPyhtonオブジェクトへ脱直列化する。
+****** Classes
+******* class json.JSONDecoder(...)
+- 単純なJSONデコーダ。
+- デフォルトでは、以下の変化を行う。
+  |---------------+--------|
+  | JSON          | Python |
+  |---------------+--------|
+  | object        | dict   |
+  | array         | list   |
+  | string        | str    |
+  | number (int)  | int    |
+  | number (real) | float  |
+  | true          | True   |
+  | false         | False  |
+  | null          | None   |
+  |---------------+--------|
+  
+******** Methods
+********* decode(s)
+********* raw_decode(s)
+******* class json.JSONEncoder(...)
+****** Exceptions
+******* exception json.JSONDecodeError(msg, doc, pos, end=None)
+**** Structured Markup Processing Tools / 構造化マークアップツール
+**** Internet Protocols and Support / インターネットプロトコルとサポート
 ***** urllib
 - URLを扱うモジュール群
 ***** urllib.request
@@ -875,12 +937,12 @@
 - headers
   HTTPErrorの原因となったHTTPリクエストのHTTPレスポンスヘッダ。
 
-**** マルチメディアサービス
-**** 国際化
-**** プログラムのフレームワーク
-**** Tkを用いたグラフィカルユーザインターフェース
-**** 開発ツール
-**** デバッグとプロファイル
+**** Multimedia Services / マルチメディアサービス
+**** Internationalization / 国際化
+**** Program Frameworks / プログラムのフレームワーク
+**** Graphical User Interface with Tk / Tkを用いたグラフィカルユーザインターフェース
+**** Development Tools / 開発ツール
+**** Debugging and Profiling / デバッグとプロファイル
 ***** pdb
 - Pythonデバッガ
   対話型ソースコードデバッガーを定義する。
@@ -955,8 +1017,8 @@
 - 
   デバッガを終了する。
 
-**** ソフトウェア・パッケージと配布
-**** Pythonランタイムサービス
+**** Software Packaging and Distribution / ソフトウェア・パッケージと配布
+**** Python Runtime Services / Pythonランタイムサービス
 ***** sys
 - システムパラメータと関数
 ****** sys.argv
@@ -984,14 +1046,14 @@
 - 
   バージョン情報を表す5個のタプル : major, minor, micro, releaselevel, serialが表示される。
   
-**** カスタムPythonインタプリタ
+**** Custom Pyhton Interpreters / カスタムPythonインタプリタ
 **** 制限実行
-**** モジュールのインポート
-**** Python言語サービス
+**** Importing Modules / モジュールのインポート
+**** Python Language Services / Python言語サービス
 **** Pythonコンパイラパッケージ
-**** 各種サービス
-**** MSWin固有
-**** Usix固有
+**** Miscellaneous Services / 各種サービス
+**** MS Windows Specific Sercices / MSWin固有
+**** Unix Specific Services / Usix固有
 **** MacOSX固有
 *** Other Libraries
 **** Beautiful Soup
@@ -1109,18 +1171,15 @@
 - 他のオブジェクトに対する参照をもつオブジェクト。
   Tuple, List, Dictionaryなど。
 ** Link
-- [[http://docs.python.jp/3.5/index.html][Python 3.5.1 ドキュメント]]
+- [[http://docs.python.jp/3.5/index.html][Python 3.5.2 ドキュメント]]
 - [[https://docs.python.org/3/index.html][Python 3.5.2 documentation]]
 - [[http://d.hatena.ne.jp/dplusplus/20100126/p1][Python基礎文法最速マスター - LazyLife@Diary]]
-** Memo
-*** old
-- osでよく使うコマンド
-  os.getcwd, os.chdir
-
+** Reverse Lookup
+*** 覚書(old)
 - time.sleep
   time.sleep(3)で3秒停止。
 
-- strin.rstrip()
+- string.rstrip()
   string.rstrip()で末尾の改行を削除
 
 - string.find()
@@ -1128,19 +1187,19 @@
   'abcde'.find('b')で1(int)が返る。
 
 - shutil.copy
-copyはshutil(shutil.copy, shutil.copytree, shutil.copyfile等)、
+  copyはshutil(shutil.copy, shutil.copytree, shutil.copyfile等)、
 
 - os.rename
   renameはos(os.rename)
 
 - 終了：
-  Ctrz(Unix系 Ctrd)
+  Ctrl-z(Unix系 Ctrl-d)
   quit()
-*** shellコマンド互換
+*** shellコマンド互換コマンド
 - cd  : os.chdir(path)
 - ls  : os.listdir(path), glob.glob(pattern)
 - pwd : os.getcwd()
-*** 読み書き
+*** ファイルの読み書き
 - ファイルを開いて読む
   - ex
     for line in open('text.txt', 'r'):
@@ -1160,16 +1219,6 @@ copyはshutil(shutil.copy, shutil.copytree, shutil.copyfile等)、
         for line in open(file, 'r'):
             print line
 
-*** 前回表示結果
-- 
-  "_"に格納されている。
-  - 例
-    >>>price=100.50
-    >>>price * tax
-    12.5624
-    >>>price + _
-    113.9625 # 前回の値が足されている。
-
 *** 外部プログラムの実行
 - 
   subprocessの利用を推奨。
@@ -1183,3 +1232,17 @@ copyはshutil(shutil.copy, shutil.copytree, shutil.copyfile等)、
     os.system('ls')
     commands.getstatusoutput('ls')
   
+*** jsonを扱う
+- jsonモジュールを利用する。(import json)
+  
+** Memo
+*** 前回表示結果
+- 
+  "_"に格納されている。
+  - 例
+    >>>price=100.50
+    >>>price * tax
+    12.5624
+    >>>price + _
+    113.9625 # 前回の値が足されている。
+
