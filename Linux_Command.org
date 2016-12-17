@@ -1,12 +1,13 @@
 * Linux Commands
 ** Commands
-*** .
+*** #
+**** .
 - 
   identical to the source function.
   sourceと同様、カレントシェルで実行が行われる。
   shではsourceがない場合があるようなので、.を利用する。
   
-*** !
+**** !
 - !!
   直前に実行したコマンドを再実行する。
 - !num
@@ -14,32 +15,37 @@
 - ![char]
   最後に実行した[char]に当てはまるコマンドを実行する。
   
-*** adduser
+**** [
+- see "test"
+*** a
+**** adduser
 - 
   Create a new user or update default new user information.
   
   In Debian, this command works as an interactive way of user adding.
   CentOS or Fedora, this command may not exist, or just a link to "useradd" command.
 
-*** alias
+**** alias
 - 
   別名をつける。
 
-*** apropos
+**** apropos
 - 
   show result searched from summaries and command names.
   whatisデータベースより文字列を検索する。
 
-*** basename
+**** basename
 - 
   extract filename from path strings.
 
-*** bg
+*** b
+**** bg
 - [%jobsid]
   ジョブをバックグラウンドで実行するよう切り替える。
 
-*** bzip2 / bunzip2
-*** cat
+**** bzip2 / bunzip2
+*** c
+**** cat
 - 
   Concatenate FILES(s), or standard input, to standard output.
 - -A, --show-all
@@ -55,19 +61,20 @@
 - -v, --show-nonprinting
   use ^ and M- notation, except for LFD and TAB
 
-*** chgrp
+**** chgrp
 
-*** chkconfig
+**** chkconfig
 - 
   起動スクリプトを管理する。
+  chkconfig service [on/off/0-6]
 
-- --list
+- -l, --list
   ランレベルごとの起動スクリプトごとの状態を表示する。
 
-- --add
+- -a, --add
   起動スクリプトを管理対象として追加する。
 
-- --del
+- -d, --del
   起動スクリプトを管理対象から削除する。
 
 - --level
@@ -79,7 +86,7 @@
 - --version, -v
   コマンドのバージョンを表示する。
 
-*** chmod
+**** chmod
 - 
   アクセス権限の変更。
 
@@ -102,7 +109,7 @@
     書き込み権限があっても、自分以外のユーザが所有するファイルを削除できなくなる。
     o+t, 1xxx
 
-*** chown
+**** chown
 - chown [user][:.][group] file
   ファイルやディレクトリの所有者を変更する。
   グループも同時に変更可能。
@@ -114,21 +121,24 @@
 - -R, --recursive
   ディレクトリとその中身を再帰的に変更する。
 
-*** chroot
-    ルートディレクトリを変更してコマンドを実行する。
-    chroot directory [command [args]]
+**** chroot
+     ルートディレクトリを変更してコマンドを実行する。
+     chroot directory [command [args]]
 
-*** clear
+**** clear
+   
+**** col
+- 改行コードなどのエスケープシーケンスをフィルタし、変換・削除するコマンド。
+  manページをテキストファイルに出力する場合によく利用される。
 
-*** cp
+**** cp
 - 
   
 - -i
   
 - -p
-  
-*** crontab
-*** cut
+**** crontab
+**** cut
 - 
   特定の文字で区切られた項目を分割する。
   文字列の中から所定の位置にある特定の項目を抜き出したい場合に利用する。
@@ -151,7 +161,7 @@
 - --outputdelimiter 'delimiter'
   デリミタを変更した形で出力する
 
-**** examples
+***** examples
 - select columns for characters
   ex) cut -c2 test.txt
   mn) display 2nd character from each line.
@@ -184,7 +194,8 @@
       -> root#/root#/bin/bash
   mn) change delimiter from ':' to '#'
 
-*** date
+*** d
+**** date
 - date
   show 
 
@@ -212,7 +223,7 @@
 - link(tmp)
   https://hydrocul.github.io/wiki/commands/date.html
 
-*** df
+**** df
 - 
   ファイルシステムについて、使用領域と空き領域のサイズを表示する。
   disk free : display free disk space.
@@ -231,21 +242,21 @@
   print the total for a directory only if it is N or fewer levels below the command line argument;
   specify 0 is the same as --summarize.
 
-*** dirname
+**** dirname
 - 
   extract directory path from full-path string
 
-*** dmesg
+**** dmesg
 - 
   カーネルのメッセージバッファの内容を表示する。"display message"の略。
   print or control the kernel ring buffer.
   the porgram helps users to print out their bootup messaes.
 
-*** dstat
+**** dstat
 - 
   pythonスクリプト。
 
-*** du
+**** du
 - du [filename...]
   ディレクトリ内のファイル容量を表示する。
   実際に使用しているディスク容量なので、ファイルサイズとは一致しない場合がある。
@@ -262,7 +273,8 @@
 - -s
   report only the sum of the usage in the current directory
 
-*** e2fsdk
+*** e
+**** e2fsdk
 - e2fsck DEVICE
   ext2/ext3/ext4ファイルシステムの整合性をチェックし、修復する。
   マウント中のファイルシステムに実行すると壊れる恐れがあるため注意。
@@ -270,7 +282,7 @@
 - -f
   ファイルシステムにcleanマークが付いていても強制的にチェックアウトする。
 
-*** echo
+**** echo
 - 
   display a line of text
   メッセージを表示する
@@ -278,24 +290,24 @@
 - -n
   do not output the trailing newline
   
-*** env
+**** env
 - 
   
-*** exec
+**** exec
 - 
   現在実行中のシェルに変わり、指定したコマンドを実行する。
   コマンドを実行すると普通forkして子プロセスを生成するが、
   execから呼ぶとforkせずコマンドが呼ばれる。
 
-*** exit
+**** exit
 - 
   スクリプトの実行を終了する。
   returnと異なり、関数がどれだけネストしていても全体が終了される。
   数字を指定して終了ステータスを返すことが出来る。
 
-*** expect
+**** expect
 - programme dialogue with interactive programs
-*** export
+**** export
 - export VAR
   set VAR as environment variables.
   
@@ -324,7 +336,8 @@
 - -p
   環境変数の一覧を取得する
 
-*** fdisk
+*** f
+**** fdisk
 - fdisk (option) device
   ディスクのパーティションを設定する。
 
@@ -333,11 +346,11 @@
 
 - -s partition
   
-*** fg
+**** fg
 - [%jobsid]
   バックグラウンドで実行しているジョブをフォアグラウンドに切り替える。
 
-*** file
+**** file
 - 
   実行可能ファイルかテキストかその他データかなどのファイルのタイプを判定して表示する。
 - -b
@@ -349,13 +362,13 @@
 - -v
   バージョンを表示する
 
-*** find
+**** find
 - 
   ファイルやディレクトリを検索する。
   用法: find [option] [path...] [expression]
   用法：find [path] [condition] [action]
 
-**** Options
+***** Options
 - symbolic link
   - -P
     Never follow symbolic links.
@@ -378,7 +391,7 @@
     - 1
     - 2
     - 3
-**** Expressions
+***** Expressions
 - -name
   ファイル名を検索、パターンマッチ可。
 
@@ -394,16 +407,16 @@
   f : file
   d : directory
 
-*** finger
+**** finger
 - 
   ユーザ情報を表示する。
   ただし、最近はセキュリティの強化のためfingerを通さないよう設定している場合が多い。
 
-*** free
+**** free
 - 
   
 - -t
-*** ftp
+**** ftp
 - ftp [-options] [host]
   
 - -A
@@ -426,11 +439,12 @@
   - ls
   - open
     
-*** fsdk
+**** fsdk
 - 
   実際にはLinuxで利用できるさまざまなファイルシステムチェッカーへの単なるフロントエンド、とのこと。
 
-*** gcc
+*** g
+**** gcc
 - 
   コンパイルする。
 - -o
@@ -456,7 +470,7 @@
   -lの後にスペースはあけず、ライブラリ名のlibを除いたものを指定する。
   ex) libmをリンクしたければ、-lmとする。
 
-*** gdb
+**** gdb
 - 
   デバッグを行う。
 - run (options)
@@ -475,7 +489,7 @@
 - quit, q
   gdbの終了する
 
-*** glob
+**** glob
 - 
   パス名をglobする
 
@@ -491,7 +505,7 @@
 - pathname
   '/'は'?'や'*'にはマッチせず、陽に'/'文字を含むことはできない。
   
-*** global
+**** global
 - 説明
   ソースコードの関数定義等に素早くアクセスできるようにする。
   apt-getやbrew等でglobalをインストールして使う。
@@ -511,7 +525,7 @@
 - -g 検索文字列
   ソースコードのgrep
 
-*** grep
+**** grep
 - grep [OPTIONS] PATTERN [FILE...]
 - grep [OPTIONS] [-e PATTERN | -f FILE} [FILE...] 
   searches the named input FILEs for lines containing a match to the given PATTERN.
@@ -534,27 +548,27 @@
 - -P, --perl-repexp
   as a Perl regular expresion.
 
-**** egrep
+***** egrep
 - 
   the same as grep -E
 
-**** fgrep
+***** fgrep
 - 
   the same as grep -F
 
-*** groupadd
+**** groupadd
 - 
   新しいグループの作成
 
 - ex)
   groupadd group01
 
-*** gtags
+**** gtags
 - 
   tagを作成する。
   Gnu globalと共にインストールする。
 
-*** gzip / gunzip
+**** gzip / gunzip
 - 
   gzip形式で圧縮/解凍する。
   
@@ -562,17 +576,18 @@
   圧縮された個々のファイルについて、以下のフィールドを列挙する。
   compresed size, uncompressed size, ratio, uncompresed_name
 
-*** hexdump
+*** h
+**** hexdump
 - 
   ascii, decimal, hexadecimal, octal dump
 
 - -C Canonical hex+ASCII display.
-*** history
+**** history
 - 
   display the command history list with line numbers.
   Lines listed with a * have been modified.
 
-*** htags
+**** htags
 - 
   ソースコードをhtmlに変換する。
 
@@ -588,7 +603,8 @@
 - -x, --xhtml
   XHTML形式で表示する
 
-*** iconv
+*** i
+**** iconv
 - convert text from one character encoding to another
 
 - Usage:
@@ -600,11 +616,11 @@
   - -c
     Silently discard characters that cannot be converted insteadof terminating when encountering such characters.
 
-*** id
+**** id
 - 
   ユーザIDやグループIDを表示する。
 
-*** ifconfig
+**** ifconfig
 - (obsolete)
 
 - memo
@@ -614,7 +630,7 @@
 
   - ifconfig eth1 up
     
-*** inetd
+**** inetd
 - 
   待ち受けポートの監視専用中継デーモン。ポート番号を指定して監視する。
   待ち受けポートに要求が来た場合に、あらかじめ決められたデーモンを起動させる。
@@ -625,21 +641,21 @@
 - /etc/inetd.conf
   サービス名とサーバ名の対応付け
 
-*** info
+**** info
 - 
   emacsを使ってマニュアルを表示する。
   GNU libcの一次情報はinfo。
 
-*** install
-    ファイルをコピーして属性の設定をする。
-    1. install [OPTION]... SOURCE DEST
-    2. install [OPTION]... SOURCE... DIRECTORY
-    3. install -d [OPTION]... DIRECTORY...
-    [-d, --directory] ディレクトリを作成する。
-    [-m, --mode] アクセス権を設定する。
-    [-v, --verbose]
+**** install
+     ファイルをコピーして属性の設定をする。
+     1. install [OPTION]... SOURCE DEST
+     2. install [OPTION]... SOURCE... DIRECTORY
+     3. install -d [OPTION]... DIRECTORY...
+     [-d, --directory] ディレクトリを作成する。
+     [-m, --mode] アクセス権を設定する。
+     [-v, --verbose]
 
-*** iostat
+**** iostat
 - iostat
   Report Central Processing Unit(CPU) statistics and input/output statistics for devices,
   paritions and network filesystems.
@@ -654,9 +670,9 @@
   Display extended statistics.
 
 
-**** Status
+***** Status
 
-***** -x
+****** -x
 - rrpm/s : マージされた読み込みIO要求。この値が大きいほどディスクの性能を引き出せている。
 - wrpm/s : マージされた書き込みIO要求。この値が大きいほどディスクの性能を引き出せている。
 - r/s : 秒間読み込みIO要求回数。この数値が大きいほど多くの要求をこなしている。低く保つようにすべき値。
@@ -669,46 +685,46 @@
 - svctm : 要求に対する平均レスポンスタイム。値が安定していることが非常に重要。サービスタイム。
 - %util : 使用率（ビジー率）
 
-*** ip
+**** ip
 - ip [ OPTIONS ] OBJECT { COMMAND | help }
   show / manipulate routing, devices, policy rounting and tunnels
 
-**** Objects
+***** Objects
 - 
   Object := { link | addr | addrlabel | route | rule | neigh | tunnel | maddr | mroute | monitor }
 
-***** ip link (l)
-****** ip link set
-****** ip link show
-***** ip addr (a)
-****** ip addr { add | del}
-****** ip addr { show | flush }
-***** ip addrlabel
-****** ip addrlabel { add | del }
-****** ip addrlabel { list | flush }
-***** ip route (r)
-****** ip route { list | flush }
-****** ip route get
-****** ip route { add | del | change | append | replace | monitor }
-***** ip rule
-***** ip neigh
-***** ip tunnel
-***** ip maddr
-***** ip mroute
-***** ip monitor (mo)
-**** Link
+****** ip link (l)
+******* ip link set
+******* ip link show
+****** ip addr (a)
+******* ip addr { add | del}
+******* ip addr { show | flush }
+****** ip addrlabel
+******* ip addrlabel { add | del }
+******* ip addrlabel { list | flush }
+****** ip route (r)
+******* ip route { list | flush }
+******* ip route get
+******* ip route { add | del | change | append | replace | monitor }
+****** ip rule
+****** ip neigh
+****** ip tunnel
+****** ip maddr
+****** ip mroute
+****** ip monitor (mo)
+***** Link
 - [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][ip COMMAND CHEAT SHEET]]
 
-*** ipcs
+**** ipcs
 - IPCリソース情報の表示。
   
 - -i
   後続のidで指定されたリソースの情報だけが出力される。
   
-*** ipcrm
+**** ipcrm
 - メッセージキュー、セマフォ集合、共有メモリIDを削除する。
 
-*** iptables
+**** iptables
 - iptables
   handle iptables settings.
   see alse [files]
@@ -716,28 +732,30 @@
 - ex)
   iptables -t filter -I Input -p tcp -s 123.123.123.123 --dport 80 -j DROP
   
-*** jobs
+*** j
+**** jobs
 - 
   実行中のジョブを表示する。
 
-*** joke
-**** sl
+**** joke
+***** sl
 - 
   slが走る。いくつかオプションも存在する。
 
-**** banner
+***** banner
 - 
   バナーっぽいアスキーアートが表示できる。
 
-**** aafire
+***** aafire
 - 
   AAの炎が表示される。
 
-**** cmatrix
+***** cmatrix
 - 
   matrixっぽい表示
 
-*** kill
+*** k
+**** kill
 - [-s signal] pid
   プロセスおよびジョブを強制終了する
 - -l
@@ -757,18 +775,19 @@
   | 15 | SIGTERM | 終了(Termination)シグナルによるプロセスの終了                                  |
   |----+---------+--------------------------------------------------------------------------------|
 
-*** last
+*** l
+**** last
 - 
   show listing of last logged in sures
   searches the file /var/log/wtmp and displays a list of all users logged in.
 
-*** ldconfig
+**** ldconfig
 - configure dynamic linker run-time bindings
   
-*** ldd
+**** ldd
 - 
   共有ライブラリの依存関係を表示する。
-*** less
+**** less
 - 
   pager
 
@@ -786,23 +805,23 @@
   - :d
     remove current file on the list
 
-*** ln
+**** ln
 - 
   リンクを作成する
 - -s, --symbolic
   シンボリックリンクの作成
 - -v, --verbose
 
-*** locale
+**** locale
 - Get locale-specific information.
   
-*** locate
+**** locate
 - 
   ファイルを高速に検索する。
   あらかじめ作成したデータベースを用いるため、findコマンドより高速。
   データベースはスーパーユーザ権限でupdatedbコマンドを実行して作成する。
 
-*** logrotate
+**** logrotate
 - 
   logrotate is designed to ease administration of systems that generate large number of log files.
   It allows automatic rotation, compression, removal, and mailing of log files.
@@ -816,7 +835,7 @@
   
 - -f, --force
   
-*** ls
+**** ls
 - 
   ls means list.
   show files and directories on the target directory.
@@ -831,19 +850,19 @@
 - +F
   wait for data updating
 
-**** Subcommand
+***** Subcommand
 - F
   waiting and following the updating data. same as +F
 
 - :n
   show next file (when opening some files)
 
-*** lsof
+**** lsof
 - list open files
   
 - -p [pid]
   
-*** lvcreate
+**** lvcreate
 - 
   create a new logical volume in a volume group.
 
@@ -861,15 +880,15 @@
 
 - ex) lvcreate -s -L 40G -n snapshot_vol -p r /dev/vg01/lvol01
 
-*** lvdisplay
+**** lvdisplay
 - 
   display attributes of a logical volume
   
-*** lvextend
+**** lvextend
 - 
   extend the size of a logical volume.
 
-*** lvreduce
+**** lvreduce
 - 
   reduce the size of a logical volume
 
@@ -880,7 +899,7 @@
 - link
   [[http://seriousbirder.com/blogs/lvreduce-ext4-example/][lvreduce ext4 example]]
 
-*** lvremove
+**** lvremove
 - 
   removes one or more logical volumes.
   
@@ -890,18 +909,19 @@
 - ex)
   lvremove -f vg00/lvol1
 
-*** lvs
+**** lvs
 - 
   report information about logical volumes
 
-*** lynx
+**** lynx
 - 
   text-based web-browser.
   
-*** mail
+*** m
+**** mail
 - 
 
-**** Subcommands
+***** Subcommands
 - mailnumber
   show mail of mailnumber
 - n
@@ -928,12 +948,12 @@
 
 - 
   http://www.uetyi.com/server-const/command/entry-166.html
-*** make
-    コンパイル等の処理を自動で行う。
-    [-k, --keep-going] エラーが発生してもできるだけ処理を継続させる。
-    [-n, --just-print, --dry-run] 実際には処理せず実行コマンドのみ表示する。
+**** make
+     コンパイル等の処理を自動で行う。
+     [-k, --keep-going] エラーが発生してもできるだけ処理を継続させる。
+     [-n, --just-print, --dry-run] 実際には処理せず実行コマンドのみ表示する。
 
-*** man
+**** man
 - マニュアルを呼び出す。
   |------------+------------------------|
   | セクション | 分類                   |
@@ -948,12 +968,12 @@
   |          8 | システム管理用コマンド |
   |------------+------------------------|
 
-*** merge
+**** merge
 - merge (option) file1 file2 file3
   file2からfile3へのすべての変更をfile1に併合する。
 
-*** mkdir
-*** mkfs
+**** mkdir
+**** mkfs
 - 
   ファイルシステムの作成
 - -t
@@ -962,20 +982,20 @@
   verboseもversionも兼用しているようです。
   ex: mkfs -v -t ext4 /dev/sdb1
 
-*** mknod
-    特殊ファイルを作成する。
-    mknod [オプション] ファイル名 タイプ メジャー マイナー
-    [-m] アクセス権を設定する。デフォルトは0666からumaskを引いたもの。
-    タイプ: b ブロック(buffered)型、c,u キャラクタ(unbuffered)型
-            p FIFO(名前つきパイプ)
-            ※pを指定を指定した場合はデバイス番号（メジャーマイナー）を指定しない。
+**** mknod
+     特殊ファイルを作成する。
+     mknod [オプション] ファイル名 タイプ メジャー マイナー
+     [-m] アクセス権を設定する。デフォルトは0666からumaskを引いたもの。
+     タイプ: b ブロック(buffered)型、c,u キャラクタ(unbuffered)型
+             p FIFO(名前つきパイプ)
+             ※pを指定を指定した場合はデバイス番号（メジャーマイナー）を指定しない。
 
-*** mkswap
+**** mkswap
 - 
   スワップ領域を設定する。
   mkswap /dev/sbd2
 
-*** mount
+**** mount
 - 
   現在マウントされているファイルシステムを調べる。
 - --bind
@@ -985,18 +1005,19 @@
   ファイルシステムのタイプを指定
    ext3, ntfs, sysfs, devpts, proc, tmpfsなど。
 
-*** mpstat
+**** mpstat
 - Report processors related statistics
   
 - -A
   equivalent to specifying "-I ALL -u -P ALL"
 
-*** mv
+**** mv
 - 
   リネームとかファイルの移動とか。
   mv aaa{,bbb}とするとaaa->aaabbbにリネームされる。
 
-*** nc
+*** n
+**** nc
 - 
   netcat.
   arbitrary TCP and UDP connections and listens.
@@ -1008,7 +1029,7 @@
 - -z
   Specifies that nc should just scan for listening daemons, without sending any data to them.
 
-*** netstat
+**** netstat
 - 
 
 - State
@@ -1021,16 +1042,18 @@
   | TIME_WAIT   | コネクション終了後                   |
   |-------------+--------------------------------------|
   
-*** od
+*** o
+**** od
 - dump files in octal and other formats
-*** passwd
+*** p
+**** passwd
 - 
   ユーザパスワードを変更する。
 
 - ex)
   passwd user
 
-*** pgrep
+**** pgrep
 - 
   選択基準にマッチするプロセスのプロセスIDを標準出力する
 - -l
@@ -1042,17 +1065,17 @@
 - -G グループID
   実グループIDがリストのどれかであるプロセスのみマッチする
   
-*** printenv
+**** printenv
 - 
   show list of environment variables.
 
-*** printf
+**** printf
 - 
   メッセージを整形して表示する。
   '\n'を入れないと改行されない。
 
-*** ps
-**** About
+**** ps
+***** About
 - 
   displays information about selection of the active processes.
   実行中のプロセスを表示する。
@@ -1074,172 +1097,179 @@
     ps ax
     ps aux
 
-***** Items
-******* PID
+****** Items
+******** PID
 - プロセス番号
-******* TTY
+******** TTY
 - 端末名
-******* TIME
+******** TIME
 - プロセスの総実行時間
-******* CMD
+******** CMD
 - 実行しているコマンド
-**** Unix
-***** -e
+***** Unix
+****** -e
 - Select all processes. Identical to -A.
   全てのプロセスを表示する。
-***** -f
+****** -f
 - プロセスの親子関係を表示する
-***** -u
+****** -u
 - -uユーザ
   指定されたユーザ名（ユーザID）に対応するプロセスのみ表示する
-***** -A
+****** -A
 - Select all processes. Identical to -e.
 
-**** BSD
-***** a
+***** BSD
+****** a
 - 自分以外のユーザのプロセスも表示する
-***** f
+****** f
 - プロセスの親子関係をツリー状に表示する
-***** l
+****** l
 - ロングフォーマット・詳細情報を表示する
-****** Items
-******* F
+******* Items
+******** F
 - 現在の状態を表す16新フラグ
-******** 00
+********* 00
 - 終了している。
-******** 01
+********* 01
 - システムプロセス。常にメモリー上にある。
-******** 02
+********* 02
 - 親プロセスからトレースされている。
-******** 04
+********* 04
 - 親プロセスからトレースされて、停止している
-******** 08
+********* 08
 - シグナルで起動できない
-******** 10
+********* 10
 - メモリー上にあり、イベント終了までロックされている
-******** 20
+********* 20
 - スワップできない
-******* PPID
-******* RI
-******* NI
-******* WCHAN
-***** r
+******** PPID
+******** RI
+******** NI
+******** WCHAN
+****** r
 - 実行中のプロセスのみ表示する
-***** u
+****** u
 - プロセスのユーザ情報を表示
-****** Items
-******* USER
+******* Items
+******** USER
 - プロセスの所有ユーザ
-******* %CPU
+******** %CPU
 - CPUの占有率
-******* %MEM
+******** %MEM
 - 実メモリでの占有率
-******* SIZE
+******** SIZE
 - 仮想分も含めた使用サイズ(KByte)
-******* VSZ
+******** VSZ
 
-******* RSS
+******** RSS
 - 実メモリ上の使用サイズ(KByte)
-******* STAT
+******** STAT
 - プロセスの状態
-******** 1文字目
-********* R
+********* 1文字目
+********** R
 - Runnable, 実行可能
 - 稼働中
-********* S
+********** S
 - 一時停止中
 - 20秒未満のsleep状態
-********* D
+********** D
 - 停止不可能で一時停止
 - ディスク（あるいは他の割り込み不可能な短期間の）待ち状態
-********* T
+********** T
 - 終了処理中
 - stop状態
-********* Z
+********** Z
 - ゾンビプロセス
-********* W
+********** W
 - 実メモリになく、スワップアウトしている
-********* N
+********** N
 - nice値
-******** 2文字目以降
-********* +
+********* 2文字目以降
+********** +
 - 制御端末のフォアグラウンドプロセスグループに属している
-********* >
+********** >
 - CPUのスケジュール優先度があげられている
-********* <
+********** <
 - メモリ要求に対するソフトリミットが設定されており、現在そのリミットを超えている。
-********* A
+********** A
 - ランダムなページスワップを要求
-********* E
+********** E
 - 終了しようとしている
-********* L
+********** L
 - 実メモリ中にロックされたページを持っている
-********* N
+********** N
 - スケジューリング優先度が下げられている
-********* S
+********** S
 - FIFOページスワップを要求した
-********* s
+********** s
 - セッションリーダ
-********* V
+********** V
 - vforkの間、一時中断されている
-********* W
+********** W
 - スワップアウトされている
-********* X
+********** X
 - トレースされているかデバッグされている
-******* START
+******** START
 - プロセスの開始時間
-******* COMMAND
+******** COMMAND
 - 実行コマンドとパス
-***** x
+****** x
 - 制御端末のないプロセスの情報も表示する
-**** GNU long
+***** GNU long
 
-*** pstree
+**** pstree
 - [ pid | user ]
   実行中のプロセスをツリー形式で実行する。
   pidを基点として表示するが、省略されるとinitを基点とする。
 
-*** pvcreate
+**** pvcreate
 - 
   initialize a disk or partition for use by LVM
 
 - ex)
   sudo pvcreate /dev/sdb1
   
-*** pvdisplay
+**** pvdisplay
 - 
   display attributes of a physical volume
 
-*** pvs
+**** pvs
 - 
   report information about physical volumes
 
-*** rar / unrar
-*** read
-- [varname]
+*** q
+
+*** r
+**** rar / unrar
+**** read
+- read [varname]
   標準入力から1行読み取り、読み込んだ内容をvarnameに指定したシェル変数に格納する。
 
-*** readelf
-    ELFファイルに関する情報を表示
+***** Options
+- -n nchars
+  read returs after reading nchars characters.
 
-*** readlink
-    シンボリックリンクの値を読む。
-    readlink [OPTION]... FILE...
+**** readelf
+     ELFファイルに関する情報を表示
 
-*** readonly
+**** readlink
+     シンボリックリンクの値を読む。
+     readlink [OPTION]... FILE...
+
+**** readonly
 - readonly 変数
   変数を読み込み専用にする。上書きやunsetができなくなる。
-*** resize2fs
+**** resize2fs
 - 
   resize ext2, ext3, or ext4 file system.
   It can be used to enlarge or shrink an unmounted file system located on device.
 
-*** return
+**** return
 - 
   関数の実行を終了する。
   数字を指定して終了ステータスを返すことが出来る。
 
-*** rsync
+**** rsync
 - Usage
   - Local:
     - rsync [OPTION...] SRC... [DEST]
@@ -1256,7 +1286,7 @@
       rsync [OPTION...] SRC... [USER@]HOST:DEST
       rsync [OPTION...] SRC... rsync://[USER@]HOST[:PORT]/[DEST]
 
-*** run-parts
+**** run-parts
 - 
   run scripts or programs in a directory.
   
@@ -1264,14 +1294,15 @@
   cronで使われている。
   またdebian系とRHEL系で動きが違うとのこと。
 
-*** rm
+**** rm
 - 
   ファイルを削除する
 
-*** rmdir
+**** rmdir
 
-*** sar
-*** scp
+*** s
+**** sar
+**** scp
 - scp [[user@]sourcehost1:]filename1 ... [[user@]desthost2:]filename2
   データコピーを安全に行う。
   sshを使ってデータをコピーする。
@@ -1283,9 +1314,9 @@
   サーバ側がglobで解釈できるよう、エスケープして渡す。
   ex) scp 'SERVERNAME:/DIR/\*' .
 
-*** screen
+**** screen
 
-*** seq
+**** seq
 - usage
   - seq [OPTION]... LAST
   - seq [OPTION]... FIRST LAST
@@ -1304,16 +1335,16 @@
   - --help
   - --version
 
-*** service
+**** service
 - 
   指定されたLinuxデーモンの起動や停止、ステータスの確認を実行する。
   中身はシェルスクリプト。
-*** set
+**** set
 - set [-options] [-o options]
   シェルのオプションを設定する。
   -aのように位置文字で設定する場合と、-oの後にスペースを空けて単語を指定する2種類の書式が存在する。
   「-」の代わりに「+」を用いると意味が逆になる。
-*** sh(dash)
+**** sh(dash)
 - 
   'sh -c -x "コマンド内容"'などととすることで、
   シェルがどのようにコマンドを展開しているか理解するのに役立つ。
@@ -1326,7 +1357,7 @@
 - -x xtrace
   Write each command to standard error befor it is executed. Useful for debugging.
 
-*** shopt
+**** shopt
 - Bash built-in.
 - (no-option)
   オプション一覧を表示
@@ -1334,18 +1365,18 @@
   set
 - -u Options
   unset
-**** Options
-***** autocd
-***** expand_aliases
+***** Options
+****** autocd
+****** expand_aliases
 - If set, aliases are expanded as described below under Aliases.
-**** Link
+***** Link
 - [[https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html][The Shopt Builtin - Bash Reference Manual]]
-*** sftp
+**** sftp
 - 
   interactive file transfer program, similar to ftp.
   performing all operations over an encrypted ssh transport.
   
-**** interactive commands
+***** interactive commands
 - bye
 - cd path
 - chgrp grp path
@@ -1384,7 +1415,7 @@
   Escape to local shell
 - ?
 
-*** sort
+**** sort
 - 
   sorts the contents of a text file, line by line.
 
@@ -1410,14 +1441,14 @@
 - -u, --unique
   With -c, check for strict ordering; without -c, output only the first of an equal run.
 
-*** source
+**** source
 - 
   "source filename"で、filenameで指定されたスクリプトファイルを実行する。
   ファイルの内容を、自分で手で打っていくのと同じ。
   
   子プロセスの変数を親プロセスで使う場合に利用することができる。
 
-*** split
+**** split
 - 
   ファイルを分割する。
   usage: split [-b bytes[bkm]] [infile [outfile-prefix]]
@@ -1434,8 +1465,8 @@
 - link
   [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060227/230888/][【split】ファイルを分割する - Linuxコマンド集]]
 
-*** ss
-*** ssh
+**** ss
+**** ssh
 - 
   secure shell.
 
@@ -1457,26 +1488,26 @@
   write down port forwarding settings to  ~/.ssh/config 
   and not to need to set everytime to connect.
 
-*** ssh-keygen
+**** ssh-keygen
 - 
   認証用の鍵を生成、管理、および変換する。
 
-*** stat
+**** stat
 - 
   display file or file system status
 
-*** stop
+**** stop
 - [%jobsid]
   バックグラウンドで停止するコマンドのジョブ番号を指定する
 
-*** strace
+**** strace
 - 
   動作中のプログラムが呼んだシステムコールを表示してくれる。
 
-*** strip
-    オブジェクトファイルからシンボル(デバッグ用のデータ)を切り捨てる。
+**** strip
+     オブジェクトファイルからシンボル(デバッグ用のデータ)を切り捨てる。
 
-*** stty
+**** stty
 - 
   端末ラインの設定を変更・表示する
 
@@ -1488,7 +1519,7 @@
   Ctrl-qでstartとなるので、再度入力ができるようになる。
   無効とするには、"stty stop undef"とする。
 
-*** su
+**** su
 - 
   ユーザを切り替える。
 
@@ -1499,12 +1530,13 @@
   "su"だと、環境をuserから引き継ぐ。
   "su -"だと、rootの環境となる。
 
-*** sysctl
+**** sysctl
 - 
   system settings
   /proc/sys/net/ipv4/ip_forward -> net.ipv4.ip_forward (in /etc/sysctl.conf)
 
-*** tail
+*** t
+**** tail
 - 
 - -n, --lines=K
   output the last K lines, instead of the last 10
@@ -1515,7 +1547,7 @@
 - -F
   same as --follow=name --retry
 
-*** tar
+**** tar
 - 
   ファイルを書庫化、展開する。
   - メインオプション
@@ -1550,10 +1582,10 @@
     - -J
       tar + xz
 
-*** tc
+**** tc
 - 
   show / 
-*** tcpdump
+**** tcpdump
 - 
 
 - -i [interface]
@@ -1571,7 +1603,7 @@
 - -p
   execute not being promiscous mode
   
-**** expression
+***** expression
 - type
   host, net, port
 - dir
@@ -1579,13 +1611,13 @@
 - proto
   ether, fddi, mopdl, ip, ip6, arp, rarp, decnet, lat, sca, moprc, mopdl, icmp, icmp, tcp, udp
   
-*** tee
+**** tee
 - 
   標準入力から読み込んだ内容を、標準出力とファイルの両方へ出力する。
 
-*** telnet
+**** telnet
 
-*** test, [
+**** test, [
 - 
 
 - Expression
@@ -1638,7 +1670,7 @@
 - Link(temp)
   - http://linux.about.com/library/cmd/blcmdl1_test.htm
 
-*** top
+**** top
 - 
   CPUのプロセスをリアルタイムで表示する。
 - 
@@ -1666,7 +1698,7 @@
 
 - -c
 
-*** touch
+**** touch
 - touch [options] file...
   change file timestamp
 
@@ -1678,12 +1710,12 @@
   
 - -t MMDDhhmm[[CC]YY][.ss]
 
-*** tmpwatch
+**** tmpwatch
 - tmpwatch time dirs
   removes files which haven't been accessed for a period of time
   recursively removes files which haven't been accessed for a given time.
 
-*** tr
+**** tr
 - translate or delete characters
 - Format
   tr [OPTION]... SET1 [SET2]
@@ -1691,7 +1723,7 @@
 - Ex
   - echo abcde | tr '[a-z]' '[A-Z]' -> ABCDE
 
-*** trap
+**** trap
 - 
   システム割り込み時の処理を設定する。
 - -l
@@ -1699,11 +1731,11 @@
 - -p
   単独で用いた場合、現在各シグナルに対して設定されている処理内容を表示する。
 
-*** tty
+**** tty
 - 
   どの端末が割り当てられたか確認する
 
-*** type
+**** type
 - 
   コマンドに関する情報を表示する
 - -a
@@ -1714,21 +1746,22 @@
   コマンドの型を表示する
   alias, shell builtin, file, function, keywordがある。
 
-*** tzselect
+**** tzselect
 - 
   タイムゾーンを選択する。
 
-*** umask
+*** u
+**** umask
 - 
   The user file-creation mask is set to mode.
   If mode begins with a digit, it is interpreted as an octal numbers;
   otherwise it is interpreted as a symbolic mode mask similar to that accepted by chmod.
 
-*** umount / unmount
+**** umount / unmount
 - 
   unmount file systems
 
-*** uname
+**** uname
 - 
   OSやCPUのアーキテクチャ、ホスト名、カーネルバージョン等のシステム情報が表示される。
 - -a
@@ -1736,7 +1769,7 @@
 - -n
   ホスト名を表示する
 
-*** uniq
+**** uniq
 - 
   reporting or filtering out repeated lines in a file.
   
@@ -1755,23 +1788,23 @@
 - -u, --unique
   Only print unique lines.
 
-*** unset
+**** unset
 - 
   指定した変数や関数を削除する。
   ただし、シェルが始めから利用している変数や
   readonlyが指定されている変数は削除できない。
 
-*** updatedb
+**** updatedb
 - 
   locate用ファイル・データベースを更新する。
 
-*** uptime
+**** uptime
 - 
   show how long the system has been runnning.
   this is the same information contained in the header line displayed by w.
   - Current time, The actual up time, How many users logged in, The load average
 
-*** useradd
+**** useradd
 - 
   新規ユーザの作成
 - -s
@@ -1792,8 +1825,8 @@
 - ex)
   - useradd -d /user1 -m -g user1 user1
 
-*** userdel
-*** usermod
+**** userdel
+**** usermod
 - usermod [options] LOGIN
   modify a user account
 - -a, --append
@@ -1807,42 +1840,43 @@
 - -p, --password
 - -s, --shell SHELL
 - -u, --uid UID
-*** vgdisplay
+*** v
+**** vgdisplay
 - 
   display attributes of volume groups
 
-*** vgextend
+**** vgextend
 - 
   add physical volumes to a volume group
 
 - ex)
   sudo vgextend centos /dev/sdb1
   
-*** vgs
+**** vgs
 - 
   report information about volume groups
 
-*** vigr
+**** vigr
 - 
   edit /etc/group
 
-*** vim
+**** vim
 - [[file:Vim.org][Vim.org]]
-*** vipw
+**** vipw
 - 
   edit /etc/password
 
 - -s
   edit /etc/shadow
 
-*** visudo
+**** visudo
 - 
   Edit /etc/sudoers.
   
   Format: User Host=(Permisson) Command
   ex) root ALL=(ALL) ALL
 
-*** vmstat
+**** vmstat
 - vmstat (options) [interval [times]]
   システム内の情報を表示するコマンド。
 
@@ -1857,8 +1891,8 @@
     ディスクに関する統計を表示する
   - -S 単位
   
-**** Status
-***** オプションなし
+***** Status
+****** オプションなし
 - procs : アクティブなプロセスに関する統計
   - r : 実行待ち状態にあるプロセス数
   - b : 割り込み不可能なスリープ状態にあるプロセス数
@@ -1884,19 +1918,20 @@
   - wa : IO待ち時間
 
 *** w
+**** w
 - 
   ログインユーザ名とその利用状況を表示する。
 
-*** w3m
+**** w3m
 - 
   pager / text-based web-browser.
 
-*** wall
+**** wall
 - wall [-n] [ message ]
   send a message to everybody's terminal
   a message to everybody logged in with their mesg(1) permission set to yes.
 
-*** wc
+**** wc
 - 
   ファイルのバイト、行、文字および単語をカウントする。
   行数・単語数・文字数・バイト数・ファイル名の順に、オプション指定された情報だけ表示する。
@@ -1909,7 +1944,7 @@
 - -w
   単語数を出力する。単語数はスペース、タブおよび改行で区切られた文字列の数とする。
 
-*** wget
+**** wget
 - 
   ファイルをダウンロードする。
   wget [option] URL
@@ -1920,38 +1955,40 @@
 - -l 階層数
   再帰的にファイルを入手する場合の階層数を指定する。
 
-*** whatis
+**** whatis
 - 
   show summary of man, searched from command names.
   簡単な説明とキーワードを含むデータベースを検索し、結果を出力する。
 
-*** whereis
+**** whereis
 - 
   コマンドのバイナリ、ソース、manページの場所を示す。
 
-*** which
+**** which
 - 
   コマンドのフルパスを表示する。パスが通っているもののみ。
   （パスが通っていないものについては、findやlocateを使用するとよい。）
 
-*** who
+**** who
 - 
   現在ログインしているユーザ情報を表示する
 
-*** write
+**** write
 - write user [ttyname]
   send a message to another user
   to communicate with other users.
 
-*** xauth
-*** xhost
+*** x
+**** xauth
+**** xhost
 - 
   "xhost +host_name"とすると、host_nameからもXサーバにアクセス可能となる。
   "xhost +"とすると全てのホスト（世界中）からアクセス可能となり、スクリーンショットを取ったりプログラムを表示・キーストロークを盗むことが可能となるので、xauthを使う方が望ましい。
   
-*** xz / unxz
+**** xz / unxz
 
-*** zip / unzip
+*** z
+**** zip / unzip
 
 ** BASH BUILTINS
 *** bash
