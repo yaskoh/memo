@@ -1,9 +1,8 @@
 * JSON
 - JavaScript Object Notation
-- [[https://www.ietf.org/rfc/rfc7159.txt][RFC7159]]
-- [[http://json.org/json-ja.html][JSON�̏Љ�]]
-- [[http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf][ECMA-404 The JSON Data Interchange Standard.]]
-
+** Fundamental
+- Objectが第一、Array、Pairが準上位構造、のイメージ。
+  ただし上下関係は特にない。Array, Pairの下層にもObjectは使える。
 ** Structure
 *** JSON Values
 - value
@@ -87,3 +86,8 @@
   - \r
   - \t
   - \u four-hex-digits
+** Link
+- [[https://www.ietf.org/rfc/rfc7159.txt][RFC7159]]
+- [[http://json.org/json-ja.html][JSONの紹介]]
+- [[http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf][ECMA-404 The JSON Data Interchange Standard.]]
+

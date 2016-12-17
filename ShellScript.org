@@ -439,6 +439,8 @@
   pushd `dirname $0`
   ...
   popd
+*** Show full path of execution location
+- echo $(cd $(dirname ${0}) && pwd)
 *** Using child process vars in parent process
 - 
   use "source" command when calling files, and the contents of the called files are executed like just it typed on parent environmet.
