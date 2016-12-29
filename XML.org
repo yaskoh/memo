@@ -10,3 +10,18 @@
 *** CDATA
 - Character Data
   the data in between these tags includes data that could be interpreted as XML markup, but shuould not be.
+** Memo
+*** XQuery
+- XMLデータ問合せのための言語であり、チューリング完全な関数型言語でもある。
+  QUiltと呼ばれる言語をベースに設計されているが、他にも各種言語の影響を受けている。
+- XQuery 1.0はXPath 2.0の拡張。
+*** XPath, XML Path Language
+- XMLに準拠した文書の特定の部分を指定する言語構文。
+**** XPath 1.0
+**** XPath 2.0
+**** XPath 3.0
+*** XSL
+**** XSLT, XSL Transformations
+- XML文書の変換用言語。
+**** XSL-FO
+*** XML Database

@@ -118,6 +118,10 @@
 ****** ROUND
 ****** SQRT
 ***** 文字値を戻す文字ファンクション
+****** CHR
+- nに等しい2進数を持つ文字を、VARCHAR2値として戻す。
+******* Syntax
+- CHAR ( n [ USING NCHAR_CS ] )
 ****** CONCAT
 - 
   2つの引数を連結して返す。
@@ -136,6 +140,10 @@
   charのpositionの文字からsubstring_length文字分の文字列を抜き出して戻す。
 ****** TRIM
 ***** 数値を戻す文字ファンクション
+****** ASCII
+- charの最初の文字の、データベース・キャラクタ・セットでの10進数表記を戻す。
+******* Syntax
+- ASCII ( char )
 ****** LENGTH
 ****** REGEXP_COUNT
 ***** キャラクタ・セット・ファンクション
@@ -169,6 +177,25 @@
 ***** 階層ファンクション
 ***** データ・マイニング・ファンクション
 ***** XMLファンクション
+****** EXTRACTVALUE
+- 非推奨。下位互換のためにサポートされている。
+  XMLTABLE, XMLCASTおよびXMLQUERYを使用する。
+******* Syntax
+  EXTRACTVALUE ( XMLType_instance , XPath_string [, namespace_string] )
+****** XMLCAST
+******* Syntax
+- XMLCAST ( value_expression AS datatype )
+****** XMLQUERY
+- SQL文のXMLデータを問い合わせることができる。
+  文字列リテラル、オプションのコンテキスト項目、および他のバインド変数としてXQuery式を取り、これらの入力値を使用してXQuery式の評価結果を戻す。
+******* Syntax
+- Syntax
+  XMLQUERY ( XQuery_string [XML_passing_clause] RETURNING CONTENT [NULL ON EMPTY] )
+- XML_passing_clause
+  PASSING [BY VALUE] {expr [AS identifier]},+
+****** XMLTABLE
+- XQueryの評価結果をリレーショナル行および列にマップする。
+******* Syntax
 ***** エンコーディングおよびデコーディング・ファンクション
 ***** NULL関連ファンクション
 ****** COALESCE

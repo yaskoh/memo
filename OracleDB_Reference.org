@@ -243,6 +243,8 @@
   基本的にV$のみにアクセスするようにする。
 - GV$ビュー
   ほとんどすべてのV$ビューに対し、対応するGV$ビューがある。
+**** V$CONTROLFILE
+- 制御ファイルの名前を示す
 **** V$DATABASE
 - 現在接続しているインスタンスのDBID、チェックポイントなどが取得できる。
 **** V$DIAG_INFO
@@ -250,6 +252,10 @@
 
 **** V$INSTANCE
 - 現行インスタンスの状態を表す。
+***** Columns
+****** INSTANEC_NAME
+****** STATUS
+- OPEN, MOUNTなどの状態
 **** V$OPTION
 - オプション製品のインストール状況
 **** V$SQL
@@ -328,6 +334,13 @@
 **** DBMS_ROWID
 - ROWIDに関する情報を取得できる。
   https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/d_rowid.htm
+**** DBMS_XMLGEN
+- SQL問合せの結果を標準的なXML形式に変化する。
+***** Subprograms
+****** GETXML
+- XML文書を取得する。指定した最大行数まで行をフェッチする。
+****** GETXMLTYPE
+****** NEWCONTEXT
 **** TimesTen
 ***** UTL_RECOMP
 - データベース内の無効なPL/SQLモジュール、無効なビュー、索引タイプおよび演算子を再コンパイルする。
@@ -340,7 +353,6 @@
   特定のスキーマ内またはデータベース内の無効なオブジェクトを再コンパイルする。
 
 ** Link
-- [[file:./OracleDB.org][OracleDB.org]]
 *** Reference
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/toc.htm][Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/toc.htm][Oracle® Database PL/SQLパッケージおよびタイプ・リファレンス 11g リリース2(11.2)]]

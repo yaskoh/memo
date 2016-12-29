@@ -135,7 +135,7 @@
 - struct-declarator-list:
   - struct-declarator
   - struct-declarator-list , struct-declarator
-- struct-decalrator:
+- struct-declarator:
   - declarotor
   - declarator(opt) : constant-expression
 ******* Enumeration specifiers

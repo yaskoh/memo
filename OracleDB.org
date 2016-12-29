@@ -61,13 +61,32 @@
 - [[file:OracleDB_Architecture.org][OracleDB Architecture]]
 ** Setting
 *** files
-**** initXXXX.ora
-- 初期化パラメータファイル
+**** parameter file
+***** PFILE, SPFILE
+- PFILE
+  初期化パラメータファイル
+  テキストファイル。設定内容を手動で変更可能。
+  ALTER SYSTEMコマンドで変更した場合、起動中のインスタンスのみに変更が適用されるため、変更した値はインスタンス再起動により失われる。
+- SPFILE
+  サーバー・パラメータファイル
+  バイナリファイル。alter sysetmコマンドで編集し、効果は永続する。9iから導入された。
+***** initSID.ora
+- 初期化パラメータファイル。PFILE
 - 下記のコマンドで設定値を確認可能。
   SQL> show parameter
+***** spfileSID.ora
+- サーバー・パラメータファイル。SPFILE。
+  select * from v$spparameterなどで確認が可能
 ***** Default path
 - UNIX : $ORACLE_HOME/dbs/init$ORACLE_SID.ora
 - Windows : ORACLE_HOME\database\initORCL.ora
+***** 優先順
+- 
+  1. 起動時に指定したpfile (startup pfile='filename')
+  2. spfileSID.ora
+  3. spfile.ora
+  4. initSID.ora
+  5. init.ora
 
 **** network(folder)
 ***** admin
@@ -211,415 +230,7 @@
 ** PL/SQL
 - [[file:OracleDB_PLSQL.org][OracleDB_PLSQL.org]]
 ** SQL*Plus
-- 入力
-  次の3タイプのコマンドが入力可能。
-  - SQLコマンド
-  - PL/SQLブロック
-  - SQL*Plusコマンド
-  
-*** SQLコマンドの終了
-- 
-  - セミコロン(;)を入力する
-  - 1行にスラッシュ(/)のみを1つ入力する
-  - 空白行を入力する
-*** Scriptの使用
-**** Variables 変数
-***** 置換変数
-****** 定義
-- DEFINE varname
-- ACCEPT ~
-- 削除
-  UNDEFINE varname
-****** 利用
-******* &置換変数
-- &VARNAME、で指定の値に置き換えられ、SQL実行される。
-  例: where deptno = &deptno
-- VERIFY変数
-  OFFにすると、置換変数の置き換え前後の値が表示されなくなる。
-  例: SET VERIFY OFF
-  
-******* &&置換変数
-- &&変数は、SQL実行後も値が保持される。
-  対して、&置換変数で置き換えられた値はSQL実行後に破棄される。
-  DEFINEコマンドで確認し、UNDEFINEコマンドで破棄する。
-
-******* 無効化
-- 置換変数を無効にする
-  SET DEFINE OFF
-- 置換変数を他の文字に変更することなども可能(SET ESCAPE c)。
-****** 種類
-******* ユーザー定義変数
-******* 事前定義変数
-******** _CONNECT_IDENTIFIER
-- 可能な宛先への接続に使用される接続識別子
-******** _DATE
-- 動的変数としての現在の日付、またはユーザー定義の固定文字列が含まれる。
-******** _EDITOR
-- EDITコマンドで使用されるエディタを指定
-******** _O_VERSION
-- インストールされたOracle Databaseの現行のバージョン
-******** _O_RELEASE
-- インストールされたOracle Databaseの完全なリリース番号
-******** _PRIVILEGE
-- 現在の接続での権限レベル。次のいずれかの値となる。
-  - AS SYSASM
-  - AS SYSBACKUP
-  - AS SYSDBA
-  - AS SYSDG
-  - AS SYSOPER
-  - 空文字(通常のユーザー接続)
-******** _SQLPLUS_RELEASE
-- インストールされたSQL*Plusコンポーネントの完全なリリース番号
-******** _USER
-- 接続に使用されるユーザー名
-***** バインド変数
-- 
-  SQL*PlusとPL/SQLの双方で参照できる変数。
-  PL/SQLに値を渡したり、結果を受け取ったりできる。
-  "var[iable] 変数名 型"で宣言する。
-  
-- PL/SQL
-  変数名の前に:(コロン)を付けて参照したり値を格納できる。
-  :count:=3;
-  
-- SQL*Plus
-  PRINTコマンドで出力可能。
-
-*** Variables
-- SQL*Plusに影響するパラメータ・環境変数
-**** LD_LIBRARY_PATH
-**** LOCAL
-**** NLS_LANG
-- グローバリゼーション機能を指定する環境変数。
-  NLSはNational Language Supportの略。
-  "language_territory.charset"を指定する。
-  例: JAPANESE_JAPAN.UTF8, AMERICAN_AMERICA.UTF8
-
-**** ORACLE_HOME
-**** ORACLE_PATH
-**** ORACLE_SID
-**** PATH
-**** SQLPATH
-*** Commands
-**** @
-- 指定したスクリプトのSQL*Plus文を実行する。
-**** /
-- 最後に実行されたSQLコマンドまたはSQLバッファに格納されているPL/SQLブロックを実行する。
-**** ;
-- バッファの内容を表示する。L(IST)と同様。
-**** !
-- unix系でのHO[ST]コマンド実行の短縮形。
-**** ACCEPT
-- 構文
-  ACC[EPT] variable 
-    [NUM[BER] | CHAR | DATE | BINARY_FLOAT | BINARY_DOUBLE]
-    [FOR[MAT] foramt]
-    [DEF[AULT] default]
-    [PROMPT text|NOPR[OMPT]]
-    [HIDE]
-
-- 項
-  - variable
-    値を格納する変数の名前を指定する。variableを指定しない場合、SQL*Plusによって変数が指定される。
-
-  - Type
-    - NUM[BER]
-      variableがNUMBERデータ型に設定される。
-    - CHAR
-      variableがCHARデータ型に設定される。
-
-  - Prompt
-    - PROMPT text
-      variableの値を受け入れる前に、画面にテキストtextを表示する。
-    - NOPROMPT
-      - プロンプトを表示せずに入力を待つ
-
-  - HIDE
-    - 入力された応答が表示されない。
-
-**** APPEND
-- A[PPEND] text
-  textで指定したテキストをSQLバッファ内のカレント行の終わりに追加する。
-**** ARCHIVE LOG
-**** ATTRIBUTE
-**** BREAK
-**** BTITLE
-**** CHANGE
-- C[HANGE] sephcar old [sepchar [new [sepchar]]]
-  バッファ内のカレント行で最初に一致した文字列を変更する。
-**** CLEAR
-**** COLUMN
-- COL[UMN] [{column | expr} [option ...]]
-- options
-  - ALI[AS] alias
-  - CLE{AR}
-  - ENTMAP {ON|OFF}
-  - FOLD_A[FTER]
-  - FOLD_B[EFORE]
-  - FOR[MAT] format
-  - HEA[DING] text
-  - JUS[TIFY] {L[EFT] | C[ENTER] | R[IGHT]}
-  - LIKE {expr | alias}
-  - NEWL[INE]
-  - NEW_V[ALUE] variable
-  - NOPRI[NT] | PRI[NT]
-  - NUL[L] text
-  - OLD_V[ALUE] variable
-  - ON | OFF
-  - WRA[PPED]
-  - WOR[D_WRAPPED]
-  - TRU[NCATED]
-**** COMPUTE
-**** CONNECT
-- 
-  指定したユーザ-名でOracle Databaseに接続する。
-
-- 構文
-  CONN[ECT] [{logon|/|proxy} [AS {SYSOPER|SYSDBA|SYSASM}] [edition=value]
-  - logon : 
-    username[/password]@connect_identifier
-  - proxy :
-    proxyuser[ username][/password][@connect_identifier]
-  
-- 項
-  - /
-    デフォルト・ログオンを表す。
-
-  - AS {SYSOPER|SYSDBA|SYSASM}
-    AS句を使用すると、SYSOPER、SYSDBA、またはSYSASMシステム権限が付与されているユーザーによる特権付接続が可能。
-
-**** COPY
-**** DEFINE
-- DEF[INE] [variable] | [variable = text]
-  ユーザ変数または事前定義変数を指定し、その変数にCHAR値を割り当てたり、1つまたはすべての変数の値および変数型を表示する。
-
-***** 事前定義変数
-****** _CONNECT_INDENTIFIER
-****** _DATE
-****** _EDITOR
-- EDITコマンドで使用されるエディタを指定する。
-****** _O_VERSION
-****** _O_RELEASE
-****** _PRIVILEGE
-****** _SQLPLUS_RELEASE
-****** _USER
-**** DEL
-**** DESCRIBE
-- DESC[RIBE] objectx
-  表、ビュー、ファンクション、プロシージャの定義を表示する。
-
-**** DISCONNECT
-**** EDIT
-- ED[IT] [file_name[.ext]]
-  file_name[.ext]に指定したファイルの内容又はバッファの内容を対象として、OSのテキストエディタを起動する。
-**** EXECUTE
-**** EXIT
-**** GET
-**** HELP
-- HELP | ? [topic]
-  topicには、COLUMなどのSQL*Plusのヘルプトピックを指定する。
-**** HOST
-- HO[ST]
-  続けてOSのコマンドを入力することで、OSのコマンドを実行可能。
-
-- 短縮形
-  - !
-    Unix系での短縮形。直後にスペースは不要で、続けて入力可能。
-  - $
-    Windows系での短縮形。
-
-**** INPUT
-- I[NPUT] [text]
-  textの内容をバッファ内のカレント行の後に1行以上の新規コメントを追加する。
-  
-**** LIST
-- L[IST] [n|n m|n*|n LAST|*|* n|* LAST|LAST]
-  SQLバッファの1つ以上の行を表示する。
-  ";"でも同様。
-**** PASSWORD
-**** PAUSE
-**** PRINT
-**** PROMPT
-- PRO[MPT] [text]
-  textを画面上表示する
-  
-**** RECOVER
-- https://docs.oracle.com/cd/E16338_01/server.112/b56314/ch_twelve033.htm#i2698238
-**** REMARK
-**** REPFOOTER
-**** REPHEADER
-**** RUN
-- R[UN]
-  現在SQLバッファに格納されているSQLコマンドまたはPL/SQLブロックを表示して実行する。
-**** SAVE
-- SAV[E] [FILE] file_name[.ext] [CRE[ATE]] | REP[LACE] | APP[END]]
-  SQLバッファの内容を、OSのスクリプトに保存する。
-**** SET
-***** SET DEF[INE] {&|c|ON|OFF}
-- 置換変数の接頭辞として使用する文字を、cに設定する。
-  ONまたはOFFによって、置換をするかどうかを設定する。ONを設定するとデフォルトの"&"へボトル。
-***** SET ECHO {ON|OFF}
-- @、@@またはSTARTを使用して実行するスクリプトでコマンドをエコー表示するかどうかを制御する。
-  ONを指定すると、画面にコマンドが表示される。OFFを指定すると、非表示となる。
-  対話方式で入力するコマンドまたはOSからリダイレクトするコマンドの表示には影響がない。
-  
-***** SET ESC[APE] {\|c|ON|OFF}
-- エスケープ文字として使用する文字を定義する。
-  OFFを指定するとエスケープ文字の定義が解除される。ONを指定すると、使用可能となり、設定値はデフォルトの"\"に戻る。
-  
-***** SET LIN[ESIZE]
-- 1行に表示する文字の合計数を設定する。
-***** SET PAGES[IZE]
-- 各出力ページの行数を設定する。
-  0に設定すると、ヘッダ、ブレーク、タイトル、初期空白行およびその他の情報をすべて費用時にできる。
-***** SET VER[IFY] {ON|OFF}
-- 
-  置換変数を値と置き換える前後に、SQL文またはPL/SQLコマンドのテキストをリスト表示するかどうかを制御する。
-**** SHOW
-**** SHUTDOWN
-- 
-  接続の終了を待つ。
-
-- transactional
-  トランザクションが終わるまで待つ。
-  トランザクションが終わったら接続を切る。
-
-- immediate
-  接続終了をまたず、コミットされていないデータは失われる。
-  変更済みデータはデータファイルに書き込まれる。
-
-- abort
-  接続終了をまたず、コミットされていないデータは失われる。
-  変更済みデータはデータファイルに書き込まれない。
-**** SPOOL
-- 構文
-  SPO[OL] [file_name[.ext] [CRE[ATE] | REP[LACE] | APP[END]] | OFF | OUT]
-- 項
-  - CRE[ATE]
-    指定した名前でファイルを新規作成する。
-  - REP[LACE]
-    デフォルトの動作。既存のファイルの内容を置換する。ファイルが存在しない場合、ファイルが作成される。
-  - APP[END]
-    指定したファイルの終わりに、バッファの内容を追加数r
-  - OFF
-    スプールを停止する。
-  - OUT
-    スプールを停止して、ファイルをコンピュータの標準プリンタに送る。
-  - (指定なし)
-    現行のスプール状態を表示する。
-
-**** START
-**** STARTUP
-- 
-  SQL*Plusを起動する
-
-- 構文
-  - STARTUP options | upgrade_options
-  - options :
-    [FORCE] [RESTRICT] [PFILE=filename] [QUIET] [MOUNT [dbname] | [OPEN [open_options] [dbname]] | NOMOUNT ]
-  - open_options :
-    READ {ONLY | WRITE [RECOVER]} | RECOVER
-  - upgrade_options :
-    [PFILE=filename] {UPGRADE | DOWNGRADE} [QUIET]
-
-- 項
-  - FORCE
-    再起動する前に現行のインスタンスをABORTモードのSHUTDOWNで停止しておく必要があり、現在のインスタンスが実行されている場合はエラーとなる。
-    FORCEが指定されている場合は実行される。デバッグ中及び異常な環境下で有効なオプションで、通常は仕様を控えるべき。
-  - PFILE=filename
-    インスタンスの起動中に使用されるクライアント・パラメータ・ファイルを指定する。
-    PFILEの指定を省略すると、デフォルトのサーバー・パラメータ・ファイル(spfile)にアクセスしようとする。spfileが見つからないとデフォルトのpfileにアクセスしようとする。
-    デフォルトファイルはプラットフォーム固有でhとなる。
-    例 : UNIX : $ORACLE_HOME/dbs/init$ORACLE_SID.ora、Windows : ORACLE_HOME\database\initORCL.ora
-    
-  - Mount
-    - MOUNT dbname
-      オープンしないでマウントする。
-    - OPEN
-      マウントおよびオープンする。
-    - NOMOUNT
-      停止状態からNOMOUNT状態になる。
-      MOUNTまたはOPENと同時には指定できない。
-      その後変更する場合は、alter database mount; alter database open;など。
-
-**** STORE
-**** TIMING
-**** TTITLE
-**** UNDEFINE
-**** VARIABLE
-- VAR[IABLE] [variable [type]]
-  引数なしでVARIABLEを指定すると、セッション内で宣言されているすべての変数が表示される。
-  変数名のみを指定すると、その変数が表示される。
-  
-  ストアドプロシージャに対するパラメータとして使用される。また、無名PL/SQLブロックの中で直接参照できる。
-
-**** WHENEVER OSERROR
-- 
-  OSのエラーが発生した場合に、指定した操作を実行する。
-- 構文
-  - WHENEVER OSERROR {EXIT [SUCCESS|FAILURE|n|variable|:BindVariable] [COMMIT|ROLLBACK] | CONTINUE [COMMIT|ROLLBACK|NONE]}
-- 項
-  - EXIT [SUCCESS|FAILURE|n|variable|:BindVariable]
-    エラーが検出されたらすぐに終了するように指定する。
-  - CONTINUE
-    EXITオプションをオフにする。
-  - 動作
-    - COMMIT
-      終了または継続する前にCOMMITを実行し、データベースに対する保留中の変更を保存するように指示する。
-    - ROLLBACK
-      終了前にROLLBACKを実行するようにする。
-    - NONE
-      何の操作もしない。
-**** WHENEVER SQLERROR
-- SQLコマンドまたはPL/SQLブロックでエラーが発生した場合に、指定した操作を実行する。
-- 構文
-  WHENEVER SQLERROR {EXIT [SUCCESS|FAILURE|WARNING|n|visible|:BindVariable] [COMMIT|ROLLBACK] | CONTINUE [COMMIT|ROLLBACK|NONE]}
-- 項
-  - EXIT [SUCCESS|FAILURE|n|variable|:BindVariable]
-    エラーが検出されたらすぐに終了するように指定する。
-  - CONTINUE
-    EXITオプションをオフにする。
-  - 動作
-    - COMMIT
-      終了または継続する前にCOMMITを実行し、データベースに対する保留中の変更を保存するように指示する。
-    - ROLLBACK
-      終了前にROLLBACKを実行するようにする。
-    - NONE
-      何の操作もしない。
-**** XQUERY
-*** Restriction
-- 
-  |----------------------+------------|
-  | 項目                 | 制限       |
-  |----------------------+------------|
-  | ユーザー名           | 30バイト   |
-  | 置換変数名の長さ     | 30バイト   |
-  | 置換変数値の長さ     | 240文字    |
-  | コマンドラインの長さ | 2500文字   |
-  | 最大PAGESIZE         | 50,000行   |
-  | 合計行幅             | 32,767文字 |
-  | 最大ページ数         | 99,999     |
-  |----------------------+------------|
-
-- 
-  [[http://docs.oracle.com/cd/E16338_01/server.112/b56314/apa.htm][A SQL*Plusの制限 - SQL*Plus®ユーザーズ・ガイドおよびリファレンス リリース11.2]]
-
-*** Arguments
-- 
-  ファイル名の後にスペースを挟んで引数を列挙する。
-  内部では&1, &2などの形で受け取れる。
-  
-- 
-  [[http://www.shift-the-oracle.com/sqlplus/tutorial/sqlplus-script-parameter.html][SQL*Plus の実行スクリプトをパラメータ付きで起動する - SHIFT the Oracle]]
-
-*** Security
-**** PRODUCT_USER_PROFILE表
-- PUP表
-  GRANTとREVOKEコマンド、およびユーザー・ロールによるユーザー・レベルのセキュリティを補う。
-  特定のSQLおよびSQL*Plusコマンドをユーザー単位で使用禁止にできる。
-*** Link
-- [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/toc.htm][目次 - SQL*Plusユーザーズ・ガイドおよびリファレンスリリース11.2]]
-- [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/ch_twelve001.htm#BACDBGBC][SQL*Plusコマンド一覧 - SQL*Plusユーザーズ・ガイドおよびリファレンスリリース11.2]]
+- [[file:OracleDB_SQLPlus.org][SQL*Plus.org]]
 ** Reference
 - [[file:OracleDB_Reference.org][OracleDB_Reference.org]]
 ** Interface
@@ -1074,45 +685,8 @@
 *** Oracle Directory Integration and Provisioning Server
 - Oracle DIP
   
-*** Oracle Enterprise Manager
-**** Database Control
-- 
-  Webベースのインターフェース。
-  インストール、データベースを作成（アップグレード）してネットワークを構成すると使用可能に。
-**** Cloud Control
-- 
-  OracleおよびOracle以外のテクノロジを実行するシステムを含むITインフラストラクチャ全体に対し、
-  集中化された監視機能、管理機能およびライフ・サイクル管理機能を提供するシステム管理ソフトウェア。
-  
-***** Components
-
-****** Oracle Management Agent
-- 管理エージェント
-  組み込まれたソフトウェア・コンポーネントで、Enterprise Managerシステムで管理対象外ホストを管理対処ホストに変換する。
-  プラグインと連携することにより、管理対象ホスト上で実行されているターゲットを監視する。
-
-****** Oracle Management Service
-- OMC
-  管理エージェントおよびプラグインと連携し、ターゲットを検出して、その監視及び管理を行い、
-  将来の分析のために収集した情報をリポジトリ内に格納するWebベースのアプリケーション。
-  
-****** Oracle Management Repository
-- 管理リポジトリ
-  管理リポジトリは、管理エージェントが収集したすべての情報が保存される場所。
-  
-****** Plugins
-****** Console
-**** Grid Control
--
-***** Components
-****** Oracle Management Agent
-- 管理エージェント
-****** Oracle Management Service
-- OMS
-****** Oracle Management Repository
-- 管理リポジトリ
-****** Console
-
+*** Oracle Enterprise Manager(OEM)
+- [[file:OracleDB_EnterpriseManager.org][OracleDB EnterpriseManager]]
 *** Oracle Expression Filter
 - RUL
   Expression FilterとObject Relationalの機能を使用して、特殊な目的のルールエンジンの機能を提供する。
@@ -1204,6 +778,15 @@
 - 
   [[http://www.atmarkit.co.jp/ait/articles/0808/08/news143.html][11gからの新管理機構「ADR」を理解しよう (1/4) - @IT]]
   [[http://cosol.jp/tech/detail/d3_adr_automatic_diagnostic_repository.shtml][Oracle Database 11gから導入されたADR ( 自動診断リポジトリ ) - 株式会社こーそる]]
+*** DUAL表
+- 
+  1列しか存在しない特別な表。
+  SYSDATEやUESRなど、表を適用せずとも値を返す演算に対してSELECTを行う場合に使われる。
+  VARCHAR2(1)のDUMMYという列があり、レコード値は'X'となっている。
+
+- 
+  Oracle 10gでは、DUAL表そのものは存在しているものの、最適化により実際にはアクセスしないようになっている。
+
 *** Oracle ASM
 - Oracle Automatic Storage Management
   データベースファイルの配置とネーミングを自動的に管理する。
@@ -1249,21 +832,9 @@
   非引用識別子は大/小文字が区別されず、すべて大文字として解析される。
   引用識別子は大/小文字が区別される。
   [[http://otndnld.oracle.co.jp/document/products/oracle11g/111/doc_dvd/server.111/E05750-03/sql_elements.htm#57456][スキーマオブジェクト名および修飾子 - Oracle Database SQL言語リファレンス 11g リリース1（11.1）]]
+*** RAC
+- Oracle Real Application Clusters
 
-*** PFILE, SPFILE
-- PFILE
-  初期化パラメータファイル
-  テキストファイル。設定内容を手動で変更可能。
-  ALTER SYSTEMコマンドで変更した場合、起動中のインスタンスのみに変更が適用されるため、変更した値はインスタンス再起動により失われる。
-- SPFILE
-  サーバー・パラメータファイル
-  バイナリファイル。alter sysetmコマンドで編集し、効果は永続する。9iから導入された。
-- 起動時の優先順位
-  1. 起動時指定のpfile
-  2. spfileSID.ora
-  3. spfile.ora
-  4. initSID.ora
-  5. init.ora
 *** PSR, CPU, PSU, PSE
 - PSR, Patch Set Release
   安定したパッチセットで、重要度の高いバグをフィックス可能。PSUやCPU適用の前提条件であることも多い。
@@ -1274,6 +845,7 @@
 - PSE, Patch Set Exception
   別名個別パッチ。
   一つの不具合に対する修正パッチ。リリースタイミングは不定期。
+  
 *** RMAN
 - Recovery Managerのこと。Toolも参照
 *** PROFILE
@@ -1313,6 +885,11 @@
 *** Snapshot
 - 現在"Materialized View"と呼ばれているものの、昔の呼び方。
   
+*** Restore/Recovery リストア/リカバリ
+- Restore
+  取得しておいたバックアップから、データを物理的に復元すること
+- Recovery
+  リストアしたデータに対して、その後の変更内容を反映させ最新の状態に復旧すること
 ** Memo
 *** 他システムとの違い
 **** 空文字/Null
@@ -1332,18 +909,6 @@
 - 
   テーブル名や列名、その別名にマルチバイト文字を使用する場合必ず""で囲む必要がある。
   困難なため、実際には英数字および記号（_ $ #）のみを使用することが推奨される。
-*** DUAL表
-- 
-  1列しか存在しない特別な表。
-  SYSDATEやUESRなど、表を適用せずとも値を返す演算に対してSELECTを行う場合に使われる。
-  VARCHAR2(1)のDUMMYという列があり、レコード値は'X'となっている。
-
-- 
-  Oracle 10gでは、DUAL表そのものは存在しているものの、最適化により実際にはアクセスしないようになっている。
-
-*** RAC
-- Oracle Real Application Clusters
-  
 *** 読み込み時の情報
 **** sequential read
 - 
@@ -1371,13 +936,14 @@
   ただし、キャッシュ上の変更済みデータが失われただけでなく、データファイルが存在しないなどのファイルに関する障害がある場合は、
   本格的な復旧作業が必要。
   
-*** sqlplusでヒストリ利用
+*** rlwrap - sqlplusでヒストリ利用
 - 
   "readline-devel"を入れて、rlwrapというツールを使ってwrapする。
-  
+  rlwrap_extを利用すれば補完も可能。
 - 
   [[http://utopia.knoware.nl/~hlub/uck/rlwrap/][rlwrap]]
   [[http://d.hatena.ne.jp/yohei-a/20101021/1287677679][sqlplus で bash みたいにヒストリを呼び出したりできたらいいな - ablog]]
+  [[http://www.intellilink.co.jp/article/column/oracle-yam05.html][第5回 SQL*Plusを使いやすくする - NTTデータ]]
 
 *** 実行スクリプトファイルを指定してSQL*Plusを起動
 - 
@@ -1386,28 +952,6 @@
   ex) sqlplus rivus/rivus_pass@orcl_net @go.sql
 - 
   [[http://www.shift-the-oracle.com/sqlplus/tutorial/sqlplus-script.html][SQL*Plus を実行スクリプトファイルを指定して起動する - SHIFT the Oracle]]
-
-*** インスタンスの状態確認
-- 
-  以下のコマンドで確認する。
-  select STATUS from v$instance;
-  ⇒
-  shutdown : エラー(ORA-01034: ORACLE not available)
-  nomount  : STARTED
-  mount    : MOUNTED
-  open     : open
-
-- 
-  [[http://ooltcloud.expressweb.jp/201212/article_18230921.html][【Oracle】データベースの状態の変更と確認方法 - オールトの雲]]
-
-*** PLUSTRACEロール
-- PLUSTRACEロールの作成方法
-  @$ORACLE_HOME/sqlplus/admin/plustrce.sql
-  
-*** コメントの削除
-- 
-  削除コマンドは存在しないので、空文字で上書きすることとなる。
-  COMMENT ON COLUMN table.column is '';
 
 *** 結果の出力行数を抑制する
 - 
@@ -1457,33 +1001,6 @@
 **** ALTER SYSTEM
 **** DBMS_MONITOR
 - [[https://www.ashisuto.co.jp/db_blog/article/20160630_sqltrace.html][SQLトレースの取得方法まとめ（ケース別） - アシスト Database Support Blog]]
-*** キャッシュクリア
-- 共有プール(SHARED POOL)
-  ALTER SYSTEM FLUSH SHARED_POOL;
-  - SGAの「共有プール」上のすべてのデータをフラッシュする。
-    - 対象
-      - データディクショナリ
-      - SHARED SQL AREA
-      - SHARED PL/SQL AREA
-      - ストアド・サブプログラム
-      - トリガー
-      - （実行中のキャッシュは削除されない）
-- バッファキャッシュ(10g以降)
-  ALTER SYSTEM FLUSH BUFFER_CACHE;
-
-*** コンパイル
-- 単体
-  ALETR PROCEDURE procedure_name COMPILE;
-  ALTER PACKAGE package_name COMPILE [PACKAGE/BODY];
-- 全体 （スキーマ名を省略すると全スキーマを対象にINVALIDなオブジェクトをコンパイルする）
-  CALL UTL.RECOMP.RECOMP_SERIAL('schema_name');
-  or
-  EXECUTE UTL.RECOMP.RECOMP_SERIAL('schema_name');
-  or
-  EXECUTE DBMS_UTILITY.COMPILE_SCHEMA('schema_name');
-*** 実行履歴の確認
-- V$SQLのSQL_TEXT列を確認する。SQL_TEXTに入っているのは最初の1000文字で、CLOB型のSQL_FULLTEXTには全テキストが入っている。
-- V$SQLTEXTのSQL_TEXTを確認する。VARCHAR2(64)で、テキストの一部分。
 *** Flashback Technology
 - http://docs.oracle.com/cd/E16338_01/appdev.112/b56259/adfns_flashback.htm
 
@@ -1508,11 +1025,6 @@
   - http://www.shift-the-oracle.com/table/external-table-practice.html
   - http://otn.oracle.co.jp/otn_pl/otn_tool/code_detail?n_code_id=203
   - http://d.hatena.ne.jp/replication/20130408/1366426828
-*** テーブル一覧の表示
-- 古い方法（非推奨）
-  SELECT TNAME FROM TAB;
-- 普通の方法
-  SELECT TABLE_NAME FROM USER_TABLES;
 ** Link
 *** Oracle 11.2
 - [[http://docs.oracle.com/cd/E16338_01/nav/portal_booklist.htm][Oracle® Databaseオンライン・ドキュメント・ライブラリ 11g リリース2 (11.2) すべてのドキュメント]]

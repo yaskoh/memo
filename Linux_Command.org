@@ -307,6 +307,25 @@
 
 **** expect
 - programme dialogue with interactive programs
+- tcl
+***** syntax
+- expect [-dDinN] [-c cmds] [ -[f|b] cmdfile] [args]
+***** install
+- yum install expect
+- apt-get install expect
+- pacman -S expect
+***** Command
+****** expect
+- expect [[-opts] pat1 body1] ... [-opts] patn [bodyn]
+  spawnされたプロセスの出力がパターンのどれかにマッチするか、指定された時間が経過するか、eof-of-fileを見つけるか、のいずれかが成立するまでウェイとする。
+****** spawn
+- spawn [args] program [args]
+  program argsを走らせる新しいプロセスを生成する。
+  標準入力と標準出力はExpectに結び付けられる。
+****** send
+- send [-flasgs] string
+  stringを現プロセスに送る。
+****** interact
 **** export
 - export VAR
   set VAR as environment variables.

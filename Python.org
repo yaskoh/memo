@@ -1,5 +1,4 @@
 * Python
-** Tutorial
 ** Command
 *** python
 - usage
@@ -16,6 +15,8 @@
   全コマンドラインオプションの短い説明を出力する。
 - -V, --version
   Pythonのバージョンを表示する
+*** argument
+- sys.argv変数にスクリプト名やそれ以降の引数が格納される。
 *** Environmental variables
 **** PYTHONHOME
 - 標準Pythonライブラリの場所を変更する。
@@ -33,7 +34,7 @@
 **** PYTHONHASHSEED
 ** Language
 *** Parser
-**** line structure
+**** Line structure
 ***** logical line
 ***** physical line
 ***** Comments
@@ -592,41 +593,12 @@
 - set, frozenset
 ****** Mapping Types
 - dict
-****** File Object
-- 
-  Cのstdioパッケージを使って実装されており、組み込み関数のopen()で生成することができる。
-  
-******* Methods
-******** file.close()
-******** file.flush()
-******** file.read()
-- file.read([size])
-  最大でsizeバイトをファイルから読み込む。
-  size引数が負であるか省略された場合、EFに到達するまでのすべてのデータを読み込む。
-******** file.readline()
-******** file.readlines()
-******** file.seek()
-- file.seek(offset[, whence])
-  ファイルの現在位置を設定する。
-
-- whence
-  - 0, os.SEEK_SET
-    絶対位置指定。デフォルト。
-  - 1, os.SEEK_CUR
-    現在のファイル位置から相対的にseekする
-  - 2, os.SEEK_END
-    ファイルの末端から相対的にseekする
-******** file.write()
-- file.write(str)
-  文字列をファイルに書き込む。戻り値はない。
-******** file.name
-- 
-  ファイルオブジェクトがopen()を使って生成された時のファイルの名前。
-******** file.mode
-- 
-  ファイルのI/Oモード。
-  Version 2.6で追加。
-****** memoryview type
+******* dict
+******** Constructors
+********* class dict(**kwarg)
+********* class dict(mapping, **kwarg)
+********* class dict(iterable, **kwarg)
+******** 
 ****** Context Manager Types
 ****** Other Built-in Types
 ******* Modules
@@ -1235,6 +1207,9 @@
 *** jsonを扱う
 - jsonモジュールを利用する。(import json)
   
+*** 連番を作成する
+- range()関数をつかう。
+  rangne(5,10) -> 
 ** Memo
 *** 前回表示結果
 - 
@@ -1246,3 +1221,7 @@
     >>>price + _
     113.9625 # 前回の値が足されている。
 
+*** private
+- private
+  "__abc"と変数やメソッドの前に"__"を付けるとprivateとなる。
+*** Tutorial

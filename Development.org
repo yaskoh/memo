@@ -24,6 +24,17 @@
 *** Link
 - https://en.wikipedia.org/wiki/Software_metric
 - https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E6%B8%AC%E5%AE%9A%E6%B3%95
+** Backup
+*** 条件
+- 復旧にどれだけの時間をかけられるか
+- どの時点のデータにふっゆすればよいのか
+*** 要件例
+- バックアップ対象とサイズ
+- バックアップ取得時間
+- バックアップ方法
+- バックアップ世代数と取得媒体
+- バックアップにかけられる費用
+
 ** Glossary
 *** COCOMO
 - constructive cost model
