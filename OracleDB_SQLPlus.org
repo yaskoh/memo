@@ -461,6 +461,13 @@
 - PUP表
   GRANTとREVOKEコマンド、およびユーザー・ロールによるユーザー・レベルのセキュリティを補う。
   特定のSQLおよびSQL*Plusコマンドをユーザー単位で使用禁止にできる。
+** Memo
+*** 接続
+- [[http://itref.fc2web.com/oracle/sqlplus/][Oracle SQL*Plus - SE学院]]
+**** ローカル接続
+**** リモート接続
+***** 簡易接続
+***** ローカルネーミングパラメータによる接続
 ** Link
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/toc.htm][目次 - SQL*Plusユーザーズ・ガイドおよびリファレンスリリース11.2]]
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56314/ch_twelve001.htm#BACDBGBC][SQL*Plusコマンド一覧 - SQL*Plusユーザーズ・ガイドおよびリファレンスリリース11.2]]

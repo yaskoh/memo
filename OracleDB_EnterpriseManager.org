@@ -46,17 +46,38 @@
 **** emca
 ***** 
 **** emctl
+***** OMS
+****** emctl start oms
+- -admin_only
+- -bip_only
+****** emctl stop oms
+- -all
+- -force
+- -bip_only
+****** emctl secure oms
+- OMSのSSL構成を設定する
+***** 管理Agent
 - 
-***** emctl start | stop dbconsole
-***** emctl status | secure | setpasswd dbconsole
-***** emctl config dbconsole -heap_size <size_value> -max_perm_size <size_value>
-***** emctl status agent
-***** emctl resetTZ agent
+****** emctl start | stop dbconsole
+****** emctl status | secure | setpasswd dbconsole
+****** emctl config dbconsole -heap_size <size_value> -max_perm_size <size_value>
+****** emctl status agent
+****** emctl resetTZ agent
 - タイムゾーンのリセット
-***** emctl getemhome
+****** emctl getemhome
 - ランタイムディレクトリの確認。
   ログ及びトレースファイルは以下に存在。
   <EMHOME>/sysman/log
+***** セキュリティ
+****** セキュリティ
+****** セキュリティ診断
+****** EMキー
+***** HAConfig
+***** Resync
+***** コネクタ
+***** パッチ・リポジトリ
+***** Partool
+***** プラグイン
 *** Files
 **** 管理エージェントのログ・トレース
 - emagent.log / Oracle Management Agent ログ・ファイル

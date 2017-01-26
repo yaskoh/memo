@@ -899,6 +899,8 @@
   
 *** アイコン画像作成
 - bmpで保存、拡張子を.icoとすればOK。
+*** Bluetooth設定
+- [[http://qa.elecom.co.jp/faq_detail.html?id=4406][【Bluetooth】Windows機能でのヘッドセット・ヘッドフォンペアリング方法 - ELECOM]]
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe
