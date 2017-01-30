@@ -1,0 +1,9 @@
+* Linux Packages
+- 必要に応じ、言語別とする、C関連へ移動するなどするかも。
+** General
+*** libjpeg
+- C library for reading and writing JPEG image files.
+*** libxpm
+** Link
+- [[https://launchpad.net/ubuntu/+search?text=][Search packages in Ubuntu]]
+- [[https://rpmfind.net/linux/RPM/index.html][Rpmfind.net]]

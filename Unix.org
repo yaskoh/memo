@@ -10,6 +10,9 @@
 *** OS X
 *** GNU/Linux
 *** HP-UX
+**** Command
+***** glance
+- performance‚ðŠm”F‚·‚é
 *** Solaris
 *** Minix
 ** Link

@@ -148,140 +148,6 @@
 **** Standard Hooks
 ** Syntax
 *** Functions
-**** special-form-p
-***** and
-- (and CONDITIONS...)
-  Eval args until one of them yields nil, then return nil.
-
-***** catch
-- (catch TAG BODY...)
-  Eval BODY allowing nonlocal exists using "throw".
-  TAG is evalled to get the tag to use; it must not be nil.
-- 
-  throwされた場合にcatch式の評価がその値でただちに行われ、catch式を抜ける。
-
-***** cond
-- (cond CLAUSES...)
-  Try each clause until one succeeds.
-  Each clause looks like (CONDITION BODY...).
-- 
-  条件分岐をする際に用いる。
-
-***** condition-case
-***** defconst
-***** defvar
-- (defvar SYMBOL &optional INITVALUE DOCSTRING)
-  Define SYMBOL as a variable, and return SYMBOL.
-  You are not required to define a variable in order to use it, but defining it lets you supply an initial value and documentation,
-  which can be referred to by the Emacs help facilities and other programming tools.
-
-- 
-  変数は宣言をしなくてもsetqなどで代入・利用できるが、
-  defvarで変数宣言することでバイトコンパイラが文句を言わない。
-
-***** function
-***** if
-- (if COND THEN ELSE ...)
-  If COND yields non-nil, do THEN, else do ELSE...
-  Returns the value of THEN or the value of the last of the ELSE's.
-
-- (if 式 From1 Form2 ... Fromn)
-  式がnil以外だった場合、From1を、nilだった場合はFrom2 ... Fromn までを実行する。
-
-***** interactive
-- (interactive &optional ARGS)
-  Specify a way of parsing arguments for interactive use of a function.
-
-- ARGS
-  ex) (interactive "sInputString :a\nsInputString :b\n"
-  最初の文字が引数の型で、\nまでがプロンプトとして利用される。
-
-****** Code letters
-- a
-- b
-- B
-- c : character
-- C
-- d
-- D : Directory name
-- e
-- f : Exsisting file name
-- F
-- G
-- i
-- k
-- K
-- m
-- M
-- n : Number read using minibuffer.
-- N
-- p : Prefix arg converted to numebr. Does not do I/O. C-u prefixで与えた値。デフォルト1
-- P : Prefix arg in raw form. Does not do I/O. デフォルト nil
-- r : Region point and mark as 2 numeric args, smallest first. Des not do I/O.
-- s : Any string.
-- S : Any symbol.
-- U
-- v
-- x
-- X
-- z
-- Z
-   
-***** lambda
-- (lambda ARGS [DOCSTRING] [INTERACTIVE] BODY)
-  Return a lambda expression.
-  
-***** let, let*
-- (let VARLIST BODY...)
-  Bind variables according to VARLIST then eval BODY.
-- (let* VARLIST BODY...)
-
-- 
-  局所的に利用する変数を作成する。
-
-  let*は直前の宣言部での値を代入可能。
-  (let (変数リスト)
-    本体)
-
-***** or
-- (or CONDITIONS...)
-***** progn,prog1,prog2,..
-- (progn BODY...)
-  Eval BODY forms sequentially and return value of last one.
-- 
-  複数の処理をまとめる。
-  式を順に評価していく。複数のS式を一つにまとめるためのもの。
-  prognは最後の式を式を評価して返すが、prog1は一つ目の式、prog2は二つ目の式を返す。
-
-***** quote
-***** save-current-buffer
-***** save-excursion
-- (save-excursion &rest BODY)
-  Save point, mark, and current buffer; execute BODY; resutore those things.
-  Executes BODY just like 'progn'.
-***** save-restriction
-***** setq
-- (setq [SYM VAL]...)
-  Set each SYM to the value of its VAL
-- 
-  値の設定
-***** setq-default
-***** track-mouse
-***** unwind-protect
-- (unwind-protect BODYFORM UNWINDFORMS...)
-  Do BODYFORM, protecting with UNWINDFORMS.
-  If BODYFORM completes normally, its value is returned after executing the UNWINDFORMS.
-  If BODYFORM exits nonlocally, the UNWINDFORMS are executed anyway.
-- 
-  途中で何らかの理由で終了した場合でも、最後まで処理をおこなってくれる関数。
-  prog1の最後までやりきる版みたいなもの。評価値は最初の式。
-***** while
-- (while TEST BODY...)
-  If TEST yields non-nil, eval BODY... and repeat.
-  The order of execution is thus TEST, BODY, TEST, BODY and so on until TEST returns nil.
-- 
-  while 式 本体
-  ループ
 **** C source code
 ***** built-in function
 ****** Etc
@@ -520,7 +386,7 @@ lsh, ash（論理シフト、算術シフト）
   Declare SYMBOL as a customization group containing MEMBERS.
   SYMBOL does not need to be quoted.
 
-**** eval.c
+**** eval
 ***** throw
 - (throw TAG VALUE)
   Throw to the catch for TAG and return VALUE from it.
@@ -794,6 +660,8 @@ replace-match
 - ベル
 ***** \b
 - バックスペース
+***** \e
+- ECS(1Bh)
 ***** \f
 - フォームフィールド(C-l)
 ***** \n
@@ -812,30 +680,16 @@ replace-match
 - "自身
 ***** \\
 - \自身
-** Command
-*** eval-print-last-sexp : C-j
-*** eval-last-sexp : C-x C-e
-*** eval-defun : C-M-x
+** Keybinds
+*** C-j : eval-print-last-sexp
+*** C-x C-e : eval-last-sexp
+*** C-M-x : eval-defun
+*** C-u C-M-x : (edebug)
+*** M-: : eval-expression
+*** C-x M-: : repeat-complex-command
+*** M-C-q : インデントを直す(lisp-intreaction)
 *** load-file
 *** eval-current-buffer
-*** old
-- C-U M-C-x
-  Edebug
-
-- M-:
-  eval-expression
-- C-x M-:
-  repeat-complex-command    
-- M-x
-  - describe-bindings
-    キーバインド一覧
-  - describe-key
-    特定のキー
-  - describe-function
-    関数の説明
-
-- M-C-q
-  インデントを直す(lisp-intreaction)
      
 ** Memo
 *** 関数名末尾のp
@@ -887,6 +741,12 @@ replace-match
   M-x sort-lines。
   C-u M-x sort-linesで逆順にソート。
 
+*** vector ベクター
+- []を使ってベクター（配列）にアクセスできる。
+  ただしキー指定以外ではほとんど使わない。
+*** Lexical Binding
+- To use lexical binding, an Emacs-lisp source file must set a file-variable "lexical-binding" to t in the file header.
+  https://www.emacswiki.org/emacs/LexicalBinding
 ** BookMemo_Tmp
 *** やさしいEmacs-Lisp講座メモ
 **** メジャーモードが備えるべき最低条件
@@ -911,12 +771,6 @@ replace-match
   
 ***** 動作に必要な変数の設定
   
-**** Function
-***** defun
-- 関数定義
-- &optional
-- &rest
-
 *** An Introduction to Programming in Emacs Lisp
 *** Mode tutorial
 **** Basic
@@ -940,3 +794,14 @@ replace-match
 - [[https://www.gnu.org/software/emacs/manual/elisp.html][GNU Emacs Lisp Reference Manual]]
 - [[https://www.gnu.org/software/emacs/manual/eintr.html][An Introduction to Programming in Emacs Lisp]]
 - [[http://d.hatena.ne.jp/rubikitch/20100201/elispsyntax][Emacs Lisp基礎文法最速マスター]]
+
+- [[http://d.hatena.ne.jp/kiwanami/20100929/1285716364][Emacs Lisp が「書ける」ようになるまで - 技術日記＠kiwanami]]
+
+*** ありえるえりあ
+- [[http://dev.ariel-networks.com/articles/workshop/emacs-lisp-basic/][Emacs Lisp勉強会(基礎編)]]
+- [[http://dev.ariel-networks.com/Members/sugawara/emacs-lisp-52c95f374f1a-30c330d530a1306830a630a330f330a67de8/view][Emacs Lisp勉強会(バッファとウィンドウ編)]]
+
+- [[http://dev.ariel-networks.com/wp/documents/aritcles/emacs][Software Design連載記事「Emacsのトラノマキ」の原稿]]
+- [[http://dev.ariel-networks.com/articles/software-design-200802/][Software Design 2008年2月号 「Emacsマスターへの道」 原稿]]
+- [[http://dev.ariel-networks.com/articles/][原稿・資料]]
+

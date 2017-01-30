@@ -242,6 +242,9 @@
   print the total for a directory only if it is N or fewer levels below the command line argument;
   specify 0 is the same as --summarize.
 
+**** dig
+- DNS lookup utility
+  a flexible tool for interrogating DNS name servers.
 **** dirname
 - 
   extract directory path from full-path string
@@ -606,6 +609,9 @@
   display the command history list with line numbers.
   Lines listed with a * have been modified.
 
+**** host
+- DNS lookup utility
+  normally used to convert names to IP addresses and vice versa.
 **** htags
 - 
   ソースコードをhtmlに変換する。
@@ -1061,6 +1067,10 @@
   | TIME_WAIT   | コネクション終了後                   |
   |-------------+--------------------------------------|
   
+**** nslookup
+- query Internet name servers interactively
+  a program to query Internet domain name servers.
+  two models, interactive and non-interactive mode, exists.
 *** o
 **** od
 - dump files in octal and other formats
@@ -2010,73 +2020,7 @@
 **** zip / unzip
 
 ** BASH BUILTINS
-*** bash
-*** :
-*** .
-*** [
-*** alias
-*** bg
-*** bind
-*** break
-*** builtin
-*** caller
-*** cd
-*** command
-*** compgen
-*** complete
-*** compopt
-*** continue
-*** declare
-*** dirs
-*** disown
-*** echo
-*** enable
-*** eval
-*** exec
-*** exit
-*** export
-*** false
-*** fc
-*** fg
-*** getopts
-*** hash
-*** help
-*** history
-*** jobs
-- 実行中のジョブを表示する。
-  jobs [-lrs] [%jobid]
-
-- -l
-  プロセスIDも表示する
-
-*** kill
-*** let
-*** local
-*** logout
-*** mapfile
-*** popd
-*** printf
-*** pushd
-*** pwd
-*** read
-*** readonly
-*** return
-*** set
-*** shift
-*** shopt
-*** source
-*** suspend
-*** test
-*** times
-*** trap
-*** true
-*** type
-*** typeset
-*** ulimit
-*** umask
-*** unalias
-*** unset
-*** wait
+- [[file:Bash.org][Bash.org]]
 ** Link
 - [[http://ss64.com/bash/][An A-Z Index of the Bash command line for Linux.]]
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230573/?ST=oss&rt=nocnt][Linuxコマンド集 INDEX （機能別） - ITpro]]

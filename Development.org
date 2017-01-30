@@ -56,6 +56,8 @@
 
 **** PCMM
 - People Capability Maturity Model, People CMMI
+** Book
+- [[http://keens.github.io/blog/2016/01/17/dokugakudepuroguraminguwoyattekitanakadeyokattagijutsushowoageteiku/][独学でプログラミングをやってきた中で良かった技術書50選 - κeenのHappy Hacκing Blog]]
 ** Memo
 *** 標準工期の計算
 - 

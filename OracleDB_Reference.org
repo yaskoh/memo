@@ -76,6 +76,16 @@
 **** OPEN_CURSORS
 - Type:整数, Default:50, Range:0-65535
   1つのセッションで同時にオープンできるカーソルの最大数。
+**** OPTIMIZER_MODE
+- Type:文字列, Default:all_rows
+  インスタンスの最適化方法を選択するためのデフォルトの動作を確立する。
+- Value
+  - first_rows_n
+    最短の応答時間で最初のn行(n=1,10,100,1000)を戻すために最適化する。
+  - first_rows
+    コストと発見的方法を組み合わせて使用し、最初の数行を迅速に配信するための最適な計画を判断する
+  - all_rows
+    セッション内のすべてのSQL文に対してコストベース方法を使用し、最高のスループットを得るために最適化する。
 **** PGA_AGGREGAET_TARGET
 - Type:大整数, Default:10MBもしくはSGAサイズの20%の大きい方, Range:10MB - 4096GB-1
   インスタンスに接続されたすべてのサーバー・プロセスが使用できるターゲット集計PGAメモリーを指定する。
@@ -329,6 +339,56 @@
 
 - 
   https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_sqltun.htm#CHDGAJCI
+**** DBMS_STATS
+- データベース・オブジェクト用に収集したオプティマイザの統計情報を表示及び変更できる。
+***** 定数
+***** Supprograms
+****** オプティマイザ統計情報の収集
+******* GATHER_INDEX_STATS
+- 索引の統計譲歩うを収集する。
+  可能な限り多くの作業をパラレル化する。
+******** Parameters
+********* ownname
+- 索引のスキーマ
+********* indname
+- 索引名
+********* partname
+- パーティション名
+********* estimate_percent
+- 推定する行のパーセント
+********* stattab
+********* degree
+********* granularity
+******* GATHER_SCHEMA_STATS
+******* GATHER_TABLE_STATS
+****** 統計情報の設定または取得
+******* PREPARE_COLUMN_VALUES
+******* SET_INDEX_STATS
+******* SET_TABLE_STATS
+******* GET_INDEX_STATS
+******* GET_INDEX_STATS
+****** 統計情報の削除
+******* DELETE_DATABASE_STATS
+******* DELETE_INDEX_STATS
+******* DELETE_TABLE_STATS
+****** 統計情報の転送
+******* CREATE_STAT_TABLE
+******* DROP_STAT_TABLE
+******* EXPORT_INDEX_STATS
+******* EXPORT_TABLE_STATS
+******* IMPORT_INDEX_STATS
+******* IMPORT_TABLE_STATS
+****** 統計情報のロックまたはロック解除
+******* LOCK_SCHEMA_STATS
+******* LOCK_TABLE_STATS
+******* UNLOCK_SCHEMA_STATS
+******* UNLOCK_TABLE_STATS
+
+****** 統計履歴のリストアおよびパージ
+******* RESET_GLOBAL_PREF_DEFAULTS
+******* RESTORE_DICTIONARY_STATS
+******* RESTORE_SCHEMA_STATS
+******* RESTORE_TABLE_STATS
 **** DBMS_TRACE
 - PL/SQLトレースを開始および停止するサブプログラムを提供する。
 **** DBMS_ROWID

@@ -1583,12 +1583,33 @@
 - https://en.wikipedia.org/wiki/OSI_model
 ** Command
 *** Posix
+**** arp
 **** ifconfig
 - 
-  
-**** route
-**** traceroute
+**** ip
 **** netstat
+  
+**** ping
+- 接続確認
+**** route
+**** rsync
+**** scp
+**** sftp
+**** ssh
+**** tcpdump
+- ネットワークのトラフィックをダンプ
+**** traceroute
+- ホストまでの経路を表示
+**** Download
+***** curl
+- transfer a URL
+***** wget
+- non-interactive network downloader
+**** DNS lookup
+***** nslookup
+- 対話的にDNSサーバへ問合せ
+***** host
+***** dig
 *** Windows
 **** route
 ***** print
@@ -1640,6 +1661,8 @@
 *** Link
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230618/?rt=nocnt][管理者必見！ネットワーク・コマンド集]]
 - [[http://enakai00.hatenablog.com/entry/20140712/1405139841][RHEL7/CentOS7でipコマンドをマスター - めもめも]]  
+- [[http://www.21linux.com/archives/180network/][ネットワーク関係のカテゴリ - Linux コマンド百科事典]]
+- [[http://webkaru.net/linux/cat/command/network/][ネットワーク(Linuxコマンド集) - Linux入門]]
 
 ** History
 *** Internet
