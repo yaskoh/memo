@@ -187,6 +187,7 @@
 - 
   著者が文書を他のリソースとリンクするのを可能にする。
   リンクの宛先はhref属性によって与えられ、これは存在し、妥当なURLを含まなければならない。
+  また、rel属性を持たなければならない。
 
 ******* Def
 - 
@@ -225,6 +226,15 @@
     - charset : 文字エンコーディング宣言
   - Tag omission :
     終了タグなし
+******* Memo
+******** http-equiv
+********* X-UA-Compatible
+- IEに互換表示をさせない。
+  ex) <meta http-equiv="X-UA-Compatible" content="IE=edge">
+******** name
+********* viewport
+- http://qiita.com/ryounagaoka/items/045b2808a5ed43f96607
+- http://blog.ousaan.com/index.cgi/links/20130925.html
 ****** style
 ******* Def
 - 
