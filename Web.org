@@ -167,7 +167,6 @@
 - [[http://fontawesome.io/][Font Awesome]]
 - [[https://h2ham.net/font-awasome][楽して便利！Webアイコンフォント『Font Awesome』の使い方と活用 Tips - HAM MEDIA MEMO]]
 
-*** 
 ** Link
 - [[https://developer.mozilla.org/en-US/Learn][Learning web development - MDN]]
 
@@ -186,6 +185,12 @@
 - 
   Webデザインの一種で、画像などのコンテンツをスムーズに横にスライドさせる表示方法。
 
+*** WebService
+- HTTPなどのインターネット関連技術を応用し、SOAPと呼ばれるXML形式のプロトコルを用いメッセージの送受信を行う技術。
+  WSDL、SOAP、REST、Axis2など
+**** WSDL
+- Web srevices Description Language
+  http://www.wakhok.ac.jp/~sakamoto/WS/web_service_c3.html
 ** Memo
 *** HTML Editor
 **** TinyMCE

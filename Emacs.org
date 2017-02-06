@@ -1,1043 +1,6 @@
 * Emacs
 ** Packages
-*** System Packages
-- 24.5時点
-  - /emacs/share/emacs/24.5/lisp(win)
-**** C source code
-***** Functions
-****** assoc
-- (assoc KEY LIST)
-  Return non-nil if KEY is "equal" to the car of an element of LIST.
-****** apropos
-- (apropos PATTERN &optional DO-ALL)
-  Show all meaningful Lisp symbols whose names match PATTERN.
-  Symbols are shown if they are defined as functions, veriables, or faces, or if they have nonempty property lists.
-****** autoload
-- (autoload FUNCTION FILE &optional DOCSTRING INTERACTIVE TYPE)
-  Define FUNCTION to autoload from FILE.
-  FUNCTION is a symmol; FILE is a file name string to pass to "load".
-****** backward-char
-- (backward-char &optional N)
-****** backward-word
-- (backward-word &optional ARG)
-  Move backward until encountering the beginning of a word.
-****** beginning-of-line (C-a)
-- (beginning-of-line &optional N)
-  Move point to beginning of current line (in the logical order).
-****** bobp
-- (bobp)
-  Return t if point is at the beginning of the buffer.
-****** bolp
-- (bolp)
-  Return t if point is at the beginning of line.
-****** char-to-string
-- (char-to-string CHAR)
-  Convert arg CHAR to a string containing that character.
-****** concat
-- (concat &rest SEQUENCES)
-  Concatenate all the arguments and make the result a string.
-****** count-lines
-- (count-lines START END)
-  Return number of lines between START and END.
-****** current-buffer
-- (current-buffer)
-  Return the current buffer as a Lisp object.
-****** current-column
-- (current-column)
-  Return the horizontal position of point.
-****** define-key
-- (define-key KEYMAP KEY DEF)
-  In KEYMAP, define key sequence KEY as DEF.
-****** defvar
-- (defvar SYMBOL &optional INITVALUE DOCSTRING)
-  Define SYMBOL as a variable, and return SYMBOL.
-  You are not required to define a variable in order to use it,
-  but defining it lets you supply an initial value and documentation,
-  which can be referred to by the Emacs help facilities and other programming tools.
-  
-  The optional argument INITVALUE is evaluated, and used to set SYMBOL,
-  only if SYMBOL's value is void.
-
-- 
-  変数は宣言をしなくてもsetqなどで代入・利用できるが、
-  defvarで変数宣言することでバイトコンパイラが文句を言わない。
-
-****** delete
-- (delete ELT SEQ)
-  Delete members of SEQ which are "equal" to ELT, and erturn the result.
-****** downcase
-- (downcase OBJ)
-  Convert argument to lower case and return that.
-****** end-of-line
-- (end-of-line &optional N)
-  Move point to end of current line (in the logical order).
-****** eobp
-- (eobp)
-  Return t if point is at the end of the buffer.
-****** eolp
-- (eolp)
-  Return t if point is at the end of a line.
-****** eq
-- (eq OBJ1 OBJ2)
-  Return t if the two args are the same Lisp object.
-****** equal
-- (equal O1 O2)
-  Return t if two lisp objects have similar structure and contents.
-****** erase-buffer
-- (erase-buffer)
-  Delete the entire contents of the current buffer.
-****** expand-file-name
-- (expand-file-name NAME &optoinal DEFAULT-DIRECTORY)
-  Convert filename NAME to absolute, and canonicalize it.
-****** eval
-- (eval FORM &opitonal LEXICAL)
-  Evaluate FORM and return its value.
-****** fboundp
-- (fboundp SYMBOL)
-  Return t if SYMBOL's function definition is not void.
-****** file-exists-p
-- (file-exists-p FILENAME)
-  Return t if file FILENAME exists.
-  関数が定義済みかどうかのチェック
-****** file-name-nondirectory
-- (file-name-nondirectory FILENAME)
-  Return file name FILENAME sans its directory.
-  ディレクトリパスを除いたファイル名を取得
-****** file-name-directory
-- (file-name-directory FILENAME)
-  Return the directory component in file name FILENAME.
-  ファイル名を除いたディレクトリパスを取得。
-****** format
-- (format STRING &rest OBJECTS)
-  Format a string out of a format-string and arguments.
-****** format-time-string
-- (format-time-string FORMAT-STRING &optional TIME UNIVERSAL)
-  Use FORMAT-STRING to format the time TIME, or now if omitted.
-****** forward-char
-- (forward-char &optional N)
-****** forward-line
-- (forward-line &optional N)
-  Move N lines forward (backward if N is negative).
-- backward-lineは存在しないので、上に移動する場合は負の引数を渡す。
-****** forward-word
-- (forward-word &optional ARG)
-****** get-buffer
-- (get-buffer BUFFER-OR-NAME)
-  Return the bufer named BUFFER-OR-NAME.
-****** get-buffer-create
-- (get-buffer-create BUFFER-OR-NAME)
-  Return the bufer specified by BUFFER-OR-NAME, creating a new one if needed.
-****** get-text-property
-- (get-text-property POSITION PROP &optional OBJECT)
-  Return the value of POSITION's property PROP, in OBJECT.
-****** goto-char
-- (goto-char POSITION)
-  Set point to POSITION, a number or marker.
-****** goto-line
-- (goto-line LINE &optional BUFFER)
-  Go to LINE, counting from line 1 at beginning of buffer.
-****** insert
-- (insert &rest ARGS)
-  Insert the arguments, either strings or characters, at point.
-****** kill-all-local-variables
-- (kill-all-local-variables)
-  Switch to Fundamental mode by killing current buffer's local variables.
-****** list
-- (list &rest OBJECT)
-  Return a newly created list with specified arguments as elements.
-****** load
-- (load FILE &optional NOERROR NOMESSAGE NOSUFFIX MUST-SUFFIX)
-  Execute a file of Lisp code named FILE.
-  First try FILE with ".elc" appendend, then try with ".el", then try FILE unmodified.
-
-  This function searches the directories in "load-path".
-  
-  リロードの抑制がない以外はrequireと同じ動き。
-****** macroexpand
-- (macroexpand FORM &optional ENVIRONMENT)
-  Return result of expanding macros at top level of FORM.
-  
-  ex) (macroexpand '(push 'a test))
-****** make-key-map
-- (make-keymap &optional STRING)
-  Construct and return a new keymap, of the form (keymap CHARTABLE .ALIST).
-  CHARTABLE is a char-table that holds the bindings for all characters without modifiers.
-****** make-local-variable
-- (make-local-variable VARIABLE)
-  Make VARIABLE have a separate value in the current buffer.
-****** make-sparse-keymap
-- (make-sparse-keymap &optional STRING)
-  Construct and return a new sparse keymap.
-****** match-beginning
-- (match-beginning SUBEXP)
-  Return position of start of text matched by last search.
-****** match-end
-- (match-end SUBEXP)
-  Return position of end of text matched by last search.
-****** max
-- (max NUMBER-OR-MARKER &rest NUMBERS-OR-MARKERS)
-  Return largest of all the arguments.
-****** message
-- (message FORMAT-STRING &rest ARGS)
-  Display a message at the bottom of the screen.
-****** min
-- (min NUMBER-OR-MARKER &rest NUMBERS-OR-MARKERS)
-  Return smallest of all the arguments.
-****** move-to-column (M-g TAB)
-- (move-to-column COLUMN &optoinal FORCE)
-  Move point to column COLUMN in the current line.
-****** number-to-string
-- (number-to-string)
-  Return the decimal representation of NUMBER as a string.
-****** nth
-- (nth N LIST)
-  Return the Nth element of LIST.
-  N counts from zero.
-****** nreverse
-- (nreverse LIST)
-  Reverse LIST by modifying cdr pointers.
-****** print
-- (print OBJCET &optional PRINTCHARFUN)
-  Output the printed representation of OBJECT, with newlines around it.
-****** point
-- (point)
-  Return value of point, as an integer.
-****** point-min
-- (point-min)
-  Return the minimum permissible value of point in the current buffer.
-****** point-max
-- (point-max)
-  Return the maximum permissible value of point in the current buffer.
-****** put-text-property
-- (put-text-property START END PROPERTY VALUE &optional OBJECT)
-  Set one property of the text from START to END.
-  The arguments PROPERTY and VALUE specify the propety to add.
-****** random
-- (random &optional LIMIT)
-  Return a pseudo-random number.
-****** read-key-sequence
-- (read-key-sequence PROMPT &optional CONTINUE-ECHO DONT-DONCASE-LAST CAN-RETURN-SWITCH-FRAME CMD-LOOP)
-  Read a sequence of keystrokes and return as a string or vector.
-****** re-search-backward
-- (re-search-backward REGEXP &optional BOUND NOERROR COUNT)
-  Search backward from point for match for regular expression REGEXP.
-****** re-search-forward
-- (re-search-forward REGEXP &optional BOUND NOERROR COUNT)
-  Search forward from point for regular expression REGEXP.
-****** require
-- (require FEATURE &optional FILENAME NOERROR)
-  If feature FEATURE is not loaded, load it from FILENAME.
-  If FEATURE is not a member of the list "features", then the feature is not loaded; so load the file FILENAME.
-****** search-forward
-- (search-forward STRING &optional BOUND NOERROR COUNT)
-  Search forward from point for STRING.
-  Set point to the end of occurrence found, and return point.
-
-- 引数
-  - BOUND : どこまで検索するかポイント位置で指定する。バッファ末までの時はnilを指定する。
-  - NOERROR : 見つからなかった場合の処理を指定。
-    - t : nilを返す(no error)
-    - nil,t以外 : 検索範囲まで
-  - COUNT : 指定した回数だけ検索を繰り返す。
-****** self-insert-command
-- (self-insert-command N)
-  Insert the character you type.
-****** set-buffer
-- (set-buffer BUFFER-OR-NAME)
-  Make bufer BUFFER-OR-NAME current for editing operations.
-****** setq
-- (setq [SYM VAL]...)
-  Set each SYM to the value of its VAL.
-****** skip-chars-backward
-- (skip-chars-backward STRING &optional LIM)
-  Move point backward, stopping before a char not in STRING, or at pos LIM.
-****** skip-chars-forward
-- (skip-chars-forward STRING &optional LIM)
-  Move point forward, stopping before a char not in STRING, or at pos LIM.
-****** string-to-char
-- (string-to-char STRING)
-  Return the first character in STRING.
-****** string-to-number
-- (string-to-number STRING &optional BASE)
-  Parse STRING as a decimal number and return the number.
-****** system-name
-- (system-name)
-  Return the host name of the machine you are running on, as a string.
-****** this-command-keys
-- (this-command-keys)
-  Return the key sequence that invoked this command.
-****** throw
-- (throw TAG VALUE)
-  Throw to the catch for TAG and return VALUE from it.
-****** upcase
-- (upcase OBJ)
-  Convert argument to upper case and return that.
-****** use-global-map
-- (use-global-map KEYMAP)
-  Select KEYMAP as the global keymap.
-****** use-local-map
-- (use-local-map KEYMAP)
-  Select KEYMAP as the local keymap.
-****** user-login-name
-- (user-login-name &optional UID)
-  Return the name under which the user logged in, as a string.
-****** user-uid
-- (user-uid)
-  Return the effective uid of Emacs.
-  Value is an integer or a float, dependingon the value.
-****** 1+
-****** 1-
-****** +
-- (+ &rest NUMEBRS-OR-MARKERS)
-****** -
-****** %
-****** *
-****** /
-****** <
-****** <=
-****** =
-****** /=
-****** >
-****** >=
-***** Special forms
-****** and
-- (and CONDITIONS...)
-  Eval args until one of htem yields nil, then return nil.
-****** catch
-- (catch TAG BODY...)
-  Eval BODY allowing nonlocal exists using "throw".
-  TAG is evalled to get the tag to use; it must not be nil.
-- 
-  throwされた場合にcatch式の評価がその値でただちに行われ、catch式を抜ける。
-
-****** cond
-- (cond CLAUSES...)
-  Try each clause until one succeeds.
-  Each clause looks like (CONDITION BODY...).
-- 
-  条件分岐をする際に用いる。
-
-****** condition-case
-****** defconst
-****** function
-****** if
-- (if COND THEN ELSE...)
-  If COND yields non-nil, do THEN, else do ELSE...
-  Returns the value of THEN or the value of the last of the ELSE's.
-
-- (if 式 From1 Form2 ... Fromn)
-  式がnil以外だった場合、From1を、nilだった場合はFrom2 ... Fromn までを実行する。
-
-****** interactive
-- (interactive &optional ARGS)
-  Specify a way of parsing arguments for interactive use of a function.
-
-- ARGS
-  ex) (interactive "sInputString :a\nsInputString :b\n"
-  最初の文字が引数の型で、\nまでがプロンプトとして利用される。
-
-******* Code letters
-- a
-- b
-- B
-- c : character
-- C
-- d
-- D : Directory name
-- e
-- f : Exsisting file name
-- F
-- G
-- i
-- k
-- K
-- m
-- M
-- n : Number read using minibuffer.
-- N
-- p : Prefix arg converted to numebr. Does not do I/O. C-u prefixで与えた値。デフォルト1
-- P : Prefix arg in raw form. Does not do I/O. デフォルト nil
-- r : Region point and mark as 2 numeric args, smallest first. Des not do I/O.
-- s : Any string.
-- S : Any symbol.
-- U
-- v
-- x
-- X
-- z
-- Z
-
-****** lambda
-- (lambda ARGS [DOCSTRING] [INTERACTIVE] BODY)
-  Return a lambda expression.
-  
-****** let
-- (let VARLIST BODY...)
-  Bind variables according to VARLIST then eval BODY.
-
-- 局所的に利用する変数を作成する。
-  (let (変数リスト)
-    本体)
-****** let*
-- (let* VARLIST BODY...)
-- letとの違いは、直前の宣言部での値を代入可能。
-
-
-****** or
-- (or CONDITIONS...)
-  Eval args until one of them yields non-nil, then return that value.
-****** point-min
-- (point-min)
-  Return the minimum permissible value of point in the current buffer.
-****** progn
-- (progn BODY...)
-  Eval BODY forms sequentially and return value of last one.
-- 複数の処理をまとめる。
-  式を順に評価していく。複数のS式を一つにまとめるためのもの。
-  prognは最後の式を式を評価して返すが、prog1は一つ目の式、prog2は二つ目の式を返す。
-****** prog1
-- (prog1 FIRST BODY...)
-  Eval FIRST and BODY sequentially; return value from FIRST.
-****** prog2
-- (prog2 FORM1 FORM2 BODY...)
-  Eval FORM1, FORM2 and BODY sequentially; return value FORM2.
-****** quote
-- (quote ARG)
-  Return the argument, without evaluating it.
-****** save-current-buffer
-****** save-excursion
-- (save-excursion &rest BODY)
-  Save point, mark, and current buffer; execute BODY; resutore those things.
-****** save-restriction
-****** setq
-- (setq [SYM VAL]...)
-  Set each SYM to the value of its VAL.
-****** setq-default
-- (setq-default [VAR VALUE]...)
-  Set the default value of variable VAR to VALUE.
-****** track-mouse
-- (track-mouse BODY...)
-  Evaluate BODY with mouse movement enabled.
-****** unwind-protect
-- (unwind-protect BODYFORM UNWINDFORMS...)
-  Do BODYFORM, protecting with UNWINDFORMS.
-  If BODYFORM completes normally, its value is returned after executing the UNWINDFORMS.
-  If BODYFORM exits nonlocally, the UNWINDFORMS are executed anyway.
-- 
-  途中で何らかの理由で終了した場合でも、最後まで処理をおこなってくれる関数。
-  prog1の最後までやりきる版みたいなもの。評価値は最初の式。
-****** while
-- (while TEST BODY...)
-  If TEST yields non-nil, eval BODY... and repeat.
-  The order of execution is thus TEST, BODY, TEST, BODY and so on until TEST returns nil.
-- 
-  while 式 本体
-  ループ
-***** Variables
-****** buffer-file-name
-- Name of file visited in current buffer, or nil if not visiting a file.
-****** case-fold-search
-- Non-nil if searches and matches should ignore case.
-****** case-replace
-- Non-nil means "query-replace" should preserve case in replacements.
-****** debug-on-error
-- Non-nil means enter ebugger if an error is signaled.
-  Does not apply to errors handleb dy "condition-case" ore those matched by "debug-ignored-errors".
-****** default-directory
-- Name of default directory of current buffer.
-****** exec-directory
-- Directory for executables for Eamcs to invoke.
-****** features
-- A list of symbols which are the features of the executing Emacs.
-****** load-path
-- List of directories to search for files to load.
-****** scroll-margin
-- Number of lines of margin at the top and bottom of a window.
-****** scroll-step
-- The number of lines to try scrolling a window by when point moves out.
-****** system-type
-- The value is a sybmol indicating the type of operating system you are using.
-- Values
-  - gnu
-  - gnu/linux
-  - darwin
-  - ms-dos
-  - windows-nt
-  - cygwin
-****** this-command
-- The command now being executed.
-****** windows-system
-- Name of window system through which the selected frame is displayed.
-- Values:
-  - nil : a termcap frame
-  - x   : an Emacs frame that is really an X window
-  - w32 : an Emacs frame that is a window on MS-Windows display.
-  - ns  : an Emacs frame on a GNUstep on Macintosh Cocoa display.
-  - pc  : a direct-write MS-DOS frame.
-**** emacs-lisp(dir)
-***** byte-run
-****** Functions
-******* eval-when-compile
-- (eval-when-compile &rest BODY)
-  Like "progn", but evaluates the body at compile time if you're compiling.
-****** Macros
-******* defun
-- (defun NAME ARGLIST &optional DOCSTRING DECL &rest BODY... )
-  Define NAME as function.
-  
-***** cl
-****** Alias
-******* loop
-- (loop CLAUSE)
-  alias for "cl-loop"
-****** Functions
-******* cl-loop
-- (cl-loop CLAUSE...)
-  The Common Lisp "loop" macro.
-  
-***** edebug
-****** Alias
-******* eval-defun
-- (eval-defun EDEBUG-IT)
-  alias for "edebu-eval-defun"
-
-****** Functions
-******* edebug
-- (edebug &optional ARG-MODE &rest ARGS)
-  Replacement for "debug".
-******* edebug-eval-defun
-- (edebug-eval-defun EDEBUG-IT)
-  Evaluate the top-level form containing point, or after point.
-
-***** lisp-mode
-****** Functions
-******* eval-defun (C-M-x)
-- (eval-defun EDEBUG-IT)
-  Evaluate the top-level form containing point, or after point.
-******* eval-print-last-sexp (C-j)
-- (eval-print-last-sexp &optional EVAL-LAST-SEXP-ARG-INTERNAL)
-  Evaluate sexp before point; print value into current buffer.
-******* eval-last-sexp (C-x C-e)
-- (eval-last-sexp EVAL-LAST-SEXP-ARG-INTERNAL)
-  Evaluate sexp before point; print value in the echo area.
-******* kill-sexp (C-M-k)
-- (kill-sexp &optional ARG)
-  Kill the sexp (balanced expression) following point.
-***** package
-****** Functions
-******* describe-package (C-h P)
-- (describe-package PACKAGE)
-  Display the full documentation of PACKAGE (a symbol)
-  
-******* list-packages
-- (ilst-packages &option NO-FETTH)
-  Display a list of packages.
-- 用法
-  1. インストールしたいパッケージの上で"i"を押す
-  2. 選択し終わったら"x"を押す
-******* package-initialize
-- (package-initialize &optional NO-ACTIVATE)
-  Load Emacs Lisp packages, and activate them.
-  The variable "package-load-list" controles which packages to load.
-******* package-install
-- (package-install PKG)
-  install the package PKG.
-******* package-refresh-contents
-- (package-refresh-contents)
-  Download the ELPA archive description if needed.
-****** Variables
-******* package-load-list
-- List of packages for "package-initialize" to load.
-******* package-archives
-- An alist of archives from which to fetch.
-  The default value points to the GNU Emacs package repository.
-****** Link
-- [[http://emacs-jp.github.io/packages/package-management/package-el.html][package.el - Emacs JP]]
-
-***** re-builder
-****** re-builder
-- (re-builder)
-  Construct a regexp interactively.
-****** reb-change-target-buffer (C-c C-b)
-- (reb-change-target-buffer BUF)
-  Change the target buffer and display it in the target window.
-****** reb-quit (C-c C-q)
-- (reb-quit)
-  Quit the RE Bulider mode.
-****** reb-copy (C-c C-w)
-- Copy current RE into the kill ring for later insertion.
-****** reb-change-syntax (C-c TAB)
-- (reb-changne-syntax &optional SYNTAX)
-  Changne the syntax used by the RE Bulider.
-
-****** reb-toggle-case (C-c C-c)
-****** reb-enter-subexp-mode (C-c C-e)
-****** reb-prev-match (C-c C-r)
-****** reb-next-match (C-c C-s)
-****** reb-force-update (C-c C-u)
-****** reb-copy (C-c C-w)
-**** emmulation(dir)
-***** cua-base
-****** Functions
-******* cua-set-mark / C-SPC, C-@
-- (cua-set-mark &optional ARG)
-  Set mark at where point is, clear mark, or jump to mark.
-**** eshell(dir)
-***** em-alias
-****** Functions
-****** Variables
-******* eshell-command-aliases-list
-- A list of command aliases currently defined by the user.
-***** em-hist
-****** Variables
-******* eshell-hist-ignoredups
-- If non-nil, don't add input matching the last on the input ring.
-***** em-dirs
-****** Functions
-******* eshell/pwd
-- (eshell/pwd &rest ARGS)
-  Change output from "pwd" to be cleaner.
-***** em-prompt
-****** Variables
-******* eshell-prompt-function
-- A function that returns the Eshell prompt string.
-******* eshell-prompt-regexp
-- A regexp which fully matches your eshell prompt.
-  it affects how eshell will interpret the lines that arpe passed to it.
-**** international(dir)
-***** mule-cmds
-****** toggle-input-method (C-\)
-- (toggle-input-method &optoinal ARG INTERACTIVE)
-  Enable or disable multilingual text input method for the curret buffer.
-****** set-language-environment LANGUAGE-NAME)
-- (set-language-environment LANGUAGE-NAME)
-  Set up multilingual environment for using LANGUAGE-NAME.
-**** progmodes(dir)
-***** cc-cmds
-****** Functions
-******* c-electric-delete
-- (c-electric-delete ARG)
-  Delets preceding or following character or whitespace.
-**** url(dir)
-***** url
-****** Functions
-******* url-retrieve-synchronously
-- (url-retrieve-synchronously URL &optional SILENT INHIBIT-COOKIES)
-  Retrieve URL synchronously.
-**** compile
-***** Functions
-****** compile
-- (compile COMMAND &optional COMINT)
-  Compile the program including the current buffer.
-****** compilation-window-height
-- Number of lines in a compilation window.
-  
-**** custom
-***** Functions
-****** defcustom
-- (defcustom SYMBOL STANDARD DOC &rest ARGS)
-  Declare SYMBOL as a customizable variable.
-**** cus-edit
-***** Variables
-****** custom-file
-- File used for storing customization information.
-**** env
-***** Functions
-****** setenv
-- (setenv VARIABLE &optional VALUE SUBSTITUTE-ENV-VARS)
-  Set the value of the environment variable named VARIABLE to VALUE.
-  
-**** files
-***** Functions
-****** abbreviate-file-name
-- (abbreviate-file-name FILENAME)
-  Return a version of FILENAME shortened using "directory-abbrev-alist".
-  This also substitutes "~" for the user's home directory and removes automounter prefixes.
-****** basic-save-buffer
-- (basic-save-buffer)
-  Save the current buffer in its visited file, if it has been modified.
-****** file-name-extension
-- (file-name-extension FILENAME &optional PERIOD)
-  Return FILENAME's final "extension".
-****** file-name-sans-extension
-- (file-name-sans-extension FILENAME)
-  Return FILENAME sans final "extension"
-****** load-file
-- (load-file FILE)
-  Load the Lisp file named FILE.
-
-***** Variables
-****** auto-mode-alist
-- 
-  Alist of filename patterns vs corresponding major mode functions.
-  Each element looks like (REGEXP . FUNCTION) or (REGEXP FUNCTION NON-NIL).
-
-****** backup-directory-alist
-- Alist of filename patterns and backup directory names.
-****** directory-abbrev-alist
-- Alist of abbreviations for file directories.
-  A list of elements of the form (FROM . TO), each meaning to replace FROM with TO when it appears in a directory name.
-**** frame
-***** Functions
-****** blink-cursor-mode
-- (blink-cursor-mode &otoinal ARG)
-  Toggle cursor blinking (Blink Cursor mode).
-**** image-file
-***** Functions
-****** auto-image-file-mode
-- (auto-image-file-mode &optional ARG)
-  Toggle visiting of image files as image (Auto Image File mode).
-**** indent
-***** Functions
-****** indent-for-tab-command
-- C-i
-****** indent-region (C-M-\)
-- (indent-region START END &optional COLUMN)
-  Indent each nonblank line in the region.
-***** Variables
-****** tab-stop-list
-- List of tab stop positions used by "tab-to-tab-stop"
-**** info
-***** Functions
-****** info
-- (info &optional FILE_OR_NODE BUFFER)
-  the documentation browser.
-****** info-emacs-manual
-- (info-emacs-manual)
-  Display the Emacs manual in Info mode.
-**** info-look
-***** Functions
-****** info-lookup-symbol (C-h S)
-- (ifo-lookup-symbol SYMBOL &optional MODE)
-  Display the definition of SYMBOL, as found in the relevant manual.
-**** isearch
-***** Functions
-****** isearch-delete-char
-- (isearch-delete-char)
-  Discard last input item and move point back.
-****** isearch-forward
-- (isearch-forward &optiona REGEXP-P NO-RECURSIVE-EDIT)
-  Do incremental search forward.
-****** word-search-backward
-- (word-search-backward STRING &optional BOUND NOERROR COUNT)
-  Search backward from point for STRING, ignoring differences in punctuation.
-****** word-search-forward
-- (word-search-forward STRING &optional BOUND NOERROR COUNT)
-  Search forward from point for STRING, ignoring differences in punctuation.
-**** jka-cmpr-hook
-***** Functions
-****** auto-compression-mode
-- (auto-compression-mode &optional ARG)
-  Toggle Auto Compression mode.
-**** linum
-***** Functions
-****** global-linum-mode
-- (global-linum-mode &optional ARG)
-  Toggle Linum mode in all buffers.
-****** linum-mode
-- (linum-mode &optional ARG)
-  Toggle display of line numbers in the left margin.
-**** menu-bar
-***** Functions
-****** menu-bar-mode
-- (menu-bar-mode &optional ARG)
-  Toggle display of a menu bar on each frame (Menu Bar mode)
-**** minibuffer
-***** Functions
-****** completion-at-point
-- (completion-at-point)
-  Perform completion on the text around point.
-**** newcomment
-***** Functions
-****** comment-region
-- (comment-region BEG END &optional ARG)
-**** help
-***** Functions
-****** help
-- (help)
-  an alias for `help-for-help-internal`
-****** describe-bindings (C-h b)
-- 
-  show key-bindings list
-
-****** describe-key (C-h k key)
-- 
-  show key bindings that you will press
-
-****** describe-key-briefly (C-h c key)
-- 
-  Print the name of the function KEY invokes.
-****** describe-mode (C-h m)
-- 
-  現在のメジャーモードの説明
-
-****** describe-function (C-h f)
-- (describe-function FUNCTION)
-
-****** describe-variable (C-h v)
-- 
-  Display the full documentation of VARIABLE (a symbol).
-  Returns the documentation as a string, also.
-
-****** help-with-tutorial (C-h t)
-- 
-  Emacsの対話型チュートリアルに入る
-
-****** view-lossage (C-h l)
-- 
-  これまでに打鍵した最後の100文字を表示する
-
-**** paren
-***** Variables
-****** show-paren-style
-- Style used when showing a matching paren.
-- Value
-  - parenthesis
-  - expression
-  - mixed
-**** server
-***** Functions
-****** (server-running-p &optional NAME)
-       Test whether server NAME is running.
-**** simple
-***** Functions
-****** beginning-of-buffer (M-<, C-home)
-- (beginning-of-buffer &optional ARG)
-  Move point to the beginning of the buffer.
-  With numeric arg N, put point N/10 of the way from the beginning.
-- マーク位置を変更してしまうため、プログラムでは利用しない。代わりに(goto-char (point-min))などを使う。
-****** end-of-buffer (M->, C-end)
-- (end-of-buffer &optional ARG)
-  Move point to the end of the buffer.
-  With numeric arg N, put point N/10 of the way from the end.
-****** delete-backward-char
-- (delete-backward-char N &optional KILLFLAG)
-  Delete the previous N characters (following if N is negative).
-****** column-number-mode
-- (column-number-mode &optional ARG)
-  Toggle column number display in the mode line.
-****** eval-expression
-- (eval-expression EXP &optional INSERT-VALUE)
-  Evaluate EXP and print value in the echo area.
-****** keyboard-quit (C-g)
-- (keyboard-quit)
-  Signal a "quit" condition.
-
-****** next-line (C-n)
-- (next-line &optoinal ARG TRY-VSCROLL)
-  Move cursor vertically down ARG lines.
-- goal-columnの制御などが含まれているため、プログラムとして使用する場合はforward-lineを用いる。
-****** previous-line (C-p)
-- (previous-line &optional ARG TRY-VSCROLL)
-  Move cursor vertically up ARG lines.
-***** Variables
-****** column-number-mode
-- Non-nil if Column-Number mode is enabled.
-****** eval-expression-print-length
-- Value for "print-length" while printing value in "eval-expression".
-  
-**** startup
-***** Functions
-****** normal-top-levevl-add-subdirs-to-load-path
-- (normal-top-levevl-add-subdirs-to-load-path)
-  Add all subdirectories of "default-directory" to "load-path"
-**** subr
-***** Alias
-****** int-to-string
-- (int-to-string NUMBER)
-  alias for "number-to-string"
-****** not
-- alias for "null"
-  (not OBJECT)
-****** string-to-int
-- (string-to-int STRING &optional BASE)
-  alias for "string-to-number"
-***** Functions
-****** add-hook
-- (add-hook HOOK FUNCTION &optional APPEND LOCAL)
-  Add to the value of HOOK the function FUNCTION.
-  FUNCTION is not added if already present.
-
-****** add-to-list
-- (add-to-list LIST-VAR ELEMENT &optional APPEND COMPARE-FN)
-  This function has a compiler macro.
-  Add ELEMENT to the value of LIST-VAR if it isn't there yet.
-****** eval-after-load
-- (eval-after-load FILE FORM)
-  Arrange that if FILE is loaded, FORM will be run immediately afterwards.
-  If FILE is already loaded, evaluate FORM right now.
-****** kbd
-- (kdb KEYS)
-  Convert KEYS to the internal Emacs key representation.
-****** keyboard-translate
-- (keyboard-translate FROM TO)
-  Translate character FROM to TO on the current terminal.
-****** local-set-key
-- (local-set-key KEY COMMAND)
-  Give KEY a local binding as COMMAND.
-  
-  呼び出した際に使われているキーマップに対してキーを設定する。
-****** global-set-key
-- (global-set-key KEY COMMAND)
-  Give KEY a global binding as COMMAND.
-  
-  same as (define-key global-map KEY COMMAND).
-****** match-string
-- (match-string NUM &optional STRING)
-  Return string of text matched by last search.
-  
-****** sit-for
-- (sit-for SECONDS &optional NODISP)
-  Redisplay, then wait for SECONDS seconds. Stop when input is available.
-****** y-or-n-p
-- (y-or-n-p PROMPT)
-  Ask user a "y or n" question. Return t if answer is "y".
-  PROMPT is the string to display to ask the question.
-***** Macros
-****** dolist
-- (dolist (VAR LIST [RESULT]) BODY...)
-  Evaluate BODY with VAR bound to each car from LIST, in turn.
-  Then evaluate RESULT to get return value, default nil.
-****** dotimes
-- (dotimes (VAR COUNT [RESULT]) BODY...)
-  Loop a certain number of times.
-****** lambda
-- (lambda ARGS [DOCSTRING] [INTERACTIVE] BODY)
-  Return a lambda expression.
-
-****** push
-- (push NEWELT PLACE)
-  Add NEWELT to the list stored in the generalized variable PLACE.
-****** unless
-- (unless COND BODY...)
-  If COND yields nil, do BODY, else return nil.
-****** when
-- (when COND BODY...)
-  If COND yields non-nil, do BODY, else return nil.
-***** Variables
-****** user-emacs-directory
-- Directory beneath which additional per-user Emacs-specific files are placed.
-**** time
-***** Functions
-****** dispaly-time
-- (display-time)
-  Enable display of time, load level, and mail flag in mode lines.
-**** tutorial
-***** Functions
-****** help-with-tutorial
-- (help-with-tutorial &optional ARG DONT-ASK-FOR-REVERT)
-- Command : (C-h t)
-  Select the Emacs learn-by-doing tutorial.
-**** window
-***** Functions
-****** display-buffer
-- (display-buffer BUFFER-OR-NAME &optional ACTION FRAME)
-  Display BUFFER-OR-NAME in some window, without selecting it.
-****** pop-to-buffer
-- (pop-to-buffer BUFFER &optional ACTION NORECORD)
-  Select buffer BUFFER in some window, preferably a different one.
-****** switch-to-buffer
-- (switch-to-buffer BUFFER-OR-NAME &optional NORECORD FORCE-SAME-WINDOW)
-  Display buffer BUFFER-OR-NAME in teh selected window.
-****** switch-to-next-buffer
-- (switch-to-next-buffer &optoinal WINDOW)
-  In WINDOW switch to next buffer.
-****** switch-to-prev-buffer
-- (switch-to-prev-buffer &optional WINDOW BURY-OR-KILL)
-  WINDOW switch to previous buffer.
-*** Other Packages
-**** auto-complete-config
-***** Functions
-****** auto-complete-config
-- (ac-config-default)
-**** auto-save-buffers
-- http://0xcc.net/misc/auto-save/
-
-**** bind-key
-***** Functions
-- [[http://emacs.rubikitch.com/bind-key/][bind-key.el : define-keyを直接書くのは時代遅れ！Emacsの重鎮が行っているスタイリッシュキー割り当て管理術！ - るびきち「新生日刊Emacs」]]
-**** cl-lib
-- GNU Emacs Common Lisp Emulation
-***** About
-- 
-  The CL package adds a number of Common Lisp functions and control structures to Emacs Lisp.
-  While not a 100% complete implementation of Common Lisp, it ads enough functionality to make Emacs Lisp programming significantly more convenient.
-  
-***** Link
-- [[http://www.gnu.org/software/emacs/manual/html_mono/cl.html][GNU Emacs Common Lisp Emulation]]
-**** el-get
-***** Functions
-***** Link
-- [[https://github.com/dimitri/el-get][dimitri/el-get - github]]a
-- [[http://tarao.hatenablog.com/entry/20150221/1424518030][Caskはもう古い、これからはEl-Get - いまどきのEmacsパッケージ管理 - 貳佰伍拾陸夜日記]]
-**** el-get-build
-***** Variables
-****** el-get-install-info
-- install-info path
-**** etags
-- Etags
-***** Command
-****** find-tags
-- M-. / <menu-bar><edit><goto><find-tag>
-**** esup
-**** evil
-**** initchart
-- https://github.com/yuttie/initchart
-- provides macros and functions to measure and visualize a init process of Emacs.
-***** Functions
-****** initchart-record-execution-time-of
-****** initchart-visualize-init-sequence
-- (initchart-visualize-init-sequence &optional FP)
-  指定したfilepathに計測結果をsvg形式でグラフ表示する。
-**** init-loader
-**** noflet
-- https://github.com/nicferrier/emacs-noflet
-- Local function decoration
-  ローカル関数を定義するマクロ。
-***** About
-- 
-  By default, valid names of configuration files stat with two digits.
-- platform specific configration file has prefix corresponds to the platform.
-  these are loaded after non-platform specific configuration files.
-  |-----------+-------------------+---------------+-----------------------------|
-  | Platform  | Subplatform       | Prefix        | Exapmle                     |
-  |-----------+-------------------+---------------+-----------------------------|
-  | Windows   |                   | windows-      | windows-fonts.el            |
-  |           | Meadow            | meadow-       | meadow-commands.el          |
-  | Mac OS X  | Carbon Emacs      | carbon-emacs- | carbon-emacs-applescript.el |
-  |           | Cocoa Emacs       | cocoa-emacs-  | cocoa-emacs-plist.el        |
-  | GNU/Linux |                   | linux-        | linux-commands.el           |
-  | All       | Non-window system | nw-           | nw-key.el                   |
-  |-----------+-------------------+---------------+-----------------------------|
-
-***** Functions
-****** init-loader-load
-****** init-loader-show-log
-- (init-loader-show-log)
-  Show init-loader log buffer.
-***** Link
-- [[https://github.com/emacs-jp/init-loader][emacs-jp/init-loader - github]]
-**** magit
-***** Link
-- [[https://github.com/magit/magit][magit/magit - github]]
-- [[https://magit.vc/manual/][magit - User Manuals]]
-  
-**** use-package
-
-***** Link
-- [[http://emacs.rubikitch.com/use-package-2/][use-package.el : Emacsの世界的権威が行っている最先端ラクラクinit.el整理術 - るびきち「新生日刊Emacs」]]
-- [[http://qiita.com/kai2nenobu/items/5dfae3767514584f5220][use-packageで可読性の高いinit.elを書く - Qiita]]
-*** Memo
-**** パッケージ管理
-***** package.el
-- デフォルト
-***** Cask
-***** El-Get
-- [[http://tarao.hatenablog.com/entry/20150221/1424518030][Caskはもう古い、これからはEl-Get - いまどきのEmacsパッケージ管理 - 貳佰伍拾陸夜日記]]
-*** Link
-- [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs - emacs-tw/awesome-emacs - github]]
-- [[http://krazedkrish.com/blog/2015/12/27/awesome-emacs-plugins/][Awesome Emacs plugins you might not know - krazedkrish]]
-- [[http://qiita.com/hottestseason/items/1e8a46ad1ebcf7d0e11c][Emacsパッケージ特集 - Qiita]]
+- [[file:Emacs_Packages.org][Emacs_Packages.org]]
 ** Mode
 *** About
 - Majorモードの提供機能
@@ -1470,98 +433,105 @@
 ** Features
 *** Help
 *** Register
-*** Search/Replace 
-**** Regular Expression
+*** Regular Expression
 - https://www.emacswiki.org/emacs/RegularExpression
-***** Syntax
-****** Special Characters
+
+**** Operation
+- Lispリーダと正規処理表現処理器の二段階で読み込まれるため、
+  正規表現を文字列として渡すには、\\と2つ重ねて記述する必要がある。
+- 
+  "\\b" -> (Lispリーダ, \\⇒\) -> "\b" -> (正規表現処理機, \b)
+**** Syntax
+***** Special Characters
 - special : . * + ? ^ $ \ [
 - between brackets : ] - ^
 
-******* normal
-******** .
+****** normal
+******* .
 - any character (but new line)
-******** *
-******** +
-******** ?
-******** ^
-******** $
-******** [...]
-******** [^..]
-******** [a-z]
-******** \
+******* *
+******* +
+******* ?
+******* ^
+******* $
+******* [...]
+- どれか1つにマッチする。
+******* [^..]
+******* [a-z]
+******* \
 - prevents interpretation of following special char
-******** \|
-******** \w
+******* \|
+******* \w
 - word constituent
-******** \b
+******* \b
 - word boundary
-******** \sc
+******* \sc
 - character with c syntax (e.g. \s- for whitespace char)
-******** \( \)
-******** \< \>
+******* \( \)
+******* \< \>
 - start/end of word
-******** \_< \_>
+******* \_< \_>
 - start/end of symbol
-******** \` \'
+******* \` \'
 - start/end of buffer/string
-******** \1
+******* \1
 - string matched by the first group
-******** \n
+******* \n
 - string matched by the nth group
-******** \{3\}
-******** \{3,\}
-******** \{3,6\}
-******** \=
+******* \{3\}
+******* \{3,\}
+******* \{3,6\}
+******* \=
 - match succeeds if it is located at poit
-******* non-greedy
-******** *?
-******** +?
-******** ??
-******* not match
-******** \W
-******** \B
-******** \Sc
-******* category
+****** non-greedy
+******* *?
+******* +?
+******* ??
+****** not match
+******* \W
+- not word
+******* \B
+- not word boundary
+******* \Sc
+****** category
 - 
   Use "C-u C-x =" to display the category of the character under the cursor.
 
-******** \ca
+******* \ca
 - ascii character
-******** \Ca
+******* \Ca
 - non-ascii character (newline included)
-******** \cl
+******* \cl
 - latin character
-******** cg
+******* cg
 - greek character
-******* syntax class
+****** syntax class
 - see the syntax table by typing C-h s (but I have changed the key binding of help.)
-******** \s-
-******** \sw
-******** \s_
-******** \s.
-******** \s(
-******** \s)
-******** \s"
-******** \s\
-******** \s/
-******** \s$
-******** \s'
-******** \s<
-******** \s>
-******** \s!
-******** \s|
-******* syntax class between bracket
-******** [:digit:]
-******** [:alpha:]
-******** [:alnum:]
-******** [:alnum:]
-******** [:upper:]
-******** [:space:]
-******** [:xdigit:]
-******** [:cntrl:]
-******** [:ascii:]
-
+******* \s-
+******* \sw
+******* \s_
+******* \s.
+******* \s(
+******* \s)
+******* \s"
+******* \s\
+******* \s/
+******* \s$
+******* \s'
+******* \s<
+******* \s>
+******* \s!
+******* \s|
+****** syntax class between bracket
+******* [:digit:]
+******* [:alpha:]
+******* [:alnum:]
+******* [:alnum:]
+******* [:upper:]
+******* [:space:]
+******* [:xdigit:]
+******* [:cntrl:]
+******* [:ascii:]
 *** Keyboard Macros
 - start
  C-x (
@@ -1623,7 +593,57 @@
 - 25.1にupdate?
 - できればansible導入
 
+*** 変数設定
+- defconst, defvar, setq, defcustom
+  defcostomは無条件に変数を初期化するが、defvarは変数が空である場合のみ初期化する。
+  変数の使い方を制限することはしないため、主には好みの問題。
+  ユーザカスタマイズを目的とする変数を宣言するにはdefcustomを使う。
+*** defcustom カスタマイズ定義
+- 
+  https://www.gnu.org/software/emacs/manual/html_node/eintr/defcustom.html
+  http://www.bookshelf.jp/texi/elisp-manual-20-2.5-jp/elisp_14.html
+*** advice アドバイス
+- 関数の既存の定義に追加ができる。
+  各関数は、個別に定義した複数のアドバイス断片を持ち、明示的に有効・無効にできる。
+  
+  本来の処理の前後に処理を追加するもの。
+
+**** advice.el
+- 旧advice.elでは、defadviceにbefore, after, aroundを指定して追加をし、
+  ad-activate/ad-deactivateで有効化/無効化できる。
+  ad-do-itやad-return-valueなどを駆使して利用する。
+
+  https://www.gnu.org/software/emacs/manual/html_node/elisp/Advising-Functions.html#Advising-Functions
+  http://www.bookshelf.jp/texi/elisp-manual-20-2.5-jp/elisp_17.html
+
+**** nadvice.el
+- advice-addとadvice-removeを使う。
+  aroundでは、元の関数が引数として渡されるため、ad-do-itの代わりにapplyを使えばよい。
+  また、ad-return-valueを設定せずともそのままアドバイス関数の返り値が関数の返り値となる。
+
+- アドバイス
+  - :before
+  - :after
+  - :around
+  - :override
+  - :filter-return
+  - :filter-args
+  - :before-while
+  - :before-until
+  - :after-while
+  - :after-until
+
+    http://emacs.rubikitch.com/nadvice/
+*** backquote バッククォート
+- 基本的にはquoteと同じ。
+  - ,
+    内側にある特別な印","は、値が定数でないことを表す。バッククォートはリスト構造の中の","を評価し値で置き換える。
+  - ,@ (splice)
+    評価結果を結果となるリストに繋ぎ合わせる(splice)。結果となるリストの他の要素と同じレベルとなる。
+    
+- http://www.bookshelf.jp/texi/elisp-manual-20-2.5-jp/elisp_13.html#SEC176
 *** Major Mode作成手順
+**** 例1
 - モード用のキーマップを作る
   - make-sparse-keyで空のキーマップを作る
   - define-keyでキーと関数を指定
@@ -1631,6 +651,30 @@
   - 変数 major-mode にそのモードを表すシンボルを設定
   - 変数 mode-name にそのモードの名前を設定
   - 'use-local-map' でモード用のキーマップを設定
+
+**** 例2 (やさしいEmacs-Lisp講座 / 本)
+- モード名を設定する
+  (setq major-mode 'my-mode)
+  (setq mode-name "まいもーど")
+- 使用するキーマップを設定する
+  (setq my-local-map (make-sparse-keymap))
+  (define-key my-local-map "h" 'backward-char)
+- 動作に必要な変数を設定する
+  (use-local-map my-local-map)
+- 必要な関数を定義する
+*** Literal リテラル
+**** 数値リテラル
+***** 数値 1234
+***** 小数 3.14
+***** 文字コード ?a
+- aの文字コード
+***** 8進数 ?\12
+- 8進数表記の整数
+***** 16進数 ?\x12
+- 16進数表記の整数
+***** NN進数 #NNr
+- NN進数
+  ex: #5r40→20, #30remacs→11943388
 
 *** 置換時の改行
 - 
@@ -1730,3 +774,4 @@
 
 *** Startup
 - [[https://gist.github.com/zk-phi/9935048][setup.el で安全・爆速な init.el を書く - zk-phi/setup_description_ja.org]]
+

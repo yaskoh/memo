@@ -345,29 +345,494 @@
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20131219/525889/][最重要ネットコマンド10]]
 - [[http://blog.asial.co.jp/1157][使えると便利なWindowsネットワークコマンド]]
 
-*** Tool
-
-**** systeminfo
-- 
-  システム情報を表示できる。cmd上でsysteminfo。
-  デフォルトではローカルコンピュータ。
-  ただし/s servername, /u UserName, /p Passwordなどを入力すると、
-  リモートの情報も取得できる。
-
-**** WMI (Windows Management Instrumentation)
+*** Tools
+**** System32
+***** wbem
+****** wmic.exe / WMI (Windows Management Instrumentation)
 - 
   システム管理用インターフェイス。
   WBEMというシステム管理を目的とした標準仕様に従って、WinOSに実装、拡張したもの。
   wmicというCommandLineツールを使って情報を取得したり操作できる。
   "wmic qfe"として適用済みのKBを取得できる。
 
-**** ユーザアカウント
+***** 直下
+****** msc
+******* azman.msc
+******* certmgr.msc
+******* comexp.msc
+******* compmgmt.msc
+******* devmgmt.msc
+******* diskmgmt.msc
+******* eventvwr.msc
+******* fsmgmt.msc
+******* gpedit.msc / ローカルグループポリシーエディター
+******* lusrmgr.msc / ローカルユーザーとグループ（ローカル）
+******* perfmon.msc
+******* printmanagement.msc
+******* rsop.msc
+******* secpol.msc
+******* services.msc
+******* SQLServerManager10.msc
+******* taskschd.msc
+******* tpm.msc
+******* WF.msc
+******* WmiMgmt.msc
+
+****** exe
+******* netplwiz.exe / ユーザアカウント
 - 
   newplwiz.exeで開く。
   パスワード忘れてCMD立ち上げたときとかに役立つ。
+******* systeminfo.exe 
+- 
+  システム情報を表示できる。cmd上でsysteminfo。CUI。
+  デフォルトで対象はローカルコンピュータ。
+  ただし/s servername, /u UserName, /p Passwordなどを入力すると、
+  リモートの情報も取得できる。
 
+******* tmp
+AdapterTroubleshooter.exe
+aitagent.exe
+aitstatic.exe
+alg.exe
+appidcertstorecheck.exe
+appidpolicyconverter.exe
+appverif.exe
+at.exe
+AtBroker.exe
+attrib.exe
+audiodg.exe
+auditpol.exe
+autochk.exe
+autoconv.exe
+autofmt.exe
+AxInstUI.exe
+baaupdate.exe
+bcdboot.exe
+bcdedit.exe
+BdeHdCfg.exe
+BdeUISrv.exe
+BdeUnlockWizard.exe
+BitLockerWizard.exe
+BitLockerWizardElev.exe
+bitsadmin.exe
+bootcfg.exe
+bridgeunattend.exe
+bthudtask.exe
+cacls.exe
+calc.exe
+CertEnrollCtrl.exe
+certreq.exe
+certutil.exe
+change.exe
+charmap.exe
+chglogon.exe
+chgport.exe
+chgusr.exe
+chkdsk.exe
+chkntfs.exe
+choice.exe
+cipher.exe
+cleanmgr.exe
+cliconfg.exe
+clip.exe
+cmd.exe
+cmdkey.exe
+cmdl32.exe
+cmmon32.exe
+cmstp.exe
+cofire.exe
+colorcpl.exe
+comp.exe
+compact.exe
+CompatTelRunner.exe
+CompMgmtLauncher.exe
+ComputerDefaults.exe
+conhost.exe
+consent.exe
+control.exe
+convert.exe
+credwiz.exe
+cscript.exe
+csrss.exe
+ctfmon.exe
+cttune.exe
+cttunesvr.exe
+CustomModeApp.exe
+dccw.exe
+dcomcnfg.exe
+ddodiag.exe
+Defrag.exe
+DeviceDisplayObjectProvider.exe
+DeviceEject.exe
+DevicePairingWizard.exe
+DeviceProperties.exe
+DFDWiz.exe
+dfrgui.exe
+dialer.exe
+diantz.exe
+difx64.exe
+dinotify.exe
+diskpart.exe
+diskperf.exe
+diskraid.exe
+Dism.exe
+dispdiag.exe
+DisplaySwitch.exe
+djoin.exe
+dllhost.exe
+dllhst3g.exe
+dnscacheugc.exe
+doskey.exe
+dpapimig.exe
+DpiScaling.exe
+dpnsvr.exe
+DPTopologyApp.exe
+driverquery.exe
+drvinst.exe
+dvdplay.exe
+dvdupgrd.exe
+dwm.exe
+dxcpl.exe
+dxdiag.exe
+Dxpserver.exe
+Eap3Host.exe
+efsui.exe
+EhStorAuthn.exe
+esentutl.exe
+eudcedit.exe
+eventcreate.exe
+eventvwr.exe
+expand.exe
+extrac32.exe
+fc.exe
+find.exe
+findstr.exe
+finger.exe
+fixmapi.exe
+fltMC.exe
+fontview.exe
+forfiles.exe
+fsquirt.exe
+fsutil.exe
+ftp.exe
+fvenotify.exe
+fveprompt.exe
+FXSCOVER.exe
+FXSSVC.exe
+FXSUNATD.exe
+getmac.exe
+GettingStarted.exe
+GfxUIEx.exe
+GfxUIHotKeyMenu.exe
+gpresult.exe
+gpscript.exe
+gpupdate.exe
+grpconv.exe
+hdwwiz.exe
+help.exe
+hkcmd.exe
+hpservice.exe
+hwrcomp.exe
+hwrreg.exe
+icacls.exe
+icardagt.exe
+icsunattend.exe
+IDTNGUI.exe
+IDTNJ.exe
+ie4uinit.exe
+ieetwcollector.exe
+ieUnatt.exe
+iexpress.exe
+igfxext.exe
+igfxpers.exe
+igfxsrvc.exe
+igfxtray.exe
+InfDefaultInstall.exe
+ipconfig.exe
+irftp.exe
+iscsicli.exe
+iscsicpl.exe
+isoburn.exe
+klist.exe
+ksetup.exe
+ktmutil.exe
+label.exe
+LocationNotifications.exe
+Locator.exe
+lodctr.exe
+logagent.exe
+logman.exe
+logoff.exe
+LogonUI.exe
+lpksetup.exe
+lpremove.exe
+lsass.exe
+lsm.exe
+Magnify.exe
+makecab.exe
+manage-bde.exe
+mblctr.exe
+mcbuilder.exe
+mctadmin.exe
+MdRes.exe
+MdSched.exe
+mfevtps.exe
+mfpmp.exe
+microsoft.windows.softwarelogo.showdesktop.exe
+MigAutoPlay.exe
+mmc.exe
+mobsync.exe
+mountvol.exe
+mpnotify.exe
+MpSigStub.exe
+MRT.exe
+msconfig.exe
+msdt.exe
+msdtc.exe
+msfeedssync.exe
+msg.exe
+mshta.exe
+msiexec.exe
+msinfo32.exe
+mspaint.exe
+msra.exe
+MsSpellCheckingFacility.exe
+mstsc.exe
+mtstocom.exe
+MuiUnattend.exe
+MultiDigiMon.exe
+Narrator.exe
+nbtstat.exe
+ndadmin.exe
+net.exe
+net1.exe
+netbtugc.exe
+netcfg.exe
+netdom.exe
+netiougc.exe
+Netplwiz.exe
+NetProj.exe
+netsh.exe
+newdev.exe
+nltest.exe
+notepad.exe
+nslookup.exe
+ntoskrnl.exe
+ntprint.exe
+ocsetup.exe
+odbcad32.exe
+odbcconf.exe
+openfiles.exe
+OptionalFeatures.exe
+osk.exe
+p2phost.exe
+pcalua.exe
+pcaui.exe
+pcawrk.exe
+pcwrun.exe
+perfmon.exe
+PkgMgr.exe
+plasrv.exe
+PnPUnattend.exe
+PnPutil.exe
+poqexec.exe
+PortQry.exe
+powercfg.exe
+PresentationHost.exe
+PresentationSettings.exe
+prevhost.exe
+print.exe
+PrintBrmUi.exe
+printfilterpipelinesvc.exe
+PrintIsolationHost.exe
+printui.exe
+proquota.exe
+psr.exe
+PushPrinterConnections.exe
+qappsrv.exe
+qprocess.exe
+query.exe
+quser.exe
+qwinsta.exe
+rasautou.exe
+rasdial.exe
+raserver.exe
+rasphone.exe
+rdpclip.exe
+rdpinit.exe
+rdpshell.exe
+rdpsign.exe
+rdrleakdiag.exe
+rdrmemptylst.exe
+RDVGHelper.exe
+ReAgentc.exe
+recdisc.exe
+recover.exe
+reg.exe
+regedt32.exe
+regini.exe
+Register-CimProvider.exe
+RegisterIEPKEYs.exe
+regsvr32.exe
+rekeywiz.exe
+relog.exe
+RelPost.exe
+repair-bde.exe
+replace.exe
+reset.exe
+resmon.exe
+RMActivate.exe
+RMActivate_isv.exe
+RMActivate_ssp.exe
+RMActivate_ssp_isv.exe
+RmClient.exe
+Robocopy.exe
+RpcPing.exe
+rrinstaller.exe
+rstrui.exe
+runas.exe
+rundll32.exe
+RunLegacyCPLElevated.exe
+runonce.exe
+rwinsta.exe
+sbunattend.exe
+sc.exe
+schtasks.exe
+sdbinst.exe
+sdchange.exe
+sdclt.exe
+sdiagnhost.exe
+SearchFilterHost.exe
+SearchIndexer.exe
+SearchProtocolHost.exe
+SecEdit.exe
+secinit.exe
+services.exe
+sethc.exe
+SetIEInstalledDate.exe
+setspn.exe
+setupcl.exe
+setupugc.exe
+setx.exe
+sfc.exe
+shadow.exe
+shrpubw.exe
+shutdown.exe
+sigverif.exe
+slui.exe
+smss.exe
+SndVol.exe
+SnippingTool.exe
+snmptrap.exe
+sort.exe
+SoundRecorder.exe
+spinstall.exe
+spoolsv.exe
+sppsvc.exe
+spreview.exe
+srdelayed.exe
+StikyNot.exe
+subst.exe
+svchost.exe
+sxstrace.exe
+SyncHost.exe
+syskey.exe
+systeminfo.exe
+SystemPropertiesAdvanced.exe
+SystemPropertiesComputerName.exe
+SystemPropertiesDataExecutionPrevention.exe
+SystemPropertiesHardware.exe
+SystemPropertiesPerformance.exe
+SystemPropertiesProtection.exe
+SystemPropertiesRemote.exe
+systray.exe
+tabcal.exe
+takeown.exe
+TapiUnattend.exe
+taskeng.exe
+taskhost.exe
+taskkill.exe
+tasklist.exe
+taskmgr.exe
+tcmsetup.exe
+timeout.exe
+TpmInit.exe
+tracerpt.exe
+tscon.exe
+tsdiscon.exe
+tskill.exe
+TSTheme.exe
+TsUsbRedirectionGroupPolicyControl.exe
+TSWbPrxy.exe
+TsWpfWrp.exe
+typeperf.exe
+tzutil.exe
+ucsvc.exe
+UI0Detect.exe
+unlodctr.exe
+unregmp2.exe
+upnpcont.exe
+UserAccountControlSettings.exe
+userinit.exe
+Utilman.exe
+VaultCmd.exe
+VaultSysUi.exe
+vcsFPService.exe
+vds.exe
+vdsldr.exe
+verclsid.exe
+verifier.exe
+vmicsvc.exe
+vsjitdebugger.exe
+vssadmin.exe
+VSSVC.exe
+w32tm.exe
+waitfor.exe
+wbadmin.exe
+wbengine.exe
+wecutil.exe
+WerFault.exe
+WerFaultSecure.exe
+wermgr.exe
+wevtutil.exe
+wextract.exe
+WFS.exe
+where.exe
+whoami.exe
+wiaacmgr.exe
+wiawow64.exe
+wimserv.exe
+wininit.exe
+winload.exe
+winlogon.exe
+winresume.exe
+winrs.exe
+winrshost.exe
+WinSAT.exe
+winver.exe
+wisptis.exe
+wksprt.exe
+wlanext.exe
+wlrmdr.exe
+wowreg32.exe
+WPDShextAutoplay.exe
+wpnpinst.exe
+write.exe
+wscript.exe
+WSManHTTPConfig.exe
+wsmprovhost.exe
+wsqmcons.exe
+wuapp.exe
+wuauclt.exe
+WUDFHost.exe
+wusa.exe
+xcopy.exe
+xpsrchvw.exe
+xwizard.exe
+
+**** ローカルセキュリティポリシー
 *** etc
-
 **** IF文の複数条件指定
 - 
 
@@ -380,7 +845,6 @@
 - 
   [[http://capm-network.com/?tag=Windows%E3%83%90%E3%83%83%E3%83%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87][CapmNetwork Windowsバッチファイル制御構文]]
 
-
 **** 処理の途中で改行を入れる
 - 
   バッチファイルでのエスケープシーケンスは「^(hat)」なので、
@@ -392,14 +856,12 @@
 - [[http://orangeclover.hatenablog.com/entry/20100810/1281450669][みちしるべ バッチファイルで長い1行の処理を改行を入れて複数行に分けて書きたい]]
 - [[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
 
-
 **** 環境変数の消し方
 - 
   "SET 変数="とする。
   たとえば変数XYZを初期化したければ、"set XYZ="でよい。
 
 - [[http://orangeclover.hatenablog.com/entry/20090826/1251293551][みちしるべ 3.環境変数 (1)環境変数の使い方 〜意外に削除の仕方はしらない人が多い〜 【コマンドプロンプト、バッチファイルを使わなきゃならなくなった人向けのメモ】]]
-
 
 **** バッチでの標準入力待ち
 - 
@@ -509,7 +971,7 @@
 - [[https://support.microsoft.com/ja-jp/kb/256986][上級ユーザー向けの Windows レジストリ情報 - Microsoft]]
 - [[http://www.akadia.com/services/windows_registry_tutorial.html][Windows Registry Tutorial]]
 - 
-** DOS
+** MS-DOS
 *** Commands
 **** help
 ***** apropos
@@ -750,6 +1212,19 @@
 - 16bit時代のsystemファイル。
 **** System32
 - 32bit OSであれば32bit、64bit OSであれば64bit用のシステムファイル。
+***** Boot
+***** com
+***** CompatTel
+***** Dism
+***** DriverStore
+***** IME
+***** migwiz
+***** oobe
+***** Speech
+***** spool
+***** sysprep
+***** WindowsPowershell
+***** wbem
 **** SysWOW64
 - 64bit OSで32bit OSをエミュレーションする際に利用される、32bit用のシステムファイル。
 ** Glossary
@@ -900,7 +1375,12 @@
 *** アイコン画像作成
 - bmpで保存、拡張子を.icoとすればOK。
 *** Bluetooth設定
+**** pairing
 - [[http://qa.elecom.co.jp/faq_detail.html?id=4406][【Bluetooth】Windows機能でのヘッドセット・ヘッドフォンペアリング方法 - ELECOM]]
+**** connection
+*** ネットワークドライブの割り当て
+- エクスプローラでAlt, 「ネットワークドライブの割り当て」を行う。
+- http://www1.ark-info-sys.co.jp/support/all/kakumei/c21.html
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

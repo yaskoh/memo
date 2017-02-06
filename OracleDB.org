@@ -306,9 +306,39 @@
   ROWIDは、DB内の「どのデータ・ファイルの、何番目のデータ・ブロック中の、何番目のレコード」といったレコード位置を表す、Oracleの内部的な表現。
   指定すると直接目的のレコードを含むデータ・ブロックへアクセスできるが、表の移動等でROWIDは変更されるため、検索条件とすることは難しい。
 **** 結合方法
+- 結合順序も影響を及ぼす
 ***** ネステッド・ループ結合
+- インデックスを使用して結合できるレコードを検索
+  最初の1件を返すのが早いため、少数の結果を返す処理に向く。
+  外部表からレコードをフェッチし、結合条件に一致するレコードを内部表から検索して結合する。
 ***** ソート/マージ結合
+- 
 ***** ハッシュ結合
+- 結合キーのハッシュ表を最初に作成し、それをもとに結合できるレコードを検索
+  最初にフルスキャンが発生するがそれ以降は高速。大量のレコードを扱う場合に向く。
+  外部表を読み込んで結合キーのハッシュ表をPGA領域に作成し、そのハッシュ表をもとに内部表を検索して結合する方式。
+  PGA領域が不足するとディスクの一時表領域を使うためパフォーマンスが低下するため注意が必要。
+  その場合pga_aggregate_targetでPGAサイズを拡張することも検討する。
+**** 内容
+***** COUNT STOPKEY
+***** FIXED TABLE FULL
+***** HASH JOIN
+***** INDEX FAST FULL SCAN
+***** INDEX RANGE SCAN
+***** INDEX UNIQUE SCAN
+***** MERGE JOIN
+***** NESTED LOOPS
+***** NESTED LOOPS OUTER
+***** SELECT STATEMENT
+***** SORT AGGREGATE
+***** SORT JOIN
+***** TABLE ACCESS BY INDEX ROWID
+***** TABLE ACCESS CLUSTER
+***** TABLE ACCESS FULL
+- テーブルに対しフルスキャン
+***** Link
+- [[http://www.magata.net/memo/index.php?%BC%C2%B9%D4%B7%D7%B2%E8%A4%CE%C6%C9%A4%DF%CA%FD(Oracle)][実行計画の読み方(Oracle) - 闘うITエンジニアの覚え書き]]
+- [[http://www.doppo1.net/oracle/tuning/execute-plan.html][実行計画の解析方法(1) - WalkingAlone]]
 *** 統計情報
 **** 種類
 ***** 表
@@ -329,9 +359,95 @@
 - 特定のオブジェクトみの統計を取得するなど、自分で選ぶことができる。
 ***** 動的サンプリング
 - ハードパース時のSQLの処理に要するメモリとCPUに負荷がかかる。
+**** 内容
+***** recursive calls
+- 実行時内部で発行されたrecursive call、再帰的コールの回数
+***** db block gets
+- DMLやSELECT FOR UPDATEを発行したときなどに発生するカレントモードで読み込まれたブロック数。
+  ブロックの要求回数
+***** consistent gets
+- SELECTを発行したときなどに発生する読み取り一貫性モードで読み込まれたブロック数
+  ブロックレベルの一貫性読み込み回数
+***** physical reads
+- ディスクアクセスによって読み込まれたブロック数
+  物理読み込みの合計数(physical reads direct + physical reads cache)
+***** redo size
+- REDOログに書き込まれたサイズ
+  生成されたREDOの合計（バイト)
+***** bytes sent via SQL*Net to client
+- クライアントへ送られた合計byte数
+***** bytes received via SQL*Net from client
+- クライアントから受信した合計byte数
+***** SQL*Net roundtrips to/from client
+- クライアントに送受信されたNetメッセージの合計数
+  Oracle Netの送受信のやり取りの合計数
+***** sorts (memory)
+- メモリ内で実行されたソート回数
+***** sorts (disk)
+- ディスク書き込みを伴うソート回数
+***** rows processed
+- SQLが処理した件数
+***** Link
+- [[http://www.shift-the-oracle.com/sqlplus/tutorial/autotrace.html][SQL*Plus を使った実行計画の取得 - SHIFT the Oracle]]
+- [[http://www.atmarkit.co.jp/ait/articles/0410/21/news098_4.html][SQLチューニングの基盤となる統計情報 - Oracle SQLチューニング講座（5） - @IT]]
 **** Link
 - [[https://blogs.oracle.com/oracle4engineer/entry/oraclefaq][Oracleの統計情報にまつわる頻出FAQ～概要、確認、収集・取得 - オラクルエンジニア通信 - 技術資料、マニュアル、セミナー]]
 
+*** オプティマイザ・ヒント
+- http://docs.oracle.com/cd/E16338_01/server.112/b56312/hintsref.htm
+**** 型
+- 単一表
+- 複数表
+- 問合せブロック
+- 文
+**** ヒント
+***** アクセス・パス
+****** FULL
+****** CLUSTER
+****** HASH
+****** INDEX, NO_INDEX
+****** INDEX_ASC, INDEX_DESC
+****** INDEX_COMBINE, INDEX_JOIN
+****** INDOX_JOIN
+****** INDEX_FFS, NO_INDEX_FFS
+****** INDEX_SS, NO_INDEX_SS
+****** INDEX_SS_ASC, INDEX_SS_DESC
+***** 結合順序
+****** LEADING
+****** ORDERED
+***** 結合操作
+****** USE_NL, NO_USE_NL
+****** USE_NL_WITH_INDEX
+****** USE_MERGE, NO_USE_MERGE
+****** USE_HASH, NO_USE_HASH
+****** NO_USE_HASH
+***** オンライン・アプリケーション・アップグレード
+****** CHANGE_DUPKEY_ERROR_INDEX
+****** IGNORE_ROW_ON_DUPKEY_INDEX
+****** RETRY_ON_ROW_CHANGE
+***** パラレル実行
+****** PARALLEL, NO_PARALLEL
+****** PARALLEL_INDEX, NO_PARALLEL_INDEX
+****** PQ_DISTRIBUTE
+***** 問合せ変数
+****** NO_QUERY_TRANSFORMATION
+****** USE_CONCAT
+****** NO_EXPAND
+****** REWRITE, NO_REWRITE
+****** MERGE, NO_MERGE
+****** STAR_TRANSFORMATION, NO_STAR_TRANSFORMATION
+****** FACT, NO_FACT
+****** UNNEST, NO_UNNEST
+***** その他
+****** APPEND, APPEND_VALUES, NOAPPEND
+****** CACHE, NOCACHE
+****** PUSH_PRED, NO_PUSH_PRED
+****** PUSH_SUBQ, NO_PUSH_SUBQ
+****** QB_NAME
+****** CURSOR_SHARING_EXACT
+****** DRIVING_SITE
+****** DYNAMIC_SAMPLING
+****** MODEL_MIN_ANALYSIS
 *** Manual
 **** 概要
 **** パフォーマンス計画
@@ -1096,8 +1212,13 @@
   DESCRIBEはsqlplusの文なので、pl/sqlから呼ぶことができないが、
   dba_tab_columnsなどに列情報が入っているので、その内容を元にクエリを構成可能。
 *** SQL実行計画・統計情報を取得するための準備(PLUSTRACEなど)
+- PLUSTRACEロールの作成
+  @$ORACLE_HOME/sqlplus/admin/plustrace.sql
+- 実行ユーザの割り当て
+  GRANT PLUSTRACE TO (USER)
 - 
   [[http://www.sql-dbtips.com/performance-tuning/plustrace/][SQL実行計画・統計情報を取得するための準備 - Oracle使いのネタ帳]]
+
 *** Listerの接続関係
 - 
   リスナーは、同一リスナーで複数SIDを設定できるし、逆に複数リスナーで一つのSIDを見るように設定することも可能。

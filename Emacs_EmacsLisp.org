@@ -581,24 +581,6 @@ replace-match
 ***** font-lock-keyword-face
 ***** font-lock-constant-face
 **** tmp
-***** major-mode
-- メジャーモードの名前
-***** mode-name
-- モードラインに現れるモード名
-***** global-map
-- 
-  グローバルマップ
-***** ?a
-- 
-  aの文字コード
-***** ?\12, ?\x12
-- 
-  8進数、16進数表記の整数
-***** #NNr
-- 
-  NN進数
-  ex: #5r40→20, #30remacs→11943388
-
 ***** debug
       debug-on-error
       tになっている場合、backtraceを取得する。
@@ -748,29 +730,6 @@ replace-match
 - To use lexical binding, an Emacs-lisp source file must set a file-variable "lexical-binding" to t in the file header.
   https://www.emacswiki.org/emacs/LexicalBinding
 ** BookMemo_Tmp
-*** やさしいEmacs-Lisp講座メモ
-**** メジャーモードが備えるべき最低条件
-***** モード名の設定
-- major-mode
-  var "major-mode"にシンボルとして格納する。
-  (setq major-mode 'my-mode)
-
-- mode-name
-  モードラインに現れるモード名フィールドの名前を文字列で格納する
-  (setq mode-name "私のモード")
-
-***** 使用するキーマップ設定
-- ローカルマップ作成
-  独自のローカルマップを作成し、割りあてる。
-  下記は変数my-local-mapを新たなキーマップとしている。
-  (setq my-local-map (make-sparse-keymap)
-- キーの割り当て
-  (define-key my-local-map "h" 'backward-char)
-- ローカルマップ使用宣言
-  (use-local-map my-local-map)
-  
-***** 動作に必要な変数の設定
-  
 *** An Introduction to Programming in Emacs Lisp
 *** Mode tutorial
 **** Basic

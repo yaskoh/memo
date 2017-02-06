@@ -272,6 +272,16 @@
 *** SET
 - SET system_variable value
   SQL*Plus環境を変更するシステム変数を設定する。
+**** SET AUTOT[RACE] {ON|OFF|TRACE[ONLY]} [EXP[LAIN]] [STAT[ISTICS]]
+- 正常に実行されたSQL DML分のレポートを表示する。
+  レポートには実行統計および問合せ実行パスを含めることができる。
+- Options
+  - OFF : トレースレポートが表示されない
+  - ON : トレースレポートが表示される
+  - TRACEONLY : トレースレポートは表示される。問い合わせデータは存在しても表示しない。
+  - EXPLAIN : 実行計画が実行され、問い合わせパスが実行される。
+  - STATISTICS : 統計が表示される。
+
 **** SET AUTORECOVERY [ON|OFF]
 - ONを指定すると、リカバリ時に必要なREDOログ・ファイルのデフォルトのファイル名を自動的に適用するためにRECOVERコマンドが設定される。
 **** SET DEF[INE] {&|c|ON|OFF}

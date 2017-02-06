@@ -1,0 +1,62 @@
+* Microsoft Azure
+** About
+- 2010/1に正式サービス開始をした、MSのクラウドプラットフォーム(PaaS/IaaS)。
+  2014/1にWindows AzureからMicrosoft Azureに名称変更。
+** Services
+*** Computing
+**** Linux 仮想マシン
+**** Windows仮想マシン
+**** 仮想マシン スケールセット
+**** App Service
+**** Azure Container Service
+**** Azure Container Registry
+**** 関数
+**** Service Fabric
+**** Batch
+**** Cloud Services
+*** Network
+**** Virtual Network
+**** Load Balancer
+**** Application Gateway
+**** VPN Gateway
+**** Azure DNS
+**** CDN
+**** TRaffic Manager
+**** ExpressRoute
+*** Storage
+**** Storage
+**** Data Lake Store
+**** StorSimple
+**** Backup
+**** Site Recovery
+*** Web + Mobile
+**** App Service
+**** Web Apps
+**** Mobile Apps
+**** API Apps
+**** Logic Apps
+**** CDN
+**** Media Services
+**** Search
+**** Mobile Engagement
+**** Notification Hubs
+*** database
+**** SQL Database
+**** SQL Data Warehouse
+**** SQL Server Stretch Database
+**** DocumentDB
+**** Redis Cache
+**** Data Factory
+*** Intelligence + Analysis
+*** IoT
+*** Enterprise Migration
+*** Security + ID
+*** Development Tools
+*** 監視 + Management
+** Memo
+*** Azure China
+- 中国アカウントはGlobalアカウントとは切り離されており、MSアカウントの別途作成が必要。
+  また、支払はAlipay, Unionpayのみ、中国の携帯電話番号が必要、法人アカウントの場合は中国国内の営業許可証が必要となるなど、要求が多い。
+  MSでなく、21Vianetというローカル企業が運用を行っているとのこと。
+** Link
+- [[https://docs.microsoft.com/ja-jp/azure/][Document]]

@@ -1,0 +1,143 @@
+* AWS
+** Services
+*** Compute
+**** Amazon EC2
+- クラウド内の仮想サーバー
+**** Amazon EC2 Container Registry
+- Dockerイメージの保存と取得
+**** Amazon EC2 Container Service
+- Dockerコンテナを実行および管理
+**** Amazon Lightsail
+**** Amazon VPC
+**** AWS Batch
+**** AWS Elastic Beanstalk
+- ウェブアプリの実行及び管理
+**** AWS Lamdba
+**** Auto Scaling
+*** Storage
+**** Amazon S3
+- クラウド内のスケーラブルなストレージ
+**** Amazon EBS
+- EC2向けブロックストレージ
+  EC2のデータを保持するストレージサービス。
+  EC2のハードディスク、SSDのような役割をする。
+**** Amazon Elastic File System
+- EC2のマネージド型ファイルストレージ
+  ファイルの追加/削除に伴って、自動で容量を拡張/縮小するストレージ
+**** Amazon Glacier
+- クラウド内の低コストなアーカイブ向けストレージ
+  バックアップやアーカイブなどの用途に使う。磁気テープのような使い方が適している。
+**** AWS Storage Gateway
+- ハイブリッドストレージの統合
+  オンプレミスとAWSを接続するストレージゲートウェイ
+**** AWS Snowball
+**** AWS Snowball Edge
+**** AWS Snowmobile
+*** Database
+**** Amazon Aurora
+**** Amazon RDS
+- MySQL, PostgreSQL, Oracle, SQL Server, MariaDB向けの
+  マネージドリレーショナルデータベースサービス
+**** Amazon DynamoDB
+- マネージドNoSQLデータベース
+  非構造化データを容易に扱える。
+**** Amazon ElastiCache
+- インメモリキャッシングシステム
+  低速のディスクではなく、高速のメモリ内キャッシュから情報を取得する
+**** Amazon Redshift
+- 高速、シンプル、費用対効果の高いデータウェアハウス
+  ペタバイト規模のデータを分析できる。
+**** AWS Database Migration Service
+- 最小限のダウンタイムでデータベースを移行
+  オンプレミスのDBSからの移行などに使う。
+*** Migration
+**** AWS Database Migration Service
+**** AWS Server Migration Service
+*** Network & Content Delivery
+**** Amazon VPC
+- 独立したクラウドリソース
+**** Amazon CloudFront
+- グローバルなコンテンツ配信ネットワーク
+**** Amazon Rounte 53
+- スケーラブルなドメインネームサービス
+  ドメイン名とIPアドレスを対応付けるDNSシステムを構築するためのサービス
+**** AWS Direct Connect
+- AWSへの専用線接続
+  オンプレミスのネットワークとAWSのVPCネットワークとを直接に接続するための専用線サービス
+**** Elastic Load Balancing
+- 拡張性の高い負荷分散
+*** Developer Tools
+**** AWS CodeCommit
+- プライベートGitリポジトリでのコード保存
+**** AWS CodeBuild
+**** AWS CodeDeploy
+- コードデプロイの自動化
+**** AWS CodePipeline
+- 継続的デリバリーを使用したソフトウェアのリリース
+**** AWS X-RAY
+**** AWS コマンドインターフェース
+*** Management Tools
+**** Amazon CloudWatch
+- リリースとアプリケーションのモニタリング
+**** Amazon EC2 Systems Manager
+**** AWS CloudFormation
+- テンプレートを使ったリソースの作成と管理
+**** AWS CloudTrail
+- ユーザーアクティビティとAPI使用状況の追跡
+**** AWS Config
+- リソースのインベントリと変更の追跡
+**** AWS OpsWorks
+- Chefを使った操作の自動化
+**** AWS Service Catalog
+- 標準化された製品の作成と仕様
+**** AWS Trusted Advisor
+- パフォーマンスとセキュリティの最適化
+**** AWS Personal Health Dashboard
+*** Security, Identity & Compliance
+**** AWS Identity and Access Management (IAM)
+- ユーザーアクセスと暗号化キーの管理
+  認証を行うサービス。アクセスコントロールが可能。
+**** Amazon Inspector
+- アプリケーションのセキュリティの分析
+**** AWS Certificate Manager
+**** AWS CloudHSM
+- 法令順守のためのハードウェアベースキーストレージ
+  暗号鍵管理のための専用ハードウェア
+**** AWS Directory Service
+- Active Directoryのホスティングと管理
+**** AWS Key Management Service
+- マネージド型の暗号化キー作成と管理
+**** AWS Organizations
+**** AWS Shield
+**** AWS WAF
+- 悪意のあるウェブトラフィックのフィルター
+*** Analytics
+**** Amazon Athena
+**** Amazon EMR
+- ホスト型Hadoopフレームワーク
+**** Amazon CloudSearch
+**** Amazon Elasticsearch Service
+- Elasticsearchクラスターを実行し、スケールする
+**** Amazon Kinesis
+- リアルタイムストリーミングデータとの連携
+**** Amazon Redshift
+**** Amazon QuickSight
+- 高速ビジネス分析サービス
+**** AWS Data Pipeline
+- 定期的なデータ駆動型ワークフローに対するオーケストレーションサービス
+**** AWS Glue
+*** Artificial Intelligence
+**** Amazon Lex
+**** Amazon Polly
+**** Amazon Rekognition
+**** Amazon Machine Learning
+- 機械学習、デベロッパー向け機械学習
+*** Mobile Services
+*** Application Services
+*** Messaging
+*** Business Productivity
+*** Desktop & App Streaming
+*** Internet of Things
+*** Game Development
+** Link
+- https://aws.amazon.com/jp/

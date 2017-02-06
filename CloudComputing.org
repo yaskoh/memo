@@ -1,0 +1,22 @@
+* Cloud
+** Kind
+*** Integrated
+**** Amazon Web Services
+- [[file:AWS.org][AWS.org]]
+**** Google Cloud Platform
+***** Services
+****** Google App Engine
+****** Google Compute Engine
+****** Google Container Engine
+****** Google Cloud Storage
+****** Google Cloud Bigtable
+****** Google Cloud Datastore
+****** Google Cloud SQL
+**** Microsoft Azure
+- [[file:MSAzure.org][MSAzure.org]]
+**** IBM Bluemix
+- 2014年に開発者向けのPaaSサービスとして開始され、
+  2016/10にIaaSサービスであるSoftLayerが"IBM Bluemix Infrastructure"と名称変更されてブランド統合された。
+*** SaaS
+*** PaaS
+*** IaaS

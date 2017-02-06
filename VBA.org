@@ -4,6 +4,30 @@
 - [[https://msdn.microsoft.com/ja-jp/library/office/gg264383.aspx][Office VBA 言語リファレンス - Dev Center]]
 
 *** Constants
+**** Calender Constants
+**** CallType Constants
+**** Color Constants
+**** Comparison Constants
+**** Compiler Constants
+**** Data Constants
+**** Date Format Constants
+**** Dir, GetAttr, SetAttr Constants
+**** DriveType Constants
+**** File Attribute Constants
+**** File Input/Output Constants
+**** Form Constants
+**** IMEStatus Constants
+**** Keycode Constants
+**** Miscellaneous Constants
+**** MsgBox Constants
+**** QueryClose Constants
+**** Shell Constants
+**** SpecialFolder Constants
+**** StrConv Constants
+**** System Color Constants
+**** Tristate Constants
+**** VarType Constants
+**** Visual Basic Constants
 *** DataType
 **** Byte
 **** Boolean
@@ -141,6 +165,8 @@
 *** Statements
 - [[https://msdn.microsoft.com/ja-jp/library/office/jj692812.aspx][ステートメント - Visual Basic 言語リファレンス - Dev Center]]
 
+**** AppActivate
+**** Beep
 **** Call
 - 
   他のSubプロシージャやFunctionプロシージャなどを呼び出して制御を渡す。
@@ -159,7 +185,13 @@
   4. 返り値を受け取る場合、Callを使わないが、括弧は必要となる。
      ex) ×:rc = myFunction 123
          ○:rc = myFunction(123)
-
+**** ChDir
+**** ChDrive
+**** Close
+**** Const
+**** Date
+**** Declare
+**** DeleteSetting
 **** Dim
 - 
   変数を宣言する
@@ -184,6 +216,12 @@
 - 
   プロシージャまたはブロックを終了する
 
+**** Enum
+**** Erase
+**** Error
+**** Event
+**** Exit
+**** FileCopy
 **** For Each ... Next
 - 
   コレクションや配列の各要素に対してstatementsを実行する。
@@ -203,6 +241,9 @@
 - 
   Functionプロシージャ（戻り値あり）を作成する
 
+**** Get
+**** GoSub
+**** GoTo
 **** If ... Then ... Else
 - 
   条件を評価して、条件付きの実行を行うステートメント
@@ -218,6 +259,8 @@
         MsgBox a & "は５より大きい"
     End If
 
+**** Implements
+**** Input #
 **** Private
 - 
   プライベート変数を宣言する。プライベート変数は、宣言されたモジュール内のみ参照できる。
@@ -247,53 +290,58 @@
 - 
   Excelアプリケーション全体を表す。
 
+****** Properties
+******* ActiveSheet Property
+
+******* ActiveWorkbook Property
+
+******* ThisWorkbook Property
+- 在実行中のマクロコードが記述されているブックを返す。
 ***** ListObject
-****** Member
-******* Method
-******* Property
-******** Name
+****** Methods
+****** Properties
+******* Name
 - ListObjectオブジェクトの名前を表す文字列の値を取得または設定する。
 ***** ListObjects
 ***** Range
 - セル、行、列、1つ以上のセル範囲を含む選択範囲、または3-D範囲を表す。
-****** Member
 - [[https://msdn.microsoft.com/ja-jp/library/ff197454.aspx][Rangeメンバー(Excel) - Developer Network]]
-
-******* Method
-******** Insert
+****** Methods
+******* Insert
 - 
   ワークシートまたはマクロシートの指定された範囲に、空白のセルまたはセル範囲を挿入する。
   指定された範囲にあったセルはシフトされる。
 
-******* Property
-******** Text
+****** Properties
+******* Text
 - 
   オブジェクトのテキストを取得または設定する。値の取得のみ可能。文字列型を使用する。
 
-******** Value
+******* Value
 - Value(RangeValueDataType)
   指定されたセル範囲の値を表すバリアント型(Variant)の値を設定する。値の取得および設定が可能。
 
 ***** Workbook
-
+****** Properties
+******* Path
+- ブック/ファイルへの完全なパスを表す文字列型(String)の値を取得する。
 ***** Workbooks(Collection)
 
 ***** Worksheet
-****** Member
-******* Event
-******* Method
-******* Property
-******** Cells
+****** Events
+****** Methods
+****** Properties
+******* Cells
 - Cells
   ワークシートのすべてのセルを表すRangeオブジェクトを返す。
-******** Columns
+******* Columns
 - 
   作業中のワークシートのすべての列を表すRangeオブジェクトを返す。
   
-******** ListObjects
+******* ListObjects
 - ListObjects
   ワークシート内に複数あるListObjectオブジェクトから成る1つのコレクションを返す。
-******** Range
+******* Range
 - Range(Cell1, Cell2)
   セルまたはセル範囲を表すRangneオブジェクトを返す。
 
@@ -316,8 +364,7 @@
 - 例
   - Application.ApctivePresentation.SaveAs MyPath
     "MyPath"に示されたパス・ファイル名で現在のプレゼンテーションを保存する。
-
-******* ActiveWindow
+******* ActiveWindow Property
 - 作業中のスライドウィンドウを表すDocumentWindowオブジェクトを取得する。取得のみ可能。
   
 ******* Presentations Property
@@ -446,7 +493,6 @@
   Preserveキーワードを付けると、格納さえれているデータを保持したまま配列の要素数を再定義可能。
   [[http://officetanaka.net/excel/vba/variable/08.htm][動的配列 - Office TANAKA]]
   
-
 *** Error
 **** オートメーションエラー(440)
 - CreateObjectしたIEオブジェクトを生成、操作、終了、破棄して何度も呼び出すと起こる場合がある。

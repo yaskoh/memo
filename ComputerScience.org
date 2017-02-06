@@ -35,6 +35,14 @@
 
 ***** Global
 
+**** Kind
+- [[https://en.wikipedia.org/wiki/Scope_(computer_science)][Scope (computer science)]]
+***** Lexical/Static Scope 
+- 字句を解析した時点でスコープが決定する。
+  ソースの構造で外枠（外側の環境）が決定する。
+***** Dynamic Scope
+- 静的スコープに加え、実行時に親子関係の子側から親側のスコープを参照できるスコープ。
+  このとき参照されるのは、親子関係を親側に辿り、より近いブロックにある変数。
 *** Order of growth
 
 **** Big O

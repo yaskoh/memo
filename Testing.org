@@ -48,6 +48,7 @@
 - [[http://h50146.www5.hpe.com/products/software/hpsoftware/bto/pdfs/alm1_6.pdf][テストマネジメント虎の巻 第六回]]
 - [[http://kazu5.exblog.jp/3014629/][IEEE829標準規格のドキュメント - 和子の毎日ヘロヘロ記録]]
 ** UnitTest
+- [[file://UnitTest.org][UnitTest.org]]
 *** Link
 - [[http://code.tutsplus.com/articles/the-beginners-guide-to-unit-testing-what-is-unit-testing--wp-25728][The Beginner’s Guide to Unit Testing: What Is Unit Testing? - envatotuts+]]
 - [[https://appkitbox.com/knowledge/test/20130228-130][ユニットテストを学ぶための推薦図書 - Developers AppKit Box]]
@@ -96,6 +97,15 @@
 - 
   A software attack on a computer system that looks for security weaknesses, potentially gaining access to the computer's features and data.
   
+** Glossary
+*** UT
+- UnitTest 単体試験
+*** FT
+- Functional Test 機能試験
+*** IT
+- Integration Test 結合試験
+*** ST
+- System Test システム試験
 ** Memo
 *** 検討事項
 - [[http://h50146.www5.hpe.com/products/software/hpsoftware/bto/pdfs/alm1_6.pdf][テストマネジメント虎の巻 第六回]]
