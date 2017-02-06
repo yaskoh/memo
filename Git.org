@@ -35,6 +35,10 @@
 ***** git-merge
 ***** git-mv
 ***** git-pull
+- 
+  変更を取得した後マージする
+  git fetch + git merge origin/master
+
 ***** git-push
 ***** git-rebase
 ***** git-reset
@@ -362,10 +366,6 @@
     mv file_from file_to
     git rm file_from
     git add file_to
-
-**** git pull
-- 
-  変更を取得した後マージする
 
 **** git push
 - 
