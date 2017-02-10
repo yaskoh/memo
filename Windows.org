@@ -1204,6 +1204,9 @@ xwizard.exe
 - ex) C:
 *** SystemRoot
 - ex)%SystemDrive%\Windows
+*** USERPROFILE
+- ユーザのプロファイルのパス
+  ex) C:\Users\UserName, C:\Dcuments and Settings\UserName
 *** windir
 - ex)%SystemDrive%\Windows
 ** Structure

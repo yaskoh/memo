@@ -44,6 +44,11 @@
   |--------------------+------------------|
 
 **** WORKDAY
+- 
+  開始日から起算して、指定された稼働日数だけ前または後の日付に対応する値を返す。
+
+- 書式
+  WORKDAY(開始日, 日数, [祝日])
 
 **** YEAR
 *** エンジニアリング関数
@@ -372,6 +377,14 @@
 - INDIRECT関数を使う。
   =INDIRECT(A4&"!B3")などとして使う。
   A4にあるシート名の、B3セルの参照が取得できる。
+*** 日時のシリアル値
+- Excelでは、時刻・時間をシリアル値という値で処理する。
+  1日(24h)を1.0で表し、0:00:00-23:59:59までが0~0.99999999の範囲の値となる。
+- 1900年1月1日からの経過日数を表す。
+- http://www.excel.studio-kazu.jp/tips/0049/
+*** 日付表示
+**** 24h以上の日付を表示する場合
+- [h]を使う。[h]:mm:ssなど。
 ** Link
 - [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
 - [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]

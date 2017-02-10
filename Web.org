@@ -162,10 +162,10 @@
   scalable vector icons
 
 - 
-  class�Ɂufa�v�ƁA�e�A�C�R���Ɋ���U���Ă���ufa-xxxx�v�𗘗p���邱�Ƃŕ\�������B
+  classに「fa」と、各アイコンに割り振られている「fa-xxxx」を利用することで表示される。
   
 - [[http://fontawesome.io/][Font Awesome]]
-- [[https://h2ham.net/font-awasome][�y���ĕ֗��IWeb�A�C�R���t�H���g�wFont Awesome�x�̎g�����Ɗ��p Tips - HAM MEDIA MEMO]]
+- [[https://h2ham.net/font-awasome][楽して便利！Webアイコンフォント『Font Awesome』の使い方と活用 Tips - HAM MEDIA MEMO]]
 
 ** Link
 - [[https://developer.mozilla.org/en-US/Learn][Learning web development - MDN]]
@@ -173,21 +173,21 @@
 - [[https://github.com/hatena/Hatena-Textbook][Hatena-Textbook - GitHub]]
 - [[https://css-tricks.com/app-from-scratch-1-design/][Creating a Web App from Scratch - Part 1 of 8: Basic Idea and Design - CSS-TRICKS]]
 - [[https://netbeans.org/kb/docs/web/quickstart-webapps.html][Introduction to Developing Web Applications - NetBeans]]
-- [[http://gihyo.jp/dev/serial/01/start_webap][�ڎw���IWeb�A�v���P�[�V�����G���W�j�A]]
+- [[http://gihyo.jp/dev/serial/01/start_webap][目指せ！Webアプリケーションエンジニア]]
 
 
-*** �Q�l
+*** 参考
 - [[http://bookma.org/][bookma! v3]]
 - [[http://www.ikesai.com/][ikesai.com]]
-- [[http://lp-web.com/][�����f�B���O�y�[�W�W�߂܂����B]]
+- [[http://lp-web.com/][ランディングページ集めました。]]
 ** Glossary
-*** Carousel �J���[�Z��
+*** Carousel カルーセル
 - 
-  Web�f�U�C���̈��ŁA�摜�Ȃǂ̃R���e���c���X���[�Y�ɉ��ɃX���C�h������\�����@�B
+  Webデザインの一種で、画像などのコンテンツをスムーズに横にスライドさせる表示方法。
 
 *** WebService
-- HTTP�Ȃǂ̃C���^�[�l�b�g�֘A�Z�p�����p���ASOAP�ƌĂ΂��XML�`���̃v���g�R����p�����b�Z�[�W�̑���M���s���Z�p�B
-  WSDL�ASOAP�AREST�AAxis2�Ȃ�
+- HTTPなどのインターネット関連技術を応用し、SOAPと呼ばれるXML形式のプロトコルを用いメッセージの送受信を行う技術。
+  WSDL、SOAP、REST、Axis2など
 **** WSDL
 - Web srevices Description Language
   http://www.wakhok.ac.jp/~sakamoto/WS/web_service_c3.html
@@ -195,10 +195,10 @@
 *** HTML Editor
 **** TinyMCE
 - 
-  HTML�R���e���c��e�Ղɍ쐬���邱�Ƃ��ł���WYSIWYG�G�f�B�^�[�B
-  �u���E�U�ŗ��p�\�B
-  �I�[�v���\�[�X�Ƃ̐e�a���������B
-  �J������Mokiecode System AB�B
+  HTMLコンテンツを容易に作成することができるWYSIWYGエディター。
+  ブラウザで利用可能。
+  オープンソースとの親和性が高い。
+  開発元はMokiecode System AB。
   [[https://www.tinymce.com/][tinymce]]
 
 *** CMS
@@ -211,17 +211,17 @@
 *** MIME Type
 - RFC 2045
 *** Query String
-- �N�G��������
-  Web�u���E�U�Ȃǂ�Web�T�[�o�ɑ��M����f�[�^��URL�̖����ɓ���̌`���ŕ\�L�������́B
-  URL�����Ɂu?�v�}�[�N��t���A�����āu���O=�l�v�̌`���ŋL�q����B
-  �l���������鎞�́u&�v�ŋ�؂�B
-  ��)http://example.com/foo/var.php?name1=value1&name2=value2
+- クエリ文字列
+  WebブラウザなどがWebサーバに送信するデータをURLの末尾に特定の形式で表記したもの。
+  URL末尾に「?」マークを付け、続けて「名前=値」の形式で記述する。
+  値が複数ある時は「&」で区切る。
+  例)http://example.com/foo/var.php?name1=value1&name2=value2
 *** Percent-Encoding
 - 
-  URI�ɂ����Ďg�p�ł��Ȃ��������g���ۂɍs����G���R�[�h�̖��́B��ʂ�URL�G���R�[�h�Ƃ��B
-  RFC3986��Section2.1�Œ�`����Ă���B
-  ���{��̕����ȂǂŁA�ǂ̕�������p���邩�͊��ɂ��قȂ�B
+  URIにおいて使用できない文字を使う際に行われるエンコードの名称。一般にURLエンコードとも。
+  RFC3986のSection2.1で定義されている。
+  日本語の文字などで、どの符号化を用いるかは環境により異なる。
   
 *** apple-touch-icon
 - 
-  �X�}�z�p��Web�N���b�v�A�C�R��
+  スマホ用のWebクリップアイコン

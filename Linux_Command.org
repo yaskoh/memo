@@ -375,6 +375,7 @@
 **** file
 - 
   実行可能ファイルかテキストかその他データかなどのファイルのタイプを判定して表示する。
+  テキストファイルの文字コードを調べるのに利用可能。
 - -b
   簡易モードで表示する。
 - -i
@@ -589,6 +590,14 @@
 - 
   tagを作成する。
   Gnu globalと共にインストールする。
+- -f, --file filename
+  Browse through all files whose names are listed in file.
+
+- -v, --verbose
+***** Files
+****** GTAGS
+****** GRTAGS
+****** GPATH
 
 **** gzip / gunzip
 - 

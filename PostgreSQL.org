@@ -1363,7 +1363,7 @@
 *** VACUUM
 *** HOT(Heap Only Tuple)
 
-** etc
+** Etc
 *** current_date
 - 
   変数だろう。ただし今欄がない。
@@ -1375,7 +1375,7 @@
   window関数で使われる。
   （そのうち項目をSQL Commandにでも移すかも。）
 
-** memo
+** Memo
 *** Uninstall(Windows)
 - 
   1. [コントロールパネル]から削除
@@ -1383,17 +1383,9 @@
   3. 「postgres」ユーザアカウントを削除
      - net user postgres /delete
      - [コントロールパネル]->[ユーザアカウント]から。
-  
-** Link
-- [[https://www.postgresql.jp/document/9.3/html/index.html][PostgreSQL 9.3.2文書]]
-- [[http://www.postgresql.org/][PostgreSQL]]
-- [[https://wiki.postgresql.org/wiki/Main_Page][PostgreSQL Wiki]]
-- [[http://lets.postgresql.jp/][Let's Postgres]]
-- [[http://lets.postgresql.jp/documents/tutorial/centos/2][CentOSでPostgreSQLを使ってみよう!(2)]]
 
-
-* EnterpriseDB
-** 比較
+** EnterpriseDB
+*** 比較
 - 
   [[http://www.enterprisedb.co.jp/products-services-training/products/postgres-plus-advanced-server][PostgreSQLとPostgres Plus Advanced Serverの比較 - EDB]]
 
@@ -1406,30 +1398,38 @@
   - Oracleとの互換性
   - 企業ツール
 
-** Features
+*** Features
 - 
   [[http://www.enterprisedb.com/docs/en/9.4/eeguide/toc.html][Postgres Plus Enterprise Edition Guide v9.4 - EDB]]
 
-*** Introduction
+**** Introduction
 
-*** Database Administration
+**** Database Administration
 
-*** Enhanced SQL Features
+**** Enhanced SQL Features
 
-*** Security
+**** Security
 
-*** EDB Resource Manager
+**** EDB Resource Manager
 
-*** Database Utilities
+**** Database Utilities
 
-*** Open Client Library
+**** Open Client Library
 
-*** Performance Analysis and Tuning
+**** Performance Analysis and Tuning
 
-*** Built-In Utility Packages
+**** Built-In Utility Packages
 
-*** Expanded Catalog Views
+**** Expanded Catalog Views
 
-*** System catalog Tables
+**** System catalog Tables
 
-*** Appendix
+**** Appendix
+  
+** Link
+- [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.2 Documentation]]
+- [[https://www.postgresql.jp/document/9.3/html/index.html][PostgreSQL 9.3.2文書]]
+- [[http://www.postgresql.org/][PostgreSQL]]
+- [[https://wiki.postgresql.org/wiki/Main_Page][PostgreSQL Wiki]]
+- [[http://lets.postgresql.jp/][Let's Postgres]]
+- [[http://lets.postgresql.jp/documents/tutorial/centos/2][CentOSでPostgreSQLを使ってみよう!(2)]]

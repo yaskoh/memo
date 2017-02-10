@@ -1062,6 +1062,12 @@
 ***** isearch-forward
 - (isearch-forward &optiona REGEXP-P NO-RECURSIVE-EDIT)
   Do incremental search forward.
+****** Memo
+- C-w : カーソル後続の文字列を取り込む。繰り返すと範囲が広がる。
+- M-c : case sensitive <-> insensitive
+- M-e : 検索文字列をミニバッファで修正
+- M-r : 正規表現による検索、取りやめ
+  
 ***** word-search-backward
 - (word-search-backward STRING &optional BOUND NOERROR COUNT)
   Search backward from point for STRING, ignoring differences in punctuation.
@@ -1234,6 +1240,9 @@
   Give KEY a local binding as COMMAND.
   
   呼び出した際に使われているキーマップに対してキーを設定する。
+***** locate-library
+- (locate-library LIBRARY &optional NOSUFFIX PATH INTERACTIVE-CALL)
+  Show the precise file name of Emacs library LIBRARY.
 ***** global-set-key
 - (global-set-key KEY COMMAND)
   Give KEY a global binding as COMMAND.
@@ -1362,6 +1371,28 @@
 - M-. / <menu-bar><edit><goto><find-tag>
 *** esup
 *** evil
+*** gtags
+**** Functions
+***** gtags-find-tag
+- (gtags-find-tag TAGNAME &optional OTHER-WIN)
+  Input tag name and move to the definition.
+***** gtags-find-rtag
+- (gtags-find-rtag TAGNAME)
+  Input tag name and move to hte referenced point.
+***** gtags-find-symbol
+- (gtags-find-symbol TAGNAME)
+  Input symbol and move to the locations.
+***** gtags-pop-stack
+- (gtags-pop-stack)
+  Move to previous point on the stack.
+**** Variables
+***** gtags-path-style
+- Controls the style of path in [GTAGS SELECT MODE].
+- Values :
+  - root (default)
+  - relative
+- Memo
+  Windowsでは、root->relativeを設定することで動作するようになった。
 *** initchart
 - https://github.com/yuttie/initchart
 - provides macros and functions to measure and visualize a init process of Emacs.

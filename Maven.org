@@ -61,14 +61,34 @@
 *** Tools
 **** archetype
 ***** Goals
-****** archetype:create
 ****** archetype:generate
+- creates a Maven project from an archetype: 
+  asks the user to choose an archetype from the archetype catalog, and retrieves it from the remote repository.
+******* Parameters
+******** Required
+********* interactiveMode
+- Defalut : $(settings.intreractiveMode)
+- User propety : interactiveMode
+******** Optional
 ****** archetype:create-from-project
 ****** archetype:crawl
 ****** archetype:jar
 ****** archetype:integration-test
 ****** archetype:update-local-catalog
+****** (deprecated)archetype:create
 ** POM
+- POM stands for "Project Object Model".
+  https://maven.apache.org/pom.html
+*** Fields
+**** Basics
+***** modelVersion
+***** groupId
+***** artifactId
+***** version
+***** packaging
+***** name
+***** classifier
+*** Dependencies
 *** sourceDirectory
 *** testSourceDirectory
 *** outputDirectoyr
@@ -94,12 +114,17 @@
   
 *** Goal
 - Mavenのプラグインが持つ機能のこと
+
 *** Phase
 - プロジェクトのビルドサイクルに含まれる個々のステップのこと。
   実際には対応するプラグインで行われており、プラグインのゴールのエイリアスとも考えられるが、
   特定のフェイズに関連付けてプラグインを実行させることができるため、
   正確には"mvn compile"と"mvn compiler:compile"は同じ動作をするとは限らない。
 
+** Memo
+*** 開始方法
+- mvn archetype:generate
+  プロジェクトを作成。各種求められる値を入力。"pom.xml"が作成される。
 ** Link
 - [[https://maven.apache.org/index.html][Apache Maven Project]]
 

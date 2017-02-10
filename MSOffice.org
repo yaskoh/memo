@@ -1,9 +1,9 @@
 * Microsoft Office
 ** Word
 *** Memo
-**** Property‚Ì•ÒW
+**** Propertyã®ç·¨é›†
 - Word 2013
-  - Office -> Info -> (‰æ–Ê’†‰›‰E)Properties -> Advanced Properties -> Custom(tab)
+  - Office -> Info -> (ç”»é¢ä¸­å¤®å³)Properties -> Advanced Properties -> Custom(tab)
 ** Excel
 - 
   [[file:Excel.org][Excel.org]]
@@ -24,7 +24,7 @@
   Insert Tab -> Text Slide -> Slide Number
   
 - Link
-  [[https://support.office.com/ja-jp/article/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E7%95%AA%E5%8F%B7%E3%80%81%E3%83%9A%E3%83%BC%E3%82%B8%E7%95%AA%E5%8F%B7%E3%80%81%E3%81%BE%E3%81%9F%E3%81%AF%E6%97%A5%E4%BB%98%E3%81%A8%E6%99%82%E5%88%BB%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B-21e67a79-3d55-4d97-ba7f-4f32c160ec5b][ƒXƒ‰ƒCƒh”Ô†Aƒy[ƒW”Ô†A‚Ü‚½‚Í“ú•t‚Æ‚ğ’Ç‰Á‚·‚é - Office]]
+  [[https://support.office.com/ja-jp/article/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89%E7%95%AA%E5%8F%B7%E3%80%81%E3%83%9A%E3%83%BC%E3%82%B8%E7%95%AA%E5%8F%B7%E3%80%81%E3%81%BE%E3%81%9F%E3%81%AF%E6%97%A5%E4%BB%98%E3%81%A8%E6%99%82%E5%88%BB%E3%82%92%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B-21e67a79-3d55-4d97-ba7f-4f32c160ec5b][ã‚¹ãƒ©ã‚¤ãƒ‰ç•ªå·ã€ãƒšãƒ¼ã‚¸ç•ªå·ã€ã¾ãŸã¯æ—¥ä»˜ã¨æ™‚åˆ»ã‚’è¿½åŠ ã™ã‚‹ - Office]]
 **** Grid
 - 
   View Tab -> Chcek "Gridlines" checkbox
@@ -35,19 +35,19 @@
 - delete : move away a line to outside of slide
   
 
-- [[https://support.office.com/ja-jp/article/%E3%82%B0%E3%83%AA%E3%83%83%E3%83%89%E7%B7%9A%E3%81%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%8A%E3%82%88%E3%81%B3%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B-786b4958-199a-40f9-b17b-01b85084bd5e][ƒOƒŠƒbƒhü‚ÆƒKƒCƒh‚ğ•\¦‚¨‚æ‚Ñg—p‚·‚é - Office]]
+- [[https://support.office.com/ja-jp/article/%E3%82%B0%E3%83%AA%E3%83%83%E3%83%89%E7%B7%9A%E3%81%A8%E3%82%AC%E3%82%A4%E3%83%89%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%8A%E3%82%88%E3%81%B3%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B-786b4958-199a-40f9-b17b-01b85084bd5e][ã‚°ãƒªãƒƒãƒ‰ç·šã¨ã‚¬ã‚¤ãƒ‰ã‚’è¡¨ç¤ºãŠã‚ˆã³ä½¿ç”¨ã™ã‚‹ - Office]]
   
 **** Delete all Presentation Note
 - 
   File -> Info -> Check for Issues -> Inspect Document
   Check the box of [Presentation Notes], then click [Inspect]
   Show Remove All
-  [[http://kshimizu.hatenadiary.jp/entry/2015/04/03/052633][PowerPointiƒpƒƒ|j 2013 ƒm[ƒg‚ğˆêŠ‡íœ‚·‚é•û–@ - Training for D-Day]]
+  [[http://kshimizu.hatenadiary.jp/entry/2015/04/03/052633][PowerPointï¼ˆãƒ‘ãƒ¯ãƒï¼‰ 2013 ãƒãƒ¼ãƒˆã‚’ä¸€æ‹¬å‰Šé™¤ã™ã‚‹æ–¹æ³• - Training for D-Day]]
 
 **** Add Hyperink
 - 
   Insert->Hyperlink
-  [[https://support.office.com/ja-jp/article/%E3%83%8F%E3%82%A4%E3%83%91%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%AF%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B-459946fe-0747-4474-84e8-273d734466fe#bm2][ƒnƒCƒp[ƒŠƒ“ƒN‚ğì¬‚·‚é - Office]]
+  [[https://support.office.com/ja-jp/article/%E3%83%8F%E3%82%A4%E3%83%91%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%AF%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B-459946fe-0747-4474-84e8-273d734466fe#bm2][ãƒã‚¤ãƒ‘ãƒ¼ãƒªãƒ³ã‚¯ã‚’ä½œæˆã™ã‚‹ - Office]]
 
 **** Use VB Macro
 - 
@@ -55,34 +55,42 @@
   PowerPoint Opitions: Customize Ribbon -> Developer(Checked)
 
 - 
-  VBA‚Í—˜—p‰Â”\‚¾‚ªAMacro‚Ì‹L˜^‚Í”p~‚³‚ê‚Ä‚¢‚é–Í—lB
+  VBAã¯åˆ©ç”¨å¯èƒ½ã ãŒã€Macroã®è¨˜éŒ²ã¯å»ƒæ­¢ã•ã‚Œã¦ã„ã‚‹æ¨¡æ§˜ã€‚
   
 **** Slide Master
 - 
   
 - 
-  [[https://support.office.com/ja-jp/article/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89-%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%A8%E3%81%AF-d8d1c49d-d6f1-4b83-a4e7-34311a11b546][ƒXƒ‰ƒCƒhƒ}ƒXƒ^[‚Æ‚Í - Office]]
-  [[http://office-powerpoint.com/powerpoint-design/ppt046.html][PowerPointƒXƒ‰ƒCƒhƒ}ƒXƒ^[‚ÅˆêŠ‡•ÏX - ƒpƒ[ƒ|ƒCƒ“ƒg‚Ìg‚¢•û]]
-  [[http://allabout.co.jp/gm/gc/436828/][ƒpƒƒ|‚ÌƒXƒ‰ƒCƒhƒ}ƒXƒ^[Ä“ü–å (Šî–{•Ò) - All About ƒfƒWƒ^ƒ‹]]
-  [[http://thepopp.com/understand-slidemaster-which-is-the-core-of-powerpoint/][ƒpƒ[ƒ|ƒCƒ“ƒg‚Ì_‘AƒXƒ‰ƒCƒhƒ}ƒXƒ^‚ÆƒŒƒCƒAƒEƒg‚ğ—‰ğ‚·‚é - the power of powerpoint]]
+  [[https://support.office.com/ja-jp/article/%E3%82%B9%E3%83%A9%E3%82%A4%E3%83%89-%E3%83%9E%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%A8%E3%81%AF-d8d1c49d-d6f1-4b83-a4e7-34311a11b546][ã‚¹ãƒ©ã‚¤ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã¨ã¯ - Office]]
+  [[http://office-powerpoint.com/powerpoint-design/ppt046.html][PowerPointã‚¹ãƒ©ã‚¤ãƒ‰ãƒã‚¹ã‚¿ãƒ¼ã§ä¸€æ‹¬å¤‰æ›´ - ãƒ‘ãƒ¯ãƒ¼ãƒã‚¤ãƒ³ãƒˆã®ä½¿ã„æ–¹]]
+  [[http://allabout.co.jp/gm/gc/436828/][ãƒ‘ãƒ¯ãƒã®ã‚¹ãƒ©ã‚¤ãƒ‰ãƒã‚¹ã‚¿ãƒ¼å†å…¥é–€ (åŸºæœ¬ç·¨) - All About ãƒ‡ã‚¸ã‚¿ãƒ«]]
+  [[http://thepopp.com/understand-slidemaster-which-is-the-core-of-powerpoint/][ãƒ‘ãƒ¯ãƒ¼ãƒã‚¤ãƒ³ãƒˆã®ç¥é«„ã€ã‚¹ãƒ©ã‚¤ãƒ‰ãƒã‚¹ã‚¿ã¨ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’ç†è§£ã™ã‚‹ - the power of powerpoint]]
 
 ** Outlook
 *** memo
-**** ğŒ•t‘®
+**** æ¡ä»¶ä»˜æ›¸å¼
 - 
-  [•\¦]ƒ^ƒuA[Œ»İ‚Ìƒrƒ…[]A[ƒrƒ…[‚Ìİ’è]A[ƒrƒ…[‚ÌÚ×İ’è]A[ğŒ•t‘]
-  [[https://support.office.microsoft.com/ja-jp/article/%E9%80%81%E4%BF%A1%E8%80%85%E3%80%81%E4%BB%B6%E5%90%8D%E3%80%81%E3%81%BE%E3%81%9F%E3%81%AF%E5%8F%97%E4%BF%A1%E8%80%85%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%84%E3%81%A6%E8%87%AA%E5%8B%95%E7%9A%84%E3%81%AB%E5%8F%97%E4%BF%A1%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E8%89%B2%E3%82%84%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B-4efbf993-fb00-4f2c-9a3f-78e64e4455ec?CorrelationId=d2b319fe-8b61-4967-9e6c-fec34571060a&ui=ja-JP&rs=ja-JP&ad=JP][‘—MÒAŒ–¼A‚Ü‚½‚ÍóMÒ‚ÉŠî‚Ã‚¢‚Ä©“®“I‚ÉóMƒƒbƒZ[ƒW‚ÌF‚âƒtƒHƒ“ƒg‚ğ•ÏX‚·‚é - Office]]
+  [è¡¨ç¤º]ã‚¿ãƒ–ã€[ç¾åœ¨ã®ãƒ“ãƒ¥ãƒ¼]ã€[ãƒ“ãƒ¥ãƒ¼ã®è¨­å®š]ã€[ãƒ“ãƒ¥ãƒ¼ã®è©³ç´°è¨­å®š]ã€[æ¡ä»¶ä»˜æ›¸]
+  [[https://support.office.microsoft.com/ja-jp/article/%E9%80%81%E4%BF%A1%E8%80%85%E3%80%81%E4%BB%B6%E5%90%8D%E3%80%81%E3%81%BE%E3%81%9F%E3%81%AF%E5%8F%97%E4%BF%A1%E8%80%85%E3%81%AB%E5%9F%BA%E3%81%A5%E3%81%84%E3%81%A6%E8%87%AA%E5%8B%95%E7%9A%84%E3%81%AB%E5%8F%97%E4%BF%A1%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E8%89%B2%E3%82%84%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B-4efbf993-fb00-4f2c-9a3f-78e64e4455ec?CorrelationId=d2b319fe-8b61-4967-9e6c-fec34571060a&ui=ja-JP&rs=ja-JP&ad=JP][é€ä¿¡è€…ã€ä»¶åã€ã¾ãŸã¯å—ä¿¡è€…ã«åŸºã¥ã„ã¦è‡ªå‹•çš„ã«å—ä¿¡ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®è‰²ã‚„ãƒ•ã‚©ãƒ³ãƒˆã‚’å¤‰æ›´ã™ã‚‹ - Office]]
 
-**** ƒtƒHƒ‹ƒ_‚Ìƒrƒ…[İ’è‚ğƒRƒs[
+**** ãƒ•ã‚©ãƒ«ãƒ€ã®ãƒ“ãƒ¥ãƒ¼è¨­å®šã‚’ã‚³ãƒ”ãƒ¼
 - 
-  [•\¦]ƒ^ƒuA[ƒrƒ…[‚Ì•ÏX]A[Œ»İ‚Ìƒrƒ…[‚ğ‘¼‚Ìƒ[ƒ‹ƒtƒHƒ‹ƒ_[‚É“K—p‚·‚é]
-  [[http://outlook-navi.com/qa/ol92.htm][Outlook2010FƒtƒHƒ‹ƒ_‚Ìƒrƒ…[‚ğˆêŠ‡•ÏXiƒRƒs[j‚·‚é‚É‚Í]]
+  [è¡¨ç¤º]ã‚¿ãƒ–ã€[ãƒ“ãƒ¥ãƒ¼ã®å¤‰æ›´]ã€[ç¾åœ¨ã®ãƒ“ãƒ¥ãƒ¼ã‚’ä»–ã®ãƒ¡ãƒ¼ãƒ«ãƒ•ã‚©ãƒ«ãƒ€ãƒ¼ã«é©ç”¨ã™ã‚‹]
+  [[http://outlook-navi.com/qa/ol92.htm][Outlook2010ï¼šãƒ•ã‚©ãƒ«ãƒ€ã®ãƒ“ãƒ¥ãƒ¼ã‚’ä¸€æ‹¬å¤‰æ›´ï¼ˆã‚³ãƒ”ãƒ¼ï¼‰ã™ã‚‹ã«ã¯]]
 
 ** Project
-*** ƒtƒ@ƒCƒ‹ƒTƒCƒY‚ğk¬‚·‚é
+*** Memo
+**** ä½¿ã„æ–¹
+- https://srad.jp/~ins13/journal/331238
+- http://d.hatena.ne.jp/someone_else/20080218/1203343099
+**** ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºã‚’ç¸®å°ã™ã‚‹
 - 
-  •Ê–¼‚Å•Û‘¶‚·‚é‚ÆAƒtƒ@ƒCƒ‹ƒTƒCƒY‚ªk¬‚³‚ê‚éB
-  [[http://crossmodelife.com/2014/03/07/5390/][”ì‘å‰»‚µ‚½MS Project‚Ìƒtƒ@ƒCƒ‹ƒTƒCƒY‚ğk¬‚·‚é•û–@ - Cross Mode Life]]
+  åˆ¥åã§ä¿å­˜ã™ã‚‹ã¨ã€ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºãŒç¸®å°ã•ã‚Œã‚‹ã€‚
+  [[http://crossmodelife.com/2014/03/07/5390/][è‚¥å¤§åŒ–ã—ãŸMS Projectã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºã‚’ç¸®å°ã™ã‚‹æ–¹æ³• - Cross Mode Life]]
 
 ** VBA
 - [[file./VBA.org][VBA.org]]
+** Memo
+*** Backround Theme
+- (2013) File -> Account -> Office Background
+  [[https://121ware.com/qasearch/1007/app/servlet/relatedqa?QID=014606][Office 2013ã§ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼ã®èƒŒæ™¯ã‚’å¤‰æ›´ã™ã‚‹æ–¹æ³• - LAVIE]]

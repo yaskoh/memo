@@ -754,6 +754,9 @@
 - [[http://dev.ariel-networks.com/articles/software-design-200802/elisp-debug/][Emacs Lisp デバッグ - ありえるえりあ]]
 - [[http://d.hatena.ne.jp/rubikitch/20101116/edebug][Emacs Lispのソースコードデバッガ edebug を使う]]
 - [[http://www.bookshelf.jp/texi/emacs-lisp-intro-jp/eintro_19.html][17.デバッグ]]
+*** server is unsafe
+- directoryの所有者をAdministratorから利用ユーザに変更する。
+  http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
 ** Link
 *** Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]
