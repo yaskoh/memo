@@ -1,22 +1,22 @@
 * Computer Science
 ** Glossary
 *** Type safe
-- �^���S��
+- 型安全性
   http://postd.cc/what-is-type-safety/
 *** Memory safe
-- ���������S��
-*** Liskov substitution principle ���X�R�t�̒u������
-- �I�u�W�F�N�g�w���v���O���~���O�ɂ�����h���^�̒�`�̈��B
+- メモリ安全性
+*** Liskov substitution principle リスコフの置換原理
+- オブジェクト指向プログラミングにおける派生型の定義の一種。
   
 ** Memo
 *** Evaluation
 **** normal-order evaluation
-- ���K�����̕]��
-  ���S�ɓW�J���A�Ȗ񂷂�
+- 正規順序の評価
+  完全に展開し、簡約する
 
 **** applicative-order evaluation
-- ��p�I�����̕]��
-  ������]�����A��p������
+- 作用的順序の評価
+  引数を評価し、作用させる
 
 *** bound variable
 - 
@@ -38,11 +38,11 @@
 **** Kind
 - [[https://en.wikipedia.org/wiki/Scope_(computer_science)][Scope (computer science)]]
 ***** Lexical/Static Scope 
-- �������͂������_�ŃX�R�[�v�����肷��B
-  �\�[�X�̍\���ŊO�g�i�O���̊��j�����肷��B
+- 字句を解析した時点でスコープが決定する。
+  ソースの構造で外枠（外側の環境）が決定する。
 ***** Dynamic Scope
-- �ÓI�X�R�[�v�ɉ����A���s���ɐe�q�֌W�̎q������e���̃X�R�[�v���Q�Ƃł���X�R�[�v�B
-  ���̂Ƃ��Q�Ƃ����̂́A�e�q�֌W��e���ɒH��A���߂��u���b�N�ɂ���ϐ��B
+- 静的スコープに加え、実行時に親子関係の子側から親側のスコープを参照できるスコープ。
+  このとき参照されるのは、親子関係を親側に辿り、より近いブロックにある変数。
 *** Order of growth
 
 **** Big O

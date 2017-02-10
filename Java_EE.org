@@ -1,120 +1,120 @@
 * Java EE
 - 
-  Java Platform, Enterprise Edition�B
-  Java SE�ɉ����A���w�N���C�A���g�T�[�o�̑�K�̓V�X�e�����J�����邽�߂́A���܂��܂�API���ǉ�����Ă���B
-  ��Ɨp�@�\�Z�b�g�B
-  Java EE���͎̂d�l�ł��邽�߁A�e�Ђ����C�Z���X���󂯎������A�̔��Ȃǂ����Ă���B
+  Java Platform, Enterprise Edition。
+  Java SEに加え、多層クライアントサーバの大規模システムを開発するための、さまざまなAPIが追加されている。
+  企業用機能セット。
+  Java EE自体は仕様であるため、各社がライセンスを受け実装し、販売などをしている。
 
 ** API
 *** javax.servlet.*
 *** javax.faces.*
 *** javax.ejb.*
 ** Architecture
-*** �֌W
+*** 関係
 - 
-  Servlet�̏��JSP�����݂��A���̏��JSP STL�����݂���֌W�B
+  Servletの上にJSPが存在し、その上にJSP STLが存在する関係。
 
 ** Functions
 *** Java Servlet
 **** About
 - 
-  MVC�ł����Ƃ����Controller�ɊY���B
+  MVCでいうところのControllerに該当。
 
-  �N���C�A���g���󂯕t����B
-  1��Servlet���琶�����ꂽ�X���b�h�̓�������Ԃ����L����B
+  クライアントを受け付ける。
+  1つのServletから生成されたスレッドはメモリ空間を共有する。
 
-  �������ȒP�ɂ����ƁA
-  1. �N���C�A���g���烊�N�G�X�g����
-  2. ���N�G�X�g�ɉ������������s��
-  3. �N���C�A���g�փ��X�|���X��Ԃ�
-
-- 
-  �ŏ��̌Ăяo���̂݃C���X�^���X������A����ȍ~�̓X���b�h�����������̂݁B
-  �X���b�h�����̓�������Ԃ����L����B
+  処理を簡単にいうと、
+  1. クライアントからリクエストを受け
+  2. リクエストに応じた処理を行い
+  3. クライアントへレスポンスを返す
 
 - 
-  HttpServlet��GenericServlet�����݂���
+  最初の呼び出しのみインスタンス化され、それ以降はスレッドが生成されるのみ。
+  スレッド同氏はメモリ空間を共有する。
+
+- 
+  HttpServletやGenericServletが存在する
 
 **** Life cycle
-- �ŏ��ɃC���X�^���X�������v�����ꂽ�ꍇ�̂݁A�C���X�^���X������B
-  ���̍�init���Ăяo���ꏉ�����������s����
-  2��ڈȍ~��init�͌Ăяo����Ȃ��B
-- Get�܂���Post���v�������ƁAdoGet, doPost���\�b�h���Ăяo��������B
-  HttpServletRequest��getParameter���g���A�u���E�U�œ��͂��ꂽ�l���擾���A�v���ɉ�����B
-- ���ł͖����I�ɍs�킸�A�Ǘ��R���\�[���̒�~�w����A�T�[�o�n�k�̒�~�̑O�ɌĂяo�����B
+- 最初にインスタンス生成が要求された場合のみ、インスタンス化する。
+  その際initが呼び出され初期化処理が行われる
+  2回目以降はinitは呼び出されない。
+- GetまたはPostが要求されると、doGet, doPostメソッドが呼び出さえっる。
+  HttpServletRequestのgetParameterを使い、ブラウザで入力された値を取得し、要求に応じる。
+- 消滅は明示的に行わず、管理コンソールの停止指示や、サーバ地震の停止の前に呼び出される。
   
 *** JSP
 **** About
 - JavaServer Pages
-  MVC�ł����Ƃ����View�ɑ����B
-  HTML����Java�̃R�[�h�𖄂ߍ���ł����AWeb�T�[�o�œ��I��Web�y�[�W�𐶐����ăN���C�A���g�ɕԂ��Z�p�B
-  �T�[�u���b�g�̋@�\�̈�Ƃ��Ď�������Ă���AServlet�ɏ����������Ď��s�����B
-  ����̋Z�p��PHP�AASP.NET�ȂǁB
+  MVCでいうところのViewに相当。
+  HTML内にJavaのコードを埋め込んでおき、Webサーバで動的にWebページを生成してクライアントに返す技術。
+  サーブレットの機能の一つとして実装されており、Servletに書き換えられて実行される。
+  同種の技術にPHP、ASP.NETなど。
 - 
-  �uAjax�̉H������̂���HTML�̉��ʂ����Ԃ���Servlet�v
-  Servlet�̏�ɏ�����d�l�ł�������BServlet�ɖ|�󂳂ꂽ��R���p�C�������B
-  ���I�ȃR���e���c�̍쐬���\�B
+  「Ajaxの羽根飾りのついたHTMLの仮面をかぶったServlet」
+  Servletの上に乗った仕様であり実装。Servletに翻訳された後コンパイルされる。
+  動的なコンテンツの作成が可能。
 
 - 
-  �o�ꓖ����HTML��Java�R�[�h��������A�Ƃ������ƂŔ�т����ꍇ�������������A
-  ���݂�Java�R�[�h���ɗ͏����Ȃ��̂����V�ƂȂ��Ă���B
+  登場当時はHTMLにJavaコードを書ける、ということで飛びついた場合も多かったが、
+  現在はJavaコードを極力書かないのが流儀となっている。
 
 - 
-  JSP�̒��Ń��\�b�h��錾���Ȃ��ꍇ�AprocessRequest���\�b�h�̓������R�[�f�B���O���Ă��邱�ƂƓ����B
-  <%! int a = 0 %>�̂悤�ɕϐ���錾����ƃt�B�[���h�ϐ��ƂȂ�A�������̒D���������N����B
+  JSPの中でメソッドを宣言しない場合、processRequestメソッドの内部をコーディングしていることと同じ。
+  <%! int a = 0 %>のように変数を宣言するとフィールド変数となり、メモリの奪い合いが起きる。
 
 - 
-  ����ŃR���p�C����Ƃ��K�v�Ȃ��B�R���e�i�������I�ɏ������s���B
-  �T�[�u���b�g�͎��O�ŃR���p�C������class�t�@�C�������s����B
+  自らでコンパイル作業が必要ない。コンテナが自動的に処理を行う。
+  サーブレットは自前でコンパイルしたclassファイルを実行する。
 
 **** scope
 ***** application
-- �^�FServletContext
-  �R���e�L�X�g���[�g�z���ō\�������A�v���P�[�V�������w���B
-  Tomcat�ł���webapps�z���ɔz�u����war�t�@�C���B
-  �uJava EE 5 Tutorial�v��Web���W���[���\���ɏ]���ƁAAssembly Root���Y���B
+- 型：ServletContext
+  コンテキストルート配下で構成されるアプリケーションを指す。
+  Tomcatでいうwebapps配下に配置するwarファイル。
+  「Java EE 5 Tutorial」のWebモジュール構造に従うと、Assembly Rootが該当。
 
 ***** session
-- �^�FHttpSession
-  �Z�b�V�����̊ԁA�N���C�A���g���m���u������͈͂�session�X�R�[�v�B
-  Servlet�̃t�B�[���h�ϐ��ƈقȂ�Asession�ɕϐ����`����ƁA���̂悤�ȏ󋵂�����ł���B
-  �������A���ׂẴI�u�W�F�N�g���Z�b�V�����ɓ����ƁA���ɏd���A�v���P�[�V�����ƂȂ�̂ŁA
-  ���̃X�R�[�v�Ɋi�[���邱�Ƃ���������B
+- 型：HttpSession
+  セッションの間、クライアント同士を隔離する範囲がsessionスコープ。
+  Servletのフィールド変数と異なり、sessionに変数を定義すると、このような状況を回避できる。
+  ただし、すべてのオブジェクトをセッションに入れると、非常に重いアプリケーションとなるので、
+  他のスコープに格納することも検討する。
   
 ***** request
 - 
-  �N���C�A���g����Web�R���|�[�l���g�ɗv����������Ԃ̂ݕێ������X�R�[�v�B
-  1��̃��N�G�X�g���ŕێ������̂�request�X�R�[�v�B
+  クライアントからWebコンポーネントに要求が送られる間のみ保持されるスコープ。
+  1回のリクエスト内で保持されるのがrequestスコープ。
 
 ***** page
 - 
-  JSP page�̂��ƁBprocessRequest���\�b�h�ɑ������郁�\�b�h���L�q����̂Ɠ��`�B
-  JSP��Servlet�̃��\�b�h���L�q���Ă��邱�ƂɂȂ邽�߁A�����Œ�`�������̂����[�J���ϐ��ƂȂ�B
-  JSP�����݂̂���A�N�Z�X�ł���͈́B
+  JSP pageのこと。processRequestメソッドに相当するメソッドを記述するのと同義。
+  JSPはServletのメソッドを記述していることになるため、そこで定義したものがローカル変数となる。
+  JSP内部のみからアクセスできる範囲。
 
-**** �\��
+**** 構造
 ***** Tag
-- HTML�̒��ɓ���^�O���L�q�\�B
+- HTMLの中に特殊タグを記述可能。
 - 
   |------------------+----------------------+-----------------------------------|
-  | ����             | �^�O                 | ����                              |
+  | 名称             | タグ                 | 説明                              |
   |------------------+----------------------+-----------------------------------|
-  | �f�B���N�e�B�u   | <%@ �f�B���N�e�B�u > | �������̑�����Web�R���e�i�ɓ`���� |
-  | �錾             | <%! �錾 %>          | JSP�Ŏg�p����ϐ��⃁�\�b�h��錾���� |
-  | �X�N���v�g���b�g | <% Java�R�[�h %>     | �^�O����Java�̃R�[�h�����R�ɋL�q���� |
-  | ��              | <%= �� %>           | ���̕]�����ʂ�HTML���ɏo�͂���    |
-  | �A�N�V����       | <jsp:�A�N�V������>   | JSP�ł悭�s���������^�O�ŊȌ��ɋL�q���� |
-  | �R�����g         | <%-- �R�����g --%>   | JSP�Ƃ��ẴR�����g���L�q����                  |
+  | ディレクティブ   | <%@ ディレクティブ > | 処理時の属性をWebコンテナに伝える |
+  | 宣言             | <%! 宣言 %>          | JSPで使用する変数やメソッドを宣言する |
+  | スクリプトレット | <% Javaコード %>     | タグ内にJavaのコードを自由に記述する |
+  | 式              | <%= 式 %>           | 式の評価結果をHTML内に出力する    |
+  | アクション       | <jsp:アクション名>   | JSPでよく行う処理をタグで簡潔に記述する |
+  | コメント         | <%-- コメント --%>   | JSPとしてのコメントを記述する                  |
   |------------------+----------------------+-----------------------------------|
 
-****** Directive �f�B���N�e�B�u
+****** Directive ディレクティブ
 ******* page
 - 
-  JSP page�̂��ƁB
-  JSP���̂��̂Ɋւ��鏈���̎d�����R���e�i�ɓ`������́B
+  JSP pageのこと。
+  JSPそのものに関する処理の仕方をコンテナに伝えるもの。
   <%@ page page_directive_attr_list %>
   
-- ��
+- 例
   <%@ page buffer="32kb" autoFlush="true" %>
 
 ******** page_directive_attr_list
@@ -122,16 +122,16 @@
 ********* extends
 ********* import
 - 
-  java.lang.*, javax.servlet.*, javax.servlet.jsp.*, javax.servlet.http.*�ȊO�̃N���X���g�p����ꍇ�Ɏw�肷��B
+  java.lang.*, javax.servlet.*, javax.servlet.jsp.*, javax.servlet.http.*以外のクラスを使用する場合に指定する。
 
 ********* session
 - 
-  "true"�̏ꍇjavax.servlet.http.HttpSession���g����B
+  "true"の場合javax.servlet.http.HttpSessionが使える。
 
 ********* buffer
 - 
-  "none"�̏ꍇ�AJSP�ŏ��������x�ɃN���C�A���g�Ɍ��ʂ�������B
-  "none"�ȊO��kb�Ŏw�肷��B�f�t�H���g��8kb�B
+  "none"の場合、JSPで処理される度にクライアントに結果が送られる。
+  "none"以外はkbで指定する。デフォルトは8kb。
 ********* autoFlush
 ********* isThreadSafe
 ********* isErrorPage
@@ -143,25 +143,25 @@
 ********* trimDirectiveWhitespaces
 ******* taglib
 - 
-  �J�X�^���^�O���g�p�ł���悤�ɂ��邽�߂̐ݒ���s��
+  カスタムタグを使用できるようにするための設定を行う
   
   <% taglib (uri="tagLibraryURI" | targdir="tagDir") prefix="tagPrefix" %>
 
 ******** attr
 ********* uri
 - 
-  taglib-uri�̗v�f���e���w�肷��B
-  TLD(tag library descriptor)�̖��O���������邽�߂Ɏg����B
+  taglib-uriの要素内容を指定する。
+  TLD(tag library descriptor)の名前を検索するために使われる。
 
 ********* tagdir
 - 
-  JSP2.0���瓱�����ꂽ�����ŁA�^�O�t�@�C���̃f�B���N�g�����w�肷��B
+  JSP2.0から導入された属性で、タグファイルのディレクトリを指定する。
 
 ********* prefix
 - 
-  <myPrefix:myTag>�̂悤�ɋL�q����B
+  <myPrefix:myTag>のように記述する。
 
-- myPrefix�Ɉȉ��͎g�p�ł��Ȃ��B
+- myPrefixに以下は使用できない。
   - jsp:
   - jspx:
   - java:
@@ -172,56 +172,56 @@
 
 ******* include
 - 
-  �e�L�X�g�t�@�C���₻�̑���JSP�t�@�C�����C���N���[�h����B
-  �C���N���[�h�́AJSP����Servlet�ɕϊ�����ۂɍs����B
+  テキストファイルやその他のJSPファイルをインクルードする。
+  インクルードは、JSPからServletに変換する際に行われる。
   
 - 
-  �|�󎞂�file�����Ŏw�肵�����\�[�X�ɒu�������Ă����JSP�R���e�i�Ɏw�����o�����́B
-  page�f�B���N�e�B�u��import�����͗ݐϓI�Ȏw�肪�ł��邪�A���̑��͖������N�����\��������A���ӂ���K�v������B
-  ����������ꍇ�͖|�󎞂ɃG���[�ƂȂ�B
+  翻訳時にfile属性で指定したリソースに置き換えてくれとJSPコンテナに指示を出すもの。
+  pageディレクティブのimport属性は累積的な指定ができるが、その他は矛盾を起こす可能性があり、注意する必要がある。
+  矛盾がある場合は翻訳時にエラーとなる。
   
 - 
-  ������file�̂݁B
+  属性はfileのみ。
   <%@ include file="relativeURLspec" %>
 
-****** Expression Language, EL��, ������
+****** Expression Language, EL式, 式言語
 - 
-  JSF�ɂ����Ă��Ǝ��ɒ�`����Ă������AJSP 2.1, JSF 1.2�ň�̎d�l(Unified EL, ����������)�ɓ�������A
-  EL 3.0�ł�JSP����Ɨ�����Java EE 7�̎d�l�̈�ƂȂ��Ă���B
+  JSFにおいても独自に定義されていたが、JSP 2.1, JSF 1.2で一つの仕様(Unified EL, 統合式言語)に統合され、
+  EL 3.0ではJSPから独立したJava EE 7の仕様の一つとなっている。
   
-  ������ł͉��Z�̌��ʂ����łȂ��I�u�W�F�N�g�̃v���p�e�B�̒l���Ԃ����Ƃ��ł���B
+  式言語では演算の結果だけでなくオブジェクトのプロパティの値も返すことができる。
   
-- �\��
+- 構文
   ${expr}
   
-****** �X�N���v�e�B���O�v�f
+****** スクリプティング要素
 - 
-  �����ꂪJSP 2.0�Ŏ�����ꂽ���߁A�@�\�I�ɏd�Ȃ镔���������Ȃ�A�ǂ�����̗p���邩�̓v���W�F�N�g���f�A�Ƃ����ʒu�Â��ƂȂ��Ă���B
-******* �錾
+  式言語がJSP 2.0で取り入られたため、機能的に重なる部分が多くなり、どちらを採用するかはプロジェクト判断、という位置づけとなっている。
+******* 宣言
 - 
-  �t�B�[���h�Œ�`����邽�߁A�������ɒ��ӂ���K�v������B
+  フィールドで定義されるため、同期化に注意する必要がある。
 
-- �ϐ��錾
+- 変数宣言
   <%! int i = 0; %>
-- ���\�b�h�錾
+- メソッド宣言
   <%! public boolean isAdult(int age) {boolean adult = false; if (age >= 20) return true; } %>
 
-******* �X�N���v�g���b�g
+******* スクリプトレット
 - 
-  <% if (age >= 20) {%> ���l <% } else {%> �����N <% } %>
+  <% if (age >= 20) {%> 成人 <% } else {%> 未成年 <% } %>
 
-******* ��
+******* 式
 - 
-  ���Z���ʂ�I�u�W�F�N�g�̖߂�l�Ȃǂ̒l��Ԃ��B
-  ������͖|�󎞂�String�^�ɕϊ����邪�A���ł͌^�ϊ����Ă���Ȃ��B
+  演算結果やオブジェクトの戻り値などの値を返す。
+  式言語は翻訳時にString型に変換するが、式では型変換してくれない。
 
   <%= employee.getName() >
 
-****** �A�N�V����
+****** アクション
 - 
-  �T�[�o����Java���W�b�N���Ăяo�����́B
+  サーバ側のJavaロジックを呼び出すもの。
 
-******* ���
+******* 種類
 ******** jsp:include
 ******** jsp:param
 ******** jsp:forward
@@ -230,146 +230,146 @@
 ******** jsp:getProperty
 ******** jsp:setProperty
 ******** jsp:useBean
-- ��
+- 例
   <jsp:useBean id="employee" class="jp.kawakubo.Employee" scope="session" />
 
 - 
-  Javabean�Ƃ��ăC���X�^���X�ł��Ȃ��ꍇ�Aclass�łȂ�type�Ŏw�肷��B
-  ���ۃN���X�A�C���^�[�t�F�[�X�Apublic�ł��Ȃ������������݂���R���X�g���N�^�����N���X�̏ꍇ�Atype�Ŏw�肷��B
-  �N���X��.ser�t�@�C���ɑ��݂���ꍇ�AbeanName�Ŏw�肷��B
+  Javabeanとしてインスタンスできない場合、classでなくtypeで指定する。
+  抽象クラス、インターフェース、publicでもなくかつ引数が存在するコンストラクタを持つクラスの場合、typeで指定する。
+  クラスが.serファイルに存在する場合、beanNameで指定する。
 
-  scope�������������\�B
+  scope属性をしえ亭可能。
 
-  body��jsp:setProperty�A�N�V�������w�肷��ƁA�N���X����C���X�^���X������ہAsetProperty�Ŏw�肵���v���p�e�B�ɒl���ݒ肳���B
+  bodyでjsp:setPropertyアクションを指定すると、クラスからインスタンス化する際、setPropertyで指定したプロパティに値が設定される。
 
 ****** JSTL
-- JavaServer Pages Standard Tag Library, JSP�W���^�O���C�u����
-  Web�A�v���P�[�V�����ő��p�����ł��낤�A�N�V���������炩���ߒ񋟂��邱�ƂŁA
-  �����A�N�V�������d�����ĊJ�����邱�Ƃ�������A�ǐ��␶�Y�������߂邽�߂̂��́B
+- JavaServer Pages Standard Tag Library, JSP標準タグライブラリ
+  Webアプリケーションで多用されるであろうアクションをあらかじめ提供することで、
+  同じアクションを重複して開発することを回避し、可読性や生産性を高めるためのもの。
 
 ******* Core (prefix : c)
 - 
-  ���JSP���̂̋L�q���ȒP�ɂ��邽�߂̋@�\���W�߂��Ă���B
-  �ϐ��̐ݒ�E�폜�A��O�̕⑫�A���䃍�W�b�N�ȂǁB
+  主にJSP自体の記述を簡単にするための機能が集められている。
+  変数の設定・削除、例外の補足、制御ロジックなど。
 
 ******* XML (prefix : x)
-******** XML�R�A�A�N�V����
+******** XMLコアアクション
 - <x:parse>
-  XML����͂���
+  XMLを解析する
 - <x:out>
-  XPath���̕]�����ʂ��o�͂���
+  XPath式の評価結果を出力する
 - <x:set>
-  XPath���ւ̕]�����ʂ�ϐ��֐ݒ肷��
+  XPath式への評価結果を変数へ設定する
 
-******** XML�t���[����A�N�V����
+******** XMLフロー制御アクション
 - 
-  ��������XPath�����g�p����t���[����A�N�V�����B
+  条件式にXPath式を使用するフロー制御アクション。
 - <x:if>
 - <x:choose>
 - <x:when>
 - <x:x:otherwise>
 - <x:forEach>
 
-******** XML�ϊ��A�N�V����
+******** XML変換アクション
 - <x:transform>
-  XSLT�V�[�g���g�p����XML������ϊ�����B
+  XSLTシートを使用してXML文書を変換する。
 
 ******* i18n / Internationalization (prefix : fmt)
 - 
-  ���R�[�h�̃G���R�[�f�B���O�B
+  字コードのエンコーディング。
 
 ******* SQL (prefix : sql)
 - 
-  JSP page����f�[�^�x�[�X����ł���@�\���W�߂��Ă���B
+  JSP pageからデータベース操作できる機能が集められている。
 
 ******* Function (prefix : fn)
 - 
-  ��ɕ����񑀍���s���@�\���W�߂��Ă���B
+  主に文字列操作を行う機能が集められている。
 
 *** Java Beans (EJB)
 - 
-  MVC�Ƃ��Ă̗��p�ł́AModel�ɑ�������ƈʒu�Â�����B
-  �ė��p�\�ȃ\�t�g�E�F�A�R���|�[�l���g�A�܂��͂��̋Z�p�B
+  MVCとしての利用では、Modelに相当すると位置づけられる。
+  再利用可能なソフトウェアコンポーネント、またはその技術。
 
-  �r�W�l�X�w�Ɋւ��Ă͊�{�I��EJB���g���B
-  CDI�ƒʏ��Java�N���X(POJO:Plain Old Java Object)�ɂ���č�邱�Ƃ��\�����A
-  EJB�ɂ̓g�����U�N�V�����𐧌䂷��@�\��������Ă���̂ŁA������g���������M�����̍����A�v���P�[�V�������ȒP�ɍ���B
+  ビジネス層に関しては基本的にEJBを使う。
+  CDIと通常のJavaクラス(POJO:Plain Old Java Object)によって作ることも可能だが、
+  EJBにはトランザクションを制御する機能が備わっているので、これを使った方が信頼性の高いアプリケーションを簡単に作れる。
 
 **** Component
 ***** Session Bean
 - 
-  �N���C�A���g�E�T�[�o�Ԃ�V�X�e���Ԃ̂�����ʂ��Ď��s����r�W�l�X���W�b�N���������邽�߂�EJB�R���|�[�l���g�B
-  �ȉ��̎�ނ�����B
+  クライアント・サーバ間やシステム間のやり取りを通じて実行するビジネスロジックを実装するためのEJBコンポーネント。
+  以下の種類がある。
   - Stateless Session Bean
   - Stateful Session Bean
   - Singleton Session Bean
 
 ***** Message Driven Bean
 - 
-  ���b�Z�[�W�E�T�[�o����̗v���ɉ����ăr�W�l�X���W�b�N�����s����EJB�R���|�[�l���g�B
-  ���b�Z�[�W���O������V�X�e���A�g���s���ꍇ�ɍ쐬����B
+  メッセージ・サーバからの要求に応じてビジネスロジックを実行するEJBコンポーネント。
+  メッセージングを介したシステム連携を行う場合に作成する。
 
 ***** Entity Bean
 - 
-  �f�[�^�x�[�X�ւ̃f�[�^�i�����Ɏg�p����EJB�R���|�[�l���g�B
-  �����̋@�\����������Z�p�Ƃ���JPA���������ꂽ���߁A���݂͔񐄏������B
+  データベースへのデータ永続化に使用するEJBコンポーネント。
+  道央の機能を実現する技術としてJPAが導入されたため、現在は非推奨扱い。
 
 *** JSF
 - JavaServer Faces
-  ���@�\�ȃ��[�U�C���^�[�t�F�[�X�������I�ɍ�邽�߂�Web�A�v���P�[�V�����t���[�����[�N�B
+  高機能なユーザインターフェースを効率的に作るためのWebアプリケーションフレームワーク。
 
-**** �v�f
+**** 要素
 ***** FacesServlet (Controller)
 - 
-  �N���C�A���g�Ƃ̂����̑����̖������ʂ����B
-  ���N�G�X�g���󂯎��ƓK�؂ȃR���|�[�l���g�ɏ������󂯓n���A�������ʂ��N���C�A���g�ɑ���Ԃ��B
+  クライアントとのやり取りの窓口の役割を果たす。
+  リクエストを受け取ると適切なコンポーネントに処理を受け渡し、処理結果をクライアントに送り返す。
 
 ***** Facelets (XMTML)
 - 
-  ��ʂ̍\���v�f���L�q����BXHTML����JSF�̃^�O���L�q����ƁA�������^�O�ɑΉ������R���|�[�l���g���K�v�ȏ������s���B
-  ��ʃ��C�A�E�g�ƁA���[�U�[����ʂ̍\���v�f�i�{�^���⃊�X�g�A�t�H�[���Ȃǁj
+  画面の構成要素を記述する。XHTML内にJSFのタグを記述すると、そおｎタグに対応したコンポーネントが必要な処理を行う。
+  画面レイアウトと、ユーザーが画面の構成要素（ボタンやリスト、フォームなど）
 
 ***** Maneged Bean
 - 
-  ��ʑJ�ڂ�r�W�l�X���W�b�N�̌Ăяo���A���o�͒l�̊Ǘ��Ȃǂ��s���R���|�[�l���g�B
+  画面遷移やビジネスロジックの呼び出し、入出力値の管理などを行うコンポーネント。
 
 *** JPA
 - Java Persistence API
-  �f�[�^�x�[�X�ւ̃A�N�Z�X�Ȃǉi�������̏����̊J���ɂ�JPA���g���B
-  RDBMS�̃e�[�u���Ɋi�[����Ă��郌�R�[�h��Java�I�u�W�F�N�g�Ƃ��Ĉ�����悤�ɂ��Ă����O/R�}�b�s���O�t���[�����[�N�B
-  �Ȃ��AJDBC�ł�SELECT����UPDATE����Java�v���O�������ɏ����̂�RDB�̒m�����K�v�ƂȂ邪�A
-  JPA���g���ꍇ�����������R�[�h�������K�v�͂Ȃ��B
+  データベースへのアクセスなど永続化相の処理の開発にはJPAを使う。
+  RDBMSのテーブルに格納されているレコードをJavaオブジェクトとして扱えるようにしてくれるO/Rマッピングフレームワーク。
+  なお、JDBCではSELECT文やUPDATE文をJavaプログラム内に書くのでRDBの知識が必要となるが、
+  JPAを使う場合そういったコードを書く必要はない。
   
-  JavaEE�����łȂ��AJavaSE�ł��g�p�\�B
+  JavaEEだけでなく、JavaSEでも使用可能。
 
 *** CDI
 - Container Dependency Injection
-  DI(Dependency Injection�A�ˑ����̒���)�@�\�������DI�t���[�����[�N�B
-  �e�w�̃R���|�[�l���g���_��Ɍ��т���������ʂ����B
-  �v���[���e�[�V�����w��JSF����r�W�l�X�w��EJB�R���|�[�l���g���Ăяo���Ƃ������A�w���܂������R���|�[�l���g�ԃA�N�Z�X�̕��@��W�������Ă���B
+  DI(Dependency Injection、依存性の注入)機能を備えたDIフレームワーク。
+  各層のコンポーネントを柔軟に結びつける役割を果たす。
+  プレゼンテーション層のJSFからビジネス層のEJBコンポーネントを呼び出すといった、層をまたいだコンポーネント間アクセスの方法を標準化している。
   
-  �܂�CDI�̓I�u�W�F�N�g�̃��C�t�T�C�N���i�����j���Ǘ�����@�\������Ă���A
-  ���Ƃ��΂���Z�b�V���������ŗL���ȃI�u�W�F�N�g��A���郊�N�G�X�g�����ŗL���ȃI�u�W�F�N�g�ȂǁA
-  �I�u�W�F�N�g�̗L�����Ԃ��w�肵�Đ������邱�Ƃ��ł���B
+  またCDIはオブジェクトのライフサイクル（寿命）を管理する機能を備えており、
+  たとえばあるセッションだけで有効なオブジェクトや、あるリクエストだけで有効なオブジェクトなど、
+  オブジェクトの有効期間を指定して生成することができる。
   
 *** JAX-RS
 ** Glossary
 *** Deployment Descriptor, DD
-- �f�v���C�����g�L�q�q
-  �A�v���P�[�V�����܂��̓��W���[���ɑ΂���\���I�v�V��������уR���e�i�[�E�I�v�V�������w�肷��XML�t�@�C���B
+- デプロイメント記述子
+  アプリケーションまたはモジュールに対する構成オプションおよびコンテナー・オプションを指定するXMLファイル。
 **** web.xml
-- Web���W���[��(WAR�t�@�C��)�̐ݒ���
+- Webモジュール(WARファイル)の設定情報
 **** ejb-jar.xml
-- EJB���W���[��(EJB-JAR�t�@�C��)�̐ݒ���
+- EJBモジュール(EJB-JARファイル)の設定情報
 **** application.xml
-- Web�A�v���P�[�V����(EAR�t�@�C��)�̐ݒ���
+- Webアプリケーション(EARファイル)の設定情報
 **** application-client.xml
-- �N���C�A���g�E�A�v���P�[�V����(�N���C�A���gJAR�t�@�C��)�̐ݒ���
+- クライアント・アプリケーション(クライアントJARファイル)の設定情報
 **** webservices.xml
 **** ra.xml
-- ���\�[�X�E�A�_�v�^�E���W���[��(RAR�t�@�C��)�̐ݒ�t�@�C��
+- リソース・アダプタ・モジュール(RARファイル)の設定ファイル
 ** Link
 - [[https://docs.oracle.com/javaee/7/tutorial/index.html][The Java EE Tutorial - Java Platform, Enterprise Edition 7]]
-- [[https://netbeans.org/kb/trails/java-ee_ja.html][Java EE�����Java Web�̊w�K - NetBeans]]
-- [[http://qiita.com/tkxlab/items/3c0d4073defacb1215f5][JavaEE���͂��߂悤�I - Qiita]]
+- [[https://netbeans.org/kb/trails/java-ee_ja.html][Java EEおよびJava Webの学習 - NetBeans]]
+- [[http://qiita.com/tkxlab/items/3c0d4073defacb1215f5][JavaEEをはじめよう！ - Qiita]]
 

@@ -380,7 +380,7 @@
 **** Lambda Expressions
 ***** About
 - 
-  �֐��^�C���^�[�t�F�[�X�̑���Ń����_����n�����Ƃ��\�B
+  関数型インターフェースの代入でラムダ式を渡すことが可能。
   
 ***** Def
 - Lambda Expression:
@@ -429,28 +429,28 @@
 *** Type Interface
 *** Syntax
 ** Memo
-*** ����\��
-**** �R�����g
+*** 字句構造
+**** コメント
 - 
-  3��ނ̃R�����g������B
+  3種類のコメントがある。
 
 - /* comment */
-  �`���I�R�����g(traditional comment)�B
-  �����s�ɂ킽��R�����g�̋L�q�Ɍ��ʓI�B
+  伝統的コメント(traditional comment)。
+  複数行にわたるコメントの記述に効果的。
 
 - // line-comment
-  �s���R�����g(end of line comment)
-  �s���܂ł��R�����g�ƂȂ�B
+  行末コメント(end of line comment)
+  行末までがコメントとなる。
 
 - /** documentation */
-  ���������������쐬����B
-  �����s�ɂ킽�邱�Ƃ��ł���B
+  自動生成文書を作成する。
+  複数行にわたることができる。
 
-**** ���ʎq
+**** 識別子
 - 
-  ���ʎq(identifier)�́A�ϐ��A���x���A���\�b�h�A�N���X�Ȃǂɗ^�����閼�O�̂��ƁB
+  識別子(identifier)は、変数、ラベル、メソッド、クラスなどに与えられる名前のこと。
 
-**** �L�[���[�h
+**** キーワード
 - 
   abstract boolean break byte case catch char class const continue
   default do double else extends final finally float for goto
@@ -458,97 +458,97 @@
   private protected public return short static super switch synchronized this
   throw throws transient try void volatile while
 
-**** ���e����
-***** �������e����
+**** リテラル
+***** 整数リテラル
 - 
-  �����^�̒萔��\���B
+  整数型の定数を表す。
   
-- ���
-  - 10�i�����e���� (int / long)
-  - 8�i�����e���� (int / long)
-    �擪��0������2���ȏ�ŕ\�L����B
-    ex) 013 (10�i����11)
-  - 16�i�����e���� (int / long)
-    �擪��0x�܂���0X��t���ĕ\�L����B
-    ex) 0xA (10�i����10), 0x13(10�i����19)
+- 種類
+  - 10進数リテラル (int / long)
+  - 8進数リテラル (int / long)
+    先頭に0をつけて2桁以上で表記する。
+    ex) 013 (10進数で11)
+  - 16進数リテラル (int / long)
+    先頭に0xまたは0Xを付けて表記する。
+    ex) 0xA (10進数で10), 0x13(10進数で19)
 
-***** ���������_���e����
+***** 浮動小数点リテラル
 - 
-  ���������_�ڔ���(float type suffix)���g���ĕ\���B
-  double�^�̎w���d, D, �Ⴕ���͎w�肵�Ȃ��ꍇ�A
-  float�^�̎w���f, F�B
+  浮動小数点接尾語(float type suffix)を使って表す。
+  double型の指定はd, D, 若しくは指定しない場合、
+  float型の指定はf, F。
   ex) 80.0  // double
       80.0D // double
       80.0F // float
   
-  �������⏬�������ȗ��\�B
+  整数部や小数部を省略可能。
   ex) .5   // 0.5
       10.  // 10.0
       .5f  // 0.5
       1D   // 1.0
 
-***** �_���l���e����
-***** �������e����
+***** 論理値リテラル
+***** 文字リテラル
 - 
-  �P��̕�����\���B
-  �V���O���N�H�[�g(')�ň͂ށB
+  単一の文字を表す。
+  シングルクォート(')で囲む。
 
-***** �����񃊃e����
+***** 文字列リテラル
 - 
-  �����̕��т�\���B
-  �_�u���N�H�[�g(")�ň͂ށB
+  文字の並びを表す。
+  ダブルクォート(")で囲む。
 
-****** �g���\�L
-- �g���\�L(escape sequentce)
+****** 拡張表記
+- 拡張表記(escape sequentce)
   |----------------+-------------------------+--------------------------------------------+-------------|
-  | �g���\�L       | �Ӗ�                    | ���e                                       | Unicode�g�� |
+  | 拡張表記       | 意味                    | 内容                                       | Unicode拡張 |
   |----------------+-------------------------+--------------------------------------------+-------------|
-  | \b             | ���(backspace)         | �\���ʒu�𒼑O�̈ʒu�ֈړ�����B           | \u0008      |
-  | \f             | ��������(form feed)     | ���y�[�W���āA���̃y�[�W�̐擪�ֈړ�����B | \u000c      |
-  | \n             | ���s(new line)          | ���s���āA���̍s�̐擪�ֈړ�����B         | \u000a      |
-  | \r             | ���A(carriage return)   | ���݂̍s�̐擪�ʒu�ֈړ�����B             | \u000d      |
-  | \t             | �����^�u(horiontal tab) | ���̐����^�u�ʒu�ֈړ�����B               | \u0009      |
-  | \"             | ����"                   | ��d���p��                                 | \u0022      |
-  | \'             | ����'                   | �P����p��                                 | \u0027      |
-  | \\             | ����\                   | �o�b�N�X���b�V��                           | \u005c      |
-  | \ooo(o��8�i��) |                         | 8�i����ooo�̒l���������B                 |             |
+  | \b             | 後退(backspace)         | 表示位置を直前の位置へ移動する。           | \u0008      |
+  | \f             | 書式送り(form feed)     | 改ページして、次のページの先頭へ移動する。 | \u000c      |
+  | \n             | 改行(new line)          | 改行して、次の行の先頭へ移動する。         | \u000a      |
+  | \r             | 復帰(carriage return)   | 現在の行の先頭位置へ移動する。             | \u000d      |
+  | \t             | 水平タブ(horiontal tab) | 次の水平タブ位置へ移動する。               | \u0009      |
+  | \"             | 文字"                   | 二重引用符                                 | \u0022      |
+  | \'             | 文字'                   | 単一引用符                                 | \u0027      |
+  | \\             | 文字\                   | バックスラッシュ                           | \u005c      |
+  | \ooo(oは8進数) |                         | 8進数でoooの値を持つ文字。                 |             |
   |----------------+-------------------------+--------------------------------------------+-------------|
 
-- Unicode�g��
-  \uhhhh(h��16�i��)�ŁA16�i����hhhh�̒l����������\���B
+- Unicode拡張
+  \uhhhh(hは16進数)で、16進数でhhhhの値を持つ文字を表す。
 
-***** �󃊃e����
+***** 空リテラル
 - 
   null
 
-**** �����q
+**** 分離子
 - 
-  �ȉ���9��ASCII������Java�����q(separators)�Ƃ���B
+  以下の9個のASCII文字をJava分離子(separators)とする。
   ( ) { } [ ] ; ,
 
-**** ���Z�q
+**** 演算子
 - 
-  �ȉ���37�̃g�[�N����Java���Z�q(operators)�Ƃ���B
+  以下の37個のトークンをJava演算子(operators)とする。
   = > < ! ~ ? : == <= >= != && || ++ --
   + - * / & | ^ % << >> >>>
   += -= *= /= &= |= ^= %= <<= >>= >>>=
 
-*** �^�A�l
+*** 型、値
 **** Primitive Type
 - 
-  �v���~�e�B�u�^�A�l�^�A��{�^
+  プリミティブ型、値型、基本型
 
 ***** Numeric Type
 - 
-  ���l�^
+  数値型
 
 ****** Integral Type
 - 
-  �����^
+  整数型
 
 - byte
   -128 ~ 127
-  1�o�C�g�f�[�^
+  1バイトデータ
 - short
   -32768 ~ 32767
 - int
@@ -558,52 +558,52 @@
 - char
   '\u0000' ~ '\uffff' (0 ~ 65535)
 
-******* �������Z
-******** ��r���Z�q
-- ���l��r
+******* 整数演算
+******** 比較演算子
+- 数値比較
   < <= > >=
 
-- ���l�������Z�q
+- 数値等価演算子
   == !=
 
-******** ���l���Z�q
-- �P���������Z�q
+******** 数値演算子
+- 単項符号演算子
   + -
 
-- �揜���Z�q
+- 乗除演算子
   * / %
 
-- ���@���Z�q
+- 加法演算子
   + -
 
-- �������Z�q
-  ++�i�ړ���y�ѐڔ���j
+- 増分演算子
+  ++（接頭語及び接尾語）
 
-- �������Z�q
-  --�i�ړ���y�ѐڔ���j
+- 減分演算子
+  --（接頭語及び接尾語）
 
-- �����t���A���������V�t�g���Z�q
+- 符号付き、符号無しシフト演算子
   << >> >>>
 
-- �r�b�g�P�ʕ␔���Z�q
+- ビット単位補数演算子
   ~
 
-- �����r�b�g�P�ʉ��Z�q
+- 整数ビット単位演算子
   & | ^
 
-******** �������Z�q
-- �������Z�q
+******** 条件演算子
+- 条件演算子
   ?:
 
-******** �L���X�g���Z�q
+******** キャスト演算子
 
-******** ������A�����Z�q
-- ������A�����Z�q
+******** 文字列連結演算子
+- 文字列連結演算子
   +
 
 ****** Floating Point Type
 - 
-  ���������_�^
+  浮動小数点型
 
 - float
   s * m * 2e
@@ -617,312 +617,312 @@
   m : m < 2^52
   e : -1075 <= e <= 970
 
-- ���y�ѕ��̃[���A���y�ѕ��̖�����A���т�Not-a-Number(NaN)���܂ށB
+- 正及び負のゼロ、正及び負の無限大、並びにNot-a-Number(NaN)を含む。
 
-******* ����
+******* 順序
 - 
-  ���̖����� < ���̗L����[�� < ���̃[�� < ���̃[�� < ���̗L����[�� < ���̖�����
-  ���̃[���ƕ��̃[���̔�r���ʂ͓������B(-0.0=0.0)
-  NaN�͏����t�����Ȃ��B
+  負の無限大 < 負の有限非ゼロ < 負のゼロ < 正のゼロ < 正の有限非ゼロ < 正の無限大
+  正のゼロと負のゼロの比較結果は等しい。(-0.0=0.0)
+  NaNは順序付けしない。
 
-******* ���������_���Z
-******** ��r���Z�q
-- ���l��r
+******* 浮動小数点演算
+******** 比較演算子
+- 数値比較
   < <= > >=
 
-- ���l�������Z�q
+- 数値等価演算子
   == !=
 
-******** ���l���Z�q
-- �P���������Z�q
+******** 数値演算子
+- 単項符号演算子
   + -
 
-- �揜���Z�q
+- 乗除演算子
   * / %
 
-- ���@���Z�q
+- 加法演算子
   + -
 
-- �������Z�q
-  ++�i�ړ���y�ѐڔ���j
+- 増分演算子
+  ++（接頭語及び接尾語）
 
-- �������Z�q
-  --�i�ړ���y�ѐڔ���j
+- 減分演算子
+  --（接頭語及び接尾語）
 
-******** �������Z�q
-- �������Z�q
+******** 条件演算子
+- 条件演算子
   ?:
 
-******** �L���X�g���Z�q
+******** キャスト演算子
 
-******** ������A�����Z�q
-- ������A�����Z�q
+******** 文字列連結演算子
+- 文字列連結演算子
   +
 
 ***** Boolean
 - 
-  �_���^
+  論理型
 
 - true
 - false
 
-****** ���Z
-- �֌W���Z�q
+****** 演算
+- 関係演算子
   == !=
-- �_���␔���Z�q
+- 論理補数演算子
   !
-- �_�����Z�q
+- 論理演算子
   & ^ |
-- �����t��AND�y��OR���Z�q
+- 条件付きAND及びOR演算子
   && ||
-- �������Z�q
+- 条件演算子
   ?:
-- ������A�����Z�q
+- 文字列連結演算子
   +
 
 **** Reference Type
 - 
-  �Q�ƌ^�B
-  �N���X�^�A�C���^�[�t�F�[�X�^�A�z��^�����݂���B
-  �Q�ƒl�̓I�u�W�F�N�g�̃|�C���^�A�������͂����Ȃ�I�u�W�F�N�g���Q�Ƃ��Ȃ����ʂȋ�Q�ƂƂȂ�B
+  参照型。
+  クラス型、インターフェース型、配列型が存在する。
+  参照値はオブジェクトのポインタ、もしくはいかなるオブジェクトも参照しない特別な空参照となる。
 
 ***** Class Or Interface Type
 
 ****** Class Type
 
-******* �N���X
+******* クラス
 - 
-  ���\�b�h�Ə����ΏۂƂȂ�f�[�^��g�ݍ��킹���\���B
+  メソッドと処理対象となるデータを組み合わせた構造。
 
-- �錾
+- 宣言
   new Class()
 
-- �������Z�q
-  ==�ŃC���X�^���X���m���r�����ꍇ�A�C���X�^���X�̎Q�Ɛ悪�������ۂ��Ŕ�r���s���B
-  �Ⴆ�Γ����t�B�[���h�l���S�ē������Ă��A�Ⴄ��������Ԃ��w���Ă����ꍇ��false���Ԃ�B
+- 等価演算子
+  ==でインスタンス同士を比較した場合、インスタンスの参照先が同じか否かで比較を行う。
+  例えば内部フィールド値が全て等しくても、違うメモリ空間を指していた場合はfalseが返る。
 
-******* �����o
+******* メンバ
 
-******** �t�B�[���h
+******** フィールド
 - 
-  ���\�b�h�̊O�Ő錾���ꂽ�ϐ��B
+  メソッドの外で宣言された変数。
 
-- �A�N�Z�X
-  �����o�A�N�Z�X���Z�q(meber access operator)���g���B�h�b�g���Z�q(.)�B
+- アクセス
+  メンバアクセス演算子(meber access operator)を使う。ドット演算子(.)。
 
-******** ���\�b�h
+******** メソッド
 - void
-  �l��Ԃ��Ȃ����\�b�h�͖߂�l�̌^��void�Ƃ���B
+  値を返さないメソッドは戻り値の型をvoidとする。
 
 - return
-  return���Œl���Ăяo�����ɕԋp����B
+  return文で値を呼び出し元に返却する。
 
-- ������
+- 仮引数
   formal parameter
-  ���\�b�h�̓��ɋL�ڂ���ϐ����B�Ăяo�����ɏ����������B
-  final������Ɖ�������ύX�ł��Ȃ��Ȃ�B
+  メソッドの頭に記載する変数名。呼び出し時に初期化される。
+  finalをつけると仮引数を変更できなくなる。
 
-- ������
+- 実引数
   actual argument
-  ���\�b�h�Ăяo�����Ɏ󂯓n�����Ƃ��w�肷��l�B
-  �����珇�ɕ]�������B
+  メソッド呼び出し時に受け渡すことを指定する値。
+  左から順に評価される。
 
-- this�Q��
-  �������N�������C���X�^���X�ւ̎Q�Ƃ�this�Ƃ��Ď����Ă���B
+- this参照
+  自分を起動したインスタンスへの参照をthisとして持っている。
 
 ********* overload
 - 
-  ���d��`�B�����V�O�l�`���̃��\�b�h�͑��d��`�ł��Ȃ��B
-  �V�O�l�`���́A���\�b�h���ƁA�������̌��ƌ^�̑g�����̂��ƁB�߂�l�^�͊܂܂�Ȃ��B
+  多重定義。同じシグネチャのメソッドは多重定義できない。
+  シグネチャは、メソッド名と、仮引数の個数と型の組合せのこと。戻り値型は含まれない。
 
-******** �R���X�g���N�^
+******** コンストラクタ
 - 
-  �\���q
-  �N���X���Ɠ����̖߂�l�������Ȃ����\�b�h�Ɠ��l�̌`���ŋL�q����B
-  ���Ȃ݂ɃN���X���Ɠ����̃��\�b�h����`�ł��邪�A��������Ȃ��B
+  構成子
+  クラス名と同名の戻り値を持たないメソッドと同様の形式で記述する。
+  ちなみにクラス名と同名のメソッドも定義できるが、推奨されない。
 
-  �����ɂ̓R���X�g���N�^�̓����o�Ɋ܂߂Ȃ��炵���B
+  厳密にはコンストラクタはメンバに含めないらしい。
   
 
-******* ���̑�
+******* その他
 
 ******** Object Class
 - 
-  Object�͂��ׂĂ̑��̃N���X�̃X�[�p�[�N���X�ƂȂ�B
-  ���ׂẴN���X�y�єz��^��Object���p������B
+  Objectはすべての他のクラスのスーパークラスとなる。
+  すべてのクラス及び配列型はObjectを継承する。
 
 ****** Interface Type
 
 ***** Array Type
 - 
-  �z��^
+  配列型
 
-- �錾
-  �ȉ��̂ǂ���ł��i�������A��ʂ�1�̕����D�܂��j�B
+- 宣言
+  以下のどちらでも可（ただし、一般に1の方が好まれる）。
   1. int[] a;
   2. int a[];
   
-- ����
-  new�ɂ���Đ�������B
+- 生成
+  newによって生成する。
   ex) a = new int[5];
 
-- �K��l
+- 規定値
   |---------+-------------------|
-  | �^      | �K��l            |
+  | 型      | 規定値            |
   |---------+-------------------|
-  | byte    | �[�� / (byte)0    |
-  | short   | �[�� / (short)0   |
-  | int     | �[�� / 0          |
-  | long    | �[�� / 0L         |
-  | float   | �[�� / 0.0f       |
-  | double  | �[�� / 0.0d       |
-  | char    | �󕶎� / '\u0000' |
-  | boolean | �U / false        |
-  | �Q�ƌ^  | ��Q�� / null     |
+  | byte    | ゼロ / (byte)0    |
+  | short   | ゼロ / (short)0   |
+  | int     | ゼロ / 0          |
+  | long    | ゼロ / 0L         |
+  | float   | ゼロ / 0.0f       |
+  | double  | ゼロ / 0.0d       |
+  | char    | 空文字 / '\u0000' |
+  | boolean | 偽 / false        |
+  | 参照型  | 空参照 / null     |
   |---------+-------------------|
 
-- ������
-  { }�̒��ɃJ���}��؂�Œl�������ƁA���̒l�ŏ����������B
+- 初期化
+  { }の中にカンマ区切りで値を書くと、その値で初期化される。
   ex) int[] a = {1, 2, 3, 4, 5}
   
-  �ȉ��̂悤�ɏ������q�������邱�Ƃ͂ł��Ȃ��B
+  以下のように初期化子を代入することはできない。
   a = {1, 2, 3, 4, 5}
-  �ȉ��Ȃ�\�B
+  以下なら可能。
   a = new int[]{1, 2, 3, 4, 5}
 
-****** ���\�b�h
-(�ǂ��ɂǂ̂悤�ɏ����ׂ��������Ă���Ƃ���)
+****** メソッド
+(どこにどのように書くべきか迷っているところ)
 - length
   
-*** �ϐ��A�ϊ�
-**** ���
-- �N���X�ϐ� class variable
-  static�����Đ錾���ꂽ�t�B�[���h�B
-- �C���X�^���X�ϐ� instance variable
-- �z��\���v�f Array components
-- ���\�b�h������ Method parameters
-- �R���X�g���N�^������ Constructor parameters
-- ��O�n���h�������� exception-handler parameter
-- �Ǐ��ϐ� Local variables
+*** 変数、変換
+**** 種類
+- クラス変数 class variable
+  staticをつけて宣言されたフィールド。
+- インスタンス変数 instance variable
+- 配列構成要素 Array components
+- メソッド仮引数 Method parameters
+- コンストラクタ仮引数 Constructor parameters
+- 例外ハンドラ仮引数 exception-handler parameter
+- 局所変数 Local variables
 
-**** �ϊ�
+**** 変換
 
-***** ���
-****** �P���ϊ�
+***** 種別
+****** 恒等変換
 
-****** �v���~�e�B�u�^�̊g��ϊ�
+****** プリミティブ型の拡大変換
 
-****** �v���~�e�B�u�^�̏k���ϊ�
+****** プリミティブ型の縮小変換
 
-****** �Q�ƌ^�̊g��ϊ�
+****** 参照型の拡大変換
 
-****** �Q�ƌ^�̏k���ϊ�
+****** 参照型の縮小変換
 
-****** ������̕ϊ�
+****** 文字列の変換
 
-***** ����
+***** 文脈
 
-****** ����ϊ�
-****** ���\�b�h�Ăяo���ϊ�
-****** �L���X�g�ϊ�
+****** 代入変換
+****** メソッド呼び出し変換
+****** キャスト変換
 - 
   
 
-****** ������ϊ�
-****** ���l���i
-******* �P�����l���i
-******* �񍀐��l���i
+****** 文字列変換
+****** 数値昇格
+******* 単項数値昇格
+******* 二項数値昇格
 - 
   binary numerical promotion
-  ����̉��Z�q�̃I�y�����h�ɑ΂��āA���傫���^�ɕϊ����ꂽ��Ŏ��s�����B
-  �ȉ��̂悤�ȋK���ɏ]���B
-  - ����̃I�y�����h��double�ł����double�ɁA
-    �����łȂ�float�ł����float�ɁA
-    �����łȂ�long�ł����long�ɁA
-    �����łȂ����int�ɕϊ�����B
+  特定の演算子のオペランドに対して、より大きい型に変換された上で実行される。
+  以下のような規則に従う。
+  - 一方のオペランドがdoubleであればdoubleに、
+    そうでなくfloatであればfloatに、
+    そうでなくlongであればlongに、
+    そうでなければintに変換する。
 
-*** ���O
+*** 名前
 - 
-  �錾�������Ԃ��Q�Ƃ��邽�߂Ɏg�p����B
-  �L���͈͂����B
+  宣言した実態を参照するために使用する。
+  有効範囲を持つ。
 
-**** �錾 declaration
+**** 宣言 declaration
 - 
-  ���Ԃ𓱓����A�Q�Ƃ��邽�߂ɖ��O�Ƃ��Ďg�p�ł��鎯�ʎq���������B
+  実態を導入し、参照するために名前として使用できる識別子を取り入れる。
 
-- �錾��������
-  - package�錾�Ő錾�����p�b�P�[�W
-  - �^�C���|�[�g�錾�Ő錾�����^
-  - �N���X�^�錾�Ő錾�����N���X
-  - �Q�ƌ^�̃����o
-    - �t�B�[���h
-      - �N���X�^�Ő錾�����t�B�[���h
-      - �C���^�t�F�[�X�^�Ő錾�������\�b�h(abstract)
-  - ������
-    - �N���X�̃��\�b�h���̓R���X�g���N�^�̉�����
-    - �C���^�[�t�F�[�X��abstract�ȃ��\�b�h�̉�����
-    - try����catch�߂Ő錾������O�n���h���̉�����
-  - �Ǐ��ϐ�
-    - �u���b�N�ɂ�����Ǐ��ϐ��錾
-    - for���ɂ�����Ǐ��ϐ��錾
+- 宣言される実態
+  - package宣言で宣言したパッケージ
+  - 型インポート宣言で宣言した型
+  - クラス型宣言で宣言したクラス
+  - 参照型のメンバ
+    - フィールド
+      - クラス型で宣言したフィールド
+      - インタフェース型で宣言したメソッド(abstract)
+  - 仮引数
+    - クラスのメソッド又はコンストラクタの仮引数
+    - インターフェースのabstractなメソッドの仮引数
+    - try文のcatch節で宣言した例外ハンドラの仮引数
+  - 局所変数
+    - ブロックにおける局所変数宣言
+    - for文における局所変数宣言
 
-**** ����
+**** 決定
 - 
-  ���O�̌���ɂ͎O�i�K���K�v�B
-  1. ���O��5�̕��ނ̂ǂꂩ�ɕ��ނ���B
+  名前の決定には三段階が必要。
+  1. 名前を5つの分類のどれかに分類する。
      PackageName, TypeName, ExpressionName, MethodName, AmbiguousName 
-  2. AmbiguousName�ɕ��ނ��ꂽ���O�́A�L���͈͂̋K���ɂ����Package, Type Expression�̂ǂꂩ�ɕ��ނ���B
-  3. ���O�̈Ӗ����ŏI�I�Ɍ��肷��B�Ӗ��������Ȃ���΃R���p�C���G���[�Ƃ���B
+  2. AmbiguousNameに分類された名前は、有効範囲の規則によってPackage, Type Expressionのどれかに分類する。
+  3. 名前の意味を最終的に決定する。意味をもたなければコンパイルエラーとする。
 
-**** ���O�t���K��
-***** �p�b�P�[�W��
+**** 名前付け規則
+***** パッケージ名
 - 
-  �L�����p�\�ɂ���ɂ́A�ŏ��̍\���v�f�����ׂđ啶���ŏ����B
-  Sun.COM�̂悤�ȃh���C�����t���ɂ�(COM.Sun)�A�ȍ~�͑g�D���̋K��(���A�ہA�v���W�F�N�g��)�𗘗p����B
+  広く利用可能にするには、最初の構成要素をすべて大文字で書く。
+  Sun.COMのようなドメインを逆順にし(COM.Sun)、以降は組織内の規約(部、課、プロジェクト等)を利用する。
   ex) COM.Sun.sunsoft.DOE
       EDU.cmu.cs.bovik.cheese
-  �Ǐ��g�p�������Ӑ}�����p�b�P�[�W���́A�������Ŏn�܂鎯�ʎq�������Ƃ��]�܂����B
-  ���ʎqjava�Ŏn�܂�p�b�P�[�W���͕W��java�p�b�P�[�W�𖼑O�t�����邽�߂ɗ\�񂳂�Ă���B
+  局所使用だけを意図したパッケージ名は、小文字で始まる識別子をもつことが望ましい。
+  識別子javaで始まるパッケージ名は標準javaパッケージを名前付けするために予約されている。
 
-***** �N���X�y�уC���^�[�t�F�[�X�^��
+***** クラス及びインターフェース型名
 - 
-  �e�P��̐擪������啶���Ƃ��A�啶�������������݂������A�L�q�I�ȁ[�����܂��͖����傪�]�܂����B
+  各単語の先頭文字を大文字とし、大文字小文字を混在させた、記述的なー名詞または名詞句が望ましい。
   ex) ClassLoader
       SecurityManager
-  �C���^�[�t�F�[�X�́A�������͖�����ł��悢�B���ۃX�[�p�[�N���X�ł͓��ɓK���Ă���B
-  �܂��Ajava.lang.Runnable��java.lang.Cloneable�̂悤�ɁA�U�镑�����L�q����`�e���Ƃ��Ă��悢�B
+  インターフェースは、名詞又は名詞句でもよい。抽象スーパークラスでは特に適している。
+  また、java.lang.Runnableやjava.lang.Cloneableのように、振る舞いを記述する形容詞としてもよい。
 
-***** ���\�b�h��
+***** メソッド名
 - 
-  �擪�������������Ƃ��A����ɑ����e�P��̐擪������啶���Ƃ���A�啶���Ə����������݂����������܂�h�����傪�]�܂����B
+  先頭文字を小文字とし、それに続く各単語の先頭文字を大文字とする、大文字と小文字を混在させた動詞またh動詞句が望ましい。
 
-***** �t�B�[���h��
+***** フィールド名
 - 
-  final�łȂ��t�B�[���h�̖��O�́A�擪�����͏������Ŏn�܂�A����ɑ����P��̐擪������啶���Ƃ����A
-  �啶�������������݂��������̂Ƃ��邱�Ƃ��]�܂����B
-  �����A������܂��͖����̏ȗ��`�̖��O�������Ƃ��]�܂����B
+  finalでないフィールドの名前は、先頭文字は小文字で始まり、それに続く単語の先頭文字を大文字とした、
+  大文字小文字を混在させたものとすることが望ましい。
+  名詞、名詞句または名詞の省略形の名前を持つことが望ましい。
 
-***** �萔��
+***** 定数名
 - 
-  �S�đ啶���ŁA����"_"�ŋ�؂�ꂽ�\���v�f�����A��ȏ�̒P��A���������͗���̕��тƂ��邱�Ƃ��]�܂����B
-  �N���X�^��final�ϐ����A����Ƃ��āA�������тƂ��Ă悢�B
+  全て大文字で、下線"_"で区切られた構成要素を持つ、一つ以上の単語、頭文字又は略語の並びとすることが望ましい。
+  クラス型のfinal変数も、慣例として、同じ並びとしてよい。
 
-***** �Ǐ��ϐ�����щ�������
+***** 局所変数および仮引数名
 - 
-  �Z�����Ӗ��̂�����̂Ƃ���̂��]�܂����B���ʁA�P��ł͂Ȃ��Z���������̗�Ƃ���B
-  ex) in, out, off, len, buf�Ȃ�
+  短いが意味のあるものとするのが望ましい。普通、単語ではない短い小文字の列とする。
+  ex) in, out, off, len, bufなど
 
-*** �p�b�P�[�W
-*** ��O
-*** �u���b�N�y�ѕ�
-**** �u���b�N
+*** パッケージ
+*** 例外
+*** ブロック及び文
+**** ブロック
 - 
-  ���̕��т�{ }�ň͂񂾕����u���b�N(block)�Ƃ����B
-  �\����P��̕��ƌ��Ȃ����B
+  文の並びを{ }で囲んだ物をブロック(block)という。
+  構文上単一の文と見なされる。
 
-**** ��
+**** 文
 - 
-  ��(statement)�́A��{�I�ɃZ�~�R����(;)�ŏI����B
+  文(statement)は、基本的にセミコロン(;)で終える。
 
 ***** if
 ****** if-then
@@ -950,26 +950,26 @@
 
 ***** for
 - 
-  for (��������; ���䕔; �X�V��) {
+  for (初期化部; 制御部; 更新部) {
     ...
   }
 
-- �g��for��
-  for-each����for-in���Ƃ��Ă΂��B
+- 拡張for文
+  for-each文やfor-in文とも呼ばれる。
 
-  for (<�^> <�ϐ���> : <�z���List�^>) {
+  for (<型> <変数名> : <配列やList型>) {
     ...
   }
 
 
 ***** break
 - 
-  break�Ƀ��x����t����ƁA�C�ӂ̃��[�v���甲������B
-  ���x���t��break�́A���[�v�̒��łȂ��Ă��g����B
+  breakにラベルを付けると、任意のループから抜けられる。
+  ラベル付きbreakは、ループの中でなくても使える。
 
 ***** continue
 - 
-  continue�Ƀ��x����t���āA
+  continueにラベルを付けて、
 
 ***** return
 ***** throw
@@ -978,108 +978,108 @@
 ****** try-catch
 ****** try-catch-finally
 
-*** ��
+*** 式
 - 
-  ��(expression)�Ƃ͈ȉ��̑��́B
-  - �ϐ�
-  - ���e����
-  - �ϐ��⃊�e���������Z�q�Ō�����������
+  式(expression)とは以下の総称。
+  - 変数
+  - リテラル
+  - 変数やリテラルを演算子で結合したもの
 
-**** �N���X�C���X�^���X������
-**** �z�񐶐���
-**** �t�B�[���h�A�N�Z�X��
-**** ���\�b�h�ďo����
-**** �z��A�N�Z�X��
-**** ��u��
-***** ++ ��u�C���N�������g���Z�q
-***** -- ��u�f�N�������g���Z�q
-**** �P�����Z�q
-***** ++ �O�u�C���N�������g���Z�q
-***** -- ��u�f�N�������g���Z�q
-***** + �P�����Z�q
-***** - �P���}�C�i�X���Z�q
-***** ~ �r�b�g���̕␔���Z�q
-***** ! �_���I�ȕ␔���Z�q
-**** �L���X�g��
+**** クラスインスタンス生成式
+**** 配列生成式
+**** フィールドアクセス式
+**** メソッド呼出し式
+**** 配列アクセス式
+**** 後置式
+***** ++ 後置インクリメント演算子
+***** -- 後置デクリメント演算子
+**** 単項演算子
+***** ++ 前置インクリメント演算子
+***** -- 後置デクリメント演算子
+***** + 単項演算子
+***** - 単項マイナス演算子
+***** ~ ビット毎の補数演算子
+***** ! 論理的な補数演算子
+**** キャスト式
 - 
-  �L���X�g���Z�q�Ŏw�肵���^�ɕϊ�����B
-  ���ʓ��Ɏw�肵�����O�̌^�ɕϊ�����B
+  キャスト演算子で指定した型に変換する。
+  括弧内に指定した名前の型に変換する。
 
-- �`��
-  (�^)��
+- 形式
+  (型)式
 
-- �k���ϊ�
-  ��菬�����^�ւ̑����(double -> int�Ȃ�)�̓L���X�g���K�v�B
+- 縮小変換
+  より小さい型への代入時(double -> intなど)はキャストが必要。
   ex) a = (int)10.0;
 
-  ������ɉE�ӂ̎��⏉�����q�̒萔�����ϐ��̌^(byte, short, char�̂�)�ŕ\���ł���ꍇ�́A
-  �k���ϊ��������ōs����B
-  �萔���Ɍ����邽�߁A�ϐ��̑���̓G���[�ƂȂ�B
+  代入時に右辺の式や初期化子の定数式が変数の型(byte, short, charのみ)で表現できる場合は、
+  縮小変換が自動で行われる。
+  定数式に限られるため、変数の代入はエラーとなる。
   ex) short a = 53;  // OK
       byte b = a;    // NG
 
-  ���������_�ɂ��Ă͎����ŕϊ����s���Ȃ����߁Afloat��double�^�̒l�͑���s�\�B
-  ex) float a = 3.14;        // NG�B3.14��double
+  浮動小数点については自動で変換が行われないため、floatにdouble型の値は代入不可能。
+  ex) float a = 3.14;        // NG。3.14はdouble
       float b = 3.14f;       // OK
       float c = (float)3.14; // OK
 
-- �g��ϊ�
-  �g��ϊ����̓L���X�g�s�v�B
+- 拡大変換
+  拡大変換時はキャスト不要。
   ex) int a = '5';       // OK
       long b = a;        // OK
       double c = 3.14f;  // OK
 
-**** �揜���Z�q
-***** * ��Z���Z�q
-***** / ���Z���Z�q
-***** % ��]���Z�q
-**** �������Z�q
-***** + ������A�����Z�q
-***** +, - ���l�������Z�q
-**** �V�t�g���Z�q
-- << ���V�t�g
-  x << n : x��n�r�b�g���ɃV�t�g���āA�󂢂��r�b�g��0���l�߂��l�𐶐�����B
+**** 乗除演算子
+***** * 乗算演算子
+***** / 除算演算子
+***** % 剰余演算子
+**** 加減演算子
+***** + 文字列連結演算子
+***** +, - 数値加減演算子
+**** シフト演算子
+- << 左シフト
+  x << n : xをnビット左にシフトして、空いたビットに0を詰めた値を生成する。
 
-- >> �E�V�t�g�i�Z�p�V�t�g)
-  x >> n : x��n�r�b�g�E�ɃV�t�g���āA�󂢂��r�b�g���V�t�g�O�̕����r�b�g�Ŗ��ߐs�������l�𐶐�����B
+- >> 右シフト（算術シフト)
+  x >> n : xをnビット右にシフトして、空いたビットをシフト前の符号ビットで埋め尽くした値を生成する。
 
-- >>> �E�V�t�g�i�_���V�t�g�j
-  x >>> n : x��n�r�b�g�E�ɃV�t�g���āA�󂢂��r�b�g��0���l�߂��l�𐶐�����B
+- >>> 右シフト（論理シフト）
+  x >>> n : xをnビット右にシフトして、空いたビットに0を詰めた値を生成する。
 
-**** �֌W���Z�q
-***** <, <=, >, >= ���l��r���Z�q
-***** instanceof �^��r���Z�q
-**** �������Z�q
-***** ==, != ���l�������Z�q
-***** ==, != �_���^�������Z�q
-***** ==, != �Q�ƌ^�������Z�q
-**** �r�b�g�P�ʂ̘_�����Z�q
-***** &, ^, | �����l�r�b�g�P�ʉ��Z�q
-***** &, ^, | �_���^�_�����Z�q
-**** ����AND���Z�q &&
+**** 関係演算子
+***** <, <=, >, >= 数値比較演算子
+***** instanceof 型比較演算子
+**** 等価演算子
+***** ==, != 数値等価演算子
+***** ==, != 論理型等価演算子
+***** ==, != 参照型等価演算子
+**** ビット単位の論理演算子
+***** &, ^, | 整数値ビット単位演算子
+***** &, ^, | 論理型論理演算子
+**** 条件AND演算子 &&
 - 
-  &�ƈقȂ�A�Z���]��(short circuit evaluation)���s����B
+  &と異なり、短絡評価(short circuit evaluation)が行われる。
   
-**** ����OR���Z�q ||
+**** 条件OR演算子 ||
 - 
-  �Z���]�����s����B|�ł͗��ӂ��K���]�������B
+  短絡評価が行われる。|では両辺が必ず評価される。
 
-**** �������Z�q ?:
-**** ������Z�q
-***** = �P��������Z�q
+**** 条件演算子 ?:
+**** 代入演算子
+***** = 単純代入演算子
 - 
-  �������]������ƁA���I�y�����h�̌^�ƒl��������B
-  ������Z�q�͉E�����B
+  代入式を評価すると、左オペランドの型と値が得られる。
+  代入演算子は右結合。
   ex) a = b = 1 => a = (b = 1)
   
-  ���������́A��L�̍\���̓G���[�ƂȂ�B
-  ex) int a = b = 0;   // �R���p�C���G���[
+  初期化時は、上記の構文はエラーとなる。
+  ex) int a = b = 0;   // コンパイルエラー
 
-***** ����������Z�q
+***** 複合代入演算子
 - 
-  ���Z�Ƒ���Ƃ�����̓����������߁A����������Z�q�ƌĂ΂��B
+  演算と代入という二つの働きをもつため、複合代入演算子と呼ばれる。
 
-- �ꗗ
+- 一覧
   *= /= %= += -= <<= >>= >>>= &= ^= |=
 
 *** API
@@ -1088,72 +1088,72 @@
 ***** java.lang.System
 ****** System.out
 - 
-  System.out�̓R���\�[����ʂƌ��т��X�g���[���ŁA
-  �W���o�̓X�g���[��(standard output stream)�ƌĂ΂��B
+  System.outはコンソール画面と結びつくストリームで、
+  標準出力ストリーム(standard output stream)と呼ばれる。
 
 ******* println
 - 
-  ���s�t���̕\���Bln��line�B
+  改行付きの表示。lnはline。
 
 ******* printf
 - 
   ex) System.out.printf("x = %3d\n", x);
 
-  %�͏����w��̐擪�����Ȃ̂ŁA����%���o�͂������ꍇ��%%�ƕ\�L����B
+  %は書式指定の先頭文字なので、文字%を出力したい場合は%%と表記する。
 
-- �ϊ�����
+- 変換文字
   |----------+------------------|
-  | �ϊ����� | ���             |
+  | 変換文字 | 解説             |
   |----------+------------------|
-  | %d       | 10�i���ŏo��     |
-  | %o       | 8�i���ŏo��      |
-  | %x       | 16�i���ŏo��     |
-  | %f       | �����_�`���ŏo�� |
-  | %s       | ������ŏo��     |
+  | %d       | 10進数で出力     |
+  | %o       | 8進数で出力      |
+  | %x       | 16進数で出力     |
+  | %f       | 小数点形式で出力 |
+  | %s       | 文字列で出力     |
   |----------+------------------|
   
 ******* print
 - 
-  �\����ɉ��s�͂���Ȃ��B
+  表示後に改行はされない。
 
 
 ****** system.in
 - 
-  System.in�͕W�����̓X�g���[��(standard input stream)
+  System.inは標準入力ストリーム(standard input stream)
 
 **** java.math
 **** java.net
 **** java.util
 ***** java.util.Scanner
 - 
-  nextInt()��nextDouble()���̃��\�b�h�œ��͒l�����o���B
-  ������̓Ǎ��݂ɂ�next()���g���B�󔒂�^�u��������؂�ƌ��Ȃ����B
-  ��s�Ǎ��ޏꍇ��nextLine()�B
+  nextInt()やnextDouble()等のメソッドで入力値を取り出す。
+  文字列の読込みにはnext()を使う。空白やタブ文字が区切りと見なされる。
+  一行読込む場合はnextLine()。
 
 ***** java.util.Random
 - 
-  �����̐���
+  乱数の生成
 
-- �C���X�^���X�̐���
+- インスタンスの生成
   1. Random rand = new Random();
   2. Random rand = new Random(5);
 
-- ���\�b�h
+- メソッド
   |---------------+---------+--------------------------|
-  | ���\�b�h      | �^      | ���������l�͈̔�       |
+  | メソッド      | 型      | 生成される値の範囲       |
   |---------------+---------+--------------------------|
   | nextBoolean() | boolean | true / false             |
   | nexnInt()     | int     | -2147483648 ~ 2147483647 |
   | nextInt(n)    | int     | 0 ~ n-1                  |
   | nextLong()    | long    |                          |
-  | nextDouble()  | double  | 0.0�ȏ�1.0����           |
-  | nextFloat()   | float   | 0.0�ȏ�1.0����           |
+  | nextDouble()  | double  | 0.0以上1.0未満           |
+  | nextFloat()   | float   | 0.0以上1.0未満           |
   |---------------+---------+--------------------------|
 
 
 ***** java.util.GregorianCalendar
 - 
-  ���t�E�������������߂̃N���X�B
+  日付・時刻を扱うためのクラス。
 
 ***** java.util.Date
 
@@ -1165,7 +1165,7 @@
 
 **** static import
 - 
-  static�ϐ���static���\�b�h���N���X�����w�肹���Ɏg�p����@�\�B
+  static変数やstaticメソッドをクラス名を指定せずに使用する機能。
 
 - 
   import static packageName.className.staticVariables;

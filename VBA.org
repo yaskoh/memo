@@ -1,7 +1,7 @@
 * VBA
 ** Language
 - [[https://msdn.microsoft.com/en-us/library/office/gg264383.aspx][Visual Basic for Applications language reference for Office 2013 - Dev Center]]
-- [[https://msdn.microsoft.com/ja-jp/library/office/gg264383.aspx][Office VBA ���ꃊ�t�@�����X - Dev Center]]
+- [[https://msdn.microsoft.com/ja-jp/library/office/gg264383.aspx][Office VBA 言語リファレンス - Dev Center]]
 
 *** Constants
 **** Calender Constants
@@ -41,95 +41,95 @@
 **** Decimal
 **** Data
 **** Object
-**** String(�ϒ�)
-**** String(�Œ蒷)
-**** Variant(���l)
-**** Variant(����)
+**** String(可変長)
+**** String(固定長)
+**** Variant(数値)
+**** Variant(文字)
 *** Directive
 **** #Const
 **** #If...Then...#Else
   
-*** Functions / �֐�
-- [[http://officetanaka.net/excel/vba/function/index.htm][VBA�̊֐� - officeTANAKA]]
-  �iApplication���ɈႢ������Έڍs����j
+*** Functions / 関数
+- [[http://officetanaka.net/excel/vba/function/index.htm][VBAの関数 - officeTANAKA]]
+  （Application毎に違いがあれば移行する）
 
 **** MsgBox
 - MsgBox(prompt [,bottuns] [,title] [,helpfile,context])
-  - prompt : �\�����郁�b�Z�[�W���w��
-  - button : �{�^���̎�ނ�^�C�v�Ȃǂ��w�肷��
-  - title : �^�C�g���o�[�ɕ\�����镶������w�肷��B
-  - helpfile : [�w���v]�{�^������J���w���v�t�@�C�����w�肷��B
+  - prompt : 表示するメッセージを指定
+  - button : ボタンの種類やタイプなどを指定する
+  - title : タイトルバーに表示する文字列を指定する。
+  - helpfile : [ヘルプ]ボタンから開くヘルプファイルを指定する。
 - 
-  �_�C�A���O�{�b�N�X�Ƀ��b�Z�[�W�ƃ{�^����\�����A�ǂ̃{�^���������ꂽ�������������^�̐��l��Ԃ��B
+  ダイアログボックスにメッセージとボタンを表示し、どのボタンが押されたかを示す整数型の数値を返す。
 
 ***** buttons
 - 
   |--------------------+------+----------------------------------------------------------------------------------------------------------------------------|
-  | �萔               |   �l | ���e                                                                                                                       |
+  | 定数               |   値 | 内容                                                                                                                       |
   |--------------------+------+----------------------------------------------------------------------------------------------------------------------------|
-  | vbOKOnly           |    0 | [OK]�{�^���݂̂�\�����܂�                                                                                                 |
-  | vbOKCancel         |    1 | [OK]�{�^����[�L�����Z��]�{�^����\�����܂�                                                                                 |
-  | vbAbortRetryIgnore |    2 | [���~]�A[�Ď��s]�A�����[����]�̂R�̃{�^����\�����܂�                                                                   |
-  | vbYesNoCancel      |    3 | [�͂�]�A[������]�A�����[�L�����Z��]�̂R�̃{�^����\�����܂�                                                             |
-  | vbYesNo            |    4 | [�͂�]�{�^����[������]�{�^����\�����܂�                                                                                   |
-  | vbRetryCancel      |    5 | [�Ď��s]�{�^����[�L�����Z��]�{�^����\�����܂�                                                                             |
-  | vbCritical         |   16 | �x�����b�Z�[�W�A�C�R����\�����܂�                                                                                         |
-  | vbQuestion         |   32 | �₢���킹���b�Z�[�W�A�C�R����\�����܂�                                                                                   |
-  | vbExclamation      |   48 | ���Ӄ��b�Z�[�W�A�C�R����\�����܂�                                                                                         |
-  | vbInformation      |   64 | ��񃁃b�Z�[�W�A�C�R����\�����܂�                                                                                         |
-  | vbDefaultButton1   |    0 | ��1�{�^����W���{�^���ɂ��܂�                                                                                              |
-  | vbDefaultButton2   |  256 | ��2�{�^����W���{�^���ɂ��܂�                                                                                              |
-  | vbDefaultButton3   |  512 | ��3�{�^����W���{�^���ɂ��܂�                                                                                              |
-  | vbDefaultButton4   |  768 | ��4�{�^����W���{�^���ɂ��܂�                                                                                              |
-  | vbApplicationModal |    0 | �A�v���P�[�V�������[�_���ɐݒ肵�܂��B���b�Z�[�W�{�b�N�X�ɉ�������܂ŁA���ݑI�𒆂̃A�v���P�[�V�����̎��s���p���ł��܂��� |
-  | vbSystemModal      | 4096 | �V�X�e�����[�_���ɐݒ肵�܂��B���b�Z�[�W�{�b�N�X�ɉ�������܂ŁA���ׂẴA�v���P�[�V���������f����܂�                     |
+  | vbOKOnly           |    0 | [OK]ボタンのみを表示します                                                                                                 |
+  | vbOKCancel         |    1 | [OK]ボタンと[キャンセル]ボタンを表示します                                                                                 |
+  | vbAbortRetryIgnore |    2 | [中止]、[再試行]、および[無視]の３つのボタンを表示します                                                                   |
+  | vbYesNoCancel      |    3 | [はい]、[いいえ]、および[キャンセル]の３つのボタンを表示します                                                             |
+  | vbYesNo            |    4 | [はい]ボタンと[いいえ]ボタンを表示します                                                                                   |
+  | vbRetryCancel      |    5 | [再試行]ボタンと[キャンセル]ボタンを表示します                                                                             |
+  | vbCritical         |   16 | 警告メッセージアイコンを表示します                                                                                         |
+  | vbQuestion         |   32 | 問い合わせメッセージアイコンを表示します                                                                                   |
+  | vbExclamation      |   48 | 注意メッセージアイコンを表示します                                                                                         |
+  | vbInformation      |   64 | 情報メッセージアイコンを表示します                                                                                         |
+  | vbDefaultButton1   |    0 | 第1ボタンを標準ボタンにします                                                                                              |
+  | vbDefaultButton2   |  256 | 第2ボタンを標準ボタンにします                                                                                              |
+  | vbDefaultButton3   |  512 | 第3ボタンを標準ボタンにします                                                                                              |
+  | vbDefaultButton4   |  768 | 第4ボタンを標準ボタンにします                                                                                              |
+  | vbApplicationModal |    0 | アプリケーションモーダルに設定します。メッセージボックスに応答するまで、現在選択中のアプリケーションの実行を継続できません |
+  | vbSystemModal      | 4096 | システムモーダルに設定します。メッセージボックスに応答するまで、すべてのアプリケーションが中断されます                     |
   |--------------------+------+----------------------------------------------------------------------------------------------------------------------------|
 
 ***** return value
 - 
   |----------+----+------------------------------|
-  | �萔     | �l | ����                         |
+  | 定数     | 値 | 説明                         |
   |----------+----+------------------------------|
-  | vbOK     |  1 | [OK]�{�^���������ꂽ         |
-  | vbCancel |  2 | [�L�����Z��]�{�^���������ꂽ |
-  | vbAbort  |  3 | [���~]�{�^���������ꂽ       |
-  | vbRetry  |  4 | [�Ď��s]�{�^���������ꂽ     |
-  | vbIgnore |  5 | [����]�{�^���������ꂽ       |
-  | vbYes    |  6 | [�͂�]�{�^���������ꂽ       |
-  | vbNo     |  7 | [������]�{�^���������ꂽ     |
+  | vbOK     |  1 | [OK]ボタンが押された         |
+  | vbCancel |  2 | [キャンセル]ボタンが押された |
+  | vbAbort  |  3 | [中止]ボタンが押された       |
+  | vbRetry  |  4 | [再試行]ボタンが押された     |
+  | vbIgnore |  5 | [無視]ボタンが押された       |
+  | vbYes    |  6 | [はい]ボタンが押された       |
+  | vbNo     |  7 | [いいえ]ボタンが押された     |
   |----------+----+------------------------------|
 
 **** Right
 - Right(string,length)
-  - string : ���̕�����
-  - length : �����o��������
+  - string : 元の文字列
+  - length : 抜き出す文字数
 
 - 
-  string������̉E�[����Alength����������擾���Ԃ��B
+  string文字列の右端から、length分文字列を取得し返す。
 
 **** Mid
 - 
 
 **** StrConv
-- �p�@
+- 用法
   StrConv(string, conversion)
 
 - conversion
   |--------------+----+----------------------------|
-  | �萔         | �l | ���e                       |
+  | 定数         | 値 | 内容                       |
   |--------------+----+----------------------------|
-  | vpUpperCase  |  1 | �啶���ɕϊ�               |
-  | vbLowerCase  |  2 | �������ɕϊ�               |
-  | vbProperCase |  3 | �e�����̐擪��啶���ɕϊ� |
-  | vbWide       |  4 | ���p������S�p�ɕϊ�       |
-  | vbNarrow     |  8 | �S�p�����𔼊p�ɕϊ�       |
+  | vpUpperCase  |  1 | 大文字に変換               |
+  | vbLowerCase  |  2 | 小文字に変換               |
+  | vbProperCase |  3 | 各文字の先頭を大文字に変換 |
+  | vbWide       |  4 | 半角文字を全角に変換       |
+  | vbNarrow     |  8 | 全角文字を半角に変換       |
   |--------------+----+----------------------------|
   
 - 
-  "string"�Ŏw�肵��������ɁAconversion�Ŏw�肵���ϊ����s���B
+  "string"で指定した文字列に、conversionで指定した変換を行う。
 *** Objects
 *** Operators
-**** �Z�p���Z�q
+**** 算術演算子
 ***** ^
 ***** *
 ***** /
@@ -137,7 +137,7 @@
 ***** Mod
 ***** +
 ***** -
-**** ��r���Z�q
+**** 比較演算子
 ***** ComparisonOperator
 ****** <
 ****** <=
@@ -147,10 +147,10 @@
 ****** <>
 ***** Is
 ***** Like
-**** �A�����Z�q
+**** 連結演算子
 ***** &
 ***** +
-**** �_�����Z�q
+**** 論理演算子
 ***** AND
 ***** Eqv
 ***** Imp
@@ -158,33 +158,33 @@
 ***** OR
 ***** Xor
 **** =
-- ������Z�q
+- 代入演算子
 **** AddressOf
-- �w�肳�ꂽ�v���V�[�W���̃A�h���X��n���P�����Z�q�B
+- 指定されたプロシージャのアドレスを渡す単項演算子。
 *** Properties
 *** Statements
-- [[https://msdn.microsoft.com/ja-jp/library/office/jj692812.aspx][�X�e�[�g�����g - Visual Basic ���ꃊ�t�@�����X - Dev Center]]
+- [[https://msdn.microsoft.com/ja-jp/library/office/jj692812.aspx][ステートメント - Visual Basic 言語リファレンス - Dev Center]]
 
 **** AppActivate
 **** Beep
 **** Call
 - 
-  ����Sub�v���V�[�W����Function�v���V�[�W���Ȃǂ��Ăяo���Đ����n���B
+  他のSubプロシージャやFunctionプロシージャなどを呼び出して制御を渡す。
 
-  ���L�Ƀv���V�[�W���Ɋւ��āA����̎g�p�K�����L���B
-  1. �ʏ��Sub�v���V�[�W���́ACall�X�e�[�g�����g���ȗ����邱�Ƃ��\�B
-     ex) ��:Call myFunction(123)
-         ��:myFunction 123
-  2. Call���ȗ�����ꍇ�A���������ʂň͂܂Ȃ��BCall���g���ꍇ�͈͂ށB
-     ex) �~:myFunction(123)
-         ��:myFunction 123
-         ��:Call myFunction(123)
-         �~:Call myFunction 123
-  3. Call�ł͕Ԃ�l���󂯎��Ȃ��B
-     ex) �~:rc = Call myFunction(123)
-  4. �Ԃ�l���󂯎��ꍇ�ACall���g��Ȃ����A���ʂ͕K�v�ƂȂ�B
-     ex) �~:rc = myFunction 123
-         ��:rc = myFunction(123)
+  下記にプロシージャに関して、幾つかの使用規則を記す。
+  1. 通常のSubプロシージャは、Callステートメントを省略することも可能。
+     ex) ○:Call myFunction(123)
+         ○:myFunction 123
+  2. Callを省略する場合、引数を括弧で囲まない。Callを使う場合は囲む。
+     ex) ×:myFunction(123)
+         ○:myFunction 123
+         ○:Call myFunction(123)
+         ×:Call myFunction 123
+  3. Callでは返り値を受け取れない。
+     ex) ×:rc = Call myFunction(123)
+  4. 返り値を受け取る場合、Callを使わないが、括弧は必要となる。
+     ex) ×:rc = myFunction 123
+         ○:rc = myFunction(123)
 **** ChDir
 **** ChDrive
 **** Close
@@ -194,11 +194,11 @@
 **** DeleteSetting
 **** Dim
 - 
-  �ϐ���錾����
+  変数を宣言する
 
 **** Do ... Loop
 - About
-  ������True�̊ԁA��A�̃X�e�[�g�����g���J��Ԃ����s����B
+  条件がTrueの間、一連のステートメントを繰り返し実行する。
 
 - Statement
   - Do [{While | Until} condition]
@@ -214,7 +214,7 @@
 
 **** End
 - 
-  �v���V�[�W���܂��̓u���b�N���I������
+  プロシージャまたはブロックを終了する
 
 **** Enum
 **** Erase
@@ -224,11 +224,11 @@
 **** FileCopy
 **** For Each ... Next
 - 
-  �R���N�V������z��̊e�v�f�ɑ΂���statements�����s����B
+  コレクションや配列の各要素に対してstatementsを実行する。
 
 **** For ... Next
 - About
-  ����start�Ŏw�肵���l����A����end�Ŏw�肵���l�܂�statement���J��Ԃ�
+  引数startで指定した値から、引数endで指定した値までstatementを繰り返す
 
 - Statement
   For counter = start To end [Step step]
@@ -239,35 +239,35 @@
   
 **** Function
 - 
-  Function�v���V�[�W���i�߂�l����j���쐬����
+  Functionプロシージャ（戻り値あり）を作成する
 
 **** Get
 **** GoSub
 **** GoTo
 **** If ... Then ... Else
 - 
-  ������]�����āA�����t���̎��s���s���X�e�[�g�����g
-  If ... Then�Ŏn�܂�AEnd If�ŏI���B
-  ElseIf, Else���g�p�\�B
+  条件を評価して、条件付きの実行を行うステートメント
+  If ... Thenで始まり、End Ifで終わる。
+  ElseIf, Elseも使用可能。
 
-- ��
+- 例
     If a < 5 Then
-        MsgBox a & "�͂T��菬����"
+        MsgBox a & "は５より小さい"
     ElseIf a = 5 Then
-        MsgBox a & "�͂T�ł�"
+        MsgBox a & "は５です"
     Else
-        MsgBox a & "�͂T���傫��"
+        MsgBox a & "は５より大きい"
     End If
 
 **** Implements
 **** Input #
 **** Private
 - 
-  �v���C�x�[�g�ϐ���錾����B�v���C�x�[�g�ϐ��́A�錾���ꂽ���W���[�����̂ݎQ�Ƃł���B
+  プライベート変数を宣言する。プライベート変数は、宣言されたモジュール内のみ参照できる。
 
 **** Sub
 - 
-  Sub�v���V�[�W�����쐬����B
+  Subプロシージャを作成する。
 
 **** With
 - 
@@ -277,18 +277,18 @@
 **** About
 ***** Object Model
 - 
-  ��Ȃ��̂́AApplication�AWorkbook�AWorksheet�ARange�B
+  主なものは、Application、Workbook、Worksheet、Range。
   
 **** Property
 ***** Format
 ***** Value
 **** Object
-- [[https://msdn.microsoft.com/ja-jp/library/ff194068.aspx][�I�u�W�F�N�g���f�� (Excel VBA ���t�@�����X)]]
-- [[http://www.vba-ie.net/object/index.html][Excel��VBA�ŗ��p�����I�u�W�F�N�g�ꗗ - VBA��IE�������]]
+- [[https://msdn.microsoft.com/ja-jp/library/ff194068.aspx][オブジェクトモデル (Excel VBA リファレンス)]]
+- [[http://www.vba-ie.net/object/index.html][ExcelのVBAで利用したオブジェクト一覧 - VBAのIE制御入門]]
 
 ***** Application
 - 
-  Excel�A�v���P�[�V�����S�̂�\���B
+  Excelアプリケーション全体を表す。
 
 ****** Properties
 ******* ActiveSheet Property
@@ -296,35 +296,35 @@
 ******* ActiveWorkbook Property
 
 ******* ThisWorkbook Property
-- �ݎ��s���̃}�N���R�[�h���L�q����Ă���u�b�N��Ԃ��B
+- 在実行中のマクロコードが記述されているブックを返す。
 ***** ListObject
 ****** Methods
 ****** Properties
 ******* Name
-- ListObject�I�u�W�F�N�g�̖��O��\��������̒l���擾�܂��͐ݒ肷��B
+- ListObjectオブジェクトの名前を表す文字列の値を取得または設定する。
 ***** ListObjects
 ***** Range
-- �Z���A�s�A��A1�ȏ�̃Z���͈͂��܂ޑI��͈́A�܂���3-D�͈͂�\���B
-- [[https://msdn.microsoft.com/ja-jp/library/ff197454.aspx][Range�����o�[(Excel) - Developer Network]]
+- セル、行、列、1つ以上のセル範囲を含む選択範囲、または3-D範囲を表す。
+- [[https://msdn.microsoft.com/ja-jp/library/ff197454.aspx][Rangeメンバー(Excel) - Developer Network]]
 ****** Methods
 ******* Insert
 - 
-  ���[�N�V�[�g�܂��̓}�N���V�[�g�̎w�肳�ꂽ�͈͂ɁA�󔒂̃Z���܂��̓Z���͈͂�}������B
-  �w�肳�ꂽ�͈͂ɂ������Z���̓V�t�g�����B
+  ワークシートまたはマクロシートの指定された範囲に、空白のセルまたはセル範囲を挿入する。
+  指定された範囲にあったセルはシフトされる。
 
 ****** Properties
 ******* Text
 - 
-  �I�u�W�F�N�g�̃e�L�X�g���擾�܂��͐ݒ肷��B�l�̎擾�̂݉\�B������^���g�p����B
+  オブジェクトのテキストを取得または設定する。値の取得のみ可能。文字列型を使用する。
 
 ******* Value
 - Value(RangeValueDataType)
-  �w�肳�ꂽ�Z���͈͂̒l��\���o���A���g�^(Variant)�̒l��ݒ肷��B�l�̎擾����ѐݒ肪�\�B
+  指定されたセル範囲の値を表すバリアント型(Variant)の値を設定する。値の取得および設定が可能。
 
 ***** Workbook
 ****** Properties
 ******* Path
-- �u�b�N/�t�@�C���ւ̊��S�ȃp�X��\��������^(String)�̒l���擾����B
+- ブック/ファイルへの完全なパスを表す文字列型(String)の値を取得する。
 ***** Workbooks(Collection)
 
 ***** Worksheet
@@ -333,110 +333,110 @@
 ****** Properties
 ******* Cells
 - Cells
-  ���[�N�V�[�g�̂��ׂẴZ����\��Range�I�u�W�F�N�g��Ԃ��B
+  ワークシートのすべてのセルを表すRangeオブジェクトを返す。
 ******* Columns
 - 
-  ��ƒ��̃��[�N�V�[�g�̂��ׂĂ̗��\��Range�I�u�W�F�N�g��Ԃ��B
+  作業中のワークシートのすべての列を表すRangeオブジェクトを返す。
   
 ******* ListObjects
 - ListObjects
-  ���[�N�V�[�g���ɕ�������ListObject�I�u�W�F�N�g���琬��1�̃R���N�V������Ԃ��B
+  ワークシート内に複数あるListObjectオブジェクトから成る1つのコレクションを返す。
 ******* Range
 - Range(Cell1, Cell2)
-  �Z���܂��̓Z���͈͂�\��Rangne�I�u�W�F�N�g��Ԃ��B
+  セルまたはセル範囲を表すRangneオブジェクトを返す。
 
 ***** Worksheets(Collection)
 
 *** Powerpoint
 **** Object Model
-- [[https://msdn.microsoft.com/ja-jp/library/ff743835.aspx][�I�u�W�F�N�g���f�� (PowerPoint VBA ���t�@�����X) - Developer Network]]
+- [[https://msdn.microsoft.com/ja-jp/library/ff743835.aspx][オブジェクトモデル (PowerPoint VBA リファレンス) - Developer Network]]
 
 ***** Application Object
-- PowerPoint�A�v���P�[�V�����S�́B
-  ActivePresentation��Windows�Ȃǂ́A�ŏ�ʃ��x���̃I�u�W�F�N�g���擾����v���p�e�B��A
-  �A�v���P�[�V�����S�̂ɓK�p�����ݒ��I�v�V�������܂܂��B
-- PowerPoint������s�����R�[�h���L�q����ꍇ�AApplication�I�u�W�F�N�g�̃v���p�e�B�ł���
-  ActivePresentation, ActiveWindow, AddIns, Presentations, SlideShowWindows, �����Windows�͏C���q�Ȃ��Ŏg�p�\�B
+- PowerPointアプリケーション全体。
+  ActivePresentationやWindowsなどの、最上位レベルのオブジェクトを取得するプロパティや、
+  アプリケーション全体に適用される設定やオプションが含まれる。
+- PowerPointから実行されるコードを記述する場合、Applicationオブジェクトのプロパティである
+  ActivePresentation, ActiveWindow, AddIns, Presentations, SlideShowWindows, およびWindowsは修飾子なしで使用可能。
   
 ****** Properties
 ******* ActivePresentation
-- ��ƒ��̃E�B���h�E�ŊJ����Ă���v���[���e�[�V������\��Presentation�I�u�W�F�N�g���擾����B
-- ��
+- 作業中のウィンドウで開かれているプレゼンテーションを表すPresentationオブジェクトを取得する。
+- 例
   - Application.ApctivePresentation.SaveAs MyPath
-    "MyPath"�Ɏ����ꂽ�p�X�E�t�@�C�����Ō��݂̃v���[���e�[�V������ۑ�����B
+    "MyPath"に示されたパス・ファイル名で現在のプレゼンテーションを保存する。
 ******* ActiveWindow Property
-- ��ƒ��̃X���C�h�E�B���h�E��\��DocumentWindow�I�u�W�F�N�g���擾����B�擾�̂݉\�B
+- 作業中のスライドウィンドウを表すDocumentWindowオブジェクトを取得する。取得のみ可能。
   
 ******* Presentations Property
-- �J���Ă��邷�ׂẴv���[���e�[�V������\��Presentations�R���N�V�������擾����B
-  �l�̎擾�̂݉\�B
+- 開いているすべてのプレゼンテーションを表すPresentationsコレクションを取得する。
+  値の取得のみ可能。
 
-- �\��
-  ��.Presentations
-  �߂�l : Presentations
+- 構文
+  式.Presentations
+  戻り値 : Presentations
 
 ****** Methods
 ***** DocumentWindow Object
-- �h�L�������g�E�B���h�E��Ԃ��BDocumentWindows�R���N�V�����̃����o�B
-  ���ׂĂ̊J���Ă���h�L�������g�E�B���h�E���܂܂��B
+- ドキュメントウィンドウを返す。DocumentWindowsコレクションのメンバ。
+  すべての開いているドキュメントウィンドウが含まれる。
 
-- ���ݎ��s���̃v���[���e�[�V������Presentation�v���p�e�B���g�p����B
-  �I����e���擾����ɂ�Selection�v���p�e�B���g�p����B
-  �w�肵���E�B���h�E�̕\�����[�h���擾����ɂ�View�v���p�e�B���擾����B
+- 現在実行中のプレゼンテーションはPresentationプロパティを使用する。
+  選択内容を取得するにはSelectionプロパティを使用する。
+  指定したウィンドウの表示モードを取得するにはViewプロパティを取得する。
 
 ****** Properties
 ******* Selection
 ******* View
-- �\�����[�h��\��View�I�u�W�F�N�g���擾����B
+- 表示モードを表すViewオブジェクトを取得する。
 ***** Presentation Object
-- �v���[���e�[�V������\���B
-  Presentations�R���N�V�����̃����o�B
-- ��
+- プレゼンテーションを表す。
+  Presentationsコレクションのメンバ。
+- 例
   - Presentatons("Sample Presentation").Slides.Add 1,1
-    �t�@�C����"Sample Presentation"�̐擪�ɃX���C�h��ǉ�����B
+    ファイル名"Sample Presentation"の先頭にスライドを追加する。
   - ActivePresentation.Save
-    ��ƒ��̃v���[���e�[�V������ۑ�����B
+    作業中のプレゼンテーションを保存する。
 ***** Presentations Object
-- Presentation�I�u�W�F�N�g�̃R���N�V�����B
-  Presentanios�R���N�V�������擾����ɂ́APresentations�v���p�e�B���g�p����B
+- Presentationオブジェクトのコレクション。
+  Presentaniosコレクションを取得するには、Presentationsプロパティを使用する。
 ***** Shapes Object
-- �w�肵���X���C�h�̂��ׂĂ�Shape�I�u�W�F�N�g�̃R���N�V�����B
+- 指定したスライドのすべてのShapeオブジェクトのコレクション。
 ****** Methods
 ******* Paste
-- �\��
-  ��.Paste
-  �߂�l : ShapeRange
+- 構文
+  式.Paste
+  戻り値 : ShapeRange
 ***** Slide Object
-- �X���C�h��\���BSlides�R���N�V�����ɂ́A�v���[���e�[�V�����̂��ׂĂ�Slide�I�u�W�F�N�g���܂܂��B
+- スライドを表す。Slidesコレクションには、プレゼンテーションのすべてのSlideオブジェクトが含まれる。
 ****** Properties
 ****** Methods
 ******* MoveTo Method
-- �w�肵���I�u�W�F�N�g�𓯂��R���N�V�������̏ꏊ�Ɉړ����A���̃A�C�e���̔ԍ���U��Ȃ����B
-- �\��
-  ��.MoveTo(toPos)
-- ToPos : �ړ���̃C���f�b�N�X�ʒu�B
-- ��
+- 指定したオブジェクトを同じコレクション内の場所に移動し、他のアイテムの番号を振りなおす。
+- 構文
+  式.MoveTo(toPos)
+- ToPos : 移動先のインデックス位置。
+- 例
   - ActivePresentation.Slides(2).MoveTo toPos:=1
-    �X���C�h2���X���C�h1�ֈړ�����B
+    スライド2をスライド1へ移動する。
 
 ***** Slides Object
 ***** View Object
-- �w�肵���X���C�h�E�B���h�E�̌��ݕҏW���̕\�����[�h��\���B
+- 指定したスライドウィンドウの現在編集中の表示モードを表す。
 ****** Methods
 ******* GotoSlide
-- �w�肵���X���C�h�ɐ؂�ւ���B
-- �\��
-  ��.GotoSlide(Index)
+- 指定したスライドに切り替える。
+- 構文
+  式.GotoSlide(Index)
 **** Memo
-***** �X���C�h�ԍ����w�肵�ăW�����v
+***** スライド番号を指定してジャンプ
 - ActiveWindow.View.GotoSlide Index:=Int(2)
 - SlideShowWindows(1).View.GotoSlide 3
   http://www.relief.jp/itnote/archives/powerpoint-vba-goto-slide.php
 
-***** �X���C�h�����擾
+***** スライド数を取得
 - ActivePresentation.Slides.Count
 
-***** �X���C�h�����ԂɃ��[�v
+***** スライドを順番にループ
 - For i = 1 To ActivePresentation.Slides.Count
       Operation
   Next
@@ -448,58 +448,58 @@
   http://okwave.jp/qa/q8684138.html
 
 **** Link
-- [[https://msdn.microsoft.com/ja-jp/library/ee861525.aspx][PowerPoint VBA���t�@�����X - Developer Network]]
+- [[https://msdn.microsoft.com/ja-jp/library/ee861525.aspx][PowerPoint VBAリファレンス - Developer Network]]
 
 *** Outlook
 ** Memo
-*** ByVal��ByRef
+*** ByValとByRef
 - 
-  �������Ȃ��ꍇ�AByRef(�Q�Ɠn��)�Ƃ��Ē�`����Ă���B
-  �l�n�����������ꍇ�͖����I��ByVal�A�Ƃ��Ȃ��Ă͂Ȃ�Ȃ��B
-  �o���������Ă����̂��ǂ��B
+  何もつけない場合、ByRef(参照渡し)として定義されている。
+  値渡しをしたい場合は明示的にByVal、としなくてはならない。
+  出来る限りつけておくのが良い。
 
-*** sub��function
+*** subとfunction
 - 
-  function�͖߂�l��Ԃ��Bsub��subroutine�̗��Ŗ߂�l�͕Ԃ��Ȃ��B
+  functionは戻り値を返す。subはsubroutineの略で戻り値は返さない。
 
-*** �����̒l���v���V�[�W���ɓn��
+*** 複数の値をプロシージャに渡す
 - 
-  �����̒l�������Ƃ��ēn���ꍇ�́A�ȉ��̂ǂ��炩�̑Ή����K�v�B
-  - Call�X�e�[�g�����g������
-  - ���ʂ������ĕ����œn��
+  複数の値を引数として渡す場合は、以下のどちらかの対応が必要。
+  - Callステートメントをつける
+  - 括弧を除いて平文で渡す
   
-  ���ʂ́A�����̉��Z�����̂��߂̂��̂Ȃ̂ŁA���������ɂ͑Ή����Ă��Ȃ��A�Ƃ̂��ƁB
-  ���Ȃ݂Ɉȉ��͐���ƂȂ�B
-  ex) MsgBox ("�����C�ł����H"+"����ł�낵���ł����H"), vbOKOnly
-  - [[http://www.atmarkit.co.jp/ait/articles/1503/17/news039.html][�R���p�C���G���[�ɂȂ�Ȃ��֐��̎g���� - @IT]]
+  括弧は、引数の演算処理のためのものなので、複数引数には対応していない、とのこと。
+  ちなみに以下は正常となる。
+  ex) MsgBox ("お元気ですか？"+"これでよろしいですか？"), vbOKOnly
+  - [[http://www.atmarkit.co.jp/ait/articles/1503/17/news039.html][コンパイルエラーにならない関数の使い方 - @IT]]
   
-*** ���
+*** 代入
 - 
-  �I�u�W�F�N�g�ɒl��������Ƃ��́ASet A = B�A�Ƃ����`��"Set"���K�v�B
-  �l�ł���΁AA = B�Ƃ���Ƒ���ł���B
+  オブジェクトに値を代入するときは、Set A = B、という形で"Set"が必要。
+  値であれば、A = Bとすると代入できる。
 
-*** GUID�̍쐬
+*** GUIDの作成
 - 
   Mid$(CreateObject("Scriptlet.TypeLib").GUID, 2, 36)
-  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBA��GUID���쐬����]]
+  [[http://maeda0414.blog.fc2.com/blog-entry-26.html][Execl VBAでGUIDを作成する]]
 
-*** �z��
+*** 配列
 - 
-  �ϐ����̌�Ɋ���()��t����Ɣz��Ƃ��Ĉ������Ƃ��ł���B
+  変数名の後に括弧()を付けると配列として扱うことができる。
 
-  �v�f�����w�肵�Ȃ��œ��I�z��Ƃ��Ĉ������Ƃ��ł��邪�A
-  �v�f�������܂�Ȃ��ꍇ�͗v�f�ɃA�N�Z�X���o���Ȃ��B
-  ReDim���s���v�f�����m�肳���邪�A���̍ۂɗv�f�̃f�[�^�͍폜����Ă��܂��B
-  Preserve�L�[���[�h��t����ƁA�i�[������Ă���f�[�^��ێ������܂ܔz��̗v�f�����Ē�`�\�B
-  [[http://officetanaka.net/excel/vba/variable/08.htm][���I�z�� - Office TANAKA]]
+  要素数を指定しないで動的配列として扱うこともできるが、
+  要素数が決まらない場合は要素にアクセスが出来ない。
+  ReDimを行い要素数を確定させるが、その際に要素のデータは削除されてしまう。
+  Preserveキーワードを付けると、格納さえれているデータを保持したまま配列の要素数を再定義可能。
+  [[http://officetanaka.net/excel/vba/variable/08.htm][動的配列 - Office TANAKA]]
   
 *** Error
-**** �I�[�g���[�V�����G���[(440)
-- CreateObject����IE�I�u�W�F�N�g�𐶐��A����A�I���A�j�����ĉ��x���Ăяo���ƋN����ꍇ������B
-  1���g���܂킷�ꍇ�ɂ͖��Ȃ��B
+**** オートメーションエラー(440)
+- CreateObjectしたIEオブジェクトを生成、操作、終了、破棄して何度も呼び出すと起こる場合がある。
+  1つを使いまわす場合には問題ない。
   
-  �{������͂��̃I�u�W�F�N�g���͂߂Ȃ��A�Ƃ������Ƃ炵���B
-  �X�e�b�v���s�ł���Ζ��Ȃ����s�����ꍇ�������B
+  本来あるはずのオブジェクトが掴めない、ということらしい。
+  ステップ実行であれば問題なく実行される場合が多い。
 
-- Excel�A�h�C���́u���̓c�[��(FUNCRES.XLAM)�v���~���邱�Ƃŉ�������ꍇ������炵���B
+- Excelアドインの「分析ツール(FUNCRES.XLAM)」を停止することで解決する場合もあるらしい。
   http://excelfactory.net/excelboard/excelvba/excel.cgi?mode=all&namber=175963&rev=0

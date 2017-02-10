@@ -1,8 +1,8 @@
 * Font
 ** RictyDiminished
-- “Á’¥
-  - ƒ‰ƒeƒ“•¶š‚ÍInconsolataA‚»‚Ì‘¼‚ÍCircle M+ 1mB
-  - ”¼Šp•¶š‚Æ‘SŠp•¶š‚Ì‰¡•”ä‚ª1:2
+- ç‰¹å¾´
+  - ãƒ©ãƒ†ãƒ³æ–‡å­—ã¯Inconsolataã€ãã®ä»–ã¯Circle M+ 1mã€‚
+  - åŠè§’æ–‡å­—ã¨å…¨è§’æ–‡å­—ã®æ¨ªå¹…æ¯”ãŒ1:2
 - 
   https://github.com/yascentur/RictyDiminished
 
@@ -11,6 +11,6 @@
   http://levien.com/type/myfonts/inconsolata.html
 
 
-** M+‚ÆIPA‚Ì‡¬ƒtƒHƒ“ƒg
+** M+ã¨IPAã®åˆæˆãƒ•ã‚©ãƒ³ãƒˆ
 - 
   http://mix-mplus-ipa.osdn.jp/

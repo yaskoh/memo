@@ -3,9 +3,9 @@
 *** _llseek(2)
 *** _exit(2)
 - 
-  status���I���X�e�[�^�X�Ƃ��ăv���Z�X���I������B
-  ��΂Ɏ��s���Ȃ��̂ŁA�Ăяo������߂�Ȃ��B
-  exit(3)�ƈقȂ�libc�֘A�̌�n�����s��Ȃ��B
+  statusを終了ステータスとしてプロセスを終了する。
+  絶対に失敗しないので、呼び出したら戻らない。
+  exit(3)と異なりlibc関連の後始末を行わない。
 
 - def
   #include <unistd.h>
@@ -13,14 +13,14 @@
 
 *** brk(2)
 - 
-  �����A�h���X�����蓖�Ă��Ă��Ȃ��y�[�W�ɕ����A�h���X��Ή�������B
-  malloc(3)��realloc(3)���g���Ă���V�X�e���R�[���B
-  sbrk(2)�Ƃ����V�X�e���R�[��������B
+  物理アドレスが割り当てられていないページに物理アドレスを対応させる。
+  malloc(3)やrealloc(3)が使っているシステムコール。
+  sbrk(2)というシステムコールもある。
 
 *** chdir(2)
 - 
-  ���v���Z�X�̃J�����g�f�B���N�g����path�ɕύX����B
-  ����������0�A���s������-1��Ԃ�errno���Z�b�g����B
+  自プロセスのカレントディレクトリをpathに変更する。
+  成功したら0、失敗したら-1を返しerrnoをセットする。
 
 - def
   #include <unistd.h>
@@ -28,8 +28,8 @@
 
 *** chmod(2)
 - 
-  path�̃��[�h��mode�ɕύX����B
-  ����������0��Ԃ��A���s������-1��Ԃ���errno���Z�b�g����B
+  pathのモードをmodeに変更する。
+  成功したら0を返し、失敗したら-1を返してerrnoをセットする。
 
 - def
   #include <sys/types.h>
@@ -39,14 +39,14 @@
 
 *** chown(2)
 - 
-  path�̏��L���[�U��owner�ɁA���L�O���[�v��group�ɕύX����B
-  owner�̓��[�UID, group�̓O���[�vID�B
-  �ǂ��炩������ύX�������ꍇ�A�ύX���Ȃ��l��-1�Ƃ���B
-  lchown�́Apath���V���{���b�N�����N�������ꍇ�̓V���{���b�N�����N���̂̏���ύX����B
-  ����������0��Ԃ��B���s������-1��Ԃ��Aerrno��ݒ肷��B
-  ���L���[�U��ύX����ꍇ�̓X�[�p�[���[�U�������K�v�B
-  ���L�O���[�v��ύX����ꍇ�̓t�@�C���̏��L���[�[�ł�������group�Ɋ܂܂��K�v������B
-  �X�[�p�[���[�U�Ȃ�ΔC�ӂ̃O���[�v�ɕύX�\�B
+  pathの所有ユーザをownerに、所有グループをgroupに変更する。
+  ownerはユーザID, groupはグループID。
+  どちらかだけを変更したい場合、変更しない値を-1とする。
+  lchownは、pathがシンボリックリンクだった場合はシンボリックリンク自体の情報を変更する。
+  成功したら0を返す。失敗したら-1を返し、errnoを設定する。
+  所有ユーザを変更する場合はスーパーユーザ権限が必要。
+  所有グループを変更する場合はファイルの所有ユーゼでかつ自分がgroupに含まれる必要がある。
+  スーパーユーザならば任意のグループに変更可能。
 
 - def
   #include <sys/types>
@@ -61,23 +61,23 @@
   int close(int fd);
 
 - argument
-  fd:�t�@�C���f�B�X�N���v�^
+  fd:ファイルディスクリプタ
 
 - return
-  ���Ȃ�����ꂽ�ꍇ��0, �G���[���������ꍇ��-1��Ԃ��B
+  問題なく閉じられた場合は0, エラーがあった場合は-1を返す。
 
 - ex
   if (close(fd) < 0){
-      /* �G���[���� */
+      /* エラー処理 */
   }
 
 *** dup(2), dup2(2)
 - 
-  oldfd�𕡐�����V�X�e���R�[���B
-  dup()�͎g���Ă��Ȃ��ŏ��̃t�@�C���f�B�X�N���v�^��oldfd�𕡐����Ă����Ԃ��B
-  dup2()��oldfd��newfd�ɕ������Ă����Ԃ��B
-  �G���[���N�����ꍇ��-1��Ԃ��B
-  dup��duplicate����B
+  oldfdを複製するシステムコール。
+  dup()は使われていない最小のファイルディスクリプタへoldfdを複製してそれを返す。
+  dup2()はoldfdをnewfdに複製してそれを返す。
+  エラーが起きた場合は-1を返す。
+  dupはduplicateから。
 
 - def
   #include <unistd.h>
@@ -86,19 +86,19 @@
 
 *** exec(2)
 - 
-  ���ݎ��s���Ă�v���Z�X�����ł��A���v���Z�X�ɐV�����v���O���������[�h����B
-  exec�͐�������ƌĂяo�����߂�Ȃ��̂ŁA�߂����ꍇ�͏�Ɏ��s�B-1��Ԃ���errno���Z�b�g����B
+  現在実行してるプロセスが消滅し、自プロセスに新しいプログラムをロードする。
+  execは成功すると呼び出しが戻らないので、戻った場合は常に失敗。-1を返してerrnoをセットする。
   - l
-    �����"l"�������̂́A�R�}���h���C���������������X�g�Ƃ��ēn���B
-    �������X�g�̍Ō��NULL��u���Ȃ���΂Ȃ�Ȃ��B
+    語尾に"l"がつくものは、コマンドライン引数を引数リストとして渡す。
+    引数リストの最後はNULLを置かなければならない。
   - v
-    �R�}���h���C���������𕶎���̔z��œn���Bargv[]�̍Ō�̗v�f��NULL�ɂ��Ȃ���΂Ȃ�Ȃ��B
+    コマンドライン引き巣を文字列の配列で渡す。argv[]の最後の要素はNULLにしなければならない。
   - e
-    �Ō�̈����Ƃ��Ċ��ϐ�envp���ǉ������B
-    e�����Ă��Ȃ�API�ł́A���v���Z�X�̊��ϐ������̂܂܎g����B
+    最後の引数として環境変数envpが追加される。
+    eがついていないAPIでは、現プロセスの環境変数がそのまま使われる。
   - p
-    ��1����program�����ϐ�PATH���玩���ŒT���B
-    p�����Ă��Ȃ��ꍇ�A���path���΃p�X�܂��͑��΃p�X�Ŏw�肵�Ȃ���΂Ȃ�Ȃ��B
+    第1引数programを環境変数PATHから自動で探す。
+    pがついていない場合、常にpathを絶対パスまたは相対パスで指定しなければならない。
 
 - def
   #include <unistd.h>
@@ -114,7 +114,7 @@
 
 *** fcntl(2)
 - 
-  �t�@�C���f�B�X�N���v�^�֘A�̑����ioctl��蕪���������́B
+  ファイルディスクリプタ関連の操作をioctlより分離したもの。
 
 - def
   #include <unistd.h>
@@ -128,11 +128,11 @@
   ptd_t fork(void);
 
 - 
-  �v���Z�X�𕡐����A2�̃v���Z�X�ɕ��􂳂���B
-  �����̃v���Z�X��fork()�̌Ăяo�����߂�B
-  �����瑶�݂��Ă���ق���e�v���Z�X�A�������������q�v���Z�X�Ƃ����B
-  �q�v���Z�X�ł̖߂�l��0�ŁA�e�v���Z�X�̖߂�l�͎q�v���Z�X�̃v���Z�XID�ƂȂ�B
-  ���s�����ꍇ�͎q�v���Z�X�͍쐬���ꂸ�A�e�ł̂�-1���߂�B
+  プロセスを複製し、2つのプロセスに分裂させる。
+  両方のプロセスでfork()の呼び出しが戻る。
+  元から存在しているほうを親プロセス、複製した方を子プロセスという。
+  子プロセスでの戻り値は0で、親プロセスの戻り値は子プロセスのプロセスIDとなる。
+  失敗した場合は子プロセスは作成されず、親でのみ-1が戻る。
 
 - def
   #include <sys/types.h>
@@ -141,9 +141,9 @@
 
 *** getgroups(2)
 - 
-  ���v���Z�X�̕ߑ��O���[�vID��buf�ɏ������ށB
-  �ߑ��O���[�vID��bufsize��葽���ꍇ�́A�G���[��Ԃ��B
-  ���������ꍇ�ߑ��O���[�vID�̐����A���s�����ꍇ��-1��Ԃ���errno���Z�b�g����B
+  自プロセスの捕捉グループIDをbufに書き込む。
+  捕捉グループIDがbufsize個より多い場合は、エラーを返す。
+  成功した場合捕捉グループIDの数を、失敗した場合は-1を返してerrnoをセットする。
 
 - def
   #include <unistd.h>
@@ -153,8 +153,8 @@
 
 *** getpid(2), getppid(2)
 - 
-  getpid()�͎����̃v���Z�XID��Ԃ��B
-  getppid()�͐e�v���Z�X��ppid��Ԃ��B
+  getpid()は自分のプロセスIDを返す。
+  getppid()は親プロセスのppidを返す。
 
 - def
   #include <sys/types.h>
@@ -164,11 +164,11 @@
 
 *** getrusage(2)
 - 
-  �v���Z�X�̃��\�[�X�g�p�ʂ��2����usage�ɏ������ށB
-  ��1����who��RUSAGE_SELF�Ȃ�Ύ��v���Z�X�̃��\�[�X�g�p�ʂ��������ށB
-  ��1����who��RUSAGE_CHILDREN�Ȃ�Ύq�v���Z�X�̃��\�[�X�g�p�ʂ��������ށB
-  ���̏ꍇ�̎q�v���Z�X�́u���v���Z�X����fork()�����q�v���Z�X�S�Ă̂����Await�������́v���Ӗ�����B
-  �Ăяo��������������0��Ԃ��B���s������-1��Ԃ���errno���Z�b�g����B
+  プロセスのリソース使用量を第2引数usageに書き込む。
+  第1引数whoがRUSAGE_SELFならば自プロセスのリソース使用量を書き込む。
+  第1引数whoがRUSAGE_CHILDRENならば子プロセスのリソース使用量を書き込む。
+  この場合の子プロセスは「自プロセスからfork()した子プロセス全てのうち、waitしたもの」を意味する。
+  呼び出しが成功したら0を返す。失敗したら-1を返してerrnoをセットする。
 
 - def
   #include <unistd.h>
@@ -178,24 +178,24 @@
   int getrusage(int who, struct rusage *usage);
 
 - struct rusage
-  �uman getrusage�v�ɂ͑�R�̃����o�����邪�A
-  Linux�ł͂��̂����̈ꕔ�����������l���Z�b�g����Ȃ��B
+  「man getrusage」には沢山のメンバがあるが、
+  Linuxではそのうちの一部しか正しい値がセットされない。
   
   |----------------+-----------+--------------------------|
-  | �^             | �����o��  | �Ӗ�                     |
+  | 型             | メンバ名  | 意味                     |
   |----------------+-----------+--------------------------|
-  | struct timeval | ru_utime  | �g��ꂽ���[�U����       |
-  | struct timeal  | ru_stime  | �g��ꂽ�V�X�e������     |
-  | long           | ru_majflt | ���W���[�t�H�[���g�̉� |
-  | long           | ru_minflt | �}�C�i�[�t�H�[���g�̉� |
-  | long           | ru_nswap  | �X���b�v�T�C�Y           |
+  | struct timeval | ru_utime  | 使われたユーザ時間       |
+  | struct timeal  | ru_stime  | 使われたシステム時間     |
+  | long           | ru_majflt | メジャーフォールトの回数 |
+  | long           | ru_minflt | マイナーフォールトの回数 |
+  | long           | ru_nswap  | スワップサイズ           |
   |----------------+-----------+--------------------------|
 
 *** gettimeofday(2)
 - 
-  UNIX�G�|�b�N���猻�݂܂ł̌o�ߎ��Ԃ�tv�ɏ������ށB
-  tz�͊��Ɏg���Ă��Ȃ��̂ŏ��NULL���w�肷��B
-  ���s������������0��Ԃ��A���s������-1��Ԃ�errno���Z�b�g����B
+  UNIXエポックから現在までの経過時間をtvに書き込む。
+  tzは既に使われていないので常にNULLを指定する。
+  実行が成功したら0を返し、失敗したら-1を返しerrnoをセットする。
 
 - def
   #include <sys/time.h>
@@ -203,17 +203,17 @@
   int gettimeofday(struct timeval *tv, struct timezone *tz);
   
   struct timeval {
-      long tv_sec;   /* �b */
-      long tv_usec;  /* �~���b */
+      long tv_sec;   /* 秒 */
+      long tv_usec;  /* ミリ秒 */
   };
 
 *** getuid(2), getgid(2)
 - 
-  ���݂̃N���f���V�����𓾂�B
-  getuid�͎����[�UID���Ageteuid�͎��s���[�UID���A
-  getgid�͎��O���[�vID���Agetegid�͎��s�O���[�vID���A
-  ���ꂼ��Ԃ��B
-  �����̃V�X�e���R�[���͎��s���Ȃ��B
+  現在のクレデンシャルを得る。
+  getuidは実ユーザIDを、geteuidは実行ユーザIDを、
+  getgidは実グループIDを、getegidは実行グループIDを、
+  それぞれ返す。
+  これらのシステムコールは失敗しない。
 
 - def
   #include <unistd.h>
@@ -226,12 +226,12 @@
 
 *** initgroups(2)
 - 
-  /etc/group�Ȃǂ̃f�[�^�x�[�X�����āA
-  ���[�Uuser�̕⑫�O���[�v�����v���Z�X�ɐݒ肷��B
-  �܂��A��2������group���ǉ�����B
-  group�͒ʏ�A���[�U�̃O���[�v(primary group)��⑫�O���[�v�ɂ��ǉ����邽�߂Ɏg���B
-  ����������0��Ԃ��B���s������-1��Ԃ�errno��ݒ肷��B
-  �X�[�p�[���[�U�łȂ��Ɛ������Ȃ��B
+  /etc/groupなどのデータベースを見て、
+  ユーザuserの補足グループを自プロセスに設定する。
+  また、第2引数のgroupも追加する。
+  groupは通常、ユーザのグループ(primary group)を補足グループにも追加するために使う。
+  成功したら0を返す。失敗したら-1を返しerrnoを設定する。
+  スーパーユーザでないと成功しない。
 
 - def
   #define _BSD_SOURCE
@@ -242,22 +242,22 @@
 
 *** ioctl(2)
 - 
-  �X�g���[�����Ȃ����ɂ���f�o�C�X�ɓ������������S�Ċ܂߂��V�X�e���R�[���B
+  ストリームがつながる先にあるデバイスに特化した操作を全て含めたシステムコール。
 
 - def
   #include <sys.ioctl.h>
   int ioctl(int fd, int request, ...);
 
 - argument
-  request:�ǂ̂悤�ȑ�������邩�萔�Ŏw�肵�A����request���L�̈������3�����ȍ~�ɓn���B
+  request:どのような操作をするか定数で指定し、そのrequest特有の引数を第3引数以降に渡す。
 
 *** kill(2)
 - 
-  �V�O�i���𑗐M����V�X�e���R�[���B
-  �v���Z�XID��pid�̃v���Z�X�ɃV�O�i��sig�𑗐M����B
-  ����������0��Ԃ��B���s������-1��Ԃ��Aerrno���Z�b�g����B
-  pid�������̂Ƃ��́AID��-pid�̃v���Z�X�O���[�v�S�̂ɃV�O�i���𑗂�B
-  �v���Z�X�O���[�v�ɃV�O�i���𑗂�ɂ́Akillpg()�Ƃ�����p�̃V�X�e���R�[��������B
+  シグナルを送信するシステムコール。
+  プロセスIDがpidのプロセスにシグナルsigを送信する。
+  成功したら0を返す。失敗したら-1を返し、errnoをセットする。
+  pidが負数のときは、IDが-pidのプロセスグループ全体にシグナルを送る。
+  プロセスグループにシグナルを送るには、killpg()という専用のシステムコールもある。
 
 - def
   #include <sys/types.h>
@@ -267,10 +267,10 @@
 
 *** link(2)
 - 
-  �t�@�C��src�̎��ԂɐV�������Odist������B(�n�[�h�����N�j
-  ���������Ƃ���0��Ԃ��A���s�����Ƃ���-1��Ԃ���errno���Z�b�g����B
-  src��dist�͓����t�@�C���V�X�e����ɑ��݂���K�v������B
-  �܂��A�f�B���N�g���ɂ͎g�p�ł��Ȃ��B
+  ファイルsrcの実態に新しい名前distをつける。(ハードリンク）
+  成功したときは0を返し、失敗したときは-1を返してerrnoをセットする。
+  srcとdistは同じファイルシステム上に存在する必要がある。
+  また、ディレクトリには使用できない。
 
 - def
   #include <unistd.h>
@@ -278,8 +278,8 @@
 
 *** lseek(2)
 - 
-  �t�@�C���f�B�X�N���v�^fd�����̃t�@�C���I�t�Z�b�g���w�肵���ʒuoffset�ֈړ�����B
-  �ړ����@��whence�Ɏw�肷��B
+  ファイルディスクリプタfd内部のファイルオフセットを指定した位置offsetへ移動する。
+  移動方法はwhenceに指定する。
 
 - def
   #include <sys/types.h>
@@ -287,16 +287,16 @@
   off_t lseek(int fd, off_t offset, int whence);
 
 - argument
-  whence:�ʒu�̎w����@�B
-         SEEK_SET:offset�Ɉړ��i�N�_�̓t�@�C���擪�j
-         SEEK_CUR:���݂̃t�@�C���I�t�Z�b�g+offset�Ɉړ�
-         SEEK_END:�t�@�C������+offset�Ɉړ�
+  whence:位置の指定方法。
+         SEEK_SET:offsetに移動（起点はファイル先頭）
+         SEEK_CUR:現在のファイルオフセット+offsetに移動
+         SEEK_END:ファイル末尾+offsetに移動
 
 *** mkdir(2)
 - 
-  �f�B���N�g��path���쐬����B
-  ����������0��Ԃ��A���s������-1��Ԃ���errno���Z�b�g����B
-  ��2�����ɂ͍쐬���̃p�[�~�b�V�������w�肷��B
+  ディレクトリpathを作成する。
+  成功したら0を返し、失敗したら-1を返してerrnoをセットする。
+  第2引数には作成時のパーミッションを指定する。
 
 - def
   #include <sys/stat.h>
@@ -306,24 +306,24 @@
 
 - error
   - ENOENT
-    �e�f�B���N�g�����Ȃ�
+    親ディレクトリがない
   - ENOTDIR
-    path�Őe�f�B���N�g���ɓ����镔�����f�B���N�g���łȂ�
+    pathで親ディレクトリに当たる部分がディレクトリでない
   - EEXIST
-    path�ɂ��łɃt�@�C����f�B���N�g�������݂���
+    pathにすでにファイルやディレクトリが存在する
   - EPERM
-    �e�f�B���N�g����ύX���錠�����Ȃ�
+    親ディレクトリを変更する権限がない
 
 *** mmap(2)
 - 
-  �t�@�C����f�o�C�X���������Ƀ}�b�v/�A���}�b�v����
-  �t�@�C���L�q�qfd�Ŏw�肳�ꂽ�t�@�C���́A�I�t�Z�b�goffset����length�o�C�g�͈̔͂�
-  �������Ƀ}�b�v����B
-  ���̂Ƃ��A�Ȃ�ׂ����������addr�A�h���X����͂��߂�悤�Ƀ}�b�v����B
-  ���ۂɂ͊֐��ɑ΂��Ẵq���g�ł����Ȃ��A�ʏ��0��I������B
-  prot�́A�������ی���ǂ̂悤�ɍs�����w�肷��B
-  flags�́A�}�b�v���ꂽ�I�u�W�F�N�g�̃^�C�v�A�}�b�v���̃I�v�V�����A
-  �}�b�v���ꂽ�y�[�W�R�s�[�ւ̕ύX�����̃v���Z�X�������s����̂��w�肷��B
+  ファイルやデバイスをメモリにマップ/アンマップする
+  ファイル記述子fdで指定されたファイルの、オフセットoffsetからlengthバイトの範囲を
+  メモリにマップする。
+  このとき、なるべくメモリ上のaddrアドレスからはじめるようにマップする。
+  実際には関数に対してのヒントでしかなく、通常は0を選択する。
+  protは、メモリ保護をどのように行うか指定する。
+  flagsは、マップされたオブジェクトのタイプ、マップ時のオプション、
+  マップされたページコピーへの変更をそのプロセスだけが行えるのか指定する。
 
 - def
   #include <sys/mman.h>
@@ -333,20 +333,20 @@
 
 - plot
   |------------+--------------|
-  | �t���O��   | ���e         |
+  | フラグ名   | 内容         |
   |------------+--------------|
-  | PROT_EXEC  | ���s�\     |
-  | PROT_READ  | �ǂݍ��݉\ |
-  | PROT_WRITE | �������݉\ |
-  | PROT_NONE  | �A�N�Z�X�s�\ |
+  | PROT_EXEC  | 実行可能     |
+  | PROT_READ  | 読み込み可能 |
+  | PROT_WRITE | 書き込み可能 |
+  | PROT_NONE  | アクセス不能 |
   |------------+--------------|
 
 - return
   - mmap
-    ��������ƃ}�b�v���ꂽ�̈�ւ̃|�C���^��Ԃ��B
-    ���s����ƒlMAP_FAILED((void *)-1)��Ԃ��Aerrno���Z�b�g�������B
+    成功するとマップされた領域へのポインタを返す。
+    失敗すると値MAP_FAILED((void *)-1)を返し、errnoがセットされっる。
   - munmap
-    ���������0��Ԃ��A���s�����-1��Ԃ�errno���Z�b�g�����i�����̏ꍇEINVAL�j�B
+    成功すると0を返し、失敗すると-1を返しerrnoがセットされる（多くの場合EINVAL）。
 
 *** open(2)
 - def
@@ -357,37 +357,37 @@
   int open(const char *path, int flags, mode_t mode);
 
 - argument
-  path:open����t�@�C���̃p�X
-  flags:�X�g���[���̐�����\���t���O
-  mode:O_CREAT���w�肵���ꍇ�ɁA�V�K�t�@�C���̃p�[�~�b�V�������w�肷��
+  path:openするファイルのパス
+  flags:ストリームの性質を表すフラグ
+  mode:O_CREATを指定した場合に、新規ファイルのパーミッションを指定する
 
   - flags 1
-    ��ɂǂꂩ����w�肷��
+    常にどれか一つを指定する
     |----------+--------------|
-    | O_RDONLY | �ǂݎ���p |
-    | O_WRONLY | �����ݐ�p   |
-    | O_RDWR   | �ǂݏ������p |
+    | O_RDONLY | 読み取り専用 |
+    | O_WRONLY | 書込み専用   |
+    | O_RDWR   | 読み書き両用 |
     |----------+--------------|
 
   - flag 2
-    �w�肵�Ȃ��Ă��ǂ����A�����w�肵�Ă��ǂ��B
-    ���̂��̈ȊO�ɂ��F�X����B
+    指定しなくても良いし、複数指定しても良い。
+    下のもの以外にも色々ある。
     |----------+-----------------------------------------------------------------------------------|
-    | O_CREAT  | �t�@�C�������݂��Ȃ���ΐV�����t�@�C�������                                      |
-    | O_EXCL   | O_CREAT�ƂƂ��Ɏw�肷��ƁA���łɃt�@�C�������݂���Ƃ��̓G���[�ƂȂ�             |
-    | O_TRUNC  | O_CREAT�ƂƂ��Ɏw�肷��ƁA�t�@�C�������݂���Ƃ��͂܂��t�@�C���̒������[���ɂ��� |
-    | O_APPEND | write()����Ƀt�@�C�������ɏ����܂��悤�w�肷��                                 |
+    | O_CREAT  | ファイルが存在しなければ新しいファイルを作る                                      |
+    | O_EXCL   | O_CREATとともに指定すると、すでにファイルが存在するときはエラーとなる             |
+    | O_TRUNC  | O_CREATとともに指定すると、ファイルが存在するときはまずファイルの長さをゼロにする |
+    | O_APPEND | write()が常にファイル末尾に書込まれるよう指定する                                 |
     |----------+-----------------------------------------------------------------------------------|
 
 - return
-  �t�@�C���f�B�X�N���v�^�̒l��Ԃ�
+  ファイルディスクリプタの値を返す
 
   - ex
     open(file, O_RDWR|O_CREAT|O_TRUNC, 0666)
 
 *** pipe(2)
 - 
-  ���[�Ƃ����v���Z�X�ɂȂ������X�g���[�����쐬���A���̗��[�̃f�B�X�N���v�^��Ԃ��B
+  両端とも自プロセスにつながったストリームを作成し、その両端のディスクリプタを返す。
   
 
 - def
@@ -400,36 +400,36 @@
   ssize_t read(int fd, void *buf, size_t bufsize);
 
 - argument
-  fd:�t�@�C���f�B�X�N���v�^�̔ԍ�
-  buf:�i�[��
-  bufsize:�ő�Ǎ��o�C�g��
+  fd:ファイルディスクリプタの番号
+  buf:格納先
+  bufsize:最大読込バイト数
 
 - return
-  ����I�������ꍇ�͓Ǎ��񂾃o�C�g����Ԃ��B
-  �t�@�C���I�[�ɒB�����Ƃ���0���A�G���[���N�����Ƃ���-1��Ԃ��B
+  正常終了した場合は読込んだバイト数を返す。
+  ファイル終端に達したときは0を、エラーが起きたときは-1を返す。
 
 *** readlink(2)
 - 
-  readlink�́Apath�̕\���Ă��閼�O��buf�Ɋi�[����B
-  �������A�����Ȃ�ꍇ��bufsize�o�C�g�܂ł��������܂Ȃ��B
-  �܂��A������Ō��'\0'�͏����܂�Ȃ��B
-  ����������buf�Ɋi�[�����o�C�g����Ԃ��B���s������-1��Ԃ���errno���Z�b�g����B
+  readlinkは、pathの表している名前をbufに格納する。
+  ただし、いかなる場合もbufsizeバイトまでしか書込まない。
+  また、文字列最後の'\0'は書込まれない。
+  成功したらbufに格納したバイト数を返す。失敗したら-1を返してerrnoをセットする。
 - def
   #include <unistd.h>
   int readlink(const char *path, char *buf, size_t bufsize);
 
 *** rename(2)
 - 
-  src��dest�ɕύX����B
-  ����������0���A���s������-1��Ԃ���errno���Z�b�g����B
-  �t�@�C���V�X�e�����܂����ňړ����邱�Ƃ͂ł��Ȃ��B���̏ꍇEXDEV��errno�ɃZ�b�g�����B
+  srcをdestに変更する。
+  成功したら0を、失敗したら-1を返してerrnoをセットする。
+  ファイルシステムをまたいで移動することはできない。その場合EXDEVがerrnoにセットされる。
 - def
   #include <stdio.h>
   int rename(const char *src, const char *dest);
 
 *** rmdir(2)
 - 
-  �f�B���N�g��path���폜����B
+  ディレクトリpathを削除する。
 
 - def
   #include <unistd.h>
@@ -437,12 +437,12 @@
 
 *** setsid(2)
 - 
-  �V�����Z�b�V�������쐬���A�������Z�b�V�������[�_�[�ɂȂ�B
-  �����ɂ��̃Z�b�V�����ōŏ��̃v���Z�X�O���[�v���쐬���A���̃O���[�v���[�_�[�ƂȂ�B
-  �߂�l�͍쐬�����Z�b�V����ID�B���s�����ꍇ��-1��Ԃ�errno���Z�b�g����B
-  ���s���鑽���̏ꍇ�́A�������v���Z�X�O���[�v���[�_�[�̏ꍇ�Ȃ̂ŁA
-  ���炩����1�񑽂�fork���Ă����ăO���[�v���[�_�[�ł͂Ȃ��Ȃ��Ă���K�v������B
-  ����[���������Ȃ����߁A�f�[�����ƂȂ�B
+  新しいセッションを作成し、自分がセッションリーダーになる。
+  同時にそのセッションで最初のプロセスグループを作成し、そのグループリーダーとなる。
+  戻り値は作成したセッションID。失敗した場合は-1を返しerrnoをセットする。
+  失敗する多くの場合は、自分がプロセスグループリーダーの場合なので、
+  あらかじめ1回多くforkしておいてグループリーダーではなくなっている必要がある。
+  制御端末を持たないため、デーモンとなる。
 
 - def
   #include <unistd.h>
@@ -450,8 +450,8 @@
 
 *** setuid(2), setgid(2)
 - 
-  setuid()�́A�����[�UID�Ǝ��s���[�UID��id�ɕύX����B
-  setgid()�́A���O���[�vID�Ǝ��s�O���[�vID��id�ɕύX����B
+  setuid()は、実ユーザIDと実行ユーザIDをidに変更する。
+  setgid()は、実グループIDと実行グループIDをidに変更する。
 - def
   #include <unistd.h>
   #include <sys/types.h>
@@ -461,11 +461,11 @@
 
 *** sigaction(2)
 - 
-  sigaction()�͑�1�����̃V�O�i��sig�̃n���h����o�^����B
-  ��2����act�ɃV�O�i���n���h�����w�肷��B��̓I�ɂ͊֐��|�C���^��SIG_IGN, SIG_DFL�B
-  ��3������oldact�ɂ́Asigaction()�Ăяo�����̃n���h�����Ԃ�B�s�v�Ȃ�NULL���w�肷��B
-  struct sigcation��sa_sigcation���V�O�i���n���h�����w�肷�郁���o�ŁA
-  ��M�����Ƃ��ɃV�O�i���ԍ��ȊO�̏��𓾂邱�Ƃ��o����B
+  sigaction()は第1引数のシグナルsigのハンドラを登録する。
+  第2引数actにシグナルハンドラを指定する。具体的には関数ポインタかSIG_IGN, SIG_DFL。
+  第3引数のoldactには、sigaction()呼び出し時のハンドラが返る。不要ならNULLを指定する。
+  struct sigcationのsa_sigcationもシグナルハンドラを指定するメンバで、
+  受信したときにシグナル番号以外の情報を得ることが出来る。
   
 - def
   #include <signal.h>
@@ -474,46 +474,46 @@
                 struct sigaction *oldact);
   
   struct sigaction {
-      /* sa_handler, sa_sigaction�͕Е��̂ݎg�� */
+      /* sa_handler, sa_sigactionは片方のみ使う */
       void (*sa_handler)(int);
       void (*sa_sigaction)(int, siginfo_t*, void*);
       sigset_t sa_mask;
       int sa_flags;
   };
 
-- signal�̖��_�ɑ΂���Ώ�
-  - �n���h���̍Đݒ�
-    sigaction()��OS�Ɋւ�炸�V�O�i���n���h���̐ݒ��ێ��������邱�Ƃ�ۏ؂���B
-  - �V�X�e���R�[���̍ċN��
-    sigaction()�̓f�t�H���g�ŃV�X�e���R�[�����ċN�����Ȃ��B
-    sa_flags�����o�Ƀt���OSA_RESTART��ǉ�����ƍċN������ݒ�ɂȂ�B
-    ��ʂɂ͍ċN�������ق����֗��Ȃ̂ŁASA_RESTART����ɒǉ����Ă����̂�����B
-  - �V�O�i���̃u���b�N
-    sa_mask�Ńu���b�N����V�O�i�����w��ł���B
-    �V�O�i���n���h���̋N�����͏������̃V�O�i���������I�Ƀu���b�N���Ă����̂ŁA
-    �قƂ�ǂ̏ꍇ��sa_mask�͋�ɂ��Ă����Ώ\���B��ɂ���ɂ�sigemptyset()���g���B
+- signalの問題点に対する対処
+  - ハンドラの再設定
+    sigaction()はOSに関わらずシグナルハンドラの設定を保持し続けることを保証する。
+  - システムコールの再起動
+    sigaction()はデフォルトでシステムコールを再起動しない。
+    sa_flagsメンバにフラグSA_RESTARTを追加すると再起動する設定になる。
+    一般には再起動されるほうが便利なので、SA_RESTARTを常に追加しておくのが無難。
+  - シグナルのブロック
+    sa_maskでブロックするシグナルを指定できる。
+    シグナルハンドラの起動中は処理中のシグナルを自動的にブロックしてくれるので、
+    ほとんどの場合はsa_maskは空にしておけば十分。空にするにはsigemptyset()を使う。
 
-- sigset_t����API
+- sigset_t操作API
   - int sigemptyset(sigset_t *set);
-    set����ɏ���������
+    setを空に初期化する
   - int sigfillset(sigset_t *set);
-    set�����ׂẴV�O�i�����܂ޏ�Ԃɂ���
+    setをすべてのシグナルを含む状態にする
   - int sigaddset(sigset_t *set, int sig);
-    �V�O�i��sig��set�ɒǉ�����
+    シグナルsigをsetに追加する
   - int sigdelset(sigset_t *set, int sig);
-    �V�O�i��sig��set����폜����
+    シグナルsigをsetから削除する
   - int sigismember(const sigset_t *set, int sig);
-    �V�O�i��sig��set�Ɋ܂܂��Ƃ��^��������
+    シグナルsigがsetに含まれるとき真をかえす
 
-- �V�O�i���̃u���b�N
-  �u���b�N���Ă����V�O�i����z�����Ă��炤���߂�API�B
-  sigprocmask�͎��v���Z�X�̃V�O�i���}�X�N���Z�b�g����B
-  �Z�b�g���@�̓t���Ohow�Ō��܂�B
-  sigpending�͕ۗ�����Ă���V�O�i����set�ɏ������ށB
-  ����������0�A���s������-1��Ԃ�errno���Z�b�g����B
-  sigsuspend�̓V�O�i���}�X�Nmask���Z�b�g����Ɠ����Ƀv���Z�X���V�O�i���҂��ɂ���B
-  �u���b�N���Ă����V�O�i�����������āA�ۗ�����Ă����V�O�i������������Ƃ��Ɏg���B
-  sigsuspend�͏��-1���������B
+- シグナルのブロック
+  ブロックしていたシグナルを配送してもらうためのAPI。
+  sigprocmaskは自プロセスのシグナルマスクをセットする。
+  セット方法はフラグhowで決まる。
+  sigpendingは保留されているシグナルをsetに書き込む。
+  成功したら0、失敗したら-1を返しerrnoをセットする。
+  sigsuspendはシグナルマスクmaskをセットすると同時にプロセスをシグナル待ちにする。
+  ブロックしていたシグナルを解除して、保留されていたシグナルを処理するときに使う。
+  sigsuspendは常に-1をかえす。
 
   - def
     #include <signal.h>
@@ -522,49 +522,49 @@
     int sigpending(sigset_t *set);
     int sigsuspend(const sigset_t *mask);
 
-  - sigprocmask��how�l
+  - sigprocmaskのhow値
     |-------------+---------------------------------------------------|
-    | �l          | ����                                              |
+    | 値          | 効果                                              |
     |-------------+---------------------------------------------------|
-    | SIG_BLOCK   | set�Ɋ܂܂��V�O�i�����V���O���}�X�N�ɒǉ�����   |
-    | SIG_UNBLOCK | set�Ɋ܂܂��V�O�i�����V�O�i���}�X�N����폜���� |
-    | SIG_SETMASK | �V�O�i���}�X�N��set�ɒu��������                   |
+    | SIG_BLOCK   | setに含まれるシグナルをシングルマスクに追加する   |
+    | SIG_UNBLOCK | setに含まれるシグナルをシグナルマスクから削除する |
+    | SIG_SETMASK | シグナルマスクをsetに置き換える                   |
     |-------------+---------------------------------------------------|
 
 *** signal(2)
 - 
-  signal��ߑ�����API�B
-  �V�O�i���𑗂�API�łȂ�trap����API�Ȃ̂Œ��ӁB
+  signalを捕捉するAPI。
+  シグナルを送るAPIでなくtrapするAPIなので注意。
   
-  �V�O�i���ԍ�sig�̃V�O�i�����󂯂��Ƃ��̋������A
-  ��2����func�̊֐����ĂԂ悤�ɕύX����B
-  ����func�ɓn���֐����A�V�O�i������������֐��Ƃ����Ӗ��ŃV�O�i���n���h��(signal handler)�ƌĂԁB
+  シグナル番号sigのシグナルを受けたときの挙動を、
+  第2引数funcの関数を呼ぶように変更する。
+  このfuncに渡す関数を、シグナルを処理する関数という意味でシグナルハンドラ(signal handler)と呼ぶ。
 
-  ��肪�F�X�Ƃ��邽�߁Asigaction()��p����̂��悢�B
+  問題が色々とあるため、sigaction()を用いるのがよい。
 
 - def
   #include <signal.h>
   void (*signal (int sig, void (*func)(int)))(int)
 
-  (�킩��ɂ����̂ŏ������������Ɓ�
+  (わかりにくいので少し書き直すと↓
    typedef void (*sighandler_t)(int);
    sighandler_t signal(int sig, sighandler_t func);
   )
 
-- ��2����func�ŗp��������ʂȒl
+- 第2引数funcで用いられる特別な値
   |---------+--------------------------------------------------|
-  | �萔    | �Ӗ�                                             |
+  | 定数    | 意味                                             |
   |---------+--------------------------------------------------|
-  | SIG_DFL | OS�̃f�t�H���g�̓���ɖ߂�                       |
-  | SIG_IGN | �J�[�l�����x���ŃV�O�i���𖳎�����悤�Ɏw������ |
+  | SIG_DFL | OSのデフォルトの動作に戻す                       |
+  | SIG_IGN | カーネルレベルでシグナルを無視するように指示する |
   |---------+--------------------------------------------------|
 
 *** stat(2)
 - 
-  stat��path�ŕ\�����G���g���̏����擾���Abuf�ɏ������ށB
-  lstat���قƂ�Ǔ��������A�V���{���b�N�����N�̏ꍇ�Ƀ����N�����ǂ炸���g�̏���Ԃ��B
-  �������̂ɁA�t�@�C���f�B�X�N���v�^���瓯�����𓾂���fstat������B
-  ����������0��Ԃ��A���s������-1��Ԃ���errno���Z�b�g����B
+  statはpathで表されるエントリの情報を取得し、bufに書き込む。
+  lstatもほとんど同じだが、シンボリックリンクの場合にリンクをたどらず自身の情報を返す。
+  似たものに、ファイルディスクリプタから同じ情報を得られるfstatもある。
+  成功したら0を返し、失敗したら-1を返してerrnoをセットする。
 
 - def
   #include <sys/types.h>
@@ -574,39 +574,39 @@
   int stat(const char *path, struct stat *buf);
   int lstat(const char *path, struct stat *buf);
 
-- struct stat�����o
+- struct statメンバ
   |-----------+------------+--------------------------------------------|
-  | �^        | �����o��   | ����                                       |
+  | 型        | メンバ名   | 説明                                       |
   |-----------+------------+--------------------------------------------|
-  | dev_t     | st_dev     | �f�o�C�X�ԍ�                               |
-  | ino_t     | st_ino     | i�m�[�h�ԍ�                                |
-  | mode_t    | st_mode    | �t�@�C���^�C�v�ƃp�[�~�b�V�������܂ރt���O |
-  | nlink_t   | st_nlink   | �����N�J�E���g                             |
-  | uid_t     | st_uid     | ���L���[�UID                               |
-  | gid_t     | st_gid     | ���L�O���[�vID                             |
-  | dev_t     | st_rdev    | �f�o�C�X�t�@�C���̎�ʂ�\���ԍ�           |
-  | off_t     | st_size    | �t�@�C���T�C�Y�i�o�C�g�P�ʁj               |
-  | blksize_t | st_blksize | �t�@�C���̃u���b�N�T�C�Y                   |
-  | blkcnt_t  | st_blocks  | �t���b�N��                                 |
-  | time_t    | st_atime   | �ŏI�A�N�Z�X����                           |
-  | time_t    | st_mtime   | �ŏI�ύX����                               |
-  | time_t    | st_ctime   | �t�я�񂪍Ō�ɕύX���ꂽ����             |
+  | dev_t     | st_dev     | デバイス番号                               |
+  | ino_t     | st_ino     | iノード番号                                |
+  | mode_t    | st_mode    | ファイルタイプとパーミッションを含むフラグ |
+  | nlink_t   | st_nlink   | リンクカウント                             |
+  | uid_t     | st_uid     | 所有ユーザID                               |
+  | gid_t     | st_gid     | 所有グループID                             |
+  | dev_t     | st_rdev    | デバイスファイルの種別を表す番号           |
+  | off_t     | st_size    | ファイルサイズ（バイト単位）               |
+  | blksize_t | st_blksize | ファイルのブロックサイズ                   |
+  | blkcnt_t  | st_blocks  | フロック数                                 |
+  | time_t    | st_atime   | 最終アクセス時刻                           |
+  | time_t    | st_mtime   | 最終変更時刻                               |
+  | time_t    | st_ctime   | 付帯情報が最後に変更された時期             |
   |-----------+------------+--------------------------------------------|
 
 *** symlink(2)
 - 
-  �V���{���b�N�����N���쐬����V�X�e���R�[���B
-  src���w���V�����V���{���b�N�����N��dest�ɍ쐬����B
-  ����������0���A���s������-1��Ԃ��B
+  シンボリックリンクを作成するシステムコール。
+  srcを指す新しいシンボリックリンクをdestに作成する。
+  成功したら0を、失敗したら-1を返す。
 - def
   #include <unistd.h>
   int symlink(const char *src, const char *dest);
 
 *** time(2)
 - 
-  UNIX�G�|�b�N���猻�݂܂ł̌o�ߕb����Ԃ��B
-  tptr��NULL�łȂ��ꍇ��*tptr�ɂ������l���������ށB
-  �b�܂ł̒P�ʂ��������Ȃ��B
+  UNIXエポックから現在までの経過秒数を返す。
+  tptrがNULLでない場合は*tptrにも同じ値を書き込む。
+  秒までの単位しか扱えない。
 
 - def
   #include <time.h>
@@ -614,7 +614,7 @@
 
 *** umask(2)
 - 
-  ���O�܂ł�umask�̒l��mask�ɕύX���A���O���ł�umask��Ԃ��B
+  直前までのumaskの値をmaskに変更し、直前万でのumaskを返す。
 - def
   #include <sys/types.h>
   #include <sys/stat.h>
@@ -623,18 +623,18 @@
 
 *** unlink(2)
 - 
-  ���Opath�������B����������0���A���s������-1��Ԃ��B
-  �f�B���N�g���̍폜�͂ł��Ȃ��B
+  名前pathを消す。成功したら0を、失敗したら-1を返す。
+  ディレクトリの削除はできない。
 - def
   #include <unistd.h>
   int unlink(const char *path);
 
 *** utime(2)
 - 
-  path�̍ŏI�A�N�Z�X����(st_atime)�ƍŏI�X�V����(st_mtime)��ύX����B
-  buf��NULL�łȂ���΍ŏI�A�N�Z�X������buf->actime, �ŏI�X�V������buf->modtime�ɕύX����B
-  buf��NULL�Ȃ痼�������ݎ����ɕύX����B
-  ����������0��Ԃ��A���s������-1��Ԃ�errno��ݒ肷��B
+  pathの最終アクセス時刻(st_atime)と最終更新時刻(st_mtime)を変更する。
+  bufがNULLでなければ最終アクセス時効をbuf->actime, 最終更新時刻をbuf->modtimeに変更する。
+  bufがNULLなら両方を現在時刻に変更する。
+  成功したら0を返し、失敗したら-1を返しerrnoを設定する。
 
 - def
   #include <sys/types.h>
@@ -643,15 +643,15 @@
   int utime(const char *path, strut utimbuf *buf);
   
   struct utimbuf {
-      time_t actime; /* �ŏI�A�N�Z�X���� */
-      time_t modtime; /* �ŏI�X�V���� */
+      time_t actime; /* 最終アクセス時刻 */
+      time_t modtime; /* 最終更新時刻 */
   }
 
 *** wait(2)
 - 
-  wait�͎q�v���Z�X�̂����ǂꂩ�ЂƂ��I������̂�҂B
-  waitpid��pid�Ŏw�肵���v���Z�X���I������̂�҂B
-  status��NULL�ȊO���w�肵���ꍇ�A���̃A�h���X�Ɏq�v���Z�X�̏I���X�e�[�^�X���i�[�����B
+  waitは子プロセスのうちどれかひとつが終了するのを待つ。
+  waitpidはpidで指定したプロセスが終了するのを待つ。
+  statusにNULL以外を指定した場合、そのアドレスに子プロセスの終了ステータスが格納される。
 
 - def
   #include <sys/types.h>
@@ -660,15 +660,15 @@
   pid_t wait(int *status);
   pid_t waitpid(pid_t pid, int *status, int options);
 
-- �I���̎d���𒲂ׂ�}�N��
+- 終了の仕方を調べるマクロ
 
   |---------------------+----------------------------------------------------|
-  | �}�N��              | �Ӗ�                                               |
+  | マクロ              | 意味                                               |
   |---------------------+----------------------------------------------------|
-  | WIFEXITED(status)   | exit�ŏI�����Ă������0�A����ȊO�Ȃ�0             |
-  | WEXITSTATUS(status) | exit�ŏI�����肢���Ƃ��ɁA���̏I���R�[�h��Ԃ��B   |
-  | WIFSIGNALED(status) | �V�O�i���ŏI���������0�A����ȊO�Ȃ�0             |
-  | WTERMSIG(status)    | �V�O�i���ŏI�������Ƃ��ɁA���̃V�O�i���ԍ���Ԃ��B |
+  | WIFEXITED(status)   | exitで終了していたら非0、それ以外なら0             |
+  | WEXITSTATUS(status) | exitで終了し手いたときに、その終了コードを返す。   |
+  | WIFSIGNALED(status) | シグナルで終了したら非0、それ以外なら0             |
+  | WTERMSIG(status)    | シグナルで終了したときに、そのシグナル番号を返す。 |
   |---------------------+----------------------------------------------------|
 
 *** write(2)
@@ -677,13 +677,13 @@
   ssize_t write(int fd, const void *buf, size_t bufsize)
 
 - argument
-  fd:�t�@�C���f�B�X�N���v�^�̔ԍ�
-  buf:������
-  bufsize:�ő发���T�C�Y��
+  fd:ファイルディスクリプタの番号
+  buf:書込元
+  bufsize:最大書込サイズ数
 
 - return
-  ����I�����͏������񂾃o�C�g����Ԃ��B
-  �G���[����-1��Ԃ��B
+  正常終了時は書き込んだバイト数を返す。
+  エラー時は-1を返す。
 
 ** Subroutine
 ** Headers

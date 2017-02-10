@@ -2,6 +2,6 @@
 ** OS
 ** Language
 *** Link
-- [[http://jpn.nec.com/manufacture/machinery/ihi/images/201407ihi_migration/Linux_jirei.pdf][Linux‚ÖˆÚs‚Ìl‚¦•û‚ÆˆÚs–—á - NEC]]
-- [[http://jp-redhat.com/leadership/pdf/13690.pdf][HP-UX‚©‚çRed Hat Enterprise Linux‚Ö‚Ìí—ª“IˆÚsŒv‰æƒKƒCƒh - redhat]]
-- [[http://h50146.www5.hpe.com/products/software/oe/hpux/document/pdfs/t_0044.pdf][HP-UX 11.xŒü‚¯LinuxˆÚAƒKƒCƒh - hp]]
+- [[http://jpn.nec.com/manufacture/machinery/ihi/images/201407ihi_migration/Linux_jirei.pdf][Linuxã¸ç§»è¡Œã®è€ƒãˆæ–¹ã¨ç§»è¡Œäº‹ä¾‹ - NEC]]
+- [[http://jp-redhat.com/leadership/pdf/13690.pdf][HP-UXã‹ã‚‰Red Hat Enterprise Linuxã¸ã®æˆ¦ç•¥çš„ç§»è¡Œè¨ˆç”»ã‚¬ã‚¤ãƒ‰ - redhat]]
+- [[http://h50146.www5.hpe.com/products/software/oe/hpux/document/pdfs/t_0044.pdf][HP-UX 11.xå‘ã‘Linuxç§»æ¤ã‚¬ã‚¤ãƒ‰ - hp]]

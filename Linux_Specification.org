@@ -8,262 +8,262 @@
 *** old
 **** / (FHS)
 - 
-  ���K�w�A���[�g�f�B���N�g��
+  第一階層、ルートディレクトリ
 
 ***** /bin
 - 
-  �V���O�����[�U���[�h�ŕK�v�ƂȂ��ʃ��[�U������{�R�}���h�̎��s�t�@�C���B
-  /usr/bin�̓V���O�����[�U�ȊO�̈�ʃ��[�U�����R�}���h�B
+  シングルユーザモードで必要となる一般ユーザ向け基本コマンドの実行ファイル。
+  /usr/binはシングルユーザ以外の一般ユーザ向けコマンド。
   
 - 
-  �K�{: 
+  必須: 
   cat, chgrp, chmod, chown, cp, date, dd, df, dmesg, echo, false, hostname,
   kill, ln, login, ls, mkdir, mknod, more, mount, mv, ps, pwd, rm, rmdir,
   sed, sh, stty, su, sync, true, unmount, uname
 
 - 
-  �I�v�V����: 
+  オプション: 
   csh, ed, tar, cpio, gzip, gunzip, zcat, netstat, ping
 
 ***** /boot
 - 
-  �u�[�g���[�_�֘A�̃t�@�C���Q�B�J�[�l����initrd�B�ʏ�ʃp�[�e�B�V�����B
-  �J�[�l���́Avmlinuz�Ɋi�[����Ă���B
-  unix -> vmunix�i���z�������@�\�ǉ��j -> vmlinux -> vmlinuz�i���k�j�̂悤�ɕϑJ�����B
+  ブートローダ関連のファイル群。カーネルやinitrd。通常別パーティション。
+  カーネルは、vmlinuzに格納されている。
+  unix -> vmunix（仮想メモリ機構追加） -> vmlinux -> vmlinuz（圧縮）のように変遷した。
 
 ***** /dev
 - 
-  ��{�f�o�C�X�B/dev/null, /dev/console�ȂǁB
-  Linux2.4�ł�devfs�Ƃ����d�g�݂��������ꂽ���AUSB�ȂǂƑ������ǂ��Ȃ��������߁A
-  Linux2.6�ȍ~��udev�Ƃ����d�g�݂��g����B
-  defvs�̓J�[�l���̈ꕔ�����Audev�̓J�[�l���̊O�B
-  "ls -l"�Ȃǂ̃R�}���h�Ŋm�F����ƁA�L�����N�^�f�o�C�X���u���b�N�f�o�C�X�����m�F�ł���B
+  基本デバイス。/dev/null, /dev/consoleなど。
+  Linux2.4ではdevfsという仕組みが導入されたが、USBなどと相性が良くなかったため、
+  Linux2.6以降はudevという仕組みが使われる。
+  defvsはカーネルの一部だが、udevはカーネルの外。
+  "ls -l"などのコマンドで確認すると、キャラクタデバイスかブロックデバイスかが確認できる。
 
 ***** /etc
 - 
-  �V�X�e���S�̂̌ŗL�ݒ�t�@�C���Q�B�o�C�i���t�@�C����u���Ȃ��B
-  fstab, gateway, group, hosts, password, profile, services�ȂǁB
+  システム全体の固有設定ファイル群。バイナリファイルを置かない。
+  fstab, gateway, group, hosts, password, profile, servicesなど。
 
 ****** /etc/opt
 - 
-  /opt/�̂��߂̐ݒ�t�@�C���Q�B
+  /opt/のための設定ファイル群。
 ****** /etc/X11
 - 
-  X Window System�p�̐ݒ�t�@�C���Q�B
+  X Window System用の設定ファイル群。
 ****** /etc/sgml
 - 
-  sgml�ݒ�t�@�C���Q�B
+  sgml設定ファイル群。
 ****** /etc/xml
 - 
-  xml�ݒ�t�@�C���Q�B
+  xml設定ファイル群。
 ****** /etc/init.d
 - 
-  �f�[�������N�����邽�߂̃t�@�C�����u�����B
-  �����̃t�@�C���͋N���X�N���v�g�ƌĂ΂��B
-  /etc/rc*.d�f�B���N�g���̋N���X�N���v�g�̎��Ԃ͂��ׂ�/etc/init.d�Ɋi�[����Ă���B
+  デーモンを起動するためのファイルが置かれる。
+  これらのファイルは起動スクリプトと呼ばれる。
+  /etc/rc*.dディレクトリの起動スクリプトの実態はすべて/etc/init.dに格納されている。
 
 ***** /home
 - 
-  ���[�U�̃z�[���f�B���N�g���B�I�v�V�����B
+  ユーザのホームディレクトリ。オプション。
 
 ***** /lib
 - 
-  /bin �� /sbin �ɂ�����s�t�@�C���̊�{�ƂȂ郉�C�u�����Q�B
+  /bin や /sbin にある実行ファイルの基本となるライブラリ群。
 
-***** /lost+found (FHS�̋K��ɂ͂Ȃ�)
+***** /lost+found (FHSの規定にはなし)
 - 
-  fsck�Ńf�B�X�N�`�F�b�N�����ۂɍ����A�j���t�@�C���̒f�Ђ����߂�f�B���N�g���B
+  fsckでディスクチェックした際に作られる、破損ファイルの断片を収めるディレクトリ。
 
 ***** /media
 - 
-  CD-ROM�Ȃǂ̃����[�o�u���}�̃}�E���g�|�C���g�B
+  CD-ROMなどのリムーバブル媒体マウントポイント。
 
 ***** /mnt
 - 
-  �t�@�C���V�X�e���̈ꎞ�}�E���g�|�C���g�B
+  ファイルシステムの一時マウントポイント。
 
 ***** /opt
 - 
-  �I�v�V�����̃A�v���P�[�V�����\�t�g�E�F�A�̃C���X�g�[���p
+  オプションのアプリケーションソフトウェアのインストール用
 
 ***** /proc
 - 
-  �J�[�l����v���Z�X�̏����e�L�X�g�Ŏ������z�t�@�C���V�X�e���B
-  procfs(Process File System)�̃}�E���g�|�C���g�B
+  カーネルやプロセスの情報をテキストで示す仮想ファイルシステム。
+  procfs(Process File System)のマウントポイント。
 
 ***** /root
 - 
-  root���[�U�̃z�[���f�B���N�g���B�I�v�V�����B
+  rootユーザのホームディレクトリ。オプション。
 
 ***** /sbin
 - 
-  �V�X�e���Ǘ��n�R�}���h�̎��s�t�@�C���Q�B
+  システム管理系コマンドの実行ファイル群。
 
-- �K�{:
+- 必須:
   shutdown
 
-- �I�v�V����:
+- オプション:
   fastboot, fasthalt, fdisk, fsck, fsck.*, getty, halt, ifconfig, init,
   mkfs, mkfs.*, mkswap, reboot, route, swapon, swapoff, update
 
 ***** /srv
 - 
-  �V�X�e���ɂ���Ē񋟂��ꂽ(served)�ŗL�̃f�[�^
+  システムによって提供された(served)固有のデータ
 
 ***** /tmp
 - 
-  �ꎞ�t�@�C���u��B���u�[�g���ɂ͓��e���폜�����B
-  /var/tmp�͏����Ȃ��B
+  一時ファイル置場。リブート時には内容が削除される。
+  /var/tmpは消えない。
 
 ***** /usr
 - 
-  ���[�U���[�e�B���e�B�ƃA�v���P�[�V�������i�[�B
-  �����̃}�V���ŋ��L�\�ȃt�@�C����u���A�����̃}�V���Ƀ}�E���g���Ďg�����肷��B
-  ���L�ł��Ȃ��悤�ȃt�@�C����var�ɂ����B
-  "User Services and Routines"�̗��炵���B
+  ユーザユーティリティとアプリケーションを格納。
+  複数のマシンで共有可能なファイルを置き、多くのマシンにマウントして使ったりする。
+  共有できないようなファイルはvarにおく。
+  "User Services and Routines"の略らしい。
 
 ****** /usr/bin
 - 
-  ��ʃ��[�U����������{�I�łȂ��R�}���h�B
-  �V���O�����[�U���[�h�ɂ͕s�v�ȃo�C�i���ŁA�p�b�P�[�W�̒ǉ��폜�Ńt�@�C���͑�������B
-  �f�B�X�g���r���[�V�������Ǘ�����f�B���N�g���Ȃ̂ŁA�����ŃC���X�g�[������v���O������/usr/local/bin�Ȃǂɒu���B
+  一般ユーザ向けだが基本的でないコマンド。
+  シングルユーザモードには不要なバイナリで、パッケージの追加削除でファイルは増減する。
+  ディストリビューションが管理するディレクトリなので、自分でインストールするプログラムは/usr/local/binなどに置く。
 
 ****** /usr/include
 - 
-  �W��include�t�@�C���Q�BC����Ŏg���W���w�b�_�t�@�C���B
-  �J�[�l���̃w�b�_�t�@�C����/usr/include/linux��/usr/include/asm�ɂ���B
-  �{����/usr/include/sys�ȉ����J�[�l���֘A�����A
-  Linux�̓J�[�l����libc�ŊǗ��҂��u���������ߏ����ϑ��I�ȃf�B���N�g���\���ɂȂ��Ă���B
+  標準includeファイル群。C言語で使う標準ヘッダファイル。
+  カーネルのヘッダファイルは/usr/include/linuxと/usr/include/asmにある。
+  本来は/usr/include/sys以下がカーネル関連だが、
+  Linuxはカーネルとlibcで管理者が置が言うため少し変則的なディレクトリ構造になっている。
 
 ****** /usr/lib
 - 
-  /usr/bin �� /usr/sbin �ɂ�����s�t�@�C���̊�{���C�u�����B
+  /usr/bin や /usr/sbin にある実行ファイルの基本ライブラリ。
 
 ****** /usr/sbin
 - 
-  ��{�I�łȂ����s�t�@�C���Q�B�l�b�g���[�N�p�f�[�����ȂǁB
-  ���펞�p�̃V�X�e���Ǘ��R�}���h��T�[�o�v���O�����B
+  基本的でない実行ファイル群。ネットワーク用デーモンなど。
+  平常時用のシステム管理コマンドやサーバプログラム。
 
 ****** /usr/share
 - 
-  �A�[�L�e�N�`���Ɉˑ����Ȃ����L�f�[�^
-  �T�^�I�ȗ�̓h�L�������g�Bman��info�ȂǁB
+  アーキテクチャに依存しない共有データ
+  典型的な例はドキュメント。manやinfoなど。
 
 ******* /usr/shar/man
 - 
-  man�y�[�W��u���B
-  roff�Ƃ����e�L�X�g�`���ŏ�����Ă���B
+  manページを置く。
+  roffというテキスト形式で書かれている。
 
 ******* /usr/share/info
 - 
-  info�h�L�������g��u���B
-  textinfo�`���̃t�@�C����info�����ɕ��ԁB
+  infoドキュメントを置く。
+  textinfo形式のファイルがinfo直下に並ぶ。
 
 ****** /usr/src
 - 
-  �V�X�e���Ŏg���Ă���R�}���h�̃\�[�X�R�[�h��u���B
-  Kernel�̃\�[�X�R�[�h�ȂǁB
+  システムで使っているコマンドのソースコードを置く。
+  Kernelのソースコードなど。
 
 ****** /usr/X11R6
 - 
   X Windows System Version 11 Release 6
-  ����bin��lib������B
+  下にbinやlibがある。
 
 ****** /usr/local
 - 
-  �z�X�g�ŗL�̃��[�J���f�[�^���i�[����B�V�X�e���Ǘ��҂������ŃA�v���P�[�V�������C���X�g�[������B
-  �\���͂ق�/usr�Ɠ����B
+  ホスト固有のローカルデータを格納する。システム管理者が自分でアプリケーションをインストールする。
+  構造はほぼ/usrと同じ。
 
 ******* /usr/local/bin
 - 
-  �����ŃC���X�g�[������R�}���h����z�u����B
+  自分でインストールするコマンド等を配置する。
 
 ******* /usr/local/games
 ******* /usr/local/include
 ******* /usr/local/lib
 ******* /usr/local/man
-- /local/bin�p�}�j���A��
+- /local/bin用マニュアル
 ******* /usr/local/sbin
-- /sbin�Ɣ�ׂďd�v�łȂ��V�X�e���o�C�i����z�u����B
-  /sbin�ً͋}���ɕK�v�Ȃ��́A/usr/sbin�͒ʏ�^�p���B
+- /sbinと比べて重要でないシステムバイナリを配置する。
+  /sbinは緊急時に必要なもの、/usr/sbinは通常運用時。
 ******* /usr/local/share
-- �A�[�L�e�N�`���Ɉˑ����Ȃ��f�[�^�����߂�B
+- アーキテクチャに依存しないデータを収める。
 ******* /usr/local/man
 ******** /usr/local/man/man1
-- ���[�U�v���O����
+- ユーザプログラム
 ******** /usr/local/man/man2
-- �V�X�e���R�[��
+- システムコール
 ******** /usr/local/man/man3
-- C���C�u�����֐�
+- Cライブラリ関数
 ******** /usr/local/man/man4
-- �X�y�V����(�f�o�C�X)�t�@�C��
+- スペシャル(デバイス)ファイル
 ******** /usr/local/man/man5
-- �t�@�C���t�H�[�}�b�g
+- ファイルフォーマット
 ******** /usr/local/man/man6
-- �Q�[��
+- ゲーム
 ******** /usr/local/man/man7
-- ���̑�
+- その他
 ******** /usr/local/man/man8
-- �V�X�e���Ǘ�
+- システム管理
 ******* /usr/local/misc
 ******* /usr/local/src
 
 ***** /var
 - 
-  �ςȃt�@�C���Q�B���e����ɕω�����悤�ȃt�@�C���Q���i�[����B
-  ���O�A�X�v�[���A�ꎞ�I�ȓd�q���[�����B
+  可変なファイル群。内容が常に変化するようなファイル群を格納する。
+  ログ、スプール、一時的な電子メール等。
 
 ****** /var/cache
 - 
-  �A�v���P�[�V�����̃L���b�V���f�[�^�B
-  ���ʂ͗v�̂ɏ����݂��āA�Â����Ɏ̂ĂĂ����B
+  アプリケーションのキャッシュデータ。
+  普通は要領に上限を設けて、古い順に捨てていく。
 
 ****** /var/lib
 - 
-  ��ԏ��B�f�[�^�x�[�X�A�p�b�P�[�W���O�V�X�e���̃��^�f�[�^�ȂǁB
+  状態情報。データベース、パッケージングシステムのメタデータなど。
 
 ******* /var/lib/misc
 
 ****** /var/local
 ****** /var/lock
 - 
-  ���b�N�t�@�C���Q�B�g�p�����\�[�X��ێ�����t�@�C���B�r��������s�������ꍇ�Ɏg�p����B
+  ロックファイル群。使用中リソースを保持するファイル。排他制御を行いたい場合に使用する。
 ****** /var/log
 - 
-  �e�탍�O
+  各種ログ
 ****** /var/opt
 ****** /var/mail
 - 
-  ���[��
+  メール
 ****** /var/run
 - 
-  ���s���V�X�e���Ɋւ�����B���݃��O�C�����̃��[�U�A���s���f�[�������B
-  "`kill -HUP `cat /var/run/sendmail.pid`"�Ȃǂ���ƃv���Z�X�ԍ����^�C�|�����悢�B
-  PID�t�@�C���Ƃ������B
+  走行中システムに関する情報。現在ログイン中のユーザ、走行中デーモン等。
+  "`kill -HUP `cat /var/run/sendmail.pid`"などするとプロセス番号をタイポせずよい。
+  PIDファイルともいう。
 
 ****** /var/spool
 - 
-  �����҂��X�v�[���B�v�����g�L���[�A���ǃ��[���ȂǁB
+  処理待ちスプール。プリントキュー、未読メールなど。
 
 ******* /var/spool/mail
 - 
-  �݊��̂��߂̂��Ẵ��[���{�b�N�X�B
+  互換のためのかつてのメールボックス。
 
 ****** /var/tmp
 - 
-  �ꎞ�t�@�C���u��B/tmp�Ƃ͈قȂ�A���u�[�g���Ă����e�������Ȃ��B
+  一時ファイル置場。/tmpとは異なり、リブートしても内容が失われない。
 
 ***** memo
-- �f�B���N�g���̕���
+- ディレクトリの分類
   |----------+----------------------------+---------------------|
-  |          | ���L�\                   | ���L�s��            |
+  |          | 共有可能                   | 共有不可            |
   |----------+----------------------------+---------------------|
-  | �ω����� | /usr, /opt                 | /etc, /boot         |
+  | 変化せず | /usr, /opt                 | /etc, /boot         |
   |----------+----------------------------+---------------------|
-  | �ω����� | /var/mail, /var/spool/news | /var/run, /var/lock |
+  | 変化する | /var/mail, /var/spool/news | /var/run, /var/lock |
   |----------+----------------------------+---------------------|
 
-**** / (�����Q�Ƃ������͖Y�ꂽ�B)
+**** / (何を参照したかは忘れた。)
      - vmlinuz
          Linux Kernel
      - boot

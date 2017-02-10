@@ -1,4 +1,4 @@
 * Subversion
 
 ** Link
-- [[http://tracpath.com/bootcamp/learning_tortoisesvn.html][TortoiseSVN‚ÌŠî‘b•×‹­ - tracpath]]
+- [[http://tracpath.com/bootcamp/learning_tortoisesvn.html][TortoiseSVNã®åŸºç¤å‹‰å¼· - tracpath]]

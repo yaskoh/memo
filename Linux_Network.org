@@ -5,18 +5,18 @@
 - show/manipulate traffic control settings
 ** Memo
 *** ip
-- ip(“Á‚Éip a)‚ÉŠÖ‚·‚éƒƒ‚
+- ip(ç‰¹ã«ip a)ã«é–¢ã™ã‚‹ãƒ¡ãƒ¢
 **** L1
 ***** lo, eth, pan
 ****** lo
 - local loopback
-  “Á•Ê‚È‰¼‘zƒCƒ“ƒ^[ƒtƒFƒCƒXBƒzƒXƒg©g‚ğw‚µA•K‚¸127.0.0.1‚ªŠ„‚è“–‚Ä‚ç‚ê‚éB
+  ç‰¹åˆ¥ãªä»®æƒ³ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã€‚ãƒ›ã‚¹ãƒˆè‡ªèº«ã‚’æŒ‡ã—ã€å¿…ãš127.0.0.1ãŒå‰²ã‚Šå½“ã¦ã‚‰ã‚Œã‚‹ã€‚
 ****** eth
 - Ethernet
-  —Lü
+  æœ‰ç·š
 ****** pan
-- Private Area Network ’Z‹——£–³ü’ÊMƒfƒoƒCƒX
-  Bluetooth‚È‚Ç‚ÉŠ„‚è“–‚Ä‚ç‚ê‚éB
+- Private Area Network çŸ­è·é›¢ç„¡ç·šé€šä¿¡ãƒ‡ãƒã‚¤ã‚¹
+  Bluetoothãªã©ã«å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã‚‹ã€‚
   
 ***** UP, etc...
 ****** LOOPBACK
@@ -29,10 +29,10 @@
 - the state of Ethernet link, as Driver signals L1 up.
   it basically means the cable is fitted and it can see another device on teh other end of the cable.
 ***** mtu nnnn
-- MTU(Maximum Transfer Unit : EthernetƒtƒŒ[ƒ€‚ÌÅ‘å“]‘—ƒTƒCƒY)
+- MTU(Maximum Transfer Unit : Ethernetãƒ•ãƒ¬ãƒ¼ãƒ ã®æœ€å¤§è»¢é€ã‚µã‚¤ã‚º)
 ***** qdisc
 - Queueing discipline
-- [[http://labs.gree.jp/blog/2014/10/11266/][‚æ‚­‚í‚©‚éLinux‘Ñˆæ§ŒÀ - GREE Engineer's Blog]]
+- [[http://labs.gree.jp/blog/2014/10/11266/][ã‚ˆãã‚ã‹ã‚‹Linuxå¸¯åŸŸåˆ¶é™ - GREE Engineer's Blog]]
 ****** noqueue
 ****** pfifo_fast
 ***** state
@@ -40,7 +40,7 @@
 ****** DOWN
 ****** UNKNOWN
 ***** qlen
-**** L2ˆÈ~
+**** L2ä»¥é™
 ***** link, inet
 ****** link/*(ether, etc...)
 - Mac address

@@ -5,11 +5,11 @@
 ** Programming Language
 *** elm
 - 
-  �֐��^�̃t�����g�G���h�̂��߂̌���B
-  html, css, javascript�ɕϊ������B
+  関数型のフロントエンドのための言語。
+  html, css, javascriptに変換される。
   
 - 
-  [[http://doloopwhile.hatenablog.com/entry/2014/12/01/200000][Elm�Ƃ͂ǂ�Ȍ��ꂩ�H���̂V�̓����yElm�A�h�x���g�J�����_�[2014 1���ځz - None is None is None]]
+  [[http://doloopwhile.hatenablog.com/entry/2014/12/01/200000][Elmとはどんな言語か？その７つの特徴【Elmアドベントカレンダー2014 1日目】 - None is None is None]]
 
 ** Parser Generator
 *** yakk/bison
@@ -32,11 +32,11 @@
 
 ** Shell
 *** GNU Readline
-- �L�[�o�C���h��ݒ肷��B
-  �f�t�H���g�ݒ�t�@�C����~/.inputrc�B
+- キーバインドを設定する。
+  デフォルト設定ファイルは~/.inputrc。
 ** File
 *** Samba
-- Unix�nOS��Windows�̃t�@�C�����L�@�\��񋟂�����́B
+- Unix系OSでWindowsのファイル共有機能を提供するもの。
 - [[https://www.samba.org/][SAMBA]]
 - [[https://wiki.samba.org/index.php/Main_Page][Main Page - SAMBA wiki]]
 ** Database
@@ -48,60 +48,60 @@
 
 ** WebServer
 *** Architecture
-**** �V���A�����f��
-**** �}���`�v���Z�X���f��
-**** �}���`�X���b�h���f��
-**** �C�x���g�쓮���f��
-**** �n�C�u���b�h���f��
-**** �v�ʃv���Z�X���f��
+**** シリアルモデル
+**** マルチプロセスモデル
+**** マルチスレッドモデル
+**** イベント駆動モデル
+**** ハイブリッドモデル
+**** 計量プロセスモデル
 **** Link
-- [[http://yuuki.hatenablog.com/entry/2015-webserver-architecture][2015�NWeb�T�[�o�A�[�L�e�N�`�����_ - �䂤�����u���O]]
+- [[http://yuuki.hatenablog.com/entry/2015-webserver-architecture][2015年Webサーバアーキテクチャ序論 - ゆううきブログ]]
 
 *** Apache
-**** ����
-***** �����o�[�W�����̃T�|�[�g
+**** 特徴
+***** 複数バージョンのサポート
 ***** MPM : Multi Processing Module
 - 
-  ����OS�ɍœK��
+  複数OSに最適化
 
-****** �v���Z�X�̋���(Unix)
+****** プロセスの挙動(Unix)
 ******* prefork
 - 
-  �X���b�h���g�킸�A��s����fork���s���E�F�u�T�[�o�B
-  �`���I�ɐe�v���Z�X��1�����A�N���C�A���g���烊�N�G�X�g�������fork����B���ۂ̒ʐM�͎q�v���Z�X���󂯎��B
-  ���̂��߁A�ڑ��������q�v���Z�X���N������B
-  fork�Ɏ��Ԃ������邽�߁A���炩���ߕ����̃v���Z�X�����O�ɗ����グ�Ă������߁Aprefork�ƌĂ΂��B
+  スレッドを使わず、先行してforkを行うウェブサーバ。
+  伝統的に親プロセスを1つ持ち、クライアントからリクエストが来るとforkする。実際の通信は子プロセスが受け持つ。
+  そのため、接続数だけ子プロセスが起動する。
+  forkに時間がかかるため、あらかじめ複数個のプロセスを事前に立ち上げておくため、preforkと呼ばれる。
 
-- �����b�g
-  ����q�v���Z�X���t���[�Y���Ă��A���̃v���Z�X�ɂ͉e�������A���肵���ʐM���\�B
+- メリット
+  ある子プロセスがフリーズしても、他のプロセスには影響せず、安定した通信が可能。
 
-- �f�����b�g
-  �N���C�A���g�������Ȃ�قǃ�������CPU���ׂ������Ă����B
+- デメリット
+  クライアントが多くなるほどメモリやCPU負荷が増えていく。
 
 ******* worker
 - 
-  �}���`�X���b�h�ƃ}���`�v���Z�X�̃n�C�u���b�h�^�B
-  �q�v���Z�X1��1���}���`�X���b�h�œ��삵�A�X���b�h1��1�̃N���C�A���g���󂯎��B
+  マルチスレッドとマルチプロセスのハイブリッド型。
+  子プロセス1つ1つがマルチスレッドで動作し、スレッド1つが1つのクライアントを受け持つ。
 
 ******* event
 - 
-  worker�̈��ŁA�}���`�X���b�h�œ��삷��B
-  �Ⴂ��Keep-Alive�̏������@�ŁAKeep-Alive�̏�����ʂ̃X���b�h�Ɋ���U���ĒʐM����������B
-  2.4.1�Ő����ɍ̗p���ꂽ�B
+  workerの一種で、マルチスレッドで動作する。
+  違いはKeep-Aliveの処理方法で、Keep-Aliveの処理を別のスレッドに割り振って通信を処理する。
+  2.4.1で正式に採用された。
 
-***** ���W���[���ɂ��@�\�ǉ�
+***** モジュールによる機能追加
 - 
-  ���W���[����ǉ����邱�ƂŊg���\�B(Apache->A patch)
-  �uCore�v���܂�����A���W���[����ǉ����ċ@�\���g������B�umod_XXX�v�Ɩ��t������B
+  モジュールを追加することで拡張可能。(Apache->A patch)
+  「Core」がまずあり、モジュールを追加して機能を拡張する。「mod_XXX」と名付けられる。
   
-  �ǉ��́u�ÓI�����N�v�Ɓu���I�����N�v������B
-  - �ÓI�����N
-    �ÓI�����N��Apache�̎��s�t�@�C�����̂��̂Ƀ��W���[����g�ݍ��ށB�o�C�i���I�Ɉ�̉�����B
-    �������ăR���p�C�����K�v�B
-  - DSO : Dynamic Shared Object�A���I���L�I�u�W�F�N�g
-    ���I�����N�̓��W���[����ʃt�@�C���Ƃ��č쐬���A�K�v�ɉ����ă��W���[���̃t�@�C������@�\���Ăяo�������B
-    ���炩���߁umod_so�v���W���[����ÓI�����N���Ă����K�v������B
-    ���ׂ������Ȃ邪�������e�ՁB
+  追加は「静的リンク」と「動的リンク」がある。
+  - 静的リンク
+    静的リンクはApacheの実行ファイルそのものにモジュールを組み込む。バイナリ的に一体化する。
+    早いが再コンパイルが必要。
+  - DSO : Dynamic Shared Object、動的共有オブジェクト
+    動的リンクはモジュールを別ファイルとして作成し、必要に応じてモジュールのファイルから機能を呼び出す方式。
+    あらかじめ「mod_so」モジュールを静的リンクしておく必要がある。
+    負荷が高くなるが導入が容易。
 
 **** Build
 - http://httpd.apache.org/docs/2.4/install.html
@@ -109,7 +109,7 @@
 ***** Expansion
 ***** Setting
 - 
-  Default�̃p�X��/usr/local/apache2
+  Defaultのパスは/usr/local/apache2
 
 - [[http://httpd.apache.org/docs/2.4/programs/configure.html][configure - Configure the source tree - Apache HTTP Server]]
 ***** Compile
@@ -119,7 +119,7 @@
 **** Modules
 ***** core
 - 
-  [[http://httpd.apache.org/docs/2.4/mod/core.html][Apache �R�A�@�\]]
+  [[http://httpd.apache.org/docs/2.4/mod/core.html][Apache コア機能]]
 
 ****** <Directory>
 
@@ -128,9 +128,9 @@
 ****** <VirtualHost>
 ****** Include
 - Include file-path|directory-path
-  - �ݒ�t�@�C�����C���N���[�h�ł���B
-  - fnmatch�̃��C���h�J�[�h�����̗��p���\�B
-  - �t�@�C���͐�΃p�X��ServerRoot�f�B���N�g������̑��΃p�X�B
+  - 設定ファイルをインクルードできる。
+  - fnmatchのワイルドカード文字の利用が可能。
+  - ファイルは絶対パスかServerRootディレクトリからの相対パス。
 - ex)
   Include /usr/local/apache2/conf/ssl.conf
   Include conf/ssl.conf
@@ -148,7 +148,7 @@
 ****** prefork
 ****** worker
 - 
-  �}���`�X���b�h�ƃ}���`�v���Z�X�̃n�C�u���b�h�^
+  マルチスレッドとマルチプロセスのハイブリッド型
 
 ****** event
 ****** mpm_winnt
@@ -159,16 +159,16 @@
 - 
   Provides a rule-based rewriting engine to rewrite requested URLs on the fly.
 - 
-  Apache Web�T�[�o�ɂ����āA�N���C�A���g���烊�N�G�X�g�̂�����URL�̓�������������A
-  ���܂��܂Ȋ��ϐ����ɉ��������_�C���N�g���\�Ƃ��郂�W���[���B
-  ���K�\�����g�p�����}�b�`���O���s�����Ƃ��ł���B
+  Apache Webサーバにおいて、クライアントからリクエストのあったURLの内部書き換えや、
+  さまざまな環境変数等に応じたリダイレクトを可能とするモジュール。
+  正規表現を使用したマッチングを行うことができる。
 
-- �g�p���@
-  - httpd.conf�ɐݒ肷��
-    ������̕���
+- 使用方法
+  - httpd.confに設定する
+    こちらの方が
 
-  - .htaccess�ɐݒ肷��
-    �������x���Ȃ�̂ŁAhttpd.conf�����B
+  - .htaccessに設定する
+    処理が遅くなるので、httpd.conf推奨。
 
 ***** Etc2
 ****** mod_jk
@@ -181,21 +181,21 @@
 **** Settings
 ***** httpd.conf
 ****** TypesConfig
-- mime�^�C�v�Ɗg���q�̑g�ݍ��킹��ݒ肷��t�@�C���p�X�̎w��
-  �f�t�@���g�Őݒ肳�ꂽ�t�@�C������mime.types
+- mimeタイプと拡張子の組み合わせを設定するファイルパスの指定
+  デファルトで設定されたファイル名はmime.types
 ****** AddType
-- MIME�^�C�v��ǉ�����B
-  �� : AddType MIME�^�C�v �g���q
+- MIMEタイプを追加する。
+  例 : AddType MIMEタイプ 拡張子
 ****** CustomLog
-- ���O�t�@�C���̈ʒu��ݒ肷��B
-  �� : CustomLog ���O�t�@�C���̏ꏊ ���O�t�@�C���̃t�H�[�}�b�g
+- ログファイルの位置を設定する。
+  例 : CustomLog ログファイルの場所 ログファイルのフォーマット
   
 ***** .htaccess
 - this files provide a way to make configuration changes on a per-directory basis.
 ***** mime.types
-- MIME�^�C�v�Ɗg���q�̑g�ݍ��킹��ݒ肷��B
-  httpd.conf�t�@�C������"TypesConfig"�Ńp�X��ݒ肵�Ă���B
-  httpd.conf�t�@�C�����ŁAAddType���s��MIME�^�C�v��ǉ����邱�Ƃ��\�B
+- MIMEタイプと拡張子の組み合わせを設定する。
+  httpd.confファイル中の"TypesConfig"でパスを設定している。
+  httpd.confファイル内で、AddTypeを行いMIMEタイプを追加することも可能。
 **** Command
 ***** httpd
 ****** -k
@@ -227,7 +227,7 @@
 
 *** IIS
 *** DIY
-- [[http://kmaebashi.com/programmer/webserver/index.html][�{���̊�b�����Web�A�v���P�[�V�������� -Web�T�[�o������Ă݂悤-]]
+- [[http://kmaebashi.com/programmer/webserver/index.html][本当の基礎からのWebアプリケーション入門 -Webサーバを作ってみよう-]]
 ** Reverse Proxy Server
 *** Squid
 *** Varnish Cache
@@ -236,16 +236,16 @@
 *** Kind
 **** NAT
 - 
-  �p�P�b�g�����ׂă��[�h�o�����T���o�R����
+  パケットがすべてロードバランサを経由する
 
 **** DSR, Direct Server Return
 - 
-  ���H�����[�h�o�����T���o�R���Ȃ�
+  復路がロードバランサを経由しない
 
 *** Linux Virtual Server, LVS
 - 
-  Linux�����[�h�o�����T�Ƃ��ė��p���邽�߂̃\�t�g�E�F�A�B
-  Linux�J�[�l���ɑg�ݍ���Ŏg���J�[�l�����W���[���ƁA�ݒ��Ǘ����s��ipvsadm�R�}���h����\������Ă���B
+  Linuxをロードバランサとして利用するためのソフトウェア。
+  Linuxカーネルに組み込んで使うカーネルモジュールと、設定や管理を行うipvsadmコマンドから構成されている。
 
 *** HAProxy
 - 
@@ -262,21 +262,21 @@
   The main goal of this project is to provide smple and robust facilities for loadbalancing and high-availability to Linux system and Linux based infrastructures.
 
 - 
-  �T�[�r�X�̉ғ���Ԃ��Ď�����\�t�g�E�F�A�B
-  LVS�ƍ��킹�ė��p���A�T�[�o����~�ELB����~���Ă�����A���֐U�蕪���邱�Ƃ��s���B
+  サービスの稼働状態を監視するソフトウェア。
+  LVSと合わせて利用し、サーバが停止・LBが停止していたら、他へ振り分けることを行う。
 
 - 
   http://www.keepalived.org/
 
 *** Heartbeat
 - 
-  The High Availability Linux Project���J���������̂ŁA�A�N�e�B�u�E�X�^���o�C�N���X�^��񋟂����{�I�ȋ@�\��񋟂���B
+  The High Availability Linux Projectが開発したもので、アクティブ・スタンバイクラスタを提供する基本的な機能を提供する。
 
-- �@�\
-  - �t�F�[���I�[�o�[�ƃt�F�[���o�b�N
-  - �ғ��Ď�
-  - ���L���\�[�X�Ǘ�
-  - �T�[�r�X�Ď�
+- 機能
+  - フェールオーバーとフェールバック
+  - 稼働監視
+  - 共有リソース管理
+  - サービス監視
 
 - 
   http://linux-ha.org/wiki/Heartbeat
@@ -284,13 +284,13 @@
 ** BigData
 *** BigQuery
 - 
-  �r�b�O�f�[�^�̕��͂Ɏg����cloud�T�[�r�X�B
+  ビッグデータの分析に使われるcloudサービス。
 
 ** Browser
 *** Firefox
 **** XUL
-- XML User Interface Language, ���[��
-  Mozila�A�v���P�[�V�������쐬���邽�߂̃��[�U�C���^�[�t�F�[�X�}�[�N�A�b�v����B
+- XML User Interface Language, ずーる
+  Mozilaアプリケーションを作成するためのユーザインターフェースマークアップ言語。
 
 *** Chrome
 
@@ -298,8 +298,8 @@
 *** Google Analytics
 **** Link
 - [[https://www.google.com/intl/ja_jp/analytics/][Google Analytics]]
-- [[https://developers.google.com/analytics/][Google�A�i���e�B�N�X]]
-- [[https://liginc.co.jp/web/seo/107795][Google�A�i���e�B�N�X�̗p��̈Ӗ��Ɗ�{�I�Ȏg�������������悤 - LIG INC.]]
+- [[https://developers.google.com/analytics/][Googleアナリティクス]]
+- [[https://liginc.co.jp/web/seo/107795][Googleアナリティクスの用語の意味と基本的な使い方をおさえよう - LIG INC.]]
 ** CI
 *** Jenkins
 *** TravisCI
@@ -321,20 +321,20 @@
 *** memcached
 - 
   a general-purpose distributed memory caching system.
-  �ėp�̕��U�^�������L���b�V���V�X�e���B
+  汎用の分散型メモリキャッシュシステム。
 
 *** Oracle Coherence
 - 
-  �C���������E�f�[�^�O���b�h���i
-  ���̂�Java�N���X���C�u����(100% Pure Java)
-  ���C�u������Java/C++/.NET
+  インメモリ・データグリッド製品
+  実体はJavaクラスライブラリ(100% Pure Java)
+  ライブラリはJava/C++/.NET
 ** Log
 *** Fluentd
 *** Elasticsearch
 *** Kibana
 - 
-  Elastic�Ђ̃��O���/�����c�[���B
-  ��{�I��Elasticsearch�ƃZ�b�g�Ŏg����B
+  Elastic社のログ解析/可視化ツール。
+  基本的にElasticsearchとセットで使われる。
 
 ** Chat
 *** idobata
@@ -354,23 +354,23 @@
 *** Library
 **** Rack
 - 
-  WSGI�ɉe������ĊJ�����ꂽ�ARuby�ɂ�����T�[�o�ƃA�v���P�[�V�����^�t���[�����[�N�Ԃ̃C���^�[�t�F�[�X�̖������ʂ������C�u�����B
+  WSGIに影響されて開発された、Rubyにおけるサーバとアプリケーション／フレームワーク間のインターフェースの役割を果たすライブラリ。
 
 - 
-  [[http://gihyo.jp/dev/serial/01/ruby/0023][��23�� Rack�Ƃ͉����i1�jRack�̐��܂ꂽ�w�i - Ruby Freaks Lounge - gihyo.jp]]
+  [[http://gihyo.jp/dev/serial/01/ruby/0023][第23回 Rackとは何か（1）Rackの生まれた背景 - Ruby Freaks Lounge - gihyo.jp]]
 
 *** Web Server
 **** Unicorn
 - Rack Web Srever.
-  Rack��Web�T�[�o�[�̋@�\�𕹂����B
+  RackとWebサーバーの機能を併せ持つ。
 
 - 
-  Unicorn+Rails�Ō��J���\�����A���X�|���X��Apache��Nginx�ɗ�邽�߁ANginx+Unicorn+Rails�ł̌��J����ʓI�B
-  ���Ȃ݂�Nginx��Rails�̋@�\���T�|�[�g���Ă��Ȃ����߁ANginx+Rails�ł͓��삵�Ȃ��B
+  Unicorn+Railsで公開も可能だが、レスポンスがApacheやNginxに劣るため、Nginx+Unicorn+Railsでの公開が一般的。
+  ちなみにNginxはRailsの機能をサポートしていないため、Nginx+Railsでは動作しない。
 
 **** WEBrick
-- �ėpHTTP�T�[�o�t���[�����[�N
-  �P����HTTP Web�T�[�o�̋@�\��񋟂���Ruby�̃��C�u�����B
+- 汎用HTTPサーバフレームワーク
+  単純なHTTP Webサーバの機能を提供するRubyのライブラリ。
   
 **** Mongrel
 
@@ -380,13 +380,13 @@
 *** Library
 **** WSGI
 - Web Server Gateway Interface
-  Python�̂��߂�Web�T�[�o��Web�A�v���P�[�V�����E�t���[�����[�N�Ԃ̕W���C���^�[�t�F�[�X���߂�d�l�B
+  PythonのためのWebサーバとWebアプリケーション・フレームワーク間の標準インターフェースを定める仕様。
 
 - 
-  �t���[�����[�N�̎����������Web�T�[�o�Ɉˑ����Ă��邱�Ƃ������A�t���[�����[�N���T�[�o�����������ꍇ�������������B
-  ���̂��߁A���݂��ɕ����̊��ɑΉ����邽��
+  フレームワークの実装が特定のWebサーバに依存していることが多く、フレームワークかサーバが制限される場合が多くあった。
+  そのため、お互いに複数の環境に対応するため
   
-- ������ւ̉e��
+- 他言語への影響
   - PSGI(Perl)
   - Rack(Ruby)
   - SCGI
@@ -401,7 +401,7 @@
 **** Pyramid
 **** Tornado
 - 
-  Facebook���B
+  Facebook製。
 
 **** CherryPy
 
@@ -420,43 +420,43 @@
 *** Library
 **** PSGI
 - 
-  PHP��WSGI
+  PHP版WSGI
 
-** Posix�݊�
+** Posix互換
 *** Cygwin
 - 
-  �݊������C���[�Ȃ��Ńo�C�i������邱�Ƃ��T�|�[�g���Ă��Ȃ��A�Ƃ̂��ƁB
-  Red Hat�̏]�ƈ����ꕔ�J���ɏ]�����Ă���炵���B
+  互換性レイヤーなしでバイナリを作ることをサポートしていない、とのこと。
+  Red Hatの従業員が一部開発に従事しているらしい。
 
 *** Msys2
 - 
-  mingw�r���h�`�[����Alexey Pavlov�ɂ���Ďn�߂�ꂽ�v���W�F�N�g�ŁA�ŐV��Cygwin��������ƒǐՂ��Ă���B
-  �p�b�P�[�W�Ǘ��\�t�g��Pacman���ڐA���Ă���B
+  mingwビルドチームのAlexey Pavlovによって始められたプロジェクトで、最新のCygwinをきちんと追跡している。
+  パッケージ管理ソフトのPacmanを移植している。
 
 - 
   [[http://msys2.github.io/][MSYS2 installer]]
-  [[http://verifiedby.me/adiary/055][MSYS2�������Ă݂� - kashi�̓��L]]
-  [[http://yaritakunai.hatenablog.com/entry/2015/11/07/201000][Windows��œ����ŐV��Unix���AMSYS2�ɂ��ĉ��߂Ă܂Ƃ߂� - �ł��Ȃ����Ƃ͂�肽���Ȃ�]]
-  [[http://amekujira.seesaa.net/article/420665358.html][MSYS�AMSYS2�ACygwin�Amsysgit�̈Ⴂ - �J�~�̂�������]]
+  [[http://verifiedby.me/adiary/055][MSYS2を試してみる - kashiの日記]]
+  [[http://yaritakunai.hatenablog.com/entry/2015/11/07/201000][Windows上で動く最新のUnix環境、MSYS2について改めてまとめた - できないことはやりたくない]]
+  [[http://amekujira.seesaa.net/article/420665358.html][MSYS、MSYS2、Cygwin、msysgitの違い - 雨鯨のたそがれ]]
 
 *** MSYS
 - Minimal System
-  �����e�i���X���ǂ��t���Ă��Ȃ��͗l
+  メンテナンスが追い付いていない模様
 
 *** MinGW
 - Minimalist GNU for Windows
-  GNU�c�[���`�F�[����Windows�ڐA�ŁB
+  GNUツールチェーンのWindows移植版。
 
 ** Undefined
 ** Glossary
 - 
-  ����́A�s����̂Ȃ�Temp�Ȃ��́B
-  Tools�Ƃ͒��ڊ֌W�Ȃ��B
+  現状は、行き場のないTempなもの。
+  Toolsとは直接関係ない。
 
-*** �O���b�h�E�R���s���[�e�B���O
+*** グリッド・コンピューティング
 - 
-  �C���^�[�l�b�g�Ȃǂ̍L��̃l�b�g���[�N��ɂ���v�Z���������т��A
-  �ЂƂ̕��������R���s���[�^�V�X�e���Ƃ��ăT�[�r�X��񋟂���d�g�݁B
+  インターネットなどの広域のネットワーク上にある計算資源を結びつけ、
+  ひとつの複合したコンピュータシステムとしてサービスを提供する仕組み。
 
 ** Memo
 

@@ -12,7 +12,7 @@
 *** HP-UX
 **** Command
 ***** glance
-- performance‚ğŠm”F‚·‚é
+- performanceã‚’ç¢ºèªã™ã‚‹
 *** Solaris
 *** Minix
 ** Link

@@ -11,7 +11,7 @@
 *** Build Tool
 *** UNit Test
 **** xUnit
-*** ‰æ–ÊŒ‹‡
+*** ç”»é¢çµåˆ
 **** Selenium
 *** Deploy
 **** Orchestration

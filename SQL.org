@@ -1,9 +1,9 @@
 * SQL
-** Window�֐�
+** Window関数
 - 
-  ���ʃZ�b�g�𕔕��I�ɐ؂�o�����̈�ɏW��֐���K�p�ł���B
-  SQL:2003�ȍ~�̕W��SQL�ŋK�肳��Ă���B
+  結果セットを部分的に切り出した領域に集約関数を適用できる。
+  SQL:2003以降の標準SQLで規定されている。
   
     ex) sum(population) OVER ( PARTITION BY city)
-        city����population�̍��v��������l�A���擾����B
+        city毎にpopulationの合計を取った値、を取得する。
 

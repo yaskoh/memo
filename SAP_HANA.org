@@ -59,7 +59,7 @@
   - Insert Only
     
 
-*** ŠK‘w“Iata Storage System
+*** éšŽå±¤çš„ata Storage System
 - Dynamic Tearing
   - Hot Data
     In Memory

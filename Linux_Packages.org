@@ -1,5 +1,5 @@
 * Linux Packages
-- •K—v‚É‰‚¶AŒ¾Œê•Ê‚Æ‚·‚éACŠÖ˜A‚ÖˆÚ“®‚·‚é‚È‚Ç‚·‚é‚©‚àB
+- å¿…è¦ã«å¿œã˜ã€è¨€èªåˆ¥ã¨ã™ã‚‹ã€Cé–¢é€£ã¸ç§»å‹•ã™ã‚‹ãªã©ã™ã‚‹ã‹ã‚‚ã€‚
 ** General
 *** libjpeg
 - C library for reading and writing JPEG image files.

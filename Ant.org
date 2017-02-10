@@ -22,7 +22,7 @@
   -file      <file>
   -f         <file>
 - -D<property>=<value>
-  ƒvƒƒpƒeƒBƒtƒ@ƒCƒ‹‚Ìw’è‚æ‚è‚à—Dæ‚³‚ê‚éB
+  ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ•ã‚¡ã‚¤ãƒ«ã®æŒ‡å®šã‚ˆã‚Šã‚‚å„ªå…ˆã•ã‚Œã‚‹ã€‚
 - -keep-going, -k
 - -propertyfile <name>
 - -inputhandler <class>
@@ -58,10 +58,10 @@
   a comma-separated listo f names of targets on which this target depends.
 - if
   the name of the property that msut be set in order for this target to execute, or something evaluating to true.
-  “–ŠYƒ^[ƒQƒbƒg‚Ì‚İ‚É‰e‹¿‚ğ—^‚¦‚é‚½‚ßAˆË‘¶ŠÖŒW‚É‚ ‚éƒvƒƒWƒFƒNƒg‚ÍŒ‹‰Ê‚ÉŠÖŒW‚È‚­Às‚³‚ê‚éB
+  å½“è©²ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®ã¿ã«å½±éŸ¿ã‚’ä¸ãˆã‚‹ãŸã‚ã€ä¾å­˜é–¢ä¿‚ã«ã‚ã‚‹ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯çµæœã«é–¢ä¿‚ãªãå®Ÿè¡Œã•ã‚Œã‚‹ã€‚
 - unless
   the name of the property that msut not be set in order for this target to execute, or something evaluating to false.
-  “–ŠYƒ^[ƒQƒbƒg‚Ì‚İ‚É‰e‹¿‚ğ—^‚¦‚é‚½‚ßAˆË‘¶ŠÖŒW‚É‚ ‚éƒvƒƒWƒFƒNƒg‚ÍŒ‹‰Ê‚ÉŠÖŒW‚È‚­Às‚³‚ê‚éB
+  å½“è©²ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®ã¿ã«å½±éŸ¿ã‚’ä¸ãˆã‚‹ãŸã‚ã€ä¾å­˜é–¢ä¿‚ã«ã‚ã‚‹ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯çµæœã«é–¢ä¿‚ãªãå®Ÿè¡Œã•ã‚Œã‚‹ã€‚
 - description
   a short description of this target's function
 - extensionOf
@@ -160,7 +160,7 @@
   this is set by the launcher script and maybe not set inside IDEs.
 - ant.library.dir
   this is only set if Ant is started via the Launcher class
-- java.lang.System.getProperty()‚Åæ“¾‚Å‚«‚éproperty‚Í‘S‚Ä—˜—p‰Â”\B
+- java.lang.System.getProperty()ã§å–å¾—ã§ãã‚‹propertyã¯å…¨ã¦åˆ©ç”¨å¯èƒ½ã€‚
 **** Propety Helpers
 *** Type
 **** List
@@ -190,8 +190,8 @@
 ***** ZipFileSet
 ** Ant API
 ** Memo
-*** Optional‚Ì“±“ü
-- Linux‚Åant‚ğÀs‚µ‚½ÛANative2Ascii‚ª‚È‚¢A‚Æ“{‚ç‚ê‚½‚ªAˆÈ‰º‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é‚±‚Æ‚Å‰ğŒˆ‚µ‚½B
+*** Optionalã®å°å…¥
+- Linuxã§antã‚’å®Ÿè¡Œã—ãŸéš›ã€Native2AsciiãŒãªã„ã€ã¨æ€’ã‚‰ã‚ŒãŸãŒã€ä»¥ä¸‹ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹ã“ã¨ã§è§£æ±ºã—ãŸã€‚
   Message : Cause: the class org.apache.tools.ant.taskdefs.optional.Native2Ascii was not found.
   Install : sudo yum install ant-nodeps
 ** Link

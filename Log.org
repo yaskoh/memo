@@ -1,46 +1,46 @@
 * Log
 ** logrotate
 ** rsyslog
-- [[http://changineer.info/server/logging/linux_rsyslogd.html][rsyslogd(syslogd)İ’è - ƒlƒbƒgƒ[ƒNƒ`ƒFƒ“ƒWƒjƒA‚Æ‚µ‚Ä]]
+- [[http://changineer.info/server/logging/linux_rsyslogd.html][rsyslogd(syslogd)è¨­å®š - ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒã‚§ãƒ³ã‚¸ãƒ‹ã‚¢ã¨ã—ã¦]]
 
 ** fluentd
 - fluentd
-  ruby gem‚É‚æ‚Á‚Ä’ñ‹Ÿ‚³‚ê‚éAƒƒO‚Ì“]‘—EW–ñ‚ğs‚¤‚½‚ß‚Ìd‘g‚İB
-  •¡”‘ä‚ÌƒT[ƒo‚ğ‰^—p‚µ‚Ä‚¢‚é‚É‚»‚ê‚¼‚ê‚ÌƒT[ƒo‚É‚½‚Ü‚éƒƒO‚ğAŠÈ’P‚È‹Lq‚Å“Á’è‚ÌêŠ‚ÉW–ñ‚Å‚«‚éB
+  ruby gemã«ã‚ˆã£ã¦æä¾›ã•ã‚Œã‚‹ã€ãƒ­ã‚°ã®è»¢é€ãƒ»é›†ç´„ã‚’è¡Œã†ãŸã‚ã®ä»•çµ„ã¿ã€‚
+  è¤‡æ•°å°ã®ã‚µãƒ¼ãƒã‚’é‹ç”¨ã—ã¦ã„ã‚‹æ™‚ã«ãã‚Œãã‚Œã®ã‚µãƒ¼ãƒã«ãŸã¾ã‚‹ãƒ­ã‚°ã‚’ã€ç°¡å˜ãªè¨˜è¿°ã§ç‰¹å®šã®å ´æ‰€ã«é›†ç´„ã§ãã‚‹ã€‚
 
 - td-agent
-  fluentd‚Ìƒ‰ƒbƒp[ƒvƒƒOƒ‰ƒ€B
-  ruby, gem“™‚ÌƒvƒƒOƒ‰ƒ€‚â‹N“®ƒXƒNƒŠƒvƒg‚È‚Ç‚Ì•Ö—˜‚Èƒtƒ@ƒCƒ‹‚ğƒCƒ“ƒXƒg[ƒ‹ƒRƒ}ƒ“ƒh‚Ğ‚Æ‚Â‚Å’ñ‹Ÿ‚µ‚Ä‚­‚ê‚éB
+  fluentdã®ãƒ©ãƒƒãƒ‘ãƒ¼ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã€‚
+  ruby, gemç­‰ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã‚„èµ·å‹•ã‚¹ã‚¯ãƒªãƒ—ãƒˆãªã©ã®ä¾¿åˆ©ãªãƒ•ã‚¡ã‚¤ãƒ«ã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã‚³ãƒãƒ³ãƒ‰ã²ã¨ã¤ã§æä¾›ã—ã¦ãã‚Œã‚‹ã€‚
 
 *** Link
 - [[http://www.fluentd.org/][fluentd]]
-- [[http://changineer.info/server/logging/fluentd-td-agent.html][fluentd(td-agent)‚ÌƒCƒ“ƒXƒg[ƒ‹‚Æİ’è ƒlƒbƒgƒ[ƒNƒ`ƒFƒ“ƒWƒjƒA‚Æ‚µ‚Ä]]
+- [[http://changineer.info/server/logging/fluentd-td-agent.html][fluentd(td-agent)ã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã¨è¨­å®š ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒã‚§ãƒ³ã‚¸ãƒ‹ã‚¢ã¨ã—ã¦]]
 
 ** Log4j
-*** ŠT—v
+*** æ¦‚è¦
 - 
-  JavaƒvƒƒOƒ‰ƒ€—p‚ÌƒƒOAPIB
+  Javaãƒ—ãƒ­ã‚°ãƒ©ãƒ ç”¨ã®ãƒ­ã‚°APIã€‚
 
 *** Ver1.2
 **** Fundamentals
 ***** Logger
 - 
-  ’†SƒNƒ‰ƒXBƒƒMƒ“ƒO‚ğs‚¤•”•ª‚ğƒOƒ‹[ƒv‰»‚µA•K—v‚ÈƒOƒ‹[ƒv‚ÌƒƒO‚¾‚¯‚ğo—Í‚µ‚½‚èA
-  ƒJƒeƒSƒŠ[‚É—Dæ‡ˆÊ‚ğ‚Â‚¯‚é‚±‚Æ‚Å—lX‚Èo—Í•û–@‚ğw’è‰Â”\B
+  ä¸­å¿ƒã‚¯ãƒ©ã‚¹ã€‚ãƒ­ã‚®ãƒ³ã‚°ã‚’è¡Œã†éƒ¨åˆ†ã‚’ã‚°ãƒ«ãƒ¼ãƒ—åŒ–ã—ã€å¿…è¦ãªã‚°ãƒ«ãƒ¼ãƒ—ã®ãƒ­ã‚°ã ã‘ã‚’å‡ºåŠ›ã—ãŸã‚Šã€
+  ã‚«ãƒ†ã‚´ãƒªãƒ¼ã«å„ªå…ˆé †ä½ã‚’ã¤ã‘ã‚‹ã“ã¨ã§æ§˜ã€…ãªå‡ºåŠ›æ–¹æ³•ã‚’æŒ‡å®šå¯èƒ½ã€‚
   
 - 
-  –¼Ì‚Ìw’è©‘Ì‚Íjava‚Ìƒ\[ƒX‚Ås‚Á‚Ä‚¨‚èA‚»‚ê‚ğİ’èƒtƒ@ƒCƒ‹‚Åˆµ‚¤B
+  åç§°ã®æŒ‡å®šè‡ªä½“ã¯javaã®ã‚½ãƒ¼ã‚¹ã§è¡Œã£ã¦ãŠã‚Šã€ãã‚Œã‚’è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã§æ‰±ã†ã€‚
   
 - ex
-   //İ’è’lã‚Ì"tripleLogger"‚ğAƒ\[ƒXã‚ÅtripleL‚Æ‚µ‚Äˆµ‚¤B‰º‚à“¯—lB
+   //è¨­å®šå€¤ä¸Šã®"tripleLogger"ã‚’ã€ã‚½ãƒ¼ã‚¹ä¸Šã§tripleLã¨ã—ã¦æ‰±ã†ã€‚ä¸‹ã‚‚åŒæ§˜ã€‚
   tripleL = Logger.getLogger("tripleLogger");
   fifthL  = Logger.getLogger("fifthLogger");
 
 ****** org.apache.log4j.Logger Class
 - 
-  ƒƒOƒCƒxƒ“ƒg‚ğ”­¶‚³‚¹‚é‚½‚ß‚Ég—p‚³‚ê‚éƒNƒ‰ƒXB
-  ŠK‘w‚ğŒ`¬‚µAeLogger‚Éİ’è‚³‚ê‚½‘®«‚È‚Ç‚ÍqLogger‚ÉŒp³‚³‚ê‚éB
-  ÅãˆÊ‚ÉRootLogger‚ª‘¶İ‚·‚éB
+  ãƒ­ã‚°ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºç”Ÿã•ã›ã‚‹ãŸã‚ã«ä½¿ç”¨ã•ã‚Œã‚‹ã‚¯ãƒ©ã‚¹ã€‚
+  éšå±¤ã‚’å½¢æˆã—ã€è¦ªLoggerã«è¨­å®šã•ã‚ŒãŸå±æ€§ãªã©ã¯å­Loggerã«ç¶™æ‰¿ã•ã‚Œã‚‹ã€‚
+  æœ€ä¸Šä½ã«RootLoggerãŒå­˜åœ¨ã™ã‚‹ã€‚
 
 ****** Level
 - 
@@ -48,33 +48,33 @@
 
 ***** Appender
 - 
-  ƒƒO‚Ìo—Íæ‚ğw’è‚·‚é‚à‚ÌB
+  ãƒ­ã‚°ã®å‡ºåŠ›å…ˆã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã€‚
 
 - addAppender()
-  Appender‚ÍaddAppender()ƒƒ\ƒbƒh‚ÅLogger‚ÉƒZƒbƒg‚·rB‰L
-  ŠeLogger‚ÉƒZƒbƒg‚·‚é‚±‚Æ‚ÅA‚»‚ê‚¼‚ê‚ÌƒƒO‚ğ—lX‚Èˆ¶æ‚Éo—Í‚·‚é‚±‚Æ‚ª‚Å‚«‚éB
+  Appenderã¯addAppender()ãƒ¡ã‚½ãƒƒãƒ‰ã§Loggerã«ã‚»ãƒƒãƒˆã™rã€‚éµœ
+  å„Loggerã«ã‚»ãƒƒãƒˆã™ã‚‹ã“ã¨ã§ã€ãã‚Œãã‚Œã®ãƒ­ã‚°ã‚’æ§˜ã€…ãªå®›å…ˆã«å‡ºåŠ›ã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚
 
 ****** org.apache.log4j.Appender Interface
 - 
-  o—Íæ‚ğw’è‚·‚éÛ‚Ég—p‚·‚éƒNƒ‰ƒX‚ÍA‚·‚×‚Äorg.apache.log4j.AppenderƒCƒ“ƒ^[ƒtƒF[ƒX‚ğÀ‘•‚µ‚Ä‚¢‚éB
+  å‡ºåŠ›å…ˆã‚’æŒ‡å®šã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹ã‚¯ãƒ©ã‚¹ã¯ã€ã™ã¹ã¦org.apache.log4j.Appenderã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ã¦ã„ã‚‹ã€‚
 
-- o—Íæİ’è
+- å‡ºåŠ›å…ˆè¨­å®š
   |-----------------------------------------------------+-----------------------------|
   | class                                               | output                      |
   |-----------------------------------------------------+-----------------------------|
-  | org.apache.log4j.ConsoleAppender                    | ƒRƒ“ƒ\[ƒ‹                  |
-  | org.apache.log4j.DailyRollingFileAppender           | ƒtƒ@ƒCƒ‹                    |
-  | org.apache.log4j.FileAppender                       | V                          |
-  | org.apache.log4j.RollingFileAppender                | V                          |
+  | org.apache.log4j.ConsoleAppender                    | ã‚³ãƒ³ã‚½ãƒ¼ãƒ«                  |
+  | org.apache.log4j.DailyRollingFileAppender           | ãƒ•ã‚¡ã‚¤ãƒ«                    |
+  | org.apache.log4j.FileAppender                       | ã€ƒ                          |
+  | org.apache.log4j.RollingFileAppender                | ã€ƒ                          |
   | org.apache.log4j.WriterAppender                     | Java.io.Writer              |
-  | org.apache.log4j.net.JMSAppender                    | JMSiJava Message Servicej |
-  | org.apache.log4j.net.SMTPAppender                   | “dqƒ[ƒ‹                  |
-  | org.apache.log4j.net.SocketAppender                 | ƒŠƒ‚[ƒgƒ\ƒPƒbƒgƒT[ƒo      |
-  | org.apache.log4j.net.SyslogAppender                 | ƒŠƒ‚[ƒgUnixSyslogƒf[ƒ‚ƒ“  |
-  | org.apache.log4j.nt.NTEventLogAppender              | WindowsNT‚ÌƒCƒxƒ“ƒgEƒƒO   |
-  | org.apache.log4j.AsyncAppender                      | ‚»‚Ì‘¼                      |
-  | org.apache.log4j.performance.NullAppender           | V                          |
-  | org.apache.log4j.varia.ExternallyRolledFileAppender | V                          |
+  | org.apache.log4j.net.JMSAppender                    | JMSï¼ˆJava Message Serviceï¼‰ |
+  | org.apache.log4j.net.SMTPAppender                   | é›»å­ãƒ¡ãƒ¼ãƒ«                  |
+  | org.apache.log4j.net.SocketAppender                 | ãƒªãƒ¢ãƒ¼ãƒˆã‚½ã‚±ãƒƒãƒˆã‚µãƒ¼ãƒ      |
+  | org.apache.log4j.net.SyslogAppender                 | ãƒªãƒ¢ãƒ¼ãƒˆUnixSyslogãƒ‡ãƒ¼ãƒ¢ãƒ³  |
+  | org.apache.log4j.nt.NTEventLogAppender              | WindowsNTã®ã‚¤ãƒ™ãƒ³ãƒˆãƒ»ãƒ­ã‚°   |
+  | org.apache.log4j.AsyncAppender                      | ãã®ä»–                      |
+  | org.apache.log4j.performance.NullAppender           | ã€ƒ                          |
+  | org.apache.log4j.varia.ExternallyRolledFileAppender | ã€ƒ                          |
   |-----------------------------------------------------+-----------------------------|
   
 ******* org.apache.log4j.WriteAppender Class
@@ -87,18 +87,18 @@
 ******* org.apache.log4j.DailyRollingFileAppender Class
 ***** Layout
 - 
-  ƒƒO‚Ìo—ÍƒtƒH[ƒ}ƒbƒg‚ğw’è‚·‚é‚à‚ÌB
-  LayoutƒNƒ‰ƒX‚Í’ŠÛƒNƒ‰ƒX‚ÅA‹ï‘Ì“I‚ÈƒtƒH[ƒ}ƒbƒgİ’è‚ÍˆÈ‰º‚ÌƒNƒ‰ƒX‚ğ—˜—p‚·‚éB
+  ãƒ­ã‚°ã®å‡ºåŠ›ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã™ã‚‹ã‚‚ã®ã€‚
+  Layoutã‚¯ãƒ©ã‚¹ã¯æŠ½è±¡ã‚¯ãƒ©ã‚¹ã§ã€å…·ä½“çš„ãªãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆè¨­å®šã¯ä»¥ä¸‹ã®ã‚¯ãƒ©ã‚¹ã‚’åˆ©ç”¨ã™ã‚‹ã€‚
 
 ****** org.apache.log4j.Layout Class
 - 
   |--------------------------------+--------------------------------------------------------------------------------------------|
   | class                          | format                                                                                     |
   |--------------------------------+--------------------------------------------------------------------------------------------|
-  | org.apache.log4j.SimpleLayout  | ’Pƒ‚ÈƒŒƒCƒAƒEƒg                                                                           |
-  | org.apache.log4j.PatternLayout | ƒ†[ƒU‚ªw’è‚µ‚½ƒtƒH[ƒ}ƒbƒg                                                               |
-  | org.apache.log4j.HTMLLayout    | HTML‚Ìƒe[ƒuƒ‹Œ`®                                                                         |
-  | org.apache.log4j.TTCCLayout    | ŠÔ‚ÆƒXƒŒƒbƒhAƒJƒeƒSƒŠ‚ÆƒlƒXƒg‰»f’fƒRƒ“ƒeƒLƒXƒgî•ñA‚»‚µ‚Ä–¼‘O‚©‚ç¬‚è—§‚ÂƒtƒH[ƒ}ƒbƒg |
+  | org.apache.log4j.SimpleLayout  | å˜ç´”ãªãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆ                                                                           |
+  | org.apache.log4j.PatternLayout | ãƒ¦ãƒ¼ã‚¶ãŒæŒ‡å®šã—ãŸãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ                                                               |
+  | org.apache.log4j.HTMLLayout    | HTMLã®ãƒ†ãƒ¼ãƒ–ãƒ«å½¢å¼                                                                         |
+  | org.apache.log4j.TTCCLayout    | æ™‚é–“ã¨ã‚¹ãƒ¬ãƒƒãƒ‰ã€ã‚«ãƒ†ã‚´ãƒªã¨ãƒã‚¹ãƒˆåŒ–è¨ºæ–­ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆæƒ…å ±ã€ãã—ã¦åå‰ã‹ã‚‰æˆã‚Šç«‹ã¤ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆ |
   |--------------------------------+--------------------------------------------------------------------------------------------|
 
 
@@ -109,48 +109,48 @@
 ******* org.apache.log4j.HTMLLayout Class
 **** Configuration File
 - 
-  ukey=valuev‚ÌŒ`‚Å‹LqB
+  ã€Œkey=valueã€ã®å½¢ã§è¨˜è¿°ã€‚
 
 ***** Properties
 ****** Logger
 - 
-  ƒƒOo—ÍƒŒƒxƒ‹‚ÆAg—p‚·‚éAppender‚Ì–¼‘O‚ğİ’è‚·‚éBAppedner‚Í–¼‘O‚¾‚¯‚Å‚æ‚¢B
-  Appender‚Í•¡”İ’è‚·‚é‚±‚Æ‚ª‚Å‚«AŠù‚ÉRootLoger‚Å—Dæ“x‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡Œp³‚Å‚«‚éB
-  Œp³‚·‚éê‡‚ÍINHERITED‚ğƒƒOo—ÍƒŒƒxƒ‹‚É‹LÚ‚·‚éB
+  ãƒ­ã‚°å‡ºåŠ›ãƒ¬ãƒ™ãƒ«ã¨ã€ä½¿ç”¨ã™ã‚‹Appenderã®åå‰ã‚’è¨­å®šã™ã‚‹ã€‚Appednerã¯åå‰ã ã‘ã§ã‚ˆã„ã€‚
+  Appenderã¯è¤‡æ•°è¨­å®šã™ã‚‹ã“ã¨ãŒã§ãã€æ—¢ã«RootLogerã§å„ªå…ˆåº¦ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆç¶™æ‰¿ã§ãã‚‹ã€‚
+  ç¶™æ‰¿ã™ã‚‹å ´åˆã¯INHERITEDã‚’ãƒ­ã‚°å‡ºåŠ›ãƒ¬ãƒ™ãƒ«ã«è¨˜è¼‰ã™ã‚‹ã€‚
 
 - Format
   #RootLogger
-  log4j.rootLogger=(o—ÍƒŒƒxƒ‹),appenderName1,appenderName2,...
+  log4j.rootLogger=(å‡ºåŠ›ãƒ¬ãƒ™ãƒ«),appenderName1,appenderName2,...
   
   #Logger
-  log4j.logger.logger_name=[ƒƒOo—ÍƒŒƒxƒ‹|INHERITED], appenderName1, appenderName2, ...
+  log4j.logger.logger_name=[ãƒ­ã‚°å‡ºåŠ›ãƒ¬ãƒ™ãƒ«|INHERITED], appenderName1, appenderName2, ...
 
 - Sample
   #sampleLogger
-  log4j.logger.sampleLogger=ERROR,A1 #sampleLogger‚ÉA1‚Æ‚¢‚¤–¼‘O‚ÌAppender‚ğİ’è
+  log4j.logger.sampleLogger=ERROR,A1 #sampleLoggerã«A1ã¨ã„ã†åå‰ã®Appenderã‚’è¨­å®š
 
 ****** Appender
 - 
-  Appender‚Ìİ’è‚ğs‚¤Bg—p‚·‚éAppender‚Æ‚»‚ÌƒIƒvƒVƒ‡ƒ“‚Ì’l‚ğİ’è‚·‚é‚±‚Æ‚ª‚Å‚«‚éB
+  Appenderã®è¨­å®šã‚’è¡Œã†ã€‚ä½¿ç”¨ã™ã‚‹Appenderã¨ãã®ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®å€¤ã‚’è¨­å®šã™ã‚‹ã“ã¨ãŒã§ãã‚‹ã€‚
 
 - Format
-  #APPENDER‚Ìİ’è
+  #APPENDERã®è¨­å®š
   log4j.appender.appender_name=appender_class_name
-  #Optionİ’è
+  #Optionè¨­å®š
   log4j.appender.appender_name.option1=value1
     ...
   log4j.appender.appender_name.optionN=valueN
 
 - Sample
-  #APPENDER‚Ìİ’è
+  #APPENDERã®è¨­å®š
   log4j.appender.A1=org.apache.log4j.ConsoleAppender
-  #PatternLayoutİ’è
+  #PatternLayoutè¨­å®š
   log4j.appender.A1.layout=org.apache.olg4j.PatternLayout
   log4j.appender.A1.layout.ConversionPattern=%-4r [%t] %-5p %c - %m%n
 
-****** —˜—p
+****** åˆ©ç”¨
 - 
-  İ’èƒtƒ@ƒCƒ‹‚ğg—p‚·‚é‚É‚ÍAorg.apache.log4j.PropertyConfiguratorƒNƒ‰ƒX‚ğg—p‚·‚éB
+  è¨­å®šãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½¿ç”¨ã™ã‚‹ã«ã¯ã€org.apache.log4j.PropertyConfiguratorã‚¯ãƒ©ã‚¹ã‚’ä½¿ç”¨ã™ã‚‹ã€‚
 
 ***** XML
 - 
@@ -160,4 +160,4 @@
 - 
   [[http://www.techscore.com/tech/Java/ApacheJakarta/Log4J/index/][Log4J - TECHSCORE]]
 ** Link
-- [[http://changineer.info/server/logging][ƒƒOŠÇ—•û–@ - ƒlƒbƒgƒ[ƒNƒ`ƒFƒ“ƒWƒjƒA‚Æ‚µ‚Ä]]
+- [[http://changineer.info/server/logging][ãƒ­ã‚°ç®¡ç†æ–¹æ³• - ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ãƒã‚§ãƒ³ã‚¸ãƒ‹ã‚¢ã¨ã—ã¦]]

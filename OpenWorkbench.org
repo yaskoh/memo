@@ -1,6 +1,6 @@
 * Open Workbench
 ** Link
 - [[http://www.ca.com/jp/lpg/japan/open-workbench.aspx][OPEN WORKBENCH - CA Techonlogies]]
-- [[https://www.ca.com/jp/register/forms/owb-download-regi-form.aspx][Open Workbench ƒ_ƒEƒ“ƒ[ƒh - CA Technologies]]
-- [[http://www.ca.com/~/media/Files/lpg/Workshop-jp/wbsetup.exe][ƒ_ƒEƒ“ƒ[ƒhƒŠƒ“ƒN]]
+- [[https://www.ca.com/jp/register/forms/owb-download-regi-form.aspx][Open Workbench ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ - CA Technologies]]
+- [[http://www.ca.com/~/media/Files/lpg/Workshop-jp/wbsetup.exe][ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãƒªãƒ³ã‚¯]]
 - [[https://support.ca.com/cadocs/0/CA%20Clarity%20PPM%2013%200%2000-ENU/Bookshelf_Files/PDF/OpenWorkbench_UserGuide_ENU.pdf][Open Workbench User Guide v2.0.00]]

@@ -2,31 +2,31 @@
 ** Kind
 *** Database Control
 - 
-  Webƒx[ƒX‚ÌƒCƒ“ƒ^[ƒtƒF[ƒXB
-  ƒCƒ“ƒXƒg[ƒ‹Aƒf[ƒ^ƒx[ƒX‚ğì¬iƒAƒbƒvƒOƒŒ[ƒhj‚µ‚Äƒlƒbƒgƒ[ƒN‚ğ\¬‚·‚é‚Æg—p‰Â”\‚ÉB
-  1‚Â‚Ìƒf[ƒ^ƒx[ƒX‚É‘Î‚µ‚Ä1‚Â—pˆÓ‚³‚ê‚édbconsoleƒvƒƒZƒX‚ªŠÇ—‚ğs‚¤B
+  Webãƒ™ãƒ¼ã‚¹ã®ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã€‚
+  ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã€ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã‚’ä½œæˆï¼ˆã‚¢ãƒƒãƒ—ã‚°ãƒ¬ãƒ¼ãƒ‰ï¼‰ã—ã¦ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯ã‚’æ§‹æˆã™ã‚‹ã¨ä½¿ç”¨å¯èƒ½ã«ã€‚
+  1ã¤ã®ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã«å¯¾ã—ã¦1ã¤ç”¨æ„ã•ã‚Œã‚‹dbconsoleãƒ—ãƒ­ã‚»ã‚¹ãŒç®¡ç†ã‚’è¡Œã†ã€‚
 
 *** Cloud Control
 - 
-  Oracle‚¨‚æ‚ÑOracleˆÈŠO‚ÌƒeƒNƒmƒƒW‚ğÀs‚·‚éƒVƒXƒeƒ€‚ğŠÜ‚ŞITƒCƒ“ƒtƒ‰ƒXƒgƒ‰ƒNƒ`ƒƒ‘S‘Ì‚É‘Î‚µA
-  W’†‰»‚³‚ê‚½ŠÄ‹‹@”\AŠÇ—‹@”\‚¨‚æ‚Ñƒ‰ƒCƒtEƒTƒCƒNƒ‹ŠÇ—‹@”\‚ğ’ñ‹Ÿ‚·‚éƒVƒXƒeƒ€ŠÇ—ƒ\ƒtƒgƒEƒFƒAB
-  Grid Control‚ÌŒãŒp»•iB
+  OracleãŠã‚ˆã³Oracleä»¥å¤–ã®ãƒ†ã‚¯ãƒãƒ­ã‚¸ã‚’å®Ÿè¡Œã™ã‚‹ã‚·ã‚¹ãƒ†ãƒ ã‚’å«ã‚€ITã‚¤ãƒ³ãƒ•ãƒ©ã‚¹ãƒˆãƒ©ã‚¯ãƒãƒ£å…¨ä½“ã«å¯¾ã—ã€
+  é›†ä¸­åŒ–ã•ã‚ŒãŸç›£è¦–æ©Ÿèƒ½ã€ç®¡ç†æ©Ÿèƒ½ãŠã‚ˆã³ãƒ©ã‚¤ãƒ•ãƒ»ã‚µã‚¤ã‚¯ãƒ«ç®¡ç†æ©Ÿèƒ½ã‚’æä¾›ã™ã‚‹ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ã€‚
+  Grid Controlã®å¾Œç¶™è£½å“ã€‚
   
 **** Components
 
 ***** Oracle Management Agent
-- ŠÇ—ƒG[ƒWƒFƒ“ƒg
-  ‘g‚İ‚Ü‚ê‚½ƒ\ƒtƒgƒEƒFƒAEƒRƒ“ƒ|[ƒlƒ“ƒg‚ÅAEnterprise ManagerƒVƒXƒeƒ€‚ÅŠÇ—‘ÎÛŠOƒzƒXƒg‚ğŠÇ—‘ÎˆƒzƒXƒg‚É•ÏŠ·‚·‚éB
-  ƒvƒ‰ƒOƒCƒ“‚Æ˜AŒg‚·‚é‚±‚Æ‚É‚æ‚èAŠÇ—‘ÎÛƒzƒXƒgã‚ÅÀs‚³‚ê‚Ä‚¢‚éƒ^[ƒQƒbƒg‚ğŠÄ‹‚·‚éB
+- ç®¡ç†ã‚¨ãƒ¼ã‚¸ã‚§ãƒ³ãƒˆ
+  çµ„ã¿è¾¼ã¾ã‚ŒãŸã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ãƒ»ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã§ã€Enterprise Managerã‚·ã‚¹ãƒ†ãƒ ã§ç®¡ç†å¯¾è±¡å¤–ãƒ›ã‚¹ãƒˆã‚’ç®¡ç†å¯¾å‡¦ãƒ›ã‚¹ãƒˆã«å¤‰æ›ã™ã‚‹ã€‚
+  ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¨é€£æºã™ã‚‹ã“ã¨ã«ã‚ˆã‚Šã€ç®¡ç†å¯¾è±¡ãƒ›ã‚¹ãƒˆä¸Šã§å®Ÿè¡Œã•ã‚Œã¦ã„ã‚‹ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’ç›£è¦–ã™ã‚‹ã€‚
 
 ***** Oracle Management Service
 - OMC
-  ŠÇ—ƒG[ƒWƒFƒ“ƒg‚¨‚æ‚Ñƒvƒ‰ƒOƒCƒ“‚Æ˜AŒg‚µAƒ^[ƒQƒbƒg‚ğŒŸo‚µ‚ÄA‚»‚ÌŠÄ‹‹y‚ÑŠÇ—‚ğs‚¢A
-  «—ˆ‚Ì•ªÍ‚Ì‚½‚ß‚ÉûW‚µ‚½î•ñ‚ğƒŠƒ|ƒWƒgƒŠ“à‚ÉŠi”[‚·‚éWebƒx[ƒX‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“B
+  ç®¡ç†ã‚¨ãƒ¼ã‚¸ã‚§ãƒ³ãƒˆãŠã‚ˆã³ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¨é€£æºã—ã€ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’æ¤œå‡ºã—ã¦ã€ãã®ç›£è¦–åŠã³ç®¡ç†ã‚’è¡Œã„ã€
+  å°†æ¥ã®åˆ†æã®ãŸã‚ã«åé›†ã—ãŸæƒ…å ±ã‚’ãƒªãƒã‚¸ãƒˆãƒªå†…ã«æ ¼ç´ã™ã‚‹Webãƒ™ãƒ¼ã‚¹ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã€‚
   
 ***** Oracle Management Repository
-- ŠÇ—ƒŠƒ|ƒWƒgƒŠ
-  ŠÇ—ƒŠƒ|ƒWƒgƒŠ‚ÍAŠÇ—ƒG[ƒWƒFƒ“ƒg‚ªûW‚µ‚½‚·‚×‚Ä‚Ìî•ñ‚ª•Û‘¶‚³‚ê‚éêŠB
+- ç®¡ç†ãƒªãƒã‚¸ãƒˆãƒª
+  ç®¡ç†ãƒªãƒã‚¸ãƒˆãƒªã¯ã€ç®¡ç†ã‚¨ãƒ¼ã‚¸ã‚§ãƒ³ãƒˆãŒåé›†ã—ãŸã™ã¹ã¦ã®æƒ…å ±ãŒä¿å­˜ã•ã‚Œã‚‹å ´æ‰€ã€‚
   
 ***** Plugins
 ***** Console
@@ -34,11 +34,11 @@
 -
 **** Components
 ***** Oracle Management Agent
-- ŠÇ—ƒG[ƒWƒFƒ“ƒg
+- ç®¡ç†ã‚¨ãƒ¼ã‚¸ã‚§ãƒ³ãƒˆ
 ***** Oracle Management Service
 - OMS
 ***** Oracle Management Repository
-- ŠÇ—ƒŠƒ|ƒWƒgƒŠ
+- ç®¡ç†ãƒªãƒã‚¸ãƒˆãƒª
 ***** Console
 
 ** Operations
@@ -55,34 +55,34 @@
 - -force
 - -bip_only
 ****** emctl secure oms
-- OMS‚ÌSSL\¬‚ğİ’è‚·‚é
-***** ŠÇ—Agent
+- OMSã®SSLæ§‹æˆã‚’è¨­å®šã™ã‚‹
+***** ç®¡ç†Agent
 - 
 ****** emctl start | stop dbconsole
 ****** emctl status | secure | setpasswd dbconsole
 ****** emctl config dbconsole -heap_size <size_value> -max_perm_size <size_value>
 ****** emctl status agent
 ****** emctl resetTZ agent
-- ƒ^ƒCƒ€ƒ][ƒ“‚ÌƒŠƒZƒbƒg
+- ã‚¿ã‚¤ãƒ ã‚¾ãƒ¼ãƒ³ã®ãƒªã‚»ãƒƒãƒˆ
 ****** emctl getemhome
-- ƒ‰ƒ“ƒ^ƒCƒ€ƒfƒBƒŒƒNƒgƒŠ‚ÌŠm”FB
-  ƒƒO‹y‚ÑƒgƒŒ[ƒXƒtƒ@ƒCƒ‹‚ÍˆÈ‰º‚É‘¶İB
+- ãƒ©ãƒ³ã‚¿ã‚¤ãƒ ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ç¢ºèªã€‚
+  ãƒ­ã‚°åŠã³ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ•ã‚¡ã‚¤ãƒ«ã¯ä»¥ä¸‹ã«å­˜åœ¨ã€‚
   <EMHOME>/sysman/log
-***** ƒZƒLƒ…ƒŠƒeƒB
-****** ƒZƒLƒ…ƒŠƒeƒB
-****** ƒZƒLƒ…ƒŠƒeƒBf’f
-****** EMƒL[
+***** ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£
+****** ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£
+****** ã‚»ã‚­ãƒ¥ãƒªãƒ†ã‚£è¨ºæ–­
+****** EMã‚­ãƒ¼
 ***** HAConfig
 ***** Resync
-***** ƒRƒlƒNƒ^
-***** ƒpƒbƒ`EƒŠƒ|ƒWƒgƒŠ
+***** ã‚³ãƒã‚¯ã‚¿
+***** ãƒ‘ãƒƒãƒãƒ»ãƒªãƒã‚¸ãƒˆãƒª
 ***** Partool
-***** ƒvƒ‰ƒOƒCƒ“
+***** ãƒ—ãƒ©ã‚°ã‚¤ãƒ³
 *** Files
-**** ŠÇ—ƒG[ƒWƒFƒ“ƒg‚ÌƒƒOEƒgƒŒ[ƒX
-- emagent.log / Oracle Management Agent ƒƒOEƒtƒ@ƒCƒ‹
-- emagent.trc / Oracle Management Agent ƒgƒŒ[ƒXEƒtƒ@ƒCƒ‹
-- emagent.nohup / Oracle Management Agent ‹N“®ƒƒOEƒtƒ@ƒCƒ‹
+**** ç®¡ç†ã‚¨ãƒ¼ã‚¸ã‚§ãƒ³ãƒˆã®ãƒ­ã‚°ãƒ»ãƒˆãƒ¬ãƒ¼ã‚¹
+- emagent.log / Oracle Management Agent ãƒ­ã‚°ãƒ»ãƒ•ã‚¡ã‚¤ãƒ«
+- emagent.trc / Oracle Management Agent ãƒˆãƒ¬ãƒ¼ã‚¹ãƒ»ãƒ•ã‚¡ã‚¤ãƒ«
+- emagent.nohup / Oracle Management Agent èµ·å‹•ãƒ­ã‚°ãƒ»ãƒ•ã‚¡ã‚¤ãƒ«
 **** tmp
 ***** bin
 ***** sysman
@@ -96,9 +96,9 @@
 *** Access
 **** URL
 - https://<hostname(localhost)>:<port(1158)>/em
-- "$ORACLE_HOME/host_sid/sysman/config/emd.properties"‚Ì"REOSITORY_URL"‚Éƒ|[ƒg”Ô†‚Ì‹LÚ‚ ‚èB
+- "$ORACLE_HOME/host_sid/sysman/config/emd.properties"ã®"REOSITORY_URL"ã«ãƒãƒ¼ãƒˆç•ªå·ã®è¨˜è¼‰ã‚ã‚Šã€‚
 **** User
-- sys/(password)‚ÅƒAƒNƒZƒX
+- sys/(password)ã§ã‚¢ã‚¯ã‚»ã‚¹
 *** Functions/Screen
 **** Database
 ***** Home
@@ -134,10 +134,10 @@
 ******* Make Tablespace Locally Managed
 ****** Database Configuration
 ******* Memory Advisors
-- ƒƒ‚ƒŠŠÇ—AŠ„‚è“–‚Äó‹µ‚ÌŠm”F
+- ãƒ¡ãƒ¢ãƒªç®¡ç†ã€å‰²ã‚Šå½“ã¦çŠ¶æ³ã®ç¢ºèª
 ******* Automatic Undo Management
 ******* Initialization Parameters
-- ‰Šúƒpƒ‰ƒ[ƒ^
+- åˆæœŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿
 ******* View Database Feature Usage
 ****** Oracle Scheduler
 ******* Jobs
@@ -162,7 +162,7 @@
 ******* Parallel Statement Queue
 ****** Security
 ******* Users
-- ƒ†[ƒU
+- ãƒ¦ãƒ¼ã‚¶
 ******* Roles
 ******* Profiles
 ******* Audit Settings
@@ -212,17 +212,17 @@
 **** Logout
 ** Glossary
 *** Blackout
-- ƒƒ“ƒeƒiƒ“ƒX“™‚Ì‚½‚ß‚ÉAŠÄ‹‚ğŒv‰æ’â~‚Å‚«‚éB
+- ãƒ¡ãƒ³ãƒ†ãƒŠãƒ³ã‚¹ç­‰ã®ãŸã‚ã«ã€ç›£è¦–ã‚’è¨ˆç”»åœæ­¢ã§ãã‚‹ã€‚
 ** Memo
 *** (tmp)SQL Worksheet
-- Related Links(‰æ–Ê‰º•”)‚©‚çƒŠƒ“ƒN‚ÅˆÚ“®‚Å‚«‚éB
-*** IP/hostname‚Ì•ÏX
-- ƒAƒNƒZƒX‚Å‚«‚È‚­‚È‚é‚Ì‚ÅAŠeí\’z‚ª•K—vB
-*** ERROR: NMO not setuid-root (Unix-only)‚ª•\¦‚³‚ê‚½ê‡
-- $ORACLE_HOME/root.sh‚ğÀs‚·‚é‚ÆÀs‚Å‚«‚½B
+- Related Links(ç”»é¢ä¸‹éƒ¨)ã‹ã‚‰ãƒªãƒ³ã‚¯ã§ç§»å‹•ã§ãã‚‹ã€‚
+*** IP/hostnameã®å¤‰æ›´æ™‚
+- ã‚¢ã‚¯ã‚»ã‚¹ã§ããªããªã‚‹ã®ã§ã€å„ç¨®æ§‹ç¯‰ãŒå¿…è¦ã€‚
+*** ERROR: NMO not setuid-root (Unix-only)ãŒè¡¨ç¤ºã•ã‚ŒãŸå ´åˆ
+- $ORACLE_HOME/root.shã‚’å®Ÿè¡Œã™ã‚‹ã¨å®Ÿè¡Œã§ããŸã€‚
   
 ** Link
-- [[http://www.oracle.com/technetwork/jp/oem/enterprise-manager/documentation/index.html][Oracle Enterprise Manager ƒhƒLƒ…ƒƒ“ƒg - ORACLE]]
-- [[https://docs.oracle.com/cd/E17559_01/em.111/b61022/toc.htm][Oracle Enterprise ManagerŠÇ— 11gƒŠƒŠ[ƒX1i11.1.0.1j]]
+- [[http://www.oracle.com/technetwork/jp/oem/enterprise-manager/documentation/index.html][Oracle Enterprise Manager ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆ - ORACLE]]
+- [[https://docs.oracle.com/cd/E17559_01/em.111/b61022/toc.htm][Oracle Enterprise Managerç®¡ç† 11gãƒªãƒªãƒ¼ã‚¹1ï¼ˆ11.1.0.1ï¼‰]]
 
-- [[http://otndnld.oracle.co.jp/easy/oracle11gr1/windows/1st/][ˆÓŠO‚ÆŠÈ’P!? Oracle Database 11g Release 1]]
+- [[http://otndnld.oracle.co.jp/easy/oracle11gr1/windows/1st/][æ„å¤–ã¨ç°¡å˜!? Oracle Database 11g Release 1]]

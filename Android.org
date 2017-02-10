@@ -1,7 +1,7 @@
 * Android
 ** Application Framework
-- [[http://youkey.jimdo.com/android%E6%8A%80%E8%A1%93%E8%80%85%E8%AA%8D%E5%AE%9A%E8%A9%A6%E9%A8%93/1-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/][1. ƒVƒXƒeƒ€ƒA[ƒLƒeƒNƒ`ƒƒ - AndroidŠJ”­’´“ü–å]]
-- [[http://itpro.nikkeibp.co.jp/article/COLUMN/20091208/341738/?ST=android-dev&P=2][Android‚Ìd‘g‚İ‚ğ’m‚é(2) i2/5j Android Runtime‚ÆƒAƒvƒŠƒP[ƒVƒ‡ƒ“EƒtƒŒ[ƒ€ƒ[ƒN - ITpro]]
+- [[http://youkey.jimdo.com/android%E6%8A%80%E8%A1%93%E8%80%85%E8%AA%8D%E5%AE%9A%E8%A9%A6%E9%A8%93/1-%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3/][1. ã‚·ã‚¹ãƒ†ãƒ ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£ - Androidé–‹ç™ºè¶…å…¥é–€]]
+- [[http://itpro.nikkeibp.co.jp/article/COLUMN/20091208/341738/?ST=android-dev&P=2][Androidã®ä»•çµ„ã¿ã‚’çŸ¥ã‚‹(2) ï¼ˆ2/5ï¼‰ Android Runtimeã¨ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãƒ»ãƒ•ãƒ¬ãƒ¼ãƒ ãƒ¯ãƒ¼ã‚¯ - ITpro]]
 
 ** Standard Library
 

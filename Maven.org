@@ -113,23 +113,23 @@
 - Project Object Model
   
 *** Goal
-- Maven‚Ìƒvƒ‰ƒOƒCƒ“‚ª‚Â‹@”\‚Ì‚±‚Æ
+- Mavenã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãŒæŒã¤æ©Ÿèƒ½ã®ã“ã¨
 
 *** Phase
-- ƒvƒƒWƒFƒNƒg‚Ìƒrƒ‹ƒhƒTƒCƒNƒ‹‚ÉŠÜ‚Ü‚ê‚éŒÂX‚ÌƒXƒeƒbƒv‚Ì‚±‚ÆB
-  ÀÛ‚É‚Í‘Î‰‚·‚éƒvƒ‰ƒOƒCƒ“‚Ås‚í‚ê‚Ä‚¨‚èAƒvƒ‰ƒOƒCƒ“‚ÌƒS[ƒ‹‚ÌƒGƒCƒŠƒAƒX‚Æ‚àl‚¦‚ç‚ê‚é‚ªA
-  “Á’è‚ÌƒtƒFƒCƒY‚ÉŠÖ˜A•t‚¯‚Äƒvƒ‰ƒOƒCƒ“‚ğÀs‚³‚¹‚é‚±‚Æ‚ª‚Å‚«‚é‚½‚ßA
-  ³Šm‚É‚Í"mvn compile"‚Æ"mvn compiler:compile"‚Í“¯‚¶“®ì‚ğ‚·‚é‚Æ‚ÍŒÀ‚ç‚È‚¢B
+- ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ“ãƒ«ãƒ‰ã‚µã‚¤ã‚¯ãƒ«ã«å«ã¾ã‚Œã‚‹å€‹ã€…ã®ã‚¹ãƒ†ãƒƒãƒ—ã®ã“ã¨ã€‚
+  å®Ÿéš›ã«ã¯å¯¾å¿œã™ã‚‹ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã§è¡Œã‚ã‚Œã¦ãŠã‚Šã€ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ã‚´ãƒ¼ãƒ«ã®ã‚¨ã‚¤ãƒªã‚¢ã‚¹ã¨ã‚‚è€ƒãˆã‚‰ã‚Œã‚‹ãŒã€
+  ç‰¹å®šã®ãƒ•ã‚§ã‚¤ã‚ºã«é–¢é€£ä»˜ã‘ã¦ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’å®Ÿè¡Œã•ã›ã‚‹ã“ã¨ãŒã§ãã‚‹ãŸã‚ã€
+  æ­£ç¢ºã«ã¯"mvn compile"ã¨"mvn compiler:compile"ã¯åŒã˜å‹•ä½œã‚’ã™ã‚‹ã¨ã¯é™ã‚‰ãªã„ã€‚
 
 ** Memo
-*** ŠJn•û–@
+*** é–‹å§‹æ–¹æ³•
 - mvn archetype:generate
-  ƒvƒƒWƒFƒNƒg‚ğì¬BŠeí‹‚ß‚ç‚ê‚é’l‚ğ“ü—ÍB"pom.xml"‚ªì¬‚³‚ê‚éB
+  ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã€‚å„ç¨®æ±‚ã‚ã‚‰ã‚Œã‚‹å€¤ã‚’å…¥åŠ›ã€‚"pom.xml"ãŒä½œæˆã•ã‚Œã‚‹ã€‚
 ** Link
 - [[https://maven.apache.org/index.html][Apache Maven Project]]
 
 - [[https://maven.apache.org/users/index.html][Mave Users Centre - Apache Maven Project]]  
 - [[http://maven.apache.org/guides/][Documentation - Apache Maven Project]]
 
-- [[http://sambatriste.github.io/maven3-tutorial/][Maven3 ƒ`ƒ…[ƒgƒŠƒAƒ‹]]
-- [[https://kengotoda.gitbooks.io/what-is-maven/content/index.html][Maven3‚Ì‚Í‚¶‚ß‚©‚½]]
+- [[http://sambatriste.github.io/maven3-tutorial/][Maven3 ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«]]
+- [[https://kengotoda.gitbooks.io/what-is-maven/content/index.html][Maven3ã®ã¯ã˜ã‚ã‹ãŸ]]
