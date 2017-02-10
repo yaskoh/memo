@@ -1,0 +1,6 @@
+* Web Service
+** About
+- a standardized way of integrating web-based applications
+  using the XML, SOAP, WSDL and UDDI open standards over an Internet protocol backbone.
+** Link
+- [[https://www.w3.org/2002/ws/arch/][Web Services Architecture Working Group - W3C]]
