@@ -574,24 +574,14 @@
   make-local-variable関数を使うと、通常の変数をバファーローカルにできる。
 ** Memo
 *** ToDo
-- emacslispの書き方
-- 正規表現の改善
-  o re-builder
-  - foreign-regexpの代わりに、perl表現を自動でemacs表現に変換した上で実行してあげる層を作れないか？
-- ダウンロードランキングから、有用なパッケージを導入
-  http://emacs.rubikitch.com/melpa-dl-ranking-2015/
-- kawabata/dotfilesを読む
-- use-packageの設定
-- bind-keyによる設定
-- パッケージの整理
-- yasnippetの用法
-- Linux/Macで確認
-  - el-get
-    winで失敗中。
-    -> caskにしようかしら。
-  - magitの導入
-- 25.1にupdate?
-- できればansible導入
+- emacs-lisp
+  - elisp講座
+  - macro (on lisp)
+  - るびきち
+- eshell周り
+- etc
+  - magit, trump
+  - 有用パッケージ探す、入れる
 
 *** 変数設定
 - defconst, defvar, setq, defcustom

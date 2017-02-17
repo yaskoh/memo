@@ -113,8 +113,10 @@
 - 指定される文字列への参照を返す。
 **** LOOKUP
 **** MATCH
-- 
+- MATCH(検査値,検査範囲,[照合の型])
 **** OFFSET
+- OFFSET(基準,行数,列数,[高さ],[幅])
+- セルまたはセル範囲から指定された行数と列数だけシフトした位置にあるセル範囲の参照を返す。
 **** ROW
 **** ROWS
 **** RTD
@@ -302,6 +304,9 @@
 ** VBA
 - [[file:./VBA.org][VBA.org]]
 ** Memo
+*** マクロのパスワード解除
+- 最新のExcelでは利用できなそう。stirlingで無理矢理書き換える方法。
+  http://tristore.net/?p=238
 *** シート名を取得する
 - 
   =RIGHT(CELL("filename",A1),LEN(CELL("filename",A1))-FIND("]",CELL("filename",A1)))
@@ -319,7 +324,7 @@
   選択範囲の拡大/縮小を行うことができる。
   それにより一度選択した範囲を外すことができる。
   [[http://oshiete.goo.ne.jp/qa/256213.html][エクセルで複数のセル選択をした後、選択したセルの１つを選択解除したい - 教えて!goo]]
-  
+  ;
 *** シートのコピー
 - 
   Ctrlを押しながら、シートをドラッグするとコピーができる。
@@ -385,6 +390,27 @@
 *** 日付表示
 **** 24h以上の日付を表示する場合
 - [h]を使う。[h]:mm:ssなど。
+*** Array Formula / 配列数式
+- 数式入力時に「Ctrl + Shift + Enter」で確定させる。
+  配列(複数セル)を対象に、1つの数式を作成する式。
+  式がbraket{}で囲まれるが、キーボードから入力しても配列数式とはみなされない。
+  
+**** 配列入力
+- 複数範囲を選択して、braket{}で囲んだ値を入力する。
+  comman,はセルの終わり、semicolon;は行の終わりを表す。
+  ex) ={2,3,"a";4,5,"b"}
+      ->
+      | 2 | 3 | a |
+      | 4 | 5 | b |
+**** 配列計算
+- 複数セルを配列として計算可能。
+  結果的に複数セルに入力をする場合、その数分のセルを選択しておき、出力数と揃える必要あり。
+  1つのセルに出力する場合、範囲や配列を引数として取れる関数でまとめた上で出力する必要がある。
+  どちらにせよ、配列を配列のまま計算することが可能となる。
+**** Link
+- [[https://support.office.com/ja-jp/article/%E9%85%8D%E5%88%97%E6%95%B0%E5%BC%8F%E3%81%AE%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%A8%E4%BE%8B-3be0c791-3f89-4644-a062-8e6e9ecee523][配列数式のガイドラインと例 - Office]]
+- http://office-qa.com/Excel/ex69.htm
+
 ** Link
 - [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
 - [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]

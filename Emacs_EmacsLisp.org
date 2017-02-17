@@ -48,6 +48,9 @@
 - The basic object of editing
 ***** Marker Type
 - A position in a buffer
+- バッファ中の任意の文字に対して一を示す標識をつけることができる。
+  整数と同じように利用することができる。
+  マーク(C-@)もマーカーの一種。
 ***** Window Type
 - Buffers are displayed in windows
 ***** Frame Type

@@ -100,7 +100,7 @@
 **** User
 - sys/(password)でアクセス
 *** Functions/Screen
-**** Database
+**** Database(local?)
 ***** Home
 ***** Performance
 ***** Availability
@@ -206,6 +206,33 @@
 ****** Real Application Testing
 ****** Deployment Procedure Manager
 ****** Support
+**** Main(OEM 10g)
+***** Home
+***** Target
+****** Host
+****** Database
+****** Middleware
+****** Web Application
+****** Service
+****** System
+****** Group
+****** All Targets
+***** Deploy
+****** General
+****** Provisioning
+***** Alert
+****** Stopped target
+****** Critical
+****** Warning
+****** Error
+****** Blackout
+****** Unknown availability
+***** Compliance
+****** Policy
+****** Policy group
+****** Security list
+***** Job
+***** Report
 **** Setup
 **** Preferences
 **** Help
@@ -220,7 +247,55 @@
 - アクセスできなくなるので、各種構築が必要。
 *** ERROR: NMO not setuid-root (Unix-only)が表示された場合
 - $ORACLE_HOME/root.shを実行すると実行できた。
-  
+*** Performance
+**** Kind
+***** Top Activity / トップアクティビティ
+****** アクセス手順
+- 11g
+  ホーム、パフォーマンス、その他の監視リンクでトップ・アクティビティ
+***** Avarage Active Sessions / 平均アクティブ・セッション
+- データベースの負荷の平均。
+***** Top Working SQL / 上位SQL
+- アクティビティ(%)
+- SQLハッシュ値
+- SQLタイプ
+- サービス
+- インスタンス
+***** Top Sessions / 上位セッション
+- アクティビティ(%)
+- セッションID
+- ユーザー名
+- プログラム
+- サービス
+**** Metrics
+***** CPU Used
+****** CPU
+***** Scheduler
+***** User I/O
+****** db file scattered read
+****** db file sequential read
+***** System I/O
+****** control file sequential read
+***** Concurrency
+****** row cache lock
+***** Application
+***** Commit
+***** Configuration
+***** Administrative
+***** Network
+***** Queueing
+***** Cluster
+****** gc cr block 2-way
+***** Other
+****** null event
+****** reliable message
+**** その他有用なデータ
+- トップアクティビティの時系列グラフ（パフォーマンス中のリンクより）
+- 実行計画表示（SQLの詳細->プラン）
+- スループット、I/Oの時系列グラフ（パフォーマンス画面下部）
+- メモリアドバイザのアドバイザ画面
+**** Link
+- http://www.oracle.com/technetwork/jp/database/articles/pickup/index-1598196-ja.html
 ** Link
 - [[http://www.oracle.com/technetwork/jp/oem/enterprise-manager/documentation/index.html][Oracle Enterprise Manager ドキュメント - ORACLE]]
 - [[https://docs.oracle.com/cd/E17559_01/em.111/b61022/toc.htm][Oracle Enterprise Manager管理 11gリリース1（11.1.0.1）]]

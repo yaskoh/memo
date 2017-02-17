@@ -505,6 +505,8 @@
   Multiple packages can be specified on the command line.
 ****** -u, --upgrades
 - Restrict or filter output to packages that are out-of-date on the local system.
+****** -i, --info
+- Display information on a given package.
 ***** Remove Options
 ****** -c, --cascade
 - Remove all target packages, as well as all packages that depend on one or more target packages.
@@ -517,7 +519,10 @@
 ****** -u, --sysupgrade
 - Upgrades all packages that are out-of-date.
   Each currently-installed package will be examined and upgraded if a newer package exists.
+****** -i, --info
+- Display information on a given sync database package.
 ***** Database Options
+****** --k, --check
 ***** File Options
 ****** -y, --refresh
 ****** -l, --list
@@ -526,6 +531,20 @@
 ****** -x, --regex
 ****** -o, --owns
 ****** -q, --quiet
+**** Memo
+***** Usage
+****** Installing packages
+- pacman -S package_name1 package_name2
+****** Removing packages
+- pacman -R package_name
+****** Upgrading packages
+- pacman -Syu
+****** Search packages
+- pacman -Ss string1 string2 ...
+- (local) pacman -Qs string1 string2 ...
+****** Display information
+- pacman -Si package_name
+- (local) pacman -Qi package_name
 **** Link
 - [[https://www.archlinux.org/pacman/pacman.8.html][pacman(8) Manual Page]]
 - [[https://wiki.archlinuxjp.org/index.php/Pacman][pacman - archlinux]]

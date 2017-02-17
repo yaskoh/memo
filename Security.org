@@ -207,6 +207,15 @@
 - 
   URLがグリーンで表示される。
   DVとOVの違いが見た目で
+*** Guidelines
+**** Overseas
+- https://www.tripwire.co.jp/solution/compliance/nerc.html
+***** NERC
+- North American Electric Reliability Corporation
+***** FISMA
+- Federal Information Security Management Act
+***** HIPPA
+- Health Insurance Portability and Accountability Act
 ** Tools
 *** Burp Proxy
 - [[https://portswigger.net/burp/proxy.html][Burp Proxy - PORTSWIGGER]]

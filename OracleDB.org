@@ -689,6 +689,8 @@
 - 自動ワークロード・リポジトリ
   Oracle Databaseの稼働状況とワークロード情報のスナップショットを自動的に収集/管理する機能。
   10gより提供された機能。
+*** Automatic Database Diagnostic Monitor(ADDM)
+- 自動データベース診断モニター
 *** Database Upgrade Assistant
 - 既存のDBを新しいリリースのDBへアップグレードする際に使うツール
 *** Oracle Application Express

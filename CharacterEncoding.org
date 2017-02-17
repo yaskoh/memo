@@ -37,6 +37,7 @@
 *** Character Encoding Scheme
 - エンコード（符号化）方式
 **** UTF-8
+- [[https://tools.ietf.org/html/rfc3629][UTF-8, a transformation format of ISO 10646 (RFC3629)]]
 **** UTF-16
 **** UTF-32
 *** Normalization

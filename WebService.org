@@ -2,5 +2,27 @@
 ** About
 - a standardized way of integrating web-based applications
   using the XML, SOAP, WSDL and UDDI open standards over an Internet protocol backbone.
+** 製品構成
+*** JobCenter MG
+- マネージャ製品。
+  ジョブの実行環境構築、状態監視を行う。
+*** JobCenter SV
+- サーバ製品。
+  NQSをベースにしたジョブ実行機能を提供する。
+*** JobCenter CL/Win
+- ビューア機能。Windows上のビューア。
+*** JobCenter CJC Option
+- マネージャ機能とサーバ機能の二重化を行う。
+*** JobCenter for R/3 Option
+- SAP R/3連携機能。SAP R/3システムへのジョブ投入を行う。
+*** JobCenter for BW Option
+- SAP BW連携機能。SAP BWシステムへのジョブ投入を行う。
+*** JobCenter Media
+** Glossary
+*** NQS
+- Network Queuing System
 ** Link
 - [[https://www.w3.org/2002/ws/arch/][Web Services Architecture Working Group - W3C]]
+
+- http://jpn.nec.com/websam/jobcenter/download/manual/JB_QUICK_12_6.pdf
+- [[http://jpn.nec.com/websam/jobcenter/trial.html][WebSAM JobCenter - 試用版 - NEC]]

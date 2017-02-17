@@ -224,8 +224,19 @@
 - [[http://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
 
 *** nginx
-
+- [[file:Nginx.org][Nginx.org]]
 *** IIS
+- Windows
+*** Built-in Web Server
+- for PHP
+- ex) >$ php -S localhost:8000
+*** webrick
+- ruby products
+*** for Dev
+**** Web Server for Chrome
+- Chore Apps
+**** 04WebServer
+- Windows application
 *** DIY
 - [[http://kmaebashi.com/programmer/webserver/index.html][本当の基礎からのWebアプリケーション入門 -Webサーバを作ってみよう-]]
 ** Reverse Proxy Server
