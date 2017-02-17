@@ -1,0 +1,5 @@
+* JobCenter
+** Link
+- [[http://jpn.nec.com/websam/jobcenter/trial.html][WebSAM JobCenter - 隧ｦ逕ｨ迚����]
+- http://h22242.www2.hpe.com/doc/manual/openview/pdf/web0-1454.pdf
+- http://jpn.nec.com/websam/jobcenter/download/manual/JB_QUICK_12_6.pdf

@@ -1,0 +1,74 @@
+* intra-mart
+** Accel Platform
+*** Packages
+**** jp.co.intra_mart.foundation.context
+***** Classes
+****** Contexts
+******* Methods
+******** get(Class<T> type)
+- static <T extends Context> get (Class<T> type)
+  引数にマッチするアクセスコンテキストを、アクセスコンテキストストアから取得して返却する。
+****** ContextStatus
+***** Exceptions
+****** ContextNotFoundException
+****** ContextPropertyException
+**** jp.co.intra_mart.foundation.context.model
+**** jp.co.intra_mart.foundation.context.model.job_scheduler
+***** Interfaces
+****** Job
+****** JobSchedulerContext
+- public interface JOBSchedulerContext extends Context
+- ジョブスケジューラに関する情報を格納するコンテキストクラス。
+  
+******* Methods
+******** getTaskId()
+- String getTaskId()
+  タスクIDを取得する。
+****** JobSchedulerManager
+***** Class
+****** BaseJob
+****** JobResult
+****** JobSchedulerManagerFactory
+***** Enums
+**** jp.co.intra_mart.foundation.context.model.job_scheduler.exception
+***** Exceptions
+****** JobExecuteException
+- ジョブスケジューラの例外クラス
+**** jp.co.intra_mart.foundation.extension.spring.context
+***** Classes
+****** ApplicationContextProvider
+******* Methods
+******** getApplicationContext()
+- static org.springframework.context.ApplicationContext getApplicationContext()
+- ApplicationContextを返す。
+**** jp.co.intra_mart.framework.extension.spring.context
+***** Classes
+****** ApplicationContextProvider
+******* Methods
+******** getApplicationContext()
+- static org.springframework.context.ApplicationContext getApplicationContext()
+- ApplicationContextを返す。
+**** jp.co.intra_mart.foundation.job_scheduler
+***** Interfaces
+****** Job
+- ジョブスケジューラサービスから実行されるジョブ実装のためのインターフェース
+****** JobSchedulerContext
+- ジョブスケジューラに関する情報を格納するコンテキストクラス
+***** Classes
+****** JobResult
+- ジョブの実行処理の結果を格納するクラス
+**** jp.co.intra_mart.foundation.security.message
+***** Classes
+****** MessageManager
+- メッセージを取得するためのクラス
+******* Methods
+******** getInstance()
+- static MessageManager getInstance()
+  メッセージマネージャのインスタンスを取得する
+******** getMessage(String key, String arg)
+- String getMessage(String key, String arg)
+  メッセージを取得する
+*** Link
+- [[http://www.intra-mart.jp/apidoc/iap/javadoc/all-dev_apidocs/overview-summary.html][intra-mart Accel Platform API Specification]]
+** Link
+- [[http://www.intra-mart.jp/apidoc/][API Documentation - intra-mart]]
