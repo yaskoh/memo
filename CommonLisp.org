@@ -1,5 +1,5 @@
 * CommonLisp
-** Implementation
+** Implementations
 *** Steel Bank Common Lisp
 
 **** Link
@@ -10,7 +10,7 @@
 **** Link
 - [[http://ccl.clozure.com/docs/ccl.html][Documentation]]
 
-** function
+** Functions
 *** setf, steq
 - 
   データをセットする。CommonLispではsetfが推奨されている。
@@ -1073,7 +1073,7 @@
 - 
   グローバル関数に対し、対応する値を返す。
   
-** macro
+** Macros
 *** and, or
 - and
   andは複数の述語を「～かつ～」で結ぶ働きをする。
@@ -1143,7 +1143,7 @@
   :directionで指定した方向でオープンし、生成したストリームを変数にセットする。
   変数は局所変数として扱われ、with-open-fileが実行されている間だけ有効。
   S式を順番に評価し、with-open-fileの実行が終了すると自動的にファイルがクローズされる。
-** memo
+** Memo
 *** Lispのデータ構造
 - 
   S式 ─┬─ アトム─┬─ 整数値
@@ -1380,3 +1380,4 @@
 - [[http://www.lispworks.com/documentation/HyperSpec/Front/index.htm][Common Lisp Hyper Spec - LispWorks]]
 - [[http://ep.yimg.com/ty/cdn/paulgraham/onlisp.pdf][On Lisp(PDF)]]
 - [[http://modern-cl.blogspot.jp/][Modern Common Lisp (Ariel Labs)]]
+- [[http://www.geocities.co.jp/SiliconValley-Oakland/1680/xyzzy_lisp.html][xyzzy Lisp Programming - M.Hiroi's Home Page]]

@@ -329,6 +329,13 @@
   - restart
   - status
   
+** Tools
+*** DRBD
+- Distributed Replicated Block Device
+  分散ストレージシステム。
+  HAクラスタで使うのが一般的。
+  RAID1に似ているあ、ネットワーク上で動作する。
+  中・小規模システム向けで、大規模構成には向いていない可能性を考慮する必要がある。
 ** Environment Variables
 - 
   see list with "printenv"
@@ -378,8 +385,16 @@
 
 **** Ubuntu
 
+**** Obsoletes
+***** KNOPIX
 *** Red Hat
+**** Fedora
+**** RHEL
+- テスト済みFedoraをベースに安定させた。
+- 
+  [[https://access.redhat.com/ja/node/16476][Red Hat Enterprise Linux のリリース日と収録カーネルの一覧 - redhat]]
 **** CentOS
+- RHELのクローン
 ***** Memo
 ****** host名の変更
 - centos7
@@ -388,15 +403,45 @@
   "/etc/sysconfig/network"を編集
 - temporary
   hostname newhostname.newdomainname
-**** RHEL
-- 
-  [[https://access.redhat.com/ja/node/16476][Red Hat Enterprise Linux のリリース日と収録カーネルの一覧 - redhat]]
-
+**** Scientific Linux
+- RHELのクローン
+**** Obsoletes
+***** Mandriva Linux
+***** Yellow Dog Linux
+- FedoraベースでPowerPC用。
 *** Slackware
+**** Slackware
+**** Puppy Linux
+**** openSUSE
+**** SUSE linux Enterprise Server
+- コミュニティによるテスト済みopenSUSEをベースに安定させた商用Dist。
+*** Arch系
+**** Arch
+*** Gentoo系
+**** Gentoo
+**** Chromium OS
 *** Etc
 **** CoreOS
-**** Arch
-**** Gentoo
+** Desktop Environment
+*** Unity
+- Ubuntu
+*** GNOME
+- Debian
+- Fedora
+- RHEL
+- Ubuntu GNOME
+*** KDE
+- Kubuntu
+- openSUSE
+*** Cinnamon
+- Linux Mint
+*** MATE
+- Linux Mint
+- Ubuntu MATE
+*** Xfce
+- Xubuntu
+*** LXDE/LXQt
+- Lubuntu
 ** Package Management
 *** apt
 **** aptitude

@@ -171,6 +171,58 @@
 - データベース内の制約定義をすべて示す。
 ***** DBA_DATA_FILES
 - データベース・ファイルを示す。
+****** Columns
+******* ONLINE_STATUS
+- ファイルのオンライン状態。
+  - SYSOFF
+  - SYSTEM
+  - OFFLINE
+  - ONLINE
+  - RECOVER
+***** DBA_HIST_SEG_STAT
+- セグメント・レベルの履歴統計情報を示す。
+  一連の基準に基づいた最上位セグメントおよびV$SEGSTATからの情報が取得される。
+  合計値は、インスタンスの起動以降の統計の値で、デルタ値は、DBA_HIST_SNAPSHOTビューのBEGIN_INTERVAL_TIMEからEND_INTERVAL_TIMEまでの統計値。
+****** Columns
+******* BUFFER_BUSY_WAITS_DELTA
+- buffer busy waitsのデルタ値
+***** DBA_HIST_SEG_STAT_OBJ
+- ワークロード・リポジトリで取得されたセグメントのすべての名前を示す。
+****** Columns
+***** DBA_HIST_SNAPSHOT
+- ワークロード・リポジトリ内のスナップショットに関する情報を示す。
+****** Columns
+******* SNAP_ID
+- 一意のスナップショットID
+***** DBA_HIST_SQLTEXT
+- ワークロード・リポジトリで取得された共有SQLカーソルに属するSQL文のテキストを示す。
+  V$SQLからの情報が取得され、DBA_HIST_SQLSTATビューとともに使用される。
+***** DBA_HIST_SYSTEM_EVENT
+- 1つのイベントについての待機の合計の履歴情報。
+  V$SYSTEM_EVENTのスナップショットが含まれる。
+****** Columns
+******* SNAP_ID
+******* DBID
+******* INSTANCE_NUMBER
+******* EVENT_ID
+******* EVENT_NAME
+******* WAIT_CLASS_ID
+******* WAIT_CLASS
+******* TOTAL_WAITS
+******* TOTAL_TIMEOUTS
+******* TIME_WAITED_MICRO
+******* TOTAL_WAITS_FG
+******* TOTAL_TIMEOUTS_FG
+******* TIME_WAITED_MICRO_FG
+***** DBA_HIST_SYSMETRIC_HISTORY
+- データベース内に保存されているデータ・セット全体についてのシステム・メトリック値の使用可能なすべての履歴を外部化する。
+****** Columns
+******* BEGIN_TIME
+- 間隔の開始時間
+******* METRIC_NAME
+- メトリック名
+******* VALUE
+- メトリック値
 ***** DBA_DB_LINKS
 - テータベース内のデータベース・リンクをすべて示す。
 ***** DBA_DIRECTORIES
@@ -266,8 +318,12 @@
 ****** INSTANEC_NAME
 ****** STATUS
 - OPEN, MOUNTなどの状態
+**** V$METRIC
+- AWRによって取得された一連のメトリックの最新統計値を示す。
 **** V$OPTION
 - オプション製品のインストール状況
+**** V$PWFILE_USERS
+- パスワードファイル認証にエントリされている（SYSDBAまたはSYSOPERシステム権限がある）ユーザの一覧
 **** V$SQL
 - GROUP BY句のない共有SQL領域についての統計情報を示し、入力された元のSQLテキストの子ごとに1行ずつ実行する。
 **** V$SQL_BIND_CAPTURE
@@ -275,9 +331,95 @@
 **** V$SQLTEXT
 - SGA内の共有SQLカーソルに属するSQL文のテキストを示す。
   
-**** V$PWFILE_USERS
-- パスワードファイル認証にエントリされている（SYSDBAまたはSYSOPERシステム権限がある）ユーザの一覧
-*** イベント
+**** V$SYSMETRIC_HISTORY
+*** 待機イベント
+**** Class
+***** Administrative
+- ユーザーが待機する原因となるDBAコマンドによる待機。
+  索引再作成など。
+***** Application
+- ユーザーのアプリケーション・コードによる待機。
+  行レベル・ロック、明示的ロックコマンドが原因のロック待機など。
+***** Cluster
+- Real Application Clustersリソースに関連する待機。
+  gc cr block busyなどのグローバル・キャッシュ・リソースなど
+***** Commit
+- 1つの待機イベントのみで構成される待機クラス
+  コミット後のREDOログ書き込み確認用待機(log file sync)
+***** Concurrency
+- 内部データベース・リソースの待機
+  ラッチなど
+***** Configuration
+- データベースの構成またはインスタンスのリソースが十分でないことによる待機。
+  ログ・ファイル・サイズ、共有プールサイズなどが小さい、など。
+***** Idle
+- セッションがアクティブでない、すなわち作業の待機中であることを示す待機。
+  SQL*Net message from clientなど。
+***** Network
+- ネットワーク・メッセージに関連する待機。
+  SQL*Net more data to dblinkなど。
+***** Other
+- 通常システムでは発生しない待機。
+  wait for EMON to spawnなど
+***** Queue
+- パイプライン化された環境における追加データ取得での遅延を示すイベントが含まれる。
+  パイプラインに非効率性などの問題があることを示す。
+***** Scheduler
+- リソース・マネージャに関連する待機
+  resmgr: become activeなど
+***** System I/O
+- バックグラウンド・プロセスのI/Oの待機
+  db file parallel writeのDBWR待機など
+***** User I/O
+- ユーザーI/Oの待機
+  db file sequential readなど
+**** Events
+***** db file parallel read
+- User I/O
+- リカバリ時のイベント。リカバリ時に変更が必要となったデータベース・ブロックはデータベースからパラレルに読み込まれる。
+***** db file scattered read
+- User I/O
+- db file sequential readと似ているが、セッションが複数のデータ・ブロックを読み込んでいる。
+***** db file sequential read
+- User I/O
+- データベースからの旬次読み取りが実行されている間待機する。
+  制御ファイルの再構築、データベース・ファイル・ヘッダーのダンプ、データベース・ファイル・ヘッダーの取得にも使用する。
+***** enq: TX - row lock contention
+- Application
+***** gc buffer busy acquire
+- Cluster
+- 別のセッションが別のインスタンスのキャッシュからバッファを読み取り中であるため、バッファ・キャッシュ内でバッファを確保できない。
+***** gc cr block 2-way
+- Cluster
+- ブロックの待機、確保またはログ・フラッシュなしでリモート・キャッシュ・ブロックがローカルインスタンスへ送信されたことを示す。
+***** gc cr grant 2-way
+- Cluster
+- メッセージ関連待機イベント。
+  インスタンスにブロックがキャッシュされなかったために、ブロックが受信されなかったことを示す。
+***** gc current block 2-way
+- Cluster
+- ブロックの待機、確保またはログ・フラッシュなしでリモート・キャッシュ・ブロックがローカルインスタンスへ送信されたことを示す。
+***** gc current block busy
+- Cluster
+- リモート・キャッシュまたはローカル・キャッシュがビジーなため、キャッシュ・データ・ブロックへのアクセスが遅延状態であることを示す。
+***** gc current grant 2-way
+- Cluster
+- メッセージ関連待機イベント。
+  インスタンスにブロックがキャッシュされなかったために、ブロックが受信されなかったことを示す。
+***** library cache pin
+- Concurrency
+- ライブラリ・キャッシュの同時実行性を管理する。
+  オブジェクトを確保すると、ヒープがメモリーにロードされる。
+***** log file sync
+- Commit
+- LGWRを転送してログ・バッファをREDOログ・ファイルに書き込む。
+***** read by other session
+- User I/O
+- セッションが別のセッションによって現在バッファ・キャッシュに読み込まれているバッファをリクエストする場合に発生する。
+**** Link
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/waitevents.htm][Oracle待機イベント - Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
+- [[http://www.doppo1.net/oracle/tuning/wait-event.html][待機イベント一覧 - WalkingAlone]]
+
 *** PL/SQLパッケージ
 **** DBMS_ADVISOR
 - 

@@ -110,8 +110,12 @@
 ***** EXECUTE IMMEDIATE文
 - 動的SQLを一度の操作で作成して実行する。
 
+***** SQLCODEファンクション
+- 処理する例外の数値コードを戻す。
+***** SQLERRMファンクション
+- エラー・コードに関連付けられているエラー・メッセージを戻す。
 ** Link
 *** PL/SQL
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56260/toc.htm][Oracle® Database PL/SQL言語リファレンス 11gリリース2 (11.2)]]
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/toc.htm][Oracle® Database PL/SQLパッケージおよびタイプ・リファレンス 11g リリース2(11.2)]]
-
+  

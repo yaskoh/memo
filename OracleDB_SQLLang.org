@@ -209,6 +209,17 @@
   expr1, expr2には任意のデータ型を持つことができる。
 
 ***** 環境ファンクションおよび識別子ファンクション
+**** 集計ファンクション
+***** RANK
+****** Syntax
+- RANK ( expr {,expr}* ) WITHIN GROUP ( ORDER BY expr [DESC|ASC] [NULLS {FIRST|LAST}] [,expr]* )
+**** 分析ファンクション
+- 行のグループに基づいて集計値を計算する。
+  行のグループをウィンドウといい、aanlytic_clauseで定義される。
+***** RANK
+- 一連の値における値のランクを計算する。戻り値はNUMBER。
+****** Syntax
+- RANK ( ) OVER ( [query_partition_clause] order_by_clause )
 *** 式
 *** 条件
 *** SQL文
@@ -235,6 +246,16 @@
 
 ********** MOUNT [{STANDBY | CLONE} DATABASE]
 ********** OPEN {READ ONLY | [READ WRITE] [RESETLOGS|NORESETLOGS] [UPGRADE|DOWNGRADE]
+- READ WRITE
+  読み取り/書き込みモードでデータベースがオープンされ、REDOログを生成できるようになる。
+- RESETLOGS | NORESETLOGS
+  現行のログ順序番号を1にリセットし、アーカイブされていないログ(現行のログを含む)をアーカイブして、リカバリ時に適用されなかったREDO情報を今後適用されないように破棄するかどうかを指定する。
+  RESETLOGが必要な次の場合を除き、NORESETLOGSを自動的に使用する。
+  - RESETLOGSを指定する必要がある場合：
+    - 不完全メディア・リカバリ、またはバックアップ制御ファイルを使用してメディアリカバリを実行した後
+    - 前回の不完全なOPEN RESETLOGS操作後
+    - FLASHBACK DATABASE処理後
+  作成した制御ファイルをマウントした場合、オンライン・ログが失われた場合RESETLOGS、失われていない場合NORESETLOGSを指定する必要がある。
 ********* recovery_clauses
 ********* alter_datafile_clause
 - DATAFILE

@@ -84,13 +84,14 @@
 ****** cl-loop
 - (cl-loop CLAUSE...)
   The Common Lisp "loop" macro.
-  
 **** edebug
 ***** Alias
+****** edebug-defun
+- (edebug-defun)
+  alias for "edebug-eval-top-level-form"
 ****** eval-defun
 - (eval-defun EDEBUG-IT)
   alias for "edebu-eval-defun"
-
 ***** Functions
 ****** edebug
 - (edebug &optional ARG-MODE &rest ARGS)
@@ -98,6 +99,61 @@
 ****** edebug-eval-defun
 - (edebug-eval-defun EDEBUG-IT)
   Evaluate the top-level form containing point, or after point.
+  
+****** edebug-eval-top-level-form
+- (edebug-eval-top-level-form)
+  Evaluate the top level form print is in, stepping through with Edebug.
+***** Keybind
+****** edebug-mode
+******* SPC : edebug-step-mode
+******* ? : edebug-help
+******* a : abort-recursive-edit
+******* B : edebug-next-breakpoint
+- ポイント位置以降に設定されているブレークポイントに移動する。
+******* b : edebug-set-breakpoint
+- ポイント位置にブレークポイントを設定する
+******* C : edebug-Continue-fast-mode
+- 「高速continue mode」に移行する。ブレークポイントでedebugバッファの再表示をしながら評価を継続する
+******* c : edebug-continue-mode
+- 「continue mode」に移行する。ブレークポイントで1秒ずつ停止しながら評価を継続する。
+******* e : edebug-eval-expression
+- Edebugの外側の環境でeval-expressionを行う。
+******* f : edebug-forward-sexp
+- 現在の評価ポイントからS式一つ分評価ポイントを進め、得られた値を身にバッファに表示する
+******* G : edebug-Go-nonstop-mode
+- 一切のブレークポイントを無視して最後まで評価する
+******* g : edebug-go-mode
+- 次のブレークポイントまで実行
+******* h : edebug-goto-mode
+- カーソル位置まで実行
+******* i : edebug-step-in
+- 直後の関数に入る
+******* o : edebug-step-out
+- 現在の評価ポイントが属しているS式の最後まで評価する
+******* p : edebug-bounce-point
+- 現在走行中の関数が指しているバッファを一定時間停止する
+******* q : top-level
+- edebugを抜ける
+******* r : edebug-previous-result
+- 最後に評価したものの返却値をミニバッファに再表示する
+******* S : edebug-stop
+- goモード、continueモード、traceモードで継続実行中のEdebugを止める。
+******* t : edebug-trace-mode
+- trace modeに移行する。
+******* T : edebug-Trace-fast-mode
+- 「高速trace mode」に移行する。tと同じだが、1秒間の停止をしない。
+******* u : edebug-unset-breakpoint
+- ブレークポイントを削除
+******* w : edebug-where
+- ポイントを現在の評価ポイントに移動する
+******* x : edebug-set-conditional-breakpoint
+- 条件ブレークを設定する。"Condition:"というプロンプトが出てくるので、条件をS式で入力する。
+
+**** find-func
+***** find-function
+- (find-function FUNCTION)
+  Find the definition of the FUNCTION near point.
+- describe-functionと異なり、ソースの関数定義に飛ぶ。
 
 **** lisp
 ***** Functions
@@ -121,12 +177,20 @@
 ****** eval-last-sexp (C-x C-e)
 - (eval-last-sexp EVAL-LAST-SEXP-ARG-INTERNAL)
   Evaluate sexp before point; print value in the echo area.
+****** indent-sexp
 ****** kill-sexp (C-M-k)
 - (kill-sexp &optional ARG)
   Kill the sexp (balanced expression) following point.
 ****** lisp-interaction-mode
 - (lisp-interaction-mode)
   Major mode for typing and evaluating Lisp forms.
+***** Keybinds
+****** tmp
+******* C-j : eval-print-last-sexp
+******* C-x C-e : eval-last-sexp
+******* C-M-x : eval-defun
+******* C-M-k : kill-sexp
+******* C-M-q : indent-sexp
 **** nadvice
 ***** Functions
 ****** advice-add
@@ -232,6 +296,29 @@
 ***** set-language-environment LANGUAGE-NAME)
 - (set-language-environment LANGUAGE-NAME)
   Set up multilingual environment for using LANGUAGE-NAME.
+*** net(dir)
+**** eww
+- web broweser.
+  it is part of the Emacs 24.4.
+
+- [[https://lars.ingebrigtsen.no/2013/06/16/eww/][eww - Random Thoughts]]
+
+**** tramp
+- TRAMP(Transparent Remote Access, Multiple Protocols)
+  winであまりうまくいっていない
+- Link
+  [[https://www.emacswiki.org/emacs/TrampMode][Tramp Mode - EmacsWiki]]
+  [[http://yo.eki.do/notes/tramp-mode][Emacs:まだターミナルで消耗してるの？ - 葉月夜堂]]
+
+*** org(dir)
+**** org
+***** Functions
+****** org-cycle (<TAB> @org-mode)
+- (org-cycle &optional ARG)
+****** org-sort (C-c ^ @org-mode)
+***** Keybinds
+****** C-c ^ : org-sort
+****** <TAB> : org-cycle
 *** progmodes(dir)
 **** cc-cmds
 ***** Functions
@@ -244,6 +331,16 @@
 ****** url-retrieve-synchronously
 - (url-retrieve-synchronously URL &optional SILENT INHIBIT-COOKIES)
   Retrieve URL synchronously.
+*** apropos
+**** apropos
+- (apropos PATTERN &optional DO-ALL)
+  Show all meaningful Lisp symbols whose names match PATTERN.
+  Symbols are shown if they are defined as functions, veriables, or faces, or if they have nonempty property lists.
+
+**** apropos-documentation (F1 d)
+- (apropos-documentation PATTERN &optional DO-ALL)
+  Show symbols whose documentation cotains matches for PATTERN
+- 関数名に加えて説明文章も検索対象に加わる。
 *** compile
 **** Functions
 ***** compile
@@ -304,6 +401,15 @@
 **** Variables
 ***** custom-file
 - File used for storing customization information.
+*** dired
+**** Functions
+***** dired
+- (dired DIRENAME &optional SWITCHES)
+  "Edit" directory DIRNAME --delete, rename, print, etc.
+**** Keybinds
+***** dired
+****** R : dired-do-rename
+****** f
 *** env
 **** Functions
 ***** setenv
@@ -391,6 +497,11 @@
 ***** view-lossage (C-h l)
 - 
   これまでに打鍵した最後の100文字を表示する
+*** ielm
+- Inferior Emacs Lisp Mode
+  this acts like an intreactive Lisp interpreter.
+  real little REPL.
+
 *** image-file
 **** Functions
 ***** auto-image-file-mode
@@ -398,8 +509,9 @@
   Toggle visiting of image files as image (Auto Image File mode).
 *** indent
 **** Functions
-***** indent-for-tab-command
-- C-i
+***** indent-for-tab-command (C-i)
+- (indent-for-tab-command &optional ARG)
+  Indent the current line or region, or insert a tab, as appropriate.
 ***** indent-region (C-M-\)
 - (indent-region START END &optional COLUMN)
   Indent each nonblank line in the region.
@@ -465,6 +577,15 @@
 ***** completion-at-point
 - (completion-at-point)
   Perform completion on the text around point.
+***** read-file-name
+- (read-file-name PROMPT &optoinal DIR DEFAULT-FILENAME MUSTMATCH INITIAIL PREDICATE)
+  Read file name, prompting with PROMPT and completing in directory DIR.
+  The return value is not expanded -- call "expand-file-name" yourself.
+**** Variables
+***** insert-default-directory
+- Non-nil means when reading a filename start with default dir in minibuffer.
+***** read-file-name-completion-ignore-case
+- Non-nil means when reading a file name completion ignores case.
 *** newcomment
 **** Functions
 ***** comment-region
@@ -541,9 +662,19 @@
 ***** previous-line (C-p)
 - (previous-line &optional ARG TRY-VSCROLL)
   Move cursor vertically up ARG lines.
+***** read-quoted-char
+- (read-quoted-char &optoinal PROMPT)
+  Like "read-char", but do not allow quitting.
+  Also, if the first character read is an octal digit,
+  we read any number of octal digits and return the specified character code.
+- 読み込んだ最初の文字が0-7の場合はもう2桁読み、3桁の8進数にしてその値に対応するコードを返す。
 ***** repeat-complex-command (C-x M-:)
 - (repeat-complex-command ARG)
   Edit and re-evaluate last complex command, or ARGth from last.
+***** toggle-truncate-lines
+- (toggle-truncate-lines &optional ARG)
+  Toggle turncating of long lines for the current buffer.
+  When truncating is off, long lines are folded.
 **** Variables
 ***** column-number-mode
 - Non-nil if Column-Number mode is enabled.
@@ -613,6 +744,9 @@
 ***** keyboard-translate
 - (keyboard-translate FROM TO)
   Translate character FROM to TO on the current terminal.
+***** last
+- (last LIST &optional N)
+  Return the last link of LIST. Its car is the last element.
 ***** local-set-key
 - (local-set-key KEY COMMAND)
   Give KEY a local binding as COMMAND.
@@ -629,7 +763,6 @@
 ***** match-string
 - (match-string NUM &optional STRING)
   Return string of text matched by last search.
-  
 ***** match-string-no-properties
 - (match-string-no-properties NUM &optional STRING)
   Return string of text matched by last search, without text properties.
@@ -733,6 +866,13 @@
   
 **** Link
 - [[http://www.gnu.org/software/emacs/manual/html_mono/cl.html][GNU Emacs Common Lisp Emulation]]
+*** company
+**** Vairables
+***** company-selection-wrap-around
+- If enabled, selecting item before first or after last wraps around.
+**** Link
+- [[http://qiita.com/syohex/items/8d21d7422f14e9b53b17][auto-completeユーザのための company-modeの設定 - Qiita]]
+*** dash
 *** el-get
 **** Functions
 **** Link
@@ -742,12 +882,27 @@
 **** Variables
 ***** el-get-install-info
 - install-info path
+*** emmet-mode
+**** KeyBindings
+***** default
+****** C-M-right : emmet-next-edit-point
+****** C-M-left : emmet-prev-edit-point
+****** C-c w : emmet-wrap-with-markup
+***** edited
+****** C-' : emmet-expand-line
+***** original
+****** C-j : emmet-expand-line
+****** C-return : emmet-expand-line
+**** Commands
+***** emmet-expand-line
+**** Link
+- [[https://github.com/smihica/emmet-mode][smihica/emmet-mode - github]]
+*** esup
 *** etags
 - Etags
 **** Command
 ***** find-tags
 - M-. / <menu-bar><edit><goto><find-tag>
-*** esup
 *** evil
 *** gtags
 **** Functions
@@ -771,6 +926,7 @@
   - relative
 - Memo
   Windowsでは、root->relativeを設定することで動作するようになった。
+*** init-loader
 *** initchart
 - https://github.com/yuttie/initchart
 - provides macros and functions to measure and visualize a init process of Emacs.
@@ -779,7 +935,17 @@
 ***** initchart-visualize-init-sequence
 - (initchart-visualize-init-sequence &optional FP)
   指定したfilepathに計測結果をsvg形式でグラフ表示する。
-*** init-loader
+*** magit
+**** Link
+- [[https://github.com/magit/magit][magit/magit - github]]
+- [[https://magit.vc/manual/][magit - User Manuals]]
+*** Minibuffer
+**** Keybind
+***** M-p, up : previous-history-element
+***** M-n, down : next-history-element
+***** M-r : previous-matching-history-element
+***** M-s : next-matching-history-element
+***** C-M-i : completion-at-point
 *** noflet
 - https://github.com/nicferrier/emacs-noflet
 - Local function decoration
@@ -807,16 +973,74 @@
   Show init-loader log buffer.
 **** Link
 - [[https://github.com/emacs-jp/init-loader][emacs-jp/init-loader - github]]
-*** magit
+*** picture-mode
+- 
+  picture-modeかedit-pictureを選択する。
+- C-c C-c
+  pictureモードから抜ける。
+
+- C-c <, C-c >, C-c ^, C-c .
+  
+
+- C-right, C-left, C-up, C-down
+  線を描く。
+
+- M-right, M-left, M-up, M-down
+  線を消す。
+
+*** px
+- Preview inline latex in any mode
+  [[https://github.com/emacsmirror/px][px - github]]
+*** slime
+**** Commands
+***** slime
+- (slime &optional COMMAND CODING-SYSTEM)
+***** slime-compile-defun
+- C-c C-c
+- (slime-compile-defun &optional RAW-PREFIX-ARG)
+  Compile the current toplevel form.
+  
+***** slime-compile-and-load-file
+- C-c C-k
+- (slime-compile-and-load-file &optional POLICY)
+  Compile and load the buffer's file and highlight compiler notes.
+
+***** slime-switch-to-output-buffer
+- C-c C-z (slime-repl.el)
+- (slime-switch-to-output-buffer)
+  Select the output buffer, when possible in an existing window
+
+**** Memo
+***** Error on Windows 7
+- 
+  Path中にspaceがあると、argumentとして取られてしまう模様。エラーとなる。
+  [[http://stackoverflow.com/questions/17860785/slime-on-windows-7][SLIME on Windows 7]]
+
 **** Link
-- [[https://github.com/magit/magit][magit/magit - github]]
-- [[https://magit.vc/manual/][magit - User Manuals]]
+- [[https://common-lisp.net/project/slime/][SLIME: The Superior Lisp Interaction Mode for Emacs]]
   
 *** use-package
 
 **** Link
 - [[http://emacs.rubikitch.com/use-package-2/][use-package.el : Emacsの世界的権威が行っている最先端ラクラクinit.el整理術 - るびきち「新生日刊Emacs」]]
 - [[http://qiita.com/kai2nenobu/items/5dfae3767514584f5220][use-packageで可読性の高いinit.elを書く - Qiita]]
+
+*** yasnipet
+- Tag
+  ex) html, then tab
+**** KeyBindings
+***** C-i : yas-expand-from-trigger-key
+***** Tab : yas-expand
+***** C-c & C-n : yas-new-snippet
+***** C-c & C-s : yas-insert-snippet
+***** C-c & C-v : yas-visit-snippet-file
+**** Commands
+***** yas-describe-tables
+- 利用できるスニペット一覧を表示可能。
+***** yas-insert-snippet
+- Prompts you for possible snippet expansion
+***** yas-new-snippet
+- Lets you create a new snippet file in the correct subdirectory.
 ** Memo
 *** パッケージ管理
 **** package.el

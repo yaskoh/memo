@@ -4,13 +4,12 @@
 **** abs
 - (abs ARG)
   Return the absolute value of ARG.
+**** append
+- (append &rest SEQUENCES)
+  Concatenate all the arguments and make the result a list.
 **** assoc
 - (assoc KEY LIST)
   Return non-nil if KEY is "equal" to the car of an element of LIST.
-**** apropos
-- (apropos PATTERN &optional DO-ALL)
-  Show all meaningful Lisp symbols whose names match PATTERN.
-  Symbols are shown if they are defined as functions, veriables, or faces, or if they have nonempty property lists.
 **** autoload
 - (autoload FUNCTION FILE &optional DOCSTRING INTERACTIVE TYPE)
   Define FUNCTION to autoload from FILE.
@@ -33,6 +32,12 @@
 - (buffer-substring START END)
   Return the contents of part of the current buffer as a string.
 **** buffer-substring-no-properties
+**** car
+- (car LIST)
+  Return the car of LIST. If arg is nil, return nil.
+**** cdr
+- (cdr LIST)
+  Return the cdr of LIST. If arg is nil, return nil.
 **** ceiling
 **** char-after
 - (char-after &optional POS)
@@ -45,9 +50,16 @@
   Convert arg CHAR to a string containing that character.
 - ex
   (char-to-string ?a) -> "a"
+**** completing-read
+- (completing-read PROMPT COLLECTION &optional PREDICATE REQUIRE-MATCH INITIAL-INPUT HIST DEF INHERIT-INPUT-METHOD)
+  Read a string in the minibuffer, with completion.
+- "PROMPT"をミニバッファに表示して"COLLECTION"で指定した候補単語を補完入力し、結果を文字列として返す。
 **** concat
 - (concat &rest SEQUENCES)
   Concatenate all the arguments and make the result a string.
+**** cons
+- (cons CAR CDR)
+  Create a new cons, give it CAR and CDR as components, and return it.
 **** count-lines
 - (count-lines START END)
   Return number of lines between START and END.
@@ -95,6 +107,7 @@
 **** eq
 - (eq OBJ1 OBJ2)
   Return t if the two args are the same Lisp object.
+- equalと異なり、オブジェクトの形式でなく、オブジェクト自体が完全に一致した（同じメモリを指している）場合のみtを返す。
 **** equal
 - (equal O1 O2)
   Return t if two lisp objects have similar structure and contents.
@@ -209,6 +222,9 @@
 **** kill-all-local-variables
 - (kill-all-local-variables)
   Switch to Fundamental mode by killing current buffer's local variables.
+**** length
+- (length SEQUENCE)
+  Return the length of vector, list or string SEQUENCE.
 **** line-end-position
 - (line-end-position &optional N)
   Return the character position of the last character on the current line.
@@ -274,6 +290,9 @@
 **** max
 - (max NUMBER-OR-MARKER &rest NUMBERS-OR-MARKERS)
   Return largest of all the arguments.
+**** member
+- (member ELT LIST)
+  Return non-nil if ELT is an elemnt of LIST.
 **** message
 - (message FORMAT-STRING &rest ARGS)
   Display a message at the bottom of the screen.
@@ -303,6 +322,9 @@
 - (nth N LIST)
   Return the Nth element of LIST.
   N counts from zero.
+**** nthcdr
+- (nthcdr N LIST)
+  Take cdr N times on LIST, return the result.
 **** nreverse
 - (nreverse LIST)
   Reverse LIST by modifying cdr pointers.
@@ -334,9 +356,26 @@
 **** random
 - (random &optional LIMIT)
   Return a pseudo-random number.
+**** read-buffer
+- (read-buffer PROMPT &optional DEF REQUIRE-MATCH)
+  Read the name of a buffer and return as a string.
+**** read-char
+- (read-char &optional PROMPT INHERIT-INPUT-METHOD SECONDS)
+  Read a caracter from the command input (keyboard or macro).
+  It is returned as a number.
+**** read-command
+- (read-command PROMPT &optional DEFAULT-VALUE)
+  Read the name of a command and return as a symbol.
 **** read-key-sequence
 - (read-key-sequence PROMPT &optional CONTINUE-ECHO DONT-DONCASE-LAST CAN-RETURN-SWITCH-FRAME CMD-LOOP)
   Read a sequence of keystrokes and return as a string or vector.
+**** read-string
+- (read-string PROMPT &optional INITIAL-INPUT HISTORY DEFAULT-VALUE INHERIT-INPUT-METHOD)
+  Read a string from the minibuffer, prompting with string PROMPT.
+**** read-variable
+- (read-variable PROMPT &optoinal DEFAULT-VALUE)
+  Read the name of a user option and return it as a symbol.
+  Prompt with PROMPT.
 **** region-beginning
 - (region-beginning)
   Return the integer value of point or mark, whichever is smaller.
@@ -409,6 +448,11 @@
 **** sleep-for
 - (sleep-for SECONDS &optional MILLISECONDS)
   Pause, without updating display, for SECONDS seconds.
+**** sort
+- (sort LIST PREDICATE)
+  Sort LIST, stably, comparing elements using PREDICATE.
+  Returns the sorted list. LIST is modified by side effects.
+  PREDICATE is called with two elements of LIST, and should return non-nil if the first element sohuld sort before the second.
 **** stringp
 **** string-equal
 **** string-match
@@ -460,6 +504,10 @@
   Remove restrictions (narrowing) from current buffer.
 - ナローイングを解除し、バッファのすべての範囲にアクセスできるようにする。
   強制手段の意味合いのため、一時的にナローイングを解除するためにはsave-restrictionを使う。
+**** yes-or-no-p
+- (yes-or-no-p PROMPT)
+  Ask user a yes-or-no question.
+  Return t if answer is yes, and nil if the answer is no.
 **** 1+
 **** 1-
 **** +
@@ -474,6 +522,130 @@
 **** /=
 **** >
 **** >=
+*** Keybind(Global)
+**** special
+***** C-c
+***** C-h
+***** C-x
+***** C-u
+**** default
+***** C-a : beginning-of-line
+***** C-b : backward-char
+***** C-d : delete-char
+***** C-e : end-of-line
+***** C-f : forward-char
+***** C-g : keyboard-quit
+***** C-k : kill-line
+***** C-l : recenter-top-bottom
+***** C-n : next-line
+***** C-p : previous-line
+***** C-q : quoted-insert
+- 特殊文字の入力
+****** C-j : 改行
+***** C-r : isearch-backward
+***** C-s : isearch-forward
+****** C-u C-s : regexp-mode
+- C-uに限らず、一つ目の引数を取った場合にregexpに。
+****** C-s C-w : isearch-yank-word
+***** C-u : universal-argument
+***** C-v : scroll-up
+***** C-w : kill-region
+***** C-y : yank
+***** C-[ : backward-page
+***** C-] : forward-page
+***** C-\ : toggle-input-method
+- IME on/off
+***** C-Space : set-mark-command
+***** C-x b : switch-to-buffer
+***** C-x e : call-last-kbd-macro
+***** C-x k : kill-buffer
+***** C-x ( : start-kbd-macro
+***** C-x ) : end-kbd-macro
+***** C-x ] : forward-page
+***** C-x [ : backward-page
+***** C-x 0 : delete-window
+***** C-x 1 : delete-other-window
+***** C-x 2 : split-window-vertically
+***** C-x 3 : split-window-horizontally
+***** C-x C-b : list-buffers
+***** C-x C-c : save-buffers-kill-terminal
+***** C-x C-f : find-file
+***** C-x C-k e : edit-kdb-macro
+***** C-x C-k n : name-last-kbd-macro
+***** C-x C-s : save-buffer
+***** C-x C-w : write-buffer
+***** C-x C-j : dired
+***** C-x RET f : set-bufer-file-coding-system
+- Set character code
+***** C-M-s : re-search-forward
+***** C-M-r : re-search-backward
+***** C-M-\ : indent-region
+***** C-M-% : query-replace-regexp
+***** M-a : backward-sentence
+***** M-b : backward-word
+***** M-e : forward-sentence
+***** M-f : forward-word
+***** M-g g : goto-line
+***** M-g M-g : goto-line
+***** M-g TAB : move-to-column
+***** M-v : scroll-down
+***** M-x : execute-extended-command
+- コマンドを入力して実行
+
+***** M-< : beginning-of-buffer
+***** M-> : end-of-buffer
+***** M-: : eval-expression
+***** <f1> : (help-command)
+***** <help>
+****** (help-command)
+- help-for-help-internal
+****** c KEYS
+****** f FUNCTION
+- describe-function
+  Display documentation for the given function.
+****** F COMMAND
+- Show the on-line manual's section that describes the command.
+****** k KEYS
+- Display the full documentation for the key sequence.
+****** K KEYS
+- Show the on-line manual's section for the command bound to KEYS.
+****** m
+- Display documentation of current minor modes and current major mode, including their special commands.
+****** t
+- Tutorial
+****** v VARIABLE
+- Display hte given variable's documentation and value.
+**** edited
+***** C-h : delete-backward-char
+***** C-j : newline
+***** C-m : newline-and-indent
+***** C-o : other-window
+- 引数を設定した分のウィンドウ数移動する。
+  "C-c -1 C-o"とすると一つ戻る。
+***** C-t : forward-char
+***** C-x o : other-frame
+***** C-x ? : help-command
+- 
+  <f1>を使ってください
+
+***** C-z : undo
+***** C-/ : transpose-chars
+***** M-t : forward-word
+***** M-r : replace-string
+***** M-z : transpose-words
+**** original
+***** C-h : (help-command)
+***** C-j
+***** C-m
+***** C-o
+***** C-t
+***** C-x o
+***** C-z
+***** C-/
+***** M-t
+***** M-r
+***** M-z
+
 *** Special forms
 **** and
 - (and CONDITIONS...)
@@ -640,6 +812,10 @@
 - Non-nil if searches and matches should ignore case.
 **** case-replace
 - Non-nil means "query-replace" should preserve case in replacements.
+**** completion-ignore-case
+- non-nil means don't consider case significant in completion.
+  For file-name completion, "read-file-name-completion-ignore-case" controls behavior.
+  For buffer name completion, "read-buffer-completion-ignore-case" controls the behavior.
 **** debug-on-error
 - Non-nil means enter ebugger if an error is signaled.
   Does not apply to errors handleb dy "condition-case" ore those matched by "debug-ignored-errors".
@@ -658,6 +834,8 @@
 **** major-mode
 - Symbol for current buffer's major mode.
   
+**** read-buffer-completion-ignore-case
+- Non-nil means completion ignores when reading a bufer name.
 **** scroll-margin
 - Number of lines of margin at the top and bottom of a window.
 **** scroll-step
@@ -673,6 +851,9 @@
   - cygwin
 **** this-command
 - The command now being executed.
+**** toggle-truncate-lines
+- Non-nil means do not display continuation lines.
+  Instead, give each line of text just one screen line.
 **** windows-system
 - Name of window system through which the selected frame is displayed.
 - Values:

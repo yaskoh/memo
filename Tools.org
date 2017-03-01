@@ -267,6 +267,17 @@
   https://aws.amazon.com/jp/elasticloadbalancing/
 
 ** Monitoring
+*** Zabbix
+*** Nagios
+*** Hinemos
+- NTTData
+  複数のコンピュータを単一のコンピュータのイメージで運用管理することを実現するオープンソースソフトウェア。
+*** JP1
+- Hitachi
+*** WebSAM
+- NEC
+*** OpenView
+- hp
 *** Keepalived
 - 
   routing software written in C.
@@ -279,6 +290,20 @@
 - 
   http://www.keepalived.org/
 
+*** Pacemaker
+- HAクラスタソフト。
+  以前は「Heartbeat」といった。
+  複数のコンピュータをNW等で連携し、故障を検知したら他のコンピュータにフェイルオーバさせるなどし、高可用性を実現する。
+
+**** 機能
+***** アプリケーション監視・制御機能
+***** ネットワーク監視・制御機能
+***** ノード監視機能
+***** 自己監視機能
+***** ディスク監視・制御機能
+
+**** Link
+- [[http://linux-ha.osdn.jp/wp/manual/pacemaker_outline][Pacemakerの概要 - LINUX-HA JAPAN]]
 *** Heartbeat
 - 
   The High Availability Linux Projectが開発したもので、アクティブ・スタンバイクラスタを提供する基本的な機能を提供する。

@@ -990,7 +990,26 @@
 **** IntelliJ Idea
 **** NetBeans
 *** Framework
+**** SpringFramework
 **** Seasar2
+**** S2Util
+- Seasar2からスピンアウトしたプロジェクトで、様々なUtil ClassをLibraryとして提供する。
+  Seasar2ではJ2EE1.4を前提としていたものが多かったが、Java5以降のジェネリックや可変長配列に対応する変更なども加えられている。
+***** APIs
+****** 0.0.1
+******* org.seasar.util.beans.util
+******** Classes
+********* BeanMap
+********* BeanUtil
+- JavaBeansとJavaBeans、あるいはJavaBeansとMapの間でプロパティをコピーするためのユーティリティ。
+********** Methods
+*********** copyBeanToMap(Object src, Map<String,Object> dest)
+- BeanからMapにコピーを行う。
+*********** copyBeanToMap(Object src, Map<String,Object> dest, CopyOptions options)
+********* CopyOptions
+- BeanUtilでJavaBeansやMapをコピーする際に指定するオプション。
+***** Link
+- http://s2util.sandbox.seasar.org/apidocs/index.html
 *** Apache ActiveMQ
 - Java Message Serviceを実装したメッセージ関連のオープンソースのミドルウェア。
   http://activemq.apache.org/getting-started.html
@@ -1159,7 +1178,7 @@
 
 ** Link
 - [[http://docs.oracle.com/javase/specs/][Java Language and Virtual Machine Specification - ORACLE]]
-- [[http://docs.oracle.com/javase/8/docs/api/][Java™ Platform, Standard Edition 8 API Specification]]
+- [[http://docs.oracle.com/javase/8/docs/api/][Java™jj Platform, Standard Edition 8 API Specification]]
 - [[http://docs.oracle.com/javase/jp/8/docs/api/][Java(tm) Platform, Standard Edition 8 API仕様]]
 - [[http://docs.oracle.com/javase/tutorial/java/index.html][The Java Tutorials]]
 

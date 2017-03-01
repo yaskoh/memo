@@ -10,7 +10,7 @@
 **** App Service
 **** Azure Container Service
 **** Azure Container Registry
-**** 関数
+**** Functions / 関数
 **** Service Fabric
 **** Batch
 **** Cloud Services
@@ -53,6 +53,31 @@
 *** Security + ID
 *** Development Tools
 *** 監視 + Management
+** Resources
+*** General
+**** Resouce Group
+**** All Service
+**** Subscription
+- 現在までの利用金額等を見ることができる。
+*** Compute
+**** Virtual machines
+***** Memo
+****** Password Reset
+- 手順
+  - Virtual machineを選択する
+  - サポート+トラブルシューティング/Reset passwordを選択する
+  - パスワードを入れる
+- https://docs.microsoft.com/ja-jp/azure/virtual-machines/virtual-machines-windows-reset-rdp
+
+*** Networking
+*** Storage
+*** Web + Mobile
+**** App Service
+*** Database
+**** SQL Database
+**** SQL Data Warehouse
+**** NoSQL
+*** Intelligence + Analysis
 ** Memo
 *** Azure China
 - 中国アカウントはGlobalアカウントとは切り離されており、MSアカウントの別途作成が必要。
@@ -60,3 +85,4 @@
   MSでなく、21Vianetというローカル企業が運用を行っているとのこと。
 ** Link
 - [[https://docs.microsoft.com/ja-jp/azure/][Document]]
+- [[http://www.buildinsider.net/web/azure/01][まだ知らない人のための最新Microsoft Azure入門 - BulidINSIDER]]

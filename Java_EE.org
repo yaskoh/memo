@@ -6,9 +6,21 @@
   Java EE自体は仕様であるため、各社がライセンスを受け実装し、販売などをしている。
 
 ** API
-*** javax.servlet.*
-*** javax.faces.*
-*** javax.ejb.*
+*** Java EE 7
+**** javax.ejb
+**** javax.faces
+**** javax.inject
+***** Annotations
+****** Inject
+- Identifies injectable ocnstructors, methods, and fields.
+****** Named
+****** Qualifier
+****** Scope
+****** Singleton
+***** Interface
+****** Provider<T>
+**** javax.servlet
+*** Java EE 6
 ** Architecture
 *** 関係
 - 
@@ -370,6 +382,11 @@
 - リソース・アダプタ・モジュール(RARファイル)の設定ファイル
 ** Link
 - [[https://docs.oracle.com/javaee/7/tutorial/index.html][The Java EE Tutorial - Java Platform, Enterprise Edition 7]]
+
+- APIs
+  - [[https://docs.oracle.com/javaee/7/api/][Java(TM) EE 7 Specification APIs]]
+  - [[https://docs.oracle.com/javaee/6/api/][JavaTM Platform, Enterprise Edition 6 API Specification]]
+
 - [[https://netbeans.org/kb/trails/java-ee_ja.html][Java EEおよびJava Webの学習 - NetBeans]]
 - [[http://qiita.com/tkxlab/items/3c0d4073defacb1215f5][JavaEEをはじめよう！ - Qiita]]
 

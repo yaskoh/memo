@@ -12,7 +12,9 @@
 ***** clean
 - remove object files
 ***** doc
+- show documentation for package or symbol
 ***** env
+- print Go environment information
 ***** fix
 ***** fmt
 ***** generate
@@ -20,8 +22,10 @@
 ***** install
 ***** list
 ***** run
+- compile and run Go program
 ***** test
 ***** tool
+****** tour
 ***** version
 ***** vet
 *** cgo
@@ -110,6 +114,13 @@
 *** Built-in functions
 *** Packages
 *** Errors
+** Memo
+*** Exported names
+- 大文字で始まる名前は、外部のパッケージから参照できるエクスポートされた名前。
+- 小文字で始まるpiやhogeなどは、エクスポートされていない名前。
 ** Link
 - [[https://golang.org/][The Go Programming Language]]
 
+- [[http://ascii.jp/elem/000/001/235/1235262/][Goならわかるシステムプログラミング - プログラミング+]]
+
+- [[http://qiita.com/tenntenn/items/0e33a4959250d1a55045][Go言語の初心者が見ると幸せになれる場所 - Qiita]]

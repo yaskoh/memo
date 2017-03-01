@@ -1579,6 +1579,12 @@
   |------+----------------------------|
   
 ***** RIPv2
+*** Remote Desktop Protocol, RDP
+- TCPポート3389およびUDPポート3389を医療する。
+**** Link
+- [[https://msdn.microsoft.com/en-us/library/cc240445.aspx][(MS-RDPBCGR): Remote Desktop Protocol: Basic Connectivity and Graphics Remoting - Developer Network]]
+- [[https://wiki.wireshark.org/RDP][Remote Desktop Protocol (RDP) - WIRESHARK]]
+- [[https://msdn.microsoft.com/en-us/library/bb892075(v=vs.85).aspx][Remote Desktop Services - Developer Network]]
 *** Link
 - https://en.wikipedia.org/wiki/OSI_model
 ** Command

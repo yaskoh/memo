@@ -529,6 +529,7 @@
   redirect_toの第二引数で設定して(ex: redirect_to @note, notice:'メッセージ'),
   viewで表示する(ex: <%= notice %>)
 ** Link
-- 
+- [[https://railsguides.jp/][Ruby on Rails ガイド]]
+- [[https://railstutorial.jp/][Ruby on Rails チュートリアル]]
 
   

@@ -92,6 +92,9 @@
   排他的論理和を計算する。
 *** 検索/行列関数
 **** ADDRESS
+- 書式
+  ADDRESS(行番号,列番号,[参照の方],[a1],[シート名])
+- 行番号と列番号を指定して、ワークシート内のセルのアドレスを取得できる。
 **** AREAS
 **** CHOOSE
 - 
@@ -114,6 +117,7 @@
 **** LOOKUP
 **** MATCH
 - MATCH(検査値,検査範囲,[照合の型])
+  セル範囲で指定した項目を検索し、その範囲内の項目の相対的な位置を返す。
 **** OFFSET
 - OFFSET(基準,行数,列数,[高さ],[幅])
 - セルまたはセル範囲から指定された行数と列数だけシフトした位置にあるセル範囲の参照を返す。
@@ -144,6 +148,9 @@
 **** ROUNDUP
 - 指定された桁数で切り上げる
 **** SUM
+**** SUMPRODUCT
+- SUMPRODUCT(配列1,[配列2,[配列3,...]])
+  指定された配列で対応する要素の積を合計する。
 *** 統計関数
 **** COUNT
 - COUNT(範囲)
@@ -363,6 +370,21 @@
 
   [[http://excel-ubara.com/excel3/EXCEL019.html][【奥義】大量データでの高速VLOOKUP - エクセルの神髄]]
 
+*** 複数条件のvlookup
+**** 配列数式とMATCHを利用
+- MATCH(1,(検索範囲1=検索値1)*(検索範囲2=検索値2)*...,0)
+  MATCHで返ってくる値を元にINDEXで値を表示させることで、vlookupと同様の動きとなる。
+***** Link
+- [[http://azwoo.hatenablog.com/entry/2015/11/28/010834][【簡単】vlookup 複数条件は不可 でもすぐにできる代替手段！（MATCH関数・INDEX関数を使う） - "Diary" インターネットさんへの恩返し]]
+- [[http://www.exceltactics.com/vlookup-multiple-criteria-using-index-match/][How to VLOOKUP with Multiple Criteria Using INDEX and MATCH - ExcelTactics]]
+**** SUMPRODUCTを利用
+- SUMPRODUCT((検索範囲1=検索値1)*(検索範囲2=検索値2)*...*ROW(検索範囲))
+  ROWをかけることで、値が1の場合(全ての条件がTrueの場合)に行番号が返ってくる。
+  ただし複数MATCHする場合は、MATCHしたすべての行番号が足し合わせた値が返ってくるので注意。
+  また、vlookupと同様の動きをするには、戻り値を使ってINDEX関数を適用する必要あり。
+***** Link
+- [[http://hamachan.info/win8/excel/sumproduct.html][3つの条件を満たす値を求めるには - 初心者のためのOffice講座]]
+**** 結合した文字列の比較を行う（単純な方法、追加セルが必要）
 *** シート名の変更
 - ショートカット : Alt,O,H,R
 - シートをダブルクリック
