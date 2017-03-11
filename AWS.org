@@ -3,6 +3,39 @@
 *** Compute
 **** Amazon EC2
 - クラウド内の仮想サーバー
+***** Menu
+****** Network & Security
+******* Security Group
+***** Instance type
+****** 汎用 t2, m4, m3
+****** コンピューティング最適 c4, c3
+****** GPUインスタンス g2
+****** メモリ最適 r4, r3, x1
+****** ストレージ最適 d2, i2
+***** Status
+****** pending
+****** running
+****** rebooting
+****** stopping
+****** stopped
+****** shutting-down
+****** terminated
+***** Glossary
+****** インスタンス
+- 1台のサーバー
+****** EBS
+- Amazon Elastic Block Store
+  サーバーのハードディスクに相当する仮想ディスク
+****** AMI
+- Amazon Machine Image
+  OSや各種ミドルウェア・アプリのイメージ
+***** Memo
+****** 再起動と停止・起動
+- 再起動だとIPアドレス及びホストマシンは変わらないが、
+  停止し起動すると、どちらも変更される。
+****** 課金
+- EC2は稼働している間課金されるので、利用しないインスタンスは停止しておく。
+- ebsは利用した容量に関係なく、サイズによって課金される。インスタンスが不要になったらすみやかに破棄するとよい。
 **** Amazon EC2 Container Registry
 - Dockerイメージの保存と取得
 **** Amazon EC2 Container Service
@@ -12,11 +45,27 @@
 **** AWS Batch
 **** AWS Elastic Beanstalk
 - ウェブアプリの実行及び管理
+  EC2, S3, ELB, Auto Scalingなどの環境を自動で生成し、Webアプリを容易に構築できるサービス。
+- 次の開発プラットフォームをサポートしている。
+  - Apache Tomcat for Java
+  - Apache HTTP Server for PHP
+  - Apache HTTP Server for Python
+  - Nginx or Apache HTTP Server for Node.js
+  - Passenger for Ruby
+  - Microsoft IIS 7.5 for .NET
 **** AWS Lamdba
+- LambdaファンクションというJava/Node.js/Pythonのいずれかで書いたプログラムを登録しておくて、
+  イベントが発生した時に自動で実行してくれるサービス。
+- 実行時にコンテナが作成され、終了時に破棄される。
 **** Auto Scaling
 *** Storage
 **** Amazon S3
 - クラウド内のスケーラブルなストレージ
+***** Glossary
+****** バケット
+- データの入れ物
+****** オブジェクト
+- 格納するファイルの呼び方
 **** Amazon EBS
 - EC2向けブロックストレージ
   EC2のデータを保持するストレージサービス。
@@ -36,8 +85,29 @@
 *** Database
 **** Amazon Aurora
 **** Amazon RDS
-- MySQL, PostgreSQL, Oracle, SQL Server, MariaDB向けの
+- Amazon Relational Database Service
+- Aurora, MySQL, PostgreSQL, Oracle, SQL Server, MariaDB向けの
   マネージドリレーショナルデータベースサービス
+***** Menu
+****** インスタンス
+****** Security Group セキュリティグループ
+****** Parameter Group パラメータグループ
+- 文字コードや接続数などのパラメータを設定する。
+  DBの種類ごとに利用できる項目が違う。
+****** Option Group オプショングループ
+- DBの固有機能について設定する。
+****** Subnet Group サブネットグループ
+- 仮想プライベートネットワークで稼働させる際に利用する。
+***** Glossary
+****** マルチAZ
+- マルチアベイラビリティーゾーン。
+  プライマリデータベースとは異なるゾーンにデータベースを作成し、そこにデータを複製してくれる。
+****** Storage
+******* 汎用(SSD)ストレージ
+******* プロビジョンドIOPS(SSD)ストレージ
+- I/Oのパフォーマンスが高速であるSSDストレージ。
+******* マグネスティックストレージ
+- 磁気ストレージ。安価だがパフォーマンスは劣る。
 **** Amazon DynamoDB
 - マネージドNoSQLデータベース
   非構造化データを容易に扱える。
@@ -97,6 +167,11 @@
 **** AWS Identity and Access Management (IAM)
 - ユーザーアクセスと暗号化キーの管理
   認証を行うサービス。アクセスコントロールが可能。
+***** Groups
+****** AmazonEC2FullAccess
+- Provides full access to Amazon EC2 via the AWS Management Console.
+****** AmazonRDSFullAccess
+- Provides full access to Amazon RDS via the AWS Management Console.
 **** Amazon Inspector
 - アプリケーションのセキュリティの分析
 **** AWS Certificate Manager
@@ -133,6 +208,13 @@
 **** Amazon Machine Learning
 - 機械学習、デベロッパー向け機械学習
 *** Mobile Services
+**** AWS Mobile Hub
+**** Amazon API Gateway
+- Rest APIを容易に作成・管理できるツール。
+**** Amazon Cognito
+**** Amazon Pinpoint
+**** AWS Device Farm
+**** AWS Mobile SDK
 *** Application Services
 *** Messaging
 *** Business Productivity
