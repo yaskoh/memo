@@ -1,5 +1,11 @@
 * Linux_Specification
 ** Linux Standard Base
+*** 5.0
+**** Common
+**** Core
+**** Desktop
+**** Runtime Languages
+**** Imaging
 *** Link
 - [[http://refspecs.linuxfoundation.org/lsb.shtml][Linux Standard Base]]
 - [[https://wiki.linuxfoundation.org/start][Linux Foundation Wiki - THE LINUX FOUNDATION]]
@@ -318,6 +324,7 @@
          deleted when unmounting or rebooting
 
 
-
 *** Link
 - [[http://refspecs.linuxfoundation.org/fhs.shtml][Filesystem Hierarchy Standard]]
+** Link
+- [[http://pubs.opengroup.org/onlinepubs/9699919799/][POSIX.1-2008 - IEEE Std 1003.1-2008]]

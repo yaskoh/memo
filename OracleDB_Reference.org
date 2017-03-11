@@ -172,6 +172,8 @@
 ***** DBA_DATA_FILES
 - データベース・ファイルを示す。
 ****** Columns
+******* FILE_NAME
+******* TABLESPACE_NAME
 ******* ONLINE_STATUS
 - ファイルのオンライン状態。
   - SYSOFF
@@ -197,6 +199,9 @@
 ***** DBA_HIST_SQLTEXT
 - ワークロード・リポジトリで取得された共有SQLカーソルに属するSQL文のテキストを示す。
   V$SQLからの情報が取得され、DBA_HIST_SQLSTATビューとともに使用される。
+***** DBA_HIST_SQLSTAT
+- SQL統計情報の履歴情報を示す。
+  このビューには、一連の基準に基づいた最上位SQL文およびV$SQLからの統計情報が取得される。
 ***** DBA_HIST_SYSTEM_EVENT
 - 1つのイベントについての待機の合計の履歴情報。
   V$SYSTEM_EVENTのスナップショットが含まれる。
@@ -328,10 +333,25 @@
 - GROUP BY句のない共有SQL領域についての統計情報を示し、入力された元のSQLテキストの子ごとに1行ずつ実行する。
 **** V$SQL_BIND_CAPTURE
 - SQLカーソルによって使用されたバインド変数に関する情報を示す。
-**** V$SQLTEXT
-- SGA内の共有SQLカーソルに属するSQL文のテキストを示す。
   
+**** V$SQL_PLAN
+- ライブラリ・キャッシュにロードされる子カーソルごとの実行計画情報を示す。
+**** V$SQL_TEXT
+- SGA内の共有SQLカーソルに属するSQL文のテキストを示す。
+**** V$SESSION
+- カレント・セッションごとのセッション情報を示す。
 **** V$SYSMETRIC_HISTORY
+- データベースで使用可能なすべてのシステム・メトリックの値を示す。
+  長期(60s, 1hの履歴)および短期(15s, 1間隔の履歴)の両方のメトリックが表示される。
+***** Columns
+****** GROUP_ID
+- メトリック・グループID
+****** METRIC_ID
+- メトリックID
+****** METRIC_NAME
+- メトリック名
+****** VALUE
+- メトリック値
 *** 待機イベント
 **** Class
 ***** Administrative

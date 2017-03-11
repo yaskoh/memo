@@ -159,25 +159,27 @@
 *** CLEAR
 *** COLUMN
 - COL[UMN] [{column | expr} [option ...]]
-- options
-  - ALI[AS] alias
-  - CLE{AR}
-  - ENTMAP {ON|OFF}
-  - FOLD_A[FTER]
-  - FOLD_B[EFORE]
-  - FOR[MAT] format
-  - HEA[DING] text
-  - JUS[TIFY] {L[EFT] | C[ENTER] | R[IGHT]}
-  - LIKE {expr | alias}
-  - NEWL[INE]
-  - NEW_V[ALUE] variable
-  - NOPRI[NT] | PRI[NT]
-  - NUL[L] text
-  - OLD_V[ALUE] variable
-  - ON | OFF
-  - WRA[PPED]
-  - WOR[D_WRAPPED]
-  - TRU[NCATED]
+**** options
+***** ALI[AS] alias
+***** CLE{AR}
+***** ENTMAP {ON|OFF}
+***** FOLD_A[FTER]
+***** FOLD_B[EFORE]
+***** FOR[MAT] format
+- format
+  - aNNN : 桁数を指定する（バイト数）
+***** HEA[DING] text
+***** JUS[TIFY] {L[EFT] | C[ENTER] | R[IGHT]}
+***** LIKE {expr | alias}
+***** NEWL[INE]
+***** NEW_V[ALUE] variable
+***** NOPRI[NT] | PRI[NT]
+***** NUL[L] text
+***** OLD_V[ALUE] variable
+***** ON | OFF
+***** WRA[PPED]
+***** WOR[D_WRAPPED]
+***** TRU[NCATED]
 *** COMPUTE
 *** CONNECT
 - 

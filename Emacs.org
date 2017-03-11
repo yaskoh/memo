@@ -286,8 +286,9 @@
 *** ToDo
 - emacs-lisp
   - elisp講座
+  - るびきちlisp
+  - manual読む
   - macro (on lisp)
-  - るびきち
 - autoload, package.el, eval-after-load
   http://keens.github.io/blog/2013/12/13/dot-emacs-clean-up/
 - eshell周り
@@ -360,6 +361,7 @@
     
 - http://www.bookshelf.jp/texi/elisp-manual-20-2.5-jp/elisp_13.html#SEC176
 *** Major Mode作成手順
+- [[http://www.bookshelf.jp/texi/elisp-manual-20-2.5-jp/elisp_23.html][22. メジャーモードとマイナーモード - GNU Emacs Lispリファレンスマニュアル (2.5/20.3 日本語)]]
 **** 例1
 - モード用のキーマップを作る
   - make-sparse-keyで空のキーマップを作る
@@ -379,6 +381,31 @@
 - 動作に必要な変数を設定する
   (use-local-map my-local-map)
 - 必要な関数を定義する
+
+**** 継承
+- define-derived-modeを利用する。
+**** マイナーモード
+- define-minor-modeを利用する
+***** Minor-modeの挙動
+- [[http://www.kaichan.info/blog/2013-02-10-minor-mode-behavior.html][define-minor-mode で定義されたマイナーモードの挙動 - 備忘録]]
+*** Keymap
+- order
+  1. the keymap specified by the "keymap" property
+  2. the keymaps of enabled minor modes
+  3. the current buffer's local keymap
+  4. the global keymap
+  [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Active-Keymaps.html#Active-Keymaps][21.7 Active Keymaps - Emacs Lisp (Emacs version 25.1)]]
+- order
+  1. overriding-terminal-local-map : terminal
+  2. overriding-local-map : major/minor-mode
+  3. text-property 'keymap : text
+  4. emulation-mode-map-alists : minor-mode
+  5. minor-mode-overriding-map-alist : major-mode
+  6. minor-mode-map-alist : minor-mode
+  7. local-map (major-mode-map) : major-mode
+  8. global-map : global
+  9. local-function-key-map : file
+  [[http://emacs.g.hatena.ne.jp/kiwanami/20110606/1307385847][キーマップの lookup 順序について - はてなグループEmacs@kiwanami]]
 *** Literal リテラル
 **** 数値リテラル
 ***** 数値 1234
@@ -392,7 +419,6 @@
 ***** NN進数 #NNr
 - NN進数
   ex: #5r40→20, #30remacs→11943388
-
 *** 置換時の改行
 - 
   ^J(C-q C-j)

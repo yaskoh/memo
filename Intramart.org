@@ -1,6 +1,91 @@
 * intra-mart
+** Kind
+*** intra-mart Accel Platform
+*** intra-mart Accel Application
+*** Accel-Mart
+*** IM-BPM
+*** intra-mart WF
+*** Biz ∫
+** IM-Juggling
+- モジュールの管理、WARファイルのリモートデプロイを実行できる環境構築ツール。
+*** Structure
+**** conf/
+***** bis-config
+***** forma-config.xml
+***** solr-config.xml
+- solr関連の設定
+**** modules
+**** schema
+**** juggling.im
+***** ベースモジュール
+***** アプリケーション
+***** ユーザモジュール
+***** 設定ファイル
+****** IM-BIS for Accel Platform
+******* bis-config.xml
+******* bis-tenant-config.xml
+***** 履歴
+**** resin-web.xml
+*** Memo
+**** トピックス、ベースライン他が何も表示されない
+- ネット接続の問題。プロキシを疑うか、そもそもネット接続されていないかなどの確認をする。
 ** Accel Platform
+*** Setup
+**** Setup Middleware
+***** JDK
+- setup
+***** Application Server
+- Resin
+***** Database
+- postgres
+  - add login roll
+  - create database with the role above
+***** JDBC Driver
+- download JDBC 4 (4.1 is not verified)
+- set it under C:/Resin/lib
+***** Cassandra
+***** Solr
+- resinに追加
+**** Make WAR file by IM-Juggling
+**** Deploy WAR on Resin(Web Application Server)
+- deploy前に、以下が必要
+  - user/passwordを設定する
+    - java -jar lib/resin.jar generate-password username password
+      (resin generate-password username password)
+    - 上記コマンドで出力されたuser, passwordをresin.propertiesに設定する。
+  - resin.propertiesのremote_admin_enable : trueを有効にする。
+- deploy
+  - resin deploy --user username --password password imart.war
+**** Access
+**** Uninstall
+***** Undeploy
+- (win)resin undeploy application-name
+- Resinの停止
+- ファイルを削除
+**** Link
+- [[http://www.intra-mart.jp/download/product/iap/setup/iap_quick_setup_guide/index.html#][intra-mart Accel Platform クイック セットアップガイド]]
+- [[http://www.intra-mart.jp/download/product/iap/setup/iap_setup_guide/index.html][intra-mart Accel Platform セットアップガイド]]
+
+*** Tenant
+**** Setup
+**** Link
+- [[http://www.intra-mart.jp/download/product/iap/im_import_export/tenant_environment_setup_specification/index.html][intra-mart Accel Platform テナント環境セットアップ 仕様書]]
+- [[http://www.intra-mart.jp/download/product/iap/operation/tenant_administrator_guide/][intra-mart Accel Platform テナント管理者操作ガイド]]
+*** Middleware
+**** JDK
+**** Resin
+**** DB
+**** Apache Cassandra
+**** Apache Solr
 *** Packages
+**** jp.co.intra_mart.common.platform.atabase.util
+***** Classes
+****** DatabaseUtil
+******* Methods
+******** createDatabaseInfo()
+- static Map<String,Number> createDatabaseInfo()
+  DB名とDBタイプを返却する。
+- 導入バージョン:8.0.14
 **** jp.co.intra_mart.foundation.context
 ***** Classes
 ****** Contexts
@@ -41,13 +126,6 @@
 ******** getApplicationContext()
 - static org.springframework.context.ApplicationContext getApplicationContext()
 - ApplicationContextを返す。
-**** jp.co.intra_mart.framework.extension.spring.context
-***** Classes
-****** ApplicationContextProvider
-******* Methods
-******** getApplicationContext()
-- static org.springframework.context.ApplicationContext getApplicationContext()
-- ApplicationContextを返す。
 **** jp.co.intra_mart.foundation.job_scheduler
 ***** Interfaces
 ****** Job
@@ -57,6 +135,32 @@
 ***** Classes
 ****** JobResult
 - ジョブの実行処理の結果を格納するクラス
+**** jp.co.intra_mart.foundation.workflow.application.model
+***** Classes
+****** ApplyResultModel
+- 申請結果情報 モデルクラス
+******* Constructors
+******* Methods
+**** jp.co.intra_mart.foundation.workflow.application.model.param
+***** Classes
+****** ApplyParam
+- 申請用パラメータ情報 モデルクラス
+- pubilc class ApplyParam
+  extends Object
+******* Constructors
+******** ApplyParam()
+******* Methods
+**** jp.co.intra_mart.foundation.workflow.application.process
+***** Classes
+****** ApplyManager
+- 申請マネージャ
+******* Constructors
+******** ApplyManager(String localeId)
+- 引数で指定したロケールIDで申請マネージャを新しく生成する。
+******* Methods
+******** apply(ApplyParam applyParam, Map<String,Object> userParam)
+- ApplyResultModel apply(ApplyParam applyParam, Map<String,Object> userParam)
+  申請処理を実行する。
 **** jp.co.intra_mart.foundation.security.message
 ***** Classes
 ****** MessageManager
@@ -68,7 +172,415 @@
 ******** getMessage(String key, String arg)
 - String getMessage(String key, String arg)
   メッセージを取得する
+**** jp.co.intra_mart.framework.extension.spring.context
+***** Classes
+****** ApplicationContextProvider
+******* Methods
+******** getApplicationContext()
+- static org.springframework.context.ApplicationContext getApplicationContext()
+- ApplicationContextを返す。
+*** Structure(Deploy file)
+**** wepapps/
+***** (application)/
+****** WEB-INF/
+******* conf/
+******** products/
+********* import/
+********** basic/
+*********** im_tenant/ (%ショートモジュールID%)
+************ improt-im_tenant(%ショートモジュールID%)-config-n(%スキーマバージョン%).xml
+******** log/
+********* im_logger_database.xml
+- DB_LOG
+  level value : off | trace | ...?
+  トレース情報
+******** bis-config.xml
+********* rule-cache
+- キャッシュ機能利用の有無設定。
+  value : true/false
+********* delete-bpm-link
+- IM-BISを利用しない際はtrueとする。
+  value : true/false
+********* transaction-file-location
+********** history
+- value : 
+  - db : BinaryデータとしてDBに保存する場合
+  - storage : ファイル実体としてストレージに保存する場合
+******** bis-tenant-config.xml
+******** cassandra-config.xml
+- Cassandraサーバ接続に関する設定情報
+******** data-source-mapping-config.xml
+********* Tags
+********** system-data-source
+- システムデータベースとして利用するデータソースを設定する
+********** tenant-data-source
+- テナントデータベースとして利用するデータソースを設定する。
+********** resource-ref-name
+- Web Application Serverに設定されているリソース参照名を指定する項目
+********** tenant-id
+- テナントのテナントIDを指定する
+********* Link
+- http://www.intra-mart.jp/download/product/iap/setup/im_configuration_reference/texts/im_database/data-source-mapping-config/index.html
+******** forma-config.xml
+******** network-agent-config.xml
+- bind-port : Web Application Server間で通信を行う際に利用するポート番号
+- port-range : bind-portで指定されたポート番号が既に使用されていた場合の代替えポート番号のレンジ。
+******** sorr-config
+- Solrサーバへの接続設定情報を保持するファイル。
+******** storage-config.xml
+********* Tags
+********** storage-info
+********** root-path-name
+- Storage領域のパスを設定
+******* jssp/
+******** product/
+********* src/
+********** bis/
+*********** common/
+************ user_program/
+************* apply_process.js
+************* bam_action_process.js
+************* bam_action_process.js
+************* web_service_execution_end.js
+************* web_service_execution_start.js
+*********** imw/
+************ view/
+************* apply_view.js
+************* approve_view.js
+************* reference_view.js
+************* retry_view.js
+********** forma/
+*********** imw/
+************ process/
+************* apply_process.js
+******* modules/
+******* log/
+******* schema/
+******* resin-web.xml
+- databaseのコネクション設定などが存在
+*** Screen
+**** システム管理者
+- http://localhost:8080/imart/system/login
+***** システム環境構築
+****** ライセンス管理
+****** テナント管理
+****** テナント環境セットアップ
+******* テナント環境セットアップ
+******* サンプルデータセットアップ
+***** システム管理
+**** テナント
+- http://localhost:8080/imart/login
+*** Glossary
+**** tenant テナント
+***** マルチテナント
+- テナント毎にデータベースの接続先やストレージ領域などを個別に管理・運用可能。
+****** バーチャルテナント機能の利用
+- 1つのWARファイル内で、論理的にテナントを分割する。
+****** WARファイルによるマルチテナント
+- WARファイル単位で書くテナントを管理し、データベースの接続先もWARファイル単位で管理する。
+******* Setting
+- [[http://www.intra-mart.jp/download/product/iap/setup/iap_setup_guide/texts/multi_tenant/index.html][WARファイルによる複数テナント]]
+******** Network
+- クラスタリングID、クラスタリング用ポート番号、ポートレンジがテナント間で重複しないようにする。
+- /conf/network-agent-config.xml
+******** DataSource
+- テナント毎にデータベース接続先をそれぞれ設定する必要がある
+- resin-web.xml : コネクション
+- /conf/data-source-mapping-config.xml : マッピング
+******** Storage
+- テナント毎に利用するStorage領域をそれぞれ設定する必要がある。
+- /conf/storage-config.xml : Storageパス(root-path-name)
+******** Casandra
+- テナント毎にAppache Cassandraの接続先、またはkeyspaceをそれぞれ設定する必要がある
+- cassandra-config.xml : 
+******** Solr
+- テナント毎にAppache Solrを設定する必要がある。
+***** テナント環境セットアップ
+- デプロイされた各モジュールが動作するための動作前提を構築する処理。
 *** Link
 - [[http://www.intra-mart.jp/apidoc/iap/javadoc/all-dev_apidocs/overview-summary.html][intra-mart Accel Platform API Specification]]
+- [[http://www.intra-mart.jp/download/product/iap/setup/im_configuration_reference/index.html][intra-mart Accel Platform 設定ファイルリファレンス]]
+
+- [[http://www.intra-mart.jp/document/library/iap/public/first_step_guide/index.html][intra-mart Accel Platform ファーストステップガイド]]
+
+- [[http://www.intra-mart.jp/download/product/iap/iap_introduction/index.html][intra-mart Accel Platform イントロダクション]]
+** IM-BIS
+- BIS(Business Integration Suite)
+*** Architecture
+**** IM-BIS for Accel Platform
+- 画面、BPM/WFなどを統合管理するツール
+**** Forma
+***** IM FormaDesigner for Accel Platform
+- Web画面作成のためのGUIツール
+**** DataMapper
+***** DM Designer
+- 画面項目とWebサービス、部品のパラメータを関連付け、データの変換等を行う
+***** DM Executor
+- イベント発生時に関連頭蹴られたWebサービスを起動し実行する
+***** Web Service Register
+- 利用するWebサービスを事前に登録する
+**** BPM/Workflow
+***** BPM Designer
+- BPMの流れなどをGUIで定義
+***** WF Designer
+- WFの流れなどをGUIで定義
+***** BPM/WF Engine
+- BPM/WFを実行するエンジン
+***** BAM
+- BPM/WFの実行状況をロギングし、分析用の情報を管理する
+*** Glossary
+**** BPM
+- Business Process Management ビジネスプロセス管理
+*** Link
+- [[http://www.intra-mart.jp/document/library/bis/public/bis_setup_guide/index.html][IM-BIS for Accel Platform セットアップガイド]]
+- [[http://www.intra-mart.jp/document/library/bis/public/bis_beginners_guide/][IM-BIS for Accel Platform IM-BIS ビギナーズガイド]]
+- [[http://www.intra-mart.jp/download/product/bis/manager_guide/index.html][IM-BIS for Accel Platform 業務管理者 操作ガイド]]
+** IM-FormaDesigner
+*** Setting
+**** forma-config
+*** Link
+- [[http://www.intra-mart.jp/document/library/forma/public/forma_setup_guide/index.html][IM-FormaDesigner for Accel Platform セットアップガイド]]
+** IM-Workflow
+*** About
+- ワークフローの処理内容と処理順序を示す「フロー定義」に従い、その流れに応じて処理を行う「案件」を進める機能。
+*** Edit
+**** コンテンツ定義
+***** 基本情報
+***** 画面
+****** 画面種別
+****** パス種別
+- スクリプト開発モデル
+  - スクリプトパス
+    スクリプト開発モデルプログラムのソースディレクトリからの相対パス形式を指定する。
+    デフォルトではWEB-INF/jssp/srcからの相対パス形式。
+- JavaEE開発モデル
+  - アプリケーションID
+  - サービスID
+- JSP or Servlet
+  - ページパス
+***** ユーザプログラム
+- ワークフローの処理時に実行するアプリケーションプログラム。
+****** プラグイン種別
+- 案件開始処理
+  案件が開始される際に呼び出されるプログラム
+- 案件終了処理
+- アクション処理
+  申請等の処理が起動された際に呼び出されるプログラム
+- 到達処理
+  ある処理によりノードに処理が進んだ際に呼び出されるプログラム
+- 分岐処理
+  分岐先を判定するプログラム
+- 結合処理
+  分岐終了ノードの次へ遷移してよいかを判定するプログラム
+
+****** プラグイン種類
+- スクリプト開発モデル
+- JavaEE開発モデル
+- LogicDesigner
+***** メール
+***** IMBox
+***** ルール
+**** ルート定義
+- 申請から最終承認までの処理の流れを保持する。
+  ルート定義を利用するフロー定義において、ルートに定義された各ノードの設定を使用することができる。
+**** フロー定義
+***** 基本情報
+***** 参照者
+***** コンテンツ詳細
+***** ルート詳細
+**** 案件プロパティ
+- 案件処理中にユーザコンテンツ固有の業務データを保持する。
+  以下の機能で使用可能。
+  - 案件の一覧表示画面での表示
+  - ルールが判定するパラメータとしての利用
+  - メールテンプレートやIMBoxテンプレートの置換文字列としての利用
+***** 型
+- 文字列
+- 数値
+***** 仕様種別
+- 一覧表示項目の項目
+- メールの置換文字列
+- IMBoxの置換文字列
+- ルールの条件変数
+**** ルール
+**** メール定義
+- ワークフローの処理時に送信するメールの送信先や内容のひな形を定義する。
+**** IMBox定義
+- ワークフローの処理時にIMBoxへ送信する内容のひな形を定義する。
+*** Node
+**** 開始ノード
+**** 終了ノード
+**** 申請ノード
+**** 承認ノード
+**** 動的承認ノード
+**** システムノード
+- Workflow外の別のプログラムで案件の処理を行うことを示すノード。
+**** 確認ノード
+**** 同期開始ノード
+**** 同期終了ノード
+**** 分岐開始ノード
+**** 分岐終了ノード
+**** 横配置ノード
+**** 縦配置ノード
+**** テンプレート置換ノード
+**** テンプレート開始ノード
+**** テンプレート終了ノード
+**** コメント
+**** スイムレーン
+- ルート上のノードを分類、整理する際に枠線表示として使用する。処理に
+*** Link
+- [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_administrator_guide/index.html][intra-mart Accel Platform IM-Workflow 管理者操作ガイド]]
+- [[http://www.intra-mart.jp/download/product/iap/im_workflow/im_workflow_user_guide/index.html][intra-mart Accel Platform IM-Workflow ユーザ操作ガイド]]
+- [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_specification/][intra-mart Accel Platform IM-Workflow 仕様書]]
+- [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_programming_guide/][intra-mart Accel Platform IM-Workflow プログラミングガイド]]
+** IM-Mail
+** IM-PDF Designer
+** Accel Documents
+*** Link
+- [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_setup_guide/index.html][intra-mart Accel Documents セットアップガイド]]
+- [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_user_guide/][intra-mart Accel Documents ユーザ操作ガイド]]
+- [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_repository_api_programming_guide/index.html][intra-mart Accel Documents プログラミングガイド]]
+** e Builder
+*** Structure
+**** module.xml
+- ユーザ定義モジュールを作成するために必要なファイル。
+  編集する際に、専用のモジュール・エディタが開く。
+*** Project
+**** Partitioning
+***** main
+- モジュールの主たるコードやリソースを配置する
+***** test
+- テストを行うためのコード・リソースを配置する。
+**** Directory
+***** generated
+- 対象例:*.java
+- 配置先:WEB-INF/libのjarファイル内
+- 自動生成されたJavaファイルを格納する。
+***** java
+- 対象例:*.java
+- 配置先:WEB-INF/libのjarファイル内
+***** resource
+- 対象例:*.java
+- 配置先:WEB-INF/libのjarファイル内
+***** conf
+- 対象例:*.properties, *.xml
+- 配置先:WEB-INF/conf配下
+***** jssp
+- 対象例:*.properties, *.xml
+- 配置先:WEB-INF/jssp配下
+***** plugin
+- 対象例:*.html, *.js
+- 配置先:WEB-INF/plugin配下
+***** public
+- 対象例:*.html, *.css, *.swf等
+- 配置先:WARを展開したフォルダ配下
+***** schema
+- 対象例:*.xsd
+- 配置先:WEB-INF/schema配下
+***** storage/public
+- 対象例:*.*
+- 配置先:%ストレージのパス%/storage/pubilc配下
+***** storage/system
+- 対象例:*.*
+- 配置先:%ストレージのパス%/storage/system配下
+***** webapp
+- 対象例:*.jsp, WEB-INF/に配置するファイル(iconファイル等)
+- 配置先:WARを展開したフォルダ配下
+*** Settings
+**** Workspace
+- ウィンドウ->設定
+***** 一般
+***** e Bulider
+****** license
+- ライセンス・コード
+***** Java
+****** インストール済みのJRE
+- 利用するJREバージョンの設定
+****** コンパイラー
+****** ビルド・パス
+***** Maven
+- Download repository index updates on startup
+  Mavenを利用しない場合、本オプションを無効にする。
+***** Web
+****** CSSファイル
+****** HTMLファイル
+- エンコード
+  エンコード設定。UTF-8を推奨。
+**** Project
+- プロジェクトを右クリック->プロパティ
+***** e Builder
+****** Module Assembly
+- 連携するResin上のWARファイル（展開後）を設定する。
+***** Javaコンパイラー
+***** Javaのビルドパス
+****** ソース
+****** プロジェクト
+****** ライブラリー
+****** 順序およびエクスポート
+*****
+*** Developing Model
+**** スクリプト開発モデル
+***** HTMLエディター
+**** im-JavaEEフレームワーク
+***** JSPエディター
+***** im-JavaEEフレームワークエディター
+****** アプリケーション
+****** サービス
+****** イベント
+****** DAO(モデル)
+****** DAO
+****** SQLビルダ
+**** SAStruts+S2JDBCフレームワーク
+**** 業務スケルトン
+*** Link
+- [[http://www.intra-mart.jp/document/library/ebuilder/public/e_builder_setup_guide/texts/all_in_one/index.html][intra-mart e Builder for Accel Platform セットアップガイド]]
+- [[http://www.intra-mart.jp/document/library/ebuilder/public/e_builder_user_guide/index.html][intra-mart e Builder for Accel Platform アプリケーション開発ガイド]]
+** TERASOLUNA
+*** Link
+- [[http://terasolunaorg.github.io/guideline/][TERASOLUNA Server Framework for Java (5.x)]]
+** Resin
+- [[file:Resin.org][Resin.org]]
 ** Link
+- [[http://www.intra-mart.jp/document/library/index.html][intra-mart Accell Platform - intra-mart Accel Series ドキュメントライブラリ]]
 - [[http://www.intra-mart.jp/apidoc/][API Documentation - intra-mart]]
+
+- [[http://www.intra-mart.jp/apidoc/iap/index.html][intra-mart Accel Platform API Documentation]]
+- [[http://www.intra-mart.jp/apidoc/iap/javadoc/all-dev_apidocs/overview-summary.html][intra-mart Accel Platform API Specification]]
+
+*** Docsまとめ
+- Accel Platform
+  - [[http://www.intra-mart.jp/download/product/iap/iap_introduction/index.html][intra-mart Accel Platform イントロダクション]]
+  - [[http://www.intra-mart.jp/download/product/iap/setup/iap_quick_setup_guide/index.html#][intra-mart Accel Platform クイック セットアップガイド]]
+  - [[http://www.intra-mart.jp/download/product/iap/setup/iap_setup_guide/index.html][intra-mart Accel Platform セットアップガイド]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/first_step_guide/index.html][intra-mart Accel Platform ファーストステップガイド]]
+  - [[http://www.intra-mart.jp/download/product/iap/setup/im_configuration_reference/index.html][intra-mart Accel Platform 設定ファイルリファレンス]]
+  - [[http://www.intra-mart.jp/download/product/iap/im_import_export/tenant_environment_setup_specification/index.html][intra-mart Accel Platform テナント環境セットアップ 仕様書]]
+  - [[http://www.intra-mart.jp/download/product/iap/operation/tenant_administrator_guide/][intra-mart Accel Platform テナント管理者操作ガイド]]
+
+  - [[http://www.intra-mart.jp/document/library/iap/public/job-jobnet_reference/index.html][intra-mart Accel Platform ジョブ・ジョブネット リファレンス]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_job_scheduler/im_job_scheduler_specification/index.html][intra-mart Accel Platform ジョブスケジューラ仕様書]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_admin_role_import_export_specification/index.html][intra-mart Accel Platform ロール インポート・エクスポート仕様書]]
+- IM-BIS
+  - [[http://www.intra-mart.jp/document/library/bis/public/bis_setup_guide/index.html][IM-BIS for Accel Platform セットアップガイド]]
+  - [[http://www.intra-mart.jp/document/library/bis/public/bis_beginners_guide/][IM-BIS for Accel Platform IM-BIS ビギナーズガイド]]
+  - [[http://www.intra-mart.jp/download/product/bis/manager_guide/index.html][IM-BIS for Accel Platform 業務管理者 操作ガイド]]
+- IM-FormaDesigner
+  - [[http://www.intra-mart.jp/document/library/forma/public/forma_setup_guide/index.html][IM-FormaDesigner for Accel Platform セットアップガイド]]
+- IM-Workflow
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_administrator_guide/index.html][intra-mart Accel Platform IM-Workflow 管理者操作ガイド]]
+  - [[http://www.intra-mart.jp/download/product/iap/im_workflow/im_workflow_user_guide/index.html][intra-mart Accel Platform IM-Workflow ユーザ操作ガイド]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_specification/][intra-mart Accel Platform IM-Workflow 仕様書]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_programming_guide/][intra-mart Accel Platform IM-Workflow プログラミングガイド]]
+- Accel Documents
+  - [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_setup_guide/index.html][intra-mart Accel Documents セットアップガイド]]
+  - [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_user_guide/][intra-mart Accel Documents ユーザ操作ガイド]]
+  - [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_repository_api_programming_guide/index.html][intra-mart Accel Documents プログラミングガイド]]
+- e Builder
+  - [[http://www.intra-mart.jp/document/library/ebuilder/public/e_builder_setup_guide/texts/all_in_one/index.html][intra-mart e Builder for Accel Platform セットアップガイド]]
+  - [[http://www.intra-mart.jp/document/library/ebuilder/public/e_builder_user_guide/index.html][intra-mart e Builder for Accel Platform アプリケーション開発ガイド]]
+- 開発
+  - http://www.intra-mart.jp/document/library/ebuilder/public/e_builder_user_guide/index.html
+  - http://www.intra-mart.jp/document/library/iap/public/development/usermodule_developers_guide/index.html
+  - http://www.intra-mart.jp/document/library/iap/public/development/tgfw_programming_guide/index.html
+  - http://www.intra-mart.jp/document/library/iap/public/development/script_programming_guide/index.html
+  - http://www.intra-mart.jp/document/library/iap/public/development/sastruts_s2jdbc_programming_guide/index.html

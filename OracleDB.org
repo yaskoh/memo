@@ -1089,7 +1089,6 @@
   表を削除してから、表領域の削除を再実行する必要がある。
 ** Reference
 - [[file:OracleDB_Reference.org][OracleDB_Reference.org]]
-
 ** Glossary
 *** ADR
 - Automatic Diagnostic Repository 自動診断レポジトリ

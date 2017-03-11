@@ -483,6 +483,22 @@
 - Minimalist GNU for Windows
   GNUツールチェーンのWindows移植版。
 
+** Graphics editor
+*** Drawing / Vector
+**** Inkscape
+**** Adobe Illustrator
+**** LibreOffice Draw
+*** Paint / Raster
+**** GIMP
+**** Adobe Photoshop
+**** CLIP STUDIO PAINT
+** Chart 図説
+*** draw.io
+- https://www.draw.io/
+*** Cacoo
+*** Gliffy
+*** mermaid.js
+- Library
 ** Undefined
 ** Glossary
 - 

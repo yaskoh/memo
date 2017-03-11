@@ -616,6 +616,17 @@
 ***** java.security.spec
 ***** java.security.zip
 ***** java.text
+****** Interfaces
+****** Classes
+******* SimpleDataFormat
+- public class SimpleDateFormat
+  extends DataFormat
+- 日付のフォーマットと解析を、ロケールを考慮して行うための具象クラス。
+******** Constructors
+******** Methods
+********* format(Date date, StringBuffer toAppendTo, FieldPosition pos)
+- StringBuffer format(Date date, StringBuffer toAppendTo, FieldPosition pos)
+  指定されたDateを日付/時間文字列にフォーマットし、指定されたStringBufferに結果を付与する。
 ***** java.text.spi
 ***** java.time
 ***** java.time.format

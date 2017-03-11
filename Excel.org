@@ -267,20 +267,34 @@
 
 **** フィルタのつけ外し(Ctrl+Shift-L)
 *** Ribbon
-**** 値貼り付け(Alt,E,S,V)
+**** Earlier Ver.
+***** Paste Special(Alt,E,S)
+****** 関数貼り付け(Alt,E,S,F)
+****** 値貼り付け(Alt,E,S,V)
 - 
   値貼り付けを行う。
   Alt,E,Sで特別な方法で貼り付け。Vで方法としてValueを選択してくれる。
-
-**** フォーマット貼り付け(Alt,E,S,T)
-**** オートフィル(Alt,E,I,S)
+****** フォーマット貼り付け(Alt,E,S,T)
+***** オートフィル(Alt,E,I,S)
 - 
   オートフィル。連番を振れる。
 
-**** オートフィルタ設定(Alt,D,F,F)
+***** オートフィルタ設定(Alt,D,F,F)
 
-**** オートフィルタ設定解除(Alt,D,F,S)
-**** ワークシート名の変更(Alt,O,H,R)
+***** オートフィルタ設定解除(Alt,D,F,S)
+***** ワークシート名の変更(Alt,O,H,R)
+**** FILE(F)
+**** HOME(H)
+**** INSERT(N)
+**** PAGE LAYOUT(P)
+**** FORMULA(M)
+***** オートフィルタ設定(Alt,A,T)
+**** DATA(A)
+**** REVIEW(R)
+**** VIEW(W)
+***** 新規ウィンドウ生成(Alt,W,N)
+**** DEVELOPER(L)
+**** LOAD TEST(Y1)
 *** Link
 - [[https://support.office.com/en-us/article/Excel-keyboard-shortcuts-and-function-keys-1798d9d5-842a-42b8-9c99-9b7213f0040f][Excel keyboard shortcuts and function keys - Office]]
 - [[https://support.office.com/ja-jp/article/Excel-%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89-%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88-%E3%83%95%E3%82%A1%E3%83%B3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3-%E3%82%AD%E3%83%BC-1798d9d5-842a-42b8-9c99-9b7213f0040f][Excel キーボード ショートカット - ファンクション キー - Office]]

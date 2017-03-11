@@ -2,7 +2,6 @@
 ** Sort
 
 ** Search
-
 *** Beam search
 - heuristic search algorithm
 ** Math
@@ -12,7 +11,8 @@
 **** Brent's method
 **** Polynomial
 *** Euclidean Algorithm
-**** 
+*** Newton
+- 
 ** Memory
 *** LRU
 - Least Recently Used

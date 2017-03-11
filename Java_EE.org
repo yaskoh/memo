@@ -55,6 +55,8 @@
   HttpServletRequestのgetParameterを使い、ブラウザで入力された値を取得し、要求に応じる。
 - 消滅は明示的に行わず、管理コンソールの停止指示や、サーバ地震の停止の前に呼び出される。
   
+**** Link
+- [[https://jcp.org/en/jsr/detail?id=340][JSR 340: Java Servlet 3.1 Specification - Java Community Process]]
 *** JSP
 **** About
 - JavaServer Pages
@@ -380,7 +382,59 @@
 **** webservices.xml
 **** ra.xml
 - リソース・アダプタ・モジュール(RARファイル)の設定ファイル
+** Memo
+*** Packaging
+**** JAR
+***** Structure
+***** Link
+- [[https://docs.oracle.com/javase/jp/8/docs/technotes/guides/jar/jar.html][JARファイルの仕様 - Java Documentation]]
+**** WAR
+***** Structure
+- /WEB-INF/web.xmlが必須。その他は必要に応じ設置。
+****** /
+******* .
+- webクライアントからアクセスされるファイルを格納する。
+  WEB-INF以外のサブディレクトリに格納することもできる。
+******* META-INF
+- 管理情報を格納するディレクトリ。jarコマンドで自動的に作成される。
+******** .
+********* MANIFEST.MF
+- jarコマンドのmオプションで指定されたファイルが格納される
+******* WEB-INF
+- パブリックドキュメントツリーの一部でなく、クライアントへ直接提供されるファイルはない。
+******** .
+********* web.xml
+- 必須。servlet仕様で規定されたDD。
+
+********* *.tld
+- Java Server Pages仕様で規定されたタグライブラリ・ディスクリプタのファイル。
+******** classes
+- サーブレットやその他のクラスファイルを格納するディレクトリ。
+  クラスパスに自動で追加される。
+******** lib
+- サーブレットやその他のクラスを扱うJARファイルを格納するディレクトリ。
+  クラスパスに自動で追加される。
+**** EJB-JAR
+***** Structure
+****** /
+******* .
+- 
+******* META-INF
+******** .
+********* ejb-jar.xml
+- EJB仕様で規定されたDD。
+  EJB2.0仕様のEnterprise Beanでは必須。アノテーションに対応したEnterprise Beanでは不要。
+********* MANIFEST.MF
+**** EAR
+***** Structure
+****** /
+******* META-INF
+******** .
+********* application.xml
+- J2EEで規定されたDD。必須。
+********* MANIFEST.MF
 ** Link
+- [[https://jcp.org/en/jsr/platform?listBy=3&listByType=platform][JSRs: Java Specification Requests - Java Community Process]]
 - [[https://docs.oracle.com/javaee/7/tutorial/index.html][The Java EE Tutorial - Java Platform, Enterprise Edition 7]]
 
 - APIs

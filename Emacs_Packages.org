@@ -2,6 +2,130 @@
 ** System Packages
 - 24.5時点
   - /emacs/share/emacs/24.5/lisp(win)
+*** Keybind(Global)
+**** special
+***** C-c
+***** C-h
+***** C-x
+***** C-u
+**** default
+***** C-a : beginning-of-line
+***** C-b : backward-char
+***** C-d : delete-char
+***** C-e : end-of-line
+***** C-f : forward-char
+***** C-g : keyboard-quit
+***** C-k : kill-line
+***** C-l : recenter-top-bottom
+***** C-n : next-line
+***** C-p : previous-line
+***** C-q : quoted-insert
+- 特殊文字の入力
+****** C-j : 改行
+***** C-r : isearch-backward
+***** C-s : isearch-forward
+****** C-u C-s : regexp-mode
+- C-uに限らず、一つ目の引数を取った場合にregexpに。
+****** C-s C-w : isearch-yank-word
+***** C-u : universal-argument
+***** C-v : scroll-up
+***** C-w : kill-region
+***** C-y : yank
+***** C-[ : backward-page
+***** C-] : forward-page
+***** C-\ : toggle-input-method
+- IME on/off
+***** C-Space : set-mark-command
+***** C-x b : switch-to-buffer
+***** C-x e : call-last-kbd-macro
+***** C-x k : kill-buffer
+***** C-x ( : start-kbd-macro
+***** C-x ) : end-kbd-macro
+***** C-x ] : forward-page
+***** C-x [ : backward-page
+***** C-x 0 : delete-window
+***** C-x 1 : delete-other-window
+***** C-x 2 : split-window-vertically
+***** C-x 3 : split-window-horizontally
+***** C-x C-b : list-buffers
+***** C-x C-c : save-buffers-kill-terminal
+***** C-x C-f : find-file
+***** C-x C-k e : edit-kdb-macro
+***** C-x C-k n : name-last-kbd-macro
+***** C-x C-s : save-buffer
+***** C-x C-w : write-buffer
+***** C-x C-j : dired
+***** C-x RET f : set-bufer-file-coding-system
+- Set character code
+***** C-M-s : re-search-forward
+***** C-M-r : re-search-backward
+***** C-M-\ : indent-region
+***** C-M-% : query-replace-regexp
+***** M-a : backward-sentence
+***** M-b : backward-word
+***** M-e : forward-sentence
+***** M-f : forward-word
+***** M-g g : goto-line
+***** M-g M-g : goto-line
+***** M-g TAB : move-to-column
+***** M-v : scroll-down
+***** M-x : execute-extended-command
+- コマンドを入力して実行
+
+***** M-< : beginning-of-buffer
+***** M-> : end-of-buffer
+***** M-: : eval-expression
+***** <f1> : (help-command)
+***** <help>
+****** (help-command)
+- help-for-help-internal
+****** c KEYS
+****** f FUNCTION
+- describe-function
+  Display documentation for the given function.
+****** F COMMAND
+- Show the on-line manual's section that describes the command.
+****** k KEYS
+- Display the full documentation for the key sequence.
+****** K KEYS
+- Show the on-line manual's section for the command bound to KEYS.
+****** m
+- Display documentation of current minor modes and current major mode, including their special commands.
+****** t
+- Tutorial
+****** v VARIABLE
+- Display hte given variable's documentation and value.
+**** edited
+***** C-h : delete-backward-char
+***** C-j : newline
+***** C-m : newline-and-indent
+***** C-o : other-window
+- 引数を設定した分のウィンドウ数移動する。
+  "C-c -1 C-o"とすると一つ戻る。
+***** C-t : forward-char
+***** C-x o : other-frame
+***** C-x ? : help-command
+- 
+  <f1>を使ってください
+
+***** C-z : undo
+***** C-/ : transpose-chars
+***** M-t : forward-word
+***** M-r : replace-string
+***** M-z : transpose-words
+**** original
+***** C-h : (help-command)
+***** C-j
+***** C-m
+***** C-o
+***** C-t
+***** C-x o
+***** C-z
+***** C-/
+***** M-t
+***** M-r
+***** M-z
+
 *** C source code
 - [[file:Emacs_Packages_Builtin.org][Emacs_Packages_Builtin.org]]
 *** emacs-lisp(dir)
@@ -84,6 +208,16 @@
 ****** cl-loop
 - (cl-loop CLAUSE...)
   The Common Lisp "loop" macro.
+**** derived
+***** Functions
+****** define-derived-mode
+- (define-derived-mode CHILD PARENT NAME &optional DOCSTRING &rest BODY)
+  Create a new mode as a variant of an existing mode.
+**** easy-mmode
+***** Macros
+****** define-minor-mode
+- (define-minor-mode MODE DOC &optional INIT-VALUE LIGHTER KEYMAP &rest BODY)
+  Define a new minor mode MODE.
 **** edebug
 ***** Alias
 ****** edebug-defun
@@ -325,6 +459,17 @@
 ****** c-electric-delete
 - (c-electric-delete ARG)
   Delets preceding or following character or whitespace.
+**** hideshow
+***** Functions
+****** hs-minor-mode
+- (hs-minor-mode &optional ARG)
+  Minor mode to selectively hide/show code and comment blocks.
+****** hs-hide-all
+****** hs-show-all
+****** hs-hide-block
+****** hs-show-block
+****** hs-hide-level
+****** hs-toggle-hiding
 *** url(dir)
 **** url
 ***** Functions
@@ -341,6 +486,11 @@
 - (apropos-documentation PATTERN &optional DO-ALL)
   Show symbols whose documentation cotains matches for PATTERN
 - 関数名に加えて説明文章も検索対象に加わる。
+*** bindings
+**** Functions
+**** Variables
+***** minor-mode-alist
+- Alist saying how to show minor modes in the mode line.
 *** compile
 **** Functions
 ***** compile
@@ -478,7 +628,12 @@
 ***** describe-key-briefly (C-h c key)
 - 
   Print the name of the function KEY invokes.
+***** describe-minor-mode
+- (describe-minor-mode MINOR-MODE)
+  Display documentation of a minor mode given as MINOR-MODE.
 ***** describe-mode (C-h m)
+- (describe-mode &optional BUFFER)
+  Display documentation of current major mode and minor mode
 - 
   現在のメジャーモードの説明
 
@@ -581,6 +736,12 @@
 - (read-file-name PROMPT &optoinal DIR DEFAULT-FILENAME MUSTMATCH INITIAIL PREDICATE)
   Read file name, prompting with PROMPT and completing in directory DIR.
   The return value is not expanded -- call "expand-file-name" yourself.
+**** Keybind
+***** M-p, up : previous-history-element
+***** M-n, down : next-history-element
+***** M-r : previous-matching-history-element
+***** M-s : next-matching-history-element
+***** C-M-i : completion-at-point
 **** Variables
 ***** insert-default-directory
 - Non-nil means when reading a filename start with default dir in minibuffer.
@@ -591,6 +752,10 @@
 ***** comment-region
 - (comment-region BEG END &optional ARG)
 
+*** outline
+**** Functions
+***** outline-mode
+- (outline-mode)
 *** paren
 **** Variables
 ***** show-paren-style
@@ -641,6 +806,9 @@
 ***** eval-expression (M-:)
 - (eval-expression EXP &optional INSERT-VALUE)
   Evaluate EXP and print value in the echo area.
+***** fundamental-mode
+- (fundamental-mode)
+  Major mode not specialized for anything in particular.
 ***** keyboard-quit (C-g)
 - (keyboard-quit)
   Signal a "quit" condition.
@@ -849,6 +1017,10 @@
 
 *** bind-key
 - [[http://emacs.rubikitch.com/bind-key/][bind-key.el : define-keyを直接書くのは時代遅れ！Emacsの重鎮が行っているスタイリッシュキー割り当て管理術！ - るびきち「新生日刊Emacs」]]
+**** Functions
+***** describe-personal-keybindings
+- (describe-personal-keybindings)
+  Display all the personal keybindings defined by 'bind-key'.
 **** Macros
 ***** bind-key
 - (bind-key KEY-NAME COMMAND &optional KEYMAP PREDICATE)
@@ -856,6 +1028,11 @@
 ***** bind-key*
 - (bind-key* KEY-NAME COMMAND &optional PREDICATE)
   Similar to "bind-key", but overrides any mode-specific bindings.
+***** bind-keys
+- (bind-keys &rest ARGS)
+  Bind multiple keys at once.
+***** bind-keys*
+- (bind-keys* &rest ARGS)
 
 *** cl-lib
 - GNU Emacs Common Lisp Emulation
@@ -939,13 +1116,6 @@
 **** Link
 - [[https://github.com/magit/magit][magit/magit - github]]
 - [[https://magit.vc/manual/][magit - User Manuals]]
-*** Minibuffer
-**** Keybind
-***** M-p, up : previous-history-element
-***** M-n, down : next-history-element
-***** M-r : previous-matching-history-element
-***** M-s : next-matching-history-element
-***** C-M-i : completion-at-point
 *** noflet
 - https://github.com/nicferrier/emacs-noflet
 - Local function decoration
@@ -991,6 +1161,19 @@
 *** px
 - Preview inline latex in any mode
   [[https://github.com/emacsmirror/px][px - github]]
+**** Functions
+***** px-preview-region
+- (px-preview-region BEG END)
+  Preview LaTeX fragments
+***** px-preview
+- (px-preview)
+  Preview LateX fragments in the current buffer.
+***** px-remove
+- (px-remove)
+  Remove LaTeX preview image in current buffer.
+***** px-toggle
+- (px-toggle)
+  Toggle display of LaTeX preview in the current buffeer.
 *** slime
 **** Commands
 ***** slime
