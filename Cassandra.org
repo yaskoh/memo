@@ -1,0 +1,21 @@
+* Apache Cassandra
+** Structure
+*** 1.1.12
+**** bin
+***** cassandra.bat
+- 実行ファイル(win)
+****** Properties
+- -Xms : 最小ヒープサイズ
+- -Xmx : 最大ヒープサイズ
+- -Dcom.sun.management.jmxremote.port : ポート番号
+**** conf
+***** cassandra.yaml
+- data_file_directories : データの保存場所
+- commitlog_drectory : CommitLogの保存場所
+- saved_caches_directory : キャッシュデータの保存場所
+***** log4j-server.properties
+** About
+- オープンソースの分散データベース管理システム。
+  キー・バリュー型のデータストア。
+** Link
+- [[http://cassandra.apache.org/][Apache Cassandra]]

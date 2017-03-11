@@ -1,0 +1,57 @@
+* Resin
+** Commands
+*** resin
+**** deploy
+**** generate-password
+*** Link
+- [[http://caucho.com/resin-4.0/admin/resin-admin-command-line.xtp][command line resin administration - Resin Documentation]]
+** Structure
+*** Unix
+**** /etc/resin/
+***** resin.properties
+***** resin.xml
+***** licenses/
+***** keys/
+**** /var/resin/
+***** webapps/
+**** /var/log/resin/
+**** /usr/local/share/resin/
+*** Windows
+**** resin.exe
+- 実行ファイル。サーバが起動。
+**** conf/
+***** resin.properties
+- jvm_args : インストール値に応じたメモリ値、ヒープ最大サイズを設定する。
+- app.http : ポート番号。必要に応じ変更する。
+- remote_admin_enable : 
+- cluster_system_key : 
+***** resin.xml
+***** licenses/
+- licens location
+***** keys/
+- openssl keys
+**** webapps/
+- default deployment directory
+**** logs/
+- logs
+** Configuration
+*** resin.properties
+- http://caucho.com/resin-4.0/admin/config-resin-properties.xtp
+*** resin.xml
+**** Properties
+***** cluster
+****** id="app"
+******* host-default
+******** web-app-deploy
+**** Link
+- http://caucho.com/resin-4.0/admin/config-resin-xml.xtp
+** Deployment
+*** Webapps Directory
+- Copy a .war file containing application to a webapps directory.
+  Resin will detect the .war archive, expand it, and start serving requests.
+*** Command-Line
+*** Cloud
+** Link
+- [[http://caucho.com/][Resin - caucho]]
+- [[http://caucho.com/resin-4.0/][Resin Documentation]]
+
