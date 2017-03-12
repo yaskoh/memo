@@ -1,304 +1,10 @@
 * Emacs
 ** Packages
 - [[file:Emacs_Packages.org][Emacs_Packages.org]]
-** Mode
-*** About
-- Majorモードの提供機能
-*** Built-in
-**** Global
-***** Keybind
-****** special
-******* C-c
-******* C-h
-******* C-x
-******* C-u
-****** default
-******* C-a : beginning-of-line
-******* C-b : backward-char
-******* C-d : delete-char
-******* C-e : end-of-line
-******* C-f : forward-char
-******* C-g : keyboard-quit
-******* C-k : kill-line
-******* C-l : recenter-top-bottom
-******* C-n : next-line
-******* C-p : previous-line
-******* C-q : quoted-insert
-- 特殊文字の入力
-******** C-j : 改行
-******* C-r : isearch-backward
-******* C-s : isearch-forward
-******** C-u C-s : regexp-mode
-- C-uに限らず、一つ目の引数を取った場合にregexpに。
-******** C-s C-w : isearch-yank-word
-******* C-u : universal-argument
-******* C-v : scroll-up
-******* C-w : kill-region
-******* C-y : yank
-******* C-[ : backward-page
-******* C-] : forward-page
-******* C-\ : toggle-input-method
-- IME on/off
-******* C-Space : set-mark-command
-******* C-x b : switch-to-buffer
-******* C-x e : call-last-kbd-macro
-******* C-x k : kill-buffer
-******* C-x ( : start-kbd-macro
-******* C-x ) : end-kbd-macro
-******* C-x ] : forward-page
-******* C-x [ : backward-page
-******* C-x 0 : delete-window
-******* C-x 1 : delete-other-window
-******* C-x 2 : split-window-vertically
-******* C-x 3 : split-window-horizontally
-******* C-x C-b : list-buffers
-******* C-x C-c : save-buffers-kill-terminal
-******* C-x C-f : find-file
-******* C-x C-k e : edit-kdb-macro
-******* C-x C-k n : name-last-kbd-macro
-******* C-x C-s : save-buffer
-******* C-x C-w : write-buffer
-******* C-x C-j : dired
-******* C-x RET f : set-bufer-file-coding-system
-- Set character code
-******* C-M-s : re-search-forward
-******* C-M-r : re-search-backward
-******* C-M-\ : indent-region
-******* C-M-% : query-replace-regexp
-******* M-a : backward-sentence
-******* M-b : backward-word
-******* M-e : forward-sentence
-******* M-f : forward-word
-******* M-g g : goto-line
-******* M-g M-g : goto-line
-******* M-g TAB : move-to-column
-******* M-v : scroll-down
-******* M-x : execute-extended-command
-- コマンドを入力して実行
-
-******* M-< : beginning-of-buffer
-******* M-> : end-of-buffer
-******* M-: : eval-expression
-******* <f1> : (help-command)
-******* <help>
-******** (help-command)
-- help-for-help-internal
-******** c KEYS
-******** f FUNCTION
-- describe-function
-  Display documentation for the given function.
-******** F COMMAND
-- Show the on-line manual's section that describes the command.
-******** k KEYS
-- Display the full documentation for the key sequence.
-******** K KEYS
-- Show the on-line manual's section for the command bound to KEYS.
-******** m
-- Display documentation of current minor modes and current major mode, including their special commands.
-******** t
-- Tutorial
-******** v VARIABLE
-- Display hte given variable's documentation and value.
-****** edited
-******* C-h : delete-backward-char
-******* C-j : newline
-******* C-m : newline-and-indent
-******* C-o : other-window
-- 引数を設定した分のウィンドウ数移動する。
-  "C-c -1 C-o"とすると一つ戻る。
-******* C-t : forward-char
-******* C-x o : other-frame
-******* C-x ? : help-command
-- 
-  <f1>を使ってください
-
-******* C-z : undo
-******* C-/ : transpose-chars
-******* M-t : forward-word
-******* M-r : replace-string
-******* M-z : transpose-words
-****** original
-******* C-h : (help-command)
-******* C-j
-******* C-m
-******* C-o
-******* C-t
-******* C-x o
-******* C-z
-******* C-/
-******* M-t
-******* M-r
-******* M-z
-**** edebug-mode
-- Minor
-***** Keybind
-****** SPC : edebug-step-mode
-****** ? : edebug-help
-****** B : edebug-nex-breakpoint
-****** b : edebug-set-breakpoint
-****** c : edebug-continue-mode
-****** e : edebug-eval-expression
-- 式を表亜カルス
-****** g : edebug-go-mode
-- 次のブレークポイントまで実行
-****** h : edebug-goto-mode
-- カーソル位置まで実行
-****** i : edebug-step-in
-- 直後の関数に入る
-****** q : top-level
-- edebugを抜ける
-****** u : edebug-unset-breakpoint
-- ブレークポイントを削除
-**** dired
-***** Commands
-****** R : dired-do-rename
-****** f : 
-**** eshell
-**** lisp-interaction-mode
-***** Command
-****** eval-print-last-sexp
-- C-j
-****** eval-last-sexp
-- C-x C-e
-  直前の括弧で囲まれたS式を評価する
-****** eval-defun
-- C-M-x
-  全体を評価して結果を返す
-****** indent-for-tab-command
-- C-i
-****** indent-sexp
-- C-M-q
-****** load-file
-****** eval-current-buffer
-**** org-mode
-***** KeyBind
-****** C-c ^ : org-sort
-****** tab : org-cycle
-***** Commands
-****** org-sort
-****** org-cycle
-**** lisp
-***** Keybind
-****** C-M-x : edebug-eval-defun
-**** re-builder
-**** eww
-- web broweser.
-  it is part of the Emacs 24.4.
-
-- [[https://lars.ingebrigtsen.no/2013/06/16/eww/][eww - Random Thoughts]]
-**** ielm
-- Inferior Emacs Lisp Mode
-  this acts like an intreactive Lisp interpreter.
-  real little REPL.
-
-- 
-  うまく評価してくれず、使い方不明。
-
-**** Tramp-mode
-- TRAMP(Transparent Remote Access, Multiple Protocols)
-  winではあまりうまくいっていないので、どうにかしたい。
-- Link
-  [[https://www.emacswiki.org/emacs/TrampMode][Tramp Mode - EmacsWiki]]
-  [[http://yo.eki.do/notes/tramp-mode][Emacs:まだターミナルで消耗してるの？ - 葉月夜堂]]
-**** shells
-***** shell
-- M-x shell
-  標準シェル。
-  タブ補完などが効かない。
-
-***** ansi-term(term)
-- M-x term (M-x ansi-term)
-  
-***** eshell
-- M-x eshell
-  
-***** multi-term
-- 
-  別途インストールが必要。
-*** Others
-**** slime
-***** Command
-****** slime
-- (slime &optional COMMAND CODING-SYSTEM)
-****** slime-compile-defun
-- C-c C-c
-- (slime-compile-defun &optional RAW-PREFIX-ARG)
-  Compile the current toplevel form.
-  
-****** slime-compile-and-load-file
-- C-c C-k
-- (slime-compile-and-load-file &optional POLICY)
-  Compile and load the buffer's file and highlight compiler notes.
-
-****** slime-switch-to-output-buffer
-- C-c C-z (slime-repl.el)
-- (slime-switch-to-output-buffer)
-  Select the output buffer, when possible in an existing window
-
-***** Memo
-****** Error on Windows 7
-- 
-  Path中にspaceがあると、argumentとして取られてしまう模様。エラーとなる。
-  [[http://stackoverflow.com/questions/17860785/slime-on-windows-7][SLIME on Windows 7]]
-
-***** Link
-- [[https://common-lisp.net/project/slime/][SLIME: The Superior Lisp Interaction Mode for Emacs]]
-
-**** px
-- Preview inline latex in any mode
-  [[https://github.com/emacsmirror/px][px - github]]
-**** emmet-mode
-***** KeyBindings
-****** default
-******* C-M-right : emmet-next-edit-point
-******* C-M-left : emmet-prev-edit-point
-******* C-c w : emmet-wrap-with-markup
-****** edited
-******* C-' : emmet-expand-line
-****** original
-******* C-j : emmet-expand-line
-******* C-return : emmet-expand-line
-***** Commands
-****** emmet-expand-line
-***** Link
-- [[https://github.com/smihica/emmet-mode][smihica/emmet-mode - github]]
-**** yasnipet
-- Tag
-  ex) html, then tab
-***** KeyBindings
-****** C-i : yas-expand-from-trigger-key
-****** Tab : yas-expand
-****** C-c & C-n : yas-new-snippet
-****** C-c & C-s : yas-insert-snippet
-****** C-c & C-v : yas-visit-snippet-file
-***** Commands
-****** yas-describe-tables
-- 利用できるスニペット一覧を表示可能。
-****** yas-insert-snippet
-- Prompts you for possible snippet expansion
-****** yas-new-snippet
-- Lets you create a new snippet file in the correct subdirectory.
-**** Minibuffer
-***** Keybind
-****** M-p, up : previous-history-element
-****** M-n, down : next-history-element
-****** M-r : previous-matching-history-element
-****** M-s : next-matching-history-element
-****** C-M-i : completion-at-point
-**** picture-mode
-- 
-  picture-modeかedit-pictureを選択する。
-- C-c C-c
-  pictureモードから抜ける。
-
-- C-c <, C-c >, C-c ^, C-c .
-  
-
-- C-right, C-left, C-up, C-down
-  線を描く。
-
-- M-right, M-left, M-up, M-down
-  線を消す。
+** Languages
+*** Go
+- [[https://www.emacswiki.org/emacs/GoLangMode][Go Lang Mode - EmacsWiki]]
+- [[http://unknownplace.org/archives/golang-editing-with-emacs.html][EmacsでのGo言語編集環境 - unknownplace.org]]
 ** Functions
 - 使いやすさのために、パッケージを超えてまとめる必要があれば行う。
   厳密なものはPackagesへ移行中
@@ -566,38 +272,50 @@
 **** --unibyte
 **** --multibyte
 ** Glossary
+*** alist
+- Assosiation List
 *** Special Forms
 - A special form is a primitive function specially marked so that its argumets are not all evaluated.
   
+*** SEXP
+- S-expression, S式
 *** バッファーローカル変数
 - バッファーごとに別の値を取れる変数。
   make-local-variable関数を使うと、通常の変数をバファーローカルにできる。
 ** Memo
 *** ToDo
-- emacslispの書き方
-- 正規表現の改善
-  o re-builder
-  - foreign-regexpの代わりに、perl表現を自動でemacs表現に変換した上で実行してあげる層を作れないか？
-- ダウンロードランキングから、有用なパッケージを導入
-  http://emacs.rubikitch.com/melpa-dl-ranking-2015/
-- kawabata/dotfilesを読む
-- use-packageの設定
-- bind-keyによる設定
-- パッケージの整理
-- yasnippetの用法
-- Linux/Macで確認
-  - el-get
-    winで失敗中。
-    -> caskにしようかしら。
-  - magitの導入
-- 25.1にupdate?
-- できればansible導入
+- emacs-lisp
+  - elisp講座
+  - るびきちlisp
+  - manual読む
+  - macro (on lisp)
+- autoload, package.el, eval-after-load
+  http://keens.github.io/blog/2013/12/13/dot-emacs-clean-up/
+- eshell周り
+- etc
+  - magit, trump
+  - 有用パッケージ探す、入れる
 
 *** 変数設定
 - defconst, defvar, setq, defcustom
   defcostomは無条件に変数を初期化するが、defvarは変数が空である場合のみ初期化する。
   変数の使い方を制限することはしないため、主には好みの問題。
   ユーザカスタマイズを目的とする変数を宣言するにはdefcustomを使う。
+*** shells on emacs
+**** shell
+- M-x shell
+  標準シェル。
+  タブ補完などが効かない。
+
+**** ansi-term(term)
+- M-x term (M-x ansi-term)
+  
+**** eshell
+- M-x eshell
+  
+**** multi-term
+- 
+  別途インストールが必要。
 *** defcustom カスタマイズ定義
 - 
   https://www.gnu.org/software/emacs/manual/html_node/eintr/defcustom.html
@@ -643,6 +361,7 @@
     
 - http://www.bookshelf.jp/texi/elisp-manual-20-2.5-jp/elisp_13.html#SEC176
 *** Major Mode作成手順
+- [[http://www.bookshelf.jp/texi/elisp-manual-20-2.5-jp/elisp_23.html][22. メジャーモードとマイナーモード - GNU Emacs Lispリファレンスマニュアル (2.5/20.3 日本語)]]
 **** 例1
 - モード用のキーマップを作る
   - make-sparse-keyで空のキーマップを作る
@@ -662,6 +381,31 @@
 - 動作に必要な変数を設定する
   (use-local-map my-local-map)
 - 必要な関数を定義する
+
+**** 継承
+- define-derived-modeを利用する。
+**** マイナーモード
+- define-minor-modeを利用する
+***** Minor-modeの挙動
+- [[http://www.kaichan.info/blog/2013-02-10-minor-mode-behavior.html][define-minor-mode で定義されたマイナーモードの挙動 - 備忘録]]
+*** Keymap
+- order
+  1. the keymap specified by the "keymap" property
+  2. the keymaps of enabled minor modes
+  3. the current buffer's local keymap
+  4. the global keymap
+  [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Active-Keymaps.html#Active-Keymaps][21.7 Active Keymaps - Emacs Lisp (Emacs version 25.1)]]
+- order
+  1. overriding-terminal-local-map : terminal
+  2. overriding-local-map : major/minor-mode
+  3. text-property 'keymap : text
+  4. emulation-mode-map-alists : minor-mode
+  5. minor-mode-overriding-map-alist : major-mode
+  6. minor-mode-map-alist : minor-mode
+  7. local-map (major-mode-map) : major-mode
+  8. global-map : global
+  9. local-function-key-map : file
+  [[http://emacs.g.hatena.ne.jp/kiwanami/20110606/1307385847][キーマップの lookup 順序について - はてなグループEmacs@kiwanami]]
 *** Literal リテラル
 **** 数値リテラル
 ***** 数値 1234
@@ -675,7 +419,6 @@
 ***** NN進数 #NNr
 - NN進数
   ex: #5r40→20, #30remacs→11943388
-
 *** 置換時の改行
 - 
   ^J(C-q C-j)
@@ -724,8 +467,6 @@
 - Windowsでうまくgrepができない/結果がヒットしない
 - [[https://www.emacswiki.org/emacs/GrepMode][Grep Mode - EmacsWiki]]
 
-*** debug
-- [[http://dev.ariel-networks.com/articles/software-design-200802/elisp-debug/][Emacs Lisp デバッグ - ありえるえりあ]]
 *** キー設定
 **** remap
 - あるコマンドに割り当てられているキー、という形でキー指定が可能。
@@ -741,19 +482,30 @@
   引数はベクター表記の中の文字。低次元層に働く関数なので、結構強力。
   ex) (keyboard-translat ?\C-l ?\C-f)
   
-*** デバッグ
+*** Debug デバッグ
 **** print(message)
 - message関数を使う。
-  sit-forやy-or-n-p
+  sit-forやy-or-n-pも利用
 **** backtrace
-- 事前にdebug-on-errorをtにしておく必要がある。
+- (setq debug-on-error t)
+  事前にdebug-on-errorをtにしておく必要がある。
   backtraceバッファでeを押すとその時点での変数の値を評価できる。
 **** edebug
-- C-u C-M-xを評価したい関数に対して適用して、その後関数を実行する。
+- C-u C-M-x(edebug-defun)を評価したい関数に対して適用して、その後関数を実行する。
 **** Link
 - [[http://dev.ariel-networks.com/articles/software-design-200802/elisp-debug/][Emacs Lisp デバッグ - ありえるえりあ]]
 - [[http://d.hatena.ne.jp/rubikitch/20101116/edebug][Emacs Lispのソースコードデバッガ edebug を使う]]
 - [[http://www.bookshelf.jp/texi/emacs-lisp-intro-jp/eintro_19.html][17.デバッグ]]
+*** server is unsafe
+- directoryの所有者をAdministratorから利用ユーザに変更する。
+  http://stackoverflow.com/questions/885793/emacs-error-when-calling-server-start
+*** 読み込み・保存が重い場合
+**** vc処理を無効化
+- (setq vc-handled-backends nil)
+  https://www.rainyman.net/nest/?p=1117
+*** 折り返し表示の変更
+- 関数"toggle-truncate-lines"で切り替えられる。
+  制御自体は変数"truncate-lines"で行う。
 ** Link
 *** Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]

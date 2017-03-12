@@ -206,9 +206,9 @@ Additional C code
   bison --yacc -dv file.y
 **** Memo
 ***** yyclearin
-- ��ǂ݂����g�[�N�����̂Ă�
+- 先読みしたトークンを捨てる
 ***** yyerrok
-- �G���[��Ԃ��畜�A�������Ƃ�yacc�ɒʒm����
+- エラー状態から復帰したことをyaccに通知する
 
 ** Memo
 *** Parser
@@ -231,7 +231,7 @@ Additional C code
 - Simple LR
 *** Intern
 - 
-  �v���O�����ɓo�ꂷ�鎯�ʎq��o�^����f�[�^�\��������āA
-  �V���ɓo�ꂵ�����ʎq���o�^����Ă���΂��̃|�C���^��Ԃ��A�Ȃ���Γo�^���Ă��̃|�C���^��Ԃ��A�Ƃ�������B
+  プログラムに登場する識別子を登録するデータ構造を作って、
+  新たに登場した識別子が登録されていればそのポインタを返し、なければ登録してそのポインタを返す、という操作。
 
-*** �v���O���~���O��������
+*** プログラミング言語を作る

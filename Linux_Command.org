@@ -85,7 +85,6 @@
 
 - --version, -v
   コマンドのバージョンを表示する。
-
 ***** run level
 - 0 : インスタンス停止
 - 1 : シングルユーザーモード
@@ -94,6 +93,7 @@
 - 4 : 未使用
 - 5 : グラフィカルユーザーインターフェースが起動する状態
 - 6 : インスタンス再起動
+
 **** chmod
 - 
   アクセス権限の変更。
@@ -383,6 +383,7 @@
 **** file
 - 
   実行可能ファイルかテキストかその他データかなどのファイルのタイプを判定して表示する。
+  テキストファイルの文字コードを調べるのに利用可能。
 - -b
   簡易モードで表示する。
 - -i
@@ -597,6 +598,14 @@
 - 
   tagを作成する。
   Gnu globalと共にインストールする。
+- -f, --file filename
+  Browse through all files whose names are listed in file.
+
+- -v, --verbose
+***** Files
+****** GTAGS
+****** GRTAGS
+****** GPATH
 
 **** gzip / gunzip
 - 
@@ -1986,11 +1995,24 @@
   ファイルをダウンロードする。
   wget [option] URL
 
-- -r
-  配下全てのデータを取得する。再帰的にファイルを入手する。
+***** Options
+****** -r
+- 配下全てのデータを取得する。再帰的にファイルを入手する。
 
-- -l 階層数
-  再帰的にファイルを入手する場合の階層数を指定する。
+****** -l 階層数
+- 再帰的にファイルを入手する場合の階層数を指定する。
+
+****** --no-check-certificate
+- Don't check the server certificate against the available certificate authorities.
+
+***** Memo
+****** SSLサイトから取得
+- wget --no-check-certificate <URL>
+****** BASIC認証のかかったサーバから取得
+- wget --http-user={username} --http-passwd={passwd} {url}
+***** Link
+- [[http://qiita.com/hirohiro77/items/b774908436ec032df719][wgetでこういう時はこうする!! - Qiita]]
+- [[http://webos-goodies.jp/archives/51277893.html][wget で認証付きサイトをダウンロードする - WebOS Goodies]]
 
 **** whatis
 - 

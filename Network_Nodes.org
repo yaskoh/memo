@@ -1,0 +1,39 @@
+* Network Nodes
+** DNS Server
+*** About
+**** Root Srever
+- 世界に13台(グローバルアドレスの数。実際は冗長化されている)。
+*** Records
+**** SOA
+- Start Of a zone Of Authority
+- ドメイン/ゾーン情報を記載する。
+  - ドメインのDNSサーバ名
+  - ドメイン管理者のメール・アドレス・シリアル番号
+  - 更新間隔(refresh)
+    ゾーン転送感覚時間を秒で指定する
+  - 転送再試行時間(retry)
+    ゾーン転送に失敗した場合の再試行までの有効時間を秒で指定する
+  - レコード有効時間(expire)
+  - キャッシュ有効時間(TTL)
+**** NS
+- ドメインのDNSサーバ名を指定する
+**** A
+- ホストのIPアドレス。正引きのためのレコード。
+**** PTR
+- IPアドレスに対するホスト名。逆引きのためのレコード。
+**** CNAME
+- ホスト名のエイリアス（別名）
+**** MX
+- ドメインのメール・サーバ名
+**** HINFO
+- ホストの追加情報。ホストのハードウェア・ソフトウェア(OS)情報を記述する
+**** WKS
+- ホストで実行されているサービス情報(Well Known Services)
+**** TXT
+- ホストへのテキスト情報
+**** Link
+- http://www.atmarkit.co.jp/ait/articles/0112/18/news001.html
+** Switch
+*** Layer 2
+*** Layer 3
+*** Layer 4

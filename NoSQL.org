@@ -1,46 +1,46 @@
 * NoSQL
-** Classification / ����
-*** Column / ��w�� ���C�h�J�����X�g�A
+** Classification / 分類
+*** Column / 列指向 ワイドカラムストア
 **** Apache HBase
-***** ����
+***** 特徴
 - 
-  Hadoop��œ��삷��B
+  Hadoop上で動作する。
 
-  Hadoop��Google File System��MapReduce�̎����������̂ɑ΂��A
-  HBase��BigTable�̃I�[�v���\�[�X�����Ƃ�����B
+  HadoopがGoogle File SystemとMapReduceの実装だったのに対し、
+  HBaseはBigTableのオープンソース実装といえる。
 
   - Big Table
-    - Big Table��"�X�p�[�X"�ŕ��U����A�i�����̂���A�������\�[�g�}�b�v�ł���B
-    - �e"�}�b�v"�̓\�[�g���ꂽ�s�L�[�A�J�����L�[�A�^�C���X�^���v�ŃC���f�b�N�X����A�l�͉��߂���Ă��Ȃ��o�C�g��
+    - Big Tableは"スパース"で分散され、永続性のある、多次元ソートマップである。
+    - 各"マップ"はソートされた行キー、カラムキー、タイムスタンプでインデックスされ、値は解釈されていないバイト列
 
-- �����X�P�[���r���e�B
-  �P���ɃT�[�o�䐔�𑝂₷���ƂŊg���\�B
-- �V���[�f�B���O�ɂ�镉�ׂ̕��U
-  ���[�W�����Ɋi�[���ꂽ�f�[�^�ɑ΂��鏈�����A�e�T�[�o�ŕ���Ɏ��s�\�B
-- ������ѐ�
-  ���ʐ��������f���ƈقȂ�A�������݂���������̓ǂݏo���ŁA�K���������񂾃f�[�^���ǂ߂邱�Ƃ��V�X�e���S�̂ŕۏ؂��Ă���B
-- �����t�F�[���I�[�o�[�ɂ�鍂�p��
-  HDFS�����p���\���ɑΉ����Ă���A�P���Q�_�͂Ȃ��B
-- �V���v����API
-  ��{�I��Get, Put, Scan���x�̊ȒP��API�����p�ӂ���Ă��Ȃ��B
-- Hadoop�Ƃ̐e�a��
-  Hadoop�N���X�^��ɍ\�z����AHDFS�Ɋi�[�����B
+- 高いスケーラビリティ
+  単純にサーバ台数を増やすことで拡張可能。
+- シャーディングによる負荷の分散
+  リージョンに格納されたデータに対する処理を、各サーバで並列に実行可能。
+- 強い一貫性
+  結果整合性モデルと異なり、書き込みがあった後の読み出しで、必ず書き込んだデータが読めることをシステム全体で保証している。
+- 自動フェールオーバーによる高可用性
+  HDFSが高可用性構成に対応しており、単一障害点はない。
+- シンプルなAPI
+  基本的にGet, Put, Scan程度の簡単なAPIしか用意されていない。
+- Hadoopとの親和性
+  Hadoopクラスタ上に構築され、HDFSに格納される。
   
 
-***** ����
-- Region Server : �f�[�^���i�[�E��������
-- Master : ���^�f�[�^���Ǘ����A�e�T�[�o�𒲐�����
-- ZooKeeper : �\�������Ǘ�����
+***** 実装
+- Region Server : データを格納・処理する
+- Master : メタデータを管理し、各サーバを調整する
+- ZooKeeper : 構成情報を管理する
 
-- �\��
-  �s�A��A�^�C���X�^���v�Ƃ����������̗v�f����Ȃ�L�[�ƁA���������ӂɒ�܂�l�̃y�A���f�[�^�\����\�����Ă���B
+- 構造
+  行、列、タイムスタンプという多次元の要素からなるキーと、そこから一意に定まる値のペアがデータ構造を表現している。
 
 - 
-  �f�[�^�͍s�L�[�Ń\�[�g���ꂽ��ԂŊi�[����Ă���B
-  �s�L�[�͈̔͂���Ƃ���"���[�W����"�Ƃ����P�ʂɕ�������A
-  �e���[�W�����̓N���X�^����Region Serer�ɕ��U���Ċi�[�A���������B
+  データは行キーでソートされた状態で格納されている。
+  行キーの範囲を基準として"リージョン"という単位に分割され、
+  各リージョンはクラスタ内のRegion Sererに分散して格納、処理される。
 
-  ����ɃJ������"�J�����t�@�~���["�Ƃ����P�ʂŃO���[�v������A�e�J�����t�@�~���[�͓Ɨ������������̈��t�@�C���̃Z�b�g���Ǘ�����B
+  さらにカラムは"カラムファミリー"という単位でグループ化され、各カラムファミリーは独立したメモリ領域やファイルのセットを管理する。
 
 
 ***** Folder
@@ -119,34 +119,37 @@
 
 **** Apache Cassandra
 
-*** Document / �h�L�������g�w��
+*** Document / ドキュメント指向
 **** MongoDB
-***** ����
+***** 特徴
 - 
-  JSON�Ɏ����`���Ńf�[�^���i�[����B
-  �������͒S�ۂ���Ȃ��B
+  JSONに似た形式でデータを格納する。
+  整合性は担保されない。
 
-- �L�[�o�����[�������G�ȃf�[�^���ȒP�Ɉ�����
-- �f�[�^�\���̕ύX���_��
-- �G���W�j�A�łȂ��Ă��S�e���킩��
-- �E�F�u�T�[�r�X��M2M�̕W���I�ȃf�[�^�\��
+- キーバリューよりも複雑なデータが簡単に扱える
+- データ構造の変更が柔軟
+- エンジニアでなくても全貌がわかる
+- ウェブサービスやM2Mの標準的なデータ構造
 
 ***** memo
 - 
-  32bit OS�ł́Amongodb��ver3�̓C���X�g�[���ł��Ȃ��B
-  32bit��ubuntu�ł̓_���ŁA64bit�ł�debian�Ń_�E�����[�h������擾�ł����B
+  32bit OSでは、mongodbのver3はインストールできない。
+  32bitのubuntuではダメで、64bit版のdebianでダウンロードしたら取得できた。
   
 
 **** Couchbase
 
-*** Key-Value / �L�[�E�o�����[
+*** Key-Value / キー・バリュー
 **** Riak
 **** Redis
 
-*** Graph / �O���t
+*** Graph / グラフ
 **** Neo4j
-
+***** Link
+- [[https://neo4j.com/][neo4j]]
+- tmp
+  - [[http://engineer.wantedly.com/2014/01/02/neo4j-introduction.html][グラフDBのNeo4jを1日触ってみた - Wantedly Engineer Blog]]
 ** Link
 - [[https://medium.baqend.com/nosql-databases-a-survey-and-decision-guidance-ea7823a822d#.x7otznnfv][NoSQL Databases: a Survey and Decision Guidance]]
-- [[http://dev.classmethod.jp/event/dbtechsowcase-tokyo-2015-e-22/][(���|�[�g)NoSQL�̕K�v���Ǝ�v�v���_�N�g��r]]
+- [[http://dev.classmethod.jp/event/dbtechsowcase-tokyo-2015-e-22/][(レポート)NoSQLの必要性と主要プロダクト比較]]
 

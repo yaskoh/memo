@@ -2,25 +2,25 @@
 ** ClientProgram
 *** mysql
 **** About
-- MySQLƒRƒ}ƒ“ƒhsÀsƒc[ƒ‹
+- MySQLã‚³ãƒãƒ³ãƒ‰è¡Œå®Ÿè¡Œãƒ„ãƒ¼ãƒ«
 **** Options
 - https://dev.mysql.com/doc/refman/5.6/ja/mysql-command-options.html
 ***** --help, -?
 - --help, -?
-  ƒwƒ‹ƒvƒƒbƒZ[ƒW‚ğo‚µ‚ÄI—¹‚·‚é
+  ãƒ˜ãƒ«ãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’å‡ºã—ã¦çµ‚äº†ã™ã‚‹
   
 ***** --password, -p
 - --password[=password], -p[password]
-  ƒT[ƒo‚ÉÚ‘±‚·‚éÛ‚Ég—p‚·‚éƒpƒXƒ[ƒhB
-  ’Z‚¢ƒIƒvƒVƒ‡ƒ“‚ğg—p‚·‚éê‡‚ÍŠÔ‚ÉƒXƒy[ƒX‚Í’u‚©‚È‚¢B
+  ã‚µãƒ¼ãƒã«æ¥ç¶šã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã€‚
+  çŸ­ã„ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã‚’ä½¿ç”¨ã™ã‚‹å ´åˆã¯é–“ã«ã‚¹ãƒšãƒ¼ã‚¹ã¯ç½®ã‹ãªã„ã€‚
 
 ***** --user, -u
 - --user=user_name, -u user_name
-  ƒT[ƒo‚Ö‚ÌÚ‘±‚Ég—p‚·‚éMySQLƒ†[ƒU–¼
+  ã‚µãƒ¼ãƒã¸ã®æ¥ç¶šæ™‚ã«ä½¿ç”¨ã™ã‚‹MySQLãƒ¦ãƒ¼ã‚¶å
 **** mysqlCommand
 - 
-  mysql©g‚ª‰ğß‚·‚éƒRƒ}ƒ“ƒhB
-  mysql>ƒvƒƒ“ƒvƒg‚Åhelp‚Ü‚½‚Í\h‚Æ“ü—Í‚·‚é‚ÆƒŠƒXƒg‚ğŠm”F‰Â”\B
+  mysqlè‡ªèº«ãŒè§£é‡ˆã™ã‚‹ã‚³ãƒãƒ³ãƒ‰ã€‚
+  mysql>ãƒ—ãƒ­ãƒ³ãƒ—ãƒˆã§helpã¾ãŸã¯\hã¨å…¥åŠ›ã™ã‚‹ã¨ãƒªã‚¹ãƒˆã‚’ç¢ºèªå¯èƒ½ã€‚
 ***** List
 ****** ? (\?)
 ****** clear (\c)
@@ -37,7 +37,7 @@
 ****** tee (\T)
 *** mysqladmin
 - mysqladmin [options] command [command-arg] [command [command-arg]]
-  ŠÇ—‘€ì‚ğÀs‚·‚é‚½‚ß‚ÌƒNƒ‰ƒCƒAƒ“ƒgB
+  ç®¡ç†æ“ä½œã‚’å®Ÿè¡Œã™ã‚‹ãŸã‚ã®ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã€‚
 
 **** Command
 ***** create db_name
@@ -49,24 +49,24 @@
 ***** kill id, id, ...
 ***** password new-password
 ***** ping
-- ƒT[ƒo‚ªg—p‰Â”\‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN‚·‚éB
-  ƒT[ƒo[‚ª‰Ò“­’†‚Ìê‡‚Ímysqladmin‚ÌƒŠƒ^[ƒ“ƒXƒe[ƒ^ƒX‚Í0‚Æ‚È‚èA‰Ò“­‚µ‚Ä‚¢‚È‚¢ê‡‚Í1‚Æ‚È‚éB
+- ã‚µãƒ¼ãƒãŒä½¿ç”¨å¯èƒ½ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚
+  ã‚µãƒ¼ãƒãƒ¼ãŒç¨¼åƒä¸­ã®å ´åˆã¯mysqladminã®ãƒªã‚¿ãƒ¼ãƒ³ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã¯0ã¨ãªã‚Šã€ç¨¼åƒã—ã¦ã„ãªã„å ´åˆã¯1ã¨ãªã‚‹ã€‚
 ***** processlist
-- ƒAƒNƒeƒBƒu‚ÈƒT[ƒo[ƒXƒŒƒbƒh‚ÌƒŠƒXƒg‚ğ•\¦‚·‚éB
+- ã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã‚µãƒ¼ãƒãƒ¼ã‚¹ãƒ¬ãƒƒãƒ‰ã®ãƒªã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹ã€‚
 ***** shutdown
-- ƒT[ƒo[‚ğ’â~‚·‚éB
+- ã‚µãƒ¼ãƒãƒ¼ã‚’åœæ­¢ã™ã‚‹ã€‚
 ***** variables
-- ƒT[ƒo[ƒVƒXƒeƒ€•Ï”‚Æ‚»‚Ì’l‚ğ•\¦‚·‚é
+- ã‚µãƒ¼ãƒãƒ¼ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•°ã¨ãã®å€¤ã‚’è¡¨ç¤ºã™ã‚‹
 ***** version
-- ƒT[ƒo[‚©‚ç‚Ìƒo[ƒWƒ‡ƒ“î•ñ‚ğ•\¦‚·‚éB
+- ã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
 **** Option
 ***** --password, -p
 - --password[=password], -p[password]
-  ƒT[ƒo[‚ÉÚ‘±‚·‚éÛ‚Ég—p‚·‚éƒpƒXƒ[ƒhB
+  ã‚µãƒ¼ãƒãƒ¼ã«æ¥ç¶šã™ã‚‹éš›ã«ä½¿ç”¨ã™ã‚‹ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰ã€‚
 
 ***** --user, -u
 - --user=user_name, -u user_name
-  ƒT[ƒo[‚ÌÚ‘±‚Ég—p‚·‚éMySQLƒ†[ƒU[–¼B
+  ã‚µãƒ¼ãƒãƒ¼ã®æ¥ç¶šæ™‚ã«ä½¿ç”¨ã™ã‚‹MySQLãƒ¦ãƒ¼ã‚¶ãƒ¼åã€‚
 
 *** mysqlcheck
 *** mysqldump
@@ -86,12 +86,12 @@
 *** Environmental Variables
 **** PATH
 ** Memo
-*** ƒoƒCƒiƒŠƒƒO
+*** ãƒã‚¤ãƒŠãƒªãƒ­ã‚°
 - 
-  ƒoƒCƒiƒŠƒƒO‚Í˜_—ƒƒMƒ“ƒOB
-  iInnoDBƒƒO‚Í•¨—ƒƒMƒ“ƒOj
+  ãƒã‚¤ãƒŠãƒªãƒ­ã‚°ã¯è«–ç†ãƒ­ã‚®ãƒ³ã‚°ã€‚
+  ï¼ˆInnoDBãƒ­ã‚°ã¯ç‰©ç†ãƒ­ã‚®ãƒ³ã‚°ï¼‰
   
-*** ƒe[ƒuƒ‹Šm”F
+*** ãƒ†ãƒ¼ãƒ–ãƒ«ç¢ºèª
 - 
   SHOW TABLES FROM db_name
 
@@ -101,9 +101,9 @@
 
 *** commands(memo)
 - select User from mysql.user;
-- grant all privileges on DB–¼.* to user@"hostname" identified by 'password' with grant option;
+- grant all privileges on DBå.* to user@"hostname" identified by 'password' with grant option;
 - exit
-- revoke all privileges on DB–¼.* to "user"@"host"
+- revoke all privileges on DBå.* to "user"@"host"
 
 **** CREATE USER
 - 
@@ -137,7 +137,7 @@
 *** path of my.cnf
 - 
   mysql --help | grep my.cnf
-  Ëin this case, files is in /etc/my.cnf
+  â‡’in this case, files is in /etc/my.cnf
 
 *** installation
 - CentOS
@@ -169,8 +169,8 @@
 *** change port on centos
 - 
   SELinux disables ports
-  - [[http://yu-ya45.hatenablog.com/entry/2013/06/23/193204][CentOS6.4‚ÅMySQL‚Ìƒ|[ƒg‚ğ•ÏX‚·‚é‚Æ‚«‚É‚Í‚Ü‚Á‚½ - ŒÂlƒvƒƒOƒ‰ƒ}[‚Ì”õ–Y˜^I]]
+  - [[http://yu-ya45.hatenablog.com/entry/2013/06/23/193204][CentOS6.4ã§MySQLã®ãƒãƒ¼ãƒˆã‚’å¤‰æ›´ã™ã‚‹ã¨ãã«ã¯ã¾ã£ãŸ - å€‹äººãƒ—ãƒ­ã‚°ãƒ©ãƒãƒ¼ã®å‚™å¿˜éŒ²ï¼]]
 
 ** Link
-- [[https://dev.mysql.com/doc/refman/5.6/ja/][MySQL 5.6 ƒŠƒtƒ@ƒŒƒ“ƒXƒ}ƒjƒ…ƒAƒ‹ - MySQL]]
+- [[https://dev.mysql.com/doc/refman/5.6/ja/][MySQL 5.6 ãƒªãƒ•ã‚¡ãƒ¬ãƒ³ã‚¹ãƒãƒ‹ãƒ¥ã‚¢ãƒ« - MySQL]]
 - [[http://www.rackspace.com/knowledge_center/article/installing-mysql-server-on-centos][Installing MySQL Server on CentOS - Rackspace Support Network]]

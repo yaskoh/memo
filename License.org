@@ -15,12 +15,12 @@
 *** BSD
 *** Common Public License (CPL)
 - 
-  IBM‚Ìì‚Á‚½IBM Public License(IPL)‚ğ”Ä—p“I‚É‚µ‚½‚à‚ÌB
+  IBMã®ä½œã£ãŸIBM Public License(IPL)ã‚’æ±ç”¨çš„ã«ã—ãŸã‚‚ã®ã€‚
 
 *** Eclipse Public License (EPL)
 ** Link
 - [[http://www.gnu.org/licenses/license-list.en.html][Various Licenses and Comments about Them - GNU Operating System]]
 ** Memo
 *** Intellectual Property
-- ’m“IàYAIP
+- çŸ¥çš„è²¡ç”£ã€IP
 

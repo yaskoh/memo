@@ -44,6 +44,11 @@
   |--------------------+------------------|
 
 **** WORKDAY
+- 
+  開始日から起算して、指定された稼働日数だけ前または後の日付に対応する値を返す。
+
+- 書式
+  WORKDAY(開始日, 日数, [祝日])
 
 **** YEAR
 *** エンジニアリング関数
@@ -87,6 +92,9 @@
   排他的論理和を計算する。
 *** 検索/行列関数
 **** ADDRESS
+- 書式
+  ADDRESS(行番号,列番号,[参照の方],[a1],[シート名])
+- 行番号と列番号を指定して、ワークシート内のセルのアドレスを取得できる。
 **** AREAS
 **** CHOOSE
 - 
@@ -108,8 +116,11 @@
 - 指定される文字列への参照を返す。
 **** LOOKUP
 **** MATCH
-- 
+- MATCH(検査値,検査範囲,[照合の型])
+  セル範囲で指定した項目を検索し、その範囲内の項目の相対的な位置を返す。
 **** OFFSET
+- OFFSET(基準,行数,列数,[高さ],[幅])
+- セルまたはセル範囲から指定された行数と列数だけシフトした位置にあるセル範囲の参照を返す。
 **** ROW
 **** ROWS
 **** RTD
@@ -137,6 +148,9 @@
 **** ROUNDUP
 - 指定された桁数で切り上げる
 **** SUM
+**** SUMPRODUCT
+- SUMPRODUCT(配列1,[配列2,[配列3,...]])
+  指定された配列で対応する要素の積を合計する。
 *** 統計関数
 **** COUNT
 - COUNT(範囲)
@@ -253,20 +267,34 @@
 
 **** フィルタのつけ外し(Ctrl+Shift-L)
 *** Ribbon
-**** 値貼り付け(Alt,E,S,V)
+**** Earlier Ver.
+***** Paste Special(Alt,E,S)
+****** 関数貼り付け(Alt,E,S,F)
+****** 値貼り付け(Alt,E,S,V)
 - 
   値貼り付けを行う。
   Alt,E,Sで特別な方法で貼り付け。Vで方法としてValueを選択してくれる。
-
-**** フォーマット貼り付け(Alt,E,S,T)
-**** オートフィル(Alt,E,I,S)
+****** フォーマット貼り付け(Alt,E,S,T)
+***** オートフィル(Alt,E,I,S)
 - 
   オートフィル。連番を振れる。
 
-**** オートフィルタ設定(Alt,D,F,F)
+***** オートフィルタ設定(Alt,D,F,F)
 
-**** オートフィルタ設定解除(Alt,D,F,S)
-**** ワークシート名の変更(Alt,O,H,R)
+***** オートフィルタ設定解除(Alt,D,F,S)
+***** ワークシート名の変更(Alt,O,H,R)
+**** FILE(F)
+**** HOME(H)
+**** INSERT(N)
+**** PAGE LAYOUT(P)
+**** FORMULA(M)
+***** オートフィルタ設定(Alt,A,T)
+**** DATA(A)
+**** REVIEW(R)
+**** VIEW(W)
+***** 新規ウィンドウ生成(Alt,W,N)
+**** DEVELOPER(L)
+**** LOAD TEST(Y1)
 *** Link
 - [[https://support.office.com/en-us/article/Excel-keyboard-shortcuts-and-function-keys-1798d9d5-842a-42b8-9c99-9b7213f0040f][Excel keyboard shortcuts and function keys - Office]]
 - [[https://support.office.com/ja-jp/article/Excel-%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89-%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88-%E3%83%95%E3%82%A1%E3%83%B3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3-%E3%82%AD%E3%83%BC-1798d9d5-842a-42b8-9c99-9b7213f0040f][Excel キーボード ショートカット - ファンクション キー - Office]]
@@ -297,6 +325,9 @@
 ** VBA
 - [[file:./VBA.org][VBA.org]]
 ** Memo
+*** マクロのパスワード解除
+- 最新のExcelでは利用できなそう。stirlingで無理矢理書き換える方法。
+  http://tristore.net/?p=238
 *** シート名を取得する
 - 
   =RIGHT(CELL("filename",A1),LEN(CELL("filename",A1))-FIND("]",CELL("filename",A1)))
@@ -314,7 +345,7 @@
   選択範囲の拡大/縮小を行うことができる。
   それにより一度選択した範囲を外すことができる。
   [[http://oshiete.goo.ne.jp/qa/256213.html][エクセルで複数のセル選択をした後、選択したセルの１つを選択解除したい - 教えて!goo]]
-  
+  ;
 *** シートのコピー
 - 
   Ctrlを押しながら、シートをドラッグするとコピーができる。
@@ -353,6 +384,21 @@
 
   [[http://excel-ubara.com/excel3/EXCEL019.html][【奥義】大量データでの高速VLOOKUP - エクセルの神髄]]
 
+*** 複数条件のvlookup
+**** 配列数式とMATCHを利用
+- MATCH(1,(検索範囲1=検索値1)*(検索範囲2=検索値2)*...,0)
+  MATCHで返ってくる値を元にINDEXで値を表示させることで、vlookupと同様の動きとなる。
+***** Link
+- [[http://azwoo.hatenablog.com/entry/2015/11/28/010834][【簡単】vlookup 複数条件は不可 でもすぐにできる代替手段！（MATCH関数・INDEX関数を使う） - "Diary" インターネットさんへの恩返し]]
+- [[http://www.exceltactics.com/vlookup-multiple-criteria-using-index-match/][How to VLOOKUP with Multiple Criteria Using INDEX and MATCH - ExcelTactics]]
+**** SUMPRODUCTを利用
+- SUMPRODUCT((検索範囲1=検索値1)*(検索範囲2=検索値2)*...*ROW(検索範囲))
+  ROWをかけることで、値が1の場合(全ての条件がTrueの場合)に行番号が返ってくる。
+  ただし複数MATCHする場合は、MATCHしたすべての行番号が足し合わせた値が返ってくるので注意。
+  また、vlookupと同様の動きをするには、戻り値を使ってINDEX関数を適用する必要あり。
+***** Link
+- [[http://hamachan.info/win8/excel/sumproduct.html][3つの条件を満たす値を求めるには - 初心者のためのOffice講座]]
+**** 結合した文字列の比較を行う（単純な方法、追加セルが必要）
 *** シート名の変更
 - ショートカット : Alt,O,H,R
 - シートをダブルクリック
@@ -372,6 +418,35 @@
 - INDIRECT関数を使う。
   =INDIRECT(A4&"!B3")などとして使う。
   A4にあるシート名の、B3セルの参照が取得できる。
+*** 日時のシリアル値
+- Excelでは、時刻・時間をシリアル値という値で処理する。
+  1日(24h)を1.0で表し、0:00:00-23:59:59までが0~0.99999999の範囲の値となる。
+- 1900年1月1日からの経過日数を表す。
+- http://www.excel.studio-kazu.jp/tips/0049/
+*** 日付表示
+**** 24h以上の日付を表示する場合
+- [h]を使う。[h]:mm:ssなど。
+*** Array Formula / 配列数式
+- 数式入力時に「Ctrl + Shift + Enter」で確定させる。
+  配列(複数セル)を対象に、1つの数式を作成する式。
+  式がbraket{}で囲まれるが、キーボードから入力しても配列数式とはみなされない。
+  
+**** 配列入力
+- 複数範囲を選択して、braket{}で囲んだ値を入力する。
+  comman,はセルの終わり、semicolon;は行の終わりを表す。
+  ex) ={2,3,"a";4,5,"b"}
+      ->
+      | 2 | 3 | a |
+      | 4 | 5 | b |
+**** 配列計算
+- 複数セルを配列として計算可能。
+  結果的に複数セルに入力をする場合、その数分のセルを選択しておき、出力数と揃える必要あり。
+  1つのセルに出力する場合、範囲や配列を引数として取れる関数でまとめた上で出力する必要がある。
+  どちらにせよ、配列を配列のまま計算することが可能となる。
+**** Link
+- [[https://support.office.com/ja-jp/article/%E9%85%8D%E5%88%97%E6%95%B0%E5%BC%8F%E3%81%AE%E3%82%AC%E3%82%A4%E3%83%89%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%A8%E4%BE%8B-3be0c791-3f89-4644-a062-8e6e9ecee523][配列数式のガイドラインと例 - Office]]
+- http://office-qa.com/Excel/ex69.htm
+
 ** Link
 - [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
 - [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]

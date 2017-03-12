@@ -10,13 +10,13 @@
 *** .NET Framework 1.0
 
 ** Memo
-*** ŒİŠ·«(tmp)
-- [[https://blogs.msdn.microsoft.com/jpvsblog/2015/04/06/net-framework-3/][.NET Framework‚ÌŠeƒo[ƒWƒ‡ƒ““¯m‚ÌŠÖŒW - Developer]]
+*** äº’æ›æ€§(tmp)
+- [[https://blogs.msdn.microsoft.com/jpvsblog/2015/04/06/net-framework-3/][.NET Frameworkã®å„ãƒãƒ¼ã‚¸ãƒ§ãƒ³åŒå£«ã®é–¢ä¿‚ - Developer]]
 - 1.0 -> 1.1
 - https://msdn.microsoft.com/ja-jp/library/cc825629.aspx
 - https://msdn.microsoft.com/ja-jp/library/cc825633.aspx
 - https://msdn.microsoft.com/ja-jp/library/cc825671.aspx
-*** 4.5ˆÈã‚Å‚Ìsort algorithm‚Ì•ÏX
+*** 4.5ä»¥ä¸Šã§ã®sort algorithmã®å¤‰æ›´
 - over 4.5
   - This method uses the introspective sort (introsort) algorithm as follows:
     - If the partition size is fewer than 16 elements, it uses an insertion sort algorithm.
@@ -30,5 +30,5 @@
     In contrast, a stable sort preserves the order of elements that are equal.
 
 ** Link
-- [[https://msdn.microsoft.com/ja-jp/library/aa139615.aspx][.NETŠJ”­ - Developer Network]]
-- [[https://msdn.microsoft.com/ja-jp/library/cc948946.aspx][.NETŠJ”­(1.0ŠÜ‚Ş) - Developer Network]]
+- [[https://msdn.microsoft.com/ja-jp/library/aa139615.aspx][.NETé–‹ç™º - Developer Network]]
+- [[https://msdn.microsoft.com/ja-jp/library/cc948946.aspx][.NETé–‹ç™º(1.0å«ã‚€) - Developer Network]]

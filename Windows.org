@@ -1,12 +1,13 @@
 * Windows
-** Batch
-*** Command
-**** cls
+** Shell
+*** cmd
+**** Command
+***** cls
 - 
   画面上の文字を消去する。
   POSIX系shellだとclearかCtr+l。
 
-**** choice
+***** choice
 
 - choice[.exe] [/C <choices>] [/N] [/CS] [/T nnnn [/D c]] [/M <message>]
   - /C <choices>
@@ -28,7 +29,7 @@
 - ex) choice /C YN /M "続行しますか"
       ⇒続行しますか [Y,N]?
 
-**** cmdkey
+***** cmdkey
 - 
   保存されたユーザ名とパスワードの作成、表示、および削除を行う。
 
@@ -50,7 +51,7 @@
   - /delete /ras
     RAS資格情報を削除する
   
-**** defined
+***** defined
 - 
   環境変数が設定されているかチェックするには、DEFINEDを使う。
 
@@ -60,7 +61,7 @@
 - 
   [[http://orangeclover.hatenablog.com/entry/20110127/1296135692][バッチファイル/コマンドプロンプトで環境変数が設定されているかチェックする方法]]
 
-**** fc
+***** fc
 - fc (option) [file1] [file2]
   2つのファイルを比較して相違点を表示する。
 - /L
@@ -72,28 +73,29 @@
 - /LB(行数)
   (行数)以上続いた場合に比較をやめる。
 
-**** cacls
+***** cacls
 - 
   ファイルやフォルダに対して設定されているACLの内容を確認したり、
   変更するために利用するコマンドラインのツール。
 
-**** help
+***** help
 - 
   コマンドの一覧を取得できる。
   内部コマンドも外部コマンドもあると思われる。
 
-**** setlocal
+***** setlocal
 - 
   バッチファイルでの環境変数のローカル化を開始する。
   以前の設定を復元するにはENDLOCALを実行する。
   バッチスクリプトが終了すると、そのバッチスクリプトで発行されたSETLOCALコマンドに対し、
   暗黙のENDLOCALが実行される。
 
-**** endlocal
+***** start
+***** endlocal
 - 
   バッチプログラムで一時的に変更した環境変数のローカル化を終了する。
 
-**** robocopy
+***** robocopy
 - 
   フォルダを同期するためのコマンド。
   Robust File Copyの略で、堅牢で確実なファイル・コピーという意味を持つ。
@@ -133,8 +135,8 @@
 - /TEE
   コンソールウィンドウとログファイルに出力する
 
-**** ネットワークコマンド
-***** arp
+***** ネットワークコマンド
+****** arp
 - 
   OSが管理しているAPRテーブルを表示したり削除したりするコマンド。
   ARPテーブルは、IPアドレスとMACアドレスを関連付けた一覧。
@@ -145,7 +147,7 @@
 - -d IPアドレス
   指定したIPアドレスのエントリーを削除する
 
-***** getmac
+****** getmac
 - 
   ネットワークにつながっている別のWindowsのMACアドレスを調べる。
   getmacを使うには管理者権限が必要なので、
@@ -153,11 +155,11 @@
 - /s target /u username /p password
   サーバ名、管理者のユーザ名、パスワードを指定して、マックアドレスを確認する。
 
-***** hostname
+****** hostname
 - 
   現在のホスト名を出力する
 
-***** ipconfig
+****** ipconfig
 - 
   コンピュータのネットワーク設定情報を表示する
 
@@ -176,7 +178,7 @@
 - /flushdns
   DNSリゾルバのキャッシュをクリアする
 
-***** nbtstat
+****** nbtstat
 - 
   Windowsネットワークを管理するためのコマンド。
   NBTとは"NetBIOS over TCP/IP"のこと。
@@ -190,89 +192,89 @@
 - -n
   自分自身の情報を表示する
 
-***** net
+****** net
 - 
   ネットワーク関係の設定を行ったり、現在の状態を表示させたりするために使われるコマンド。
   サブコマンドをいれずに使うとサブコマンド一覧が表示される。
   [[http://www.atmarkit.co.jp/fwin2k/win2ktips/258netcommand/netcommand.html][netコマンドの使い方 - @IT]]
   [[http://pasofaq.jp/windows/command/net7.htm][NETコマンド(Windows 7)]]
 
-****** net use
+******* net use
 - 
   共有リソースの使用/解除。net shareされたネットワーク上のリソースをローカルで使う場合に使う。
 
-****** net share
+******* net share
 - 
   共有リソースの公開/公開停止。ローカルのリソースを公開して、外部のマシンでnet useできるようにする。
 
-****** net view
+******* net view
 - 
   リソースが共有されているマシンの列挙や、特定のマシンが公開している共有リソースの一覧を調べる
 
-****** net file
+******* net file
 - 
   使用されているファイルの一覧の表示/強制終了。
   net shareで公開されたリソースのうち、どのようなファイルが実際に外部マシンで利用されているか調べる。
 
-****** net session
+******* net session
 - 
   ユーザアカウントに対するログオンやパスワードの要件の表示/強制終了
 
-****** net print
+******* net print
 
-****** net user
+******* net user
 
-****** net accounts
+******* net accounts
 
-****** net group
+******* net group
 
-****** net computer
+******* net computer
 
-****** net start
+******* net start
 - 
   サービスの表示/開始
 
-****** net stop
+******* net stop
 - 
   サービスの停止
 
-****** net pause
+******* net pause
 - 
   サービスの一時停止
 
-****** net continue
+******* net continue
 - 
   サービスの再開
 
-****** net name
+******* net name
 - 
   NetBIOS名の表示・追加。
   新しく追加された名前はnet sendコマンドの宛先として利用できる。
 
-****** net send
+******* net send
 - 指定されたユーザやコンピュータに対するメッセージの送信
 
-****** net config
+******* net config
 - 
   サーバ・サービスやワークステーション・サービスに関する情報の表示/設定
 
-****** net sattistics
+******* net sattistics
 - 
   ネットワーク・プロトコルやリソースの公開/共有サービスに対する統計情報の表示
 
-****** net time
+******* net time
 - 
   時間情報の表示や外部との同期
 
-****** net help
+******* net help
 - 
   各コマンドの使い方の表示
 
-****** net helpmsg
+******* net helpmsg
 - 
   エラー番号に対する詳しいエラーメッセージの表示
 
-***** netsh
+****** netsh
 - 
   netsh（ネットシェル）は、コンピュータのネットワーク設定情報を書き換えるコマンド。
   対話型と結果表示型、どちらも可能。
@@ -283,7 +285,7 @@
 - exit
   終了する
 
-***** netstat
+****** netstat
 - 
   コンピュータの通信状況を一覧表示する。
   どのコンピュータとどんなプロトコルを使って何番ポートで通信しているかわかる。
@@ -296,17 +298,17 @@
 - -s
   プロトコルごとの統計を表示する。
 
-***** nslookup
+****** nslookup
 - 
   DNSサーバと通信して名前解決の「正引き」や「逆引き」を行うコマンド。
   IPアドレスかドメイン名を入力する。
 
-***** pathping
+****** pathping
 - 
   ノード間のネットワークの状態を確認する。
   pingとtracertを組み合わせたようなイメージ。
 
-***** ping
+****** ping
 - 
   ICMPのサブコマンドechoを使った、単純なパケット通信テストプログラム。
 - -t
@@ -314,7 +316,7 @@
 - -n 要求数
   送信するエコー要求数を設定する
 
-***** route
+****** route
 - 
   ルーティングテーブルに関する情報を表示、または変更する。
 
@@ -327,70 +329,171 @@
 - print
   ルーティング情報を表示する。
 
-***** telnet
+****** telnet
 - 
   ネットワーク越しに別のコンピュータを操作するコマンド。
   Vista以降はコントロールパネルで有効化する必要がある。
   平文で送信されるので、使う範囲はLAN内に限定するべき。
 
-***** tracert
+****** tracert
 - 
   実行するコンピュータから通信相手までの経路上にあるルータを一覧表示するコマンド。
   pingと同様ICMPのエコー要求・応答を利用している。
   TTLが1からスタートし、1つずつ大きくして経路上のルータを一覧表示する機能。
 
-***** 外部link
+****** 外部link
 
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230618/][管理者必見！ネットワーク・コマンド集]]
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20131219/525889/][最重要ネットコマンド10]]
 - [[http://blog.asial.co.jp/1157][使えると便利なWindowsネットワークコマンド]]
 
-*** Tools
-**** System32
-***** wbem
-****** wmic.exe / WMI (Windows Management Instrumentation)
+**** etc
+***** IF文の複数条件指定
 - 
-  システム管理用インターフェイス。
-  WBEMというシステム管理を目的とした標準仕様に従って、WinOSに実装、拡張したもの。
-  wmicというCommandLineツールを使って情報を取得したり操作できる。
-  "wmic qfe"として適用済みのKBを取得できる。
 
-***** 直下
-****** msc
-******* azman.msc
-******* certmgr.msc
-******* comexp.msc
-******* compmgmt.msc
-******* devmgmt.msc
-******* diskmgmt.msc
-******* eventvwr.msc
-******* fsmgmt.msc
-******* gpedit.msc / ローカルグループポリシーエディター
-******* lusrmgr.msc / ローカルユーザーとグループ（ローカル）
-******* perfmon.msc
-******* printmanagement.msc
-******* rsop.msc
-******* secpol.msc
-******* services.msc
-******* SQLServerManager10.msc
-******* taskschd.msc
-******* tpm.msc
-******* WF.msc
-******* WmiMgmt.msc
+  ANDやORに相当する機能はない。ただし、AND条件であればIF文を並べて記述できる。
+  ex:) IF %A% == 1 IF %B% == 2 (
+         REM 1かつ2のAND条件
+     ) ELSE (
+         それ以外
+     )
+- 
+  [[http://capm-network.com/?tag=Windows%E3%83%90%E3%83%83%E3%83%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87][CapmNetwork Windowsバッチファイル制御構文]]
 
-****** exe
-******* netplwiz.exe / ユーザアカウント
+***** 処理の途中で改行を入れる
+- 
+  バッチファイルでのエスケープシーケンスは「^(hat)」なので、
+  改行前に^をおくと複数行を1行として扱える。
+  ex:) IF %ABCDEFGHIJKLM% ==1 ^
+       IF %NOPQRSTUVWXYZ% ==2 (
+         REM 処理
+     )
+- [[http://orangeclover.hatenablog.com/entry/20100810/1281450669][みちしるべ バッチファイルで長い1行の処理を改行を入れて複数行に分けて書きたい]]
+- [[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
+
+***** 環境変数の消し方
+- 
+  "SET 変数="とする。
+  たとえば変数XYZを初期化したければ、"set XYZ="でよい。
+
+- [[http://orangeclover.hatenablog.com/entry/20090826/1251293551][みちしるべ 3.環境変数 (1)環境変数の使い方 〜意外に削除の仕方はしらない人が多い〜 【コマンドプロンプト、バッチファイルを使わなきゃならなくなった人向けのメモ】]]
+
+***** バッチでの標準入力待ち
+- 
+  "SET /P 変数=出力文字列"、という感じの構文。
+  たとえば"set /P var=好きな英数字を入力してください。"とすると、
+  "好きな英数字を入力してください。"と画面に出力された後入力待ちになり、
+  改行するまでの文字列がvarに格納される。
+  バッチファイルでユーザーに入力させた値を取得する
+
+*** WSH
+- Windows Script Host
+- Windows環境でスクリプトを実行するための環境。
+  標準では、VBScriptとJScriptを利用できる。
+**** Programs
+***** cscript.exe
+***** wscript.exe
+**** Objects
+***** Basic Objects
+****** WScript
+****** WshArguments
+****** WshController
+****** WshEnvironment
+****** WshNetwork
+****** WshShell
+****** WshShortcut
+****** WshSpecialFolders
+****** WshUrlShortcut
+****** FileSystemObject
+***** Win OS Objects
+****** ADODB.Connection
+****** ADODB.Stream
+****** XMLHTTP
+****** CDO.Message
+****** InternetExplorer.Application
+****** Shell.Application
+****** ADSI (Active Directory Service Interfaces)
+****** WMI (Windows Management Instrumentation)
+**** Memo
+***** 文字コード
+- UTF-8では実行時にエラーが出た。設定方法はあるかもしれない。
+  Shift_JISにしたところ問題なく実行できた。
+**** Link
+- [[http://www.atmarkit.co.jp/ait/articles/0606/02/news116.html][基礎解説 演習方式で身につけるチェック式WSH超入門 - @IT]]
+- [[http://news.mynavi.jp/articles/2009/01/25/wsh/][ゼロからはじめるWindows Script Host - 基本編 - マイナビニュース]]
+*** PowerShell
+- [[file:PowerShell.org][PowerShell.org]]
+*** MSYS2
+**** pacman
+- [[file:Linux.org][Linux.org(PackageManagement/pacman参照)]]
+**** Memo
+***** PATHを引き継ぐ
+- Windowsの環境変数"MSYS2_PATH_TYPE"にinheritを設定すると、設定が引き継がれる。
+  [[http://chirimenmonster.github.io/2016/05/09/msys2-path.html][MSYS2でPATHが引き継がれない - めもらんだむ]]
+**** Link
+- [[https://msys2.github.io/][MSYS2 installer]]
+- [[https://sourceforge.net/p/msys2/wiki/Home/][MSYS2 - sourceforge]]
+- [[https://github.com/Alexpux/MSYS2-packages][Alexpux/MSYS2-packages - github]]
+*** Cygwin
+**** Command
+***** Cygutils
+****** cygstart
+- start a program or open a file or URL
+  
+** Tools
+*** System32
+**** Direct
+***** msc
+****** azman.msc
+****** certmgr.msc
+****** comexp.msc
+****** compmgmt.msc
+****** devmgmt.msc
+****** diskmgmt.msc
+****** eventvwr.msc
+****** fsmgmt.msc
+****** gpedit.msc / ローカルグループポリシーエディター
+****** lusrmgr.msc / ローカルユーザーとグループ（ローカル）
+****** perfmon.msc
+****** printmanagement.msc
+****** rsop.msc
+****** secpol.msc
+****** services.msc
+****** SQLServerManager10.msc
+****** taskschd.msc
+****** tpm.msc
+****** WF.msc
+****** WmiMgmt.msc
+
+***** exe
+****** cmd.exe
+- 
+  コマンドプロンプト
+****** cscript.exe
+- コマンドライン用WSH。
+****** mstsc.exe / リモートデスクトップ
+******* Options
+******** /admin
+- コンソールセッションに接続する(RDC 6.1以降)
+******** obsolete
+********* /console
+- RDC 5.x/6.0の場合に、コンソールセッションに接続する方法。
+  6.1以降は/adminを利用。
+  https://blogs.technet.microsoft.com/peterfi/2008/01/11/mstsc-console-is-now-mstsc-admin/
+****** netplwiz.exe / ユーザアカウント
 - 
   newplwiz.exeで開く。
   パスワード忘れてCMD立ち上げたときとかに役立つ。
-******* systeminfo.exe 
+****** systeminfo.exe 
 - 
   システム情報を表示できる。cmd上でsysteminfo。CUI。
   デフォルトで対象はローカルコンピュータ。
   ただし/s servername, /u UserName, /p Passwordなどを入力すると、
   リモートの情報も取得できる。
 
-******* tmp
+****** wscript.exe
+- GUI実行用WSH。
+****** tmp
 AdapterTroubleshooter.exe
 aitagent.exe
 aitstatic.exe
@@ -436,7 +539,6 @@ cipher.exe
 cleanmgr.exe
 cliconfg.exe
 clip.exe
-cmd.exe
 cmdkey.exe
 cmdl32.exe
 cmmon32.exe
@@ -453,7 +555,6 @@ consent.exe
 control.exe
 convert.exe
 credwiz.exe
-cscript.exe
 csrss.exe
 ctfmon.exe
 cttune.exe
@@ -598,7 +699,6 @@ msinfo32.exe
 mspaint.exe
 msra.exe
 MsSpellCheckingFacility.exe
-mstsc.exe
 mtstocom.exe
 MuiUnattend.exe
 MultiDigiMon.exe
@@ -819,7 +919,6 @@ wowreg32.exe
 WPDShextAutoplay.exe
 wpnpinst.exe
 write.exe
-wscript.exe
 WSManHTTPConfig.exe
 wsmprovhost.exe
 wsqmcons.exe
@@ -830,47 +929,22 @@ wusa.exe
 xcopy.exe
 xpsrchvw.exe
 xwizard.exe
-
-**** ローカルセキュリティポリシー
-*** etc
-**** IF文の複数条件指定
+**** wbem
+***** wmic.exe / WMI (Windows Management Instrumentation)
 - 
+  システム管理用インターフェイス。
+  WBEMというシステム管理を目的とした標準仕様に従って、WinOSに実装、拡張したもの。
+  wmicというCommandLineツールを使って情報を取得したり操作できる。
+  "wmic qfe"として適用済みのKBを取得できる。
+**** WindowsPowerShell
+***** v1.0
+****** powershell.exe
 
-  ANDやORに相当する機能はない。ただし、AND条件であればIF文を並べて記述できる。
-  ex:) IF %A% == 1 IF %B% == 2 (
-         REM 1かつ2のAND条件
-     ) ELSE (
-         それ以外
-     )
-- 
-  [[http://capm-network.com/?tag=Windows%E3%83%90%E3%83%83%E3%83%81%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%88%B6%E5%BE%A1%E6%A7%8B%E6%96%87][CapmNetwork Windowsバッチファイル制御構文]]
-
-**** 処理の途中で改行を入れる
-- 
-  バッチファイルでのエスケープシーケンスは「^(hat)」なので、
-  改行前に^をおくと複数行を1行として扱える。
-  ex:) IF %ABCDEFGHIJKLM% ==1 ^
-       IF %NOPQRSTUVWXYZ% ==2 (
-         REM 処理
-     )
-- [[http://orangeclover.hatenablog.com/entry/20100810/1281450669][みちしるべ バッチファイルで長い1行の処理を改行を入れて複数行に分けて書きたい]]
-- [[http://pf-j.sakura.ne.jp/program/dos/doscmd/str_circumflex.htm][ProgrammingField DOSコマンド一覧 ^(ハット記号)]]
-
-**** 環境変数の消し方
-- 
-  "SET 変数="とする。
-  たとえば変数XYZを初期化したければ、"set XYZ="でよい。
-
-- [[http://orangeclover.hatenablog.com/entry/20090826/1251293551][みちしるべ 3.環境変数 (1)環境変数の使い方 〜意外に削除の仕方はしらない人が多い〜 【コマンドプロンプト、バッチファイルを使わなきゃならなくなった人向けのメモ】]]
-
-**** バッチでの標準入力待ち
-- 
-  "SET /P 変数=出力文字列"、という感じの構文。
-  たとえば"set /P var=好きな英数字を入力してください。"とすると、
-  "好きな英数字を入力してください。"と画面に出力された後入力待ちになり、
-  改行するまでの文字列がvarに格納される。
-  バッチファイルでユーザーに入力させた値を取得する
-
+*** Server
+**** servermanagercmd.exe
+**** oclist.exe
+**** dcpromo.exe
+*** ローカルセキュリティポリシー
 ** Files
 *** pagefile.sys
 - C:\pagefile.sys
@@ -971,228 +1045,6 @@ xwizard.exe
 - [[https://support.microsoft.com/ja-jp/kb/256986][上級ユーザー向けの Windows レジストリ情報 - Microsoft]]
 - [[http://www.akadia.com/services/windows_registry_tutorial.html][Windows Registry Tutorial]]
 - 
-** MS-DOS
-*** Commands
-**** help
-***** apropos
-***** fasthelp
-***** fdhelp
-***** fsuite04
-***** help
-***** htmlhelp
-***** whatis
-**** internal (command.com) / 内部コマンド
-***** alias
-***** beep
-***** break
-***** call
-***** chdir, cd
-***** cdd
-***** chcp
-***** cls
-
-***** copy
-***** ctty
-***** date
-***** debug
-- Format
-  DEBUG [commandfile argument]
-- Options
-  - help / ?
-    使用方法の表示
-  - assemble / A [address]
-    入力したニーモニックコードをアセンブルし、指定アドレスへ格納する。
-  - compare / C range address
-  - dump / D range
-    メモリの指定範囲を16進ダンプする
-  - enter / E adresss [list]
-    指定アドレスから1バイトずつ16進入力する。
-  - fill / F range data
-  - go / G [=address] [breakpoint]
-    指定したアドレスからプログラムを実行し、ブレークポイントのアドレスに達すると中断する。
-  - proceed / P [=address] [step]
-    プログラムをステップごとに実行する
-  - quit / Q
-    デバッグコマンドを終了する。
-  - register / R [register]
-    引数なしでレジスタ値の表示
-    レジスタ名を引数として付けると、レジスタを変更できる
-  - unassemble / U [range]
-    逆アセンブルする。
-***** del, erase
-***** dir
-***** dirs
-***** doskey
-***** echo
-***** erase
-***** exit
-***** for
-***** goto
-***** history
-***** if
-***** ifnfor
-***** lh
-***** loadfix
-***** loadhigh
-***** memory
-***** mkdir, md
-***** path
-***** prompt
-***** pushd
-***** rd
-***** rem
-***** ren, rename
-***** rmdir, rd
-***** set
-***** shift
-***** time
-***** truename
-***** type
-- テキストファイルの内容を表示する
-***** ver
-***** verify
-***** vol
-***** which
-**** external command / 外部コマンド
-***** append
-***** apropos
-***** assign
-***** attrib
-***** backup
-***** callver
-***** chkdsk
-***** choice
-***** command
-***** comp
-***** debug
-***** display
-***** edit
-***** fc
-***** fdisk
-***** find
-***** format
-***** freecom
-***** help
-***** join
-***** mem
-***** more
-***** move
-***** print
-***** replace
-***** sort
-***** tree
-***** xcopy
-**** config.sys / fdconfig.sys
-***** ;
-***** !
-***** ?
-***** break
-***** buffers
-***** buffershgih
-***** country
-***** device
-***** devicehigh
-***** dos
-***** dosdata
-***** echo
-***** eecho
-***** fcbs
-***** fileshigh
-***** idlehalt
-***** install
-***** installhigh
-***** keybuf
-***** lastdrive
-***** lastdrivehigh
-***** menu
-***** menucolor
-***** menudefault
-***** numlock
-***** rem
-***** screen
-***** set
-***** shell
-***** shellhigh
-***** stacks
-***** stackshigh
-***** switchar
-***** switches
-***** version
-**** Batch / autoexec.bat
-***** beep
-***** call
-***** choice
-***** cls
-***** echo
-***** for
-***** goto
-***** if
-***** lh
-***** loadhigh
-***** paht
-***** pause
-***** prompt
-***** rem
-***** set
-***** shift
-**** Utilities
-***** bootfix
-***** cal
-***** devload
-***** dosfsck
-***** doslfn
-***** fdpkg
-***** fdrc
-***** foxcalc
-***** freemacs
-***** locate
-***** md5sum
-***** ospedit
-***** password
-***** pcisleep
-***** pdtree
-***** rdisk
-***** ripcord
-***** shsufdrv
-***** tee
-***** touch
-***** trch
-***** unzip
-***** xgrep
-***** zip
-**** Link
-- [[http://www.geocities.co.jp/SiliconValley-PaloAlto/2099/ms-dos.html][MS-DOSコマンド一覧表]]
-*** Settings
-**** AUTOEXEC.BAT
-**** FDCONFIG.SYS
-*** Glossary
-**** DOSエクステンダー
-**** DPMI
-**** LMA
-- Lower Memory Area
-  the first 640 KiB of memory usually thought of as DOS's normal memory.
-**** UMA
-- Upper Memory Area
-*** Link
-- [[http://wiki.freedos.org/wiki/index.php/Main_Page][Main Page - FreeDOS]]
-** Tools
-*** MSYS2
-**** pacman
-- [[file:Linux.org][Linux.org(PackageManagement/pacman参照)]]
-**** Memo
-***** PATHを引き継ぐ
-- Windowsの環境変数"MSYS2_PATH_TYPE"にinheritを設定すると、設定が引き継がれる。
-  [[http://chirimenmonster.github.io/2016/05/09/msys2-path.html][MSYS2でPATHが引き継がれない - めもらんだむ]]
-**** Link
-- [[https://msys2.github.io/][MSYS2 installer]]
-- [[https://sourceforge.net/p/msys2/wiki/Home/][MSYS2 - sourceforge]]
-- [[https://github.com/Alexpux/MSYS2-packages][Alexpux/MSYS2-packages - github]]
-*** Cygwin
-**** Command
-***** Cygutils
-****** cygstart
-- start a program or open a file or URL
-  
 ** Environment Variables
 *** APPDATA
 *** LOCALLAPPDATA
@@ -1204,6 +1056,9 @@ xwizard.exe
 - ex) C:
 *** SystemRoot
 - ex)%SystemDrive%\Windows
+*** USERPROFILE
+- ユーザのプロファイルのパス
+  ex) C:\Users\UserName, C:\Dcuments and Settings\UserName
 *** windir
 - ex)%SystemDrive%\Windows
 ** Structure
@@ -1236,6 +1091,29 @@ xwizard.exe
   
 *** SafeSEH, SoftwareDEP
 - http://resemblances.click3.org/?p=1449
+** Server
+*** Roles
+**** ADDS Active Directory
+- Active Directory Domain Services
+***** 2012 R2
+- Server Manager : Dashboard -> Add roles and features
+  setting...
+- Server Manager : AD DS
+  setting...
+- http://www.rem-system.com/post-671/
+*** Features
+**** Failover Clustering
+- MSCS / Microsoft Clustering Service
+- WSFC / Windows Server Failover Cluster (Windows Server 2008以降)
+***** Memo
+****** Error: A weak event was created ...
+- It's a bug, and just run a Windows Update.
+  http://www.itprocentral.com/resolving-failover-cluster-error-message-a-weak-event-was-created-and-it-lives-on-the-wrong-object-there-is-a-very-high-chance-this-will-fail-please-review-and-make-changes-onyour-code-to-prevent-t/
+***** Link
+- [[http://blog.engineer-memo.com/2013/05/08/alwayson-%E3%82%92-azure-%E4%B8%8A%E3%81%AB%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B-wsfc-%E3%81%AE%E6%A7%8B%E7%AF%89%E7%B7%A8/][AlwaysOn を Azure 上に構築してみる – WSFC の構築編 – SEの雑記]]
+- [[https://msdn.microsoft.com/ja-jp/library/dn505754(v=ws.11).aspx][フェールオーバー クラスターを作成する - Developer Network]]
+- [[https://techinfoofmicrosofttech.osscons.jp/index.php?MSCS%2FWSFC][MSCS/WSFC - Open棟梁Project - マイクロソフト系技術情報 Wiki]]
+
 ** Memo
 *** ACL
 - 
@@ -1348,9 +1226,20 @@ xwizard.exe
   [[http://support.microsoft.com/kb/883172/ja][特殊文字・記号や罫線文字の入力一覧]]
   [[http://112123.jugem.jp/?eid=2781][【記号】 文字記号でツリーとか階層を作りたい時の変換方法【豆知識】]]
 
-*** Win7システム容量
+*** Cドライブの掃除
+**** ディスククリーンアップ
+- Cのプロパティ->ツールタブ
+**** Tempの削除
+- C:\WINDOWS\Temp
+- C:\Users\(username)\AppData\Local\Temp
+- C:\Documents and Settings\(username)\Local Settings\Temp
+**** Internet一時ファイルの削除
+**** Link
+- http://freesoft.tvbok.com/tips/optimise_vista/increase_freespace_c_drive.html
+- https://pctrouble.net/running/c_drive_freespace.html
+*** システム容量
+**** Win7
 - [[http://freesoft.tvbok.com/tips/win7rc64/windows7_winsxs.html][Windows7、HDバカ食いの理由 - ぼくんちのTV別館]]
-
 *** Scroll Lock
 - 
   矢印キーで画面が動いてしまうのは、スクロールロックがかかっているため。

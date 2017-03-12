@@ -4,18 +4,18 @@
   Hadoop Distributed File System
   
 - 
-  �}�X�^�[�m�[�h�ł���NameNode�ƁA�X���[�u�m�[�h�ł���DataNode�ō\�������B
-  NameNode�͕��U�t�@�C���V�X�e���̃��^�����Ǘ����ADataNode�̓f�[�^�̎��Ԃ�ۑ�����B
-  �t�@�C�������T�C�Y�ŕ��������f�[�^��"�u���b�N"�Ƃ���DataNode�ŕۑ�����B
+  マスターノードであるNameNodeと、スレーブノードであるDataNodeで構成される。
+  NameNodeは分散ファイルシステムのメタ情報を管理し、DataNodeはデータの実態を保存する。
+  ファイルを一定サイズで分割したデータを"ブロック"としてDataNodeで保存する。
 
-  �u���b�N�͕�����DataNode��"���v���J"��ۑ�����B
-  �f�t�H���g�ł�3�̃��v���J���ۑ������B
-  ���v���J����HDFS�Ɋi�[����t�@�C���P�ʂŕύX�\�B
+  ブロックは複数のDataNodeに"レプリカ"を保存する。
+  デフォルトでは3つのレプリカが保存される。
+  レプリカ数はHDFSに格納するファイル単位で変更可能。
 
 ** Hadoop MapReduce
 - 
-  �}�X�^�[�m�[�h�ł���JobTracker�ƃX���[�u�m�[�h�ł���TaskTracker�ō\�������B
+  マスターノードであるJobTrackerとスレーブノードであるTaskTrackerで構成される。
   
 - 
-  JobTracker�́AMapReduce�W���u�̊Ǘ���TaskTracker�ւ̃^�X�N���蓖�āATaskTracker�ւ̃��\�[�X�Ǘ�������Ƃ��Ă���B
+  JobTrackerは、MapReduceジョブの管理やTaskTrackerへのタスク割り当て、TaskTrackerへのリソース管理を役割としている。
 

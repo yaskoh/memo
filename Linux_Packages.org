@@ -1,9 +1,41 @@
 * Linux Packages
-- �K�v�ɉ����A����ʂƂ���AC�֘A�ֈړ�����Ȃǂ��邩���B
+- 必要に応じ、言語別とする、C関連へ移動するなどするかも。
 ** General
 *** libjpeg
 - C library for reading and writing JPEG image files.
 *** libxpm
+** from LFS
+*** LSB
+**** Core
+***** Bash
+***** Bc
+***** Binutils
+***** Coreutils
+***** Diffutils
+***** File
+***** Findutils
+***** Gawk
+***** Grep
+***** Gzip
+***** M4
+***** Man-DB
+***** Ncurses
+***** Procps
+***** Psmisc
+***** Sed
+***** Shadow
+***** Tar
+***** Util-linux
+***** Zlib
+**** Runtime
+***** Perl
+*** Etc
+**** Acl
+- アクセス制御リストを管理するツールを提供する。
+  ファイルやディレクトリに対して、きめ細かく様々なアクセス権限を定義する
+**** Attr
+**** Autoconf
+**** Automake
 ** Link
 - [[https://launchpad.net/ubuntu/+search?text=][Search packages in Ubuntu]]
 - [[https://rpmfind.net/linux/RPM/index.html][Rpmfind.net]]

@@ -5,5 +5,5 @@
 - 
   install "VMware tools".
   It can be install
-  VMwara Workstation : VM / VMware Toolのインストール
+  VMwara Workstation : VM / VMware Tool縺ｮ繧､繝ｳ繧ｹ繝医�ｼ繝ｫ
 

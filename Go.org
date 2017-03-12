@@ -12,7 +12,9 @@
 ***** clean
 - remove object files
 ***** doc
+- show documentation for package or symbol
 ***** env
+- print Go environment information
 ***** fix
 ***** fmt
 ***** generate
@@ -20,8 +22,10 @@
 ***** install
 ***** list
 ***** run
+- compile and run Go program
 ***** test
 ***** tool
+****** tour
 ***** version
 ***** vet
 *** cgo
@@ -110,6 +114,114 @@
 *** Built-in functions
 *** Packages
 *** Errors
+** Memo
+*** A Tour of Go
+**** Basics
+***** Packages, variables, and functinos
+****** Packages
+- package main
+****** Imports
+- import (
+      "fmt"
+      "math"
+  )
+****** Exported names
+- 大文字で始まる名前は、外部のパッケージから参照できるエクスポートされた名前。
+- 小文字で始まるpiやhogeなどは、エクスポートされていない名前。
+****** Functions
+- func add(x int, y int) int {
+    return x + y
+  }
+- 複数の引数が同じ型である場合、最後の型を残して他は省略可。
+  func add(x, y int) int {
+    return x + y
+  }
+****** Multiple results
+- return x,y
+****** Named return value
+- 戻り値の変数に名前を付けることができる
+  func split (sum int) (x, y int) {
+    x = sum * 4 / 9
+    y = sum - x
+    return
+  }
+****** Variables
+- var i int
+- vari, j int = 1, 2 (multiple)
+- k := 3 (short declarations)
+****** Basic types
+- bool
+- string
+- int int8 int16 int32 it64
+- uint uint8 uint16 uint32 uint64 uintptr
+  (int, uint, uintptrは32bitシステムでは32bit, 64bitシステムでは64)
+- byte (uint8の別名)
+- rune (int32の別名)
+- float32 float64
+- complex64 complex128
+****** Zero values
+- 数値型: 0
+- bool: false
+- string: ""(空文字列)
+****** Type conversions
+- 変数vの型Tへの変換はT(v)。
+  i := 42; f := float64(i); u := uint(f);
+****** Type inference
+- 右側の変数から型推論される。
+- 型を指定しない数値である場合、精度に基づいてint, float64, complex128の型が使われる。
+****** Constants
+- 文字、文字列、boolean、数値のみで使える。:=による宣言はできない。
+- const World = "世界"
+- 数値の定数でk棚がない場合、状況によって必要な型を取る。
+***** Flow control statements: for, if, else, switch and defer
+****** For
+- セミコロンで初期化stmt, 条件式, 後処理stmtを書く。()で囲む必要はない。
+  処理の中括弧{ }は必要。
+  - for i := 0; i < 10; i++ {
+      sum += i
+    }
+
+- 初期化と後処理stmtは省略可
+  - for ; sum < 1000; {
+      sum += sum
+    }
+  
+- セミコロンの省略も可能。whileのように利用可能。
+  - for sum < 1000 {
+      sum += sum
+    }
+
+- ループ条件を省略して無限ループを書ける。
+  - for {
+    }
+
+****** If
+- Basic
+  - if x < 0 {
+      return sqrt(-x) + "i"
+    }
+
+- with a short statement
+  - if v := math.Pow(x, n); v < lim {
+      return v
+    }
+
+- else
+  - if v := math.Pow(x, n); v < lim {
+      return v
+    } else {
+      fmt.Printf("%g >= %g\n", v, lim)
+    }
+
+
+***** More types: structs, slices, and maps
+**** Methods and interfaces
+***** Methods and interfaces
+**** Concurrency
+***** Concurrency
 ** Link
 - [[https://golang.org/][The Go Programming Language]]
 
+- [[http://ascii.jp/elem/000/001/235/1235262/][Goならわかるシステムプログラミング - プログラミング+]]
+
+- [[http://qiita.com/tenntenn/items/0e33a4959250d1a55045][Go言語の初心者が見ると幸せになれる場所 - Qiita]]

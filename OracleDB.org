@@ -133,6 +133,9 @@
 - DBSNMPユーザーおよびSNMPAGENTロールを削除する
 ****** アップグレード・ダウングレード
 ****** JavaScript
+****** AWR
+******* awrrpt.sql
+- AWRレポートの作成
 ****** パッチ適用
 ******* catbundleapply.sql
 - Call catbundle.sql to apply the Patch Set Update (PSU)
@@ -230,8 +233,6 @@
 - [[file:OracleDB_PLSQL.org][OracleDB_PLSQL.org]]
 ** SQL*Plus
 - [[file:OracleDB_SQLPlus.org][SQL*Plus.org]]
-** Reference
-- [[file:OracleDB_Reference.org][OracleDB_Reference.org]]
 ** Interface
 *** SQL*Plus
 - 
@@ -448,6 +449,11 @@
 ****** DRIVING_SITE
 ****** DYNAMIC_SAMPLING
 ****** MODEL_MIN_ANALYSIS
+*** List
+**** 待機イベント
+- [[file://OracleDB_Reference.org][OracleDB_Reference.org]]
+**** システム統計
+- [[http://www.doppo1.net/oracle/tuning/sysstat.html][システム統計一覧 - WalkingAlone]]
 *** Manual
 **** 概要
 **** パフォーマンス計画
@@ -471,8 +477,42 @@
 ***** プラン・スタビリティの使用方法
 ***** アプリケーション・トレース・ツールの使用方法
 *****
+*** Memo
+**** Metrics
+***** 2003: User Transaction Per Sec
+***** 2004: Physical Reads Per Sec
+***** 2005: Physical Reads Per Txn
+***** 2006: Physical Writes Per Sec
+***** 2016: Redo Generated Per Sec
+***** 2017: Redo Generated Per Txn
+***** 2018: Logons Per Sec
+***** 2026: User Calls Per Sec
+***** 2031: Logical Reads Per Txn
+***** 2045: Total Parse Count Per Txn
+***** 2058: Network Traffic Volume Per Sec
+***** 2066: Enqueue Requests Per Txn
+***** 2068: DB Block Changes Per Txn
+***** 2104: Current Open Cursors Count
+***** 2106: SQL Service Response Time
+***** 2109: Response Time Per Txn
+***** 2121: Executions Per Sec
+***** 2144: Average Synchronous Single-Block Read Latency
+***** 2145: I/O Megabytes per Second
+***** 2146: I/O Requests per Second
+***** 2147: Average Active Sessions
+**** OEM Metrics
+- https://docs.oracle.com/cd/E17559_01/em.111/b61024/toc.htm
+**** Tuningが必要なSQLの洗い出し
+- 動的パフォーマンスビューによる洗い出し
+  - V$SQL : SQLの累積リソース使用状況
+  - V$SQL_TEXT : SQLの全文
+  - V$SQL_PLAN : SQLの実行計画
 *** Link
 - [[http://www.atmarkit.co.jp/ait/series/2413/][Oracle SQLチューニング講座 - @IT]]
+- [[http://www.oracle.com/technetwork/jp/articles/index-349908-ja.html][Oracleデータベース 性能対策機能 ～StatspackとDiagnostics Packを使いこなす～ - Oracle Technology Network]]
+- [[http://www.oracle.com/technetwork/jp/articles/chapter1-1-085735-ja.html][門外不出のOracle現場ワザ 第１章 目からウロコのOracleパフォーマンス分析テクニック - Oracle Technology Network]]
+- [[http://www.oracle.com/technetwork/jp/articles/index-088346-ja.html][おら！オラ！Oracle － どっぷり検証生活 現場で役立つOracle DBのパフォーマンスチューニング - Oracle Technology Network]]
+- [[http://www.oracle.com/technetwork/jp/ondemand/db-new/091028-insight-tuning-250540-ja.pdf][おら! オラ! Oracle - どっぷり検証生活 - 現場で役立つ Oracle DBのパフォーマンス チューニング(slide)]]
 ** Security
 *** 事前定義ユーザ
 **** 事前定義された管理アカウント
@@ -684,11 +724,83 @@
 - test.local_domain
 - local management
 - すべてyasutake(SYS, SYSTEM, DBSNMP, SYSMAN)
+** Backup/Recovery
+*** Glossary
+**** Backup
+***** Logical Backup 論理バックアップ
+***** Physical Backup 物理バックアップ
+**** Resotre リストア
+- 
+**** Recovery リカバリ
+- アーカイブログ、REDOログを用いて状態を復元すること
+*** Memo
+**** リカバリ
+***** 完全リカバリ
+- 障害が発生した直前までリカバリする方法。
+- バックアップ、アーカイブログ、REDOログファイルを使い障害が発生した時点の状態に戻す。
+  コミットデータは失われない。
+****** 手順(RMAN上)
+- 
+  sql "ALTER TABLESPACE 表領域名 offline immediate";
+  RESTORE TABLESPACE 表領域名;
+  RECOVER TABLESPACE 表領域名;
+  sql "ALTER TABLESPACE 表領域名 online";
+
+***** 不完全リカバリ
+- 特定の時点までリカバリする方法。
+  アーカイブログを適用できる限りの時点までリカバリが可能。
+- 過去の特定の状態に戻すこと全体を「Point In Time Recovery (PITR)」と呼ぶ。
+
+****** 手順
+- 
+  1. データベースの停止
+  2. データベースをマウント
+  3. どの時点に復旧したいか決める
+  4. RMANコマンドを実行する
+- コマンドの実行が完了したら、RESETLOGSオプションでデータベースをオープンする。
 ** Tools
 *** Automatic Workload Repository(AWR)
+**** 概要
 - 自動ワークロード・リポジトリ
-  Oracle Databaseの稼働状況とワークロード情報のスナップショットを自動的に収集/管理する機能。
-  10gより提供された機能。
+  Oracle Databaseの稼働状況とワークロード情報のスナップショットを自動的に収集/管理する。
+  AWRの情報は、MMONによってSGAから直接、定期的(11gのデフォルトは60分毎)に取得され、データベース内に一定期間(11gのデフォルトは8に置換)保存される。
+- 10gより提供された、Statspackを進化させたもの。
+  Statspackの取得データに加えて、稼働統計やワークロード情報のスナップショットなど実際の使用履歴そのものを動的に取得している。
+- StatspackはDB作成時にインストールが必要だったが、AWRはSYSAUX表領域にインストールされている。
+
+**** 収集レベル
+- STATISTICS_LEVEL期化パラメータで設定する。
+  デフォルトはTYPICAL。より低いBASIC、より高いALLへの設定変更も可能。
+  TYPICALはStatspcakのi_snap_level7相当。
+**** レポート
+- 任意の2時点のスナップショットに基づき、統計をレポート形式で出力したもの。
+  利用にはOracle Diagnostics Packが必要(有償)。
+- レポート作成
+  - EM
+    EM上でGUI操作による作成が可能。
+  - コマンドライン
+    SYSTEMユーザやSSYDBA権限ユーザで"awrrpt.sql"を実行することで作成可能。
+**** Snapshot
+***** 生成
+- exec dbms_workload_repository.create_snapshot();
+***** 削除
+- exec dbms_workload_repository.drop_snapshot();
+***** 設定変更
+- exec dbms_workload_repository.modify_snapshot_settings(...);
+***** 確認
+- select * from dba_hist_snapshot;
+**** Baseline
+- パフォーマンス上の問題が発生したときに比較するために保持された特定の基幹のパフォーマンスデータが含まれる。
+- 自動AWR消去プロセス対象からは除去され、無期限に保存される。
+**** Link
+- tmp
+  - http://docs.oracle.com/cd/E16338_01/server.112/b56312/autostat.htm#i27008
+  - http://oracle-pub.wikidot.com/ocm-11g-awr
+  
+*** Automatic Database Diagnostic Monitor(ADDM)
+- 自動データベース診断モニター
+  ある程度のパフォーマンス分析を自動的に実施し、その分析結果をレポートとして提供する機能。
+
 *** Database Upgrade Assistant
 - 既存のDBを新しいリリースのDBへアップグレードする際に使うツール
 *** Oracle Application Express
@@ -911,11 +1023,11 @@
   12cでサポートが終了。
 *** Oracle Spatial
 - Oracleのファンクションとプロシージャを統合した製品で、空間データの格納、アクセスおよび分析を短時間で効率的に処理することを目的としている。
-*** Oracle Statsack
+*** Oracle Statspack
 - 
   パフォーマンス上の問題点を診断するツール。
   Oracle 8iから提供されている。
-  10gでは自動ワークロードリポジトリ(AWR)が提供されたため、マニュアルから削除されているが、能自体は存続している。
+  10gでは自動ワークロードリポジトリ(AWR)が提供されたため、マニュアルから削除されているが、機能自体は存続している。
 *** Oracle SQL Developer
 - GUIツール。
   $ORACLE_HOME/sqldeveloper中に、sqldeveloper.shがあるので起動。
@@ -938,6 +1050,27 @@
   SQLとXMLの両方のデータ・モデルの相互運用を可能にすることで、ネイティブなXMLサポートを提供する。
 *** Recovery Manager / RMAN
 - https://docs.oracle.com/cd/E16338_01/backup.112/b56269/toc.htm
+**** Commands
+***** BACKUP
+- バックアップ実行
+***** CONFIGURE
+- 初期設定
+***** CONNECT
+***** EXIT
+***** RECOVERY
+- リカバリ
+***** RESTORE
+- リストア
+***** RMAN
+***** RUN
+***** SHOW
+- 設定表示
+****** SHOW ALL
+***** SPOOL
+**** RMAN Sub Query
+**** Recovery Catalog View
+**** Link
+- [[http://docs.oracle.com/cd/E16338_01/backup.112/b56270/toc.htm][Oracle® Databaseバックアップおよびリカバリ・リファレンス 11gリリース2(11.2)]]
 *** TKPROF
 ** Error
 *** ORA-00942
@@ -954,7 +1087,8 @@
 - LOB列のセグメントがあるが、表セグメントは異なる表領域にある
   削除しようとした表領域には、表のLOB列のセグメントがあるが、表セグメントがない。
   表を削除してから、表領域の削除を再実行する必要がある。
-
+** Reference
+- [[file:OracleDB_Reference.org][OracleDB_Reference.org]]
 ** Glossary
 *** ADR
 - Automatic Diagnostic Repository 自動診断レポジトリ
@@ -1121,6 +1255,10 @@
   オプティマイザが利用されるのはハードパースの場合のみ。
   オプティマイザのアウトプットとして「問合せ実行計画(QEP:QueryExecutionPlan)」が作成される。
   その結果をソースジェネレータが受け取り、必要なデータ構造を生成する。
+*** Latch ラッチ
+- SGAのメモリー構造を保護するためにOracleで使用される下位レベルの内部ブロック。
+  サーバープロセスやバックグラウンドプロセスは、メモリー情報が変更されないように、非常に短い時間ラッチを獲得する。
+  目的はロックと同じだが、ユーザーに見せるのがロック、ユーザーに見せないのがラッチ。
 ** Memo
 *** 他システムとの違い
 **** 空文字/Null
@@ -1280,6 +1418,9 @@
 **** PL/SQL
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56260/toc.htm][Oracle® Database PL/SQL言語リファレンス 11gリリース2 (11.2)]]
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56262/toc.htm][Oracle® Database PL/SQLパッケージおよびタイプ・リファレンス 11g リリース2(11.2)]]
+**** Backup/Recovery
+- [[https://docs.oracle.com/cd/E16338_01/backup.112/b56269/toc.htm][Oracle Databaseバックアップおよびリカバリ・ユーザーズ・ガイド 11g リリース2(11.2)]]
+- [[http://docs.oracle.com/cd/E16338_01/backup.112/b56270/toc.htm][Oracle® Databaseバックアップおよびリカバリ・リファレンス 11gリリース2(11.2)]]
 **** Reference
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/toc.htm][Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
   

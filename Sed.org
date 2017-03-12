@@ -154,7 +154,6 @@
 
 ** Meta Characters
 ** etc
-
 - The slash as a delimiter
   習慣的に/(slash)をデリミタに使う場合が多いが、特にスラッシュである必要はない。
     ex) _の場合： sed 's_/usr/local/bin_/common/bin_' <old >new

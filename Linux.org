@@ -329,6 +329,13 @@
   - restart
   - status
   
+** Tools
+*** DRBD
+- Distributed Replicated Block Device
+  分散ストレージシステム。
+  HAクラスタで使うのが一般的。
+  RAID1に似ているあ、ネットワーク上で動作する。
+  中・小規模システム向けで、大規模構成には向いていない可能性を考慮する必要がある。
 ** Environment Variables
 - 
   see list with "printenv"
@@ -378,8 +385,16 @@
 
 **** Ubuntu
 
+**** Obsoletes
+***** KNOPIX
 *** Red Hat
+**** Fedora
+**** RHEL
+- テスト済みFedoraをベースに安定させた。
+- 
+  [[https://access.redhat.com/ja/node/16476][Red Hat Enterprise Linux のリリース日と収録カーネルの一覧 - redhat]]
 **** CentOS
+- RHELのクローン
 ***** Memo
 ****** host名の変更
 - centos7
@@ -388,15 +403,51 @@
   "/etc/sysconfig/network"を編集
 - temporary
   hostname newhostname.newdomainname
-**** RHEL
-- 
-  [[https://access.redhat.com/ja/node/16476][Red Hat Enterprise Linux のリリース日と収録カーネルの一覧 - redhat]]
-
+**** Scientific Linux
+- RHELのクローン
+**** Obsoletes
+***** Mandriva Linux
+***** Yellow Dog Linux
+- FedoraベースでPowerPC用。
 *** Slackware
+**** Slackware
+**** Puppy Linux
+**** openSUSE
+**** SUSE linux Enterprise Server
+- コミュニティによるテスト済みopenSUSEをベースに安定させた商用Dist。
+*** Arch系
+**** Arch
+*** Gentoo系
+**** Gentoo
+**** Chromium OS
 *** Etc
 **** CoreOS
-**** Arch
-**** Gentoo
+**** LFS / Linux From Scratch
+***** Link
+- [[http://www.linuxfromscratch.org/lfs/][linux from scratch]]
+- [[http://lfsbookja.osdn.jp/][LFSブック日本語版(lfsbookja)]]
+*** Link
+- [[https://wiki.archlinuxjp.org/index.php/Arch_%E3%81%A8%E4%BB%96%E3%81%AE%E3%83%87%E3%82%A3%E3%82%B9%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E6%AF%94%E8%BC%83#Gentoo.2FFuntoo_Linux][Arch と他のディストリビューションの比較 - archlinux]]
+** Desktop Environment
+*** Unity
+- Ubuntu
+*** GNOME
+- Debian
+- Fedora
+- RHEL
+- Ubuntu GNOME
+*** KDE
+- Kubuntu
+- openSUSE
+*** Cinnamon
+- Linux Mint
+*** MATE
+- Linux Mint
+- Ubuntu MATE
+*** Xfce
+- Xubuntu
+*** LXDE/LXQt
+- Lubuntu
 ** Package Management
 *** apt
 **** aptitude
@@ -505,6 +556,8 @@
   Multiple packages can be specified on the command line.
 ****** -u, --upgrades
 - Restrict or filter output to packages that are out-of-date on the local system.
+****** -i, --info
+- Display information on a given package.
 ***** Remove Options
 ****** -c, --cascade
 - Remove all target packages, as well as all packages that depend on one or more target packages.
@@ -517,7 +570,10 @@
 ****** -u, --sysupgrade
 - Upgrades all packages that are out-of-date.
   Each currently-installed package will be examined and upgraded if a newer package exists.
+****** -i, --info
+- Display information on a given sync database package.
 ***** Database Options
+****** --k, --check
 ***** File Options
 ****** -y, --refresh
 ****** -l, --list
@@ -526,6 +582,20 @@
 ****** -x, --regex
 ****** -o, --owns
 ****** -q, --quiet
+**** Memo
+***** Usage
+****** Installing packages
+- pacman -S package_name1 package_name2
+****** Removing packages
+- pacman -R package_name
+****** Upgrading packages
+- pacman -Syu
+****** Search packages
+- pacman -Ss string1 string2 ...
+- (local) pacman -Qs string1 string2 ...
+****** Display information
+- pacman -Si package_name
+- (local) pacman -Qi package_name
 **** Link
 - [[https://www.archlinux.org/pacman/pacman.8.html][pacman(8) Manual Page]]
 - [[https://wiki.archlinuxjp.org/index.php/Pacman][pacman - archlinux]]

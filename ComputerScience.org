@@ -1,22 +1,22 @@
 * Computer Science
 ** Glossary
 *** Type safe
-- Œ^ˆÀ‘S«
+- å‹å®‰å…¨æ€§
   http://postd.cc/what-is-type-safety/
 *** Memory safe
-- ƒƒ‚ƒŠˆÀ‘S«
-*** Liskov substitution principle ƒŠƒXƒRƒt‚Ì’uŠ·Œ´—
-- ƒIƒuƒWƒFƒNƒgwŒüƒvƒƒOƒ‰ƒ~ƒ“ƒO‚É‚¨‚¯‚é”h¶Œ^‚Ì’è‹`‚ÌˆêíB
+- ãƒ¡ãƒ¢ãƒªå®‰å…¨æ€§
+*** Liskov substitution principle ãƒªã‚¹ã‚³ãƒ•ã®ç½®æ›åŸç†
+- ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆæŒ‡å‘ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°ã«ãŠã‘ã‚‹æ´¾ç”Ÿå‹ã®å®šç¾©ã®ä¸€ç¨®ã€‚
   
 ** Memo
 *** Evaluation
 **** normal-order evaluation
-- ³‹K‡˜‚Ì•]‰¿
-  Š®‘S‚É“WŠJ‚µAŠÈ–ñ‚·‚é
+- æ­£è¦é †åºã®è©•ä¾¡
+  å®Œå…¨ã«å±•é–‹ã—ã€ç°¡ç´„ã™ã‚‹
 
 **** applicative-order evaluation
-- ì—p“I‡˜‚Ì•]‰¿
-  ˆø”‚ğ•]‰¿‚µAì—p‚³‚¹‚é
+- ä½œç”¨çš„é †åºã®è©•ä¾¡
+  å¼•æ•°ã‚’è©•ä¾¡ã—ã€ä½œç”¨ã•ã›ã‚‹
 
 *** bound variable
 - 
@@ -38,13 +38,18 @@
 **** Kind
 - [[https://en.wikipedia.org/wiki/Scope_(computer_science)][Scope (computer science)]]
 ***** Lexical/Static Scope 
-- š‹å‚ğ‰ğÍ‚µ‚½“_‚ÅƒXƒR[ƒv‚ªŒˆ’è‚·‚éB
-  ƒ\[ƒX‚Ì\‘¢‚ÅŠO˜giŠO‘¤‚ÌŠÂ‹«j‚ªŒˆ’è‚·‚éB
+- å­—å¥ã‚’è§£æã—ãŸæ™‚ç‚¹ã§ã‚¹ã‚³ãƒ¼ãƒ—ãŒæ±ºå®šã™ã‚‹ã€‚
+  ã‚½ãƒ¼ã‚¹ã®æ§‹é€ ã§å¤–æ ï¼ˆå¤–å´ã®ç’°å¢ƒï¼‰ãŒæ±ºå®šã™ã‚‹ã€‚
 ***** Dynamic Scope
-- Ã“IƒXƒR[ƒv‚É‰Á‚¦AÀs‚ÉeqŠÖŒW‚Ìq‘¤‚©‚çe‘¤‚ÌƒXƒR[ƒv‚ğQÆ‚Å‚«‚éƒXƒR[ƒvB
-  ‚±‚Ì‚Æ‚«QÆ‚³‚ê‚é‚Ì‚ÍAeqŠÖŒW‚ğe‘¤‚É’H‚èA‚æ‚è‹ß‚¢ƒuƒƒbƒN‚É‚ ‚é•Ï”B
+- é™çš„ã‚¹ã‚³ãƒ¼ãƒ—ã«åŠ ãˆã€å®Ÿè¡Œæ™‚ã«è¦ªå­é–¢ä¿‚ã®å­å´ã‹ã‚‰è¦ªå´ã®ã‚¹ã‚³ãƒ¼ãƒ—ã‚’å‚ç…§ã§ãã‚‹ã‚¹ã‚³ãƒ¼ãƒ—ã€‚
+  ã“ã®ã¨ãå‚ç…§ã•ã‚Œã‚‹ã®ã¯ã€è¦ªå­é–¢ä¿‚ã‚’è¦ªå´ã«è¾¿ã‚Šã€ã‚ˆã‚Šè¿‘ã„ãƒ–ãƒ­ãƒƒã‚¯ã«ã‚ã‚‹å¤‰æ•°ã€‚
 *** Order of growth
 
 **** Big O
 
 **** Theta
+*** Two Hard Things
+- 
+  There are only two hard things in Computer Science:
+  cache invalidation and naming things.
+  -- Phil Karlton

@@ -1,0 +1,42 @@
+* Spring Framework
+** About
+- Javaプラットフォーム向けのオープンソース・アプリケーションフレームワーク。
+  特定のプログラミングモデルを強制するものではないが、EJBモデルと代替・置換・追加として広く認知されつつある。
+** APIs
+*** 4.3.6
+- [[http://docs.spring.io/spring/docs/current/javadoc-api/][Spring Framework 4.3.6 RELEASE API]]
+**** Packages
+***** org.springframework.beans.factory
+****** Interfaces
+******* BeanFactory
+******** Fields
+******** Methods
+********* getBean(Class<T> requiredType)
+- Return the bean instance that uniquely matches the given object type, if any.
+******* ListableBeanFactory
+******** Fields
+******** Methods
+***** org.springframework.context
+****** Interfaces
+******* ConfigurableApplicationContext
+******* ApplicationContext
+- public interface ApplicationContext extends EnvironmentalCapable, ListableBeanFactory, HierarchicalBeanFactory, MessageSource, ApplicationEventPublisher, ResourcePatternResolver
+- Central interface to provide configuration for an application.
+******** Fields
+******** Methods
+***** org.springframework.stereotype
+****** Annotations
+******* Component
+- Indicates that an annotated class is a "Component".
+******* Controller
+- Indicates that an annotated class is a "Controller"
+******* Repository
+- Indicates that an annotated class is a "Repository"
+******* Service
+- Indicates that an annotated class is a "Service"
+** Link
+- [[http://projects.spring.io/spring-framework/][spring]]
+- [[http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/][Spring Framework Reference Documnetation]]
+- [[http://docs.spring.io/spring/docs/current/javadoc-api/][Spring Framework 4.3.6 RELEASE API]]
+- [[http://dev.classmethod.jp/series/spring-framework/][連載 Spring framework – シリーズ – - Developers.IO]]
+

@@ -33,11 +33,11 @@
 *** help
 *** history
 *** jobs
-- ŽÀs’†‚ÌƒWƒ‡ƒu‚ð•\Ž¦‚·‚éB
+- å®Ÿè¡Œä¸­ã®ã‚¸ãƒ§ãƒ–ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
   jobs [-lrs] [%jobid]
 
 - -l
-  ƒvƒƒZƒXID‚à•\Ž¦‚·‚é
+  ãƒ—ãƒ­ã‚»ã‚¹IDã‚‚è¡¨ç¤ºã™ã‚‹
 
 *** kill
 *** let

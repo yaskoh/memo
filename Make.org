@@ -279,7 +279,7 @@
 
 *** Link
 - [[https://www.gnu.org/software/make/manual/][GNU Make Manual]]
-- [[http://quruli.ivory.ne.jp/document/make_3.79.1/make-jp_toc.html#SEC_Contents][目次 - GNU Make Manual 日本語訳]]
-- [[http://www.ecoop.net/coop/translated/GNUMake3.77/make_toc.jp.html][GNU Make 再コンパイル作業を制御するプログラム Version 3.77 May 1998]]
+- [[http://quruli.ivory.ne.jp/document/make_3.79.1/make-jp_toc.html#SEC_Contents][逶ｮ谺｡ - GNU Make Manual 譌･譛ｬ隱櫁ｨｳ]]
+- [[http://www.ecoop.net/coop/translated/GNUMake3.77/make_toc.jp.html][GNU Make 蜀阪さ繝ｳ繝代う繝ｫ菴懈･ｭ繧貞宛蠕｡縺吶ｋ繝励Ο繧ｰ繝ｩ繝 Version 3.77 May 1998]]
 ** nmake
 ** Borland make
