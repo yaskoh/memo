@@ -367,6 +367,18 @@
   オブジェクトの有効期間を指定して生成することができる。
   
 *** JAX-RS
+- RESTアーキテクチャに基づくWebサービスのための機能を提供するJava言語のAPI。
+  リソースクラス（POJOのJavaクラス）をWebリソースにマッピングするのを助けるアノテーションを提供する。
+  JAX-RS自体はAPIであり、実装は別。
+**** 実装
+***** Apache CXF
+- Webサービスフレームワーク
+***** Jersey
+- オラクル(Sun)によるリファレンス実装
+***** RESTeasy
+***** WebSphere Application Server
+**** Link
+- [[https://backpaper0.github.io/ghosts/jaxrs-getting-started-and-practice.html#60][JAX-RS入門および実践]]
 ** Glossary
 *** Deployment Descriptor, DD
 - デプロイメント記述子

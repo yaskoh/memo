@@ -62,3 +62,6 @@
 - 
   特権を持つユーザグループ
   http://superuser.com/questions/191955/what-is-the-wheel-user-in-os-x
+*** 「開発元が未確認のため開けません」の対処
+- Ctrl+クリック、で開く
+- 「セキュリティとプライバシー」から許可設定をする
