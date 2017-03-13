@@ -44,3 +44,6 @@
 
 - [[http://php.net/manual/en/index.php][PHP Manual]]
 - [[http://www.objective-php.net/mvc/index/][MVCフレームワーク - Objective-PHP.net]]
+
+
+- [[http://blog.tokumaru.org/2014/12/phpphp.html][『例えば、PHPを避ける』以降PHPはどれだけ安全になったか - 徳丸浩の日記]]

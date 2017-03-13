@@ -1,7 +1,7 @@
 * Spring Framework
 ** About
 - Javaプラットフォーム向けのオープンソース・アプリケーションフレームワーク。
-  特定のプログラミングモデルを強制するものではないが、EJBモデルと代替・置換・追加として広く認知されつつある。
+  特定のプログラミングモデルを強制するものではないが、EJBモデルの代替・置換・追加として広く認知されつつある。
 ** APIs
 *** 4.3.6
 - [[http://docs.spring.io/spring/docs/current/javadoc-api/][Spring Framework 4.3.6 RELEASE API]]
