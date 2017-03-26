@@ -1399,6 +1399,14 @@
   - http://www.shift-the-oracle.com/table/external-table-practice.html
   - http://otn.oracle.co.jp/otn_pl/otn_tool/code_detail?n_code_id=203
   - http://d.hatena.ne.jp/replication/20130408/1366426828
+** News
+*** 2017/1/24 ライセンス体系
+- AWS, Azureにおけるクラウド環境でのコア係数を変更。実質的に値上げ。
+  マルチコアプロセッサ向けの適用係数から、他社クラウドサービスを外した。
+  http://www.oracle.com/jp/store/cloud-lic-170290-ja.pdf
+*** 2016/3/1 SE1の廃止
+- Standard Edition Oneを廃止し、Standard Editionの内容を変更したStandard Edition 2に一本化。
+  実質的に値上げに。
 ** Link
 *** Oracle 11.2
 - [[http://docs.oracle.com/cd/E16338_01/nav/portal_booklist.htm][Oracle® Databaseオンライン・ドキュメント・ライブラリ 11g リリース2 (11.2) すべてのドキュメント]]

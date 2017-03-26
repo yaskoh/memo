@@ -293,15 +293,22 @@
 **** 踏み台
 **** ウィルス感染
 *** News
-**** DigiNoater(2011)
-- オランダの認証局
+**** Apache Struts 2の脆弱 S2-045(2017/3/9)
+- 影響を受けるバージョン
+  Apache Struts 2.3.5 - 2.3.31, 2.5 - 2.5.10
+***** Link
+- [[https://www.ipa.go.jp/security/ciadr/vul/20170308-struts.html][Apache Struts2 の脆弱性対策について(CVE-2017-5638)(S2-045) - IPA]]
+- [[https://www.jpcert.or.jp/at/2017/at170009.html][Apache Struts 2 の脆弱性 (S2-045) に関する注意喚起 - JPCERT]]
 **** Ransomware対策(2015/11/11)
 - 
   ランサムウェアが猛威を振るっている。
   セキュリティ対策としては、バックアップを取ることが、現在一番重要。
 
-- 
+**** DigiNoater(2011)
+- オランダの認証局
 ** Link
+- [[https://jvn.jp/index.html][JVN Japan Volnerability Notes]]
+
 - [[http://d.hatena.ne.jp/Kango/][piyolog]] 
 - [[http://krebsonsecurity.com/][Krebs on Security]]
 - [[https://the01.jp/][THE ZERO/ONE]]

@@ -9,6 +9,7 @@
 *** Unix
 **** /etc/resin/
 ***** resin.properties
+- Configuration properties
 ***** resin.xml
 ***** licenses/
 ***** keys/
@@ -34,17 +35,66 @@
 - default deployment directory
 **** logs/
 - logs
-** Configuration
-*** resin.properties
+** Manual
+*** admin/configuration
+**** Configuration
+***** resin.properties
 - http://caucho.com/resin-4.0/admin/config-resin-properties.xtp
-*** resin.xml
-**** Properties
-***** cluster
-****** id="app"
-******* host-default
-******** web-app-deploy
-**** Link
+***** resin.xml
+****** Properties
+******* cluster
+******** id="app"
+********* host-default
+********** web-app-deploy
+****** Link
 - http://caucho.com/resin-4.0/admin/config-resin-xml.xtp
+**** Logging
+***** Overview
+- using "java.util.logging"
+- Resin uses the JDK standard java.util.logging for all its internal logging,
+  and configuration for the logging format and the logging level.
+***** Log names
+****** ""
+- Debug everything
+****** com.caucho.ejb
+- EJB handling
+****** com.caucho.jsp
+- Debug jsp
+****** com.caucho.java
+****** com.caucho.server.port
+****** com.caucho.server.http
+****** com.caucho.server.webapp
+****** com.caucho.server.cache
+****** com.caucho.sql
+****** com.caucho.transaction
+***** Log level
+****** off
+****** severe
+****** warning
+****** info
+****** config
+****** fine
+****** finner
+****** finest
+****** all
+**** Web Server
+***** HTTP server
+***** Virtual Hosts
+***** Web Applications
+***** Proxy Cache
+*** development
+*** Reference
+**** <logger>
+***** Parents
+- child of <resin>, <cluster>, <host>, <web-app>
+***** Attributes
+****** level
+- the java.util.logging level: finest, finer, fine, config, info, warning, severe
+- default : info
+****** name
+- the java.util.logging name, typically a classname
+****** use-parent-handlers
+- if true, parent handlers are also invoked
 ** Deployment
 *** Webapps Directory
 - Copy a .war file containing application to a webapps directory.
