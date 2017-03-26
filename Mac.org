@@ -1,6 +1,5 @@
 * Mac
 ** Framework
-
 - Cocoa Framework
   Foundation
   AppKit(GUI)
@@ -11,6 +10,20 @@
 - Carbon
   (XCode 4以降はサポートされず)
 
+** Tools
+*** brew
+**** Synopsis
+- brew --version
+- brew command [--verbose|-v} [options] [formula] ...
+**** Commads
+- install formula
+- remove formula
+- update
+- list
+- search text|/text/
+- audit
+- tap <user/repo>
+  taps a formula repository from GitHub using HTTPS.
 ** Memo
 *** NSSObject
 - 

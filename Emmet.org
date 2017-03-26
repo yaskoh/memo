@@ -1,50 +1,52 @@
 * Emmet
-** Abbreviations
-*** Syntax
-**** Elements
-- Any names to generate HTML tags.
-**** Nesting operators
-***** Child: >
-- nest elements inside each other
-***** Sibling: +
-- place elements near each other, on the same level.
-***** Climb-up: ^
-- climb one level up by each one operator, and can use as many as you want.
-***** Multiplication: *
-- define elements many times
-***** Grouping: ()
-**** Attribute operators
-***** ID: #id
-***** CLASS: .class
-***** Custom attributes: [attr]
-- adding custom attributes
-***** Item numbering: $
-- with multiplicaton * operator, being able to repeat elements,
-  also with $, you can number them.
-****** Numberning base: $@n
-- ex: li.item$@3*5
-****** Reverse Direction: $@-
-- ex: li.item$@-*5
-****** Reverse with base: $@-n
-**** Text: {}
+** About
 *** Element types
 **** Snippets
 **** Abbreviations
 **** Aliases
-*** Implicit Tag Name
-**** li
-- under ul, ol
-**** tr
-- under table, tbody, thread, tfoot
-**** td
-- under tr
-**** option
-- under select, optgroup
-**** memo
-- on emacs, it works only as <div>
 *** "Lorem Ipsum" generator
 - lorem(num)
-** CSS Abbreviations
+** Syntax
+*** Elements
+- Any names to generate HTML tags.
+*** Nesting operators
+**** Child: >
+- nest elements inside each other
+**** Sibling: +
+- place elements near each other, on the same level.
+**** Climb-up: ^
+- climb one level up by each one operator, and can use as many as you want.
+**** Multiplication: *
+- define elements many times
+**** Grouping: ()
+*** Attribute operators
+**** ID: #id
+**** CLASS: .class
+**** Custom attributes: [attr]
+- adding custom attributes
+**** Item numbering: $
+- with multiplicaton * operator, being able to repeat elements,
+  also with $, you can number them.
+***** Numberning base: $@n
+- ex: li.item$@3*5
+***** Reverse Direction: $@-
+- ex: li.item$@-*5
+***** Reverse with base: $@-n
+**** Text: {}
+**** Implicit Tag Name
+***** li
+- under ul, ol
+***** tr
+- under table, tbody, thread, tfoot
+***** td
+- under tr
+***** option
+- under select, optgroup
+***** memo
+- on emacs, it works only as <div>
+** Abbreviations
+*** HTML Abbreviation
+*** CSS Abbreviations
 ** Alias
 *** HTML
 **** !

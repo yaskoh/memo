@@ -6,6 +6,8 @@
   性能に優位性が見られる。
 *** Link
 - [[http://marui.hatenablog.com/entry/20120221/1329823079][なぜ僕らはJuliaを作ったか（翻訳） - 丸井綜研]]
+** 2011- : Frege
+- Haskell on JVM
 ** 2011- : Kotlin
 - 静的型付けのオブジェクト指向プログラミング言語。Java仮装マシン上で動く。
 ** 2011- : Elixir
