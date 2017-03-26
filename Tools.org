@@ -336,6 +336,17 @@
 - [[https://www.google.com/intl/ja_jp/analytics/][Google Analytics]]
 - [[https://developers.google.com/analytics/][Googleアナリティクス]]
 - [[https://liginc.co.jp/web/seo/107795][Googleアナリティクスの用語の意味と基本的な使い方をおさえよう - LIG INC.]]
+** Network
+*** Apache Thrift
+- Facebookに開発されたRPCフレームワーク。
+  C++, C#, Java, Perl, Python, PHP, Erlang, Rubyなどの言語観でシームレスに動作するサービス開発を可能とする。
+**** Link
+- [[https://thrift.apache.org/][Apache Thrift]]
+*** Apache ZooKeeper
+- 設定情報の集中管理や名前付けなどのサービスを提供するソフトウェア。
+  分散システムの
+**** Link
+- [[https://zookeeper.apache.org/][Apache ZooKeeper]]
 ** CI
 *** Jenkins
 *** TravisCI
@@ -381,6 +392,7 @@
 **** MacPorts
 - [[https://www.macports.org/][The MacPorts Project Official Homepage]]
 **** Fink
+
 ** C
 ** Java
 - 
@@ -457,6 +469,7 @@
 **** PSGI
 - 
   PHP版WSGI
+
 
 ** Posix互換
 *** Cygwin

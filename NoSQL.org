@@ -118,7 +118,7 @@
 - [[http://hbase.apache.org/book.html][Apache HBase Rference Guide]]      
 
 **** Apache Cassandra
-
+- [[file:Cassandra.org][Cassandra.org]]
 *** Document / ドキュメント指向
 **** MongoDB
 ***** 特徴
@@ -136,7 +136,6 @@
   32bit OSでは、mongodbのver3はインストールできない。
   32bitのubuntuではダメで、64bit版のdebianでダウンロードしたら取得できた。
   
-
 **** Couchbase
 
 *** Key-Value / キー・バリュー

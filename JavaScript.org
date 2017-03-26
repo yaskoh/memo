@@ -24,6 +24,8 @@
 ****** Object
 ******* Object Object
 ******** Constructor Properties
+********* Object.length
+********* Object.prototype
 ******** Constructor Methods
 ******* Object Instance / Object.prototype
 ******** Properties
@@ -34,13 +36,56 @@
 ******** Methods
 ********* Object.prototype.hasOwnProperty()
 - 指定したプロパティが、プロトタイプチェーンを通じて継承されたものではなくオブジェクトが直接持っているプロパティかどうかを示す真偽値を返す。
+********* Object.prototype.isPrototypeOf()
+- 指定したオブジェクトが、このメソッドを呼び出した元であるオブジェクトのプロトタイプチェーンにあるかどうかを示す真偽値を返す。
+********* Object.prototype.propertyIsEnumerable()
+- 内部のEMCAScript[ [ Enumerable] ]属性ね設定状態を示す真偽値を返す。
 ********* Object.prototype.propertyIsEnumerable()
 - 内部のECMAScript[ [Enumerable] ]属性の設定状態を表す真偽値を返す。
 ********* Object.prototype.toLocaleString()
 - toString()を呼び出す。
 ********* Object.prototype.toString()
 - 指定したオブジェクトを表す文字列を返す。
+********* Object.prototype.valueOf()
+- 指定したオブジェクトのプリミティブ値を返す。プリミティブな値を持たない場合、オブジェクト自身を返す。
+  オブジェクトをプリミティブな値に変換するときに呼び出す関数。
+  
 ****** Function
+- return文がない、return文で明示的に戻り値を指定しない場合などはundefinedが返る。
+******* Constructor
+- Syntax:
+  new Function ([arg1[, arg2[, ...argN]],] functionBody)
+- 一般的にFunction()コンストラクタを直接使用しない。
+  eval()を使って関数本体を解析するため、無駄なオーバーヘッドが発生するとみなされるため。
+  また、コンストラクタで生成された関数はクロージャを生成せず、スコープチェーンにはグローバルスコープのみが与えられる。
+  new演算子を用いる場合と用いない場合で、動作は変わらない。
+******* Function Object
+******** Properties
+********* Function.arguments
+- 非推奨。代わりにargumentsオブジェクトを使用する。  
+********* Function.length
+******* Function Instance
+******** Properties
+******** Metohds
+********* Function.prototype.apply()
+- Syntax :
+  fun.apply(thisArg[, argsArray])
+- thisArgをthisとしてfunに渡す。
+  Arrayの形で、argsArrayを引数として取る。
+********* Function.prototype.call()
+- Syntax :
+  fun.call(thisArg[, arg1[, arg2[, ...]]])
+- thisArgをthisとしてfunに渡す。
+  カンマ区切りの引数を取る。
+********* Function.prototype.toString()
+- Syntax :
+  function.toString(indentation)
+- 関数のソースコードを表す文字列を返す。
+  Object.prototype.toStringメソッドを上書きする。
+  Geckoではindentationは禁止。
+******* Memo
+******** this, argumnets
+- thisとargumentsはすべての関数本体で利用できる。
 ****** Boolean
 ****** Symbol
 ****** Error
@@ -113,7 +158,7 @@
 ****** Intl
 ***** Other
 ****** arguments
-**** Statements 文
+**** Statements 文と宣言
 ***** Control flow 制御フロー
 ****** Block ブロック
 - 0個以上の文をグループ化するのに使う。波括弧で囲む。
@@ -147,7 +192,7 @@
   }
 ****** throw
 ****** try...catch
-***** Declarations
+***** Declarations 宣言
 ****** var
 - 変数を宣言し、その変数を初期化することもできる。
 ****** let
@@ -160,6 +205,8 @@
 ****** function
 ****** function*
 ****** return
+- 関数によって返される値を指定する。
+  関数内でreturn文を呼び出すと、関数の実行が停止する。
 ****** class
 ***** Iterations
 ****** do...while
@@ -177,11 +224,15 @@
 ****** import
 ****** label
 **** Expressions and operators 式と演算子
-***** Primary expressions
+***** Primary expressions 基本式
 ****** this
+- 関数の実行コンテキストを参照する。
 ****** function
+- 関数式を定義する
 ****** class
+- クラス式を定義する
 ****** function*
+- ジェネレータ関数式を定義する
 ****** yield
 ****** yield*
 ****** []
@@ -290,6 +341,16 @@
 ****** ,
 **** Functions 関数
 ***** arguments
+- 関数へ渡された引数に対応するArrayのようなオブジェクト。Arrayとは異なる。
+  すべての関数内で利用可能なローカル変数。
+****** Properties
+******* arguments.callee
+- 現在実行している関数を示す
+******* arguments.caller
+- 現在実行している関数を呼び出した関数を示す。
+******* arguments.length
+- 定義されたパラメータの数でなく、実行時に実際に渡された引数の数を返す。
+  定義上は2つの引数を定義していても、3つの引数を呼び出し時に渡した場合は"3"を返す。
 ***** Arrow functions アロー関数
 - 
   匿名関数。function式と比べてより短い構文を持ち、thisの値を語彙的に束縛数r。
@@ -482,7 +543,38 @@
 ******* XMLHttpRequest.state
 ****** Event
 ******* onreadystatechange
-**** Etc
+**** Misc.
+***** Lexical grammer 字句文法
+****** Control characters 制御文字
+****** White spaceホワイトスペース
+****** Line terminators ラインターミネータ
+****** Comments コメント
+****** Keywords キーワード
+****** Literal リテラル
+******* Null literal / NULLリテラル
+- null
+******* Boolean literal / Booleanリテラル
+- true
+- false
+******* Numeric literal / Numericリテラル
+******** Decimal
+******** Binary
+******** Octal
+******** Hexadecimal
+******* Object literals / オブジェクトリテラル
+- 
+  プロパティ名とそれに関連付けられたオブジェクトの値との0個以上の組が波括弧{}で囲まれたもの。
+
+- ex)
+  var car = { myCar: "Saturn", getCar: carTypes("Honda"), special: sales };
+******* Array literals 配列リテラル
+******* String literals /文字列リテラル
+******** Hexadecimal escape sequences / 16進数エスケープシーケンス
+******** Unicode escape sequences / Unicodeエスケープシーケンス
+******** Unicode code point escapes / Unicodeコードポイントエスケープ
+******* Regular expression literals / 正規表現リテラル
+******* Template literals / テンプレートリテラル
+****** Automatic semicolon insertion (ASI) / 自動セミコロン挿入
 *** ECMAScript 2016
 **** data Types and values
 *** ES5.1
@@ -566,6 +658,53 @@
 - [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
 *** XMLHttpRequest
 - [[https://xhr.spec.whatwg.org/][XMLHttpRequest - Living Standard]]
+*** Memo
+**** Objects
+***** Properties
+****** Data property
+******* [ [Value] ]
+******* [ [Writable] ]
+******* [ [Enumerable] ]
+- If true, the property will be enumerated in for...in loops.
+- Type : Boolean
+- Defalut : false
+******* [ [Configurable] ]
+****** Accessor property
+******* [ [Get] ]
+******* [ [Set] ]
+******* [ [Enumerable] ]
+- If true, the property will be enumerated in for..in loops.
+- Type : Boolean
+- Default : false
+******* [ [Configurable] ]
+**** Constructor コンストラクタ
+- オブジェクトを作成し、初期化する関数オブジェクト(Functionオブジェクト)。
+  それぞれのコンストラクタは、関連付けされたプロトタイプオブジェクトを持っていて、継承や共有プロパティを実装するために利用できる。
+  また、同じコンストラクタから生成されたオブジェクトは、プロトタイプオブジェクトを共有する。
+- constructorプロパティ
+  - コンストラクタ関数を使ってオブジェクトを生成すると、constructorプロパティが自動生成される。
+**** Property プロパティ
+***** ドット記法、ブラケット記法
+- 
+  オブジェクトのプロパティは、ドット記法もしくはブラケット記法でアクセスできる。
+  通常はドット記法を用いる。ブラケット記法は、どうしても使用しなければならない場合、使用した方が便利な場合などのみに利用を限定する。
+  （プロパティ名を動的に作る場合や、不正なプロパティ名やjsの予約語のプロパティの場合など)
+- 例:
+  - ドット記法
+    cody.living = true;
+  - ブラケット記法
+    cody["living"] = false;
+- ブラケット記法が生きる例
+  var foobarObject = { foobar: 'foobar'};
+  var string1 = 'foo'; var string2 = 'bar';
+  console.log(foobarObject[string1 + string2]);
+  
+***** 参照の解決
+- オブジェクト内に存在しないプロパティにアクセスしようとする場合、常にプロトタイプチェーンを辿ってプロパティを探し当てようとする。
+  
+**** ホストオブジェクト
+- Webブラウザ環境ではwindowsオブジェクトと、windowsオブジェクトに保持されているすべてのオブジェクト(ネイティブオブジェクトを除く)。
+  ECMAScript標準の一部ではなく、JavaScript言語仕様とホストオブジェクトの間には何も関係がない。
 ** Grammer 文法
 *** Fundamentals Memo
 - 文の終了は;(Semicolomn)
@@ -599,12 +738,15 @@
   大文字・小文字を区別する。
 
 ****** Scope スコープ
-- グローバル（大域）変数
+- グローバルスコープ、グローバル（大域）変数
   関数の外側で宣言すると、どのコードからも使用できる。
-- ローカル（局所）変数
+- ローカルスコープ、（局所）変数
   関数の内部で宣言すると、関数の中のみで使用できる。
-- ブロック文
-  ブロックを内包しているコードに局所化される。
+- evalスコープ
+- ブロックスコープ
+  ブロックを内包しているコードに局所化される。if, for文など。
+  本来のjs・varによる変数はブロックスコープを持たなかったが、
+  JS5で導入されたlet/constはブロックスコープを持つ。
 
 **** Control flow 条件式
 ***** 条件文
@@ -996,6 +1138,8 @@
 - 
   関数内で宣言されたローカル変数は、すべてその関数の先頭で宣言されたものとみなされる。
   したがって、関数で使用されるローカル変数は、関数の先頭で宣言を行うようにすることで、間違いを視覚的に減らす。
+- 巻き上げられた場合、変数定義はスコープの最初に行われるが、変数への代入は行われない。
+  また、let/constは巻き上げが行われ、変数定義は行われるが、参照は実際の変数定義が行われるところまで行えない。
 
 - ex
   var myname = "global";
@@ -1022,20 +1166,6 @@
 ***** null
 ***** undefine
 **** Object
-*** Literal
-**** Arary literal
-**** Boolean literal
-**** Floating-point literals
-**** Integers
-**** Object literals
-- 
-  プロパティ名とそれに関連付けられたオブジェクトの値との0個以上の組が波括弧{}で囲まれたもの。
-
-- ex)
-  var car = { myCar: "Saturn", getCar: carTypes("Honda"), special: sales };
-
-**** RegExp literals
-**** String literals
 *** API仕様
 **** CommonJS
 - サーバサイドを開発するために生まれた標準APIの仕様で、元はServerJSという名前だった。
@@ -1097,56 +1227,9 @@
 - 管理者ツールのconsoleを利用する
   管理者ツールを立ち上げて、consoleを利用する。
   
-** Glossary
-*** Objects
-**** Properties
-***** Data property
-****** [ [Value] ]
-****** [ [Writable] ]
-****** [ [Enumerable] ]
-- If true, the property will be enumerated in for...in loops.
-- Type : Boolean
-- Defalut : false
-****** [ [Configurable] ]
-***** Accessor property
-****** [ [Get] ]
-****** [ [Set] ]
-****** [ [Enumerable] ]
-- If true, the property will be enumerated in for..in loops.
-- Type : Boolean
-- Default : false
-****** [ [Configurable] ]
-*** Constructor コンストラクタ
-- オブジェクトを作成し、初期化する関数オブジェクト(Functionオブジェクト)。
-  それぞれのコンストラクタは、関連付けされたプロトタイプオブジェクトを持っていて、継承や共有プロパティを実装するために利用できる。
-  また、同じコンストラクタから生成されたオブジェクトは、プロトタイプオブジェクトを共有する。
-- constructorプロパティ
-  - コンストラクタ関数を使ってオブジェクトを生成すると、constructorプロパティが自動生成される。
-*** Property プロパティ
-**** ドット記法、ブラケット記法
-- 
-  オブジェクトのプロパティは、ドット記法もしくはブラケット記法でアクセスできる。
-  通常はドット記法を用いる。ブラケット記法は、どうしても使用しなければならない場合、使用した方が便利な場合などのみに利用を限定する。
-  （プロパティ名を動的に作る場合や、不正なプロパティ名やjsの予約語のプロパティの場合など)
-- 例:
-  - ドット記法
-    cody.living = true;
-  - ブラケット記法
-    cody["living"] = false;
-- ブラケット記法が生きる例
-  var foobarObject = { foobar: 'foobar'};
-  var string1 = 'foo'; var string2 = 'bar';
-  console.log(foobarObject[string1 + string2]);
-  
-**** 参照の解決
-- オブジェクト内に存在しないプロパティにアクセスしようとする場合、常にプロトタイプチェーンを辿ってプロパティを探し当てようとする。
-  
-*** ホストオブジェクト
-- Webブラウザ環境ではwindowsオブジェクトと、windowsオブジェクトに保持されているすべてのオブジェクト(ネイティブオブジェクトを除く)。
-  ECMAScript標準の一部ではなく、JavaScript言語仕様とホストオブジェクトの間には何も関係がない。
-** Memo@Books
-*** Javascript Enlightment
-
+*** プロトタイプチェーン、スコープチェーン
+- プロパティ（メソッド）など、オブジェクトの所有する値はプロトタイプチェーン、
+  変数（関数？）などはスコープチェーンで解決するのではないか、と思われる。
 ** Link
 - [[http://www.ecma-international.org/publications/standards/Ecma-262.htm][Standard ECMA-262 - ecma INTERNATIONAL]]
 - [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]

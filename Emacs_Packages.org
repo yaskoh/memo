@@ -1203,11 +1203,35 @@
 - [[https://common-lisp.net/project/slime/][SLIME: The Superior Lisp Interaction Mode for Emacs]]
   
 *** use-package
-
 **** Link
 - [[http://emacs.rubikitch.com/use-package-2/][use-package.el : Emacsの世界的権威が行っている最先端ラクラクinit.el整理術 - るびきち「新生日刊Emacs」]]
 - [[http://qiita.com/kai2nenobu/items/5dfae3767514584f5220][use-packageで可読性の高いinit.elを書く - Qiita]]
 
+*** web-mode
+**** KeyBindings
+***** C-c C-d : web-mode-delete-element
+***** C-c C-f : web-mode-toggle-folding
+***** C-c C-j : web-mode-duplicate-element
+***** C-c C-n : web-mode-match-tag
+***** C-c C-r : web-mode-rename-element
+**** Commands
+***** web-mode-delete-element (C-c C-d)
+- (web-mode-delete-element)
+  Delete the current HTML element
+***** web-mode-duplicate-element (C-c C-j)
+- (web-mode-duplicate-element)
+  Duplicate the current HTML element.
+***** web-mode-match-tag (C-c C-n)
+- (web-mode-match-tag)
+  Match tag
+- タグの開始タグ・終了タグへジャンプする
+***** web-mode-rename-element (C-c C-r)
+- (web-mode-rename-element)
+  Rename the current HTML element.
+***** web-mode-toggle-folding (C-c C-f)
+- (web-mode-toggle-folding)
+  Toggle folding on a block.
+- HTMLタグを折りたたむ。
 *** yasnipet
 - Tag
   ex) html, then tab

@@ -52,6 +52,7 @@
 
 ** Command
 *** psqlコマンド
+**** About
 - 
   ;(セミコロン)で1文の終わりを表す。
   SQLコマンドの使用が可能。
@@ -124,7 +125,6 @@
   バックスラッシュコマンドに関するヘルプ情報を表示する
 
 *** Client Application
-
 **** clusterdb
 - 
   PostgreSQLデータベースをクラスタ化する

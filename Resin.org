@@ -3,6 +3,9 @@
 *** resin
 **** deploy
 **** generate-password
+***** Options
+- --user
+- --password
 *** Link
 - [[http://caucho.com/resin-4.0/admin/resin-admin-command-line.xtp][command line resin administration - Resin Documentation]]
 ** Structure

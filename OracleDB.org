@@ -634,13 +634,18 @@
   Enterprise Editionと同様のソフトウェアだが、シングル環境のユーザ開発環境とデプロイメントkン今日のみサポート。
 *** 拡張インストール
 **** 製品の言語
+- ソフトウェアで使用する言語
 **** データベース構成タイプ
-- 汎用目的/トランザクション処理
-- データ・ウェアハウス
+- 以下のいずれかを選択可能。
+  - 汎用目的/トランザクション処理
+  - データ・ウェアハウス
 **** データベース構成オプション
 **** データベース管理オプション
-- 
-  Oracle Enterprise Managerを使用して、集中管理するかローカル管理するかを指定する。
+- Oracle Enterprise Managerを使用して、集中管理するかローカル管理するかを指定する。
+  - 集中管理
+    複数のターゲットを単一のインターフェースで管理できる。
+    各ホスト・各コンピュータにOracle Enterprise Management Agentを1つずつ配置する必要がある。
+  - ローカル管理
 **** リカバリ・オプション
 **** スキーマ・パスワード
 **** オペレーティング・システム・グループ
@@ -803,6 +808,8 @@
 
 *** Database Upgrade Assistant
 - 既存のDBを新しいリリースのDBへアップグレードする際に使うツール
+*** Net Configuration Assistant (NetCA)
+- リスナーとネーミング・メソッドを構成する場合に使用するユーティリティ。
 *** Oracle Application Express
 - Oracle APEX
   Oracle DatabaseのためのWebアプリケーション開発ツール。
@@ -903,43 +910,79 @@
   [[http://docs.oracle.com/cd/E16338_01/server.112/b56303/part_dp.htm][Oracle Data Pump - Oracle® Databaseユーティリティ 11gリリース2 (11.2)]]
 *** Oracle Database Configuration Assistant(DBCA)
 - テンプレートからデータベースを作成したり、独自のデータベースを作成するユーティリティ。
-**** データベース作成
+**** Create a Database / データベース作成
 ***** 起動
-- shellより"dbca"
+- shellより"dbca" ($ORACLE_HOME/bin)
 ***** Templates
 - General, Data Warehouseなどから選択
+- Template
+  - General Purpose or Transaction Processing
+  - Custom Database
+  - Data Warehouse
 ***** Identification
 - Global Database Nameを指定
 ***** Management Option
 - Enterprise Managerで管理するか否か設定する。
-  集中管理かローカル管理かを選択する。
+  - Agentが存在する場合は"Register with Grid Control ~"にチェック
+  - ローカルで管理する場合"Configure Database Control ~"にチェック
 ***** Credentials
 - パスワードなどを指定する
 ***** File Locations
-- テンプレートの位置
-- すべてに対して共通の位置。指定が必要。
-- Oracle Managed Files。
+****** Storage Type
+- File System
+- ASM
+****** Storage Locations
+- テンプレートに設定されているディレクトリ情報を利用
+- すべてデータベースファイルに対して共通の位置。指定が必要。
+- Oracle Managed Files
+  すべてのファイルに対して、「データベース領域」と呼ばれるデフォルトの場所を指定する。
+  このオプションを選択すると、データベースファイルの管理を
 ***** Recovery Configuration
--
-***** Content
-- サンプルスキーマ
-- カスタムスクリプト
-***** Parameters
-- Memory
-- Sizing
-- Character Sets
-  - AL32UTF8は、Oracleで使用しているUTF-8エンコードの名前。
-- Connection Mode
-  - Dedicated Server Mode 専用サーバー・モード
-    各ユーザ・プロセスで専用のサーバ・プロセスが使用できる。
-    クライアント総数が50以下など、少ないと予想される場合にこのオプションを指定する。
-  - Shared Server Mode 共用サーバー・モード
-    リソース・プールを複数のクライアント接続で共有できる。
+****** Specify Fast Recovery Area
+- バックアップおよびリカバリ領域とそのディレクトリ位置・サイズを指定。
+****** Enable Archiving
+- アーカイブ有効化
+***** Database Content
+- Sample Schemas / サンプルスキーマ
+- Custom Scripts / カスタムスクリプト
+***** Initialization Parameters / 初期化パラメータ
+****** Memory
+- Typical / 標準
+- Custom / カスタム
+****** Sizing
+- Block Size
+- Processes / プロセス数
+****** Character Sets
+- Database Character Set
+  - Default
+  - Use Unicode
+    - AL32UTF8は、Oracleで使用しているUTF-8エンコードの名前。
+  - Choose from list
+- National Character Set / 各国語キャラクタ・セット
+  NVARCHAR2やNCHAR、NCLOBのデータ格納に使われるキャラクタっセット。
+  基本はデフォルトのAL16UTF16を使用する。
+- Default Language
+- Default Territory
+****** Connection Mode
+- Dedicated Server Mode 専用サーバー・モード
+  各ユーザ・プロセスで専用のサーバ・プロセスが使用できる。
+  クライアント総数が50以下など、少ないと予想される場合にこのオプションを指定する。
+- Shared Server Mode 共用サーバー・モード
+  リソース・プールを複数のクライアント接続で共有できる。
 ***** Storage
-***** Create
-**** DB構成変更
-**** DB削除
-**** テンプレート管理
+- 記憶域構造が表示される。
+***** Creation Options
+- Create Database
+  この時点でデータベースを作成する場合に選択
+- Save as a database Template
+  後で使用するテンプレートとしてDBの定義を保存する
+- Generate atabase Creation Scripts
+  後で実行可能なSQLデータベース作成スクリプトを生成する
+**** Configure Database Options / DB構成変更
+***** Database Content
+***** Connection Mode
+**** Delete a Database / DB削除
+**** Manage Templates / テンプレート管理
 ***** タイプ
 ****** シード
 - 
@@ -1110,22 +1153,51 @@
 *** Oracle ASM
 - Oracle Automatic Storage Management
   データベースファイルの配置とネーミングを自動的に管理する。
-  多数のディスクを持つ華僑では、管理が簡単になり、パフォーマンスが向上する。
+  多数のディスクを持つ環境では、管理が簡単になり、パフォーマンスが向上する。
+
+- ファイル・レベルでソフトウェアのストライプ化とミラー化を行う。
   
+*** データベース名
+**** インスタンス関連
+***** データベース識別子、DBID(Database Identifier)
+- データベース内部の一意データ識別子。
+- 確認方法
+  SELECT DBID, NAME, DB_UNIQUE_NAME FROM V$DATABASE;
+***** インスタンス識別子、システム識別子、SID(System Identifier)
+- ホストサーバー内で有効で、ホストの共有メモリにアクセスするための識別子。
+  ホスト外になるとSIDではアクセスできない。
+  インスタンスを区別するために使用する一意の識別子。
+***** インスタンス名、INSTANCE_NAME
+- ホスト外部から、単一のインスタンスを識別するための名前。単独でユニークとは限らない。
+  通常は個別に設定しないためSIDと同じ名前になっているが、SIDとINSTANCE_NAMEは役割が全く違う。
+- 確認方法
+  select instance_name from v$instance;
+***** データベース名、DB_NAME
+- DB_NAME初期化パラメータを表す。通常SIDと一致する。
+  一致しない場合は起動しない。
+- 確認方法
+  show parameter db_name
+****** ドメイン名
+- 確認方法
+  show parameter db_domain
+***** グローバル・データベース名、GLOBAL_NAME
+- DATABASE LINK作成に関係するパラメータ。
+  GLOBAL_NAMES初期化パラメータと併用することでデータベースリンク名の補完が行われる。
+  DB_NAME + DB_DOMAIN(database_name.database_domain)がデフォルト値。
+  その他のデータベースと一意に識別されるデータベースの完全名。
+
+***** SERVICE_NAME(S)、サービス名
+- 1つのインスタンス、もしくは同じ機能を提供する複数インスタンスの集合体を特定する名称。
+  インスタンス名とドメイン名を合わせた名前。
+- 確認方法
+  show parameter service_name
+***** ネットサービス名、NET SERVICE NAME、TNSサービス名、接続識別子
+- SERVICE_NAMEに繋ぐためのNet Service上での名前。
 *** SCN
 - System Change Number
   システム変更番号
 - 現在のSCMを確認する : select bdms_flashback.get_system_change_number from dual;
   
-*** SID
-- System Identifier
-  システム識別子。インスタンスを区別するために使用する一意の識別子。
-
-*** グローバルデータベース名
-- 
-  その他のデータベースと一意に識別されるデータベースの完全名。
-  database_name.database_domainの形式。
-
 *** Schema スキーマ
 - 
   データの論理構造の集合。
@@ -1212,39 +1284,6 @@
   リストアしたデータに対して、その後の変更内容を反映させ最新の状態に復旧すること
 *** gc
 - Global Cacheのこと。
-*** データベース名
-**** インスタンス関連
-***** データベース識別子、DBID(Database Identifier)
-- データベース内部の一意データ識別子。
-- 確認方法
-  SELECT DBID, NAME, DB_UNIQUE_NAME FROM V$DATABASE;
-***** インスタンス識別子、システム識別子、SID(System Identifier)
-- ホストサーバー内で有効で、ホストの共有メモリにアクセスするための識別子。
-  ホスト外になるとSIDではアクセスできない。
-***** インスタンス名、INSTANCE_NAME
-- ホスト外部から、単一のインスタンスを識別するための名前。単独でユニークとは限らない。
-  通常は個別に設定しないためSIDと同じ名前になっているが、SIDとINSTANCE_NAMEは役割が全く違う。
-- 確認方法
-  select instance_name from v$instance;
-***** データベース名、DB_NAME
-- DB_NAME初期化パラメータを表す。通常SIDと一致する。
-  一致しない場合は起動しない。
-- 確認方法
-  show parameter db_name
-****** ドメイン名
-- 確認方法
-  show parameter db_domain
-***** グローバル・データベース名、GLOBAL_NAME
-- DATABASE LINK作成に関係するパラメータ。
-  GLOBAL_NAMES初期化パラメータと併用することでデータベースリンク名の補完が行われる。
-  DB_NAME + DB_DOMAIN(database_name.database_domain)がデフォルト値。
-***** SERVICE_NAME(S)、サービス名
-- 1つのインスタンス、もしくは同じ機能を提供する複数インスタンスの集合体を特定する名称。
-  インスタンス名とドメイン名を合わせた名前。
-- 確認方法
-  show parameter service_name
-***** ネットサービス名、NET SERVICE NAME、TNSサービス名、接続識別子
-- SERVICE_NAMEに繋ぐためのNet Service上での名前。
 *** PARSE
 **** SOFT PARSE
 - パーサによってパースされる。
@@ -1259,6 +1298,13 @@
 - SGAのメモリー構造を保護するためにOracleで使用される下位レベルの内部ブロック。
   サーバープロセスやバックグラウンドプロセスは、メモリー情報が変更されないように、非常に短い時間ラッチを獲得する。
   目的はロックと同じだが、ユーザーに見せるのがロック、ユーザーに見せないのがラッチ。
+*** Inventry インベントリ
+- インストール用の領域。
+  $ORACLE_HOMEに犬sトールされているソフトウェア情報、JREなどそれ以外のOracle製品情報などが含まれる。
+  UNIX/Linuxではインストール時に指定。
+  WindowsではC:\Program Files\Oracle\Inventory。
+  %ORACLE_HOME\Inventory、というわけではないので注意。
+  推奨インストール先は、$Oracle_base/../oraInventory。
 ** Memo
 *** 他システムとの違い
 **** 空文字/Null
@@ -1418,7 +1464,7 @@
 **** Manage
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56301/toc.htm][Oracle® Database管理者ガイド 11gリリース2 (11.2)]]
 - [[https://docs.oracle.com/cd/E16338_01/backup.112/b56269/toc.htm][Oracle Databaseバックアップおよびリカバリ・ユーザーズ・ガイド11g リリース2(11.2)]]
-- [[https://docs.oracle.com/cd/E16338_01/server.112/b56320/toc.htm][Oracle® Database 2日でデータベース管理者 11gリリース2(11.2)]]
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b61035/title.htm][Oracle® Automatic Storage Management管理者ガイド 11gリリース2 (11.2)]]
 **** SQL言語
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56299/toc.htm][Oracle® Database SQL言語リファレンス 11gリリース2]]
 **** SQL*Plus
@@ -1431,9 +1477,12 @@
 - [[http://docs.oracle.com/cd/E16338_01/backup.112/b56270/toc.htm][Oracle® Databaseバックアップおよびリカバリ・リファレンス 11gリリース2(11.2)]]
 **** Reference
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/toc.htm][Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
-  
 **** Performance
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56312/toc.htm][Oracle® Databaseパフォーマンス・チューニング・ガイド 11gリリース2 (11.2)]]
+
+**** 2日でシリーズ
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56320/toc.htm][Oracle® Database 2日でデータベース管理者 11gリリース2(11.2)]]
+- [[https://docs.oracle.com/cd/E16338_01/server.112/b56313/tdppt_preface.htm#sthref2][Oracle® Database 2日でパフォーマンス・チューニング・ガイド 11gリリース2(11.2)]]
 *** Etc
 - [[http://luna.gonna.jp/oracle/index.html][オラクル ちょこっとリファレンス]]
 - [[http://kagamihoge.hatenablog.com/entry/2014/01/03/180049][どのようにOracleを勉強してきたか - kagamihogeの日記]]

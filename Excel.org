@@ -22,6 +22,9 @@
 **** DATEVALUE
 **** DAY
 **** DAYS
+**** EOMONTH
+- 開始日から起算して、指定した月数だけ前または後の月の最終日に対応するシリアル値を返す。
+- EOMONTH(開始日、月)
 **** HOUR
 **** MINUTE
 **** MONTH

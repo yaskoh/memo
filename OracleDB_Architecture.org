@@ -11,6 +11,12 @@
 *** Oracleインスタンス
 - メモリ構造:SGA
 - プロセス構造:バックグラウンドプロセス
+*** サーバープロセス
+- サーバープロセス
+- メモリー、一次記憶域
+*** Oracle Net
+- Oracle Net
+- Oracle Netリスナー
 ** Process
 *** About
 - 

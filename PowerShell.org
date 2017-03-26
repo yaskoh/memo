@@ -271,7 +271,11 @@
 *** Write-Output
 **** echo
 **** write
-** tmp
+** Reverse Lookup
+*** tmp
+**** ネットワークプロファイルを調べる
+- Get-NetConnectionProfile -IPv4Connectivity Internet
+  NetworkCategoryの値を見る。
 ** Memo
 *** Default Encode
 - UTF-16とのこと。

@@ -67,11 +67,10 @@
 *** YAML Syntax
 ** Commands
 *** ansible
-- 
-  Usage: ansible <host-pattern> [option]
+- Syntax: ansible <host-pattern> [-m module_name] [-a args] [option]
+  run a task on a target host(s)
 
 **** option
-
 - -a MODULE_ARGS, --args=MODULE_ARGS
   module argument
 
@@ -88,8 +87,11 @@
   connect as this user (default=current-user like vagrant)
 
 *** ansible-playbook
-
+- run an ansible playbook
 **** option
+- -i PATH, --inventory=PATH
+  The PATH to the inventory, which default to /etc/ansible/hosts.
+
 - -C, --check
   don't make any changes; instead, try to predict some of the cahnges that may occur
   dry run
@@ -137,7 +139,17 @@
 ** Installation
 - Linux : Recommend to use OS package manager
 - Others : Reccomend installing via "pip", which is the Python package manager
-
+*** Yum (CentOS,RHEL,)
+- yum install -y epel-release
+- sudo yum install ansible --enablerepo=epel
+*** Apt (Ubuntu,)
+- sudo apt-get install software-properties-common
+- sudo apt-addrepository ppa:ansible/ansible
+- sudo apt-get update
+- sudo apt-get install ansible
+*** Pip (Linux,MacOS,)
+- sudo easy_install pip
+- sudo pip install ansible
 ** Modules
 - 
   Ansibleで実行できる機能。
@@ -318,11 +330,15 @@
 - ansible_ssh_user
 
 ** Playbooks
+- りほーとホストの状態を定義するyamlファイル
 ** Directory layout
+*** 最小構成
+- hosts #Inventory
+- site.yml #Playbook
 *** [[http://docs.ansible.com/playbooks_best_practices.html#directory-layout][directory-layout best practice]]
 - 
   - production         # inventory file for production servers
-  - stage              # inventory file for stage environment
+  - stageing           # inventory file for stage environment
    
   - group_vars/
     - group1           # here we assign variables to particular groups
@@ -359,42 +375,42 @@
     - webtier/         # same kind of structure as "common" was above, done for the webtier role
     - monitoring/      # ""
     - fooapp/          # ""
-
-*** *.yml
+*** Memo
+**** *.yml
 - 
   ymlファイルにAnsibleで何をするかの定義がある。
   site.ymlが大本のファイルだが、include情報が主で、
   実際の定義はroles以下のmain.ymlに書かれる。
 
-*** hosts
+**** hosts
 - 
   inventoryファイル。
   上のbest practiceではproductionとstageか。
   サーバをグループ分けしたりする。
 
-*** vars
+**** vars
 - 
   変数を外だしする。
   上でいうとgorup_varsとhost_varsか。
 
-*** roles
+**** roles
 - 
   サーバの役割による分岐点。
   上のbest practiceではcommon, webtier, monitoring, fooappなどに分かれている。
   更に各ディレクトリもいくつかのディレクトリに分ける。
 
-**** tasks
+***** tasks
 - 
   各roleごとに何を実施するかが具体的に書かれる。
   サーバの設定やサービスのインストールはtasksディレクトリ以下のmainymlに書く。
 
-**** handlers
+***** handlers
 - 
   サービス再起動のmain.ymlをおく。
   taskディレクトリ以下のmain.ymlでサーバの設定を行い、
   設定反映のためhandlersで再起動するイメージ。
 
-**** templates
+***** templates
 - 
   サービスの設定ファイルテンプレートをj2形式でおく。
   すべてPlaybookで書くよりも、テンプレートファイルを使用したほうが簡単のため。
@@ -413,7 +429,23 @@
 *** 基本構成
 - inventry
 - playbook
+*** Windowsでの利用
+- 概要
+  - Windows Remote Management(WinRM)を使用して操作を行う。
+- Winの準備
+  - WinRMの起動と構成を行う。
+    - 構成スクリプトのダウンロード
+      Invoke-WebRequest -Uri https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1 -OutFile ConfigureRemotingForAnsible.psl
+    - ネットワークプロファイルの確認
+      Get-NetConnectionProfile -IPv4Connectivity Internet
+    - 実行 (プロファイルがPublicの場合、コマンド末尾の"-SkipNetworkProfileCheck"が必要、その他の場合は不要。)
+      powershell -ExecutionPolicy RemoteSigned .\ConfigureRemotingForAnsible.ps1 -SkipNetworkProfileCheck
+- Client側
+  - pipのインストール
+  - pywinrmのダウンロード
+    pip install pywinrm
+- [[http://qiita.com/yunano/items/f9d5652a296931a09a70][AnsibleでWindowsを操作する準備をする - Qiita]]
 ** Link
 - [[https://www.ansible.com/][ANSIBLE]]
-- [[http://docs.ansible.com/index.html?&__hssc=5198188.3.1418180787182&__hstc=5198188.e8669720ecb31fe0cfe4fb1c00202864.1418180787181.1418180787181.1418180787181.1&hsCtaTracking=496f9732-2003-4e8a-9c72-9ad8d37a1c12%7Ccb31b05e-278e-4dd4-8a4f-0a6eba410cef][Ansible Documentation]]
+- [[http://docs.ansible.com/][Documentation]]
 - [[http://techblog.clara.jp/2014/06/ansible_no1-how_to_install/][Ansible(1)概要とインストール方法について - CLARA ONLINE TECHBLOG]]

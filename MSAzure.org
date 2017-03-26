@@ -78,6 +78,8 @@
 **** SQL Data Warehouse
 **** NoSQL
 *** Intelligence + Analysis
+** Azure CLI
+*** Link
 ** Memo
 *** Azure China
 - 中国アカウントはGlobalアカウントとは切り離されており、MSアカウントの別途作成が必要。

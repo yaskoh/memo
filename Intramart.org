@@ -57,6 +57,8 @@
 - deploy
   - resin deploy --user username --password password imart.war
 **** Access
+- Tenant作成時にErrorが八歳する場合、tenantの名前が設定ファイルと異なっている可能性あり。
+  "data-source-mapping-config.xml"に設定が入っている。
 **** Uninstall
 ***** Undeploy
 - (win)resin undeploy application-name
@@ -68,6 +70,48 @@
 
 *** Tenant
 **** Setup
+- テナント環境セットアップは、モジュールやアプリケーションを新たに追加した場合に必要となるセットアップ処理の実行と、その実行履歴を管理する機能。
+  実行履歴が管理されるため、同じセットアップが2度実行されることはない。
+  機能追加や仕様変更のため、追加でセットアップ処理を行うことも可能。
+***** Setup settings file / セットアップ設定ファイル
+- Location : src/main/conf/products/import/basic/{ArtifactId (ProjectName)}/
+  ex) src/main/conf/products/import/basic/my_project/
+- File : import-{ArtifactId (ProjectName)}-config-1.xml
+  ex) import-my_project-config-1.xml
+  - "1"はテナント環境セットアップのバージョン管理のための番号（スキーマバージョン）。初回は必ず"1"とする。
+***** built-in operations / 組み込み可能な処理
+****** database / データベース系
+- 拡張子.sql
+******* create-file / DDL実行
+- tag : <create-file>
+  システムストレージからの相対パスを指定(拡張子sql)
+******* insert-file / DML実行
+- tag : <insert-file>
+  システムストレージからの相対パスを指定(拡張子sql)
+****** tenant-master / テナントマスタ系
+- 拡張子.xml
+******* role-file / ロール
+******* account-file / アカウント
+******* calendar-file / カレンダー:カレンダー
+******* calendar-day-set-file / カレンダー:日付情報セット
+******* calendar-day-file / カレンダー:日付情報
+******* calendar-merge-file / カレンダー:カレンダーマージ
+******* menu-group-category-file / メニュー:メニューカテゴリ
+******* menu-group-file / メニュー:メニューグループ
+******* authz-resource-group-file / 認可:リソースグループ
+******* authz-resource-file / 認可:リソース
+******* authz-subject-group-file / 認可:サブジェクト
+******* authz-policy-file / 認可:ポリシー
+******* job-scheduler-file / ジョブスケジューラ
+****** 拡張処理
+******* extends-import-class / 拡張インポート
+******** Javaプログラム実行
+- インターフェースjp.co.intra_mart.foundation.security.ExtendsImport実装クラスを、完全修飾クラス名で指定する。
+  doImportが実行される。
+  (上記interfaceはim_import_export_base-x.x.x-main.jarに入っている。x.x.xはバージョン番号。)
+******** サーバサイドJavaScriptプログラム実行
+- doImportメソッドを実装したサーバサイドJavaScriptを、ルートからの相対パスで拡張子.jsを付けて指定する。
+  doImportが実行される。
 **** Link
 - [[http://www.intra-mart.jp/download/product/iap/im_import_export/tenant_environment_setup_specification/index.html][intra-mart Accel Platform テナント環境セットアップ 仕様書]]
 - [[http://www.intra-mart.jp/download/product/iap/operation/tenant_administrator_guide/][intra-mart Accel Platform テナント管理者操作ガイド]]
@@ -221,14 +265,28 @@
   プレゼンテーション・ページ(HTML)とファンクションコンテナ(サーバサイドJavaScriptファイル)の2つのファイルを生成する。
   少人数システム開発における生産性がたかくなる傾向がある。
 ******* Contents
-******** プレゼンテーションページ
+******** プレゼンテーション・ページ
 - ユーザインターフェース部分に相当。拡張子は.html固定。
   HTMLファイルにIMARTタグを追加することで、JavaScriptと関連付けて呼び出すことが可能。
-******** ファンクションコンテナ
+******** ファンクション・コンテナ
 - ビジネスロジック部分に相当。拡張子は.js固定。
   ファンクションコンテナとプレゼンテーションページはワンセットのため、ファイルラベル名は同一となる。
+******** ルーティングテーブル
 ******* Development
 ******** Basics 基本
+******* 設定ファイル
+******** source-config.xml
+- プログラムリソースの読み込みや実行に関する制御を行う設定ファイル。
+- Path
+  - %CONTEXT_PATH%/WEB-INF/jssp/compatible/src/
+  - %CONTEXT_PATH%/WEB-INF/jssp/platform/src/
+  - %CONTEXT_PATH%/WEB-INF/jssp/product/src/
+  - %CONTEXT_PATH%/WEB-INF/jssp/src/
+******* Routing ルーティング
+- スクリプト開発モデルでのルーティングファイルは、以下パスの配下に設置、が基本。
+  %CONTEXT_PATH%/WEB-INF/conf/routing-jssp-config/
+- file-mapping要素のpath属性に{[識別子]}と記述することで、URL途中の値がリクエスト・パラメータとして扱える。
+
 ******* Link
 - [[http://www.intra-mart.jp/document/library/iap/public/development/script_programming_guide/index.html][intra-mart Accel Platform スクリプト開発モデル プログラミングガイド]]
 ****** IM-JavaEE Framework
@@ -396,20 +454,36 @@
 - BPM/WFを実行するエンジン
 ******** BAM
 - BPM/WFの実行状況をロギングし、分析用の情報を管理する
+****** Role
+******* BIS管理者 / bis_manager
+- 作成したフローの詳細設定やカスタマイズを行うことができる。
+******* BIS業務管理者 / bis_business_manager
+- ワークフローやBISフローのフローを作成することができるユーザ。
+******* BIS監査者 / bis_auditor
+- 監査を目的とした、履歴を参照できるユーザ。
+******* BIS担当者 / bis_user
+- 申請・承認・処理などを行うことができるユーザ。利用者。
 ****** Glossary
 ******* BPM
 - Business Process Management ビジネスプロセス管理
 ****** Link
 - [[http://www.intra-mart.jp/document/library/bis/public/bis_setup_guide/index.html][IM-BIS for Accel Platform セットアップガイド]]
 - [[http://www.intra-mart.jp/document/library/bis/public/bis_beginners_guide/][IM-BIS for Accel Platform IM-BIS ビギナーズガイド]]
+- [[http://www.intra-mart.jp/document/library/bis/public/bis_administrator_guide/index.html][IM-BIS for Accel Platform システム管理者 操作ガイド]]
 - [[http://www.intra-mart.jp/download/product/bis/manager_guide/index.html][IM-BIS for Accel Platform 業務管理者 操作ガイド]]
+- [[http://www.intra-mart.jp/document/library/bis/public/bis_user_guide/index.html][IM-BIS for Accel Platform ユーザ 操作ガイド]]
 ***** IM-FormaDesigner
 ****** Setting
 ******* forma-config
 ****** Link
 - [[http://www.intra-mart.jp/document/library/forma/public/forma_setup_guide/index.html][IM-FormaDesigner for Accel Platform セットアップガイド]]
 ***** IM-PDF Designer
-*** Packages
+***** View Creator
+****** Link
+- [[http://www.intra-mart.jp/document/library/iap/public/viewcreator/viewcreator_user_guide/index.html][intra-mart Accel Platform ViewCreator ユーザ操作ガイド]]
+- [[http://www.intra-mart.jp/document/library/iap/public/viewcreator/viewcreator_administrator_guide/index.html][intra-mart Accel Platform ViewCreator 管理者操作ガイド]]
+- [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_viewcreator_guide/index.html][intra-mart Accel Platform ViewCreator for IM-Workflow 連携ガイド]]
+*** API Specification / Packages
 **** jp.co.intra_mart.common.platform.atabase.util
 ***** Classes
 ****** DatabaseUtil
@@ -516,6 +590,9 @@
 ***** (application)/
 ****** WEB-INF/
 ******* conf/
+******** authz-resource-mappers/
+- mapperの設定を行う。
+********* im_authz.xml
 ******** log/
 ********* im_logger_database.xml
 - DB_LOG
@@ -559,7 +636,7 @@
 ******** network-agent-config.xml
 - bind-port : Web Application Server間で通信を行う際に利用するポート番号
 - port-range : bind-portで指定されたポート番号が既に使用されていた場合の代替えポート番号のレンジ。
-******** sorr-config
+******** solr-config
 - Solrサーバへの接続設定情報を保持するファイル。
 ******** storage-config.xml
 ********* Tags
@@ -621,6 +698,10 @@
 ******* modules/
 ******* log/
 ******* schema/
+******** routing-jssp-config.xsd
+- jssp用ルーティングファイルフォーマット
+******** routing-service-config.xsd
+******** routing-servlet-config.xsd
 ******* resin-web.xml
 - databaseのコネクション設定などが存在
 *** Screen
@@ -632,9 +713,73 @@
 ****** テナント環境セットアップ
 ******* テナント環境セットアップ
 ******* サンプルデータセットアップ
+****** データソース設定
 ***** システム管理
 **** テナント
 - http://localhost:8080/imart/login
+*** Setting Files
+**** テナント管理機能
+***** ルーティングテーブル用 認可リソースマッパー定義設定
+****** About
+- Location : WEB-INF/conf/authz-resource-mappers/{filename}.xml
+- Format : WEB-INF/schema/authz-resource-mappers.xsd
+****** Tags
+******* mapper
+******** Attributes
+********* name
+- マッパー名。ここで設定した名前をルーティングテーブルで指定可能。
+********* class
+- マッパーの実装裏巣の完全修飾クラス名
+***** スクリプト開発モデルルーティング設定
+****** About
+- Location : WEB-INF/conf/routing-jssp-config/{filename}.xml
+- Format : WEB-INF/schema/routing-jssp-config.xsd
+****** Tags
+******* authz-default
+- デフォルト認可設定
+- authz-defaultタグを省略した場合、file-mapping, folder-mapping, authzタグを必ず指定する必要がある。
+******** Attributes
+- ui + action属性か、mapper属性の何れかの設定を行う必要がある。
+********* uri
+- 認可リソースURIを指定する
+********* action
+- 認可アクションを指定する
+********* mapper
+- 認可リソース真っパーを指定する。
+  使用可能な値はauthz-resource-mapper設定で設定済みの値。
+******* file-mapping
+- URLとスクリプト開発モデルのプログラムのマッピングを行う。
+******** Attributes
+********* path
+- マッピングを行うURLを指定する。
+  値の末尾にワイルドカードを指定することが可能。
+  値に{<識別子>}を記述することでURLの途中の値をリクエスト・パラメータとしてプログラム中で使用可能。
+  例：/sample/view/{dataId}
+********* page
+- マッピングを行うスクリプト開発モデルのプログラムを指定する
+********* action
+- page属性に指定されたプログラウmの実行前に呼び出す関数を指定する。
+  
+********* from
+- action属性で指定した関数を呼び出すプログラムを指定する。
+********* client-type
+- マッピングが有効となるクライアントタイプを指定する。
+******* folder-mapping
+******** Attributes
+********* path-prefix
+********* folder
+********* client-type
+******* authz
+******** Attributes
+********* uri
+********* action
+********* mapper
+******* param
+******** Attributes
+********* key
+********* value
+**** Link
+- [[http://www.intra-mart.jp/download/product/iap/setup/im_configuration_reference/index.html][intra-mart Accel Platform 設定ファイルリファレンス]]
 *** Glossary
 **** tenant テナント
 ***** マルチテナント
@@ -664,25 +809,36 @@
 - デプロイされた各モジュールが動作するための動作前提を構築する処理。
 *** Link
 - [[http://www.intra-mart.jp/apidoc/iap/javadoc/all-dev_apidocs/overview-summary.html][intra-mart Accel Platform API Specification]]
-- [[http://www.intra-mart.jp/download/product/iap/setup/im_configuration_reference/index.html][intra-mart Accel Platform 設定ファイルリファレンス]]
 
 - [[http://www.intra-mart.jp/document/library/iap/public/first_step_guide/index.html][intra-mart Accel Platform ファーストステップガイド]]
 
 - [[http://www.intra-mart.jp/download/product/iap/iap_introduction/index.html][intra-mart Accel Platform イントロダクション]]
 ** IM-Mail
 ** Accel Documents
+*** API Specification
 *** Link
 - [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_setup_guide/index.html][intra-mart Accel Documents セットアップガイド]]
 - [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_user_guide/][intra-mart Accel Documents ユーザ操作ガイド]]
 - [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_repository_api_programming_guide/index.html][intra-mart Accel Documents プログラミングガイド]]
 ** Resin
 - [[file:Resin.org][Resin.org]]
+** Error
+*** デフォルトのテナント作成時に完了しない
+- コンテナ名が間違っていると思われる。設定時に注意する。
+*** リソースグループが登録されていません
+- メニューに残っているがアクセス権限がなくなった場合に出るエラー、と思われる。
+  エラーメッセージに該当するルーティング設定をconfから探し出し、コメントアウト、再起動。
+  ログイン、問題のメニューアイテムを削除し、ルーティング設定を戻した上で、再起動。
+  http://imfaq.intra-mart.jp/imqa/faq/print.asp?Option=&NodeID=&DispNodeID=&CID=&Text=&Field=&KW=&KWAnd=&Attrs=&Bind=&SearchID=&FAQID=15&baID=1&strKind=
 ** Link
+*** About
 - [[http://www.intra-mart.jp/document/library/index.html][intra-mart Accell Platform - intra-mart Accel Series ドキュメントライブラリ]]
 - [[http://www.intra-mart.jp/apidoc/][API Documentation - intra-mart]]
 
 - [[http://www.intra-mart.jp/apidoc/iap/index.html][intra-mart Accel Platform API Documentation]]
 - [[http://www.intra-mart.jp/apidoc/iap/javadoc/all-dev_apidocs/overview-summary.html][intra-mart Accel Platform API Specification]]
+
+- [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_table_definition.xls][IM-Workflowテーブル定義書(Excelファイル)]]
 
 *** Docsまとめ
 - Accel Platform
@@ -691,12 +847,19 @@
   - [[http://www.intra-mart.jp/download/product/iap/setup/iap_setup_guide/index.html][intra-mart Accel Platform セットアップガイド]]
   - [[http://www.intra-mart.jp/document/library/iap/public/first_step_guide/index.html][intra-mart Accel Platform ファーストステップガイド]]
   - [[http://www.intra-mart.jp/download/product/iap/setup/im_configuration_reference/index.html][intra-mart Accel Platform 設定ファイルリファレンス]]
+  - [[http://www.intra-mart.jp/download/product/iap/operation/system_administrator_guide/index.html][intra-mart Accel Platform システム管理者操作ガイド]]
   - [[http://www.intra-mart.jp/download/product/iap/im_import_export/tenant_environment_setup_specification/index.html][intra-mart Accel Platform テナント環境セットアップ 仕様書]]
   - [[http://www.intra-mart.jp/download/product/iap/operation/tenant_administrator_guide/][intra-mart Accel Platform テナント管理者操作ガイド]]
-
+- Job
   - [[http://www.intra-mart.jp/document/library/iap/public/job-jobnet_reference/index.html][intra-mart Accel Platform ジョブ・ジョブネット リファレンス]]
   - [[http://www.intra-mart.jp/document/library/iap/public/im_job_scheduler/im_job_scheduler_specification/index.html][intra-mart Accel Platform ジョブスケジューラ仕様書]]
+- Import/Export
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_master/im_master_import_export_specification/index.html][intra-mart Accel Platform IM-共通マスタ インポート・エクスポート仕様書]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_authz_import_export_specification/index.html][intra-mart Accel Platform IM-Authz（認可）インポート・エクスポート仕様書]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_admin_account_import_export_specification/index.html][intra-mart Accel Platform アカウント インポート・エクスポート仕様書]]
   - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_admin_role_import_export_specification/index.html][intra-mart Accel Platform ロール インポート・エクスポート仕様書]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_job_scheduler/im_job_scheduler_import_export_specification/index.html][intra-mart Accel Platform ジョブ インポート・エクスポート仕様書]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_menu_import_export_specification/index.html][intra-mart Accel Platform メニュー インポート・エクスポート仕様書]]
 - IM-BIS
   - [[http://www.intra-mart.jp/document/library/bis/public/bis_setup_guide/index.html][IM-BIS for Accel Platform セットアップガイド]]
   - [[http://www.intra-mart.jp/document/library/bis/public/bis_beginners_guide/][IM-BIS for Accel Platform IM-BIS ビギナーズガイド]]

@@ -426,10 +426,29 @@
 *** MSYS2
 **** pacman
 - [[file:Linux.org][Linux.org(PackageManagement/pacman参照)]]
+**** Commands
+***** cygpath
+- Convert Unix and Windows format paths, or output system path information.
+- Usage:
+  - cygpath (-d|-m|-u|-w|-t TYPE) [-f FILE] [OPTION]... NAME...
+
+****** Options
+******* Output
+******** -d, --dos
+******** -m, --mixed
+******** -M, --mode
+******** -u, --unix
+- default
+  print Unix form of NAMEs
+******** -w, --windows
+******** -t, --type TYPE
 **** Memo
 ***** PATHを引き継ぐ
 - Windowsの環境変数"MSYS2_PATH_TYPE"にinheritを設定すると、設定が引き継がれる。
   [[http://chirimenmonster.github.io/2016/05/09/msys2-path.html][MSYS2でPATHが引き継がれない - めもらんだむ]]
+***** ファイルパスの扱い
+- Windows式のパスをそのまま入力すると、エスケープが処理されcdなどに失敗するが、
+  ""(double quote)で囲って利用すると問題なく利用可能。
 **** Link
 - [[https://msys2.github.io/][MSYS2 installer]]
 - [[https://sourceforge.net/p/msys2/wiki/Home/][MSYS2 - sourceforge]]
