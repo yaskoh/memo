@@ -1007,6 +1007,10 @@
 ***** switch-to-prev-buffer
 - (switch-to-prev-buffer &optional WINDOW BURY-OR-KILL)
   WINDOW switch to previous buffer.
+*** emacs 25
+**** let-alist
+- http://elpa.gnu.org/packages/let-alist.html
+**** seq
 ** Other Packages
 *** auto-complete-config
 **** Functions

@@ -169,6 +169,7 @@
 
 ** Link
 - [[https://developer.mozilla.org/en-US/Learn][Learning web development - MDN]]
+- [[https://developer.mozilla.org/en-US/docs/Web][Web technology for developers - MDN]]
 
 - [[https://github.com/hatena/Hatena-Textbook][Hatena-Textbook - GitHub]]
 - [[https://css-tricks.com/app-from-scratch-1-design/][Creating a Web App from Scratch - Part 1 of 8: Basic Idea and Design - CSS-TRICKS]]

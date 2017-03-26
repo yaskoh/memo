@@ -384,39 +384,16 @@
     // ...
   }
 **** Classes クラス
-**** DOM
+**** Web APIs
+- https://developer.mozilla.org/en-US/docs/Web/API
 - [[https://developer.mozilla.org/ja/docs/DOM/DOM_Reference][DOMリファレンス - MDN]]
-***** window
-- [[https://developer.mozilla.org/ja/docs/Web/API/Window][window - MDN]]
-****** Property
-******* Window.console
-******* Window.document
-- 指定ウィンドウが含む文書への参照を返す
-******* Window.history
-- historyオブジェクトへの参照を返す
-******* Window.location
-- windowオブジェクトのロケーション、または現在のURLを取得/設定
-******* Window.status
-- ブラウザ下部のステータスバーのテキストを取得/設定
-****** Method
-******* Window.alert()
-- 警告ダイアログを表示
-******* Window.close()
-- カレントウィンドウを閉じる
-******* Window.find()
-- ウィンドウ内で文字列を検索する
-****** Event handler
-******* WindowTimers.clearInterval()
+***** Console
+****** Methods
+******* Console.log()
 - 
-  setIntervalを使用して設定された繰り返し動作をキャンセルする。
-  ex: window.clearInterval(intervalID)
-******* WindowTimers.setInterval()
-- 
-  一定の遅延間隔を置いて関数を繰り返し呼び出す。
-  ex: intervalId = window.setInterval(animate, 500)
-******* WindowTimers.setTimeout()
-****** Constractor
-***** document
+  Output a message to the Web Console.
+
+***** Document
 ****** Properties
 ******* Extension for HTML document
 ******** Document.cookie
@@ -458,14 +435,6 @@
 - ドキュメントにテキストを書き込む
 ******** document.writeln(String text)
 - ドキュメントにテキスト行を書き込む
-**** Web APIs
-- https://developer.mozilla.org/en-US/docs/Web/API
-***** Console
-****** Methods
-******* Console.log()
-- 
-  Output a message to the Web Console.
-
 ***** History
 - The History interface allows to manipulate the browser session history,
   that is the pages visited in the tab or frame that can current page is loaded in.
@@ -491,6 +460,36 @@
 - 
   Loads a page from session history, identified by its relative location to the current page.
 
+***** Window
+- [[https://developer.mozilla.org/ja/docs/Web/API/Window][window - MDN]]
+****** Property
+******* Window.console
+******* Window.document
+- 指定ウィンドウが含む文書への参照を返す
+******* Window.history
+- historyオブジェクトへの参照を返す
+******* Window.location
+- windowオブジェクトのロケーション、または現在のURLを取得/設定
+******* Window.status
+- ブラウザ下部のステータスバーのテキストを取得/設定
+****** Method
+******* Window.alert()
+- 警告ダイアログを表示
+******* Window.close()
+- カレントウィンドウを閉じる
+******* Window.find()
+- ウィンドウ内で文字列を検索する
+****** Event handler
+******* WindowTimers.clearInterval()
+- 
+  setIntervalを使用して設定された繰り返し動作をキャンセルする。
+  ex: window.clearInterval(intervalID)
+******* WindowTimers.setInterval()
+- 
+  一定の遅延間隔を置いて関数を繰り返し呼び出す。
+  ex: intervalId = window.setInterval(animate, 500)
+******* WindowTimers.setTimeout()
+****** Constractor
 ***** Worker
 - バックグラウンドで行われるタスクを実行することができる。そのタスクは簡単に生成され、作成元にメッセージを送り返すことができる。
 ***** XMLHttpRequest

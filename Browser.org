@@ -22,6 +22,17 @@
 ****** Security
 ****** Audits
 
+**** Extensions
+***** Vimium
+***** AutoPatchWork
+***** The Great Suspender
+***** Tab Glue
+***** OneTab
+***** Smooth Gestures
+***** Advanced REST client
+***** Google Art Project
+***** Google Dictionary
+***** Keepa - Amazon Price Tracker
 *** InternetExplorer
 **** IE8
 - 
