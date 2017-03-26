@@ -1,0 +1,18 @@
+* Java Virtual Machine
+** Specification
+*** 1.8
+**** Instruction Set
+***** Instructions
+****** aconst_null
+- Operation
+  Push null
+- Description
+  Push the null object reference onto the operand stack.
+****** astore
+- Operation
+  Store reference into local variable
+- Description
+
+****** getstatic
+**** Link
+- [[https://docs.oracle.com/javase/specs/jvms/se8/html/index.html][The Java® Virtual Machine Specification Java SE 8 Edition - ORACLE]]
