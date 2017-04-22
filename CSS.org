@@ -1,7 +1,6 @@
 * CSS
 ** Specification
 *** About
-*** Note
 **** CSS Snapshot 2010
 - Completed
 **** CSS Snapshot 2015
@@ -11,118 +10,120 @@
 - Working Draft, WD
 - Candidate Recommendation, CR
 - Reccomendation, REC
-***** CSS Levels
-- CSS Level 1
-  Obsolete.
-- CSS Level 2
-- CSS Level 3
-  CSS Level 3 uses CSS2.1 spec as its core, and builds on Level 2 module by module.
-  Each module adds functionality and/or replaces part of the CSS 2.1 spec.
-- CSS Level 4 and beyond
-  There is no CSS Level 4.
-  CSS as the language has no longer levels, and independent modules can reach level 4 or beyond.
 ***** Link
 - [[https://momdo.github.io/css-2015/][CSS Snapshot 2015 日本語訳]]
-*** Completed
-**** CSS Level 2 Revison 1
-***** Syntax and basic data types
-***** Selectors
-***** Assigning property values, Cascading, and Inheritance
-***** Media types
-***** Box model
-***** Visual formatting model
-***** Visual effects
-***** Generated content, automatic numbering, and lists
-***** Paged media
-***** Colors and Backgrounds
-***** Fonts
-***** Text
-***** Tables
-***** User interfaces
-***** Link
+*** CSS 1
+**** Completed
+***** CSS Level 1
+**** Testing
+***** CSS Shapes Level 1
+***** CSS Masking Level 1
+***** Compositing and Blending Level 1
+***** Geometry Interfaces Module Level 1
+**** Refining
+***** CSS Will Change Level 1
+- CR
+*** CSS 2.1
+**** Completed
+***** CSS Level 2 Revison 1
+****** Syntax and basic data types
+****** Selectors
+****** Assigning property values, Cascading, and Inheritance
+****** Media types
+****** Box model
+****** Visual formatting model
+****** Visual effects
+****** Generated content, automatic numbering, and lists
+****** Paged media
+****** Colors and Backgrounds
+****** Fonts
+****** Text
+****** Tables
+****** User interfaces
+****** Link
 - [[https://www.w3.org/TR/CSS2/][Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification - W3C]]
 - [[http://momdo.s35.xrea.com/web-html-test/spec/CSS21/cover.html][Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification 日本語訳 - W3C]]
-**** CSS Level 1
-**** CSS Color Level3
+**** Testing
+**** Refining
+***** CSS Cascaing Variables
+- CR
+***** CSS Level 2 Revision 2
+****** Syntax and basic data types
+****** Selectors
+****** Assigning property values, Cascading, and Inheritance
+****** Media types
+****** Box model
+****** Visual formatting model
+****** Visual effects
+****** Generated content, automatic numbering, and lists
+****** Paged media
+****** Colors and Backgrounds
+****** Fonts
+****** Text
+****** Tables
+****** User interfaces
+****** Link
+- [[https://www.w3.org/TR/CSS22/][Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification - W3C]]
+- [[https://momdo.github.io/css2/Overview.html][Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification 日本語訳 - W3C]]
+*** CSS 3
+**** Completed
+***** CSS Color Module Level3
 - REC 2011/6/7
-**** CSS Namespaces
+****** Link
+- [[http://standards.mitsue.co.jp/resources/w3c/TR/css3-color/][CSS カラーモジュール Level 3 - W3C]]
+***** CSS Namespaces
 - REC 2011/9/29
-**** Selectors Level 3
+***** Selectors Level 3
 - REC 2011/9/29
 
-**** Media Queries
+***** Media Queries
 - REC 2011/6/19
-**** CSS Style Attributes
+***** CSS Style Attributes
 - REC 2013/11/7
 
-*** Stable
-**** CSS Backgrounds and Borders Level 3
-**** CSS Conditional Rules Level 3
-**** CSS Multi-column Layout
-**** CSS Values and Units Level 3
-**** CSS Cascading and Inheritance Level 3
-*** Testing
-**** CSS Image Values and Replaced Content Level 3
-**** CSS Speech
-**** CSS Flexible Box Layout
-**** CSS Text Decoration Module Level 3
-**** CSS Fonts Level 3
-**** CSS Writing Modes Level 3
-**** CSS Shapes Level 1
-**** CSS Masking Level 1
-**** CSS Counter Styles Level 3
-**** CSS Fragmentation Level 3
-**** Compositing and Blending Level 1
-**** CSS Syntax Level 3
-**** CSS Basic User Interface Level 3
-**** Geometry Interfaces Module Level 1
-**** CSS Cascading and Inheritance Level 4
-***** Importing Style Sheets
-***** Shorthand Properties
-***** Value Processing
-****** Declared Values
-****** Cascaded Values
-****** Specified Values
-****** Computed Values
-****** Used Values
-****** Actual Values
-***** Filtering
-***** Cascading
-***** Defaulting
-****** Initial Values
-****** Inheritance
-****** Explicit Defaulting
-******* initial : Resetting a Property
-******* inherit : Explicit Inheritance
-******* unset : Erasing All Declarations
-******* revert : Rolling Back The Cascade
+**** Stable
+***** CSS Backgrounds and Borders Level 3
+***** CSS Conditional Rules Level 3
+***** CSS Multi-column Layout
+***** CSS Values and Units Level 3
+***** CSS Cascading and Inheritance Level 3
+**** Testing
+***** CSS Image Values and Replaced Content Level 3
+***** CSS Speech
+***** CSS Flexible Box Layout
+***** CSS Text Decoration Module Level 3
+***** CSS Fonts Level 3
+***** CSS Writing Modes Level 3
+***** CSS Counter Styles Level 3
+***** CSS Fragmentation Level 3
+***** CSS Syntax Level 3
+***** CSS Basic User Interface Level 3
+*** CSS 4
+**** Testing
+***** CSS Cascading and Inheritance Level 4
+****** Importing Style Sheets
+****** Shorthand Properties
+****** Value Processing
+******* Declared Values
+******* Cascaded Values
+******* Specified Values
+******* Computed Values
+******* Used Values
+******* Actual Values
+****** Filtering
+****** Cascading
+****** Defaulting
+******* Initial Values
+******* Inheritance
+******* Explicit Defaulting
+******** initial : Resetting a Property
+******** inherit : Explicit Inheritance
+******** unset : Erasing All Declarations
+******** revert : Rolling Back The Cascade
 - user-agent origin
 - user origin
 - author origin
-***** Changes
-*** Refining
-**** CSS Cascaing Variables
-- CR
-**** CSS Will Change Level 1
-- CR
-**** CSS Level 2 Revision 2
-***** Syntax and basic data types
-***** Selectors
-***** Assigning property values, Cascading, and Inheritance
-***** Media types
-***** Box model
-***** Visual formatting model
-***** Visual effects
-***** Generated content, automatic numbering, and lists
-***** Paged media
-***** Colors and Backgrounds
-***** Fonts
-***** Text
-***** Tables
-***** User interfaces
-***** Link
-- [[https://www.w3.org/TR/CSS22/][Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification - W3C]]
-- [[https://momdo.github.io/css2/Overview.html][Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification 日本語訳 - W3C]]
+****** Changes
 ** Properties
 *** Foundamentals
 **** box
@@ -728,6 +729,26 @@
 *** Link
 - [[http://sass-lang.com/documentation/file.SASS_REFERENCE.html][SASS_REFERENCE]]
 ** Memo
+*** CSS Levels
+**** CSS Level 1
+- 1996/12勧告。
+**** CSS Level 2
+- 1998/5勧告
+  CSS1の上位互換。幾つかの概念の追加・拡大・改定が行われた。
+  実施素敵にCSS2.1に仕様としての役割を委ねた形になっている。
+  CSS2は管理されておらず、CSS2.1を基にするよう奨励されている。
+**** CSS Level 2.1
+- 2011/6勧告。
+  CSS2の改訂版。CSS2の定義が不明瞭で各ユーザーエージェントに非互換が生じたため、
+  曖昧な記述を明確にするための改定が行われた。
+  ベンダは2002年ごろからCSS2.1を基本仕様と見なしている。
+**** CSS Level 3
+- CSS Level 3 uses CSS2.1 spec as its core, and builds on Level 2 module by module.
+  Each module adds functionality and/or replaces part of the CSS 2.1 spec.
+**** CSS Level 4
+- CSS Level 4 and beyond
+  There is no CSS Level 4.
+  CSS as the language has no longer levels, and independent modules can reach level 4 or beyond.
 *** 記述箇所
 - 
   上のものから順に優先的に適用される。

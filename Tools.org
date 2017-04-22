@@ -467,10 +467,11 @@
 ** PHP
 *** Library
 **** PSGI
-- 
-  PHP版WSGI
-
-
+- PHP版WSGI
+** XML
+*** Apache Xerces
+- アパッチ ザーシーズ
+  XML文書のパースと操作を行うための一群のソフトウェアパッケージ。
 ** Posix互換
 *** Cygwin
 - 

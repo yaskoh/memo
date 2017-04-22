@@ -1003,6 +1003,21 @@
 ********* Security Considerations
 ******** RFC7234 - Caching
 ******** RFC7235 - Authentication
+******* RFC7239 - Forward HTTP Extension
+******** Link
+- [[https://tools.ietf.org/html/rfc7239][RFC7239 Forwarded HTTP Extension]]
+****** Memo
+******* XFF / X-Forwarded-For
+- HTTPヘッダフィールドの一つ。
+  RFCの標準的なヘッダフィールドではないが、同種の"Forwarded"の標準化作業が開始されている。
+  プロキシサーバやロードバランサを経由してアクセスするクライアントの送信元IPアドレスを特定する際のデファクトスタンダード。
+  多くのプロキシサーバやキャッシュ・エンジンでサポートされている。
+- 2014年にRFC7239により、"Forwarded"が制定された。
+******** Format
+- X-Forwarded-For : client1, proxy1, proxy2
+  接続元がclient1、proxy1とproxy2を経由してproxy2に到達する場合のデータ。
+******** Link
+- [[http://3.1415.jp/kc47fh1k/][HTTPクライアントの接続元IPアドレスを知る - 3.1415.jp]]
 ****** Link
 - [[https://triple-underscore.github.io/RFC723X-ja.html][Hytertext Transfer Protocol (HTTP/1.1) - RFC 7230 〜 7235 - 日本語訳]]
 
@@ -1034,7 +1049,7 @@
 
 ***** RPC
 - Remote Procedure Call
-
+  
 ***** RTP
 
 ***** SIP
@@ -1855,7 +1870,15 @@
 
 ** Link
 - [[https://en.wikipedia.org/wiki/Computer_network][Computer network Wikipedia]]
-
+- [[http://blog.amedama.jp/entry/2017/03/29/080000][Python: ソケットプログラミングのアーキテクチャパターン - CUBE SUGAR CONTAINER]]
+** Glossary
+*** Remote IP Adress
+- Webサーバが受け取るアドレス。
+  Apacheの場合、REMOTE_ADDR, %{REMOTE_ADDR}(mod_rewriteの場合)など。
+  ロードバランサやプロキシを経由する場合、そのIPアドレスとなってしまうので、
+  元のIPが欲しい場合はXFFなどを利用する。
+  
+  RFC3875(CGI)で規定されている。
 ** Memo
 *** Free Wi-fi
 *** プロミスキャスモード端末の特定

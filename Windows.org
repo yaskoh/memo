@@ -2,66 +2,47 @@
 ** Shell
 *** cmd
 **** Command
-***** cls
+***** Internals / 内部コマンド
+- helpで確認
+****** assoc
+****** attrib
+****** break
+****** bcdedit
+****** cacls
 - 
-  画面上の文字を消去する。
+  ファイルやフォルダに対して設定されているACLの内容を確認したり、
+  変更するために利用するコマンドラインのツール。
+
+****** call
+****** cd
+****** chcp
+****** chdir
+****** chkdsk
+****** chkntfs
+****** cls
+- 画面上の文字を消去する。
   POSIX系shellだとclearかCtr+l。
 
-***** choice
-
-- choice[.exe] [/C <choices>] [/N] [/CS] [/T nnnn [/D c]] [/M <message>]
-  - /C <choices>
-    選択肢となる文字列を指定する。
-  - /N
-    選択肢と「？」を表示させない。
-  - /CS
-    選択肢の大文字小文字を区別する。
-  - /T
-    選択する時間を設定する。nnnnは制限時間の秒数。
-  - /D
-    Tで指定した時間が経過した際に選択される選択肢を指定する。
-  - /M <message>
-    メッセージを表示する。
-
-- 1番目の選択肢を選ぶと1、n番目の選択肢を選ぶとnが終了コード（エラーコード）が返される。
-  Ctrl+Cなどが押されると0、エラー時には255が返される。
-
-- ex) choice /C YN /M "続行しますか"
-      ⇒続行しますか [Y,N]?
-
-***** cmdkey
-- 
-  保存されたユーザ名とパスワードの作成、表示、および削除を行う。
-
-- /list{:targetname}
-  資格情報を表示する
-
-- /add(/genericも可)
-  - /add:targetname /user:username /pass:password
-  - /add:targetname /user:username /pass
-  - /add:targetname /user:username
-  - /add:targetname /smartcard
-  
-  - /smartcard
-
-
-- /delete
-  - /delete:targetname
-
-  - /delete /ras
-    RAS資格情報を削除する
-  
-***** defined
-- 
-  環境変数が設定されているかチェックするには、DEFINEDを使う。
-
-- ex) 
-    IF DEFINED ENV echo OK
-
-- 
-  [[http://orangeclover.hatenablog.com/entry/20110127/1296135692][バッチファイル/コマンドプロンプトで環境変数が設定されているかチェックする方法]]
-
-***** fc
+****** cmd
+****** color
+****** comp
+****** compact
+****** convert
+****** copy
+****** date
+****** del
+****** dir
+****** diskcomp
+****** diskcopy
+****** diskpart
+****** doskey
+****** drivequery
+****** echo
+****** endlocal
+- バッチプログラムで一時的に変更した環境変数のローカル化を終了する。
+****** erase
+****** exit
+****** fc
 - fc (option) [file1] [file2]
   2つのファイルを比較して相違点を表示する。
 - /L
@@ -73,29 +54,66 @@
 - /LB(行数)
   (行数)以上続いた場合に比較をやめる。
 
-***** cacls
-- 
-  ファイルやフォルダに対して設定されているACLの内容を確認したり、
-  変更するために利用するコマンドラインのツール。
-
-***** help
+****** find
+****** findstr
+****** for
+- FOR %変数 IN (セット) DO コマンド [コマンドパラメーター]
+  指定されたコマンドをファイル セットの各ファイルに対して実行する
+  - %変数 : 単一文字の置き換え可能なパラメーターを指定
+  - (セット) : ファイル セットを指定する。ワイルドカードを使用可能。
+  - コマンド : 各ファイルごとに実行するコマンドを指定
+  - コマンドパラメーター : 指定されたコマンドのパラメーターまたはスイッチを指定する
+- バッチプログラムでは、%変数の代わりに%%変数を使用する。
+******* Switch
+******** /D
+******** /R
+******** /L
+******** /F
+****** format
+****** fsutil
+****** ftype
+****** goto
+****** gpresult
+****** graptbal
+****** help
 - 
   コマンドの一覧を取得できる。
   内部コマンドも外部コマンドもあると思われる。
 
-***** setlocal
+****** icals
+****** if
+******* defined
+- 環境変数が設定されているかチェックするには、DEFINEDを使う。
+- ex) 
+    IF DEFINED ENV echo OK
 - 
-  バッチファイルでの環境変数のローカル化を開始する。
-  以前の設定を復元するにはENDLOCALを実行する。
-  バッチスクリプトが終了すると、そのバッチスクリプトで発行されたSETLOCALコマンドに対し、
-  暗黙のENDLOCALが実行される。
+  [[http://orangeclover.hatenablog.com/entry/20110127/1296135692][バッチファイル/コマンドプロンプトで環境変数が設定されているかチェックする方法]]
 
-***** start
-***** endlocal
-- 
-  バッチプログラムで一時的に変更した環境変数のローカル化を終了する。
-
-***** robocopy
+******* Link
+- tmp
+  - [[http://qiita.com/sawa_tsuka/items/8edf3d3d33a0ae86cb5c][.bat（バッチファイル）のifコマンド解説。 - Qiita]]
+****** label
+****** md
+****** mkdir
+****** mklink
+****** mode
+****** more
+****** move
+****** penfiles
+****** path
+****** pause
+****** popd
+****** print
+****** prompt
+****** pushd
+****** rd
+****** recover
+****** rem
+****** ren
+****** rename
+****** replace
+****** rmdir
+****** robocopy
 - 
   フォルダを同期するためのコマンド。
   Robust File Copyの略で、堅牢で確実なファイル・コピーという意味を持つ。
@@ -135,6 +153,47 @@
 - /TEE
   コンソールウィンドウとログファイルに出力する
 
+****** set
+- SET [変数名=[文字列]]
+  環境変数を表示、設定、または削除する。
+
+- 現在の環境変数を表示するには、パラメータを指定せず"SET"のみ入力する。
+- 変数名のみを指定して実行すると、プレフィックスが一致するすべての変数の値が表示される。
+  例えば、"SET P"とすると、'P'で始まるすべての変数が表示される。
+******* Switch スイッチ
+******** /A
+- SET /A 式
+  等号の右側の文字列が、評価する数式であることを指定する。
+******** /P
+- SET /P 変数=[プロンプト文字列]
+  ユーザによって入力された入力行を変数の値として設定できるようにする。
+****** setlocal
+- 
+  バッチファイルでの環境変数のローカル化を開始する。
+  以前の設定を復元するにはENDLOCALを実行する。
+  バッチスクリプトが終了すると、そのバッチスクリプトで発行されたSETLOCALコマンドに対し、
+  暗黙のENDLOCALが実行される。
+
+****** sc
+****** schtasks
+****** shift
+****** shutdown
+****** sort
+****** start
+****** subst
+****** systeminfo
+****** tasklist
+****** time
+****** title
+****** tree
+****** type
+****** ver
+****** verify
+****** vol
+****** xcopy
+****** wmic
+***** Externals / 外部コマンド
+- "System Programs"等を参照
 ***** ネットワークコマンド
 ****** arp
 - 
@@ -459,7 +518,7 @@
 ****** cygstart
 - start a program or open a file or URL
   
-** Tools
+** System Programs
 *** System32
 **** Direct
 ***** msc
@@ -483,11 +542,52 @@
 ****** tpm.msc
 ****** WF.msc
 ****** WmiMgmt.msc
-
 ***** exe
+****** choice.exe
+- choice[.exe] [/C <choices>] [/N] [/CS] [/T nnnn [/D c]] [/M <message>]
+  - /C <choices>
+    選択肢となる文字列を指定する。
+  - /N
+    選択肢と「？」を表示させない。
+  - /CS
+    選択肢の大文字小文字を区別する。
+  - /T
+    選択する時間を設定する。nnnnは制限時間の秒数。
+  - /D
+    Tで指定した時間が経過した際に選択される選択肢を指定する。
+  - /M <message>
+    メッセージを表示する。
+
+- 1番目の選択肢を選ぶと1、n番目の選択肢を選ぶとnが終了コード（エラーコード）が返される。
+  Ctrl+Cなどが押されると0、エラー時には255が返される。
+
+- ex) choice /C YN /M "続行しますか"
+      ⇒続行しますか [Y,N]?
+
 ****** cmd.exe
+- コマンドプロンプト
+****** cmdkey.exe
 - 
-  コマンドプロンプト
+  保存されたユーザ名とパスワードの作成、表示、および削除を行う。
+
+- /list{:targetname}
+  資格情報を表示する
+
+- /add(/genericも可)
+  - /add:targetname /user:username /pass:password
+  - /add:targetname /user:username /pass
+  - /add:targetname /user:username
+  - /add:targetname /smartcard
+  
+  - /smartcard
+
+
+- /delete
+  - /delete:targetname
+
+  - /delete /ras
+    RAS資格情報を削除する
+  
 ****** cscript.exe
 - コマンドライン用WSH。
 ****** mstsc.exe / リモートデスクトップ
@@ -553,12 +653,10 @@ chgport.exe
 chgusr.exe
 chkdsk.exe
 chkntfs.exe
-choice.exe
 cipher.exe
 cleanmgr.exe
 cliconfg.exe
 clip.exe
-cmdkey.exe
 cmdl32.exe
 cmmon32.exe
 cmstp.exe
@@ -948,14 +1046,14 @@ wusa.exe
 xcopy.exe
 xpsrchvw.exe
 xwizard.exe
-**** wbem
+**** wbem\
 ***** wmic.exe / WMI (Windows Management Instrumentation)
 - 
   システム管理用インターフェイス。
   WBEMというシステム管理を目的とした標準仕様に従って、WinOSに実装、拡張したもの。
   wmicというCommandLineツールを使って情報を取得したり操作できる。
   "wmic qfe"として適用済みのKBを取得できる。
-**** WindowsPowerShell
+**** WindowsPowerShell\
 ***** v1.0
 ****** powershell.exe
 
@@ -963,7 +1061,6 @@ xwizard.exe
 **** servermanagercmd.exe
 **** oclist.exe
 **** dcpromo.exe
-*** ローカルセキュリティポリシー
 ** Files
 *** pagefile.sys
 - C:\pagefile.sys
@@ -1065,21 +1162,54 @@ xwizard.exe
 - [[http://www.akadia.com/services/windows_registry_tutorial.html][Windows Registry Tutorial]]
 - 
 ** Environment Variables
-*** APPDATA
-*** LOCALLAPPDATA
-*** OS
-*** PATH
-*** ProgramFiles
+*** Values
+**** APPDATA
+**** LOCALLAPPDATA
+**** OS
+**** PATH
+**** PATHEXT
+- 自動で補完される拡張子の情報
+**** ProgramFiles
 - %SystemDrive%\Program Files
-*** SystemDrive
+**** SystemDrive
 - ex) C:
-*** SystemRoot
+**** SystemRoot
 - ex)%SystemDrive%\Windows
-*** USERPROFILE
+**** USERPROFILE
 - ユーザのプロファイルのパス
   ex) C:\Users\UserName, C:\Dcuments and Settings\UserName
-*** windir
+**** windir
 - ex)%SystemDrive%\Windows
+*** 動的な環境変数
+**** %CD%
+- 現在のディレクトリ文字列
+**** %DATE%
+- DATEコマンドと同じフォーマットの現在日付
+**** %TIME%
+- TIMEコマンドと同じフォーマットの現在時刻
+**** %RANDOM%
+- 0から32767の間の任意の10進数
+**** %ERRORLEVEL%
+- 現在のERRORLEVELの値
+**** %CMDEXTVERSION%
+**** %CMDCMDLINE%
+**** %HIGHESTNUMANODENUMbER%
+*** Memo
+**** Setting 設定
+- setを使って、表示や設定を行う
+**** Replace 置換
+- ex)%PATH:文字列 1 = 文字列2%
+  PATH環境変数に含まれるすべての"文字列 1"を"文字列 2"に置き換える。
+**** 副文字列の指定
+- ex)%PATH:~10,5%
+  11番目(オフセット10)の文字から5文字だけを使う。
+- ex)%PATH:~-10%
+  最後の10文字が展開される
+- ex)%PATH:~0,-2%
+  最後の2文字以外のすべてが展開される
+**** 遅延評価関数
+- 実行時に環境変数を展開する。
+  変数は感嘆符"!"で囲む。
 ** Structure
 *** Windows(%systemroot%)
 **** system

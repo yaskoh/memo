@@ -406,6 +406,43 @@
   8. global-map : global
   9. local-function-key-map : file
   [[http://emacs.g.hatena.ne.jp/kiwanami/20110606/1307385847][キーマップの lookup 順序について - はてなグループEmacs@kiwanami]]
+*** キー設定
+**** Alias
+- C-m : "RET"
+- C-i : "TAB"
+- C-[ : "ESC"
+**** Key Sequence指定
+***** string
+- ex: "\C-xa"
+***** vector
+- ex: [?\C-x ?a]
+***** kbd
+- ex: (kbd "C-x a")  ; => "\^Xa"
+***** Link
+- [[http://d.hatena.ne.jp/tama_sh/20110206/1296976730][emacsでのキー入力の表現方法 - My Emaps]]
+- [[http://ergoemacs.org/emacs/keyboard_shortcuts.html][Emacs: How to Define Keys]]
+**** <return> and RET
+- "<return>" is the Return key while emacs runs in a graphical user interface.
+- "RET" is the Return key while emacs runs in a terminal.
+  "RET" is also equivalent to "C-m"
+- [[http://ergoemacs.org/emacs/emacs_key_notation_return_vs_RET.html][Emacs's Key Notation: What's the difference between "<return>" and "RET"?]]
+
+**** remap
+- あるコマンドに割り当てられているキー、という形でキー指定が可能。
+  既存のキーを拡張したコマンドを当てる場合などに有用。
+  ex) (add-hook 'c++-mode-hook '(lambda () (local-set-key [remap newline] 'newline-and-indent)))
+  
+**** Key macro
+- キー設定関数で、コマンドの代わりにキーを指定することもできる。
+  ex) (global-set-key "\C-l" "\C-f")
+  C-lを押すとC-fのキーが押されたこととなる。
+**** keyboard-translate
+- モードに関係なくキー変換を行うことができる。
+  引数はベクター表記の中の文字。低次元層に働く関数なので、結構強力。
+  ex) (keyboard-translat ?\C-l ?\C-f)
+**** Link
+- [[http://ergoemacs.org/emacs/emacs_keys_index.html][Emacs Keybinding, Keyboard, Articles Index]]
+  
 *** Literal リテラル
 **** 数値リテラル
 ***** 数値 1234
@@ -467,21 +504,6 @@
 - Windowsでうまくgrepができない/結果がヒットしない
 - [[https://www.emacswiki.org/emacs/GrepMode][Grep Mode - EmacsWiki]]
 
-*** キー設定
-**** remap
-- あるコマンドに割り当てられているキー、という形でキー指定が可能。
-  既存のキーを拡張したコマンドを当てる場合などに有用。
-  ex) (add-hook 'c++-mode-hook '(lambda () (local-set-key [remap newline] 'newline-and-indent)))
-  
-**** Key macro
-- キー設定関数で、コマンドの代わりにキーを指定することもできる。
-  ex) (global-set-key "\C-l" "\C-f")
-  C-lを押すとC-fのキーが押されたこととなる。
-**** keyboard-translate
-- モードに関係なくキー変換を行うことができる。
-  引数はベクター表記の中の文字。低次元層に働く関数なので、結構強力。
-  ex) (keyboard-translat ?\C-l ?\C-f)
-  
 *** Debug デバッグ
 **** print(message)
 - message関数を使う。
@@ -517,6 +539,8 @@
 
 - [[http://yohshiy.blog.fc2.com/blog-category-30.html][Top - 環境設定のための Emacs Lisp 入門 - プログラマーズ雑記帳]]
 
+*** Tutorial
+- [[http://ergoemacs.org/emacs/emacs.html][Practical Emacs Tutorial - Practial Emacs Quick Start]]
 *** Settings
 - [[https://github.com/kawabata/dotfiles/blob/master/.emacs.d/init.el][dotfiles/.emacs.d/init.el (kawabata/dotfiles) - github]]
 - [[http://www.clear-code.com/blog/2012/3/20.html][Emacs実践入門 - おすすめEmacs設定2012 - ククログ]]

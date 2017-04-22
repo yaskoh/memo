@@ -411,11 +411,11 @@
   サブリソースの読み込みも完了した時点で"complete"となる。
 
 ****** Methods
-******* Document.getElementsByClassName()
+******* document.getElementsByClassName()
 - 
   引数で与えられたclass名を持つエレメント群のリストを返す。
   
-******* Document.getElementsByTagName()
+******* document.getElementsByTagName()
 - 
   引数で与えられたタグ名を持つエレメント群のリストを返す。
 
@@ -435,6 +435,36 @@
 - ドキュメントにテキストを書き込む
 ******** document.writeln(String text)
 - ドキュメントにテキスト行を書き込む
+***** Event
+***** EventTarget
+- イベントを受け取り、そのためのリスナーを持つ可能性があるオブジェクトにより実装さえたインターフェース。
+  Element, document, windowが一般的なイベントターゲットだが、他のオブジェクトもインデントターゲットになり得る。
+****** Methods
+******* EventTarget.addEventListener()
+- EventTarget上に特定のイベント種別のイベントハンドラを登録する。
+******** Syntax
+- target.addEventListener(type, listener[, options]);
+- target.addEventListener(type, listener[, userCapture]);
+- target.addEventListener(type, listener[, userCapture, aWantsUntrusted]); // Gecko/Mozillaのみ
+******** Parameters
+- type
+  対象とするイベントの種類を表す文字列
+- listener
+  指定されたタイプのイベントが発生するときに受け取るオブジェクト。
+  EventListenerインターフェースを実装するオブジェクトか、JavaScriptの関数である必要がある。
+- options
+  対象のイベントリスナーの特性を指定する、オプションのオブジェクト。
+  - capture : trueを指定すると、DOMツリーで下に位置する任意のEVentTargetに発送される前に、登録したリスナーに発送される。
+  - once : listenerが追加後にたかだか1回しか実行されないことを{jsxref("Boolean")}値で指定する。
+    trueを指定するとlistenerは一度実行された時に自動的に削除する。
+  - passive : listenerがpreventDefault()を呼び出さないことを表すBoolean値。
+    trueを指定すると、ユーザーエージェントは呼び出しを無視し、コンソールに警告を出力する。
+  - mozsystemgroup : (標準化されていない)
+- useCapture
+- WantsUntrusted
+******* EventTarget.removeEventListener()
+- EventTargetからイベントリスナーを削除する。
+******* EventTarget.dispatchEVent()
 ***** History
 - The History interface allows to manipulate the browser session history,
   that is the pages visited in the tab or frame that can current page is loaded in.
@@ -574,6 +604,38 @@
 ******* Regular expression literals / 正規表現リテラル
 ******* Template literals / テンプレートリテラル
 ****** Automatic semicolon insertion (ASI) / 自動セミコロン挿入
+***** Data type データ型
+****** Primitive プリミティブ型
+******* Boolean
+******* Number
+******* String
+******* Symbol
+******* null
+******* undefine
+****** Object
+***** hoisting 巻き上げ
+- 
+  関数内で宣言されたローカル変数は、すべてその関数の先頭で宣言されたものとみなされる。
+  したがって、関数で使用されるローカル変数は、関数の先頭で宣言を行うようにすることで、間違いを視覚的に減らす。
+- 巻き上げられた場合、変数定義はスコープの最初に行われるが、変数への代入は行われない。
+  また、let/constは巻き上げが行われ、変数定義は行われるが、参照は実際の変数定義が行われるところまで行えない。
+
+- ex
+  var myname = "global";
+  function func(){
+    console.log(myname); // -> undefined
+    myname = "local";
+    console.log(myname); // -> "local"
+  }
+  ↓(以下と同じと解釈される)
+  var myname = "global";
+  function func(){
+    var myname;
+    console.log(myname); // -> undefined
+    myname = "local";
+    console.log(myname); // -> "local"
+  }
+
 *** ECMAScript 2016
 **** data Types and values
 *** ES5.1
@@ -654,7 +716,7 @@
 ***** JSON
 **** Error
 *** DOM
-- [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
+- [[file:DOM.org][DOM.org]]
 *** XMLHttpRequest
 - [[https://xhr.spec.whatwg.org/][XMLHttpRequest - Living Standard]]
 *** Memo
@@ -1133,38 +1195,7 @@
 - [[http://www.h2.dion.ne.jp/~defghi/webc/webc.htm][Web Copmonetsの基本的な使い方・まとめ]]
 - [[http://www.h2.dion.ne.jp/~defghi/webc/webc.htm][Web開発者に革命をもたらす!「Web Components」超入門 - LIG.inc]]
 ** Glossary
-*** hoisting 巻き上げ
-- 
-  関数内で宣言されたローカル変数は、すべてその関数の先頭で宣言されたものとみなされる。
-  したがって、関数で使用されるローカル変数は、関数の先頭で宣言を行うようにすることで、間違いを視覚的に減らす。
-- 巻き上げられた場合、変数定義はスコープの最初に行われるが、変数への代入は行われない。
-  また、let/constは巻き上げが行われ、変数定義は行われるが、参照は実際の変数定義が行われるところまで行えない。
-
-- ex
-  var myname = "global";
-  function func(){
-    console.log(myname); // -> undefined
-    myname = "local";
-    console.log(myname); // -> "local"
-  }
-  ↓(以下と同じと解釈される)
-  var myname = "global";
-  function func(){
-    var myname;
-    console.log(myname); // -> undefined
-    myname = "local";
-    console.log(myname); // -> "local"
-  }
-
-*** Data type データ型
-**** Primitive プリミティブ型
-***** Boolean
-***** Number
-***** String
-***** Symbol
-***** null
-***** undefine
-**** Object
+** Memo
 *** API仕様
 **** CommonJS
 - サーバサイドを開発するために生まれた標準APIの仕様で、元はServerJSという名前だった。
@@ -1178,7 +1209,6 @@
 **** UMD
 - Universal Module Definition
   CommonJSとAMDの両方を含めたモジュール定義で、このフォーマットによりクライアントとサーバの両方の環境で動作するモジュールを定義できる。
-** Memo
 *** 標準スクリプト言語の指定
 - 
   HTML4.01までは、以下の記述によりonclickなどで使われる標準のスクリプト言語指定が推奨されていたが、

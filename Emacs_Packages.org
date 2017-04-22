@@ -68,6 +68,7 @@
 ***** M-g g : goto-line
 ***** M-g M-g : goto-line
 ***** M-g TAB : move-to-column
+***** M-l : downcase-word
 ***** M-v : scroll-down
 ***** M-x : execute-extended-command
 - コマンドを入力して実行
@@ -444,6 +445,87 @@
   [[https://www.emacswiki.org/emacs/TrampMode][Tramp Mode - EmacsWiki]]
   [[http://yo.eki.do/notes/tramp-mode][Emacs:まだターミナルで消耗してるの？ - 葉月夜堂]]
 
+*** nxml(dir)
+**** nxml-mode
+- be included in Emacs 23 and after.
+***** Functions
+****** nxml-balanced-close-start-tag-block (C-c C-b)
+- (nxml-balanced-close-start-tag-block)
+  Close the start-tag before point with ">" and insert a balancing end-tag.
+- 数行下(block形式)にend-tagでxmlのstart-tagの末尾">"を挿入する
+****** nxml-balanced-close-start-tag-inline (C-c C-i)
+- (nxml-balanced-close-start-tag-inline)
+  Close the start-tag before point with ">" and insert a balancing end-tag.
+- 同行にend-tagと、xmlのstart-tagの末尾">"を挿入する。
+****** nxml-complete
+****** nxml-electric-slash (/)
+- (nxml-electric-slash ARG)
+  Insert a slash.
+****** nxml-finish-element (C-c C-f, C-c /, C-c ])
+- (nxml-finish-element)
+  Fininsh the current element by inserting an end-tag.
+****** nxml-insert-xml-declaration (C-c C-x)
+- (nxml-insert-xml-declaration)
+  Insert an XML declaration at the beginning of buffer.
+- 現在カーソルのあるレベルのエンドタグを挿入
+****** nxml-show-all (C-c C-o C-a)
+- (nxml-show-all)
+  Show all elements in the buffer normally.
+****** nxml-hide-all-text-content (C-c C-o C-t)
+- (nxml-hide-all-text-content)
+  Hide all text content in the buffer.
+***** Keybinds
+****** C-c / : nxml-finish-element
+****** C-c ] : nxml-finish-element
+****** C-c C-b : nxml-balanced-close-start-tag-block
+****** C-c C-f : nxml-finish-element
+****** C-c C-i : nxml-balanced-close-start-tag-inline
+****** C-c C-x : nxml-insert-xml-declaration
+****** C-M-d : nxml-down-element
+****** C-M-n : nxml-forward-element
+****** C-M-p : nxml-backward-element
+****** C-M-u : nxml-backward-up-element
+****** C-c C-o C-a : nxml-show-all
+****** C-c C-o C-t : nxml-hide-all-text-content
+****** tmp
+******* C-c C-d : nxml-dynamic-markup-word
+******* C-c RET : nxml-split-element
+******* C-c C-u : nxml-insert-named-char
+******* C-c C-x : nxml-insert-xml-declaration
+******* M-h : nxml-mark-paragraph
+******* M-{ : nxml-backward-paragraph
+******* M-} : nxml-forward-paragraph
+******* C-c C-o C-c : nxml-hide-direct-text-content
+******* C-c C-o C-d : nxml-hide-subheadings
+******* C-c C-o C-e : nxml-show-direct-text-content
+******* C-c C-o C-i : nxml-show-direct-subheadings
+******* C-c C-o C-k : nxml-show-subheadings
+******* C-c C-o C-l : nxml-hide-text-content
+******* C-c C-o C-o : nxml-hide-other
+******* C-c C-o C-r : nxml-refresh-outline
+******* C-c C-o C-s : nxml-show
+***** Variables
+****** nxml-attribute-indent
+- Indentation for the attributes of an element relative to the start-tag.
+****** nxml-child-indent
+- Indentation for the children of an element relative to the start-tag.
+****** nxml-slash-auto-complete-flag
+- Non-nil means typing a slash automatically completes the end-tag.
+  This is used by `nxml-electric-slash'.
+***** Link
+- [[http://www.thaiopensource.com/nxml-mode/][nXML mode]]
+- [[https://www.emacswiki.org/emacs/NxmlMode][Nxml Mode - Emacs Wiki]]
+**** rng-valid
+- real-time validation of XML using RELAX NG
+***** Keybinds
+****** tmp
+******* C-c C-n : rng-next-error
+******* C-c C-v : rng-validate-mode
+******* C-c C-s C-a : rng-auto-set-schema-and-validate
+******* C-c C-s C-f : rng-set-schema-file-and-validate
+******* C-c C-s C-l : rng-save-schema-location
+******* C-c C-s C-t : rng-set-document-type-and-validate
+******* C-c C-s C-w : rng-what-schema
 *** org(dir)
 **** org
 ***** Functions
@@ -470,6 +552,12 @@
 ****** hs-show-block
 ****** hs-hide-level
 ****** hs-toggle-hiding
+*** textmodes(dir)
+**** fill
+***** Functions
+****** fill-paragraph
+- (fill-paragraph &optional JUSTIFY REGION)
+  Fill paragraph at or after point.
 *** url(dir)
 **** url
 ***** Functions
@@ -678,6 +766,8 @@
 ***** info
 - (info &optional FILE_OR_NODE BUFFER)
   the documentation browser.
+  FILE-OR-NODE specifies the file to examine;
+  
 ***** info-emacs-manual
 - (info-emacs-manual)
   Display the Emacs manual in Info mode.
@@ -963,6 +1053,9 @@
 ***** dotimes
 - (dotimes (VAR COUNT [RESULT]) BODY...)
   Loop a certain number of times.
+***** kbd
+- (kbd KEYS)
+  Convert KEYS to the internal Emacs key representation.
 ***** lambda
 - (lambda ARGS [DOCSTRING] [INTERACTIVE] BODY)
   Return a lambda expression.
@@ -1213,18 +1306,27 @@
 
 *** web-mode
 **** KeyBindings
+***** C-; (C-c C-;) : web-mode-comment-uncomment
+***** C-c C-a : web-mode-indent-buffer
+***** C-c C-b : web-mode-beginning-of-element
 ***** C-c C-d : web-mode-delete-element
+***** C-c C-e : web-mode-select-element-content
 ***** C-c C-f : web-mode-toggle-folding
+***** C-c C-i : web-mode-insert
 ***** C-c C-j : web-mode-duplicate-element
 ***** C-c C-n : web-mode-match-tag
+***** C-c C-p : web-mode-parent-element
 ***** C-c C-r : web-mode-rename-element
 **** Commands
+***** web-mode-beginning-of-element (C-c C-b)
+***** web-mode-comment-uncomment (C-; / C-c C-;))
 ***** web-mode-delete-element (C-c C-d)
 - (web-mode-delete-element)
   Delete the current HTML element
 ***** web-mode-duplicate-element (C-c C-j)
 - (web-mode-duplicate-element)
   Duplicate the current HTML element.
+***** web-mode-indent-buffer (C-c C-a)
 ***** web-mode-match-tag (C-c C-n)
 - (web-mode-match-tag)
   Match tag

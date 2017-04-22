@@ -503,9 +503,16 @@
   https://docs.oracle.com/cd/E57425_01/121/ARPLS/d_sqltun.htm#CHDGAJCI
 **** DBMS_STATS
 - データベース・オブジェクト用に収集したオプティマイザの統計情報を表示及び変更できる。
-***** 定数
+***** Constants 定数
+****** AUTO_CASCADE
+****** AUTO_DEGREE
+****** AUTO_INVALIDATE
+****** AUTO_SAMPLE_SIZE
 ***** Supprograms
 ****** オプティマイザ統計情報の収集
+- 特定のクラスのオプティマイザ統計情報を収集し、ANALYZEコマンドの潜在的なパフォーマンスを向上させる。
+******* GATHER_DICTIONARY_STATS
+- ディクショナリのスキーマ('SYS', 'SYSTEM'およびRDBMSコンポーネントに関するスキーマ)に関する統計情報を集する。
 ******* GATHER_INDEX_STATS
 - 索引の統計譲歩うを収集する。
   可能な限り多くの作業をパラレル化する。
@@ -523,6 +530,7 @@
 ********* granularity
 ******* GATHER_SCHEMA_STATS
 ******* GATHER_TABLE_STATS
+******* GENERATE_STATS
 ****** 統計情報の設定または取得
 ******* PREPARE_COLUMN_VALUES
 ******* SET_INDEX_STATS
@@ -536,8 +544,10 @@
 ****** 統計情報の転送
 ******* CREATE_STAT_TABLE
 ******* DROP_STAT_TABLE
+******* EXPORT_DICTIONARY_STATS
 ******* EXPORT_INDEX_STATS
 ******* EXPORT_TABLE_STATS
+******* IMPORT_DICTIONARY_STATS
 ******* IMPORT_INDEX_STATS
 ******* IMPORT_TABLE_STATS
 ****** 統計情報のロックまたはロック解除
@@ -551,6 +561,12 @@
 ******* RESTORE_DICTIONARY_STATS
 ******* RESTORE_SCHEMA_STATS
 ******* RESTORE_TABLE_STATS
+**** DBMS_SYSTEM
+- http://www.morganslibrary.org/reference/pkgs/dbms_system.html
+***** Subprograms
+****** SET_EV
+****** SET_QSL_TRACE_IN_SESSION
+- Turn tracing on or off in any session
 **** DBMS_TRACE
 - PL/SQLトレースを開始および停止するサブプログラムを提供する。
 **** DBMS_ROWID
@@ -563,6 +579,9 @@
 - XML文書を取得する。指定した最大行数まで行をフェッチする。
 ****** GETXMLTYPE
 ****** NEWCONTEXT
+**** DBMS_XPLAN
+- EXPLAIN PLANコマンドの出力を事前定義した複数の書式で表示する簡単な方法が提供される。
+***** Supprograms
 **** TimesTen
 ***** UTL_RECOMP
 - データベース内の無効なPL/SQLモジュール、無効なビュー、索引タイプおよび演算子を再コンパイルする。

@@ -95,6 +95,10 @@
 **** downcase
 - (downcase OBJ)
   Convert argument to lower case and return that.
+**** downcase-word
+- (downcase-word ARG)
+  Convert to lower case from point to end of word, moving over
+
 **** end-of-line
 - (end-of-line &optional N)
   Move point to end of current line (in the logical order).
@@ -187,6 +191,9 @@
 - (fround ARG)
   Return the nearest integer to ARG, as a float.
 **** ftruncate
+**** fset
+- (fset SYMBOL DEFINITION)
+  Set SYMBOL's function definition to DEFINITION, and return DEFINITION.
 **** get-buffer
 - (get-buffer BUFFER-OR-NAME)
   Return the bufer named BUFFER-OR-NAME.
@@ -703,6 +710,9 @@
 - Directory for executables for Eamcs to invoke.
 **** features
 - A list of symbols which are the features of the executing Emacs.
+**** indent-tabs-mode
+- Indentation can insert tabs if this is non-nil.
+  Original value : t
 **** last-command-event
 - Last input event that was part of a command.
 **** load-path

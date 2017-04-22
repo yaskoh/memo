@@ -379,6 +379,11 @@
 ***** WebSphere Application Server
 **** Link
 - [[https://backpaper0.github.io/ghosts/jaxrs-getting-started-and-practice.html#60][JAX-RS入門および実践]]
+*** JAX-WS
+- Java API for XML Web Services
+  主にSOAPを扱うためのAPI
+**** Link
+- [[http://itpro.nikkeibp.co.jp/article/COLUMN/20080801/311972/?rt=nocnt][「Java SE 6完全攻略」第81回 JAX-WS その1 - ITPro]]
 ** Glossary
 *** Deployment Descriptor, DD
 - デプロイメント記述子

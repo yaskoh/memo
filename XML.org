@@ -9,20 +9,20 @@
 - [[https://www.w3.org/TR/xml11/][Extensible Markup Language (XML) 1.1 (Second Edition) - W3C]]
 *** XML Memo
 **** XML Declaration / XML宣言
-- XML宣言を必ず先頭に書かないといけない。コメントも書いてはいけない。
+- XML宣言を必ず先頭に書かないといけない。宣言以前にはコメントも書いてはいけない。
 - 例
   <? xml version="1.0" encoding="UTF-8" standalone="yes|no" ?>
-***** 項目
-****** バージョン属性
+***** Attributes 項目
+****** version バージョン属性
 - 必須。1.0もしくは1.1。
-****** エンコーディング属性
+****** encoding エンコーディング属性
 - 省略可。省略した場合はUTF-8かUTF-16と見なされる。
 - 方式
   - UTF-8
   - UTF-16
   - Shift_JIS
   - EUC
-****** スタンドアロン属性
+****** standalone スタンドアロン属性
 - 省略可。省略した場合、"no"と同じ動きとなる。
 **** Comment / コメント
 - "<!--"から"-->"までの間の文章がコメントとなる。
@@ -45,6 +45,64 @@
 - XML宣言
 - DTD
 - XMLインスタンス
+
+- well-formed + DTDも満たしたもの。大枠のXMLとしての枠だけでなく、独自定義した制限も満たしたもの。
+
+**** 予約語
+***** SGML
+- SGMLからの予約語は大文字で表記されている
+****** #FIXED
+****** #IMPLIED
+****** #PCDATA
+****** #REQUIRED
+****** ANY
+****** ATTLIST
+****** CDATA
+****** DOCTYPE
+****** ELEMENT
+****** EMPTY
+****** ENTITY
+****** ENTITIES
+****** ID
+****** IDREF
+****** IDREFS
+****** IGNORE
+****** INCLUDE
+****** NDATA
+****** NMTOKEN
+****** NMTOKENS
+****** NOTATION
+****** PUBLIC
+****** SYSTEM
+***** XML
+****** encoding
+****** standalone
+****** version
+****** xml
+****** xml:lang
+****** xml:space
+**** Processing Interaction, PI 処理命令
+- <? ~ ?>で囲まれた内容。
+  処理アプリケーションに対して、XML文書からの命令を示すもの。
+***** xml
+- xml宣言
+***** xml-stylesheet
+- xsltスタイルシートとの紐付
+  ex) <?xml-stylesheet type="text/xsl" href="books.xsl" ?>
+****** Attributes
+******* type
+- stylesheetの形式を表す。必須。
+- values
+  - text/xsl : XSLTスタイルシート
+  - text/css : CSS
+******* href
+- stylesheetを格納した場所を指定する。必須。
+**** Rules
+- 唯一のルート要素を持つ。
+- 開始タグで始まり、終了タグでをある必要がある。
+- 全要素は正しくネストされる必要がある。
+- 各要素の大文字/小文字は区別される。
+- 属性値はダブルクォーテーションで囲まれなければならない
 ** Namespace in XML / XML名前空間
 - <要素名 XMLNS="名前空間URL">
   プリフィックスのついていない要素は全て上記の名前空間に属する。
@@ -56,9 +114,11 @@
 - XML文書の論理的構造を定義するために開発されたスキーマ言語のひとつ。
   DTDがXMLで使いにくい面があったため、1998/11にW3Cが策定開始。
   DTDよりもXMLに適したスキーマ言語となっているが、標準化が難航、複雑な仕様となっている。
+*** Elements
+- xsdは便宜上の名前
+**** xsd
 ** DSDL
 - Document Schema Definition Language / 文書スキーマ定義言語
--
 *** RELAX NG / リラクシング
 - RELAX Next Generation
 - 正規文法に基づく妥当性検証
@@ -91,6 +151,58 @@
 ** XSL
 *** XSLT, XSL Transformations
 - XML文書の変換用言語。
+  この文書自体もXML文書である。
+**** Version 1.0
+***** Elements
+- xsl、は便宜上のネームスペース
+****** xsl:stylesheet
+- xsltのルート要素。
+******* Attributes
+******** xmlns:xsl
+- "http://www.w3.org/1999/XSL/Transform"
+******** version
+- "1.0"
+****** xsl:template
+- XML文書に対して適用される一連のスタイル規則を定義する。
+****** xsl:output
+- 出力後の形式を明示的に宣言するためのもの。必須ではない。
+******* Attributes
+******** method
+- 出力形式を指定。デフォルトはhtml。
+- values
+  - xml
+  - html
+  - text
+******** encoding
+- 文字コードを指定。
+- ex)
+  - encoding="Shift_JIS"
+******** version
+******** indent
+- インデントの有無を指定
+- values
+  - yes / no
+******** media-type
+- MIMEタイプを指定
+- ex)
+  - text/html
+****** xsl:text
+- 固定の文字列を出力。
+  基本的には省略可能。
+- ex)
+  <th><xsl:text>ISBNコード</xsl:text></th>
+  ⇒<th>ISBNコード</th>でもOK。
+******* Attributes
+******** disable-output-escaping
+- エスケープ文字を展開するかどうかを指定。
+  yesの場合、"&lt" -> "<"に展開する。
+- values
+  - yes / no
+****** xsl:value-of
+- select属性で指定された要素/属性の内容を取得し出力する。
+******* Attributes
+******** select
+**** Version 2.0
 *** XSL-FO
 ** Memo
 *** Spec

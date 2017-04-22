@@ -66,10 +66,8 @@
 ** Java Platform
 *** Edition
 **** Java SE
-- 
-  Java Platform, Standard Edition。
+- Java Platform, Standard Edition。
   汎用的な用途に使われる。
-
 ***** Package
 ****** General
 ******* java.lang
@@ -87,11 +85,9 @@
 **** Java EE
 - [[file:Java_EE.org][Java_EE.org]]
 **** Java ME
-- 
-  Java Platform, Micro Edition。
+- Java Platform, Micro Edition。
   組み込みシステムなどを用途として想定したエディション。
   機器の種類に応じ、ライブラリのいくつかの異なるセット（プロファイル）を規定している。
-
 *** 配布形態
 **** Java Runtime Environment(JRE)
 - 
@@ -181,11 +177,36 @@
 - 
   Generates HTML pages of API documentation from Java source file.
 
+**** Security
+**** Internationalization
+**** Remote Method Invocation (RMI)
+**** Java IDL and RMI-IIOP
+**** Deploy Applications and Applets
+**** Java Web Start
+**** Monitor Java Applications
 **** Monitor the Java Virtual Machine
 ***** jps
 - 
   (Experimental) Lists the instrumented Java Virtual Machines (JVMs) on the target system.
 
+**** Web Services
+***** schemagen
+***** wsgen
+- Reads a web service endpoint implementation (SEI) class and generates all of the required artifacts for web service deployment, end invocation.
+- The wsgen command generates JAX-WS portable artifacts used in JAX-WS web services.
+****** Synopsis
+- wsgen [ options ] SEI
+****** Options
+- -classpath path, -cp path
+  The location of the input class files.
+***** wsimport
+- Generates JAX-WS portable artifacts that can be packaged in a web application archive(WAR) file and provides an Ant task.
+****** Synopsis
+- wsimport [options] <WSDL_URI>
+****** Options
+***** xjc
+**** Troubleshooting
+**** Scripting
 ** Warnings
 *** Comparing identical expressions
 - 同じものを比較。
@@ -760,6 +781,23 @@
 ***** javax.imageio.pulgins.jpeg
 ***** javax.imageio.imagio.spi
 ***** javax.imageio.imagio.stream
+***** javax.jws
+****** Enums
+******* WebParam.Mode
+****** Annotations
+******* HandlerChain
+******* Oneway
+******* WebMethod
+******* WebParam
+******* WebResult
+******* WebService
+***** javax.jws.soap
+****** Enums
+******* SOAPBinding.ParameterStyle
+******* SOAPBinding.Style
+******* SOAPBinding.Use
+****** Annotations
+******* SOAPBinding
 ***** javax.naming
 ****** Interfaces
 ******* Context
@@ -782,6 +820,24 @@
 ********* lookup(String name)
 - Retrieves the named object.
 ****** Exception
+***** javax.xml.ws
+- This package contains the core JAX-WS APIs.
+****** Interfaces
+****** Classes
+******* Endpoint
+- public abstract class Endpoint
+  extends Object
+- A Web service endpoint.
+******** Fields
+******** Constructors
+******** Methods
+********* publish(String address, Object implementor)
+- static Endpoint publish(String address, Object implementor)
+  Creates and publishes an endpoint for the specified implementor object at the given address.
+- 第1引数がWebサービスを公開するアドレス、第2引数がWebサービスで公開するオブジェクト。
+****** Enums
+****** Exceptions
+****** Annotations
 **** org
 ***** org.w3c.dom
 ***** org.w3c.dom.bootstrap
@@ -1197,6 +1253,11 @@
 - serialVersionUID
   クラスの構造が変わった場合に判断が付くようにするため、振るID。
 
+*** JAXB
+- Java Architecture for XML Binding
+  software framework that allows Java developers to map Java classes to XML representations.
+- v1.0 : JSR 33
+  v2.0 : JSR 222
 ** Link
 - [[http://docs.oracle.com/javase/specs/][Java Language and Virtual Machine Specification - ORACLE]]
 - [[http://docs.oracle.com/javase/8/docs/api/][Java™jj Platform, Standard Edition 8 API Specification]]
