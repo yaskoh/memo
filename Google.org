@@ -1,0 +1,17 @@
+* Google
+** Search
+*** Query Options
+**** @ ソーシャルメディア
+**** $ 価格
+**** # ハッシュタグ
+**** - 除外
+**** " 完全一致
+**** * ワイルドカード
+**** .. 範囲
+**** OR 結合
+**** site: 特定サイト
+**** related: 関連サイト
+**** info: サイトの詳細情報
+**** cache: キャッシュサイト
+**** Link
+- [[https://support.google.com/websearch/answer/2466433?visit_id=1-636274824380494107-1219258194&p=adv_operators&hl=ja&rd=1][ウェブ検索の精度を高める]]

@@ -1,0 +1,31 @@
+* Specifications
+- Temporary use. Locate specifications that does not categorised to specific files.
+  Transfer to somewhere else if each tools collecting enough volumes.
+** RFC
+*** RFC3875 : The Common Gateway Interface (CGI) Version 1.1
+**** Link
+- [[https://www.ietf.org/rfc/rfc3875][RFC3875 The Common Gateway Interface (CGI) Version 1.1]]
+
+** IATA
+** ISO
+*** ISO 8879 : Standard Generalized Markup Language (SGML)
+- マニュアルなどの文書のためのマークアップ言語。
+**** Link
+- [[https://www.iso.org/standard/16387.html][ISO 8879;1986 - ISO]]
+** W3C
+** OMG
+*** CORBA
+- Common Object Request Broker Architectrue
+**** Features
+***** Objects by Value (OBV)
+***** CORBA Component Model (CCM)
+***** ポータブルなインターセプター
+***** General InterORB Protocol (GIOP)
+***** Data Distribution Service (DDS)
+***** VMCID (Vendor Minor Codest ID)k
+** JSR
+- [[file:Java_JSR.org][Java_JSR.org]]
+** Other Protocols
+*** DCOM
+- Distributed Component Object Model
+- ネットワーク上に分散配置されたコンピュータ上のソフトウェアコンポーネント間通信のためのマイクロソフト独自の技術。
