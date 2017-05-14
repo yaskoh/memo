@@ -168,6 +168,9 @@
 ***** FOR[MAT] format
 - format
   - aNNN : 桁数を指定する（バイト数）
+  - ex)
+    col column1 for a20
+    col column2 for 999,990.9
 ***** HEA[DING] text
 ***** JUS[TIFY] {L[EFT] | C[ENTER] | R[IGHT]}
 ***** LIKE {expr | alias}
@@ -286,6 +289,11 @@
 
 **** SET AUTORECOVERY [ON|OFF]
 - ONを指定すると、リカバリ時に必要なREDOログ・ファイルのデフォルトのファイル名を自動的に適用するためにRECOVERコマンドが設定される。
+**** SET COLSEP {|text}
+- 列出力間のセパレータ文字を設定する。
+  変数に空白または句読記号が含まれる場合、シングルクォートで囲む必要がある。
+- ex
+  - SET COLSEP '|'
 **** SET DEF[INE] {&|c|ON|OFF}
 - 置換変数の接頭辞として使用する文字を、cに設定する。
   ONまたはOFFによって、置換をするかどうかを設定する。ONを設定するとデフォルトの"&"へボトル。

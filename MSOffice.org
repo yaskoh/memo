@@ -6,6 +6,108 @@
 - 
   [[file:Excel.org][Excel.org]]
 *** Outlook
+**** 検索条件
+- Format : キーワード:検索条件値
+  Ex : from:bobby
+- 残念ながら、日本語設定のため以下キーワードが利用できなかった。
+  - Ex: read:no -> 開封されている:いいえ
+***** Keywords キーワード
+****** about
+- 件名、本文、添付ファイルの内容に含む。
+****** attachments
+- 添付ファイル名を指定
+- Ex
+  - attachments:presentation.pptx
+****** bcc
+- bcc
+****** birthday
+****** businessaddress
+****** businesscity
+****** businessfax
+****** businessphone
+****** businesspostalcode
+****** carphone
+****** category
+****** cc
+- CC
+****** due
+- 期限付きのフラグがついたアイテム
+- Ex
+  - due:last week
+****** firstname
+****** followupflag
+- フォローアップするためのフラグがついたアイテム
+****** from
+- 送信元
+****** hasattachment
+- 添付ファイルを含むか否か。
+- Values
+  - true
+  - yes
+****** hasflag
+- フォローアップするためのフラグが付いたアイテム
+- Ex
+  - hasflag:true
+****** homeaddress
+****** homefax
+****** homephone
+****** homestreet
+****** is
+****** jobtitle
+****** lastname
+****** messagesize
+- Values
+  - 5MB
+- Ex
+  - messagesize:>5MB
+
+****** mobilephone
+****** nickname
+****** organizer
+****** pager
+****** read
+****** received
+- Ex
+  - received:>=2016/01/01
+  - received:yesterday
+  - received:last week
+****** sent
+****** startdate
+****** street
+****** subject
+- 件名
+****** to
+****** webpage
+***** Keyward:Values
+****** Size
+- tiny : >10KB
+- small : 10-25KB
+- medium : 25-100KB
+- large : 100-500KB
+- verylarge : 500KB-1MB
+- enormous : >5MB
+****** Time
+- yyyy/mm/dd
+- yesterday
+- last week
+***** 論理演算子
+- 大文字で入力する必要がある
+****** AND
+- 両方を含む。単純に列挙しても同様。
+  EX
+  - bobby AND moore (= bobby moore)
+****** NOT
+- Ex
+  - bobby NOT moore  /  bobbyを含みmooreは含まないアイテム
+****** OR
+- EX
+  - どちらか、もしくは両方を含むアイテム。
+****** ""
+- 引用符で囲まれた語句に一致するアイテム
+
+***** Link
+- [[https://support.office.com/ja-jp/article/Outlook-%25E3%2581%25A7%25E6%25A4%259C%25E7%25B4%25A2%25E6%259D%25A1%25E4%25BB%25B6%25E3%2582%2592%25E7%25B5%259E%25E3%2582%258A%25E8%25BE%25BC%25E3%2582%2593%25E3%2581%25A7%25E3%2582%2588%25E3%2582%258A%25E8%2589%25AF%25E3%2581%2584%25E6%25A4%259C%25E7%25B4%25A2%25E7%25B5%2590%25E6%259E%259C%25E3%2582%2592%25E5%25BE%2597%25E3%2582%258B-d824d1e9-a255-4c8a-8553-276fb895a8da?ui=ja-JP&rs=ja-JP&ad=JP][Outlook で検索条件を絞り込んでより良い検索結果を得る - Office]]
+
 **** memo
 ***** 条件付書式
 - 
@@ -88,11 +190,121 @@
   別名で保存すると、ファイルサイズが縮小される。
   [[http://crossmodelife.com/2014/03/07/5390/][肥大化したMS Projectのファイルサイズを縮小する方法 - Cross Mode Life]]
 *** Word
+**** Ribbon
+***** FILE (Alt,F)
+***** Home (Alt,H)
+***** INSERT (Alt,N)
+****** Explore Quick Parts (Alt,N,Q)
+******* Field (Alt,N,Q,F)
+***** DESIGN (Alt,G)
+***** PAGE LAYOUT (Alt,P)
+***** REFERENCE (Alt,S)
+***** MAILINGS (Alt,M)
+***** REVIEW (Alt,R)
+***** VIEW (Alt,W)
+**** Fields
+- 挿入→クイックパーツ→フィールド、で挿入可能。
+***** Type
+****** Date and Time
+******* CreateDate
+******* Date
+******* EditTime
+******* PrintDate
+******* SaveDate
+******* Time
+****** Document Automation
+******* Compare
+******* DocVariable
+******* GoToButton
+******* If
+******* MacroButton
+******* Print
+****** Document Information
+******* Author
+******* Comments
+******* DocProperty
+******* FileName
+******* FileSize
+******* Info
+******* Keywords
+******* LastSavedBy
+******* NumChars
+******* NumPages
+- 総ページ
+******* NumWords
+******* Subject
+******* Template
+******* Title
+****** Equations and Formulas
+******* # (Formula)
+******* Advance
+******* Eq
+******* Symbol
+****** Index and Tables
+******* RD
+******* TA
+******* TC
+******* TOA
+******* TOC
+******* XE
+****** Links and References
+******* AutoText
+******* AutoTextList
+******* Hyperlink
+******* IncludePicture
+******* IncludeText
+******* Link
+******* NoteRef
+******* PageRef
+******* Quote
+******* Ref
+******* StyleRef
+****** Mail Merge
+******* AddressBlock
+******* Ask
+******* Compare
+******* Database
+******* Fill-in
+******* GreetingLine
+******* If
+******* MergeField
+******* MergeRec
+******* MergeSeq
+******* Next
+******* NextIf
+******* Set
+******* SkipIf
+****** Numbering
+******* AutoNum
+******* AutoNumLgl
+******* AutoNumOut
+******* BarCode
+******* ListNum
+******* Pages
+- ページ番号
+******* RevNum
+******* Section
+******* SectionPages
+******* Seq
+****** User Information
+******* UserAddress
+******* UserInitials
+******* UserName
+****** Built-in
+***** Shortcuts
+- [[http://www4.synapse.ne.jp/yone/word2010/word2010_field.html][ワード2010基本講座：フィールドについて - よねさんのExcelとWordの使い方]]
+****** F9
+****** Shift + F9
 **** Memo
 ***** Propertyの編集
 - Word 2013
   - Office -> Info -> (画面中央右)Properties -> Advanced Properties -> Custom(tab)
 
+***** ページ数の挿入
+- Fieldを挿入する。
+  - Pages : ページ
+  - NumPages : 総ページ
+- ページ番号、の挿入でもOK。
 ** Format
 *** Office Binary Foramt
 **** Word Binary File Format

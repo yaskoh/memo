@@ -123,7 +123,7 @@
 - ユーザートレースの格納場所
 *** 静的データ・ディクショナリ・ビュー
 **** ALL
-- 現在ユーザがアクセス可能
+- 現在ユーザがアクセス可能な全て
 ***** ALL_CLUSTERS
 - 現在のユーザがアクセスできるすべてのクラスタを示す。
 ***** ALL_CONS_COLUMNS
@@ -147,6 +147,7 @@
 - 現在のユーザがアクセスできるディレクトリをすべて示す。
 ***** ALL_INDEXES
 - 現在のユーザがアクセスできる表の索引を示す。
+***** ALL_IND_COLUMNS
 ***** ALL_IND_PARTITIONS
 ***** ALL_IND_STATISTICS
 ***** ALL_SEQUENCES
@@ -240,6 +241,13 @@
   
 ***** DBA_INDEXES
 - データベース内の索引をすべて示す。
+***** DBA_IND_COLUMNS
+- データベース内のすべての表の索引の列。
+- テーブルに紐付くインデックスを調べるときなどに利用。
+****** Columns
+******* INDEX_NAME
+******* TABLE_NAME
+******* COLUMN_NAME
 ***** DBA_IND_PARTITIONS
 - データベース内の索引パーティションをすべて示す。
 ***** DBA_IND_STATISTICS
@@ -265,6 +273,13 @@
 ***** DBA_TAB_STATISTICS
 ***** DBA_TABLES
 - データベース内のリレーショナル表をすべて示す。
+***** DBA_TABLESPACE_USAGE_METRICS
+- 永続、一時、UNDOなどすべてのタイプの表領域についての表領域使用状況メトリックを示す。
+****** Columns
+******* TABLESPACE_NAME
+******* USED_SPACE
+******* TABLESPACE_SIZE
+******* USED_PERCENT
 ***** DBA_TABLESPACES
 - データベース内の表領域をすべて示す。
 ***** DBA_USERS

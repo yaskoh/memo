@@ -88,8 +88,7 @@
 - V$SQLのSQL_TEXT列を確認する。SQL_TEXTに入っているのは最初の1000文字で、CLOB型のSQL_FULLTEXTには全テキストが入っている。
 - V$SQLTEXTのSQL_TEXTを確認する。VARCHAR2(64)で、テキストの一部分。
 *** コメントの削除
-- 
-  削除コマンドは存在しないので、空文字で上書きすることとなる。
+- 削除コマンドは存在しないので、空文字で上書きすることとなる。
   COMMENT ON COLUMN table.column is '';
 *** PLUSTRACEロール
 - PLUSTRACEロールの作成方法
@@ -141,3 +140,24 @@
 - [[http://www.atmarkit.co.jp/ait/articles/0806/30/news118.html][Oracleトラブル対策の基礎知識 - @IT]]
 - [[http://www.atmarkit.co.jp/ait/articles/0406/25/news101.html][Oracleパフォーマンス障害の克服 - @IT]]
 - [[http://www.shift-the-oracle.com/oerrs/][Oracle エラーの代表的な原因と具体的な対応方法 - SHIFT the ORacle]]
+** Query
+*** テーブルに関連したインデックスを確認する
+- 
+  select INDEX_NAME, TABLE_NAME form dba_ind_columns;
+
+*** テーブルスペースのサイズを確認する
+- 
+  set linesize 200
+  set pagesize 1000
+  set colsep ‘|’
+  
+  col TABLESPACE_NAME for a20
+  col TOTAL(GB)       for 999,990.9
+  col USED(GB)        for 999,990.9
+  col USED(%)         for 990.9
+  
+  select TABLESPACE_NAME,
+         TABLESPACE_SIZE/1024/1024/1024 “TOTAL(GB)”,
+         USED_SPACE/1024/1024/1024 “USED(GB)”,
+         USED_PERCENT “USED(%)”
+  from DBA_TABLESPACE_USAGE_METRICS

@@ -189,7 +189,7 @@
 **** Link
 - [[http://www.shift-the-oracle.com/config/oracle-environment-variable.html][NLS_LANG、ORACLE_HOME、ORACLE_SID などの設定 - SHIFT the Oracle]]
 ** Command
-*** bin
+*** bin/
 **** dbca
 - 
   dbcaを起動する。
@@ -220,13 +220,26 @@
   - nosysdba : whether to shut out the SSYDBA logon (optional Database Vault only)
 **** rman
 - Recovery Manager。データベースでバックアップおよびリカバリ・タスクを実行し、バックアップ計画の管理を自動化するOracle Databaseクライアントのこと。
-  
 **** sqlplus
 - /nolog
   ログオンを行わずにsqlplusを起動
 
 **** tnsping
 - tns用のping。
+*** rdbms/
+**** admin/
+***** awrddrpt.sql
+- 選択された2つの期間の詳細なパフォーマンス属性および構成設定を比較する、HTMLまたはテキストのレポートが生成される。
+***** awrddrpi.sql
+- 特定のデータベースおよびインスタンスにおける選択された2つの基幹の詳細なパフォーマンス属性および構成設定を比較する、HTMLまたはテキストのレポートが生成される。
+***** awrrpt.sql
+- 一定範囲のスナップショットIDの統計を表示する、HTMLまたはテキストのレポートが生成される。
+***** awrrpti.sql
+- 指定されたデータベースおよびインスタンスの一定範囲のスナップショットIDの統計を表示する、HTMLまたはテキストのレポートが生成される。
+***** awrsqlpi.sql
+- 指定されたデータベース及びインスタンスにおける一定範囲のスナップショットIDに対する特定のSQL文の統計を表示する、HTMLまたはテキストのレポートが生成される。
+***** awrsqrpt.sql
+- 一定範囲のスナップショットIDに対する特定のSQL文の統計を表示する、HTMLまたはテキストのレポートが生成される。
 ** SQL言語
 - [[file:OracleDB_SQLLang.org][OracleDB_SQLLang.org]]
 ** PL/SQL
