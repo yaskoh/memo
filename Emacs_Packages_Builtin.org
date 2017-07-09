@@ -75,6 +75,7 @@
 **** defalias
 - (defalias SYMBOL DEFINITION &optional DOCSTRING)
   Set SYMBOL's function defenition to DEFINITION.
+- このスペシャルフォームは、シンボルnameを定義definition(任意の正しいLisp関数)とする 関数 として定義する。
 **** define-key
 - (define-key KEYMAP KEY DEF)
   In KEYMAP, define key sequence KEY as DEF.

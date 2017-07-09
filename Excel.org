@@ -321,7 +321,7 @@
 **** T
 - 引数を文字列に変換する
 **** TEXT
-- TEXT(書式設定する値, "適用する表示形式いコード")
+- TEXT(書式設定する値, "適用する表示形式コード")
   数値を書式設定した文字列に変換する
 ***** 表示形式
 - https://dekiru.net/article/4509/
@@ -345,19 +345,43 @@
   "E25"とか指定するとジャンプできる。
 
 **** 上のセルコピペ(Ctrl+D)
-- Ctrl+Dで上のセルを下方向へコピー。
+- Ctrl+Dで上のセルを下方向へコピー。Down。
 **** 左のセルコピぺ(Ctrl+R)
-- Ctrl+Rで左のセルを右方向へコピー。
+- Ctrl+Rで左のセルを右方向へコピー。Right。
 **** 最後のコマンド・操作を繰り返す(Ctrl+Y)
 **** 行列、セルの挿入(Ctrl+"+")
 **** 行列、セルの削除(Ctrl+"-")
 - セルを削除
 **** 右クリックメニューを出す(Shift+F10)
 
-**** フィルタのつけ外し(Ctrl+Shift-L)
+**** フィルタのつけ外し(Ctrl+Shift+L)
+**** テーブルを作成(Ctrl+L)
+**** 太字に変更(Ctrl+B or Ctrl+2)
+**** 斜体に変更(Ctrl+I or Ctrl+3)
+**** 名前を付けて保存(F12)
+**** 形式を指定して貼り付け(Ctrl+Alt+V or Alt,E,S)
+**** エクセル内のファイル切替(Ctrl+Tab)
+**** 処理を繰り返す？(Ctrl+Y)
+*** Operations
+**** 各種画面を開く
+***** セルの書式設定ダイアログの表示(Ctrl+1)
+***** 検索画面の表示(Ctrl+F)
+***** 置換画面の表示(Ctrl+H)
+**** データ表示設定
+***** 通貨表示(Ctrl+Shift+$)
+***** パーセント(Ctrl+Shift+%)
+***** 日付(Ctrl+Shift+#)
+***** 桁区切り(Ctrl+Shift+!)
+***** 標準形式？(Ctrl+Shift+^)
+**** 罫線
+***** 選択したセルの外枠に罫線を設定(Ctrl+Shift+&)
+***** 選択したセルの外枠に罫線を削除(Ctrl+Shift+_)
+**** 日時入力
+***** 現在の日付を入力(Ctrl+:)
+***** 現在の時刻を入力(Ctrl+;)
 *** Ribbon
 **** Earlier Ver.
-***** Paste Special(Alt,E,S)
+***** Paste Special(Alt,E,S or Ctrl+Alt+V)
 ****** 関数貼り付け(Alt,E,S,F)
 ****** 値貼り付け(Alt,E,S,V)
 - 
@@ -373,7 +397,12 @@
 ***** オートフィルタ設定解除(Alt,D,F,S)
 ***** ワークシート名の変更(Alt,O,H,R)
 **** FILE(F)
+***** Open(Alt,F,O)
+- 旧:Ctrl+O
+***** Print (Alt,F,P)
+- 旧:Ctrl+P
 **** HOME(H)
+***** Show/Hide newline(Alt,H,8)
 **** INSERT(N)
 **** PAGE LAYOUT(P)
 **** FORMULA(M)
@@ -386,6 +415,12 @@
 ***** 新規ウィンドウ生成(Alt,W,N)
 **** DEVELOPER(L)
 **** LOAD TEST(Y1)
+**** Tools
+***** TABLE TOOLS
+****** DESIGN(JT)
+******* Convert to Range / 範囲に変換 (Alt,JT,G)
+***** グラフ
+***** ピボットテーブル
 *** Link
 - [[https://support.office.com/en-us/article/Excel-keyboard-shortcuts-and-function-keys-1798d9d5-842a-42b8-9c99-9b7213f0040f][Excel keyboard shortcuts and function keys - Office]]
 - [[https://support.office.com/ja-jp/article/Excel-%E3%82%AD%E3%83%BC%E3%83%9C%E3%83%BC%E3%83%89-%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88-%E3%83%95%E3%82%A1%E3%83%B3%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3-%E3%82%AD%E3%83%BC-1798d9d5-842a-42b8-9c99-9b7213f0040f][Excel キーボード ショートカット - ファンクション キー - Office]]
@@ -415,6 +450,9 @@
   
 ** VBA
 - [[file:./VBA.org][VBA.org]]
+** Addin
+*** RelaxTools
+- [[https://github.com/RelaxTools/RelaxTools-Addin/releases][RelaxTools - GitHub]]
 ** Memo
 *** マクロのパスワード解除
 - 最新のExcelでは利用できなそう。stirlingで無理矢理書き換える方法。
@@ -450,12 +488,15 @@
 - 
   Dataタブの配下に、グループ化の設定ができる。
   [Alt]+[Shift]+[→]でグループ化、[Alt]+[Shift]+[←]でグループ解除ができる。
+*** グループ化、折りたたみ
+- 項目をグループ化することで、ワンタッチで折りたたみ/展開を行えるようになる。
+  Data -> Group -> Group (Alt, A, G, G)
 
 *** スクロールロック
 - 
   カーソルキーで画面がスクロールしてしまう場合は、Scroll Lockとなっている。
 
-*** 数式を使って数字として扱う方法
+*** 数式を使って文字型の数字を数値として扱う方法
 - 
   =数式*1とすると、文字列が数字に変換される。
   [[https://love-guava.com/excel-string-numerical-value-change/][Excel（エクセル）で文字列と数値を変換する方法。知っとくと地味に便利ですよ！ - ラブグアバ]]
@@ -540,9 +581,10 @@
 
 *** クイックアクセスツールバー
 - 良く使う機能を、エクセルの上部枠に設定可能。
-*** グループ化、折りたたみ
-- 項目をグループ化することで、ワンタッチで折りたたみ/展開を行えるようになる。
-  Data -> Group -> Group (Alt, A, G, G)
+*** パディング
+- フォーマットは"TEXT"関数で行う。
+- 例 : 0パディング
+  =TEXT(A1,"0000")
 ** Link
 - [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
 - [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]

@@ -297,6 +297,7 @@
 *** Reference
 **** Color, Background
 ***** color
+- text color
 ***** background
 ***** background-attachment
 ***** background-color
@@ -330,6 +331,21 @@
 ***** font-weight
 ***** font-size
 ***** font-family
+- フォントの種類
+- 複数フォントをカンマ区切りで書く。前に書かれたフォントが優先される。
+  日本語フォントよりも英語フォントを先に書く。
+****** Values
+******* 総称フォントファミリー
+******** sans-serif : ゴシック体
+******** serif : 明朝体
+******** cursive : 筆記体系
+******** fantasy : 装飾系
+******** monospace : 等幅系
+******* font
+- なんでも使える。スペースが入っている場合はダブルクォートで囲む。
+  OSに
+******** verdana
+******** courier
 ***** font-size-adjust
 ***** font-stretch
 **** Text

@@ -1126,6 +1126,41 @@
 - [[https://angularjs.org/][AngularJS]]
 - [[http://js.studio-kingdom.com/angularjs/guide/introduction][AngularJS入門 - js STUDIO]]
 **** Electron
+**** Lint
+***** ESLint
+- Pluggable linting utility
+****** Link
+- [[http://eslint.org/][ESLint]]
+***** JSLint
+****** Directives
+******* /*global*/
+******* /*Jslint*/
+******** bitwise
+******** browser
+- Assume a browser
+  - true if the standard browser globals should be predefined.
+  - document, history, clearIntervalなどのブラウザキーワードの許可。
+******** couch
+******** devel
+- Assume in development
+  - true if browser globlas that are useful in development should be predefined.
+  - devel, alertなどの開発キーワードの許可
+******** es6
+******** eval
+******** for
+******** fudge
+******** maxerr
+******** maxlen
+******** multivar
+******** node
+******** single
+******** this
+******** white
+******* /*property*/
+****** Link
+- [[http://www.jslint.com/][JSLint]]
+- [[http://www.jslint.com/help.html][Help - JSLint]]
+***** JSHint
 *** Classification 分類
 **** MVC
 - Backbone.js
@@ -1194,6 +1229,9 @@
 - [[http://postd.cc/the-state-of-web-components/][Web Componentsの現状 - POSTD]]
 - [[http://www.h2.dion.ne.jp/~defghi/webc/webc.htm][Web Copmonetsの基本的な使い方・まとめ]]
 - [[http://www.h2.dion.ne.jp/~defghi/webc/webc.htm][Web開発者に革命をもたらす!「Web Components」超入門 - LIG.inc]]
+** Coding Standard
+*** SPA/mmikowski
+- [[https://github.com/mmikowski/spa/blob/master/js-code-standard.pdf][JavaScript code standard]]
 ** Glossary
 ** Memo
 *** API仕様

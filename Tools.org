@@ -504,6 +504,23 @@
 **** LibreOffice Draw
 *** Paint / Raster
 **** GIMP
+***** Menu
+****** File(F)
+****** Edit(E)
+****** Select(S)
+****** Image(I)
+****** Layer(L)
+****** Color(C)
+****** Tool(T)
+****** Filter(R)
+****** Window(W)
+******* ツールボックス/新しいツールボックス(Ctrl+B)
+******* ドッキング可能なダイアログ(D)
+******** Layer レイヤー(L)
+- レイヤーウィンドウを表示する
+****** Help(H)
+***** Link
+- [[http://www.geocities.jp/gimpfile/gum_jp/guide.html][GIMPユーザーズマニュアル日本語版]]
 **** Adobe Photoshop
 **** CLIP STUDIO PAINT
 ** Chart 図説

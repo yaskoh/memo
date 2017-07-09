@@ -333,8 +333,37 @@
   外部表を読み込んで結合キーのハッシュ表をPGA領域に作成し、そのハッシュ表をもとに内部表を検索して結合する方式。
   PGA領域が不足するとディスクの一時表領域を使うためパフォーマンスが低下するため注意が必要。
   その場合pga_aggregate_targetでPGAサイズを拡張することも検討する。
-**** 内容
+**** 表示項目
+***** Id
+***** Operation
+***** Name
+***** TQ
+- 各ステップで処理された行が渡されるテーブル・キューのID
+- Format:Q${IDofQC},${IDofTQ}
+***** IN-OUT
+- プロセス間通信しない方式
+  - PCWP : Parallel Combined with Parent
+    次のステップも同一のQSが行う
+  - PCWC : Parallel Combined with Child
+    前のステップと同一のQSが行う
+- プロセス間通信する方式
+  - P->P : Parallel to Parallel
+    QSが次のスレーブ・セットにデータを送る
+  - P->S : Parallel to Serial
+    QSがQCにデータを送る
+  - S->P : Serial to Serial
+    QCがQSにデータを送る
+***** PQ Distrib
+- HASH
+- RANGE
+- PART(KEY)
+  パーティションキーで分散させて各QSに送る
+- BROADCAST
+  表全体をQSに送る
+**** 操作
 ***** COUNT STOPKEY
+- 必要な行数が取り出せた時点で内部的な処理を中断する。
+  「最初のN行のみ」
 ***** FIXED TABLE FULL
 ***** HASH JOIN
 ***** INDEX FAST FULL SCAN
@@ -342,7 +371,25 @@
 ***** INDEX UNIQUE SCAN
 ***** MERGE JOIN
 ***** NESTED LOOPS
-***** NESTED LOOPS OUTER
+****** ANTI
+****** OUTER
+****** PARTITION OUTER
+****** SEMI
+***** PX BLOCK ITERATOR
+- Parallel slave process - iterates through a set of blocks
+***** PX COORDINATOR
+- Coordinates parallel statement execution
+- パラレル実行のコーディネーター
+***** PX SEND
+- パラレル・セット間における配分方法の実装。
+  ランダム、ハッシュ、レンジによるパーティション化
+****** BROADCAST
+****** BROADCAST LOCAL
+****** HASH
+****** PARTITION (KEY)
+****** QC (ORDER)
+****** QC (RANDOM)
+****** RANGE
 ***** SELECT STATEMENT
 ***** SORT AGGREGATE
 ***** SORT JOIN
@@ -351,8 +398,43 @@
 ***** TABLE ACCESS FULL
 - テーブルに対しフルスキャン
 ***** Link
+- [[http://www.juliandyke.com/Optimisation/Operations/Operations.php][Oracle Internals]]
 - [[http://www.magata.net/memo/index.php?%BC%C2%B9%D4%B7%D7%B2%E8%A4%CE%C6%C9%A4%DF%CA%FD(Oracle)][実行計画の読み方(Oracle) - 闘うITエンジニアの覚え書き]]
 - [[http://www.doppo1.net/oracle/tuning/execute-plan.html][実行計画の解析方法(1) - WalkingAlone]]
+- [[http://use-the-index-luke.com/ja/sql/explain-plan/oracle/operations][実行計画の処理 - USE THE INDEX, LUKE]]
+*** リアルタイムSQL監視
+- 実行中のSQL文のパフォーマンスを監視できる。
+**** V$ビュー
+- V$SQL_MONITOR
+- V$SQL_PLAN_MONITOR
+
+- V$ACTIVE_SESSION_HISTORY
+- V$SESSION_LONGOPS
+- V$SQL
+- V$SQL_PLAN
+**** 表示項目
+- 「実行計画」項目の中身も合わせて確認のこと。
+***** 操作
+***** オブジェクト
+***** オブジェクト・ノード (Parallel時)
+***** 順序
+***** 行
+***** バイト
+***** コスト
+***** CPU(%)
+***** 時間
+***** パーティションの開始
+***** パーティションの停止
+***** TQ (Parallel時)
+- テーブルキュー: プロrセス間通信するための構造の総称
+***** IN-OUT (Parallel時)
+- プロセス間通信の入力と出力
+***** PQ配置 / PQ Distrib (Parallel時)
+- PX SEND操作のときに出力される。
+***** 問い合わせブロック名/オブジェクトの別名
+***** 述語
+***** フィルタ
+***** 予測
 *** 統計情報
 **** 種類
 ***** 表
@@ -417,9 +499,11 @@
 **** ヒント
 ***** アクセス・パス
 ****** FULL
+- テーブル全件を読み込ませる
 ****** CLUSTER
 ****** HASH
 ****** INDEX, NO_INDEX
+- 指定したインデックスを使ってテーブルを抽出する・しない
 ****** INDEX_ASC, INDEX_DESC
 ****** INDEX_COMBINE, INDEX_JOIN
 ****** INDOX_JOIN
@@ -428,12 +512,16 @@
 ****** INDEX_SS_ASC, INDEX_SS_DESC
 ***** 結合順序
 ****** LEADING
+- ヒント句内に記述された順序の通りに結合を行う
 ****** ORDERED
+- FROM句に記述された順序の通りに結合を行う
 ***** 結合操作
 ****** USE_NL, NO_USE_NL
+- ネステッドループ結合をする/しない
 ****** USE_NL_WITH_INDEX
 ****** USE_MERGE, NO_USE_MERGE
 ****** USE_HASH, NO_USE_HASH
+- ハッシュ結合をさせる・させない
 ****** NO_USE_HASH
 ***** オンライン・アプリケーション・アップグレード
 ****** CHANGE_DUPKEY_ERROR_INDEX
@@ -462,6 +550,9 @@
 ****** DRIVING_SITE
 ****** DYNAMIC_SAMPLING
 ****** MODEL_MIN_ANALYSIS
+**** ヒントの書き方
+- SELECT /*+ ヒントを書く */
+  ...
 *** List
 **** 待機イベント
 - [[file://OracleDB_Reference.org][OracleDB_Reference.org]]
@@ -489,7 +580,6 @@
 ***** オプティマイザ・ヒントの使用方法
 ***** プラン・スタビリティの使用方法
 ***** アプリケーション・トレース・ツールの使用方法
-*****
 *** Memo
 **** Metrics
 ***** 2003: User Transaction Per Sec
@@ -1143,6 +1233,11 @@
 - LOB列のセグメントがあるが、表セグメントは異なる表領域にある
   削除しようとした表領域には、表のLOB列のセグメントがあるが、表セグメントがない。
   表を削除してから、表領域の削除を再実行する必要がある。
+*** ORA-27101 : shared memory realm does not exist
+- 共有にアクセス失敗した場合に発生する。
+- 主な発生要因
+  - インスタンスが起動していない
+  - 環境変数が誤っている
 ** Reference
 - [[file:OracleDB_Reference.org][OracleDB_Reference.org]]
 ** Glossary
@@ -1458,6 +1553,53 @@
   - http://www.shift-the-oracle.com/table/external-table-practice.html
   - http://otn.oracle.co.jp/otn_pl/otn_tool/code_detail?n_code_id=203
   - http://d.hatena.ne.jp/replication/20130408/1366426828
+*** パラレル実行
+**** 種類
+- パラレル問い合わせ
+- パラレルDML
+- パラレルDLL
+**** 動作条件
+- PARALLEL句（テーブルの属性、索引の属性など）の指定
+- PARALLELヒントを指定している場合
+- ALTER SESSION FORCE PARALEL分で強制的にパラレル化することも可能
+  ※DMLはデフォルトでDISABLE
+  - ALTER SESSION {ENABLE|DISABLE|FORCE} PARALLEL {DML|DDL|QUERY} [PARALLEL <パラレル度>];
+**** 動作
+- パラレル・スレーブ・プロセス(PQプロセス)を使用して最大2セット(2つの処理)までを同時に行う。
+- PQプロセスの最大起動数
+  - 初期化パラメータ「PARALLEL_MAX_SERVERS」で設定
+    初期値は「CPU_COUNT * PARALLEL_THREADS_PER_CPU * 10」
+***** アクター
+****** QS クエリー・スレーブ
+- 処理を行うプロセス
+****** TQ テーブル・キュー
+- 前方のプロセス処理した値を格納して、順次後方のプロセスが拾い処理する。
+- テーブル・キュー自体は抽象概念
+  実際には各プロセスそれぞれがキューを持ち、そこに置かれたデータをキュー・リファレンスという番号を使ってリンク。
+  読み取ったデータは各プロセスのPGAからPGAにコピーされる。
+****** QC クエリーコーディネーター
+***** 種類
+****** パラレル問合せ
+- FULL TABLE SCAN / 全表スキャン
+- INDEX FAST FULL SCAN / 索引高速スキャン
+- パラレル索引スキャン
+- 結合
+- ソート
+- グループ関数の集計
+****** パラレルDML
+- SELECT以外のDML文(INSERT, DELETE, UPDATE, MERGE)が該当。
+****** パラレルDDL
+**** 問題点
+***** データ分割の偏り
+- 分割をするときに、データが偏らないようにする必要がある。
+  ハッシュ、レンジ、ブロードキャストなどがある。
+***** プロセス間通信（転送オーバーヘッド）
+***** 同時通信（多重実行）
+***** パラレル度
+**** Link
+- [[http://www.oracle.com/technetwork/jp/database/articles/tsushima/index-1741351-ja.html][第20回 パラレル実行について - 津島博士のパフォーマンス講座]]
+- [[http://www.oracle.com/technetwork/jp/database/articles/tsushima/tsushima-hakushi-39-2254816-ja.html][第39回 パラレル実行について（2） - 津島博士のパフォーマンス講座]]
+- [[http://www.oracle.com/webfolder/technetwork/jp/ondemand/ddd2013/A-4.pdf][シバタツ流！パラレル・クエリーの徹底活用とチューニングの極意 - ORACLE]]
 ** News
 *** 2017/1/24 ライセンス体系
 - AWS, Azureにおけるクラウド環境でのコア係数を変更。実質的に値上げ。

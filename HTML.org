@@ -106,18 +106,46 @@
   
 ********* Sectioning root
 ****** Global attributes
-******* id
 ******* title
+- 要素に関するアドバイザリー情報を表すテキストを包含する。
 ******* lang, xml:lang
 - 
   要素のコンテンツに対する基本言語およびテキストを含むあらゆる要素の属性に対して指定する。
   その値は妥当なBCP47言語タグまたは空も次である必要がある。
 
 ******* translate
-******* xml:base
 ******* dir
-******* class
 ******* style
+******* etc
+******** common, and may be specified on all HTML elements
+- only defined as attributes for HTML elements.
+********* accesskey
+********* contenteditable
+********* dir
+********* draggable
+********* hidden
+********* is
+********* itemid
+********* itemprop
+********* itemref
+********* itemscope
+********* itemtype
+********* lang
+********* spellcheck
+********* style
+********* tabindex
+********* title
+********* translate
+******** event handler content attributes 
+********* onabort
+********* onauxclick
+********* onblur
+********* oncancel
+********* oncanplay
+********* ...
+******* old?
+******** id
+******** xml:base
 ****** WAI-ARIA
 - 
   ARIA
@@ -290,6 +318,12 @@
 
 ***** Sections
 ****** address
+******* Def
+- Categories
+  - Flow content
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ****** article
 ****** aside
 ****** body
@@ -301,38 +335,70 @@
 ****** section
 ***** Grouping content / Text content
 - organization blocks or sections of content placed between the openining of <body> and cloning </body> tags.
-****** blockquote
-****** dd
-****** div
-****** dl
-****** dt
-****** figcaption
-****** figure
-****** hr
-****** li
-****** main
-****** ol
 ****** p
+****** hr
 ****** pre
 - The HTML <pre> elemest represens preformatted text.
   Text within this element is typically displayed in a non-proportional ("monospace") font exactly as it is laid out in the file.
+****** blockquote
+- quoted from another source.
+****** ol
 ****** ul
+****** menu
+****** li
+****** dl
+****** dt
+****** dd
+****** figure
+****** figcaption
+****** main
+****** div
 ***** Text-level semantics / Inline text smantics
 ****** a
 ****** abbr
+- defines abbreviation or acronym
+- ex
+  - <abbr title="World Health Organization">WHO</abbr>
+******* Def
+- Categories
+  - Flow content
+  - Phrasing content
+  - Palpable content
+- Content attributes
+  - Global attributes
+  - title : special semantics on this element: Full term or expansion of abbreviation.
 ****** adat
 ****** b
+- bold
 ****** bdi
+- bi-directional override.
+  this element is used to override the current text direction.
+  normally word flows right to left.
 ****** bdo
 ****** br
 ****** cite
+- defines the title of work.
+  usually display in italic.
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Palpable content
+- Content model:
+  - Phrasing content
+- Content attribuets:
+  - Global attributes
 ****** code
 ****** dfn
 ****** em
+- emphasize
 ****** i
+- italic
 ****** kbd
 ****** mark
+- marked, or highlighted
 ****** q
+- sohrt quotation.
 ****** rb
 ****** rp
 ****** rt
@@ -343,18 +409,47 @@
 ****** small
 ****** span
 ****** strong
+- strong text
 ****** sub, sup
+- 下付き、上付き
 ****** time
 ****** u
 ****** var
 ****** wbr
 ***** Edits / Demarcating edits
 ****** ins
+- inserted text.
+- 下線がつく場合が多いか
 ****** del
+- deleted text
+- 打消し線がつく場合が多いか
 ***** Embedded content / Image and multimedia
-****** area
-****** audio
-****** embed
+****** picture
+****** source
+****** img
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Embedded content
+  - Form-associated element
+- Contexits in which this element can be used: Where embedded content is expected
+- Content model:
+  Nothing
+- Tag omission in text/html:
+  No end tag.
+- Content attributes:
+  - Global attributes
+  - alt : Replacement text for use when images are not available
+  - src : Address of the resource
+  - srcset
+  - sizes : Image sizes for different page layouts
+  - crossorigin
+  - usemap
+  - ismap
+  - width : Horizon dimension
+  - height : Vertical dimension
+  - referrerpolicy
 ****** iframe
 - 
   ネストされたブラウジングコンテキストを表す。
@@ -379,14 +474,16 @@
   - height : 縦
 - Tag omission
   省略不可
-
-****** img
-****** map
+****** embed
 ****** object
 ****** param
-****** source
-****** track
+
 ****** video
+****** audio
+****** track
+
+****** map
+****** area
 ***** Links
 ****** Link type
 ******* alternate
@@ -558,20 +655,61 @@
 ****** canvas
 ***** Interactive elements
 ****** details
-****** dialog
-****** menu
-****** menuitem
+******* Def
+- 
+  - Cagegories
+    - Flow content
+    - Sectioning root
+    - Interactive content
+    - Palpable content
 ****** summary
+******* Def
+- 
+  - Categories
+    - None
+  - Contexts
+    - As the first child of a details element.
+****** Commands
+******* Facets
+******* a element
+******* button element
+******* input element
+******* option element
+******* accesskey attirubet on legent element
+****** dialog
 ***** Web Components
 ****** shadow
 ****** slot
 ****** template
 **** Loading Web pages
 **** Web application APIs
-**** User interaction
+**** Communication
+**** Web workers
+**** Web storage
 **** HTML syntax
-**** XHTML syntax
+***** Writing HTML documents
+****** the DOCTYPE
+****** Elements
+****** Text
+****** Character references
+****** CDATA sections
+****** Comments
+- Comments must have the following format:
+  1. The string "<!--".
+  2. Optionall, text.
+     text must not 
+     - start with the ">"
+     - start with the string "->"
+     - contain the strings "<!--", "-->", or "--!>
+     - end with the string "<!-"       
+  3. The string "-->"
+***** Parsing HTML documents
+***** Serializing HTML fragments
+***** Parsing HTML fragments
+***** Named character references
+**** XML syntax
 **** Rendering
+**** IANA considerations
 ** DOM
 *** Link
 - [[https://dom.spec.whatwg.org/][DOM Living Standard]]
@@ -654,6 +792,7 @@
   HTMLの開発やその関連技術に興味を持つ人々のコミュニティー。
   Apple, Mozilla, Operaによって設立された。
 ** Memo
+*** Suggests
 - Use lower case
 
 - Attribute values should always be enclosed in quotes.

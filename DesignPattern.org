@@ -100,5 +100,10 @@
 - オブジェクトの生成・破棄を回避するギミック。
   オブジェクトの生成・破棄はパフォーマンスへの影響が比較的大きいため。
 - [[https://thinkit.co.jp/article/934/1][Object Poolパターン - Think IT]]
+*** マルチスレッド
+**** Producer-Consumer
+- Producerは生産、Consumerは消費することに専念できる。
+- Oracleのパラレル実行の話で出た。
+  
 ** Link
 - [[http://www.happiese.com/system/dpattern.html][デザインパターンを読み解く]]

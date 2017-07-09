@@ -423,6 +423,12 @@
 ****** eshell-prompt-regexp
 - A regexp which fully matches your eshell prompt.
   it affects how eshell will interpret the lines that arpe passed to it.
+**** eshell
+***** Functions
+****** eshell
+- (eshell &optional ARG)
+  Create an interactive Eshell buffer.
+  A numeric prefix arg (as in `C-u 3 M-x eshell RET') switches to the session with that number.
 *** international(dir)
 **** mule-cmds
 ***** toggle-input-method (C-\)
@@ -639,6 +645,13 @@
 **** Variables
 ***** custom-file
 - File used for storing customization information.
+*** dabbrev
+**** Functions
+***** dabbrev-expand (M-/)
+- (dabbrev-expand ARG)
+  Expand previous word "dynamically".
+  Expand to the most recent, preceding word for which this is a prefix.
+
 *** dired
 **** Functions
 ***** dired
@@ -1354,6 +1367,27 @@
 - Prompts you for possible snippet expansion
 ***** yas-new-snippet
 - Lets you create a new snippet file in the correct subdirectory.
+
+**** Memo(yasnippet)
+***** 作成
+- Command
+  yas-new-snippet(C-c & C-n)
+
+- form
+  - name : テンプレートの名前
+  - key : TABで展開するキー
+  - # : コメントが残せる
+  - # -- 以下 : 展開したいコードを記述。
+    Tabで$1,$2と飛ぶ。$0には、展開後にカーソルがその位置に飛ぶ。
+    ${1:default text}とも設定可能。
+
+- 
+  - 終了 : C-c C-c
+  - テスト : C-c C-t
+
+***** 入力
+- 略語(key) + TAB
+- TABを押すごとに$1, $2...、全て終わった後$0に飛ぶ。
 ** Memo
 *** パッケージ管理
 **** package.el
