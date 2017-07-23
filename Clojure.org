@@ -1,4 +1,6 @@
 * Clojure
+** Official
+*** Getting Started
 ** Memo
 *** Try Clojure
 **** Functions

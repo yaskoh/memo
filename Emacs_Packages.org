@@ -1180,14 +1180,14 @@
 ***** original
 ****** C-j : emmet-expand-line
 ****** C-return : emmet-expand-line
-**** Commands
+**** Functions
 ***** emmet-expand-line
 **** Link
 - [[https://github.com/smihica/emmet-mode][smihica/emmet-mode - github]]
 *** esup
 *** etags
 - Etags
-**** Command
+**** Functions
 ***** find-tags
 - M-. / <menu-bar><edit><goto><find-tag>
 *** evil
@@ -1285,7 +1285,7 @@
 - (px-toggle)
   Toggle display of LaTeX preview in the current buffeer.
 *** slime
-**** Commands
+**** Functions
 ***** slime
 - (slime &optional COMMAND CODING-SYSTEM)
 ***** slime-compile-defun
@@ -1330,7 +1330,7 @@
 ***** C-c C-n : web-mode-match-tag
 ***** C-c C-p : web-mode-parent-element
 ***** C-c C-r : web-mode-rename-element
-**** Commands
+**** Functions
 ***** web-mode-beginning-of-element (C-c C-b)
 ***** web-mode-comment-uncomment (C-; / C-c C-;))
 ***** web-mode-delete-element (C-c C-d)
@@ -1360,14 +1360,28 @@
 ***** C-c & C-n : yas-new-snippet
 ***** C-c & C-s : yas-insert-snippet
 ***** C-c & C-v : yas-visit-snippet-file
-**** Commands
+**** Functions
 ***** yas-describe-tables
 - 利用できるスニペット一覧を表示可能。
+***** yas-expand
 ***** yas-insert-snippet
 - Prompts you for possible snippet expansion
+***** yas-load-snippet-bufer
+***** yas-load-snippet-bufer-and-close
 ***** yas-new-snippet
 - Lets you create a new snippet file in the correct subdirectory.
 
+***** yas-tryout-snippet
+***** snippet-mode
+- (snippet-mode)
+****** KeyBindings
+******* C-c C-c : yas-load-snippet-buffer-and-close
+******* C-c C-l : yas-load-snippet-buffer
+******* C-c C-t : yas-tryout-snippet
+******* C-M-i : ispell-complete-word
+**** Variables
+***** yas-snippet-dires
+- The directory where user-created snippets are to be stored.
 **** Memo(yasnippet)
 ***** 作成
 - Command
@@ -1388,6 +1402,20 @@
 ***** 入力
 - 略語(key) + TAB
 - TABを押すごとに$1, $2...、全て終わった後$0に飛ぶ。
+**** Link
+- [[https://github.com/joaotavora/yasnippet/blob/master/yasnippet.el][joaotavora/yasnippet - github]]
+- [[http://emacs.rubikitch.com/sd1601-auto-yasnippet/][#21 定型文を瞬時に入力　yasnippet の実力 (Software Design 2016年1月号掲載記事) Emacs auto-yasnippet インストール 設定 使い方 - るびきち「新生日刊Emacs」]]
+** Type
+*** Language
+**** Python
+- Python Programming In Emacs
+  https://www.emacswiki.org/emacs/PythonProgrammingInEmacs
+- PythonをEmacsで書く+α
+  http://ksknw.hatenablog.com/entry/2016/05/07/171239
+- jedi
+  http://qiita.com/yuizho/items/4c121bdecc103109e4fd
+- py-autopep8
+  https://github.com/paetzke/py-autopep8.el
 ** Memo
 *** パッケージ管理
 **** package.el
