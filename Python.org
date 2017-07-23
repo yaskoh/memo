@@ -33,21 +33,28 @@
 **** PYTHONDONTWRITEBYTECODE
 **** PYTHONHASHSEED
 ** Language
-*** Parser
+*** Lexical analysis
+- This describes how the lexical analyzer breaks a file into tokens.
+- lexical analyzer generates 'tokens', then parser reads them.
 **** Line structure
-***** logical line
-***** physical line
+- A Python program is divided into a number of "logical lines".
+***** Logical lines
+- The end of a logical line is represented by the token NEWLINE.
+  A logical line is constructed from one or more physical lines.
+***** Physical lines
+- a sequence of characters terminated by an end-of-line sequence.
 ***** Comments
-- 
-  ハッシュ"#"から始まり、同じ物理行の末端で終わる。
+- A comment starts with hash (#), and ends at the end of physical lise.
+- ハッシュ"#"から始まり、同じ物理行の末端で終わる。
 ***** encoding declaration
 - 
   スクリプトの一行目か二行目にあるコメントが正規表現"coding[=:]\s*([-\w.]+)"にマッチする場合、コメントはエンコード宣言として処理される。
   推奨系は以下。
   - Emacs : # -*- coding: <encoding-name> -*-
   - vim:fleeencoding=<coding-name>
-***** 明示的な行継続
-***** 非明示的な行継続
+- By default, Python source files are treated as encoded in UTF-8.
+***** Explicit line joining 明示的な行継続
+***** Implicit line joining 非明示的な行継続
 ***** 空行
 ***** Indent インデント
 ***** トークン間の空白
@@ -99,6 +106,60 @@
 ***** NEWLINE
 ***** INDENT
 ***** DEDENT
+**** Identifiers and keywords
+***** Keywords
+- The following identifiers are used as reserved words(keywords):
+  - False None True and as assert break class continue def del elif else except
+    finally for from global if import in is lambda nonlocal not or pass raise
+    return try while with
+***** Reserved classes of identifiers
+****** _*
+- Not imported by "from module import *".
+****** __*__
+- System-defined names.
+****** __*
+- Class-private names.
+**** Literals
+***** String and Bytes literals
+****** Def
+- stringliteral ::= [stringprefix](shortstring|longstring)
+- stringprefix ::= "r"|"u"|"R"|"U"|"f"|"F"|"fr"|"Fr"|"fR"|"FR"|"rf"|"rF"|"Rf"|"RF
+- shortstring ::= "'"shortstringitem*"'"|'"'shortstringitem*'"'
+- longstring ::= "'''"longstringitem*"'''"|'"""'longstringitem*'"""'
+******* Prefix
+******** b/B
+- Bytes literals always prefixed with 'b' or 'B'
+******** f/F : formatted string literal
+- formatted string literal
+  
+******** r/R : raw strings
+- raw strings, and treating backslashes as literal characters.
+  
+****** Escape Sequences
+- 
+  |-----------------+------------------------------------------------|
+  | Escape Sequence | Meaning                                        |
+  |-----------------+------------------------------------------------|
+  | \newline        | Backslash and newline ignored                  |
+  | \\              | Backslash (\)                                  |
+  | \'              | Single quote (')                               |
+  | \"              | Double quote (")                               |
+  | \a              | ASCII Bell (BEL)                               |
+  | \b              |                                                |
+  | \f              |                                                |
+  | \n              | ASCII Linefeed (LF)                            |
+  | \r              | ASCII Carriage Return (CR)                     |
+  | \t              | ASCII Horizontal Tab (TAB)                     |
+  | \v              | ASCII Vertical Tab (VT)                        |
+  | \ooo            | Character with octal value ooo                 |
+  | \xhh            | Character with hex value hh                    |
+  | \N{name}        | Character named "name" in the Unicode database |
+  | \uxxxx          | Character with 16-bit hex value xxxx           |
+  | \Uxxxxxxxx      | Character with 32-bit hex value xxxxxxxx       |
+  |-----------------+------------------------------------------------|
+
+**** Operators
+**** delimiters
 *** Data model
 **** Object, Value, Type
 **** The standard type hierarchy
@@ -178,7 +239,7 @@
 ****** Class metod objects
 **** Method name
 **** Co-routine
-*** Exec model
+*** Execution model
 **** Program Structure
 **** Naming and binding
 **** Exceptions
@@ -188,7 +249,7 @@
 **** Search
 **** Load
 **** path based finder
-*** Expression
+*** Expressions
 **** Arithmetic conversion
 **** Atom
 ***** Identifiers
@@ -416,6 +477,10 @@
   組み込みヘルプシステムを起動する。
   引数が与えられていない場合、インタプリタコンソール上で起動する。
   
+****** id()
+- id(object)
+  return the "identity" of an object.
+- CPython implementation : This is the address of the object in memory.
 ****** input()
 - input([prompt])
   引数promptが存在すれば、それが末尾の改行を除いて標準出力に書き出される。
@@ -465,8 +530,11 @@
   ndigitsが省略された場合、入力に最近節の整数を返す。
   偶数を選ぶ方に丸められる。（例：0.5と-0.5は0, 1.5は2に丸められる）
 ****** type()
+- class type(object)
+  - With one argument, return the type of an object.
+    The return value is a type object and generally the same object as returned by object.__class__.
+  - 引数が1つだけの場合、objectの型を返す。返り値は型オブジェクトで、一般にobjcet.__class__によって返されるのと同じオブジェクト。
 - class type(name, bases, dict)
-  引数が1つだけの場合、objectの型を返す。返り値は型オブジェクトで、一般にobjcet.__class__によって返されるのと同じオブジェクト。
   
 ****** zip(*iterables)
 - それぞれのイテラブルから集めたイテレータを作る。
@@ -1036,6 +1104,19 @@
 **** scikit-learn
 ** Python 2.x
 - [[file:Python_2_Lang.org][Python_2_Lang.org]]
+** PEP
+- Python Enhancement Proposals
+*** About
+**** PEP 0 : Index of Python Enhancement Proposals (PEPs)
+- https://www.python.org/dev/peps/
+- Key
+  - S : Standards Track REP
+  - I : Informational REP
+  - P : Process REP
+*** PEPs
+**** PEP 8 : Style Guide for Python Code
+**** PEP 263 : Defining Python Source Code Encoding
+- https://www.python.org/dev/peps/pep-0263/
 ** Style
 *** PEP 8
 - インデントは空白4つを使い、タブは使わない。
