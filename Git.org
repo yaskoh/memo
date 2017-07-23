@@ -540,6 +540,10 @@ SSHは両方可能。
   その後不要なファイルはstagingから落とせばよい。
   (unstageはgit reset HEAD <file>...)
 
+*** gitで日本語ファイルを扱う
+- core.quotepath を false とする。
+- 例: git config --[global|local] core.quotepath false
+- [[http://dev.classmethod.jp/tool/git/git-avoid-illegal-charactor-tips/][日本語ファイルの文字化けを回避する - Developers.IO]]
 ** Link
 - [[https://www.atlassian.com/ja/git/tutorial][Gitチュートリアル Atlassian]]
 
