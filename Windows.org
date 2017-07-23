@@ -1254,6 +1254,12 @@ xwizard.exe
 ***** wbem
 **** SysWOW64
 - 64bit OSで32bit OSをエミュレーションする際に利用される、32bit用のシステムファイル。
+** Shortcuts
+*** Windows 7
+**** Win + f : エクスプローラ・"検索結果"を開く
+**** Win + Ctrl + f : コンピュータを検索します
+**** Win + e : エクスプローラ・"コンピュータ"を開く
+**** Ctrl + Shift + Esc : Windowsタスクマネージャー
 ** Glossary
 *** WOW64
 - Windows 32-bit On Windows 64-bit

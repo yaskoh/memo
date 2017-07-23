@@ -26,6 +26,13 @@
 ******* Durations
 ******* Vaguer moments in time
 ****** Colors
+******* Color Name
+- using color name, like "Aqua", "Blue", "Ivory", etc.
+  [[https://www.w3schools.com/colors/colors_names.asp][Color Names Supported by All Browsers - w3schools.com]]
+******* RGB Value
+- like rgb(255,0,0) -> Red
+******* Hex Value
+- like #FF0000 -> Red
 ****** Space-separated tokens
 ****** Comma-separated tokens
 ****** References
@@ -179,51 +186,61 @@
 
 ***** Document metadata
 ****** base
-- 
-  相対URLを解決する目的で文書の規定URLを指定、および次に続くハイパーリンクのためにデフォルトでブラウジングコンテキストの名前の指定を許可数r。。
+- 相対URLを解決する目的で文書の規定URLを指定、および次に続くハイパーリンクのためにデフォルトでブラウジングコンテキストの名前の指定を許可する。
   href属性またはtarget属性のいずれか、あるいはその両方を持たなければならない。
 
 ******* Def
-- 
-  - Category : Metadata
-  - Contexts : 他のbase要素を含まないhead要素内
-  - Contents model : 空
-  - Content attributes :
-    グローバル属性
-    href : 文書基底URL
-    target : ハイパーリンクナビゲーションおよびフォーム送信に対するブラウジングコンテキスト
-  - Tag omission : 終了タグなし
+- Category : Metadata
+- Contexts : 他のbase要素を含まないhead要素内
+- Contents model : 空
+- Content attributes :
+  グローバル属性
+  href : 文書基底URL
+  target : ハイパーリンクナビゲーションおよびフォーム送信に対するブラウジングコンテキスト
+- Tag omission : 終了タグなし
   
 ****** head
 - 
   Documentに関するメタデータの集まり。
 ******* Def
-- 
-  - Category : なし
+- Category : None なし
+- Content attributes:
+  - Global attributes
  
 ****** link
-- 
-  著者が文書を他のリソースとリンクするのを可能にする。
+- 著者が文書を他のリソースとリンクするのを可能にする。
   リンクの宛先はhref属性によって与えられ、これは存在し、妥当なURLを含まなければならない。
   また、rel属性を持たなければならない。
-
 ******* Def
-- 
-  - Category : Metadata
-  - Contexts :
-    - メタデータが期待される場所
-    - head要素の子であるnoscript要素内。
-  - Content attributes :
-    - グローバル属性
-    - href : ハイパーリンクのアドレス
-    - crossorigin : 要素がcrossorigin要求を処理する方法
-    - rel : ハイパーリンクと宛先のリソースを含む文書の関係
-      ex) stylesheet
-    - media : 受け入れ可能なメディア
-    - hreflang
-    - type
-    - sizes
+- Category :
+  - Metadata
+  - flow content (If the element is allowed in the body)
+  - phrasing content (If the element is allowed in the body)
+- Contexts :
+  - メタデータが期待される場所
+  - head要素の子であるnoscript要素内。
+- Content attributes :
+  - Global attributes グローバル属性
+  - href : ハイパーリンクのアドレス
+  - crossorigin : 要素がcrossorigin要求を処理する方法
+  - rel : ハイパーリンクと宛先のリソースを含む文書の関係
+    ex) stylesheet
+  - media : 受け入れ可能なメディア
+  - nonce
+  - integrity
+  - hreflang
+  - type
+  - referrrerpolicy
+  - sizes
+  - as
+  - scope
+  - updateviacach
+  - workertype
+  - color
 
+******* Attributes
+******** rel
+- rel's supported tokens are the keywords defined in HTML link types.
 ****** meta
 - This element includes the the global attributes.
   itemprop must not be set when one of the name, http-equiv or charset is already used.
@@ -251,70 +268,94 @@
 - giving the value associated with the "http-equiv" or "name".
 ******** name
 - document-level metadata.
-********* author
-********* description
-********* generator
-********* keywords
-********* referrer
-********* creator
-********* googlebot
-********* publisher
-********* robots
-********* slurp
-********* viewport
-********** Values
-*********** width
-*********** height
-*********** initial-scale
-*********** maximum-scale
-*********** minimum-scale
-*********** user-scalable
-********** Link
+********* Standard metadata names
+********** application-name
+********** author
+********** description
+********** generator
+********** keywords
+********** referrer
+*********** content value
+- no-referrer
+- origin
+- no-referrer-when-downgrade
+- origin-when-crossorigin
+- unsafe-URL
+********** theme-color
+********* Other metadata names
+********** creator
+********** googlebot
+********** publisher
+********** robots
+*********** content value
+- index
+- noindex
+- follow
+- nofollow
+- noodp
+- noarchive
+- nosnippet
+- noimageindex
+- noydir
+- nocache
+********** slurp
+********** viewport
+- you should include the "viewport" element in all your web pages
+- 初期サイズに関する助言を与えられる。
+*********** content value
+************ width
+************ height
+************ initial-scale
+************ maximum-scale
+************ minimum-scale
+************ user-scalable
+*********** Link
+- [[https://drafts.csswg.org/css-device-adapt/#viewport-meta][Viewport <META> element - CSS Device Adaptation Module Level 1]]
 - http://qiita.com/ryounagaoka/items/045b2808a5ed43f96607
 - http://blog.ousaan.com/index.cgi/links/20130925.html
 ******** http-equiv
 - a pragma directive, i.e. information normally given by the web server about how the web page should be served.
-********* X-UA-Compatible
+  When the http-equiv attribute is specified, the element is pragma directive.
+- プラグマの値は"content"を利用する。
+********* content-language / Content-Language
+- this pragma sets the pragma-set default lanugage.
+********* content-type / Encoding declaration
+- The Encoding declaration state is just an alternative form of setting charset attribute
+********* default-style / Default style
+********* refresh / Refresh
+********* set-cookie / Cookie setter
+********* x-ua-compatible / X-UA-Compatible
 - IEに互換表示をさせない。
   ex) <meta http-equiv="X-UA-Compatible" content="IE=edge">
-********* default-style
-********* refresh
-********* set-cookie
-********* obsolete
-********** content-type (obsolete)
-- Do not use this pragma as it is obsolete. Use the charset attribute on the <meta> element instead.
-- defines the MIME type of the document, eventually followed by its character set.
-********** content-language (obsolete)
+********* Content-Security-Policy / Conetnt security policy
 ******** charset
 - a charset declaration
 ******** itemprop
 - user-defined metadata
 ****** style
 ******* Def
-- 
-  - Category : Metadata
-  - Contexts :
-    - メタデータコンテンツが期待される場所
-    - head要素配下のnoscript要素内
-  - Contents model : type属性の値に依存。
-  - Content attributes :
-    - グローバル属性
-    - media : 受け入れ可能なメディア
-    - type : 埋め込みリソースタイプ
-    - title : 特別なセマンティックを持つ。代替スタイルシート設定名
-  - Tag omission:
-    省略不可
+- Category : Metadata
+- Contexts :
+  - メタデータコンテンツが期待される場所
+  - head要素配下のnoscript要素内
+- Contents model : type属性の値に依存。
+- Content attributes :
+  - グローバル属性
+  - media : 受け入れ可能なメディア
+  - type : 埋め込みリソースタイプ
+  - title : 特別なセマンティックを持つ。代替スタイルシート設定名
+- Tag omission:
+  省略不可
 
 ****** title
-- 
-  文書のタイトルまたは名前を表す。
+- 文書のタイトルまたは名前を表す。
+- defines the title of the document, and is required in all HTML/XHTML documents.
 
 ******* Def
-- 
-  - Category : Metadata
-  - Contexts : 他のtitle要素を含まないhead要素内。
-  - Content attributes : Global attributes
-  - Tag omission : どちらも省略不可
+- Category : Metadata
+- Contexts : 他のtitle要素を含まないhead要素内。
+- Content attributes : Global attributes
+- Tag omission : どちらも省略不可
 
 ***** Sections
 ****** address
@@ -343,18 +384,90 @@
 ****** blockquote
 - quoted from another source.
 ****** ol
+******* Def
+- Categories:
+  - Flow content
+  - Palpable content (If including li element)
+- Content attributes:
+  - Global attributes
+  - reversed : Number the list backwards
+  - start : Starting value of the list
+  - type : Kind of list marker
+******* "type" keyword
+- 1 : decimal
+- a : lower-alpha
+- A : upper-alpha
+- i : lower-roman
+- I : upper-roman
 ****** ul
+******* Def
+- Categories
+  - Flow content
+  - Palpable content (If including li)
+- Content attributes
+  - Global attributes
 ****** menu
 ****** li
+******* Def
+- Categories:
+  - None
+- Content attributes:
+  - Global attributes
+  - value : Ordinal value of the list item
+    (If not a child of an "ul" or "menu" element)
 ****** dl
+- description list
+******* Def
+- Categories:
+  - Flow content
+  - Palpable conetnt (if including name-value group)
+- Content attributes:
+  - Global attributes
 ****** dt
+- defines the "term"(name)
+******* Def
+- Categories:
+  - None
+- Content attributes:
+  - Global attributes
 ****** dd
+- describes each term
+******* Def
+- Categories:
+  - None
+- Content attributes:
+  - Global attributes
 ****** figure
 ****** figcaption
 ****** main
 ****** div
+- having no special meaning at all. 
+  It can be used with the class, lang, and title attributes 
+  to mark up semantics common to a group of consecutive elements.
+******* Def
+- Categories:
+  - Flow content
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ***** Text-level semantics / Inline text smantics
 ****** a
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Interactive content (If the element has an "href" attribute)
+  - Palpable content
+- Content attributes:
+  - Global attributes
+  - href : Address of the hyperlink
+  - target : Browsing context for hyperlink navigation
+  - download : Whether to download the resource instead of navigating to it, and its file name if so
+  - ping : URLs to ping
+  - rel : Relationship between the location in the document containing the hyperlink and the destination resource
+  - hreflang
+  - type
+  - referrerpolicy
 ****** abbr
 - defines abbreviation or acronym
 - ex
@@ -408,6 +521,14 @@
 ****** samp
 ****** small
 ****** span
+- not mean anything on its own, but can be useful when used together with the global attributes.
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ****** strong
 - strong text
 ****** sub, sup
@@ -450,10 +571,14 @@
   - width : Horizon dimension
   - height : Vertical dimension
   - referrerpolicy
+******* Memo
+******** Use "style" attribute, not "width" and "height"
+- suggesting to use style="width: 120px; height: 120px;"
+  rather than "width=120 height=120".
+  latter can prevents internal or external styles sheets from changing the original size of images.
 ****** iframe
-- 
-  ネストされたブラウジングコンテキストを表す。
-  
+- The ifram element represents a nested browsing content.
+- ネストされたブラウジングコンテキストを表す。
 ******* Def
 - Category :
   - Flow
@@ -465,15 +590,25 @@
 - Contents model :
   文で与えられる要件に適合しているテキスト
 - Content attributes :
-  - グローバル属性
+  - Global attributes
   - src : リソースのアドレス
   - srcdoc : iframe内で描画する文書
   - name : ネストされたブラウジングコンテキスト名
   - sandbox : ネストされたコンテンツのセキュリティールール
+  - allawfullscreen
+  - allawpaymentrequest
+  - allawusermedia
   - width : 横
   - height : 縦
+  - referrerpolicy
 - Tag omission
   省略不可
+******* Memo
+******** aのtargetとして使用
+- aのtargetとしてiframeを設定できる。
+- 例
+  <iframe src="demo_iframe.htm" name="iframe_a"></iframe>
+  <p><a href="https://www.w3schools.com" target="iframe_a">W3Schools.com</a></p>
 ****** embed
 ****** object
 ****** param
@@ -483,19 +618,57 @@
 ****** track
 
 ****** map
+- Defining an image-map.
+  An image-map is an image with clickable areas.
+  tha name of the <map> tag is associated with the <img>'s usemap attribute
+  and creates a relationship between the image and the map.
+******* Def
+- Categories:
+  - Flow content
+  - Pharasing content
+  - Palpable content
+- Content attributes
+  - Global attributes
+  - name : Name of image map to refernce from the use map attribute
+
 ****** area
+- Defiens a clickable area inside an image-map
+******* Def
+- Categories
+  - Flow content
+  - Phrasing content
+- Content attributes
+  - Global attributes
+  - alt : Replacement text for use when images are not available
+  - coords
+  - shape
+  - href
+  - target
+  - download
+  - ping
+  - rel
+  - refererpolicy
+
 ***** Links
-****** Link type
+****** Link types
 ******* alternate
 ******* author
 ******* bookmark
+******* canonical
+******* dns-prefetch
+******* external
 ******* help
 ******* icon
 ******* license
 ******* nofollow
+******* noopener
 ******* noreferrer
+******* pingback
+******* preconnect
 ******* prefetch
+******* preload
 ******* search
+******* serviceworker
 ******* stylesheet
 ******* tag
 ******* sequential type
@@ -503,7 +676,18 @@
 ******** prev
 ***** Tabular data / Table contents
 ****** table
+******* Def
+- Categories:
+  - Flow content
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ****** caption
+******* Def
+- Categories
+  - None
+- Content attributes
+  - Global attributes
 ****** colgroup
 ****** col
 ****** tdoby
@@ -511,7 +695,25 @@
 ****** tfoot
 ****** tr
 ****** td
+******* Def
+- Categories
+  - Sectioning root
+- Content attributes
+  - Global attribuets
+  - colspan : Number of columns that tha cell is to span
+  - rowspan : Number of rows that the cell is to span
+  - headers : The header cells for this cell
 ****** th
+******* Def
+- Categories
+  - None
+- Content attributes
+  - Global attributes
+  - colspan
+  - rowspan
+  - headers
+  - scope
+  - abbr
 ***** Forms
 ****** form
 - 
@@ -626,32 +828,42 @@
 ****** legend
 ***** Scripting
 ****** script
+- The script element allows authors to include dynamic script and data blocks in their documents.
 ******* Def
-- 
-  - Category :
-    - Metadata
-    - Flow
-    - Phrasing
-    - Script support
-  - Contexts :
-    - メタデータが期待される場所
-    - フレージングコンテンツが期待される場所
-    - スクリプトサポート要素が期待される場所
-  - Contents model :
-    - src属性が存在しない場合、type属性の値に依存するが、スクリプトの内容制限に一致しなければならない。
-    - src属性が存在する場合、要素は空またはスクリプト文書を含むだけでなくスクリプトの内容制限に一致するかのいずれかでなければならない。
-  - Content attributes :
-    - グローバル属性
-    - src : リソースのアドレス
-    - type : 埋め込みリソースタイプ
-    - charset : 外部スクリプトリソースの文字エンコーディング
-      デファルトはtext/javascript。
-    - async : 非同期的にスクリプトを実行する
-    - defer : スクリプトの実行を延期する
-    - crossorigin : 要素がcrossorigin要求を処理する方法
+- Category :
+  - Metadata
+  - Flow
+  - Phrasing
+  - Script support
+- Contexts :
+  - メタデータが期待される場所
+  - フレージングコンテンツが期待される場所
+  - スクリプトサポート要素が期待される場所
+- Contents model :
+  - src属性が存在しない場合、type属性の値に依存するが、スクリプトの内容制限に一致しなければならない。
+  - src属性が存在する場合、要素は空またはスクリプト文書を含むだけでなくスクリプトの内容制限に一致するかのいずれかでなければならない。
+- Content attributes :
+  - グローバル属性
+  - src : リソースのアドレス
+  - type : 埋め込みリソースタイプ
+  - charset : 外部スクリプトリソースの文字エンコーディング
+    デファルトはtext/javascript。
+  - async : 非同期的にスクリプトを実行する
+  - defer : スクリプトの実行を延期する
+  - crossorigin : 要素がcrossorigin要求を処理する方法
 
+******* Attributes
 ****** noscript
+- used to provide an alternate content for users that disabled scripts in their browser
+******* Def
+- Categories:
+  - Metadata content
+  - Flow content
+  - Phrasing content
+- Content attributes:
+  - Global attributes
 ****** template
+****** slot
 ****** canvas
 ***** Interactive elements
 ****** details
@@ -681,7 +893,20 @@
 ****** shadow
 ****** slot
 ****** template
+**** Microdata
+**** User interaction
 **** Loading Web pages
+***** Browsing contexts
+****** Browsing context names
+******* Keyword
+******** _blank
+- Opens the linked document in a new window or tab
+******** _self
+- Opens the linked document in the same window/tab as it wal clikecd
+******** _parent
+- Opens the linked document in the parent frame
+******** _top
+- Opens the linked document in the full bofy of the window
 **** Web application APIs
 **** Communication
 **** Web workers
@@ -710,74 +935,6 @@
 **** XML syntax
 **** Rendering
 **** IANA considerations
-** DOM
-*** Link
-- [[https://dom.spec.whatwg.org/][DOM Living Standard]]
-- [[DOM Standard ("DOM4") 日本語訳]]
-- [[https://www.w3.org/TR/dom/][W3C DOM4 - W3C]]
-** Web IDL
-- Web IDL can be used to describe interfaces that are intended to be implemented in web browesrs.
-  
-*** Interface definition language
-**** Interfaces
-***** Constants
-***** Attributes
-***** Operations
-***** Special operations
-****** Legacy callers
-****** Stringifiers
-****** Indexed properties
-****** Named properties
-***** Static operations
-***** Overloading
-**** Dictionaries
-**** Exceptions
-**** Enumerations
-**** Callback functions
-**** Typedefs
-**** Implements statements
-**** Objects implementing interfaces
-**** Type
-***** any
-***** boolean
-***** byte
-***** octet
-***** short
-***** unsigned short
-***** long
-***** unsigned long
-***** long long
-***** unsigned long long
-***** float
-***** unrestricted float
-***** double
-***** unrestricted double
-***** DOMString
-***** object
-***** Interface types
-***** Dictionary types
-***** Enumeration types
-***** Callback function types
-***** Nullable types - T?
-***** Sequences - sequence<T>
-***** Arrays - T[]
-***** Union types
-***** Date
-*** IDL grammer
-- https://www.w3.org/TR/WebIDL/#prod-Definitions
-**** Definitons
-**** Definition
-**** CallbackOrInterface
-**** CallbackRestOrInterface
-**** Interface
-**** Partial
-**** PartialDefinition
-**** PartialInterface
-**** InterfaceMembes
-*** Link
-- [[https://www.w3.org/TR/WebIDL/][Web IDL - W3C]]
-- [[https://triple-underscore.github.io/WebIDL-ja.html][Web IDL (Second Edition) - 日本語訳]]
-- [[http://domes.lingua.heliohost.org/webapi-intro/webidl1.html][Web IDL入門]]
 ** WAI-ARIA
 - 
 *** Link
@@ -829,6 +986,10 @@
   [[https://www.w3.org/International/questions/qa-choosing-language-tags][Choosing a Language Tag - W3C]]
   [[http://www.rfc-editor.org/rfc/rfc5646.txt][Request for Comments : 5646]]
   [[https://www.w3.org/International/articles/language-tags/index.ja][HTMLとXMLにおける言語タグ - W3C]]
+
+*** Path
+- to use relative file path (if possible),
+  because of not being bound to your current base URL.
 
 ** Link
 - [[https://html.spec.whatwg.org/multipage/][HTML Living Standard]]

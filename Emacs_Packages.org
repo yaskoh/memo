@@ -75,6 +75,7 @@
 
 ***** M-< : beginning-of-buffer
 ***** M-> : end-of-buffer
+***** M-/ : dabbrev-expand
 ***** M-: : eval-expression
 ***** <f1> : (help-command)
 ***** <help>
@@ -1182,6 +1183,10 @@
 ****** C-return : emmet-expand-line
 **** Commands
 ***** emmet-expand-line
+**** Settings
+- emmet-mode/confに.json設定ファイルがあるので、修正可能。
+  修正後、pythonでjsontohashを実行することがおそらく必要。
+  もしくは、"Don't edit"とあるが、.elをいじるか、作成されるテーブルを後で書き換えてあげればよいかも。
 **** Link
 - [[https://github.com/smihica/emmet-mode][smihica/emmet-mode - github]]
 *** esup
@@ -1222,6 +1227,23 @@
 ***** initchart-visualize-init-sequence
 - (initchart-visualize-init-sequence &optional FP)
   指定したfilepathに計測結果をsvg形式でグラフ表示する。
+*** js2-mode
+**** Functions
+**** KeyBindings
+***** C-c C-a : js2-mode-show-all
+***** C-c C-e : js2-mode-hide-element
+***** C-c C-f : js2-mode-toggle-hide-functions
+***** C-c C-j : js-set-js-comment
+***** C-c C-o : js2-mode-toggle-element
+***** C-c C-s : js2-mode-show-element
+***** C-c C-t : js2-mode-toggle-hide-comments
+***** C-c C-w : js2-mode-toggle-warnings-and-errors
+***** C-c M-: : js-eval
+***** C-M-q : prog-indent-sexq
+***** C-M-x : js-eval-defun
+***** M-. : js-find-symbol
+**** Link
+- [[https://github.com/mooz/js2-mode][mooz/js2-mode - github]]
 *** magit
 **** Link
 - [[https://github.com/magit/magit][magit/magit - github]]
@@ -1395,6 +1417,10 @@
 **** Cask
 **** El-Get
 - [[http://tarao.hatenablog.com/entry/20150221/1424518030][Caskはもう古い、これからはEl-Get - いまどきのEmacsパッケージ管理 - 貳佰伍拾陸夜日記]]
+*** 今後取り入れ希望
+**** quickrun
+- http://emacs.rubikitch.com/quickrun/
+**** magit
 ** Link
 - [[https://github.com/emacs-tw/awesome-emacs][Awesome Emacs - emacs-tw/awesome-emacs - github]]
 - [[http://krazedkrish.com/blog/2015/12/27/awesome-emacs-plugins/][Awesome Emacs plugins you might not know - krazedkrish]]

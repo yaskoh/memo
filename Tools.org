@@ -530,6 +530,29 @@
 *** Gliffy
 *** mermaid.js
 - Library
+** Documentation
+*** Pandoc
+- Pandoc is a library and/or Command Line Tool written by Haskell, which convert format of a document to another.
+**** Guide
+***** Synopsis
+- pandoc [options] [input-file]...
+***** Options
+****** General options
+******* -f FORMAT, --from=FORMAT, -r FORMAT, --read=FORMAT
+******* -t FORMAT, --to=FORMAT, -w FORMAT, --write=FORMAT
+******* -o FILE, --output=FILE
+******* -v, --version
+- バージョンを出力する。
+******* -h, --help
+****** Reader options
+****** General writer options
+**** Link
+- [[https://pandoc.org/][Pandoc a universal document converter]]
+- [[https://github.com/jgm/pandoc/releases/tag/1.19.2.1][jgm/pandoc - github]]
+- [[http://sky-y.github.io/site-pandoc-jp/users-guide/][Pandoc ユーザーズガイド 日本語版]]
+*** Sphinx
+**** Link
+- [[http://sphinx-users.jp/][Sphinx-Users.jp]]
 ** Undefined
 ** Glossary
 - 
@@ -542,4 +565,3 @@
   ひとつの複合したコンピュータシステムとしてサービスを提供する仕組み。
 
 ** Memo
-
