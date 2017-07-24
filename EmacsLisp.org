@@ -675,7 +675,6 @@ replace-match
 *** M-C-q : インデントを直す(lisp-intreaction)
 *** load-file
 *** eval-current-buffer
-     
 ** Memo
 *** 関数名末尾のp
 - predicate
@@ -732,6 +731,11 @@ replace-match
 *** Lexical Binding
 - To use lexical binding, an Emacs-lisp source file must set a file-variable "lexical-binding" to t in the file header.
   https://www.emacswiki.org/emacs/LexicalBinding
+     
+** Tutorial
+*** Emacs Lisp基礎文法最速マスター
+- http://d.hatena.ne.jp/rubikitch/20100201/elispsyntax
+- 
 ** BookMemo_Tmp
 *** An Introduction to Programming in Emacs Lisp
 *** Mode tutorial
