@@ -28,6 +28,10 @@
 ** Glossary
 *** フロントコントローラ
 - リクエストすべてを受け付けるコントローラ。
+** Tools
+*** Compiler
+**** HHVM / HipHop Virtual Machine
+- Facebook開発・公開しているC++で実装されたPHP実行環境の一つ。
 ** Memo
 *** Version
 **** PHP 6

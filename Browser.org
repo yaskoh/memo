@@ -113,6 +113,7 @@
   - EdgeでのVBScriptサポート
   - インターネットゾーンにおけるCSS expressionsのサポート
 *** Edge
+- EdgeHTMLエンジンを使用。
 *** Firefox
 
 *** Safari

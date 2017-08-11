@@ -131,7 +131,51 @@
 - SHA-1
 - SHA-256
 
-*** Authentication
+*** Authentication 認証
+**** PPP
+***** PAP
+***** CHAP
+***** Link
+- http://itpro.nikkeibp.co.jp/article/COLUMN/20060424/236003/
+**** RADIUS
+- remote authentication dial in user service
+- RFC2865, RFC2866(課金)
+***** AAAサービス
+- A : Authentication 認証
+- A : Authorization 認可
+- A : Accounting 課金
+***** Link
+- http://itpro.nikkeibp.co.jp/article/COLUMN/20060505/236976/
+**** Kerberos Authentication
+- About
+  - ネットワーク認証方式の一つ。シングルサインオンシステムを提供する。
+  - MITの「Athena」プロジェクトによって開発され、現在もMITで保守されている。
+  - RFC4120, RFC4121で標準化されている。
+  - Active Directoryでの推奨の認証機構
+
+***** Memo
+
+****** ITPro
+- http://itpro.nikkeibp.co.jp/article/COLUMN/20060518/238303/?rt=nocnt
+
+- 用語
+  - レルム
+  - プリンシパル
+  - KDC / Key Destribution Center
+  - AS / Authentication Server 認証サーバー
+  - TGS / Ticket Granting Server チケット発行サーバー
+  - TGT / Ticket Granting Ticket
+****** 
+- 概要
+  - 元締めのコンピュータに認証を受け、「チケット」を発行してもらう
+  - その他コンピュータに対しては、発行されたチケットを使って認証を行う。
+
+- 元締めコンピュータの役割
+  - 認証
+  - チケット発行
+***** Link
+- [[http://web.mit.edu/kerberos/][Kerberos: The Network Authentication Protocol]]
+
 
 *** Authorization
 ** SSO
@@ -314,3 +358,7 @@
 - [[https://the01.jp/][THE ZERO/ONE]]
 - [[https://hackforums.net/index.php][Hack Forums]]
 - [[http://securityaffairs.co/wordpress/][security affairs]]
+
+
+
+- [[http://ken5scal.hatenablog.com/entry/2017/07/19/%28%E7%BF%BB%E8%A8%B3%29%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%81%A7%E9%A3%AF%E9%A3%9F%E3%81%84%E3%81%9F%E3%81%84%E4%BA%BA%E5%90%91%E3%81%91%E3%81%AE%E5%BF%83%E3%81%AE%E6%8C%81][(翻訳)セキュリティで飯食いたい人向けの行動指針 - Got Some \W+ech?]]

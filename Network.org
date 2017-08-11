@@ -261,17 +261,49 @@
 - The Internet Corporation for Assigned Names and Numbers
   インターネットでの資源（IPアドレス、ドメインネーム）などの管理ポリシーを策定する非営利企業。
   かつてはIANA[Internet Assigned Numbers Authority]が行っていた業務を移管して設立した。
-
+  2015年に民営化。
+******** RIP
+- Regional Internet Registry / 地域インターネットレジストリ
+- 管轄地域において、インターネットリソースの配分と登録を管理する組織。
+********* ARIN
+- American Registory for Internet Numbers
+********* RIPE NCC
+- RIPE Network Coordination Centre
+********* APNIC
+- Asia Pacific Network Information Center
+  アジアを管轄するNIC
+********** 配下NIR
+- National Internet Registry
+  主にアジアでみられるが、アジア以外ではメキシコとブラジルに存在する。
+  NIRの活動はそのエリアのRIRの配下にある。
+*********** JPNIC
+- Japan Network Information Center
+  日本を管轄するNIC。
+*********** APJII
+- インドネシア
+*********** CNNIC
+- 中国
+*********** IRINN
+- インド
+*********** KISA
+- 韓国
+*********** TWNIC
+- 台湾
+*********** VNNIC
+- ベトナム
+********* LACNIC
+********** 配下NIR
+*********** NIC Brazil
+*********** NIC Mexico
+********* AfriNIC
+******** InterNIC
+- Internet Network Information Center
+  かつてインターネットのドメイン名とIPアドレスの割り当てを管理していた。
+  1972年から活動し、1998/9/18にICANNに役割を引き継いだ。
 ******** NIC
 - Network Information Center
   ICANN下の資源管理団体。管理する範囲ごとに、地域・国でそれぞれ存在。
 
-********* APNIC
-- Asia Pacific Network Information Center
-  アジアを管轄するNIC
-********* JPNIC
-- Japan Network Information Center
-  日本を管轄するNIC。
 ****** IPX
 
 ****** DDP

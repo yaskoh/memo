@@ -12,6 +12,8 @@
 - Reccomendation, REC
 ***** Link
 - [[https://momdo.github.io/css-2015/][CSS Snapshot 2015 日本語訳]]
+**** CSS Snapshot
+- [[https://www.w3.org/TR/CSS/#css][CSS Snapshot - W3C]]
 *** CSS 1
 **** Completed
 ***** CSS Level 1
@@ -28,17 +30,228 @@
 ***** CSS Level 2 Revison 1
 ****** Syntax and basic data types
 ****** Selectors
+******* Pattern matching
+******* Pseudo-elements and pseudo-class
+******* Pseudo-class
+******** :first-child
+******** :link, :visited
+- :link : links that have not yet been visited
+- :visited : the link having been visited by the user.
+******** :hover, :active, :focus
+- :hover : while the user designates an element, but does not activate it.
+  ポインタデバイスを重ねたとき
+- :active : while an element is being activated by the user.
+  クリックされてから話されるまでの間
+- :focus : while an element has the focus.
+  テキストエリアなどが選択されているとき
+******** :lang
+
+******* Pseudo-elements
+******** :first-line
+******** :first-letter
+******** :before, :after
 ****** Assigning property values, Cascading, and Inheritance
 ****** Media types
 ****** Box model
+******* Margin properties
+******** <margin-width> value
+- <length>
+- <percentage>
+- auto
+******** margin-top, margin-bottom
+********* Def
+- Value: <margin-width> | inherit
+******** margin-right, margin-left
+********* Def
+- Value: <margin-width> | inherit
+******** margin
+********* Def
+- Value: <margin-width>{1,4} | inherit
+******* Padding properites
+******** <padding-width> value
+- <length>
+- <percentage>
+******** padding-top, padding-right, padding-bottom, padding-left
+********* Def
+- Value: <padding-width> | inherit
+******** padding
+********* Def
+- Value: <padding-width>{1,4} | inherit
+******* Border properties
+******** Border width
+********* <border-width> value
+- thin
+- medium
+- thick
+- <length>
+********* border-top-width, border-right-width, border-bottom-width, border-left-width
+********** Def
+- Value: <border-width> | inherit
+********* border-width
+- Value: <border-width>{1,4} | inherit
+******** Border color
+********* border-top-color, border-right-color, border-bottom-color, border-left-color
+********* border-color
+********** Def
+- Value: [<color> | transparent]{1,4} | inherit
+******** Border style
+********* <border-style> value
+- none
+- hidden
+- dotted
+- dashed
+- solid
+- double
+- groove : the border looks as though it were carved into the canvas.
+- ridge : the opposite of 'groove'
+- inset : the border makes the box look as though it were embedded in the canvas.
+- outset
+********* border-top-style, border-right-style, border-bottom-style, border-left-style
+********** Def
+- Value: <border-style> | inherit
+********* border-style
+********** Def
+- Value: <border-style>{1,4} | inherit
+******** Border shorthand properties
+********* border-top, border-right, border-bottom, border-left
+********* border
+********** Def
+- Value: [ <border-width> || <border-style> || <'border-top-color'> | inherit
 ****** Visual formatting model
+******* Controlling box generation
+******** display
+********* Def
+- Value :
+  inline | block | list-item | inline-block | table |
+  inline-table | table-row-group | table-header-group |
+  table-footer-group | table-row | table-column-group | table-column |
+  table-cell | table-caption | none | inherit
+  
+********* Property values
+******* Floats
+******** float
+********* Def
+- Value: left | right | none | inherit
+********* Property values
+********** left
+- generates a block box that is floated to the left.
+********** right
+- similar to 'left', except the box is floated to the right.
+********** none
+- The box is not floated.
+******** clear
+- indicates which sides of an element's box(es) mey not be adjacent to an earlier floating box.
+- floatプロパティで指定された要素に対する回り込みを解除する際に使用する。
+********* Def
+- Value : none | left | right | both | inherit
+******* Relationships between 'display', 'position', and 'float'
+- The three properties that affect box generation and layout interact as follows.
+  1. If 'display' has the value 'none', then 'position' and 'float' do not apply.
+     In this case, the element generates no box.
+  2. If 'position' has the value 'absolute' or 'fixed', the box is absolutely positioned,
+     the computed value of 'float' is 'none'
+  3. If 'float' has a value other than 'none', the box is floated
+
 ****** Visual effects
+******* Overflow and clipping
+******** overflow
+- ボックスの範囲内に内容が入りきらない場合に、はみ出た部分の表示の仕方を指定する。
+********* Def
+- Value: visible | hidden | scroll | auto | inherit
+********* Porpety values
+********** visible
+- indicateing that content is not clipped, i.e., it may be rendered outside the block box.
+********** hidden
+- indicating the content is clipped 
+  and that no scrolling user interface should be provided to view the content outside the clipping region.
+********** scroll
+- the content is clipped and that if the user agent uses a scrolling mechanism that is visible on the screen
+********** auto
+******** clip
+- ボックスの切り抜き表示を行う
 ****** Generated content, automatic numbering, and lists
+******* Lists
+******** list-style-type
+********* Def
+- Value:
+  disc | circle | square | decial | decimal-leading-zero |
+  lower-roman | upper-roman | lower-greek | lower-latin | upper-latin |
+  armenian | georgian | lower-alpha | upper-alpha | none | inherit
+- Initial: disc
+********* Values
+********** Glyphs
+*********** disc
+*********** circle
+*********** square
+********** Numbering
+*********** decimal
+*********** decimal-leading-zero
+*********** lower-roman
+*********** upper-roman
+*********** georgian
+*********** armenian
+********** Alphabetic
+*********** lower-latin, lower-alpha
+*********** upper-latin, upper-alpha
+*********** lower-greek
+******** list-style-image
+******** list-style-position
+******** list-style
 ****** Paged media
 ****** Colors and Backgrounds
 ****** Fonts
+******* font-family
+- prioritized list of font family names and/or generic family names.
+- defines the font to be used.
+******** Def
+- Value: [[ <family-name> | <generic-family> ][, <family-name> | <generic-family>]* ] | inherit
+- Initial: depends on user agent
+- INherited: yes
+- Media: visual
+******** Ex
+- body { font-family: Gill, Helvetica, sans-serif }
+******** Generic font families
+- serif
+- sans-serif
+- cursive
+- fantasy
+- monospace
+******* font-style
+******* font-variant
+******* font-weight
+******* font-size
+- the text size to be used.
+- corresponding to the em square, a concept used in typography.
+******** Def
+- Value:
+  <absolute-size> | <relative-size> | <length> | <percentage> | inherit
+********* absolute-size
+- xx-small
+- x-small
+- small
+- medium
+- large
+- x-larg
+- xx-large
+********* relative-size
+- larger
+- smaller
+******* font
+- Shorthand font property
 ****** Text
 ****** Tables
+******* Borders
+******** border-cllapse
+- 隣接するボーダーを重ねて表示するか話して表示するか設定する。
+********* Def
+- Value: collapse | separate | inherit
+
+******** border-spacing
+********* Def
+- Value: <length> <length>? | inherit
+******** empty-cells
+********* Def
+- Value: show | hide | inherit
 ****** User interfaces
 ****** Link
 - [[https://www.w3.org/TR/CSS2/][Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification - W3C]]
@@ -91,6 +304,7 @@
 ***** CSS Image Values and Replaced Content Level 3
 ***** CSS Speech
 ***** CSS Flexible Box Layout
+- https://www.w3.org/TR/css-flexbox-1/
 ***** CSS Text Decoration Module Level 3
 ***** CSS Fonts Level 3
 ***** CSS Writing Modes Level 3
@@ -207,7 +421,6 @@
 ***** placement
 ****** float
 - ボックスを左か右に寄せるためのプロパティ。
-
 ****** position
 - ボックスの配置方法を指定できる。
 
@@ -770,23 +983,35 @@
   上のものから順に優先的に適用される。
   同じ箇所に書いた場合、下に書いたものが優先される。
 
-**** 1. HTMLタグに埋め込む
+**** 1. Inline / HTMLタグに埋め込む
+- by using the style attribute in HTML elements
 - 
   <p style="color:red;">あいうえお</p>
 
-**** 2. HTMLファイル内に埋め込む
+**** 2. Internal / HTMLファイル内に埋め込む
+- by using a <style> element in the <head> section
 - 
-  <style>
-  div {
-    background:red;
-  }
-  </style>
+  <head>
+    <style>
+      div {background: red;}
+      h1  {color: blue;}
+    </style>
+  </head>
 
-**** 3. CSSファイルに記述
-- 
-  div {
-    background:red;
-  }
+**** 3. External / CSSファイルに記述
+- by using an external CSS file
+- ex
+  - html side
+    <head>
+      <link rel="stylesheet" href="styles.css">
+    </head>
+  - css side
+    div {
+      background-color: red;
+    }
+    h1 {
+      color: blue;
+    }
 
 *** Comment
 - 
@@ -824,9 +1049,34 @@
   ブラウザベンダーが独自の拡張機能を実装するとき、または草案段階の仕様を先行実装する場合に付ける識別子のこと。  
 - [[http://scene-live.com/page.php?page=43][【CSS3】ベンダープレフィックスとは？ - SCENE LIVE]]
 
+*** floatの処理
+**** clearプロパティを使う
+- margin-topが効かない、などのデメリットあり。
+  （実際は効いていないわけではなく、フロートした子要素を無視してマージンを付けている）
+**** clearfixを行う
+- clearfixという解除用クラスを親要素に与え、子要素のfloatを解除する。
+- 例
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+**** overflowを利用する
+- overflow(auto/hiddenなど)を利用することで、
+**** Link
+- [[http://taneppa.net/float/][CSSの【float】についてちょっと本気出して説明してみた。 - Taneppa!]]
+
 ** Link
 - [[https://www.w3.org/Style/CSS/][Cascading Style Sheets home page - W3C]]
 - [[https://www.w3.org/Style/CSS/read][Understanding the CSS Specifications - W3C]]
+
+- [[https://www.w3.org/TR/CSS/#css][CSS Snapshot - W3C]]
+- [[https://www.w3.org/Style/CSS/specs.en.html][Descriptions of all CSS specifications - W3C]]
 
 - [[http://momdo.s35.xrea.com/web-html-test/CSS3-ja/][CSS3の日本語訳集]]
 - [[http://www.htmq.com/style/index.shtml][スタイルシートリファレンス（目的別） - HTMLクイックリファレンス]]

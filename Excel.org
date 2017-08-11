@@ -402,7 +402,18 @@
 ***** Print (Alt,F,P)
 - 旧:Ctrl+P
 **** HOME(H)
-***** Show/Hide newline(Alt,H,8)
+***** Clipboard
+****** Clipboard
+***** Font
+****** Font
+***** Alignment
+****** Alignment
+***** Number
+****** Number
+***** Styles
+****** Conditional Formatting(Alt,H,L)
+***** Cells
+***** Editing
 **** INSERT(N)
 **** PAGE LAYOUT(P)
 **** FORMULA(M)
@@ -411,6 +422,8 @@
 ***** グループ化(Alt,A,G,G)
 **** REVIEW(R)
 **** VIEW(W)
+***** Freeze Panes(Alt,W,F)
+****** Freeze/Unfreeze Panes(Alt,W,F,F)
 ***** Gridlinesの表示・非表示(Alt,W,VG)
 ***** 新規ウィンドウ生成(Alt,W,N)
 **** DEVELOPER(L)
@@ -419,6 +432,15 @@
 ***** TABLE TOOLS
 ****** DESIGN(JT)
 ******* Convert to Range / 範囲に変換 (Alt,JT,G)
+***** DRAWING TOOLS
+****** FORMAT(JD)
+******* Insert Shapes
+******** Edit Shape(Alt,JD,E)
+********* Change Shape(Alt,JD,E,N)
+******* Shape Styles
+******* WordArt Styles
+******* Arrange
+******* Size
 ***** グラフ
 ***** ピボットテーブル
 *** Link

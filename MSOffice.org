@@ -6,6 +6,21 @@
 - 
   [[file:Excel.org][Excel.org]]
 *** Outlook
+**** Shortcuts
+***** Ribbon
+****** FILE(F)
+****** HOME(H)
+******* New
+******* Delete
+******* Respond
+******* Quick Steps
+******* Move
+******* Tags(Alt,H,ZT)
+******** Unread/Read(Alt,H,W)
+******* Find
+****** SEND/RECEIVE(S)
+****** FOLDER(O)
+****** VIEW(V)
 **** 検索条件
 - Format : キーワード:検索条件値
   Ex : from:bobby
@@ -179,8 +194,38 @@
 *** Project
 **** Shortcuts
 ***** Ribbon
-****** View(W)
-******* Arrange All 並べて表示(Alt,W,A)
+****** FILE(F)
+****** TASK(H)
+******* View
+******** Gantt Chart(Alt,H,G)
+******* Clipboard
+******* Font
+******* Schedule
+******* tasks
+******* Insert
+******* Properties
+******* Editing
+****** RESOURCE(U)
+****** REPORT(S)
+****** PROJECT(R)
+****** VIEW(W)
+******* Task Views
+******* Resource Views
+******* Data
+******** Outline(Alt,W,OS)
+********* Show Subtasks(Alt,W,OS,T)
+********* Hide Subtasks(Alt,W,OS,H)
+********* All Subtasks(Alt,W,OS,A)
+******* Zoom
+******* Split View
+******* Window
+******** Arrange All 並べて表示(Alt,W,A)
+******* Macros
+****** ACROBAT(B)
+****** TEAM(Y)
+****** TOOLS
+******* GANTT CHART
+******** FORMAT(JF)
 **** Memo
 ***** 使い方
 - https://srad.jp/~ins13/journal/331238
@@ -190,121 +235,221 @@
   別名で保存すると、ファイルサイズが縮小される。
   [[http://crossmodelife.com/2014/03/07/5390/][肥大化したMS Projectのファイルサイズを縮小する方法 - Cross Mode Life]]
 *** Word
-**** Ribbon
-***** FILE (Alt,F)
-***** Home (Alt,H)
-***** INSERT (Alt,N)
-****** Explore Quick Parts (Alt,N,Q)
-******* Field (Alt,N,Q,F)
-***** DESIGN (Alt,G)
-***** PAGE LAYOUT (Alt,P)
-***** REFERENCE (Alt,S)
-***** MAILINGS (Alt,M)
-***** REVIEW (Alt,R)
-***** VIEW (Alt,W)
-**** Fields
-- 挿入→クイックパーツ→フィールド、で挿入可能。
-***** Type
-****** Date and Time
-******* CreateDate
-******* Date
-******* EditTime
-******* PrintDate
-******* SaveDate
-******* Time
-****** Document Automation
-******* Compare
-******* DocVariable
-******* GoToButton
-******* If
-******* MacroButton
-******* Print
-****** Document Information
-******* Author
-******* Comments
-******* DocProperty
-******* FileName
-******* FileSize
+**** 2013
+***** Ribbon
+****** FILE (Alt,F)
 ******* Info
-******* Keywords
-******* LastSavedBy
-******* NumChars
-******* NumPages
+******* New
+******* Open
+******* Save
+******* Save As
+******* Save as Adobe PDF
+******* Print
+******* Share
+******* Export
+******* Close
+******* Account
+******* Options (Alt,F,T)
+******** Word Options
+********* General
+********* Display
+********* Proofing
+********* Save
+********* Typography
+********* Language
+********* Advanced
+********* Customized Ribbon
+********* Quick Access Toolbar
+********* Add-Ins
+********* Trust Center
+******* Add-Ins
+****** HOME (Alt,H)
+******* Clipboard
+******** Clipboard (Alt,H,FO)
+******* Font
+******** Font (Alt,H,FN)
+******* Paragraph
+******** Borders (Alt,H,B)
+******** Show/Hide formatting symbols (Alt,H,8) (Ctrl+*)
+- 改行コードなどの表示・非表示
+******** Paragraph (Alt,H,PG)
+********* Indents and Spacing
+********** General
+********** Indentation
+********** Spacing
+********* Line and Page Breaks
+********** Pagination
+********** Formatting exceptions
+********** Textbox options
+********* Asian Typography
+********** Line break
+********** Character spacing
+******* Styles
+******** Styles (Alt,H,FY)
+******* Editing
+****** INSERT (Alt,N)
+******* Blank Page (Alt,N,NP)
+******* Page Break (Alt,N,B)
+******* Explore Quick Parts (Alt,N,Q)
+******** Field (Alt,N,Q,F)
+****** DESIGN (Alt,G)
+******* Themes (Alt,G,TH)
+****** PAGE LAYOUT (Alt,P)
+******* Page Setup
+******** Page Setup
+******* Paragraph
+******** Paragraph
+- HOME配下の内容を参照
+******* Arrange
+****** REFERENCE (Alt,S)
+******* Table of Contents (ALt,S,T)
+- 目次を作成する。
+****** MAILINGS (Alt,M)
+****** REVIEW (Alt,R)
+****** VIEW (Alt,W)
+******* Views
+******* Show
+******** Ruler (Alt,W,R)
+******** Gridlines (Alt,W,G)
+******** Navigation Pane (Alt,W,K)
+******* Zoom
+******* Window
+******* Macros
+****** TOOLS
+******* DRAWING TOOLS
+******** FORMAT (Alt,JD)
+******* PICTURE TOOLS
+******** FORMAT (Alt,JP)
+******* TABLE TOOLS
+******** DESIGN (Alt,JT)
+******** LAYOUT (Alt,JL)
+******* HEADER & FOOTER TOOLS
+******** DESIGN (Alt,JH)
+********* Close Header and Footer (Alt,JH,C)
+***** Fields
+- 挿入→クイックパーツ→フィールド、で挿入可能。
+  編集したプロパティの値は"DocProperty"に入っている。
+****** Type
+******* Date and Time
+******** CreateDate
+******** Date
+******** EditTime
+******** PrintDate
+******** SaveDate
+******** Time
+******* Document Automation
+******** Compare
+******** DocVariable
+******** GoToButton
+******** If
+******** MacroButton
+******** Print
+******* Document Information
+******** Author
+******** Comments
+******** DocProperty
+******** FileName
+******** FileSize
+******** Info
+******** Keywords
+******** LastSavedBy
+******** NumChars
+******** NumPages
 - 総ページ
-******* NumWords
-******* Subject
-******* Template
-******* Title
-****** Equations and Formulas
-******* # (Formula)
-******* Advance
-******* Eq
-******* Symbol
-****** Index and Tables
-******* RD
-******* TA
-******* TC
-******* TOA
-******* TOC
-******* XE
-****** Links and References
-******* AutoText
-******* AutoTextList
-******* Hyperlink
-******* IncludePicture
-******* IncludeText
-******* Link
-******* NoteRef
-******* PageRef
-******* Quote
-******* Ref
-******* StyleRef
-****** Mail Merge
-******* AddressBlock
-******* Ask
-******* Compare
-******* Database
-******* Fill-in
-******* GreetingLine
-******* If
-******* MergeField
-******* MergeRec
-******* MergeSeq
-******* Next
-******* NextIf
-******* Set
-******* SkipIf
-****** Numbering
-******* AutoNum
-******* AutoNumLgl
-******* AutoNumOut
-******* BarCode
-******* ListNum
-******* Pages
+******** NumWords
+******** Subject
+******** Template
+******** Title
+******* Equations and Formulas
+******** # (Formula)
+******** Advance
+******** Eq
+******** Symbol
+******* Index and Tables
+******** RD
+******** TA
+******** TC
+******** TOA
+******** TOC
+******** XE
+******* Links and References
+******** AutoText
+******** AutoTextList
+******** Hyperlink
+******** IncludePicture
+******** IncludeText
+******** Link
+******** NoteRef
+******** PageRef
+******** Quote
+******** Ref
+******** StyleRef
+******* Mail Merge
+******** AddressBlock
+******** Ask
+******** Compare
+******** Database
+******** Fill-in
+******** GreetingLine
+******** If
+******** MergeField
+******** MergeRec
+******** MergeSeq
+******** Next
+******** NextIf
+******** Set
+******** SkipIf
+******* Numbering
+******** AutoNum
+******** AutoNumLgl
+******** AutoNumOut
+******** BarCode
+******** ListNum
+******** Pages
 - ページ番号
-******* RevNum
-******* Section
-******* SectionPages
-******* Seq
-****** User Information
-******* UserAddress
-******* UserInitials
-******* UserName
-****** Built-in
-***** Shortcuts
+******** RevNum
+******** Section
+******** SectionPages
+******** Seq
+******* User Information
+******** UserAddress
+******** UserInitials
+******** UserName
+******* Built-in
+****** Shortcuts
 - [[http://www4.synapse.ne.jp/yone/word2010/word2010_field.html][ワード2010基本講座：フィールドについて - よねさんのExcelとWordの使い方]]
-****** F9
-****** Shift + F9
+******* F9
+******* Shift + F9
 **** Memo
 ***** Propertyの編集
+- ユーザ編集のPropertyはFieldとして挿入可能（DocProperty）。
 - Word 2013
   - Office -> Info -> (画面中央右)Properties -> Advanced Properties -> Custom(tab)
-
 ***** ページ数の挿入
 - Fieldを挿入する。
   - Pages : ページ
   - NumPages : 総ページ
 - ページ番号、の挿入でもOK。
+***** Ruler ルーラー
+****** インデントマーカー
+******* First Line Indent 1行目のインデント
+******* Hanging Indent ぶら下がりインデント
+******* Left Indent 左インデント
+******* Right Indent 右インデント
+******* Link
+- http://www.becoolusers.com/word/indent.html
+****** タブセレクタ
+******* Left Tab 左揃えタブ
+******* Center Tab 中央揃えタブ
+******* Right Tab 右揃えタブ
+******* Decimal Tab 小数点揃えタブ
+******* Bar Tab 縦線タブ
+******* First Line Indent
+******* Hanging Indent
+******* Link
+- [[http://cblog.crie.jp/word/176/][タブの位置を設定して文字の位置を整えるには １ - クリエのちょこテク]]
+**** Link
+- [[http://news.mynavi.jp/series/word/001/][Wordはなぜ思い通りにならないのか？ - マイナビニュース]]
 ** Format
 *** Office Binary Foramt
 **** Word Binary File Format
@@ -317,6 +462,33 @@
   Office 2007から採用された。従来の.doc, .xls, .ppt形式のバイナリとの互換性はない。
 - 競合規格にODF(ISO/IEC 26300:OpenDocumentFormat(ODF))がある。
 - Patrick Durusauによれば、OOXMLは"要素(elements)"のアプローチをとっており、ODFは"属性(attributes)"のアプローチをとっている、とのこと。
+**** Specifications
+***** 5th edition
+****** Part1: Fundamentals and Markup Language Reference
+******* Overview
+******* Packages
+******* Markup Compatibility and Extensibility
+******* WordprocessingML
+******* SpreadsheetML
+******* PresentationML
+******* DrawingML
+******* Shared
+******* Part Overview
+******* WordprocessingML Reference Material
+******* SpreadsheetML Reference Material
+******* PresentationML Reference Material
+******* DrawingML - Framework Reference Material
+******* DrawingML - Components Reference Material
+******* Shared MLSs Reference Material
+******* Custom XML Schema Refernces
+****** Part3: Markup Compatibility and Extensibility
+******* Overview
+****** Part4: Transitional Migration Features
+***** 4th edition
+****** Part1
+****** Part2
+****** Part3
+****** Part4
 **** Structure
 ***** _rels/
 - 各パーツの関連性（リレーションシップ）を記述するファイルを格納するフォルダ。
@@ -329,20 +501,22 @@
 ****** app.xml
 ****** core.xml
 ****** custom.xml
-***** word/
-****** _rels/
-******* customization.xml.rels
-******* document.xml.rels
-****** document.xml
+***** (Apps/)
+****** word/
+******* _rels/
+******** customization.xml.rels
+******** document.xml.rels
+******* document.xml
 - テキストコンテンツ
-****** fontTable.xml
+******* fontTable.xml
 - フォント表
-****** settings.xml
+******* settings.xml
 - 設定情報
-****** styles.xml
+******* styles.xml
 - テキストのスタイル情報
-****** webSettings.xml
+******* webSettings.xml
 - ウェブ用のスタイル情報
+****** xl/
 ***** [Content_Types].xml
 **** Markup Language
 ***** PresentationML

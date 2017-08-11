@@ -636,85 +636,8 @@
     console.log(myname); // -> "local"
   }
 
-*** ECMAScript 2016
-**** data Types and values
-*** ES5.1
-**** Lexical Conventions
-**** Type
-**** Type Conversion and Testing
-**** Expressions
-***** Primary Expressions
-***** Left-Hand-Side Expressions
-***** Postfix Expressions
-***** Unary Operators
-***** Multiplicative Operators
-***** Additive Operators
-***** Bitwise Shift Operators
-***** Relational Operators
-***** Equility Operators
-***** Binary Bitwise Operators
-***** Binary Logical Operators
-***** Conditional Operator
-***** Assignment Operators
-***** Comma Operator
-**** Statements
-***** Block
-***** Variable Statement
-****** 構文
-- Variable Statement : 
-    var Variable DeclarationList ;
-- Variable Declaration List :
-    Variable Declaration
-    Variable DeclarationList, VariableDeclaration
-- VariableDeclarationListNoIn :
-    VariableDeclarationNoIn
-    VariableDeclarationListNoIn, VariableDeclarationNoIn
-- VariableDeclaration :
-    Identifier Initialiseropt
-- VariableDeclarationNoIn :
-    Identifier VariableDeclarationNoInopt
-- Initialiser :
-    = AssignmnetExpression
-- InitialiserNoIn :
-    = AssignmnetExpressionNoIn
-
-***** Empty Statement
-****** 構文
-- ;
-***** Expression Statement
-***** The if Statement
-****** if
-***** Iteration Statement
-****** do-while
-****** while
-****** for
-****** for-in
-***** continue
-***** break
-***** return
-***** with
-***** switch
-***** throw
-***** try
-***** debugger
-**** Function
-**** Objects
-**** Link
-- [[http://www.ecma-international.org/ecma-262/5.1/index.html][ECMAScript Language Specification (5.1 Edition)]]
-- [[http://www.webzoit.net/hp/it/internet/homepage/script/ecmascript/ecma262_51/contents/][ECMAScript 5.1 邦訳 - webzoit.net]]
-***** Global
-***** Object
-***** Function
-***** Array
-***** String
-***** Boolean
-***** Number
-***** Math
-***** Date
-***** RegExp
-***** Error
-***** JSON
-**** Error
+*** ECMAScript
+**** ES5
 *** DOM
 - [[file:DOM.org][DOM.org]]
 *** XMLHttpRequest
@@ -897,9 +820,9 @@
 - 2015/6/17公開
   
 *** 2016(7)
-- 策定中
-  基本的には、ES6(2015)のバグ修正。加えて、2016/1にStage4となっているProposalが入る。
+- 基本的には、ES6(2015)のバグ修正。加えて、2016/1にStage4となっているProposalが入る。
 
+*** 2017(8)
 ** Tools
 *** Exec Command
 **** osascript (Mac)
@@ -1312,5 +1235,5 @@
 - [[http://speakingjs.com/][Speaking JavaScript: An In-Depth Guide for Programmers]]
 
 - [[http://qiita.com/mizchi/items/3bbb3f466a3b5011b509][春からはじめるモダンJavaScript / ES2015 - Qiita]]
-
 - [[http://www.slideshare.net/yuka2py/javascript-23768378][最強オブジェクト指向言語 JavaScript 再入門！ - SlideShare]]
+- [[http://azu.github.io/slide/nodejs-es6/how-to-learn.html][どうやってECMAScrit6を学び始めるか]]

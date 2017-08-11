@@ -15,14 +15,7 @@
 ** W3C
 ** OMG
 *** CORBA
-- Common Object Request Broker Architectrue
-**** Features
-***** Objects by Value (OBV)
-***** CORBA Component Model (CCM)
-***** ポータブルなインターセプター
-***** General InterORB Protocol (GIOP)
-***** Data Distribution Service (DDS)
-***** VMCID (Vendor Minor Codest ID)k
+- [[file:CORBA.org][CORBA.org]]
 ** JSR
 - [[file:Java_JSR.org][Java_JSR.org]]
 ** Other Protocols

@@ -1224,9 +1224,12 @@
 - 他のオブジェクトに対する参照をもつオブジェクト。
   Tuple, List, Dictionaryなど。
 ** Link
-- [[http://docs.python.jp/3.5/index.html][Python 3.5.2 ドキュメント]]
-- [[https://docs.python.org/3/index.html][Python 3.5.2 documentation]]
+- [[http://docs.python.jp/3/index.html][Python 3 ドキュメント]]
+- [[https://docs.python.org/3/index.html][Python 3 documentation]]
 - [[http://d.hatena.ne.jp/dplusplus/20100126/p1][Python基礎文法最速マスター - LazyLife@Diary]]
+
+- [[https://docs.python.jp/3/tutorial/index.html][Pythonチュートリアル]]
+- [[https://docs.python.org/3/tutorial/][The Python Tutorial]]
 ** Reverse Lookup
 *** 覚書(old)
 - time.sleep
@@ -1306,3 +1309,4 @@
 - private
   "__abc"と変数やメソッドの前に"__"を付けるとprivateとなる。
 *** Tutorial
+- https://docs.python.jp/3/tutorial/index.html
