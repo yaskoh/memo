@@ -432,6 +432,15 @@
 ***** TABLE TOOLS
 ****** DESIGN(JT)
 ******* Convert to Range / 範囲に変換 (Alt,JT,G)
+***** DRAWING TOOLS
+****** FORMAT(JD)
+******* Insert Shapes
+******** Edit Shape(Alt,JD,E)
+********* Change Shape(Alt,JD,E,N)
+******* Shape Styles
+******* WordArt Styles
+******* Arrange
+******* Size
 ***** グラフ
 ***** ピボットテーブル
 *** Link

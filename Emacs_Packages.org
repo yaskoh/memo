@@ -759,6 +759,10 @@
   this acts like an intreactive Lisp interpreter.
   real little REPL.
 
+**** Functions
+***** ielm
+- (ielm)
+  Interactively evaluate Emacs Lisp expresions.
 *** image-file
 **** Functions
 ***** auto-image-file-mode
@@ -955,6 +959,11 @@
   
 ***** next-line-add-enwlines
 - If non-nil, "next-line" inserts newline to avoid "end of buffer" error.
+*** sort
+**** Functions
+***** delete-duplicate-lines
+- (delete-duplicate-lines BEG END &optional REVERSE ADJACENT KEEP-BLANKS INTERACTIVE)
+  Delece all but one copy of any identical lines in the region
 *** startup
 **** Functions
 ***** normal-top-levevl-add-subdirs-to-load-path

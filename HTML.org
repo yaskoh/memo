@@ -44,13 +44,21 @@
   
 ****** Document Object
 ***** Elements
+****** Semantics
+****** Elements in the DOM
+****** HTML element constructors
+****** Element definitions
+******* Attributes
 ****** Content models
+******* The "nothing" content mobel
 ******* Kinds of content
 ******** Metadata content
 - Elements
   - base, link, meta, noscript, script, style, template, title
-- 
-  見栄えまたは後のコンテンツの振る舞いを設定する、または他の文書との関係を設定する、または他の"帯域外の"情報を運搬するコンテンツ。
+- About
+  - Metadata content is content that sets up the presentation or behavior of the rest of the content,
+    or that sets up the relationship of the document with other documents, or that conveys other "out of band" information.
+  - 見栄えまたは後のコンテンツの振る舞いを設定する、または他の文書との関係を設定する、または他の"帯域外の"情報を運搬するコンテンツ。
 ******** Flow content
 - Elements
   - a, abbr, address, area(map要素の子孫の場合), article, aside, audio, b, bdi, bdo, blockquote,
@@ -58,13 +66,15 @@
     h1, h2, h3, h4, h5, h6, header, hr, i, iframe, img, input, ins, kbd, keygen, label, main, map, mark,
     math, meter, nav, noscript, object, ol, output, p, pre, progress, q, ruby, s, samp, script, section,
     select, small, span, strong, sub, sup, svg, table, template, textarea, time, u, ul, var, video, wbr, Text
-- 
-  文書及びアプリケーションのbodyで使用される多くの要素。
+- About
+  - Most elements that are used in the body of documents and applications are categorized as flow content.
+  - 文書及びアプリケーションのbodyで使用される多くの要素。
 ******** Sectioning content
 - Elements
   - article, aside, nav, section
-- 
-  見出しおよびフッターの範囲を定義するコンテンツ。
+- About
+  - Sectioning content is content that defines the scope of headings and footers.
+  - 見出しおよびフッターの範囲を定義するコンテンツ。
 ******** Heading content
 - Elements
   - h1, h2, h3, h4, h5, h6
@@ -92,8 +102,7 @@
     select, textarea, video(controls属性が存在する場合)
 - 
   ユーザーとの交流を意図するコンテンツ。
-******** Etc
-********* Palpable content
+******** Palpable content
 - Elements
   - a, abbr, address, article, aside, audio(control属性が存在する場合), b, bdi, bdo, blockquote,
     button, canvas, cite, code, data, dfn, div, dl(要素の子が少なくとも1つの名前-値グループを含む場合),
@@ -102,54 +111,109 @@
     meter, nav, object, ol(要素の子が少なくとも1つli要素を含む場合), output, p, pre, progress, q,
     ruby, s, samp, section, select, small, span, strong, sub, sup, svg, table, textarea, time, u, 
     ul(要素の少なくとも1つli要素を含む場合), var, video, 要素内の空白文字でないText
-- 
-  「明白・明瞭な」コンテンツ、という意味。
-  フローコンテンツかフレージングコンテンツは、パルパブルコンテンツを内容に持つべきである、
-********* Script-supporting elements
+- About
+  - As a general rule, elements whose content model allaws any flow content or phrasing content should have at least one node in its contents
+    that palpable content and that does not hav the hidden attribute specified.
+  - 「明白・明瞭な」コンテンツ、という意味。
+    フローコンテンツかフレージングコンテンツは、パルパブルコンテンツを内容に持つべきである、
+******** Script-supporting elements
 - Elements
   - script, template
-- 
-  自分自身で何も表さない（レンダリングされない）が、たとえばユーザに機能を提供するために、スクリプトをサポートするために使用される。
+- About
+  - Script-supporting elements are those that do not represent anything themselves, but are used to support scripts, e.ge to provide functionality for the user.
+  - 自分自身で何も表さない（レンダリングされない）が、たとえばユーザに機能を提供するために、スクリプトをサポートするために使用される。
   
+******** Etc
 ********* Sectioning root
 ****** Global attributes
-******* title
-- 要素に関するアドバイザリー情報を表すテキストを包含する。
-******* lang, xml:lang
+******* Common attributes
+******** accesskey
+******** contenteditable
+******** dir
+******** draggable
+******** hidden
+******** is
+******** itemid
+******** itemprop
+******** itemref
+******** itemscope
+******** itemtype
+******** lang (xml:lang?)
 - 
   要素のコンテンツに対する基本言語およびテキストを含むあらゆる要素の属性に対して指定する。
   その値は妥当なBCP47言語タグまたは空も次である必要がある。
 
-******* translate
-******* dir
-******* style
-******* etc
-******** common, and may be specified on all HTML elements
-- only defined as attributes for HTML elements.
-********* accesskey
-********* contenteditable
-********* dir
-********* draggable
-********* hidden
-********* is
-********* itemid
-********* itemprop
-********* itemref
-********* itemscope
-********* itemtype
-********* lang
-********* spellcheck
-********* style
-********* tabindex
-********* title
-********* translate
-******** event handler content attributes 
-********* onabort
-********* onauxclick
-********* onblur
-********* oncancel
-********* oncanplay
-********* ...
+******** spellcheck
+******** style
+******** tabindex
+******** title
+- 要素に関するアドバイザリー情報を表すテキストを包含する。
+******** traslate
+******* Event handler content attributes 
+******** onabort
+******** onauxclick
+******** onblur
+******** oncancel
+******** oncanplay
+******** oncanplaythrough
+******** onchange
+******** onclick
+******** onclose
+******** oncontextmenu
+******** oncuechange
+******** ondblclick
+******** ondrag
+******** ondragend
+******** ondragenter
+******** ondragexit
+******** ondragleave
+******** ondragover
+******** ondragstart
+******** ondrop
+******** ondurationchange
+******** onemptied
+******** onended
+******** onerror
+******** onfocus
+******** oninput
+******** oninvalid
+******** onkeydown
+******** onkeypress
+******** onkeyup
+******** onload
+******** onloadeddata
+******** onloadedmetadata
+******** onloaend
+******** onloastart
+******** onmousedown
+******** onmouseenter
+******** onmouseleave
+******** onmousemove
+******** onmouseout
+******** onmouseover
+******** onmouseup
+******** onwheel
+******** onpause
+******** onplay
+******** onplaying
+******** onprogress
+******** onratechange
+******** onreset
+******** onressize
+******** onscroll
+******** onsecuritypolicyviolation
+******** onseeked
+******** onseeking
+******** onselect
+******** onstalled
+******** onsubmit
+******** onsuspend
+******** ontimeupdate
+******** ontoggle
+******** onvolumechange
+******** onwaiting
+******* Custom data attributes
+******** data-* (Embedding custom non-visible data with the data-* attributes)
 ******* old?
 ******** id
 ******** xml:base
@@ -358,6 +422,63 @@
 - Tag omission : どちらも省略不可
 
 ***** Sections
+****** body
+****** article
+- Defines an independent self-contained article
+- その部分だけを取り出した場合に独立したコンテンツとして成り立つ際に利用する。
+******* Def
+- Categories:
+  - Flow content
+  - Sectioning content
+  - Palpable content
+- Content attributes:
+  - Global attributes
+****** section
+- Defines a section in a document
+******* Def
+- Categories:
+  - Flow content
+  - Sectioning content
+  - Palpable content
+- Content attributes:
+  - Global attributes
+****** nav
+- Defines a container for navigation links
+- ナビゲーションであることを示す際に使用する。
+******* Def
+- Categories:
+  - Flow content
+  - Sectioning content
+  - Palpable content
+- Content attributes:
+  - Global attributes
+****** aside
+- Defines content aside from the content (like a slidebar)
+******* Def
+- Categories:
+  - Flow content
+  - Sectioning content
+  - Palpable content
+- Content attributes:
+  - Global attributes
+****** h#(1-6)
+****** hgroup
+****** header
+- Defines a header for a document or a section
+******* Def
+- Categories:
+  - Flow content
+  - Palpable content
+- Content attributes:
+  - Global attributes
+****** footer
+- Defines a footer for a document or a section
+******* Def
+- Categories:
+  - Flow conetnt
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ****** address
 ******* Def
 - Categories
@@ -365,15 +486,6 @@
   - Palpable content
 - Content attributes:
   - Global attributes
-****** article
-****** aside
-****** body
-****** footer
-****** h#(1-6)
-****** header
-****** hgroup
-****** nav
-****** section
 ***** Grouping content / Text content
 - organization blocks or sections of content placed between the openining of <body> and cloning </body> tags.
 ****** p
@@ -381,6 +493,12 @@
 ****** pre
 - The HTML <pre> elemest represens preformatted text.
   Text within this element is typically displayed in a non-proportional ("monospace") font exactly as it is laid out in the file.
+******* Def
+- Categories:
+  - Flow content
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ****** blockquote
 - quoted from another source.
 ****** ol
@@ -502,12 +620,28 @@
 - Content attribuets:
   - Global attributes
 ****** code
+- represents a fragment of computer code.
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ****** dfn
 ****** em
 - emphasize
 ****** i
 - italic
 ****** kbd
+- represents user input (typically keiboard input)
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ****** mark
 - marked, or highlighted
 ****** q
@@ -519,6 +653,15 @@
 ****** ruby
 ****** s
 ****** samp
+- The samp element represents sample or quoted output
+  from another program or computing system.
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ****** small
 ****** span
 - not mean anything on its own, but can be useful when used together with the global attributes.
@@ -536,6 +679,15 @@
 ****** time
 ****** u
 ****** var
+- represents a variable
+  The variable could be a variable in a mathematical expression or a variable in programming context
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Palpable content
+- Content attributes:
+  - Global attributes
 ****** wbr
 ***** Edits / Demarcating edits
 ****** ins
@@ -716,116 +868,307 @@
   - abbr
 ***** Forms
 ****** form
-- 
-  処理のためにサーバーに送信できる編集可能な値を表すことができる一部。
+- defines a form that is used to collect user input.
+- 処理のためにサーバーに送信できる編集可能な値を表すことができる一部。
 ******* Def
-- 
-  - Category : Flow, Pulpable
-  - Contents model : フローコンテンツ、ただしform要素の子孫を除く。
-  - Content attributes :
-    - グローバル属性
-    - accept-charset : フォーム送信に使用する文字エンコーディング
-    - action : フォーム送信に使用するURL
-    - autocomplete : フォーム内のコントロールのオートフィル機能に対するデフォルト設定
-    - encrypt : フォーム送信に使用する文字円コーディングを設定するフォームデータ
-    - method : フォーム送信に使用するHTTPメソッド
-    - name
-    - novalidate
-    - target : フォーム送信に対するブラウジングコンテキスト
-  - Tag omission : 省略不可
+- Category:
+  - Flow
+  - Palpable
+- Contents model : フローコンテンツ、ただしform要素の子孫を除く。
+- Content attributes :
+  - グローバル属性
+  - accept-charset : フォーム送信に使用する文字エンコーディング
+  - action : フォーム送信に使用するURL
+  - autocomplete : フォーム内のコントロールのオートフィル機能に対するデフォルト設定
+  - encrypt : フォーム送信に使用する文字円コーディングを設定するフォームデータ
+  - method : フォーム送信に使用するHTTPメソッド(GET, POSTなど)
+  - name : Name of form to use in the document.forms API
+  - novalidate
+  - target : フォーム送信に対するブラウジングコンテキスト
+- Tag omission : 省略不可
 
 ****** label
+- represents a caption in a user interface.
+- フォーム属性とラベルを関連付けることができる
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Interactive conetnt
+  - Palpable conetnt
+- Content attriutes:
+  - Global attributes
+  - for : Associate the label with form control
 ****** input
-******* Def
-- 
-  - Category : 
-    - フローコンテンツ
-    - フレージングコンテンツ
-    - type属性がHiddenでない場合 : 
-      - インタラクティブコンテンツ
-      - 記載、ラベル付可能、送信可能、
-    - type属性がHiddenである場合 :
-  - Content attributes :
-    - グローバル属性 :
-    - disabled : フォームコントロールが無効であるかどうか
-    - form : form要素とコントロールを関連付ける
-    - name : フォーム送信およびform.elements APIで使用するフォームコントロール名
-    - size : コントロールのサイズ
-    - type : フォームコントロールの種類
-    - value : フォームコントロールの値
-  - Tag omission :
-    - 終了タグなし
+- most important form element.
+  can be displayed in several ways, depending on "type" attribute.
 
-******* Type
-******** Hidden
-- type=hidden
-******** Text
-- type=text
-******** Search
-- type=search
-******** Telephone
-- type=tel
-******** URL
-- type=url
-******** E-mail
-- type=email
-******** Password
-- type=password
-******** Date
-- type=date
-******** Time
-- type=time
-******** Number
-- type=number
-******** Range
-- type=range
-******** Color
-- type=color
-******** Checkbox
-- type=checkbox
-******** Radio Button
-- type=radio
-******** File Upload
-- type=file
-******** Submit Button
-- type=submit
-******** Image Button
-- type=image
-******** Reset Button
-- type=reset
-******** Button
-- type=button
-****** button
-****** select
-****** datalist
-****** optgroup
-****** option
-****** textarea
+- The input element represents a typed data field, usually with a form control to allow the user to edit the data.
+  The "type" attribute controls the data type (and associated control) of the element.
+  each element must have a "name" field.
 ******* Def
-- 
-  - Category :
-    - Flow
-    - Phrasing
-    - Interactive
-    - 記載、ラベル付可能、送信可能、リセット可能、および再関連付け可能フォーム関連要素
-    - Palpable
-  - Contexts : フレージングコンテンツが期待される場所
-  - Contents model : Text
-  - Content attributes :
-    - グローバル属性
-    - autocomplete
-    - autofocus
-    - cols : 行あたりの最大文字数
-    - name : フォーム送信およびform.elements APIで使用するフォームコントロール名
-    - rows : 表示する行数
-  - Tag omissions : 省略不可
-    
-****** keygen
+- Category : 
+  - フローコンテンツ
+  - フレージングコンテンツ
+  - type属性がHiddenでない場合 : 
+    - インタラクティブコンテンツ
+    - 記載、ラベル付可能、送信可能、
+  - type属性がHiddenである場合 :
+- Content attributes :
+  - グローバル属性 :
+  - accept
+  - alt
+  - autocomplete
+  - autofocus
+  - checked
+  - dirname
+  - disabled : フォームコントロールが無効であるかどうか
+  - form : form要素とコントロールを関連付ける
+  - formaction
+  - formenctype
+  - formmethod
+  - formtarget
+  - height
+  - inputmode
+  - list
+  - max
+  - maxlength
+  - min
+  - minlength
+  - multiple
+  - name : フォーム送信およびform.elements APIで使用するフォームコントロール名
+  - pattern
+  - placeholder
+  - readonly
+  - required
+  - size : コントロールのサイズ
+  - src
+  - step
+  - type : フォームコントロールの種類
+  - value : フォームコントロールの値
+  - width
+  - title: having special semantics
+- Tag omission :
+  - 終了タグなし
+
+******* Attributes
+******** Type
+********* Hidden
+- type=hidden
+- An orbitrary string
+********* Text
+- type=text
+- Text with no line breaks,
+  text control type
+********* Search
+- type=search
+- Text with no line breaks,
+  search control type
+********* Telephone
+- type=tel
+********* URL
+- type=url
+********* E-mail
+- type=email
+********* Password
+- type=password
+********* Date
+- type=date
+********* Time
+- type=time
+********* Number
+- type=number
+********* Range
+- type=range
+********* Color
+- type=color
+********* Checkbox
+- type=checkbox
+********* Radio Button
+- type=radio
+********* File Upload
+- type=file
+********* Submit Button
+- type=submit
+********* Image Button
+- type=image
+********* Reset Button
+- type=reset
+********* Button
+- type=button
+******** Common
+********* autocomplete
+********** Values
+*********** off
+*********** on
+*********** name
+*********** honorific-prefix
+*********** given-name
+*********** additional-name
+*********** family-name
+********* maxlength
+********* minlength
+********* size
+********* readonly
+********* required
+********* multiple
+********* pattern
+********* min
+********* max
+********* step
+********* list
+********* placeholder
+****** button
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Interactive conetnt
+  - Listed, labelable, and sumbittable form-associated element
+  - Palpable content
+- Content attributes:
+  - Global attributes
+  - autofocus
+  - disabled
+  - form
+  - formaction
+  - formenctype
+  - formmethod
+  - formnovalidate
+  - formtarget
+  - name
+  - type
+  - value : Value to be used for form submission
+****** select
+- represents a control for selecting amongst a set of options.
+- defines a drop-down list
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+  - Interactive centent
+  - Listed, labelable, submittable, and resettable form-associated elemnt
+  - Palpable content
+- Content attributes:
+  - Global attributes
+  - autocomplete
+  - autofocus
+  - disabled
+  - form
+  - multiple
+  - name
+  - required
+  - size
+****** datalist
+- The datalist element represents a set of option elements that represent predefined options for other controls.
+  new in HTML5
+- selectのようなdropdownリストを、別箇所で定義して適用できる。元アイテムのlist属性とdatalistのid属性を揃える。
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing content
+- Content attributes:
+  - Global attributes
+****** optgroup
+- The optgroup element represents a group of option elements with a common label.
+******* Def
+- Categories:
+  - None
+- Contexts in which this element can be used:
+  - As a child of a select element.
+- Content attributes:
+  - Global attributes
+  - disabled
+  - label: User-visible label
+****** option
+- The option element represents an option in a select element or as part of a list of suggestions in a datalist element.
+******* Def
+- Categories:
+  - None
+- Contexts in which this element can be used:
+  - As a child of a select element.
+  - As a child of a datalist element.
+  - As a child of a optgroup element.
+- Content attributes:
+  - Global attributes
+  - disabled
+  - label: User-visible label
+  - selected: Whether the option is selected by default
+  - value: Value to be used for form submission
+****** textarea
+- srepresents a multiline plain text edit control for the element's raw value.
+******* Def
+- Category :
+  - Flow
+  - Phrasing
+  - Interactive
+  - 記載、ラベル付可能、送信可能、リセット可能、および再関連付け可能フォーム関連要素
+  - Palpable
+- Contexts : フレージングコンテンツが期待される場所
+- Contents model : Text
+- Tag omissions : 省略不可
+- Content attributes :
+  - グローバル属性
+  - autocomplete
+  - autofocus
+  - cols : 行あたりの最大文字数
+  - dirname
+  - disabled
+  - form
+  - inputmode
+  - maxlength
+  - minlength
+  - name : フォーム送信およびform.elements APIで使用するフォームコントロール名
+  - placeholder
+  - readonly
+  - required
+  - rows : 表示する行数
+  - wrap
 ****** output
+- represents the result of a calculation (like one performed by a script).
+  new in HTML5
+- 何らかの計算やユーザによるアクションの結果を表す
+******* Def
+- Categories:
+  - Flow content
+  - Phrasing conetnt
+  - Listed, labelable, and resettable form-associated element
+  - Palpable conetnt
+- Content attributes:
+  - Global attributes
+  - for : 
+    Specifies controls from which the output was calculated
+    計算の入力値を与える（或いは計算値に影響を与えている）他の要素のidのリスト
+  - form
+  - name
 ****** progress
 ****** meter
 ****** fieldset
+- a set of form controls optionally grouped under a common name.
+******* Def
+- Categories:
+  - Flow content
+  - Sectioning root
+  - Listed form-associated element
+  - Palpable content
+- Content attributes:
+  - Global attributes
+  - disabled
+  - form
+  - name
 ****** legend
+- a caption for the rest of the contens of the legent element's parent fieldset element, if any.
+******* Def
+- Categories:
+  - None
+- Content attributes:
+  - Global attributes
+****** Obsolete
+******* keygen
+- providing a secure way to authenticate users.
+  new in HTML5, deleted.
+- 暗号鍵を生成する。
+  フォーム送信時にキーを発行して暗号化する際に使用する。
 ***** Scripting
 ****** script
 - The script element allows authors to include dynamic script and data blocks in their documents.
@@ -867,6 +1210,7 @@
 ****** canvas
 ***** Interactive elements
 ****** details
+- Defines a additional details
 ******* Def
 - 
   - Cagegories
@@ -875,6 +1219,7 @@
     - Interactive content
     - Palpable content
 ****** summary
+- Defines a heading for the <details> element
 ******* Def
 - 
   - Categories
@@ -908,6 +1253,8 @@
 ******** _top
 - Opens the linked document in the full bofy of the window
 **** Web application APIs
+***** Scripting
+***** The WindowOrWorkerGlobalScope mixin
 **** Communication
 **** Web workers
 **** Web storage
@@ -990,6 +1337,25 @@
 *** Path
 - to use relative file path (if possible),
   because of not being bound to your current base URL.
+
+*** Character Entities
+**** Entities
+*****   &nbsp; &#160;
+- non-breaking space 
+***** < &lt; &#60;
+- less than 
+***** > &gt; &#62;
+- greater than
+***** & &amp; &#amp;
+- ampersand
+***** " &quot; &#34;
+***** ' &apos; &#39;
+***** ￠ &cent; &#162;
+**** Link
+- https://www.w3.org/TR/html4/sgml/entities.html
+- https://www.w3schools.com/html/html_entities.asp
+- https://www.w3schools.com/html/html_symbols.asp
+- http://w-d-l.net/html__entities/
 
 ** Link
 - [[https://html.spec.whatwg.org/multipage/][HTML Living Standard]]

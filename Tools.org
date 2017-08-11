@@ -459,6 +459,11 @@
 **** Twisted
 
 **** TurboGears
+*** Web embeddedable
+**** Text Editor
+***** Ace
+- embeddeddable code editor written in JavaScript.
+- https://ace.c9.io/
 ** Perl
 *** Web Server
 **** Starlet

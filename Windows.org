@@ -1260,6 +1260,14 @@ xwizard.exe
 **** Win + Ctrl + f : コンピュータを検索します
 **** Win + e : エクスプローラ・"コンピュータ"を開く
 **** Ctrl + Shift + Esc : Windowsタスクマネージャー
+** License
+*** CAL / Client Access License
+- Windowsサーバを利用するのに必要なライセンス。
+  ユーザーCALとデバイスCALが存在する。
+**** Link
+- http://www.pg-direct.jp/blog/?p=7718
+- http://www.pg-direct.jp/user_data/cal.php
+- http://wa3.i-3-i.info/word12578.html
 ** Glossary
 *** WOW64
 - Windows 32-bit On Windows 64-bit

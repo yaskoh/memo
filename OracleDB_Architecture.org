@@ -1,5 +1,5 @@
 * OracleDB Architecture
-** 全体
+** 全体構成
 *** Oracleソフトウェア
 - ホスト・コンピュータ上にインストール
 *** Oracleデータベース
@@ -14,6 +14,7 @@
 *** サーバープロセス
 - サーバープロセス
 - メモリー、一次記憶域
+  PGAを利用
 *** Oracle Net
 - Oracle Net
 - Oracle Netリスナー
@@ -320,6 +321,9 @@
   startup (nomount)
 
 ** Link
+- [[http://www.oracle.com/webfolder/technetwork/tutorials/obe/db/12c/r1/poster/OUTPUT_poster/poster.html][Oracle Database 12c: INTERACTIVE QUICK REFERENCE]]
+- [[http://damir-vadas.blogspot.jp/2012/01/oracle-11g-architecture-interactive.html][Oracle Database 11g - Architecture Diagram]]
+
 - [[http://www.oracle.com/technetwork/jp/ondemand/db-basic/0420-1330-oracle-architecture-366291-ja.pdf][今さら聞けない!?Oracle入門 ～アーキテクチャ編～]]
 - [[http://onefact.jp/wp/2014/08/29/oracle%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%82%92%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%81%8B/][Oracleアーキテクチャをどのように理解するか - サイクル＆オラクル]]
 - [[http://www.atmarkit.co.jp/ait/articles/1010/29/news127.html][Oracleデータベースアーキテクチャを復習する - 独学！ ORACLE MASTER Gold 11g講座（1） - @IT]]

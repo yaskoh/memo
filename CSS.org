@@ -304,6 +304,7 @@
 ***** CSS Image Values and Replaced Content Level 3
 ***** CSS Speech
 ***** CSS Flexible Box Layout
+- https://www.w3.org/TR/css-flexbox-1/
 ***** CSS Text Decoration Module Level 3
 ***** CSS Fonts Level 3
 ***** CSS Writing Modes Level 3

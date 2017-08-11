@@ -6,6 +6,21 @@
 - 
   [[file:Excel.org][Excel.org]]
 *** Outlook
+**** Shortcuts
+***** Ribbon
+****** FILE(F)
+****** HOME(H)
+******* New
+******* Delete
+******* Respond
+******* Quick Steps
+******* Move
+******* Tags(Alt,H,ZT)
+******** Unread/Read(Alt,H,W)
+******* Find
+****** SEND/RECEIVE(S)
+****** FOLDER(O)
+****** VIEW(V)
 **** 検索条件
 - Format : キーワード:検索条件値
   Ex : from:bobby
@@ -179,8 +194,38 @@
 *** Project
 **** Shortcuts
 ***** Ribbon
-****** View(W)
-******* Arrange All 並べて表示(Alt,W,A)
+****** FILE(F)
+****** TASK(H)
+******* View
+******** Gantt Chart(Alt,H,G)
+******* Clipboard
+******* Font
+******* Schedule
+******* tasks
+******* Insert
+******* Properties
+******* Editing
+****** RESOURCE(U)
+****** REPORT(S)
+****** PROJECT(R)
+****** VIEW(W)
+******* Task Views
+******* Resource Views
+******* Data
+******** Outline(Alt,W,OS)
+********* Show Subtasks(Alt,W,OS,T)
+********* Hide Subtasks(Alt,W,OS,H)
+********* All Subtasks(Alt,W,OS,A)
+******* Zoom
+******* Split View
+******* Window
+******** Arrange All 並べて表示(Alt,W,A)
+******* Macros
+****** ACROBAT(B)
+****** TEAM(Y)
+****** TOOLS
+******* GANTT CHART
+******** FORMAT(JF)
 **** Memo
 ***** 使い方
 - https://srad.jp/~ins13/journal/331238
@@ -417,6 +462,33 @@
   Office 2007から採用された。従来の.doc, .xls, .ppt形式のバイナリとの互換性はない。
 - 競合規格にODF(ISO/IEC 26300:OpenDocumentFormat(ODF))がある。
 - Patrick Durusauによれば、OOXMLは"要素(elements)"のアプローチをとっており、ODFは"属性(attributes)"のアプローチをとっている、とのこと。
+**** Specifications
+***** 5th edition
+****** Part1: Fundamentals and Markup Language Reference
+******* Overview
+******* Packages
+******* Markup Compatibility and Extensibility
+******* WordprocessingML
+******* SpreadsheetML
+******* PresentationML
+******* DrawingML
+******* Shared
+******* Part Overview
+******* WordprocessingML Reference Material
+******* SpreadsheetML Reference Material
+******* PresentationML Reference Material
+******* DrawingML - Framework Reference Material
+******* DrawingML - Components Reference Material
+******* Shared MLSs Reference Material
+******* Custom XML Schema Refernces
+****** Part3: Markup Compatibility and Extensibility
+******* Overview
+****** Part4: Transitional Migration Features
+***** 4th edition
+****** Part1
+****** Part2
+****** Part3
+****** Part4
 **** Structure
 ***** _rels/
 - 各パーツの関連性（リレーションシップ）を記述するファイルを格納するフォルダ。
@@ -429,20 +501,22 @@
 ****** app.xml
 ****** core.xml
 ****** custom.xml
-***** word/
-****** _rels/
-******* customization.xml.rels
-******* document.xml.rels
-****** document.xml
+***** (Apps/)
+****** word/
+******* _rels/
+******** customization.xml.rels
+******** document.xml.rels
+******* document.xml
 - テキストコンテンツ
-****** fontTable.xml
+******* fontTable.xml
 - フォント表
-****** settings.xml
+******* settings.xml
 - 設定情報
-****** styles.xml
+******* styles.xml
 - テキストのスタイル情報
-****** webSettings.xml
+******* webSettings.xml
 - ウェブ用のスタイル情報
+****** xl/
 ***** [Content_Types].xml
 **** Markup Language
 ***** PresentationML

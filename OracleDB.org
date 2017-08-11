@@ -874,10 +874,10 @@
   AWRの情報は、MMONによってSGAから直接、定期的(11gのデフォルトは60分毎)に取得され、データベース内に一定期間(11gのデフォルトは8に置換)保存される。
 - 10gより提供された、Statspackを進化させたもの。
   Statspackの取得データに加えて、稼働統計やワークロード情報のスナップショットなど実際の使用履歴そのものを動的に取得している。
-- StatspackはDB作成時にインストールが必要だったが、AWRはSYSAUX表領域にインストールされている。
+- StatspackはDB作成時にインストールが必要だったが、AWRはSYSAUX表領域にデフォルトでインストールされている。
 
 **** 収集レベル
-- STATISTICS_LEVEL期化パラメータで設定する。
+- STATISTICS_LEVEL 初期化パラメータで設定する。
   デフォルトはTYPICAL。より低いBASIC、より高いALLへの設定変更も可能。
   TYPICALはStatspcakのi_snap_level7相当。
 **** レポート
@@ -1157,6 +1157,49 @@
 ****** ADR診断パラメータ
 ****** ADR以外の診断パラメータ
 ***** tnsnames.ora (ローカル・ネーミング)
+****** 接続記述子
+******* DESCRIPTION_LIST
+******* DESCRIPTION
+****** プロトコル・アドレス・セクション
+******* ADDRESS_LIST
+******* ADDRESS
+****** アドレス・リストのオプション・パラメータ
+******* ENABLE
+******** About
+- DESCRIPTIONパラメータの下に埋め込むことで、サポートされているTCP転送のキープアライブ機能をネット・サービス・クライアントに対して有効にできる。
+******** Value
+- BROKEN
+******** Example
+- 
+  net_service_name
+   (DESCRIPTION=
+    (ENABLE=broken)
+    (ADDRESS=(PROTOCOL=tcp)(HOST=sales1-svr)(PORT=1521))
+    (ADDRESS=(PROTOCOL=tcp)(HOST=sales2-svr)(PORT=1521)))
+    (CONNECT_DATA=(SERVICE_NAME=sales.us.example.com))
+******* FAILOVER
+******* LOAD_BALANCE
+******* RECV_BUF_SIZE
+******* SDU
+******* SEND_BUF_SIZE
+******* SOURCE_ROUTE
+******* TYPE_OF_SERVICE
+****** 接続データ・セクション
+******* CONNECT_DATA
+******* FAILOVER_MODE
+******* GLOBAL_NAME
+******* HS
+******* INSTANCE_NAME
+******* RDB_DATABASE
+******* SERVER
+******* SERVICE_NAME
+****** セキュリティ・セクション
+******* SECURITY
+******* SSL_SERVER_CERT_DN
+****** タイムアウト・パラメータ
+******* CONNECT_TIMEOUT
+******* RETRY_COUNT
+******* TRANSPORT_CONNECT_TIMEOUT
 ***** listener.ora (Oracle Net Listener)
 ***** cman.ora (Oracle Connection Manager)
 ***** ldap.ora (ディレクトリ使用)
