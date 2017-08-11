@@ -271,6 +271,18 @@
 *** Write-Output
 **** echo
 **** write
+** Commands(etc,tmp)
+*** Server Manager Cmdlets
+- https://technet.microsoft.com/ja-jp/library/jj205465(v=wps.630).aspx
+**** Add-WindowsFeature
+- "Install-WindowsFeature"のAlias
+**** Install-WindowsFeature
+- 役割と機能をインストールする。
+  管理ツールを含めるには、"IncludeManagementTools"パラメータをコマンドレットに追加する。
+- https://technet.microsoft.com/ja-jp/library/jj205467(v=wps.630).aspx
+**** Uninstall-WindowsFeature
+**** Enable-ServerManagerStandardUserRemoting
+**** Disable-ServerManagerStandardUserRemoting
 ** Reverse Lookup
 *** tmp
 **** ネットワークプロファイルを調べる

@@ -1879,6 +1879,11 @@
   元のIPが欲しい場合はXFFなどを利用する。
   
   RFC3875(CGI)で規定されている。
+*** Inbound, Outbound
+- Inbound
+  外から中へ入ってくる通信
+- Outbound
+  中から外へ出す通信
 ** Memo
 *** Free Wi-fi
 *** プロミスキャスモード端末の特定
