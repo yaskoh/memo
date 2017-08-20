@@ -468,6 +468,18 @@
   改行するまでの文字列がvarに格納される。
   バッチファイルでユーザーに入力させた値を取得する
 
+***** Batchで日時を入力
+- 
+  %date%, %time%を使えばよいが、%time%は一桁時のときスペースを入れてくるため、
+  スペースを0に置換する等の手段を取る必要がある。
+  ex: echo %time% -> " 9:20:30.93"
+
+- ex
+  rem ***日時定義***
+  set today=%date:/=%
+  set time_tmp=%time: =0%
+  set now=%today%%time_tmp:~0,2%%time_tmp:~3,2%%time_tmp:~6,2%
+
 *** WSH
 - Windows Script Host
 - Windows環境でスクリプトを実行するための環境。

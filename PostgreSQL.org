@@ -1413,8 +1413,12 @@
 - [[https://www.postgresql.jp/document/9.3/html/index.html][PostgreSQL 9.3.2文書]]
 - [[http://www.postgresql.org/][PostgreSQL]]
 - [[https://wiki.postgresql.org/wiki/Main_Page][PostgreSQL Wiki]]
+
 - [[http://lets.postgresql.jp/][Let's Postgres]]
 - [[http://lets.postgresql.jp/documents/tutorial/centos/2][CentOSでPostgreSQLを使ってみよう!(2)]]
+
+- [[https://thinkit.co.jp/series/4975][徹底比較!! Oracle & PostgreSQL 記事一覧 - Think IT]]
+
 * EnterpriseDB
 ** 比較
 - 
