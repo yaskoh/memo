@@ -3,6 +3,7 @@
 - 2010/1に正式サービス開始をした、MSのクラウドプラットフォーム(PaaS/IaaS)。
   2014/1にWindows AzureからMicrosoft Azureに名称変更。
 ** Services
+- サービスを並べただけ
 *** Computing
 **** Linux 仮想マシン
 **** Windows仮想マシン
@@ -69,6 +70,12 @@
   - パスワードを入れる
 - https://docs.microsoft.com/ja-jp/azure/virtual-machines/virtual-machines-windows-reset-rdp
 
+****** 課金せずに停止する
+- ポータル上で「停止」をクリックする。
+  サーバ上でのシャットダウンでなく、割り当てを解除となり、課金されなくなる。
+  IP割り当てなども全て解除されてしまうが、マルチインスタンスの場合はどれか一台が残っていればIP等の設定は残る。
+- http://cloudsteady.jp/faq/2611.html/
+- http://yomon.hatenablog.com/entry/2014/02/19/Azure%E3%81%AE%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%83%E3%83%88%E3%83%80%E3%82%A6%E3%83%B3%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%AF%E6%B0%97%E3%82%92%E4%BB%98%E3%81%91
 *** Networking
 *** Storage
 *** Web + Mobile
@@ -80,6 +87,10 @@
 *** Intelligence + Analysis
 ** Azure CLI
 *** Link
+** Reverse lookup
+*** Storageの追加
+- https://azure-recipe.kc-cloud.jp/2016/06/vm-data1/
+- 
 ** Memo
 *** Azure China
 - 中国アカウントはGlobalアカウントとは切り離されており、MSアカウントの別途作成が必要。

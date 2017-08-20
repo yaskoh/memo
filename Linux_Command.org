@@ -1010,10 +1010,13 @@
   |          8 | システム管理用コマンド |
   |------------+------------------------|
 
+**** md5sum
+- md5sum [OPTION]... [FILE]...
+  compute and check MD5 mesage digest
+
 **** merge
 - merge (option) file1 file2 file3
   file2からfile3へのすべての変更をfile1に併合する。
-
 **** mkdir
 **** mkfs
 - 
@@ -1091,6 +1094,20 @@
 *** o
 **** od
 - dump files in octal and other formats
+**** openssl
+- openssl command [command opts] [command args]
+  OpenSSL command line tool
+
+***** Description
+- OpenSSL is a cryptography toolkit implementing the Secure Sockets Layer
+  and Transport Layer Security network protocols and related cryptography standards required by them.
+
+***** Commands
+****** Standard
+****** Message Digest
+******* md5
+******* md5
+- md5 Digest
 *** p
 **** passwd
 - 
