@@ -807,6 +807,11 @@
 - テナント毎にAppache Solrを設定する必要がある。
 ***** テナント環境セットアップ
 - デプロイされた各モジュールが動作するための動作前提を構築する処理。
+*** Memo
+**** 分散システムとして構築する場合
+- 全てのサーバOSのシステム時計を合わせる必要がある
+- 全てのサーバプロセスについてJDKのバージョン・リビジョンを統一する
+- https://www.intra-mart.jp/download/product/iap/iap_release_note/texts/limitations/environment.html
 *** Link
 - [[http://www.intra-mart.jp/apidoc/iap/javadoc/all-dev_apidocs/overview-summary.html][intra-mart Accel Platform API Specification]]
 

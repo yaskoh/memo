@@ -2,9 +2,12 @@
 - Temporary use. Locate specifications that does not categorised to specific files.
   Transfer to somewhere else if each tools collecting enough volumes.
 ** RFC
+*** RFC3768 : Virtual Router Redundancy Protocol (VRRP)
+**** Link
+- [[https://tools.ietf.org/html/rfc3768][RFC3768 - Virtual Router Redundancy Protocol (VRRP)]]
 *** RFC3875 : The Common Gateway Interface (CGI) Version 1.1
 **** Link
-- [[https://www.ietf.org/rfc/rfc3875][RFC3875 The Common Gateway Interface (CGI) Version 1.1]]
+- [[https://www.ietf.org/rfc/rfc3875][RFC3875 - The Common Gateway Interface (CGI) Version 1.1]]
 
 ** IATA
 ** ISO
