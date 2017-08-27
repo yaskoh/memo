@@ -17,3 +17,11 @@
 *** LRU
 - Least Recently Used
   最近使われていないデータからキャッシュアウトする。
+** Compression
+*** Lempel-Ziv-Welch LZW
+- Lempel-Ziv法をテリー・ウェルチが改良したアルゴリズム。
+  GIFやTIFFなどの圧縮で利用されている。
+*** Deflate
+- LZ77とハフマン符号化を組み合わせた可逆データ圧縮アルゴリズム。
+  ZIPやgzipで使われる。
+  RFC1951としてドキュメント化された。

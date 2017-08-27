@@ -1179,7 +1179,10 @@ xwizard.exe
   1D 00 3A 00 : 1D 00 -> 3A 00
   00 00 00 00 : terminate
 
-- Keycode(106 keyboard)
+- Link
+  [[http://uguisu.skr.jp/Windows/winCaps.html][「Caps」と「Ctrl」の入れ替え]]
+
+***** Keycode(106 keyboard) Scancode
   - ESC : 00 01
   - TAB : 00 0F
   - CapsLock : 00 3A
@@ -1189,13 +1192,27 @@ xwizard.exe
   - 右Alt : E0 38
   - 左Ctrl : 00 1D
   - 右Ctrl E0 1D
-   
-- Link
-  [[http://uguisu.skr.jp/Windows/winCaps.html][「Caps」と「Ctrl」の入れ替え]]
+  - Enter : 00 1C
+  - Del : E0 53
+  - Backspace : 00 0E
+  - Win右 : E0 5C
+  - Win左 : E0 5B
+
+****** Link(Scancode)
+- [[https://www.win.tue.nl/~aeb/linux/kbd/scancodes.html#toc1][Keyboard scancodes]]
+- [[https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%AD%E3%83%A3%E3%83%B3%E3%82%B3%E3%83%BC%E3%83%89][スキャンコード - Wikipedia]]
+- [[http://softwaretechnique.jp/OS_Development/Tips/scan_code_set1.html][Tips スキャンコード一覧 スキャンコードセット1 - 0から作るソフトウェア開発]]
+- [[http://yanor.net/wiki/?Windows%2FTIPS%2F%E3%83%AC%E3%82%B8%E3%82%B9%E3%83%88%E3%83%AA%E3%82%92%E4%BF%AE%E6%AD%A3%E3%81%97%E3%81%A6CAPSLOCK%E3%81%AE%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6%E5%A4%89%E6%9B%B4][レジストリを修正してCAPSLOCKの割り当て変更 - yanor.net]]
+
+***** Key設定
+****** GDP Pocket
+- 2017/8/26
+
 **** Link
 - [[https://support.microsoft.com/ja-jp/kb/256986][上級ユーザー向けの Windows レジストリ情報 - Microsoft]]
 - [[http://www.akadia.com/services/windows_registry_tutorial.html][Windows Registry Tutorial]]
 - 
+
 ** Environment Variables
 *** Values
 **** APPDATA
