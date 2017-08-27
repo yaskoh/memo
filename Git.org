@@ -474,6 +474,29 @@ SSHは両方可能。
 *** Git Commits
 *** Git Diffs
 *** other
+** Reverse lookup
+*** ローカルの変更を取り消す
+- 
+  git checkout file
+  
+  チェックアウトを選ぶ場合は、
+  git checkout <code> file
+
+*** 普通にrmしたファイルをcommitに乗せる
+- git rm <file>
+  ファイルを消してしまって実体がいない場合でも、
+  git rmで対象を削除、stageに乗せることができる。
+  ただし既にファイルがない場合、globが効かないので*などで補完してくれない。
+
+- git add -u
+  削除コミット以外も含め一旦stagingに乗せる場合。
+  その後不要なファイルはstagingから落とせばよい。
+  (unstageはgit reset HEAD <file>...)
+
+*** gitで日本語ファイルを扱う
+- core.quotepath を false とする。
+- 例: git config --[global|local] core.quotepath false
+- [[http://dev.classmethod.jp/tool/git/git-avoid-illegal-charactor-tips/][日本語ファイルの文字化けを回避する - Developers.IO]]
 ** Memo
 *** Initialize Setting
 - git config --global user.name "your name"
@@ -517,33 +540,11 @@ SSHは両方可能。
   スペース, ~(チルダ), ^(キャレット), ?(クエスチョンマーク), *(アスタリスク), [(開ブラケット), ASCIIの制御文字等
 - ピリオドの連続(..)は使えない
 
-*** ローカルの変更を取り消す
-- 
-  git checkout file
-  
-  チェックアウトを選ぶ場合は、
-  git checkout <code> file
-
 *** .gitignore
 - 
   *はフォルダを跨がない。"/*/"は/test/local/には当てはまらず、/test/のみ当てはまる。
   **はフォルダを跨ぐ。"/**/"は/test/, /test/local/, /test/local/bin/すべてに当てはまる。
   
-*** 普通にrmしたファイルをcommitに乗せる
-- git rm <file>
-  ファイルを消してしまって実体がいない場合でも、
-  git rmで対象を削除、stageに乗せることができる。
-  ただし既にファイルがない場合、globが効かないので*などで補完してくれない。
-
-- git add -u
-  削除コミット以外も含め一旦stagingに乗せる場合。
-  その後不要なファイルはstagingから落とせばよい。
-  (unstageはgit reset HEAD <file>...)
-
-*** gitで日本語ファイルを扱う
-- core.quotepath を false とする。
-- 例: git config --[global|local] core.quotepath false
-- [[http://dev.classmethod.jp/tool/git/git-avoid-illegal-charactor-tips/][日本語ファイルの文字化けを回避する - Developers.IO]]
 ** Link
 - [[https://www.atlassian.com/ja/git/tutorial][Gitチュートリアル Atlassian]]
 

@@ -5,9 +5,9 @@
 ** Services
 - サービスを並べただけ
 *** Computing
-**** Linux 仮想マシン
-**** Windows仮想マシン
-**** 仮想マシン スケールセット
+**** Linux Virtual Machines / Linux 仮想マシン
+**** Windows Virtual Machines / Windows仮想マシン
+**** Virtual Machine Scale Sets /仮想マシン スケールセット
 **** App Service
 **** Azure Container Service
 **** Azure Container Registry
@@ -26,6 +26,10 @@
 **** ExpressRoute
 *** Storage
 **** Storage
+***** Menu
+****** Settings
+******* Access keys
+******* Configuration
 **** Data Lake Store
 **** StorSimple
 **** Backup
@@ -56,10 +60,13 @@
 *** 監視 + Management
 ** Resources
 *** General
-**** Resouce Group
-**** All Service
+**** Dashboard
+**** Resouce groups
+**** All resources
 **** Subscription
 - 現在までの利用金額等を見ることができる。
+**** Billing
+**** Help + support
 *** Compute
 **** Virtual machines
 ***** Memo
@@ -70,6 +77,19 @@
   - パスワードを入れる
 - https://docs.microsoft.com/ja-jp/azure/virtual-machines/virtual-machines-windows-reset-rdp
 
+****** Size
+******* DS1_V2
+******* DS2_V2
+******* DS3_V2
+******* DS4_V2
+******* DS11_V2
+******* DS1
+******* DS2
+******* DS3
+******* DS4
+******* DS11
+******* F1S
+- Free
 ****** 課金せずに停止する
 - ポータル上で「停止」をクリックする。
   サーバ上でのシャットダウンでなく、割り当てを解除となり、課金されなくなる。
@@ -77,16 +97,103 @@
 - http://cloudsteady.jp/faq/2611.html/
 - http://yomon.hatenablog.com/entry/2014/02/19/Azure%E3%81%AE%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%83%E3%83%88%E3%83%80%E3%82%A6%E3%83%B3%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%AF%E6%B0%97%E3%82%92%E4%BB%98%E3%81%91
 *** Networking
+**** Virtual networks
+**** Load balancers
+**** Application gateways
+**** Virtual network gataways
+**** Local network gataways
+**** DNS zones
+**** Route tables
+**** CDN profiles
+**** Traffic Manager profiles
+**** Network security groups
+- NSG secures inbound and outbound traffic.
+***** Menu
+****** Settings
+******* Inbound security rules
+******* Outbound security rules
+******* Network intrefaces
+******* Subnets
+******* Properties
+******* locks
+******* Automation script
+****** Monitoring
+****** Support + Toroubleshooting
+**** Network interfaces
+**** Public IP addresses
+**** Connections
 *** Storage
 *** Web + Mobile
 **** App Service
+*** Containers
 *** Database
 **** SQL Database
 **** SQL Data Warehouse
 **** NoSQL
-*** Intelligence + Analysis
+**** SQL servers
+*** AI + Cognitive Services
+*** Data + Analysis
+*** Internet of Things
+*** Enterprise Integration
+*** Security + Identity
+*** Developer Tools
+*** Monitoring + Management
+*** Other Clouds
+** Azure Powershell
+- [[https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-4.2.0][Install and configure Azure PowerShell - Microsoft Azure]]
 ** Azure CLI
+*** Commands
+**** az
+***** az configure
+***** az feedback
+***** az find
+***** az interactive
+***** az login
+***** az logout
+***** az account
+- Manage subscription
+***** az acr
+***** az acs
+***** az ad
+***** az appservice
+***** az batch
+***** az billing
+***** az cdn
+***** az cloud
+***** az cognitiveservices
+***** az group
+****** az group create
+- Create a resource group
+- ex:
+  az group create --name myResourceGroup --location eastus
+
+******* Options
+******** --name
+******** --locatios
+- eastus
+- japaneast
+- japanwest
+****** az group delete
+***** az vm
+****** az vm create
+- Creat a VM
+- ex:
+  az vm create --resource-group myResouceGroup --name myVM --image win2016datacenter --admin-username azureuser --admin-password myPassowrd12
+  
+******* Options
+******** -g, --resource-group
+******** --name
+******** --image
+******** --admin-username
+******** --admin--password
+****** az vm open-port
+******* Options
+******** --port
+******** --resource-group
+******** --name
 *** Link
+- [[https://docs.microsoft.com/en-us/cli/azure/overview][Azure CLI 2.0 - Microsoft Aure]]
+- [[https://docs.microsoft.com/en-us/cli/azure/][Azure CLI 2.0: Command reference - az - Microsoft Azure]]
 ** Reverse lookup
 *** Storageの追加
 - https://azure-recipe.kc-cloud.jp/2016/06/vm-data1/
