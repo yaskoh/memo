@@ -1923,6 +1923,11 @@
   外から中へ入ってくる通信
 - Outbound
   中から外へ出す通信
+*** Router
+**** CE Router
+- Customer Edge Router
+**** PE Router
+- Provider Edge Router
 ** Memo
 *** Free Wi-fi
 *** プロミスキャスモード端末の特定

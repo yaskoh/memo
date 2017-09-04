@@ -6,6 +6,12 @@
 ***** git-am
 ***** git-archive
 ***** git-checkout
+****** SYNOPSIS
+- git checkout [-q] [-f] [-m] [<branch>]
+  etc
+****** Options
+******* -b
+- -b causes a new branch to be created as if git-branch were called and then checked out.
 ***** git-clean
 ***** git-clone
 ***** git-commit

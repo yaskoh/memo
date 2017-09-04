@@ -88,6 +88,15 @@
   4. initSID.ora
   5. init.ora
 
+***** 確認方法
+- show parameter spfile
+  →spfileが使われていればpathが表示される。pfileの場合は表示されない。
+- select count(*) from v$spparameter where value is not null;
+  →pfileが使われていれば0件、spfileが使われていれば数件引っかかる。
+- http://at-j.co.jp/blog/?p=5468
+***** 作成方法
+- 
+- http://it-memo.info/?p=1227
 **** network(folder)
 ***** admin
 ****** sqlnet.ora
