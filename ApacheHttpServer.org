@@ -1,0 +1,166 @@
+* Apache HTTP Server
+** Features
+*** 複数バージョンのサポート
+*** MPM : Multi Processing Module
+- 複数OSに最適化
+
+**** プロセスの挙動(Unix)
+***** prefork
+- 
+  スレッドを使わず、先行してforkを行うウェブサーバ。
+  伝統的に親プロセスを1つ持ち、クライアントからリクエストが来るとforkする。実際の通信は子プロセスが受け持つ。
+  そのため、接続数だけ子プロセスが起動する。
+  forkに時間がかかるため、あらかじめ複数個のプロセスを事前に立ち上げておくため、preforkと呼ばれる。
+
+- メリット
+  ある子プロセスがフリーズしても、他のプロセスには影響せず、安定した通信が可能。
+
+- デメリット
+  クライアントが多くなるほどメモリやCPU負荷が増えていく。
+
+***** worker
+- 
+  マルチスレッドとマルチプロセスのハイブリッド型。
+  子プロセス1つ1つがマルチスレッドで動作し、スレッド1つが1つのクライアントを受け持つ。
+
+***** event
+- 
+  workerの一種で、マルチスレッドで動作する。
+  違いはKeep-Aliveの処理方法で、Keep-Aliveの処理を別のスレッドに割り振って通信を処理する。
+  2.4.1で正式に採用された。
+
+*** モジュールによる機能追加
+- 
+  モジュールを追加することで拡張可能。(Apache->A patch)
+  「Core」がまずあり、モジュールを追加して機能を拡張する。「mod_XXX」と名付けられる。
+  
+  追加は「静的リンク」と「動的リンク」がある。
+  - 静的リンク
+    静的リンクはApacheの実行ファイルそのものにモジュールを組み込む。バイナリ的に一体化する。
+    早いが再コンパイルが必要。
+  - DSO : Dynamic Shared Object、動的共有オブジェクト
+    動的リンクはモジュールを別ファイルとして作成し、必要に応じてモジュールのファイルから機能を呼び出す方式。
+    あらかじめ「mod_so」モジュールを静的リンクしておく必要がある。
+    負荷が高くなるが導入が容易。
+
+** Build
+- http://httpd.apache.org/docs/2.4/install.html
+*** Download
+*** Expansion
+*** Setting
+- 
+  Defaultのパスは/usr/local/apache2
+
+- [[http://httpd.apache.org/docs/2.4/programs/configure.html][configure - Configure the source tree - Apache HTTP Server]]
+*** Compile
+*** Install
+*** Customize
+*** Test
+** Modules
+*** core
+- 
+  [[http://httpd.apache.org/docs/2.4/mod/core.html][Apache コア機能]]
+
+**** <Directory>
+
+**** <Location>
+
+**** <VirtualHost>
+**** Include
+- Include file-path|directory-path
+  - 設定ファイルをインクルードできる。
+  - fnmatchのワイルドカード文字の利用が可能。
+  - ファイルは絶対パスかServerRootディレクトリからの相対パス。
+- ex)
+  Include /usr/local/apache2/conf/ssl.conf
+  Include conf/ssl.conf
+*** MPM
+- Multi Prosessing Module
+
+**** About
+- 
+  |---------+------------------------|
+  | Netware | mpm_netware            |
+  | OS/2    | mpmt_os2               |
+  | Unix    | prefork, worker, event |
+  | Windows | mpm_winnt              |
+  |---------+------------------------|
+**** prefork
+**** worker
+- 
+  マルチスレッドとマルチプロセスのハイブリッド型
+
+**** event
+**** mpm_winnt
+**** mpm_netware
+**** mpm_os2
+*** Etc1
+**** mod_rewrite
+- 
+  Provides a rule-based rewriting engine to rewrite requested URLs on the fly.
+- 
+  Apache Webサーバにおいて、クライアントからリクエストのあったURLの内部書き換えや、
+  さまざまな環境変数等に応じたリダイレクトを可能とするモジュール。
+  正規表現を使用したマッチングを行うことができる。
+
+- 使用方法
+  - httpd.confに設定する
+    こちらの方が
+
+  - .htaccessに設定する
+    処理が遅くなるので、httpd.conf推奨。
+
+*** Etc2
+**** mod_jk
+- 
+  Tomcat redirector module.
+- 
+  https://tomcat.apache.org/connectors-doc/webserver_howto/apache.html
+*** link
+- http://httpd.apache.org/docs/2.4/mod/
+** Settings
+*** httpd.conf
+**** TypesConfig
+- mimeタイプと拡張子の組み合わせを設定するファイルパスの指定
+  デファルトで設定されたファイル名はmime.types
+**** AddType
+- MIMEタイプを追加する。
+  例 : AddType MIMEタイプ 拡張子
+**** CustomLog
+- ログファイルの位置を設定する。
+  例 : CustomLog ログファイルの場所 ログファイルのフォーマット
+  
+*** .htaccess
+- this files provide a way to make configuration changes on a per-directory basis.
+*** mime.types
+- MIMEタイプと拡張子の組み合わせを設定する。
+  httpd.confファイル中の"TypesConfig"でパスを設定している。
+  httpd.confファイル内で、AddTypeを行いMIMEタイプを追加することも可能。
+** Command
+- bin/
+*** httpd
+**** -k
+***** install
+***** uninstall
+***** start
+***** stop
+***** restart
+** Structure
+*** htdocs
+- 
+  default Apache web server document directory
+*** conf
+- 
+  the directory where all server configuration files are located.
+
+*** logs
+- 
+  the directory where servere logs are kept, and includes Apache access logs and error logs.
+  
+*** cgi-bin
+- 
+  the directory where CGI scripts are kept.
+
+** Link
+- [[http://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
+
