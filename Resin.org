@@ -104,6 +104,12 @@
   Resin will detect the .war archive, expand it, and start serving requests.
 *** Command-Line
 *** Cloud
+** Memo
+*** Intramart
+**** Resinでクラスタを組む
+- Resinでクラスタを組む場合、ライセンスが必要となる。
+  Try版などで提供されるライセンスが登録されていないResinではクラスタを組むことができない。
+  
 ** Link
 - [[http://caucho.com/][Resin - caucho]]
 - [[http://caucho.com/resin-4.0/][Resin Documentation]]

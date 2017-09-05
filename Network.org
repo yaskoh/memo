@@ -736,7 +736,7 @@
 - 各種
 ** Protocol
 *** TCP/IP Protocol Suite
-**** Application
+**** Application layer
 ***** BGP
 - 
   パスベクター(Path Vector)型プロトコルと呼ばれている。
@@ -1139,7 +1139,7 @@
 ***** TLS/SSL
 
 ***** XMPP
-**** Transport
+**** Transport layer
 ***** TCP
 - Transmission Control Protocol
 ****** Header
@@ -1277,7 +1277,7 @@
 ***** SCTP
 
 ***** RSVP
-**** Internet
+**** Internet layer
 ***** IP
 ****** IPv4
 ******* IP Address
@@ -1401,7 +1401,7 @@
   |      89 | OSPF       |           |
   |      94 | IPIP       |           |
   |     103 | PIM        |           |
-  |     112 | VRRP       |           |
+  |     112 | VRRP       | [[https://tools.ietf.org/html/rfc5798][RFC5798]]   |
   |     113 | PGM        |           |
   |     115 | L2TP       |           |
   |---------+------------+-----------|
@@ -1504,7 +1504,15 @@
 ***** IGMP
 
 ***** IPsec
-**** Link
+***** VRRP
+- インターネット上でのルーターの冗長化をサポートするプロトコル。
+  同じLANにつながる数台のルーターを仮想的に1台の仮想的ルーターとして扱えるようにする。
+  仮想ルーターに利用するIPアドレスは、マスタールーターと同じにするか別とするか選べる。異常時にtelnet等での接続ができるよう、別とした方が利便性が増す。
+- 1995/4にRFC2338で定義された。
+  現在の最新プロトコルは2010/3のRFC5798。
+****** Link
+- [[https://tools.ietf.org/html/rfc5798][RFC 5798 - Virtual Router Redundancy Protocol (VRRP) Version 3 for IPv4 and IPv6]]
+**** Link layer
 ***** ARP
 - Address Resolution Protocol
   イーサネット環境で、IPアドレスから対応するMACアドレスを動的に得るためのプロトコル。
@@ -1559,8 +1567,7 @@
 ***** L2TP
 ***** PPP
 ***** MAC
-- 
-  Media Access Control
+- Media Access Control
 
 ****** Ethernet
 ****** IEEE 802.11
@@ -1592,7 +1599,7 @@
 - Network File System
 ***** NetBIOS
 **** Transport
-**** Netwokr
+**** Network
 ***** NetBIOS Fraems protocol, NBF
 - 
 **** Datalink
@@ -1916,6 +1923,11 @@
   外から中へ入ってくる通信
 - Outbound
   中から外へ出す通信
+*** Router
+**** CE Router
+- Customer Edge Router
+**** PE Router
+- Provider Edge Router
 ** Memo
 *** Free Wi-fi
 *** プロミスキャスモード端末の特定

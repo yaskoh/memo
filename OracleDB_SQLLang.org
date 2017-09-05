@@ -555,8 +555,20 @@
 ******** column_clauses
 ******** constraint_clauses
 ******** alter_table_partitioning
+********* modify_table_tefault_attrs
+********* alter_interval_partitioning
+********* set_subpartition_template
+********* move_table_partition
+********** About
+- partitionを別のセグメントへ移動できる。
+  
+********** MOVE partition_extended_name [MAPPING TABLE] [table_partition_description] [update_index_clauses] [parallel_clause]
+*********** partition_extended_name
+************ {PARTITION partition} | {PARTITION FOR "(" {partition_key_value},+ ")" }
+********* move_table_subpartition
 ******** alter_external_table
 ******** move_table_clause
+********* MOVE [ONLINE] [segment_attributes_clause] [table_compression] [index_org_table_clause] {[LOB_storage_clause] | [varray_col_properties]}* [parallel_clause]
 ******* enable_disables
 ******** enable_disable_clause
 ******** [ENABLE|DISABLE] [TABLE LOCK | ALL TRIGGERS]

@@ -88,6 +88,15 @@
   4. initSID.ora
   5. init.ora
 
+***** 確認方法
+- show parameter spfile
+  →spfileが使われていればpathが表示される。pfileの場合は表示されない。
+- select count(*) from v$spparameter where value is not null;
+  →pfileが使われていれば0件、spfileが使われていれば数件引っかかる。
+- http://at-j.co.jp/blog/?p=5468
+***** 作成方法
+- 
+- http://it-memo.info/?p=1227
 **** network(folder)
 ***** admin
 ****** sqlnet.ora
@@ -1225,10 +1234,60 @@
   http://www.oracle.com/technetwork/jp/developer-tools/sql-developer/downloads/index.html
 
 *** Oracle Text
-- 
-  全文検索およびドキュメント分類のためのエンジン。
+- 全文検索およびドキュメント分類のためのエンジン。
   検索対象の文書の「本文」そのものを検索対象とする。
+- CTXSYSユーザの存在有無でOracle Textのインストール有無が確認可能。
+  >select username from dba_users where username='CTXSYS';
+**** Reference
+- [[https://docs.oracle.com/cd/E16338_01/text.112/b61357/toc.htm][Oracle® Textリファレンス 11gリリース2(11.2)]]
 
+***** Text索引付けの要素
+****** データストア型
+****** フィルタ型
+****** レクサー型
+****** ワードリスト型
+****** 記憶域型
+****** セクション・グループ型
+****** 分類型
+****** クラスタ型
+****** ストップリスト
+****** システム定義プリファレンス
+******* データ記憶域
+******** CTXSYS.DEFAULT_DATASTORE
+******** CTXSYS.FILE_DATASTORE
+******** CTXSYS.URL_DATASTORE
+******* フィルタ
+******** CTXSYS.NULL_FILTER
+******** CTXSYS.AUTO_FILTER
+******* レクサー
+******** CTXSYS.DEFAULT_LEXER
+******** CTXSYS.BASIC_LEXER
+******* セクション・グループ
+******** CTXSYS.NULL_SECTION_GROUP
+******** CTXSYS.HTML_SECTION_GROUP
+******** CTXSYS.AUTO_SECTION_GROUP
+******** CTXSYS.PATH_SECTION_GROUP
+******* ストップリスト
+******** CTXSYS.DEFAULT_STOPLIST
+******** CTXSYS.EMPTY_STOPLIST
+******* 記憶域
+******** CTXSYS.DEFAULT_STORAGE
+******* ワードリスト
+******** CTXSYS.DEFAULT_WORDLIST
+***** CONTAINTS問合せ演算子
+***** 問合せの特殊文字
+***** パッケージ
+****** CTX_ADM
+****** CTX_CLS
+****** CTX_DDL
+****** CTX_DOC
+****** CTX_OUTPUT
+****** CTX_QUERY
+****** CTQ_REPORT
+****** CTX_THES
+****** CTX_ULEXER
+***** ユーティリティ
+***** 代替スペル
 *** Oracle Universal Installer(OUI)
 - Install用ユーティリティ
 *** Oracle Workspace Manager
