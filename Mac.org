@@ -24,6 +24,43 @@
 - audit
 - tap <user/repo>
   taps a formula repository from GitHub using HTTPS.
+** Commands
+*** BSD
+**** dd
+**** diskutil(8)
+- diskutil [quiet] verb [options]
+***** VERBS
+****** erase Disk format name device
+****** list
+****** unmount | unmount [force] device
+****** mount
+**** hdiutil(1)
+- hdiutil verb [options]
+- manipulate disk image
+***** Options
+***** Verbs
+****** help
+****** attach
+****** convert image -format format -o outfile
+- convert image to type format and write the result of outfile.
+******* Format
+- UDRW - UDIF read/write image
+**** sync(8)
+- force completion of pending disk writes (flush cache)
+** Reverse lookup
+*** lsblkやblkidのようにディスクを調べる方法
+- "diskutil list"を利用する
+*** mount用diskを作る
+- diskutil list
+  デバイス名を調べる。/dev/disk2など。
+- diskutil eraseDisk MS-DOS USBTitle
+  フォーマット
+- diskutil unmount diskx
+  ディスクをアンマウント
+- dd if=imagefile of=/dev/disk2 bs=4k
+  書き込む
+- diskutil eject /dev/disk2
+  取り出す
 ** Memo
 *** NSSObject
 - 

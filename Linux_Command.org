@@ -43,6 +43,7 @@
 - [%jobsid]
   ジョブをバックグラウンドで実行するよう切り替える。
 
+**** blkid
 **** bzip2 / bunzip2
 *** c
 **** cat
@@ -231,6 +232,23 @@
 - link(tmp)
   https://hydrocul.github.io/wiki/commands/date.html
 
+**** dd
+- dd [operands ...]
+- convert and copy a file
+  The dd utility copies the standard input to the standard output.
+  
+***** Options
+****** bs
+- bs=n
+  Set both input adn output block size to n bytes, supersending the ibs and obs operands.
+****** cbs
+- cbs=n
+****** if
+- if=file
+  Read input from file instead of the standard input.
+****** of
+- of=file
+  Write output to file instead of the standard output.
 **** df
 - 
   ファイルシステムについて、使用領域と空き領域のサイズを表示する。
@@ -257,6 +275,8 @@
 - 
   extract directory path from full-path string
 
+**** diskutil
+***** mac
 **** dmesg
 - 
   カーネルのメッセージバッファの内容を表示する。"display message"の略。
@@ -284,6 +304,8 @@
 - -s
   report only the sum of the usage in the current directory
 
+**** dumpkeys(1)
+- dump keyboard translation tables
 *** e
 **** e2fsdk
 - e2fsck DEVICE
@@ -301,6 +323,15 @@
 - -n
   do not output the trailing newline
   
+**** efivar
+- Tool to manipulate UEFI variables
+- efivar [OPTION...]
+***** Options
+****** -L, --list-guids
+****** -l, --list
+- list current variables
+****** -p, --print
+- print variables specified by --name
 **** env
 - 
   
@@ -854,6 +885,8 @@
   シンボリックリンクの作成
 - -v, --verbose
 
+**** loadkeys
+- load keyboard translation tables
 **** locale
 - Get locale-specific information.
   
@@ -899,6 +932,13 @@
 - :n
   show next file (when opening some files)
 
+**** lsblk
+- list block devices
+***** Synopsis
+- lsblk [options] [device...]
+***** Options
+****** -a, --all
+****** -b, --bytes
 **** lsof
 - list open files
   
@@ -1407,6 +1447,10 @@
   シェルのオプションを設定する。
   -aのように位置文字で設定する場合と、-oの後にスペースを空けて単語を指定する2種類の書式が存在する。
   「-」の代わりに「+」を用いると意味が逆になる。
+**** setfont(8)
+- load EGA/VGA console font
+- 引数なしで使うとデフォルトに戻る。
+- ex) setfont Lat2-Terminus16
 **** sh(dash)
 - 
   'sh -c -x "コマンド内容"'などととすることで、
@@ -1434,6 +1478,10 @@
 - If set, aliases are expanded as described below under Aliases.
 ***** Link
 - [[https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html][The Shopt Builtin - Bash Reference Manual]]
+**** showconsolefont(8)
+- Show the current EGA/VGA console screen font
+**** showkey(1)
+- examine the codes sent by the keyboard
 **** sftp
 - 
   interactive file transfer program, similar to ftp.
@@ -1593,6 +1641,9 @@
   "su"だと、環境をuserから引き継ぐ。
   "su -"だと、rootの環境となる。
 
+**** sync
+- sync
+  force completion of pending disk writes
 **** sysctl
 - 
   system settings
