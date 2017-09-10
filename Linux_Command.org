@@ -1155,6 +1155,15 @@
 ******* sha512
 ****** Encoding and Cipher
 *** p
+**** parted(8)
+- GNU Parted - a partition manipulation program
+  a program to manipulate disk parittions
+***** Synopsis
+- parted [options] [device [command [optoins...]...]]
+***** Options
+****** -h, --help
+****** -l, --list
+****** -v, --version
 **** passwd
 - 
   ユーザパスワードを変更する。
