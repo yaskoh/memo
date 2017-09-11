@@ -1,4 +1,62 @@
 * Hardware
+** CPU
+- [[file:CPU.org][CPU.org]]
+** Memory
+** Storage
+*** HDD
+**** IDE
+- Parallel ATA
+  旧形式。パラレル転送。
+***** 規格
+****** Ultra ATA/33
+****** Ultra ATA/66
+****** Ultra ATA/100
+****** Ultra ATA/133
+**** SATA
+- Serial ATA
+  シリアル転送。
+***** 規格
+****** SATA1.0
+****** SATA2.0~
+****** SATA3.0
+****** SATA Express
+**** AHCI
+- Advanced Host Controller Interface
+**** NCQ
+- Native Command Queuing
+*** SSD
+** Mother board / マザーボード
+*** Chipset
+**** Northbridge
+- CPU、メモリ、PCIエクスプレス、AGPなどをコントロールしている
+**** Southbridge
+- SATA、PCIスロット、ドライブ類、各種I/Oポートなどをコントロールしている
+***** PCI IDE ISX Xcelerator, PIIX, Intel 82371
+- マザーボード上のチップセット内でサウスブリッジとして使用されるインテルの集積回路の開発コードネーム
+ 
+***** I/O Controller Hub, ICH, Intel 82801
+- マザーボード上のチップセット内でサウスブリッジとして使用されるインテルの集積回路のコードネーム。
+****** ICH
+****** ICH 2
+****** ICH 3
+****** ICH 4
+****** ICH 5
+****** ICH 6
+****** ICH 7
+****** ICH 8
+****** ICH 9
+****** ICH 10
+** Monitor
+** tmp
+*** 光学ドライブ
+*** 電源
+*** マウス
+*** キーボード
+*** 割り込みコントローラ
+**** APIC, Advanced Programmable Interrupt Controller
+- インテルにより開発された、x86アーキテクチャにおける割り込みコントローラのこと。
+***** Local APIC
+***** IOAPIC
 ** Glossary
 *** HBA
 - host bus adapter

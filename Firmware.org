@@ -1,0 +1,7 @@
+* Farmware
+** memo
+*** BIOS
+- Basic Input/Output System
+*** UEFI
+- Unified Extensible Firmware INterface
+*** Boot loaderブートローダ
