@@ -551,6 +551,10 @@
 ***** ファイルパスの扱い
 - Windows式のパスをそのまま入力すると、エスケープが処理されcdなどに失敗するが、
   ""(double quote)で囲って利用すると問題なく利用可能。
+***** /home/userを上書き
+- $HOME設定、/etc/passwd設定をしているものの、
+  sshで~/.sshでなく/home/username/.sshが読まれていたので、fstabでmountする。
+  - ex) C:/Users/username /home/username ntfs override,binary,auto 0 0
 **** Link
 - [[https://msys2.github.io/][MSYS2 installer]]
 - [[https://sourceforge.net/p/msys2/wiki/Home/][MSYS2 - sourceforge]]

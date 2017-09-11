@@ -368,6 +368,9 @@
 
 ***** PFILE, SPFILE
 ****** CREATE
+- tmp
+  - [[https://docs.oracle.com/cd/E16338_01/server.112/b56299/statements_6008.htm#i2072768][CREATE PFILE]]
+  - [[https://docs.oracle.com/cd/E16338_01/server.112/b56299/statements_6016.htm#i2072626][CREATE SPFILE]]
 ***** PROCEDURE
 - PL/SQL
 ****** CREATE

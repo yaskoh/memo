@@ -58,15 +58,21 @@
 *** Test
 ** Modules
 *** core
-- 
-  [[http://httpd.apache.org/docs/2.4/mod/core.html][Apache コア機能]]
+- [[http://httpd.apache.org/docs/2.4/mod/core.html][Apache コア機能]]
+**** Directives
+***** AllowEncodedSlashes
+- 説明
+  URLの中に符号化されたパス分離文字が先に伝えられるのを許可するかどうかを決定する。
+- 構文
+  AllowEncodedSlashes On|Off
+- Default
+  AllowEncodedSlashes Off
+***** <Directory>
 
-**** <Directory>
+***** <Location>
 
-**** <Location>
-
-**** <VirtualHost>
-**** Include
+***** <VirtualHost>
+***** Include
 - Include file-path|directory-path
   - 設定ファイルをインクルードできる。
   - fnmatchのワイルドカード文字の利用が可能。
@@ -94,10 +100,90 @@
 **** mpm_winnt
 **** mpm_netware
 **** mpm_os2
-*** Etc1
+*** Other defaluts
+**** mod_access
+**** mod_actions
+**** mod_alias
+**** mod_asis
+**** mod_auth
+**** mod_auth_anon
+**** mod_auth_dbm
+**** mod_auth_digest
+**** mod_auth_ldap
+**** mod_autoindex
+**** mod_cache
+**** mod_cern_meta
+**** mod_cgi
+**** mod_cgid
+**** mod_charset_lite
+**** mod_dav
+**** mod_dav_fs
+**** mod_deflate
+**** mod_dir
+**** mod_disk_cache
+**** mod_dumpio
+**** mod_echo
+**** mod_env
+- CGIスクリプト及びSSIに渡される環境変数を変更する機能を提供する。
+
+***** Directives
+****** SetEnv
+- Description:
+  環境変数を設定し、それをCGIスクリプトとSSIページに渡す
+- Syntax:
+  SetEnv env-variable value
+**** mod_example
+**** mod_expires
+**** mod_ext_filter
+**** mod_file_cache
+**** mod_headers
+**** mod_imap
+**** mod_include
+**** mod_info
+**** mod_isapi
+**** mod_ldap
+**** mod_log_config
+**** mod_log_forensic
+**** mod_logio
+**** mod_mem_cache
+**** mod_mime
+**** mod_mime_magic
+**** mod_negotiation
+**** mod_nw_ssl
+**** mod_proxy
+- HTTP/1.1 proxy/gateway server
+***** Directives
+**** mod_proxy_connect
+**** mod_proxy_ftp
+**** mod_proxy_http
+- HTTP support module for mod_proxy
+***** Directives
+****** ProxyPass
+- Description
+  Maps remote servers into the local server URL-space
+- Syntax:
+  ProxyPass [path] !|url
+- Example:
+  ProxyPass /mirror/foo http://backend.example.com
+****** ProxyPassReverse
+- Description:
+  Adjusts the URL in HTTP response headers sent from a reverse proxied server
+- Syntax:
+  ProxyPassReverse [path] url
+****** ProxyPreserveHost
+- Description:
+  Use incoming Host HTTP request header for proxy request
+- Syntax:
+  ProxyPreserveHost On|Off
+- Default:
+  ProxyPreserveHost Off
+****** ProxyTimeout
+- Description:
+  Network timeout for proxied requests
+- Syntax:
+  ProxyTimeout seconds
 **** mod_rewrite
-- 
-  Provides a rule-based rewriting engine to rewrite requested URLs on the fly.
+- Provides a rule-based rewriting engine to rewrite requested URLs on the fly.
 - 
   Apache Webサーバにおいて、クライアントからリクエストのあったURLの内部書き換えや、
   さまざまな環境変数等に応じたリダイレクトを可能とするモジュール。
@@ -105,12 +191,38 @@
 
 - 使用方法
   - httpd.confに設定する
-    こちらの方が
+    こちらの方が望ましい
 
   - .htaccessに設定する
     処理が遅くなるので、httpd.conf推奨。
 
-*** Etc2
+***** Directives
+****** RewriteBase
+****** RewriteCond
+- Description:
+  Defines a condition under which rewriting will take place
+- Syntax:
+  RewriteCond TestString CondPattern
+****** RewriteEngine
+- Description:
+  Enables or disables runtime rewriting engine
+- Syntax:
+  RewriteEngine on|off
+- Default:
+  RewriteEngine off
+****** RewriteRule
+**** mod_setenvif
+**** mod_so
+**** mod_speling
+**** mod_ssl
+**** mod_status
+**** mod_suexec
+**** mod_unique_id
+**** mod_userdir
+**** mod_usertrack
+**** mod_version
+**** mod_vhost_alias
+*** Etc
 **** mod_jk
 - 
   Tomcat redirector module.

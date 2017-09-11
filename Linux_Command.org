@@ -1536,26 +1536,31 @@
 
 **** ss
 **** ssh
-- 
-  secure shell.
-
-- -L LocalPort:RemoteHost:RemotePort
-  port forwarding.
+- secure shell.
+***** Options
+****** -L LocalPort:RemoteHost:RemotePort
+- port forwarding.
   ex) ssh -L 8080:192.168.111.200:8080 User@192.168.111.1
 
-- R LocalPort:RemoteHost:RemortPort
-  like -L option, but port is opened in remote server.
+****** -R LocalPort:RemoteHost:RemortPort
+- like -L option, but port is opened in remote server.
 
-- -g
-  Allows remote hosts to connect to local forwarded ports.
+****** -N
+- Do not execute a remote command. This is useful for just forwarding ports.
+****** -g
+- Allows remote hosts to connect to local forwarded ports.
 
-- -p
-  connection port setting
+****** -p
+- connection port setting
   ex) ssh user@192.168.100.1 -p 8080
 
-- config
-  write down port forwarding settings to  ~/.ssh/config 
+***** Memo
+****** config
+- write down port forwarding settings to  ~/.ssh/config 
   and not to need to set everytime to connect.
+
+****** .ssh on win
+- ssh try to see settings on /home/username/.ssh.
 
 **** ssh-keygen
 - 

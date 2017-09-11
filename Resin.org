@@ -25,11 +25,15 @@
 - 実行ファイル。サーバが起動。
 **** conf/
 ***** resin.properties
+- configuration variable values
+  resin.xmlなどで使う変数を定義している。
+
 - jvm_args : インストール値に応じたメモリ値、ヒープ最大サイズを設定する。
 - app.http : ポート番号。必要に応じ変更する。
 - remote_admin_enable : 
 - cluster_system_key : 
 ***** resin.xml
+- 
 ***** licenses/
 - licens location
 ***** keys/

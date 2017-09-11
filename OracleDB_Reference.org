@@ -121,6 +121,12 @@
   インスタンスの起動時に使用するUNDO表領域。
 **** USER_DUMP_SIZE
 - ユーザートレースの格納場所
+**** hidden
+**** Memo
+***** 確認方法
+- show parameter
+- select * from v$parameter; (現在のセッション)
+- select * from v$system_parameter (システム、新規セッションのデフォルト)
 *** 静的データ・ディクショナリ・ビュー
 **** ALL
 - 現在ユーザがアクセス可能な全て
@@ -332,19 +338,32 @@
 ***** TAB
 - 互換性のために残している。非推奨
 ***** TABLE_EXPORT_OBJECTS
-*** 動的パフォーマンスビュー
+*** Dynamic Performance View / 動的パフォーマンスビュー
 **** About
 - V$ビュー
   実際の動的パフォーマンスビューは接頭辞V_$であり、それらのビューのパブリックシノニムに接頭辞V$が付いている。
   基本的にV$のみにアクセスするようにする。
 - GV$ビュー
   ほとんどすべてのV$ビューに対し、対応するGV$ビューがある。
+**** V$ACTIVE_SESSION_HISTORY
+- データベース内のサンプリングされたセッション・アクティビティを表示する。
+  1秒に1回取得される、アクティブなデータベース・セッションのスナップショットが含まれる。
+**** V$BH
+- SGA内のバッファごとのpingの状態と数を示す。RACのビュー。
 **** V$CONTROLFILE
 - 制御ファイルの名前を示す
 **** V$DATABASE
 - 現在接続しているインスタンスのDBID、チェックポイントなどが取得できる。
 **** V$DIAG_INFO
 - NAME=VALUEペアを使用して自動診断リポジトリ(ADR)機能の状態を示す。
+
+**** V$EVENT_NAME
+- 待機イベントに関する情報を示す。
+**** V$FIXED_TABLE
+- データベース内のすべての固定表、動的パフォーマンスビューおよび導出表を示す。
+  一部のV$表は実表を参照するため表示されない。
+**** V$FIXED_VIEW_DEFINITION
+- 全ての固定ビュー(V$で始まるビュー)の定義を示す。
 
 **** V$INSTANCE
 - 現行インスタンスの状態を表す。
@@ -356,8 +375,22 @@
 - AWRによって取得された一連のメトリックの最新統計値を示す。
 **** V$OPTION
 - オプション製品のインストール状況
+**** V$PARAMETER
+- セッションに現在有効になっている初期化パラメータの情報を示す。
+**** V$PROCESS
+- 現在アクティブなプロセスの情報を示す。
+  バックグラウンドプロセスなどが表示される。
 **** V$PWFILE_USERS
 - パスワードファイル認証にエントリされている（SYSDBAまたはSYSOPERシステム権限がある）ユーザの一覧
+**** V$SESSION
+- カレント・セッションごとのセッション情報を示す。
+**** V$SESSION_WAIT
+- 各セッションについて現行または前回の待機を示す。
+**** V$SESSION_WAIT_CLASS
+**** V$SESSION_WAIT_HISTORY
+- 各アクティブ・セッションの最後の10待機イベントを示す。
+**** V$SESSTAT
+- ユーザー・セッションについての統計情報を示す。
 **** V$SQL
 - GROUP BY句のない共有SQL領域についての統計情報を示し、入力された元のSQLテキストの子ごとに1行ずつ実行する。
 - V$SQLAREAとの違いは、こちらは「子」単位で集計、V$SQLAREAは親カーソル・SQL単位で統計情報を出力する部分。
@@ -412,8 +445,17 @@
 **** V$SQLAREA
 - 共有SQL領域の統計情報を示し、SQL文字列毎に1行ずつ表示する。
 - V$SQLとの違いは、こちらは親カーソル・SQL単位の統計情報、V$SQLは子カーソル単位の統計情報を示す、とのこと。
-**** V$SESSION
-- カレント・セッションごとのセッション情報を示す。
+**** V$STATNAME
+- V$SESSTAT表及びV#SYSSTAT表で表示される統計情報のデコードされた統計名を示す。
+**** V$SYSSTAT
+- V$SESSTAT表およびV$SYSSTAT表で表示される統計情報のデコードされた統計名を示す。
+**** V$SYSTEM_EVENT
+- イベントの待機の合計の情報を示す。
+**** V$SYSTEM_PARAMETER
+- インスタンスに現在有効になっている初期化パラメータの情報。
+  新しいセッションは本ビューで確認できるインスタンスの値を継承する。
+**** V$SYSTEM_WAIT_CLASS
+- 待機イベントクラス毎の待機回数と待機時間を調べられる
 **** V$SYSMETRIC_HISTORY
 - データベースで使用可能なすべてのシステム・メトリックの値を示す。
   長期(60s, 1hの履歴)および短期(15s, 1間隔の履歴)の両方のメトリックが表示される。
@@ -426,93 +468,329 @@
 - メトリック名
 ****** VALUE
 - メトリック値
+**** Memo(View)
+***** 一覧取得方法
+- select * from v$fixed_table where type = 'VIEW';
+  GV$表も取得される。
+*** Fixed Table / 固定表, X表
+- オラクルの内部表
+**** X$KSPPI
+- Kernel Services, Parameter
+***** Columns
+****** ksppinm
+- name
+****** ksppdesc
+- description
+**** X$KSPPCV
+- Kernel Services, Parameter
+**** X$KSSPSV
+- Kernel Services, Parameter
+**** Memo(Fixed Table)
+***** 一覧取得方法
+- select * from v$fixed_table where type = 'TABLE';
 *** 待機イベント
 **** Class
-***** Administrative
-- ユーザーが待機する原因となるDBAコマンドによる待機。
-  索引再作成など。
-***** Application
-- ユーザーのアプリケーション・コードによる待機。
-  行レベル・ロック、明示的ロックコマンドが原因のロック待機など。
-***** Cluster
-- Real Application Clustersリソースに関連する待機。
-  gc cr block busyなどのグローバル・キャッシュ・リソースなど
-***** Commit
-- 1つの待機イベントのみで構成される待機クラス
-  コミット後のREDOログ書き込み確認用待機(log file sync)
-***** Concurrency
-- 内部データベース・リソースの待機
-  ラッチなど
-***** Configuration
-- データベースの構成またはインスタンスのリソースが十分でないことによる待機。
-  ログ・ファイル・サイズ、共有プールサイズなどが小さい、など。
-***** Idle
-- セッションがアクティブでない、すなわち作業の待機中であることを示す待機。
-  SQL*Net message from clientなど。
-***** Network
-- ネットワーク・メッセージに関連する待機。
-  SQL*Net more data to dblinkなど。
-***** Other
+- 各待機イベントは待機イベントのクラスに属している。
+***** About
+- 11.2の状況
+  select wait_class#, wait_class, count(wait_class) from v$event_name group by wait_class#, wait_class order by wait_class#;
+  |-------------+----------------+-------------------|
+  | WAIT_CLASS# | WAIT_CLASS     | COUNT(WAIT_CLASS) |
+  |-------------+----------------+-------------------|
+  |           0 | Other          |               958 |
+  |           1 | Application    |                17 |
+  |           2 | Configuration  |                24 |
+  |           3 | Administrative |                55 |
+  |           4 | Concurrency    |                33 |
+  |           5 | Commit         |                 2 |
+  |           6 | Idle           |                96 |
+  |           7 | Network        |                35 |
+  |           8 | User I/O       |                48 |
+  |           9 | System I/O     |                32 |
+  |          10 | Scheduler      |                 8 |
+  |          11 | Cluster        |                50 |
+  |          12 | Queueing       |                 9 |
+  |-------------+----------------+-------------------|
+  |         Sum |                |              1367 |
+  |-------------+----------------+-------------------|
+
+***** 00 Other
 - 通常システムでは発生しない待機。
   wait for EMON to spawnなど
-***** Queue
-- パイプライン化された環境における追加データ取得での遅延を示すイベントが含まれる。
-  パイプラインに非効率性などの問題があることを示す。
-***** Scheduler
-- リソース・マネージャに関連する待機
-  resmgr: become activeなど
-***** System I/O
-- バックグラウンド・プロセスのI/Oの待機
-  db file parallel writeのDBWR待機など
-***** User I/O
-- ユーザーI/Oの待機
-  db file sequential readなど
-**** Events
-***** db file parallel read
-- User I/O
-- リカバリ時のイベント。リカバリ時に変更が必要となったデータベース・ブロックはデータベースからパラレルに読み込まれる。
-***** db file scattered read
-- User I/O
-- db file sequential readと似ているが、セッションが複数のデータ・ブロックを読み込んでいる。
-***** db file sequential read
-- User I/O
-- データベースからの旬次読み取りが実行されている間待機する。
-  制御ファイルの再構築、データベース・ファイル・ヘッダーのダンプ、データベース・ファイル・ヘッダーの取得にも使用する。
-***** enq: TX - row lock contention
+****** Events(Other)
+******* check CPU wait times
+******* ksxr poll remote instances
+******* PX Deq: Signal ACK RSG
+******* null event
+******* reliable message
+***** 01 Application
+- ユーザーのアプリケーション・コードによる待機。
+  行レベル・ロック、明示的ロックコマンドが原因のロック待機など。
+****** Events(Application)
+******* enq: TX - row lock contention
 - Application
-***** gc buffer busy acquire
-- Cluster
-- 別のセッションが別のインスタンスのキャッシュからバッファを読み取り中であるため、バッファ・キャッシュ内でバッファを確保できない。
-***** gc cr block 2-way
-- Cluster
-- ブロックの待機、確保またはログ・フラッシュなしでリモート・キャッシュ・ブロックがローカルインスタンスへ送信されたことを示す。
-***** gc cr grant 2-way
-- Cluster
-- メッセージ関連待機イベント。
-  インスタンスにブロックがキャッシュされなかったために、ブロックが受信されなかったことを示す。
-***** gc current block 2-way
-- Cluster
-- ブロックの待機、確保またはログ・フラッシュなしでリモート・キャッシュ・ブロックがローカルインスタンスへ送信されたことを示す。
-***** gc current block busy
-- Cluster
-- リモート・キャッシュまたはローカル・キャッシュがビジーなため、キャッシュ・データ・ブロックへのアクセスが遅延状態であることを示す。
-***** gc current grant 2-way
-- Cluster
-- メッセージ関連待機イベント。
-  インスタンスにブロックがキャッシュされなかったために、ブロックが受信されなかったことを示す。
-***** library cache pin
+***** 02 Configuration
+- データベースの構成またはインスタンスのリソースが十分でないことによる待機。
+  ログ・ファイル・サイズ、共有プールサイズなどが小さい、など。
+***** 03 Administrative
+- ユーザーが待機する原因となるDBAコマンドによる待機。
+  索引再作成など。
+***** 04 Concurrency
+- 内部データベース・リソースの待機
+  ラッチなど
+****** Events(Concurrency)
+******* library cache pin
 - Concurrency
 - ライブラリ・キャッシュの同時実行性を管理する。
   オブジェクトを確保すると、ヒープがメモリーにロードされる。
-***** log file sync
+******* row cache lock
+***** 05 Commit
+- 1つの待機イベントのみで構成される待機クラス
+  コミット後のREDOログ書き込み確認用待機(log file sync)
+****** Events(Commit)
+******* log file sync
 - Commit
 - LGWRを転送してログ・バッファをREDOログ・ファイルに書き込む。
-***** read by other session
+***** 06 Idle
+- セッションがアクティブでない、すなわち作業の待機中であることを示す待機。
+  SQL*Net message from clientなど。
+***** 07 Network
+- ネットワーク・メッセージに関連する待機。
+  SQL*Net more data to dblinkなど。
+***** 08 User I/O
+- ユーザーI/Oの待機
+  db file sequential readなど
+****** Events(User I/O)
+******* Archive Manager file transfer I/O
+******* ASM Fixed Package I/O
+******* ASM Staleness File I/O
+******* BFILE read
+******* buffer read retry
+******* cell list of blocks physical read
+******* cell multiblock physical read
+******* cell single block physical read
+******* cell smart file creation
+******* cell smart index scan
+******* cell smart table scan
+******* cell statistics gather
+******* Data file init write
+******* Datapump dump file I/O
+******* db file parallel read
+- User I/O
+- リカバリ時のイベント。リカバリ時に変更が必要となったデータベース・ブロックはデータベースからパラレルに読み込まれる。
+******* db file scattered read
+- User I/O
+- db file sequential readと似ているが、セッションが複数のデータ・ブロックを読み込んでいる。
+******* db file sequential read
+- User I/O
+- データベースからの順次読み取りが実行されている間待機する。
+  制御ファイルの再構築、データベース・ファイル・ヘッダーのダンプ、データベース・ファイル・ヘッダーの取得にも使用する。
+******* db file single write
+******* db flash cache multiblock physical read
+******* db flash cache single block physical read
+******* db flash cache write
+******* dbms_file_transfer I/O
+******* dbverify reads
+******* DG Broker configuration file I/O
+******* direct path read
+******* direct path read temp
+******* direct path sync
+******* direct path write
+******* direct path write temp
+******* Disk file I/O Calibration
+******* Disk file Mirror Read
+******* Disk file Mirror/Media Repair Write
+******* Disk file operations I/O
+******* external table misc IO
+******* external table open
+******* external table read
+******* external table seek
+******* external table write
+******* flashback log file sync
+******* local write wait
+******* Log file init write
+******* Parameter File I/O
+******* read by other session
 - User I/O
 - セッションが別のセッションによって現在バッファ・キャッシュに読み込まれているバッファをリクエストする場合に発生する。
+******* securefile direct-read completion
+******* securefile direct-write completion
+******* Shared IO Pool IO Completion
+******* TEXT: File System I/O
+******* utl_file I/O
+***** 09 System I/O
+- バックグラウンド・プロセスのI/Oの待機
+  db file parallel writeのDBWR待機など
+****** Event(System I/O)
+******* control file sequential read
+***** 10 Scheduler
+- リソース・マネージャに関連する待機
+  resmgr: become activeなど
+***** 11 Cluster
+- Real Application Clustersリソースに関連する待機。
+  gc cr block busyなどのグローバル・キャッシュ・リソースなど
+****** Events(Cluster)
+******* gc buffer busy acquire
+- Cluster
+- 別のセッションが別のインスタンスのキャッシュからバッファを読み取り中であるため、バッファ・キャッシュ内でバッファを確保できない。
+******* gc cr block 2-way
+- Cluster
+- ブロックの待機、確保またはログ・フラッシュなしでリモート・キャッシュ・ブロックがローカルインスタンスへ送信されたことを示す。
+******* gc cr grant 2-way
+- Cluster
+- メッセージ関連待機イベント。
+  インスタンスにブロックがキャッシュされなかったために、ブロックが受信されなかったことを示す。
+******* gc current block 2-way
+- Cluster
+- ブロックの待機、確保またはログ・フラッシュなしでリモート・キャッシュ・ブロックがローカルインスタンスへ送信されたことを示す。
+******* gc current block busy
+- Cluster
+- リモート・キャッシュまたはローカル・キャッシュがビジーなため、キャッシュ・データ・ブロックへのアクセスが遅延状態であることを示す。
+******* gc current grant 2-way
+- Cluster
+- メッセージ関連待機イベント。
+  インスタンスにブロックがキャッシュされなかったために、ブロックが受信されなかったことを示す。
+***** 12 Queueing
+- パイプライン化された環境における追加データ取得での遅延を示すイベントが含まれる。
+  パイプラインに非効率性などの問題があることを示す。
+**** Event parameters
+***** block#
+***** blocks
+***** break?
+***** class
+***** dba
+***** driver id
+***** file#
+***** id1
+***** id2
+***** le
+***** mode
+***** name, type
+***** namespace
+***** requests
+***** session#
+***** waited
+**** Events
+- 各クラスに割り振る。
+- https://docs.oracle.com/cd/E16338_01/server.112/b56311/waitevents003.htm#BGGIBDJI
+**** Memo(待機イベント)
+***** 確認方法
+- [[http://oracle-pub.wikidot.com/wait-event][待機イベント基礎 - Oracle Pub]]
+- V$EVENT_NAME
+  待機イベントの種類を知ることができる
+- V$SYSTEM_WAIT_CLASS
+  待機イベントクラスごとの待機回数と待機時間
 **** Link
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/waitevents.htm][Oracle待機イベント - Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
 - [[http://www.doppo1.net/oracle/tuning/wait-event.html][待機イベント一覧 - WalkingAlone]]
+
+*** Enqueue / エンキュー名
+*** 統計情報
+- https://docs.oracle.com/cd/E16338_01/server.112/b56311/stats002.htm
+**** 統計クラス
+- 
+  |-----+---------------------------|
+  |   1 | User                      |
+  |   2 | Redo                      |
+  |   4 | Enqueue                   |
+  |   8 | Cache                     |
+  |  16 | OS                        |
+  |  32 | Real Application Clusters |
+  |  64 | SQL                       |
+  | 128 | Debug                     |
+  |-----+---------------------------|
+  
+**** 統計情報説明
+- 2つ以上のフラグが立つ場合があるので、クラスに分けず記載する。
+***** About
+- 以下コマンドで一覧を確認できる。
+  select * from v$sysstat;
+  11.2では計679。
+***** application wait time
+***** background checkpoints started
+***** global cache cr block receive time (40)
+- フォアグラウンド・プロセスがインターコネクト経由で送信されるCRブロックを待機した合計時間。
+***** global cache cr block serve time (40)
+- BSPプロセスが読み取り一貫性(CR)ブロックを構成するために必要とした時間。
+***** global cache cr blocks received (40)
+- 受信したブロックの合計数
+***** parse count(hard)
+- 解析コール(実解析)の合計数。
+  ハード解析は、作業ヒープおよびその他のメモリー構造体を割り当てた後に解析ツリーを構築することを要求するため、
+  メモリー使用の面から考えて、非常にコストが高い。
+***** recursive calls (1)
+- 実行時内部で発行されたrecursive call、再帰的コールの回数
+***** db block gets
+- DMLやSELECT FOR UPDATEを発行したときなどに発生するカレントモードで読み込まれたブロック数。
+  ブロックの要求回数
+***** consistent gets
+- SELECTを発行したときなどに発生する読み取り一貫性モードで読み込まれたブロック数
+  ブロックレベルの一貫性読み込み回数
+***** physical reads
+- ディスクアクセスによって読み込まれたブロック数
+  物理読み込みの合計数(physical reads direct + physical reads cache)
+***** redo size
+- REDOログに書き込まれたサイズ
+  生成されたREDOの合計（バイト)
+***** bytes sent via SQL*Net to client
+- クライアントへ送られた合計byte数
+***** bytes received via SQL*Net from client
+- クライアントから受信した合計byte数
+***** SQL*Net roundtrips to/from client
+- クライアントに送受信されたNetメッセージの合計数
+  Oracle Netの送受信のやり取りの合計数
+***** sorts (memory)
+- メモリ内で実行されたソート回数
+***** sorts (disk)
+- ディスク書き込みを伴うソート回数
+***** rows processed
+- SQLが処理した件数
+*** Background processes / バックグラウンドプロセス
+**** CJQ0 / ジョブ・キュー・コーディネーター・プロセス
+- データディクショナリから実行する必要のあるジョブを選択し、ジョブを実行するジョブ・キュー・スレーブ・プロセス(Jnnn)を起動する。
+**** CKPT / チェックポイント・プロセス
+- チェックポイントでDBWnにシグナルを送り、データベースのすべてのデータ・ファイルと制御ファイルを更新して、最新のチェックポイントを示す
+**** DBRM / データベース・リソース・マネージャ・プロセス
+- リソース・プランを設定して、データベース・リソース・マネージャに関連するその他のタスクを実行する。
+**** DBW0/ データベース・ライター・プロセス
+- 変更されたブロックをデータベース・バッファ・キャッシュからデータ・ファイルに書き込む
+**** DIA0 / 診断プロセス
+- ハングおよびデッドロックを検出し解決する
+**** DIAG / 診断取得プロセス
+- 診断ダンプを実行する
+**** Dnnn / ディスパッチャ・プロセス
+- 共有サーバー・アーキテクチャでネットワーク通信を実行する
+**** GEN0 / 一般タスク実行プロセス
+- SQLとDMLを含む要求されたタスクを実行する
+**** LGWR / ログ・ライター・プロセス
+- オンラインREDOログにREDOエントリを書き込む
+**** MMAN / メモリー・マネージャ・プロセス
+- インスタンスのメモリー・マネージャとして機能する
+**** MMNL / 管理性モニター・ライト・プロセス
+- アクティブ・セッション履歴のサンプリング、メトリック計算など、管理性に関するタスクを実行する
+**** MMON / 管理性モニタープロセス
+- 管理性に関する多数のタスクを実行したり、そのスケジュールを設定する
+**** PING / インターコネクト待機時間測定プロセス
+- クラスタ・インスタンス・ペアごとに通信に伴う待機時間を評価する
+**** PMON / プロセス・モニター
+- 他のバックグラウンド・プロセスを監視し、サーバー・プロセスまたはディスパッチャ・プロセスが異常終了した場合にプロセスのリカバリを実行する
+**** PSP0 / プロセス・スポーナ・プロセス
+- 初期のインスタンス起動後にOracleバックグラウンド・プロセスを起動する。
+**** QMNC / AQコーディネータ・プロセス
+- AQを監視する
+**** Qnnn / AQサーバー・クラス・プロセス
+- QMNCのために様々なAQ関連のバックグラウンド・タスクを実行する
+**** RECO / リカバリ・プロセス
+- 分散データベースでのネットワークまたはシステムの障害によって保留にされている分散トランザクションを解決する
+**** SMCO / 領域管理コーディネーター・プロセス
+**** SMON / システム・モニター・プロセス
+**** Snnn / 共有サーバー・プロセス
+**** VKTM / 時間の仮想キーパー・プロセス
+**** Wnnn / 領域管理スレーブ・プロセス
+**** Memo(Background processes)
+***** リスト取得方法
+- おそらく不完全
+- select * from v$process;
 
 *** PL/SQLパッケージ
 **** DBMS_ADVISOR
