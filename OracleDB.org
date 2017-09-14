@@ -123,8 +123,8 @@
   $ORACLE_SID:$ORACLE_HOME:[Y|N]
   最後の値が"Y"のものが自動起動する。
 *** sql script
-**** rdbms
-***** admin
+**** rdbms/
+***** admin/
 ****** データディクショナリの作成
 ******* catalog.sql
 - データ・ディクショナリおよびその多数のビューに対するパブリック・シノニムを作成し、PUBLICアクセス権限を与える。
@@ -207,6 +207,8 @@
 - [[http://www.shift-the-oracle.com/config/oracle-environment-variable.html][NLS_LANG、ORACLE_HOME、ORACLE_SID などの設定 - SHIFT the Oracle]]
 ** Command
 *** bin/
+**** emctl
+- 
 **** dbca
 - 
   dbcaを起動する。
@@ -1012,6 +1014,8 @@
 **** Link
 - [[http://docs.oracle.com/cd/E16338_01/backup.112/b56270/toc.htm][Oracle® Databaseバックアップおよびリカバリ・リファレンス 11gリリース2(11.2)]]
 *** TKPROF
+** Services
+*** dbconsole
 ** Error
 *** ORA-00942
 - 該当の表またはビューが存在しない場合や、表やビューに対するアクセス権限が不足している場合に発生する。

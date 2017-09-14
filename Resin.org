@@ -113,7 +113,7 @@
 **** Resinでクラスタを組む
 - Resinでクラスタを組む場合、ライセンスが必要となる。
   Try版などで提供されるライセンスが登録されていないResinではクラスタを組むことができない。
-  
+  https://www.intra-mart.jp/download/product/iap/iap_release_note/texts/limitations/resin.html
 ** Link
 - [[http://caucho.com/][Resin - caucho]]
 - [[http://caucho.com/resin-4.0/][Resin Documentation]]

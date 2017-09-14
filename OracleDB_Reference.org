@@ -371,6 +371,8 @@
 ****** INSTANEC_NAME
 ****** STATUS
 - OPEN, MOUNTなどの状態
+**** V$LATCHHOLDER
+- 現行のラッチ保持プロセスの情報を示す。
 **** V$METRIC
 - AWRによって取得された一連のメトリックの最新統計値を示す。
 **** V$OPTION
@@ -474,20 +476,26 @@
   GV$表も取得される。
 *** Fixed Table / 固定表, X表
 - オラクルの内部表
+**** X$BH
+- Buffer Header
+**** X$KSPPCV
+- Kernel Services, Parameter, current value
 **** X$KSPPI
-- Kernel Services, Parameter
+- Kernel Services, Parameter, parameter info
 ***** Columns
 ****** ksppinm
 - name
 ****** ksppdesc
 - description
-**** X$KSPPCV
-- Kernel Services, Parameter
 **** X$KSSPSV
 - Kernel Services, Parameter
+**** X$KSUPRLAT
 **** Memo(Fixed Table)
 ***** 一覧取得方法
 - select * from v$fixed_table where type = 'TABLE';
+**** Link
+- [[http://yong321.freeshell.org/computer/x$table.html][Oracle X$ Tables]]
+- [[http://web.archive.org/web/20101124054809/http://www.fors.com/velpuri2/X$/List%20of%20X$%20Tables][List of X$ Tables and how the names are derived]]
 *** 待機イベント
 **** Class
 - 各待機イベントは待機イベントのクラスに属している。
@@ -822,6 +830,24 @@
 ****** GET_SYSTEM_CHANGE_NUMBER
 - 現在のSCNをOracleの数値タイプとして戻す。
 ****** TRANSACTION_BLOCKOUT
+**** DBMS_METADATA
+***** Subprograms
+****** GET_xxx
+- オブジェクトのメタデータを1回のコールでフェッチできる。
+- Type
+  - GET_XML
+  - GET_DDL
+  - GET_SXML
+  - GET_DEPENDENT_XML
+  - GET_DEPENDENT_DDL
+  - GET_GRANTED_XML
+  - GET_GRANTED_DDL
+- Ex
+  - select dbms_metadata.get_ddl('TABLESPACE','SYSTEM') from dual;
+  - select dbms_metadata.get_ddl('TABLE','TableName','SchemaName') from dual;
+    
+- Memo
+  - SET LONGを十分大きな値にし、PAGESIZEを0にしておくとよい。
 **** DBMS_MONITOR
 - PL/SQLを使用して統計情報収集とSQLトレースを制御するためのパッケージ。
 ***** Subprograms

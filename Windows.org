@@ -371,6 +371,8 @@
   すべての接続とリッスンポートを表示する
 - -n
   実行結果にコンピュータやプロトコル名を使わず、IPアドレスとポート番号で表示する
+- -o
+  Displays the owning process ID associated with each connection.
 - -s
   プロトコルごとの統計を表示する。
 
@@ -680,6 +682,10 @@
 ******** type
 ******** user
 ******** verbose
+******* NETSTAT.EXE
+- "ネットワークコマンド"配下を参照
+******* tasklist.exe
+- 現在アクティブなプロセスとそのPIDのリストが表示される。
 ******* systeminfo.exe 
 - 
   システム情報を表示できる。cmd上でsysteminfo。CUI。
@@ -1062,7 +1068,6 @@ TapiUnattend.exe
 taskeng.exe
 taskhost.exe
 taskkill.exe
-tasklist.exe
 taskmgr.exe
 tcmsetup.exe
 timeout.exe

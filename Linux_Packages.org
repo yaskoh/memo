@@ -62,6 +62,21 @@
 ****** grep
 ****** gzip
 ****** iproute2
+****** inetutils
+- http://archive.linux.or.jp/JF/JFdocs/LFS-BOOK/chapter06/inetutils.html
+- 概要
+  - ftp
+  - hostname
+  - ping
+  - ping6
+  - rcp
+  - rexec
+  - rlogin
+  - rsh
+  - talk
+  - telnet
+  - tftp
+  - traceroute
 ****** iputils
 ****** less
 ****** linux
@@ -126,21 +141,3 @@
 ** Link
 - [[https://launchpad.net/ubuntu/+search?text=][Search packages in Ubuntu]]
 - [[https://rpmfind.net/linux/RPM/index.html][Rpmfind.net]]
-** Memo(tmp)
-- マージが必要となるはず。
-*** iproute2
-*** inetutils
-- http://archive.linux.or.jp/JF/JFdocs/LFS-BOOK/chapter06/inetutils.html
-- 概要
-  - ftp
-  - hostname
-  - ping
-  - ping6
-  - rcp
-  - rexec
-  - rlogin
-  - rsh
-  - talk
-  - telnet
-  - tftp
-  - traceroute

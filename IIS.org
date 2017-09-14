@@ -52,9 +52,9 @@
 - Site
 - Server
 ***** Log File
-- Select W3C Fields
-- Directory
-- Encoding
+****** Select W3C Fields
+****** Directory
+****** Encoding
 ***** Log File Rollover
 - Schedule
   - Hourly
@@ -100,7 +100,7 @@
 - すべてのFTPセッションが、FTPサイトのルートディレクトリで開始される
 ****** User name directory
 - フォルダーが存在する場合、すべてのFTPセッションが、現在のログオンユーザーと名前が同じ物理または仮想ディレクトリで開始される。
-***** Isolate users
+***** Isolate users / ユーザーを分離する
 ****** User name directory (disable global virtual directories)
 - FTPユーザーアカウントと同じ名前の物理または仮想ディレクトリに分離
 ****** User name physical directory (enable global virtual directories)
@@ -109,7 +109,11 @@
 - Active Directoryアカウント設定で構成されているホームディレクトリにユーザセッションを分離
 ****** Custom
 - 高度な機能
+***** Link
+- [[https://technet.microsoft.com/ja-jp/library/dd939054.aspx][FTP7.5 ユーザー分離の構成 - TechNet]]
+- [[https://technet.microsoft.com/ja-jp/library/dd722768(v=ws.11).aspx][FTPユーザーの分離 - Technet]]
 *** Management
+**** Configuration Editor
 ** Security
 *** Memo
 - http://www.atmarkit.co.jp/fwin2k/operation/iisftpsec01/iisftpsec01_01.html
