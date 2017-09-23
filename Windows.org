@@ -209,6 +209,7 @@
 ****** vol
 ****** xcopy
 ****** wmic
+- System Programのwbemも参照。
 ***** Externals / 外部コマンド
 - "System Programs"等を参照
 ***** ネットワークコマンド

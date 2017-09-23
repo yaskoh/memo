@@ -3,8 +3,7 @@
 *** Access
 
 *** Excel
-- 
-  [[file:Excel.org][Excel.org]]
+- [[file:Excel.org][Excel.org]]
 *** Outlook
 **** Shortcuts
 ***** Ribbon

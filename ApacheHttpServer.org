@@ -63,12 +63,20 @@
 ***** AllowEncodedSlashes
 - 説明
   URLの中に符号化されたパス分離文字が先に伝えられるのを許可するかどうかを決定する。
+  符号化されたパス分離文字とは、/->%2F、\->%5Cなど。
 - 構文
   AllowEncodedSlashes On|Off
 - Default
   AllowEncodedSlashes Off
 ***** <Directory>
-
+- 説明
+  指定のファイルシステムのディレクトリとサブディレクトリとのみに適用されるディレクティブを囲む
+  
+***** DocumentRoot
+- 説明
+  ウェブから見えるメインのおきゅ面とツリーになるディレクティブ
+- 構文
+  DocumentRoot directory-path
 ***** <Location>
 
 ***** <VirtualHost>
@@ -157,6 +165,9 @@
 **** mod_proxy_ftp
 **** mod_proxy_http
 - HTTP support module for mod_proxy
+***** Environment Variables
+****** proxy-nokeepalive
+- Forces the proxy to close the backend connection after each request.
 ***** Directives
 ****** ProxyPass
 - Description
