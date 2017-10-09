@@ -91,6 +91,11 @@
 ***** Proxy Cache
 *** development
 *** Reference
+**** <database>
+- child of <resin>, <cluster>, <host>, <web-app>
+  
+***** Attributes
+****** jndi-name
 **** <logger>
 ***** Parents
 - child of <resin>, <cluster>, <host>, <web-app>
