@@ -1144,6 +1144,27 @@
 
 ***** Commands
 ****** Standard
+******* genrsa
+- Generation of RSA Private Key. Superceded by genpkey.
+******** Options
+********* -out filename
+********* -passout arg
+********* -aes128|-aes192|-aes256|-des|-des3
+********* numbits
+- the size of the private key to enerate in bits.
+  This must be the last option specified. The default is 512.
+
+******* req
+- PKCS#10 X.509 Certificate Signing Request (CSR) Management.
+******** Options
+********* -inform DER|PEM
+- This specifies the input format.
+********* -new
+- this option generates a new certificate request.
+********* -key filename
+- This specifies the file to read the private key from.
+********* -out filename
+- This specifies the output filename to write to or standard output by default.
 ******* s_client
 ******* s_server
 ****** Message Digest

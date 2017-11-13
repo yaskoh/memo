@@ -192,6 +192,41 @@
   暗黙のENDLOCALが実行される。
 
 ****** sc
+- Service Control
+  SC is a command line program used for communicating with the Service Control Manager and services.
+- Usage:
+  sc <server> [command] [service name] <options>...
+
+******* Commands
+******** query
+- サービスの状態を照会したりサービスの種類ごとに状態を列挙したりする。
+******** queryex
+******** start
+******** pause
+******** interrogate
+******** continue
+******** stop
+******** config
+- 設定を変更する
+  sc config ServiceName option= value
+********* Options
+********** start
+- values
+  - auto
+  - boot
+  - system
+  - demand : manualの意
+  - disabled
+  - delayed-auto : 遅延自動起動
+********** password
+********** error
+******** sdshow
+- Displays the service's security descriptor in SDDL format.
+  サービスセキュリティ記述子をSDDL形式で表示する
+- Usage:
+  sc <server> sdshow <service name> <showrights>
+******** sdset
+- Sets a service's security descriptor.
 ****** schtasks
 ****** shift
 ****** shutdown
@@ -308,8 +343,7 @@
 ******* net computer
 
 ******* net start
-- 
-  サービスの表示/開始
+- サービスの表示/開始
 
 ******* net stop
 - 
@@ -355,12 +389,18 @@
 - 
   netsh（ネットシェル）は、コンピュータのネットワーク設定情報を書き換えるコマンド。
   対話型と結果表示型、どちらも可能。
+  Win純性のみでパケットのキャプチャを取得する場合にも利用。
 
 - ?
   コマンド一覧が表示される
 
 - exit
   終了する
+
+******* Options
+******** trace
+- パケットキャプチャを取得する。
+  Microsoft Message Analyzerで解析が可能。
 
 ****** netstat
 - 
@@ -396,12 +436,26 @@
   送信するエコー要求数を設定する
 
 ****** route
-- 
+- ROUTE [-f] [-p] [-4|-6] command [destination] [MASK netmask] [gateway] [METRIC metric] [IF interface]
   ルーティングテーブルに関する情報を表示、または変更する。
 
-- -f
-  デフォルトゲートウェイを含む全ての静的ルーティング情報を消去する。
+******* Options
+******** -f
+- デフォルトゲートウェイを含む全ての静的ルーティング情報を消去する。
 
+******** -p
+- Addコマンドと併用された場合、システムの再起動後もルートが維持される。
+******** -4
+- IPv4の使用を強制する
+******** -6
+- IPv6の使用を強制する
+******** command
+- 以下のいずれか
+  - PRINT
+  - ADD
+  - DELETE
+  - CHANGE
+******* Commands
 - add|change|delete 宛先アドレス [mask ネットマスク] ゲートウェイ
   指定したルーティング情報を追加、変更、消去する。
 
@@ -524,6 +578,7 @@
 - UTF-8では実行時にエラーが出た。設定方法はあるかもしれない。
   Shift_JISにしたところ問題なく実行できた。
 **** Link
+- [[https://msdn.microsoft.com/ja-jp/library/cc364455.aspx][Windows Script Host - Developer Network]]
 - [[http://www.atmarkit.co.jp/ait/articles/0606/02/news116.html][基礎解説 演習方式で身につけるチェック式WSH超入門 - @IT]]
 - [[http://news.mynavi.jp/articles/2009/01/25/wsh/][ゼロからはじめるWindows Script Host - 基本編 - マイナビニュース]]
 *** PowerShell
@@ -571,29 +626,14 @@
 ** System Programs
 *** System32
 **** Direct
-***** msc
-****** azman.msc
-****** certmgr.msc
-****** comexp.msc
-****** compmgmt.msc
-****** devmgmt.msc
-****** diskmgmt.msc
-****** eventvwr.msc
-****** fsmgmt.msc
-****** gpedit.msc / ローカルグループポリシーエディター
-****** lusrmgr.msc / ローカルユーザーとグループ（ローカル）
-****** perfmon.msc
-****** printmanagement.msc
-****** rsop.msc
-****** secpol.msc
-****** services.msc
-****** SQLServerManager10.msc
-****** taskschd.msc
-****** tpm.msc
-****** WF.msc
-****** WmiMgmt.msc
 ***** exe
 ****** CUI
+******* cacls.exe
+- ファイルのアクセス制御リスト（ACL）を表示・変更する。
+  使用が推奨されていない、icaclsの使用を推奨。
+******* certutil.exe
+******** Options
+********* -hashfile
 ******* choice.exe
 - choice[.exe] [/C <choices>] [/N] [/CS] [/T nnnn [/D c]] [/M <message>]
   - /C <choices>
@@ -641,6 +681,11 @@
   
 ******* cscript.exe
 - コマンドライン用WSH。
+******* findstr.exe
+- ファイルから文字列を検索する
+******** Options
+********* /C:文字列
+- 指定した文字列からリテラル検索文字列として使用する
 ******* ftp.exe
 ******** !
 ******** ?
@@ -683,8 +728,30 @@
 ******** type
 ******** user
 ******** verbose
+******* gpresult.exe
+- RSoP(ポリシーの結果セット)の情報を取得するときに使う。
+  rsop.mscをコマンドライン上で確認するコマンド。
+******** Options
+********* /R
+- 概要を表示
+********* /V
+- 詳細情報を表示
+********* /Z
+- さらに詳細情報を表示
+******* gpupdate.exe
+- ドメインコントローラーからげな次の最新のグループポリシーをロードし適用する。
+  "secedit /refreshpolicy"とほぼ同じ。
+******* icacls.exe
+- Integrity Control Access Control List。
+  ファイルやフォルダのアクセス制御リストを表示、修正、バックアップ、復元などが可能。
+- icalcs <name> /save <acl file> 
+- 名前が一致する全てのファイルとフォルダーのDACLを
 ******* NETSTAT.EXE
 - "ネットワークコマンド"配下を参照
+******* SecEdit.exe
+- ローカルセキュリティポリシーをCUIで変更する。
+******** Link
+- https://orebibou.com/2013/09/secedit-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AB%E3%82%88%E3%82%8B%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC/
 ******* tasklist.exe
 - 現在アクティブなプロセスとそのPIDのリストが表示される。
 ******* systeminfo.exe 
@@ -697,6 +764,8 @@
 ******* where.exe
 - プログラムの場所を返す
 ****** GUI
+******* mmc.exe
+- Microsoft管理コンソール Microsoft Management Console
 ******* mstsc.exe / リモートデスクトップ
 ******** Options
 ********* /admin
@@ -741,11 +810,9 @@ bitsadmin.exe
 bootcfg.exe
 bridgeunattend.exe
 bthudtask.exe
-cacls.exe
 calc.exe
 CertEnrollCtrl.exe
 certreq.exe
-certutil.exe
 change.exe
 charmap.exe
 chglogon.exe
@@ -825,7 +892,6 @@ expand.exe
 extrac32.exe
 fc.exe
 find.exe
-findstr.exe
 finger.exe
 fixmapi.exe
 fltMC.exe
@@ -842,9 +908,7 @@ getmac.exe
 GettingStarted.exe
 GfxUIEx.exe
 GfxUIHotKeyMenu.exe
-gpresult.exe
 gpscript.exe
-gpupdate.exe
 grpconv.exe
 hdwwiz.exe
 help.exe
@@ -852,7 +916,6 @@ hkcmd.exe
 hpservice.exe
 hwrcomp.exe
 hwrreg.exe
-icacls.exe
 icardagt.exe
 icsunattend.exe
 IDTNGUI.exe
@@ -898,7 +961,6 @@ mfevtps.exe
 mfpmp.exe
 microsoft.windows.softwarelogo.showdesktop.exe
 MigAutoPlay.exe
-mmc.exe
 mobsync.exe
 mountvol.exe
 mpnotify.exe
@@ -1022,7 +1084,6 @@ sdiagnhost.exe
 SearchFilterHost.exe
 SearchIndexer.exe
 SearchProtocolHost.exe
-SecEdit.exe
 secinit.exe
 services.exe
 sethc.exe
@@ -1143,6 +1204,65 @@ wusa.exe
 xcopy.exe
 xpsrchvw.exe
 xwizard.exe
+***** msc
+- Microsoft Common Console Documentファイル。
+  mscは、MMC用に作られた特殊なDDL。
+  スナップインをどのように組み込むかを定義しているファイルで、中身はXML形式のテキストファイル。
+****** azman.msc
+****** certmgr.msc
+****** comexp.msc
+****** compmgmt.msc
+****** devmgmt.msc
+****** diskmgmt.msc
+****** eventvwr.msc / Event Viewer / イベントビューアー
+****** fsmgmt.msc
+****** gpedit.msc / ローカルグループポリシーエディター
+****** lusrmgr.msc / ローカルユーザーとグループ（ローカル）
+****** perfmon.msc / パフォーマンスモニター
+****** printmanagement.msc
+****** rsop.msc / Result Set of Policy / ポリシーの結果セット
+****** secpol.msc / ローカルセキュリティポリシー
+******* Console Tree
+******** Security Settings
+********* Account Policies / アカウントポリシー
+********* Local Policies / ローカルポリシー
+********* Windows Firewall with Advanced Security / セキュリティが強化されたWindowsファイアウォール
+********* Network List Manager Policies / ネットワークリストマネージャーポリシー
+********* Public Key Policies / 公開キーのポリシー
+********* Software Restriction Policies / ソフトウェアの制限のポリシー
+********* Application Control Policies / アプリケーション制御ポリシー
+********* IP Security Policies on Local Computer / IPセキュリティポリシー（ローカルコンピューター）
+********* Advanced Audit Policy Configuration / 監査ポリシーの詳細な構成
+****** services.msc / サービス
+****** SQLServerManager10.msc
+****** taskschd.msc
+****** tpm.msc
+****** WF.msc
+****** WmiMgmt.msc
+****** tmp from msc.exe/Add or Remove Snap-ins
+******* Active Directory Domains and Trusts
+******* Active Directory Rights Management Services
+******* Active Directory Sites and Services
+******* Active Directory Users and Computers
+******* ActiveX control
+******* ADSI Edit
+******* Authorization Manager
+******* Certificate Templates
+******* Certificates
+******* Certification Authority
+******* Component Services
+******* Computer Management
+******* Device Manager
+******* DFS Management
+******* DHCP
+******* Disk Management
+******* DNS
+******* Enterprise PKI
+******* Failover Cluster Manager
+******* Failover Cluster Manager Host
+******* File Server Resource Manager
+******* Folder
+******* Group Policy Object Editor
 **** wbem\
 ***** wmic.exe / WMI (Windows Management Instrumentation)
 - 
@@ -1203,6 +1323,13 @@ xwizard.exe
 ********* Keyboard Layout
 ********* Keyboard Layouts
 
+******** services
+********* LanmanWorkstation
+********** Parameters
+*********** EnableNetBTForSmb2
+- Win8, Win8.1, Win2012, Win2012R2でSMBバージョン2を使用して通信したい場合に1とする。
+  Win10では使用できない。
+*********** SMB1NATCompatibility
 ***** HKEY_USERS
 - HKU
   コンピュータ上に読み込まれた有効なユーザプロファイルがすべて格納される。
@@ -1368,6 +1495,106 @@ xwizard.exe
   
 *** SafeSEH, SoftwareDEP
 - http://resemblances.click3.org/?p=1449
+*** MMCスナップイン
+- Windowsの管理用ツールの中身。
+  外側はMicrosoft管理コンソール。「mmc.exe」がMicrosoft管理コンソールの本体。
+  スナップインは、たとえば"eventvwr.msc"、"services.msc"など。
+*** セキュリティ周り
+**** DACL
+- Discretionary Access Control List 随意アクセス制御リスト
+  リソースに対するアクセスの許可/拒否を制御する。
+  ACEが1つ以上格納されているリスト。
+**** SACL
+- システムアクセス制御リスト
+  リソースに対する監査を制御する
+**** ACL
+**** ACE
+- Access Control Entry
+**** SDDL
+- Security Descriptor Definition Language
+  セキュリティ記述子を表現するための汎用的な表記方法。
+  DACLだけでなく監査の設定やDCOMのセキュリティ設定などで広く利用される。
+***** Description
+****** O:UserSID
+****** G:GroupSID
+****** D:DACLFlag(ACE strings)...
+******* DACLFlag
+******** P / SE_DACL_PROTECTED
+- DACLが継承されたACEによって変更されないように保護する
+******** AR / SE_DACL_AUTO_INHERIT_REQ
+- DACLを子オブジェクトへ継承するように要求する
+******** AI / SE_DACL_AUTO_INHERITED
+- 継承によって作成されたDACLであることを示す
+****** S:SACLFlag(ACE strings)...
+****** ACE strings / ACE文字列
+- format:
+  (ACL Type;ACE Flag;Rights;Object GUID;Inherit Object GUID; Account SID)
+  (ACLタイプ;ACEフラグ;権利;オブジェクトGUID;継承オブジェクトGUID;アカウントSID)
+- ex:
+  (A;CIOI;GRGWGXSD;;;PU)
+- Memo
+  - オブジェクトGUIDと継承オブジェクトGUIDはActive DirectoryのオブジェクトのACLのみで使われるもので、通常は空白。
+******* ACEタイプ
+- ACEの種類を表す
+  |--------+---------------------+--------------------------|
+  | 文字列 | タイプ名            | 意味                     |
+  |--------+---------------------+--------------------------|
+  | A      | SDDL_ACCESS_ALLAWED | アクセス許可             |
+  | D      |                     | アクセス拒否             |
+  | OA     |                     | オブジェクトアクセス許可 |
+  | OD     |                     | オブジェクトアクセス拒否 |
+  | AU     |                     | 監査                     |
+  | AL     |                     | 警告                     |
+  | OU     |                     | オブジェクト監査         |
+  | OL     |                     | オブジェクト警告         |
+  |--------+---------------------+--------------------------|
+
+******* ACEフラグ
+- ACEの継承に関する情報を表す
+  |--------+----------+------------------|
+  | 文字列 | タイプ名 | 意味             |
+  |--------+----------+------------------|
+  | CI     |          | コンテナ継承     |
+  | OI     |          | オブジェクト継承 |
+  | NP     |          | 伝播なし         |
+  | IO     |          | 継承のみ         |
+  | ID     |          | 継承             |
+  | SA     |          | 監査成功         |
+  | FA     |          | 監査失敗         |
+  |--------+----------+------------------|
+
+******* 権利
+- Platform SDKに含まれるsddl.hやWinnt.h、APIの解説なども参照のこと
+  |--------+----------+------|
+  | 文字列 | タイプ名 | 意味 |
+  |--------+----------+------|
+  |        |          |      |
+
+******* オブジェクトGUID
+- パスワードの変更やリセットなど、特別なタスクの実行を許可するための権利を表すオブジェクトのGUID文字列
+
+******* 継承オブジェクトGUID
+- ACEを継承するオブジェクトのGUIDを表す文字列
+
+******* アカウントSID
+- ACEの提供対象となるSIDを表す。
+  |--------+-------------------------|
+  | 文字列 | タイプ名                |
+  |--------+-------------------------|
+  | AO     |                         |
+  | AN     |                         |
+  | AU     | Authenticated Users     |
+  | BA     | Built-in Administrators |
+  | BG     |                         |
+  | IU     | Interactive             |
+  | SU     | Service                 |
+  | SY     | Local system            |
+  |        |                         |
+
+***** Link
+- [[https://msdn.microsoft.com/en-us/library/aa374928.aspx][ACE Strings - Microsoft Developer Network]]
+- [[https://support.microsoft.com/ja-jp/help/914392/best-practices-and-guidance-for-writers-of-service-discretionary-acces][サービスの随意アクセス制御リストを作成する場合の推奨事項およびガイド - Microsoftサポート]]
+- http://www.atmarkit.co.jp/ait/articles/0603/25/news016.html
 ** Server
 *** Roles
 **** ADDS Active Directory
@@ -1547,6 +1774,55 @@ xwizard.exe
 *** ネットワークドライブの割り当て
 - エクスプローラでAlt, 「ネットワークドライブの割り当て」を行う。
 - http://www1.ark-info-sys.co.jp/support/all/kakumei/c21.html
+*** ドメイン環境で使用されるポート
+- https://blogs.technet.microsoft.com/jpntsblog/2009/03/03/563/
+**** ドメインメンバー
+- 
+  |--------------------------+------------+--------------------------+----------------|
+  | ポートを使用するサービス | プロトコル | クライアント側ポート番号 | DC側ポート番号 |
+  |--------------------------+------------+--------------------------+----------------|
+  | PING                     | ICMP       |                         |                |
+  | DNS                      | TCP/UDP    | 一時ポート               |             53 |
+  | Kerberos                 | TCP/UDP    | 一時ポート               |             88 |
+  | NTP                      | UDP        | 123                      |            123 |
+  | RPC                      | TCP        | 一時ポート               |            135 |
+  | RPC                      | TCP        | 一時ポート               |     一時ポート |
+  | NetBIOS-ns               | UDP        | 137                      |            137 |
+  | NetBIOS-dgm              | UDP        | 138                      |            138 |
+  | NetBIOS-ssn              | TCP        | 一時ポート               |            139 |
+  | LDAP                     | TCP/UDP    | 一時ポート               |            389 |
+  | SMB                      | TCP        | 一時ポート               |            445 |
+  | KPasswd                  | TCP        | 一時ポート               |            464 |
+  | LDAP GC                  | TCP        | 一時ポート               |           3268 |
+  | LDAP SSL                 | TCP        | 一時ポート               |            636 |
+  | LDAP GC SSL              | TCP        | 一時ポート               |           3269 |
+  | AD DS Web Services       | TCP        | 一時ポート               |           9389 |
+  |--------------------------+------------+--------------------------+----------------|
+
+**** DC間
+- 
+  |--------------------------+------------+------------------+----------------|
+  | ポートを使用するサービス | プロトコル | 送信元ポート番号 | 宛先ポート番号 |
+  |--------------------------+------------+------------------+----------------|
+  | WINS                     | TCP        | 一時ポート       |             42 |
+  | DNS                      | TCP/UDP    | 一時ポート       |             53 |
+  | Kerberos                 | TCP/UDP    | 一時ポート       |             88 |
+  | NTP                      | UDP        | 123              |            123 |
+  | RPC                      | TCP        | 一時ポート       |            135 |
+  | RPC                      | TCP        | 一時ポート       |     一時ポート |
+  | LDAP                     | TCP/UDP    | 一時ポート       |            389 |
+  | SMB                      | TCP        | 一時ポート       |            445 |
+  | DFSR                     | TCP        | 一時ポート       |           5722 |
+  |--------------------------+------------+------------------+----------------|
+
+*** ハッシュ値を計算する
+- certutil -hashfile <filename> <algorithm>
+*** サービスに対し権限を設定する
+- WindowsのServiceを一般ユーザで操作するには、"sc shshow ServiceName"で確認したSDDIを、
+  "sc sdset ServiceName NewSDDI"で書き換えればよい。
+  (A;;RPWP;;;AU)とすれば、許可、起動・停止、一般ユーザ、となる。
+  [[http://buti.blog.so-net.ne.jp/2010-03-03][【Tips】Windowsのサービスを一般（AdminやPowerGroup以外）ユーザで起動できるようにする。 - Butinekoの世界]]
+- scでSDDI形式の
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

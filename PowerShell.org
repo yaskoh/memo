@@ -1,5 +1,5 @@
 * PowerShell
-** Commands
+** Command-lets
 *** Add-Content
 **** ac
 *** Add-PSSnapin
@@ -20,6 +20,8 @@
 *** Compare-Object
 **** compare
 **** diff
+*** Compress-Archive
+- PowerShell5.0より。
 *** Connect-PSSession
 **** cnsn
 *** Convert-Path
@@ -39,6 +41,8 @@
 **** etsn
 *** Exit-PSSession
 **** exsn
+*** Expand-Archive
+- PowerShellv5.0より。
 *** Export-Alias
 **** epal
 *** Export-Csv
@@ -69,6 +73,8 @@
 **** cat
 **** gc
 **** type
+*** Get-Help
+- Displays information about Windows PowerShell commadns and concepts
 *** Get-History
 **** ghy
 **** h
@@ -263,6 +269,8 @@
 *** Test-Path
 *** Trace-Command
 **** trcm
+*** Update-Help
+- Downloads and installs the newest help files on your computer.
 *** Wait-Job
 **** wjb
 *** Where-Object
@@ -283,6 +291,19 @@
 **** Uninstall-WindowsFeature
 **** Enable-ServerManagerStandardUserRemoting
 **** Disable-ServerManagerStandardUserRemoting
+** Shell Variables
+*** $PSVersionTable
+- Version2.0以降
+  PowerShellのバージョン情報を表示する
+** Syntax
+- [[http://m0t0k1x2.tumblr.com/post/121507591989/powershell%E5%86%8D%E5%85%A5%E9%96%805-%E5%9F%BA%E6%9C%AC%E6%A7%8B%E6%96%87][PowerShell再入門 : 5. 基本構文]]
+- [[http://winscript.jp/powershell/202][PowerShell基礎文法最速マスター - PowerShell Scripting Weblog]]
+- [[https://codezine.jp/article/detail/2388][Windows PowerShell 入門(5) - 制御構文]]
+*** for
+- for (<初期化>; <条件>; <繰り返し処理>)
+  {
+    <コードブロック>
+  }
 ** Reverse Lookup
 *** tmp
 **** ネットワークプロファイルを調べる

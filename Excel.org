@@ -414,6 +414,18 @@
 ****** Conditional Formatting(Alt,H,L)
 ***** Cells
 ***** Editing
+****** Find & Select(Alt,H,FD)
+******* Find(F)
+******* Replace(R)
+******* Go To(G)
+******* Go To Special... (Alt,H,FD,S)
+******** Comments(c)
+******** Constans(o)
+******** Formulas(f)
+******** Blanks(k)
+******** Current region(r)
+******** Current array(a)
+******** Objects(b)
 **** INSERT(N)
 **** PAGE LAYOUT(P)
 **** FORMULA(M)

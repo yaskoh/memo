@@ -2,6 +2,7 @@
 ** Commands
 *** resin
 **** deploy
+**** deploy-list
 **** generate-password
 ***** Options
 - --user
@@ -91,11 +92,44 @@
 ***** Proxy Cache
 *** development
 *** Reference
+**** <close-dangling-connection>
+- child of <database>
+**** <connection>
+- child of <database>
+***** Attributes
+****** catalog
+****** read-only
+****** transaction-isolation
+**** <connection-wait-time>
+- child of <database>
 **** <database>
 - child of <resin>, <cluster>, <host>, <web-app>
-  
 ***** Attributes
 ****** jndi-name
+**** <driver>
+- child of <database>
+**** <max-active-time>
+- child of <database>
+**** <max-close-statement>
+- child of <database>
+**** <max-connections>
+- child of <database>
+**** <max-create-connections>
+- child of <database>
+**** <max-idle-time>
+- child of <database>
+**** <max-overflow-connections>
+- child of <database>
+**** <max-pool-time>
+- child of <database>
+**** <password>
+- child of <database>
+**** <ping>
+- child of <database>
+**** <ping-table>
+- child of <database>
+**** <transaction-timeout>
+- child of <database>
 **** <logger>
 ***** Parents
 - child of <resin>, <cluster>, <host>, <web-app>

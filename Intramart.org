@@ -835,6 +835,9 @@
   エラーメッセージに該当するルーティング設定をconfから探し出し、コメントアウト、再起動。
   ログイン、問題のメニューアイテムを削除し、ルーティング設定を戻した上で、再起動。
   http://imfaq.intra-mart.jp/imqa/faq/print.asp?Option=&NodeID=&DispNodeID=&CID=&Text=&Field=&KW=&KWAnd=&Attrs=&Bind=&SearchID=&FAQID=15&baID=1&strKind=
+*** データソースが確認できない
+- resin-web.xmlなどのデータソース設定不足。
+- data-source-mapping-config.xmlの設定不足。
 ** Link
 *** About
 - [[http://www.intra-mart.jp/document/library/index.html][intra-mart Accell Platform - intra-mart Accel Series ドキュメントライブラリ]]
