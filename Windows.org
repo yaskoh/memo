@@ -1827,6 +1827,9 @@ xwizard.exe
   (A;;RPWP;;;AU)とすれば、許可、起動・停止、一般ユーザ、となる。
   [[http://buti.blog.so-net.ne.jp/2010-03-03][【Tips】Windowsのサービスを一般（AdminやPowerGroup以外）ユーザで起動できるようにする。 - Butinekoの世界]]
 - scでSDDI形式の
+*** リモートデスクトップでパスワード変更
+- Ctrl + Alt + End (deleteでなく!)
+  http://grum.hatenablog.com/entry/2016/01/13/022550
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

@@ -54,15 +54,13 @@
 - See "Reference"
 *** psqlコマンド
 **** About
-- 
-  ;(セミコロン)で1文の終わりを表す。
+- ;(セミコロン)で1文の終わりを表す。
   SQLコマンドの使用が可能。
   
   オプション等はClient Applicationを参照。
 
 **** psqlメタコマンド
-- 
-  psql内で入力されたコマンドのうち、バックスラッシュで始まり、引用符で囲まれていないものは、
+- psql内で入力されたコマンドのうち、バックスラッシュで始まり、引用符で囲まれていないものは、
   psql自身が実行するpsqlのメタコマンドとして扱われる。
   [[https://www.postgresql.jp/document/9.3/html/app-psql.html][psql - PostgreSQL 9.3.2文書]]
 
@@ -1293,8 +1291,7 @@
   pg_dumpで作成されたアーカイブファイルから、データベースをリストアする
 
 **** psql
-- 
-  対話的ターミナル。
+- 対話的ターミナル。
   「psqlコマンド」も参照。
 
 - -c comand, --command=command
@@ -1332,7 +1329,6 @@
   不要領域の回収と解析を行う。
 
 *** Server Application
-
 **** initdb
 - 
   データベースクラスタを新しく作成する
@@ -1342,9 +1338,20 @@
   クラスタの制御情報を表示する
 
 **** pg_ctl
-- 
-  サーバの初期化、起動、停止、制御
-
+- サーバの初期化、起動、停止、制御
+***** Commands
+****** init[db]
+****** start
+****** stop
+****** restart
+****** reload
+****** status
+****** promote
+****** kill
+- 指定したプロセスにシグナルを送信できる
+****** register
+****** unregister
+***** Options
 **** pg_resetxlog
 - 
   データベースクラスタの先行書き込みログやその他制御情報を初期化する
@@ -1386,6 +1393,14 @@
   - レプリケーション
   - ロードバランス
 - [[http://www.pgpool.net/mediawiki/jp/index.php/%E3%83%A1%E3%82%A4%E3%83%B3%E3%83%9A%E3%83%BC%E3%82%B8][pgtool-II wiki]]
+** Reverse lookup
+*** 設定ファイルを読み込ませる
+- GUI
+  - "PostgerSQL X.X"を右クリックして"Reload Configuration"
+- CUI
+  - SIGHUPを投げるとリロードするとのこと。方法は色々ある。
+    - pg_ctl reload [-D PGDATA]
+    - pg_ctl kill HUP PID
 ** Memo
 *** Uninstall(Windows)
 - 
