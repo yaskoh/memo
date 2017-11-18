@@ -13,3 +13,5 @@
 
 - [[http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4296.pdf][(Afetr 2014)N4296 Working Draft, Standard for Programming Language C++ / 2014-11/19]]
 - [[http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2012/n3337.pdf][(After 2011)N3337 Working Draft, Standard for Programming Laguage C++ / 2012-01-16]]
+
+- [[http://isoparametric.hatenablog.com/entry/20080926/1222386910][Effective なんとかを読めば良いというものではない - 神様なんて信じない僕らのために]]
