@@ -626,6 +626,9 @@
 - フォーマットは"TEXT"関数で行う。
 - 例 : 0パディング
   =TEXT(A1,"0000")
+*** 書式のユーザー設定
+- @"様"などと書式設定を入力すると、〜様、となる。
+  https://kokodane.com/tec1_12.htm
 ** Link
 - [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
 - [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]
