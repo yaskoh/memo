@@ -859,7 +859,10 @@
 **** Functions
 ***** comment-region
 - (comment-region BEG END &optional ARG)
-
+***** comment-or-uncomment-region
+- (comment-or-uncomment-region BEG END &optional ARG)
+***** uncomment-region
+- (uncomment-region BEG END &optional ARG)
 *** outline
 **** Functions
 ***** outline-mode
@@ -1425,6 +1428,7 @@
   - # -- 以下 : 展開したいコードを記述。
     Tabで$1,$2と飛ぶ。$0には、展開後にカーソルがその位置に飛ぶ。
     ${1:default text}とも設定可能。
+    なお、#から始まる文字列でも問題なく入力できた模様。
 
 - 
   - 終了 : C-c C-c
