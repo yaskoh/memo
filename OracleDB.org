@@ -1404,6 +1404,25 @@
 - [[http://www.oracle.com/technetwork/jp/database/articles/tsushima/index-1741351-ja.html][第20回 パラレル実行について - 津島博士のパフォーマンス講座]]
 - [[http://www.oracle.com/technetwork/jp/database/articles/tsushima/tsushima-hakushi-39-2254816-ja.html][第39回 パラレル実行について（2） - 津島博士のパフォーマンス講座]]
 - [[http://www.oracle.com/webfolder/technetwork/jp/ondemand/ddd2013/A-4.pdf][シバタツ流！パラレル・クエリーの徹底活用とチューニングの極意 - ORACLE]]
+*** SDO_GEOR_DDL__TABLE$$, TO Locks
+- temp
+  sdo_geor_ddl__table$$ is global temporary tabel.
+  Created by Oracle Spatial which has installed DDL triger which causes this operation.
+
+- https://jonathanlewis.wordpress.com/2010/02/19/to-locks/
+  This is a system which had been installed as a "default" database,
+  and the person installing it had just accepted everything the DBCA had offered
+  without bothering to eliminate all the options they don't want or need.
+  So this system has Oracle Spatial installed, and Spatial has installed a DDL trigger
+  that does a lot of stuff in the background when you drop a table
+  – using global temporary table SDO_GEOR_DDL__TABLE$$ to keep track of what's going on.
+
+- https://stackoverflow.com/questions/40779201/is-it-wrong-to-use-direct-path-load-hint-in-array-binding
+  This is global temporary table.
+  Created by Oracle Spatial which has installed DDL trigger which causes this operation.
+  This happens we choose General Purpose database creation on DBCA.
+  Actually we should use Custom database creation so that we always have option to select required components.
+
 ** News
 *** 2017/1/24 ライセンス体系
 - AWS, Azureにおけるクラウド環境でのコア係数を変更。実質的に値上げ。
@@ -1439,10 +1458,15 @@
 **** Performance
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56312/toc.htm][Oracle® Databaseパフォーマンス・チューニング・ガイド 11gリリース2 (11.2)]]
 
+**** Geo Spatial
+- [[https://docs.oracle.com/cd/E16338_01/appdev.112/b72087/toc.htm][Oracle® Spatial開発者ガイド 11gリリース2 (11.2)]]
+- [[https://docs.oracle.com/cd/E16338_01/appdev.112/b72086/toc.htm][Oracle® Spatial GeoRaster開発者ガイド 11gリリース2 (11.2)]]
 **** 2日でシリーズ
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56320/toc.htm][Oracle® Database 2日でデータベース管理者 11gリリース2(11.2)]]
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56313/tdppt_preface.htm#sthref2][Oracle® Database 2日でパフォーマンス・チューニング・ガイド 11gリリース2(11.2)]]
 *** Etc
+- [[https://support.oracle.com/epmos/faces/Dashboard][my oracle support]]
+
 - [[http://luna.gonna.jp/oracle/index.html][オラクル ちょこっとリファレンス]]
 - [[http://kagamihoge.hatenablog.com/entry/2014/01/03/180049][どのようにOracleを勉強してきたか - kagamihogeの日記]]
 - [[https://blogs.oracle.com/otnjp/entry/links_for_oracle_database_beginners][春からはじめる、春からやりなおす。これから学ぶOracle Database - Oracle Technology Network Japan Blog]]

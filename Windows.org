@@ -754,6 +754,7 @@
 - https://orebibou.com/2013/09/secedit-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AB%E3%82%88%E3%82%8B%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC/
 ******* tasklist.exe
 - 現在アクティブなプロセスとそのPIDのリストが表示される。
+  POSIXのpsみたいなもの。
 ******* systeminfo.exe 
 - 
   システム情報を表示できる。cmd上でsysteminfo。CUI。
@@ -781,6 +782,10 @@
   パスワード忘れてCMD立ち上げたときとかに役立つ。
 ******* wscript.exe
 - GUI実行用WSH。
+****** System
+******* conhost.exe
+- コンソールウィンドウホスト。
+
 ****** tmp
 AdapterTroubleshooter.exe
 aitagent.exe
@@ -834,7 +839,6 @@ compact.exe
 CompatTelRunner.exe
 CompMgmtLauncher.exe
 ComputerDefaults.exe
-conhost.exe
 consent.exe
 control.exe
 convert.exe

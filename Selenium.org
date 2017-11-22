@@ -415,6 +415,9 @@
 - [[http://www.seleniumhq.org/][SeleniumHQ]]
 - [[https://app.codegrid.net/entry/selenium-1][入門、Selenium - CodeGrid]]
 
+- [[https://seleniumhq.wordpress.com/2016/10/13/selenium-3-0-out-now/][Selenium 3.0: Out Now! - Official Selenium Blog]]
+
+- https://www.kaitoy.xyz/2017/07/12/2017-selenium-headless-browsers/
 *** API
 - [[http://stackoverflow.com/questions/5644868/webdriver-selenium-2-api-documentation][WebDriver (Selenium 2) API documentation - stackoverflow]]
 - [[http://seleniumhq.github.io/selenium/docs/api/py/api.html][Selenium Documentation (Python)]]

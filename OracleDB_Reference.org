@@ -963,6 +963,10 @@
 **** DBMS_XPLAN
 - EXPLAIN PLANコマンドの出力を事前定義した複数の書式で表示する簡単な方法が提供される。
 ***** Supprograms
+**** SDO_GEOM
+- ジオメトリファンクション
+**** SDO_GEOR
+- Oracle Spatial GeoRaster機能に関するファンクションおよびプロシージャが含まれる。
 **** TimesTen
 ***** UTL_RECOMP
 - データベース内の無効なPL/SQLモジュール、無効なビュー、索引タイプおよび演算子を再コンパイルする。
