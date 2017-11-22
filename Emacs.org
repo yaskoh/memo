@@ -528,6 +528,14 @@
 *** 折り返し表示の変更
 - 関数"toggle-truncate-lines"で切り替えられる。
   制御自体は変数"truncate-lines"で行う。
+*** コメントアウト/解除
+- コメントアウト
+  - C-c C-c : comment-region
+  - M-; : comment-dwim
+- コメント解除
+  - uncomment-region
+- トグル
+  - comment-or-uncomment-region
 ** Link
 *** Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]
