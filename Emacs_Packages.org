@@ -130,7 +130,7 @@
 
 *** C source code
 - [[file:Emacs_Packages_Builtin.org][Emacs_Packages_Builtin.org]]
-*** emacs-lisp(dir)
+*** emacs-lisp\
 **** advice
 - 再定義なしに挙動を変更する。
   24.4以降ではnadvice.elを使う。
@@ -396,13 +396,13 @@
 ***** reb-next-match (C-c C-s)
 ***** reb-force-update (C-c C-u)
 ***** reb-copy (C-c C-w)
-*** emmulation(dir)
+*** emmulation\
 **** cua-base
 ***** Functions
 ****** cua-set-mark / C-SPC, C-@
 - (cua-set-mark &optional ARG)
   Set mark at where point is, clear mark, or jump to mark.
-*** eshell(dir)
+*** eshell\
 **** em-alias
 ***** Functions
 ***** Variables
@@ -430,7 +430,7 @@
 - (eshell &optional ARG)
   Create an interactive Eshell buffer.
   A numeric prefix arg (as in `C-u 3 M-x eshell RET') switches to the session with that number.
-*** international(dir)
+*** international\
 **** mule-cmds
 ***** toggle-input-method (C-\)
 - (toggle-input-method &optoinal ARG INTERACTIVE)
@@ -438,7 +438,7 @@
 ***** set-language-environment LANGUAGE-NAME)
 - (set-language-environment LANGUAGE-NAME)
   Set up multilingual environment for using LANGUAGE-NAME.
-*** net(dir)
+*** net\
 **** eww
 - web broweser.
   it is part of the Emacs 24.4.
@@ -452,7 +452,7 @@
   [[https://www.emacswiki.org/emacs/TrampMode][Tramp Mode - EmacsWiki]]
   [[http://yo.eki.do/notes/tramp-mode][Emacs:まだターミナルで消耗してるの？ - 葉月夜堂]]
 
-*** nxml(dir)
+*** nxml\
 **** nxml-mode
 - be included in Emacs 23 and after.
 ***** Functions
@@ -533,7 +533,7 @@
 ******* C-c C-s C-l : rng-save-schema-location
 ******* C-c C-s C-t : rng-set-document-type-and-validate
 ******* C-c C-s C-w : rng-what-schema
-*** org(dir)
+*** org\
 **** org
 ***** Functions
 ****** org-cycle (<TAB> @org-mode)
@@ -542,12 +542,16 @@
 ***** Keybinds
 ****** C-c ^ : org-sort
 ****** <TAB> : org-cycle
-*** progmodes(dir)
+*** progmodes\
+**** ada-mode
+**** bat-mode
 **** cc-cmds
 ***** Functions
 ****** c-electric-delete
 - (c-electric-delete ARG)
   Delets preceding or following character or whitespace.
+**** cc-mode
+**** cpp
 **** hideshow
 ***** Functions
 ****** hs-minor-mode
@@ -559,18 +563,59 @@
 ****** hs-show-block
 ****** hs-hide-level
 ****** hs-toggle-hiding
-*** textmodes(dir)
+**** flymake
+**** js
+**** python
+**** ruby-mode
+**** scheme
+**** sh-script
+***** Alias
+****** shell-script-mode
+- alias for "sh-mode"
+- (shell-script-mode)
+***** Functions
+****** sh-mode
+***** Keybinds
+****** C-c C-c : sh-case
+- case statement
+****** C-c C-d : sh-cd-here
+****** C-c C-f : sh-for
+- for loop
+****** C-c C-i : sh-if
+- if statement
+****** C-c C-l : sh-indexed-loop
+- indexed loop from 1 to n
+****** C-c C-o : sh-while-getopts
+- while getopts loop
+****** C-c C-r : sh-repeat
+- repeat loop
+****** C-c C-s : sh-select
+- select loop
+****** C-c C-u : sh-until
+- until loop
+****** C-c C-w : sh-while
+- while loop
+****** C-c ( : sh-function
+- function definition
+****** C-c + : sh-add
+****** C-c = : sh-set-indent
+**** sql
+*** term\
+*** textmodes\
 **** fill
 ***** Functions
 ****** fill-paragraph
 - (fill-paragraph &optional JUSTIFY REGION)
   Fill paragraph at or after point.
-*** url(dir)
+*** url\
 **** url
 ***** Functions
 ****** url-retrieve-synchronously
 - (url-retrieve-synchronously URL &optional SILENT INHIBIT-COOKIES)
   Retrieve URL synchronously.
+*** vc\
+**** diff
+**** ediff
 *** apropos
 **** apropos
 - (apropos PATTERN &optional DO-ALL)

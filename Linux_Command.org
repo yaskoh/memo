@@ -647,6 +647,8 @@
   compresed size, uncompressed size, ratio, uncompresed_name
 
 *** h
+**** head
+- output the first part of files
 **** hexdump
 - 
   ascii, decimal, hexadecimal, octal dump
@@ -1636,6 +1638,21 @@
 ****** config
 - write down port forwarding settings to  ~/.ssh/config 
   and not to need to set everytime to connect.
+
+******* Description
+******** Host
+******** HostName
+******** Port
+******** User
+******** IdentityFile
+******** LocalForward
+******** Ex
+- ex1
+  Host server1
+    HostName     192.168.11.101
+    Port         2222
+    User         user01
+    IdentityFile ~/.ssh/server1/id_rsa
 
 ****** .ssh on win
 - ssh try to see settings on /home/username/.ssh.

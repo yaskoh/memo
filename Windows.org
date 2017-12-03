@@ -1603,6 +1603,14 @@ xwizard.exe
 - [[https://msdn.microsoft.com/en-us/library/aa374928.aspx][ACE Strings - Microsoft Developer Network]]
 - [[https://support.microsoft.com/ja-jp/help/914392/best-practices-and-guidance-for-writers-of-service-discretionary-acces][サービスの随意アクセス制御リストを作成する場合の推奨事項およびガイド - Microsoftサポート]]
 - http://www.atmarkit.co.jp/ait/articles/0603/25/news016.html
+*** パス
+**** UNC
+- Universal Naming Convention
+  Windowsネットワーク上で共有されている様々な資源の位置を表記する標準的な記法。
+- 「\\コンピュータ名\共有名」のように記述する。
+***** Link
+- http://e-words.jp/w/UNC.html
+- http://desktop.arcgis.com/ja/arcmap/10.3/tools/supplement/pathnames-explained-absolute-relative-unc-and-url.htm#GUID-A2A3F32B-D0AE-4F60-97A9-4DA8AF8DC00B
 ** Server
 *** Roles
 **** ADDS Active Directory

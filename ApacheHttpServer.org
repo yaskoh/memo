@@ -74,7 +74,7 @@
   
 ***** DocumentRoot
 - 説明
-  ウェブから見えるメインのおきゅ面とツリーになるディレクティブ
+  ウェブから見えるメインのドキュメントツリーになるディレクティブ
 - 構文
   DocumentRoot directory-path
 ***** <Location>
