@@ -7,3 +7,18 @@
     ex) sum(population) OVER ( PARTITION BY city)
         city毎にpopulationの合計を取った値、を取得する。
 
+** Memo
+*** Multi-Platform Client
+**** A5:SQL Mk-2
+- https://a5m2.mmatsubara.com/
+- http://www.vector.co.jp/soft/dl/winnt/business/se422726.html
+**** DataGrip
+- https://www.jetbrains.com/datagrip/
+**** TeamSQL
+- https://teamsql.io/
+**** Emacs
+- SQLi
+  http://emacsredux.com/blog/2013/06/13/using-emacs-as-a-database-client/
+  https://truongtx.me/2014/08/23/setup-emacs-as-an-sql-database-client
+**** Link
+- [[https://geekflare.com/multi-platform-sql-client/][Multi Platform Database Client - GEEK FLARE]]

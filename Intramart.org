@@ -63,11 +63,17 @@
 ***** Undeploy
 - (win)resin undeploy application-name
 - Resinの停止
-- ファイルを削除
+- webapp以下の該当ファイルを削除
+
+- （現状不明）アプリケーションの削除
+  - resin-data配下
+  - webapps配下
+
+- Storage領域の削除
+- https://www.intra-mart.jp/download/product/iap/setup/iap_setup_guide/texts/uninstallation/index.html
 **** Link
 - [[http://www.intra-mart.jp/download/product/iap/setup/iap_quick_setup_guide/index.html#][intra-mart Accel Platform クイック セットアップガイド]]
 - [[http://www.intra-mart.jp/download/product/iap/setup/iap_setup_guide/index.html][intra-mart Accel Platform セットアップガイド]]
-
 *** Tenant
 **** Setup
 - テナント環境セットアップは、モジュールやアプリケーションを新たに追加した場合に必要となるセットアップ処理の実行と、その実行履歴を管理する機能。
@@ -704,6 +710,14 @@
 ******** routing-servlet-config.xsd
 ******* resin-web.xml
 - databaseのコネクション設定などが存在
+**** storage
+- Pathはstorage-config.xmlで設定
+***** public
+****** storage
+******* default
+- 配下をテナント管理/ファイル操作、で利用できる。
+***** system
+- systemで利用すると思われる
 *** Screen
 **** システム管理者
 - http://localhost:8080/imart/system/login
@@ -717,7 +731,82 @@
 ***** システム管理
 **** テナント
 - http://localhost:8080/imart/login
+***** ホーム
+- /home、基本的にはポータルとのこと。
+***** ポータル/
+****** ポータル /portal/desktop
+****** ポータル管理/
+******* ポートレット一覧
+******* グループポータル管理
+******* インポート・エクスポート
+***** サイトマップ /menu/sitemap
+***** 共通マスタ/
+****** マスタメンテナンス/
+******* ユーザ
+******* パブリックグループ
+******* 分類
+******* 会社
+******* 会社グループ
+******* 組織
+******* 法人・取引先
+******* 法人グループ
+******* 品目カテゴリ・品目
+******* 通過
+******* 組織分類
+****** プライベートグループ
+***** 個人設定/
+****** パスワード
+****** カレンダー
+****** ロケール
+****** 日付と時刻の形式
+****** テーマ
+****** プロファイル
+****** マイメニュー
+****** メッセージ通知
+****** メニュー表示
+****** 数値形式
+***** テナント管理/
+****** 認可
+****** メニュー
+****** ロール
+****** カレンダーメンテナンス
+****** テナント情報/
+****** ジョブ管理/
+****** ファイル操作
+****** データベース操作
+***** FileExchange
+***** ワークフロー
+***** IM-BIS
+***** LogicDesigner
+***** ViewCreator
+***** Accel Documents
+***** Table Maintenance
+****** テーブル一覧
+****** テーブル・エクスポート
+****** テーブル・インポート
+****** テーブル・キャプション登録
+****** テーブル一覧
+***** Formaアプリ
+***** Forma開発者
+***** Forma管理画面
+***** Forma全文検索管理画面
+***** Contents Search
+***** コラボレーション
 *** Setting Files
+**** Resin
+**** コアモジュール
+***** ストレージ設定ファイル
+****** storage-config.xml
+******* storage-info
+- /storage-config/storage-info
+******* root-path-name
+- /storage-config/storage-info/root-path-name
+  ストレージルートとして利用するファイルシステム上のパスを指定する。
+- 分散環境を構築する場合
+  - Storageのルートディレクトリに指定するパスは全て同じ共有ディレクトリを参照する必要がある。
+- 分散環境のサーバをWindowsサービスに登録する場合
+  - パスはUNC形式で指定する。
+    例:\\servername\drive\directory\file
 **** テナント管理機能
 ***** ルーティングテーブル用 認可リソースマッパー定義設定
 ****** About
@@ -778,6 +867,9 @@
 ******** Attributes
 ********* key
 ********* value
+***** パスワード履歴管理設定
+****** About
+- Location : WEB-INF/conf/password-history.xml
 **** Link
 - [[http://www.intra-mart.jp/download/product/iap/setup/im_configuration_reference/index.html][intra-mart Accel Platform 設定ファイルリファレンス]]
 *** Glossary
@@ -883,6 +975,11 @@
   - [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_setup_guide/index.html][intra-mart Accel Documents セットアップガイド]]
   - [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_user_guide/][intra-mart Accel Documents ユーザ操作ガイド]]
   - [[http://www.intra-mart.jp/download/product/iad/im_acceldocuments_repository_api_programming_guide/index.html][intra-mart Accel Documents プログラミングガイド]]
+- View Creator
+  - [[https://www.intra-mart.jp/document/library/iap/public/viewcreator/viewcreator_administrator_guide/index.html][intra-mart Accel Platform ViewCreator 管理者操作ガイド]]
+  - [[https://www.intra-mart.jp/document/library/iap/public/viewcreator/viewcreator_user_guide/index.html][intra-mart Accel Platform ViewCreator ユーザ操作ガイド]]
+  - [[https://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_viewcreator_guide/index.html][intra-mart Accel Platform ViewCreator for IM-Workflow 連携ガイド]]
+    
 - e Builder
   - [[http://www.intra-mart.jp/document/library/ebuilder/public/e_builder_setup_guide/texts/all_in_one/index.html][intra-mart e Builder for Accel Platform セットアップガイド]]
   - [[http://www.intra-mart.jp/document/library/ebuilder/public/e_builder_user_guide/index.html][intra-mart e Builder for Accel Platform アプリケーション開発ガイド]]

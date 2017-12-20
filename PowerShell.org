@@ -73,6 +73,7 @@
 **** cat
 **** gc
 **** type
+*** Get-EventLog
 *** Get-Help
 - Displays information about Windows PowerShell commadns and concepts
 *** Get-History
@@ -154,6 +155,11 @@
 **** mp
 *** New-Alias
 **** nal
+*** New-Event
+- 新しいイベントを作成する。
+*** New-EventLog
+- イベントソースを作成する。
+  Write-EventLogをした際にエラーが表示されなくなる。
 *** New-Item
 **** ni
 *** New-Module
@@ -183,6 +189,10 @@
 **** rcjb
 *** Receive-PSSession
 **** rcsn
+*** Remove-EventLog
+**** Options
+***** -LogName logname
+***** -Source sourcename
 *** Remove-Item
 **** del
 **** erase
@@ -276,6 +286,7 @@
 *** Where-Object
 **** ?
 **** where
+*** Write-EventLog
 *** Write-Output
 **** echo
 **** write

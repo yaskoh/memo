@@ -74,12 +74,17 @@
   
 ***** DocumentRoot
 - 説明
-  ウェブから見えるメインのおきゅ面とツリーになるディレクティブ
+  ウェブから見えるメインのドキュメントツリーになるディレクティブ
 - 構文
   DocumentRoot directory-path
-***** <Location>
-
-***** <VirtualHost>
+***** ErrorLog
+- Description : サーバがエラーをログ収集する場所
+- Syntax : ErrorLog file-path|syslog[:facility]
+- Default : ErrorLog logs/error_log (Unix) / ErrorLog logs/error.log (Windows)
+***** ErrorLogFormat
+- Description : Format specification for error log entries
+***** <IfModule>
+- Description : モジュールの存在有無に応じて処理されるディレクティブを囲む。
 ***** Include
 - Include file-path|directory-path
   - 設定ファイルをインクルードできる。
@@ -88,6 +93,33 @@
 - ex)
   Include /usr/local/apache2/conf/ssl.conf
   Include conf/ssl.conf
+***** <Location>
+- Description : 囲んだディレクティブがマッチするURLのみに適用。
+- Syntax : <Location URL-path|URL> ... </Location>
+***** Options
+- Description : ディレクトリに対して使用可能な機能を設定する。
+****** Opitons
+******* All
+******* ExecCGI
+******* FollowSymLinks
+- このディレクトリ内でシンボリックリンクを辿れるようにする
+******* Includes
+******* IncludesNOEXEC
+******* Indexes
+- URLがディレクトリにマップするリクエストで、かつDirectoryIndexで指定したファイルがディレクトリになければ、
+  mod_autoindexがディレクトリ内の一覧を整形して返す。
+******* MultiViews
+******* SymLinksIfOwnerMatch
+***** ServerAdmin
+- Description : サーバがクライアントに送るエラーメッセージに含める電子メールのアドレス
+***** ServerTokens
+- Description : Configures the Server HTTP response header
+***** Timeout
+- Description : 各イベントについて、リクエストを失敗させるまでにサーバが待つ時間
+- Syntax : TimeOut seconds
+***** TraceEnable
+- Description : Traceメソッドのリクエストに対する応答方法を決める
+***** <VirtualHost>
 *** MPM
 - Multi Prosessing Module
 
@@ -99,15 +131,40 @@
   | Unix    | prefork, worker, event |
   | Windows | mpm_winnt              |
   |---------+------------------------|
-**** prefork
-**** worker
-- 
-  マルチスレッドとマルチプロセスのハイブリッド型
 
-**** event
-**** mpm_winnt
-**** mpm_netware
-**** mpm_os2
+**** Modules
+***** mpm_common
+- Apache MPM共通ディレクティブ
+****** Directives
+******* Group
+- リクエストに応答する際に所属するグループ
+******* MaxClients
+- Description : 
+******* MaxMemFree
+- Description : free()が呼ばれない限り、主メモリアロケータが保持し続けられるメモリの最大量。
+- Default : MaxMemFree 0
+- 
+  設定されていないか、ゼロに設定されている時は無制限。
+******* ServerLimit
+- Description : 
+******* ThreadLimit
+- Description : 設定可能な子プロセス毎のスレッド数上限を設定する
+- Default : 1920(mpm_winnt) / 64 (その他)
+- 
+  ThreadsPerChildよりもずっと大きな値に設定された場合、余計な未使用共有メモリが割り当てられてしまう。
+  
+******* ThreadPerChild
+- Description : 子プロセスそれぞれに生成されるスレッド数
+- Defalut : 64(mpm_winnt) / 25 (その他)
+******* User
+- Description : 
+***** event
+***** prefork
+***** worker
+- マルチスレッドとマルチプロセスのハイブリッド型
+***** mpm_winnt
+***** mpm_netware
+***** mpm_os2
 *** Other defaluts
 **** mod_access
 **** mod_actions
@@ -119,6 +176,7 @@
 **** mod_auth_digest
 **** mod_auth_ldap
 **** mod_autoindex
+- Discription : UnixのlsやWinのdirシェルコマンドと似たディレクトリインデックスを生成する。
 **** mod_cache
 **** mod_cern_meta
 **** mod_cgi
@@ -128,6 +186,13 @@
 **** mod_dav_fs
 **** mod_deflate
 **** mod_dir
+- Description : 最後のスラッシュのリダイレクト、ディレクトリのインデックスファイルを扱う機能を提供。
+***** Directives
+****** DirectoryCheckHandler
+****** DirectoryIndex
+****** DirectoryIndexRedirect
+****** DirectorySlash
+****** FallbackResource
 **** mod_disk_cache
 **** mod_dumpio
 **** mod_echo
@@ -145,12 +210,37 @@
 **** mod_ext_filter
 **** mod_file_cache
 **** mod_headers
+- HTTPリクエストヘッダとレスポンスヘッダをカスタマイズする
+***** Directives
+****** Header
+- 説明 : HTTPレスポンスヘッダの設定
+- 構文 :
+  Header [condition] set|append|add|unset|echo header [value] [early|env=[!]variable]
+******* Options
+******** set
+******** append
+******** add
+******** unset
+- 指定された名前の応答ヘッダが存在している場合、削除する。
+******** echo
+****** RequestHeader
 **** mod_imap
 **** mod_include
 **** mod_info
 **** mod_isapi
 **** mod_ldap
 **** mod_log_config
+- サーバへのリクエストのロギング機能
+***** Format
+***** Directives
+****** BufferedLogs
+****** CustomLog
+- ログファイルの名前と書式を設定する
+****** GlobalLog
+****** LogFormat
+- Description : ログファイルで使用する書式を設定する
+- アクセスログファイルの書式を指定する。
+****** TransferLog
 **** mod_log_forensic
 **** mod_logio
 **** mod_mem_cache

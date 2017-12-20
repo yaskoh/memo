@@ -7,6 +7,7 @@
 ***** Options
 - --user
 - --password
+**** undeploy
 *** Link
 - [[http://caucho.com/resin-4.0/admin/resin-admin-command-line.xtp][command line resin administration - Resin Documentation]]
 ** Structure
@@ -39,10 +40,14 @@
 - licens location
 ***** keys/
 - openssl keys
+**** log/
+- logs
+***** access.log
+***** (service).log
+***** watchdog-manager.log
+**** resin-data/
 **** webapps/
 - default deployment directory
-**** logs/
-- logs
 ** Manual
 *** admin/configuration
 **** Configuration
