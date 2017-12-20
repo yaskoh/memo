@@ -35,6 +35,45 @@
 **** タイプライター
 **** ロジカル
 *** かな入力
+**** カナ系
+***** JISかな
+***** 新JIS
+***** 花配列
+***** 月配列
+***** NICOLA配列
+- https://ideasity.biz/mac-oyayubi-shift
+- http://nicola.sunicom.co.jp/olddoc/nicolaha.html
+***** TRON配列
+***** 飛鳥カナ配列
+- https://ameblo.jp/asuka-layout/
+- [[https://ameblo.jp/asuka-layout/entry-10589277915.html?frm_src=thumb_module][（恐る恐る）飛鳥の最終版が出た模様。。。 - 飛鳥カナ配列 未来の子供達への贈り物]]
+
+***** 下駄配列
+****** 下駄配列
+****** 新下駄配列
+**** 行段系
+***** Qwerty
+***** AZIK
+***** Dvorak
+***** SKY
+**** Link
+- http://jisx6004.client.jp/layout.html
+** Software
+*** Windows
+**** DvorakJ
+**** AutoHotkey
+**** やまぶきR
+**** 姫踊子草
+*** Mac
+**** Karabiner Element
+**** Lacille
+- http://lacaille.jpn.org/
+- http://www.geocities.jp/nasukoji_7/download/download_tesla.html
+
+**** TESLA
+***** Memo
+- dvorak・ローマ字配列でのキーが、TeslaPistMakerにデフォルトで置いていないため、作成する。
+  半濁点？かなにかでエラーとなるため、コメントアウトして作成した。
 ** Memo
 *** キーの役割
 - かな : かな入力
