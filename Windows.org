@@ -681,6 +681,9 @@
   
 ******* cscript.exe
 - コマンドライン用WSH。
+******* eventcreate.exe
+- This enables an admistrator to create a custom event ID and message in a specified event log.
+  イベントログの追加に加え、イベントソースが存在しない場合は作成してくれる。
 ******* findstr.exe
 - ファイルから文字列を検索する
 ******** Options
@@ -752,6 +755,38 @@
 - ローカルセキュリティポリシーをCUIで変更する。
 ******** Link
 - https://orebibou.com/2013/09/secedit-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%AB%E3%82%88%E3%82%8B%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC/
+******* reg.exe
+- Registory操作
+******** Operations
+********* REG ADD key
+- REG ADD key
+
+- ex
+  REG ADD "HKLM\SYSTEM\CurrentControlSet\services\eventlog\Application\Revenue Management Application" /v CustomSource /t REG_DWORD /d 1
+********** Options
+*********** /v valuename
+*********** /d data
+*********** /t type
+************ Type
+- REG_SZ
+- REG_MULTI_SZ
+- REG_EXPAND_SZ
+- REG_DWORD
+- REG_QWORD
+- REG_BINARY
+- REG_NONE
+*********** /s separator
+********* COPY
+********* DELETE
+********* QUERY
+********* SAVE
+********* RESTORE
+********* LOAD
+********* UNLOAD
+********* COMPARE
+********* EXPORT
+********* IMPORT
+********* FLAGS
 ******* tasklist.exe
 - 現在アクティブなプロセスとそのPIDのリストが表示される。
   POSIXのpsみたいなもの。
@@ -765,12 +800,17 @@
 ******* where.exe
 - プログラムの場所を返す
 ****** GUI
+******* eventvwr.exe
+- イベントビューアー
 ******* mmc.exe
 - Microsoft管理コンソール Microsoft Management Console
 ******* mstsc.exe / リモートデスクトップ
 ******** Options
 ********* /admin
 - コンソールセッションに接続する(RDC 6.1以降)
+- Windows 2008以上では、Session 0がnon-interactiveとなったため、consoleセッションには接続できない模様。
+  [[https://social.technet.microsoft.com/Forums/lync/en-US/5895015a-d041-441e-83b3-4b0c4c74169a/windows-server-2012-console-session?forum=winserverTS][Windows server 2012 Console session - Lync TechCenter]]
+  [[https://blogs.technet.microsoft.com/askperf/2007/04/27/application-compatibility-session-0-isolation/][Application Compatibility -Session 0 Isolation - Ask the Performance Team Blog]]
 ********* obsolete
 ********** /console
 - RDC 5.x/6.0の場合に、コンソールセッションに接続する方法。
@@ -890,8 +930,6 @@ efsui.exe
 EhStorAuthn.exe
 esentutl.exe
 eudcedit.exe
-eventcreate.exe
-eventvwr.exe
 expand.exe
 extrac32.exe
 fc.exe
@@ -1051,7 +1089,6 @@ RDVGHelper.exe
 ReAgentc.exe
 recdisc.exe
 recover.exe
-reg.exe
 regedt32.exe
 regini.exe
 Register-CimProvider.exe
@@ -1327,7 +1364,11 @@ xwizard.exe
 ********* Keyboard Layout
 ********* Keyboard Layouts
 
-******** services
+******** Services
+********* EventLog
+********** Application
+- イベントログソースが保存されている。
+  Event Log Source
 ********* LanmanWorkstation
 ********** Parameters
 *********** EnableNetBTForSmb2
@@ -1390,6 +1431,9 @@ xwizard.exe
   - Backspace : 00 0E
   - Win右 : E0 5C
   - Win左 : E0 5B
+  - 半角/全角 : 0x29
+  - 変換 : 0x79
+  - 無変換 : 0x78
 
 ****** Link(Scancode)
 - [[https://www.win.tue.nl/~aeb/linux/kbd/scancodes.html#toc1][Keyboard scancodes]]
@@ -1398,13 +1442,21 @@ xwizard.exe
 - [[http://yanor.net/wiki/?Windows%2FTIPS%2F%E3%83%AC%E3%82%B8%E3%82%B9%E3%83%88%E3%83%AA%E3%82%92%E4%BF%AE%E6%AD%A3%E3%81%97%E3%81%A6CAPSLOCK%E3%81%AE%E5%89%B2%E3%82%8A%E5%BD%93%E3%81%A6%E5%A4%89%E6%9B%B4][レジストリを修正してCAPSLOCKの割り当て変更 - yanor.net]]
 
 ***** Key設定
+****** PC
+- 内容(2017/12/18)
+  00 00 00 00 : header version[4byte]
+  00 00 00 00 : flags[4byte]
+  04 00 00 00 : エントリ数、terimnate含む
+  3A 00 1D 00 : CapsLock で 左Ctrl を上書
+  1D 00 3A 00 : 左Ctrl で CapsLock を上書
+  79 00 38 E0 : 変換 で 右Alt を上書
+  00 00 00 00 : terminate
 ****** GDP Pocket
 - 2017/8/26
 
 **** Link
 - [[https://support.microsoft.com/ja-jp/kb/256986][上級ユーザー向けの Windows レジストリ情報 - Microsoft]]
 - [[http://www.akadia.com/services/windows_registry_tutorial.html][Windows Registry Tutorial]]
-- 
 
 ** Environment Variables
 *** Values
@@ -1476,6 +1528,24 @@ xwizard.exe
 ***** wbem
 **** SysWOW64
 - 64bit OSで32bit OSをエミュレーションする際に利用される、32bit用のシステムファイル。
+** Account
+*** Service
+**** System (Local System)
+- NT AUTHORITY\System
+- 権限:Administratorsグループメンバと同等
+- ネットワークアクセス時の資格情報:ローカルのコンピュータ・アカウント
+**** Local Service
+- NT AUTHORITY\LocalService
+- 権限:Usersグループメンバと同等
+- ネットワークアクセス時の資格情報:匿名
+- Win XPより追加。
+**** Network Service
+- NT AUTHORITY\NetworkService
+- 権限:Usersグループメンバと同等
+- ネットワークアクセス時の資格情報:ローカルのコンピュータ・アカウント
+- Win XPより追加。
+**** Link
+- http://www.atmarkit.co.jp/ait/articles/0905/08/news095.html
 ** Shortcuts
 *** Windows 7
 **** Win + f : エクスプローラ・"検索結果"を開く
@@ -1842,6 +1912,9 @@ xwizard.exe
 *** リモートデスクトップでパスワード変更
 - Ctrl + Alt + End (deleteでなく!)
   http://grum.hatenablog.com/entry/2016/01/13/022550
+*** 権限
+- everyoneは、ログインできるユーザすべてに対しての権限。
+  ユーザ登録していない、ログインできない人も含め全て、の場合はgeustが該当とのこと。
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

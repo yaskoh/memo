@@ -1520,6 +1520,14 @@
 - Show the current EGA/VGA console screen font
 **** showkey(1)
 - examine the codes sent by the keyboard
+***** Options
+****** -h, --help
+****** -a, --ascii
+- 'ascii' dump mode.
+****** -s, --scancodes
+- Starts showkey in scan code dump mode.
+****** -k, --keycodes
+- Starts sohwkey in keycode dump mode. default.
 **** sftp
 - 
   interactive file transfer program, similar to ftp.

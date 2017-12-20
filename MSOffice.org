@@ -537,3 +537,6 @@
 *** Backround Theme
 - (2013) File -> Account -> Office Background
   [[https://121ware.com/qasearch/1007/app/servlet/relatedqa?QID=014606][Office 2013でタイトルバーの背景を変更する方法 - LAVIE]]
+*** リスト中で改行
+- Shift + Enterでリスト中で強制改行。
+  リスト以外についても同様に動作する。

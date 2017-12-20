@@ -9,6 +9,9 @@
   - 会員登録したサイトを閲覧中は他のサイトを見に行かず、終了後は一旦ブラウザを終了させることでcookieを盗まれないようにする。
 - 作成者
   - ユーザIDやユーザ認証に関わる情報は極力cookieには含めないようにし、セッションIDはセッションごとにランダムな値を生成することで、推測できないようにする。
+**** XST / Cross-Site Tracing
+***** Link
+- [[https://blog.tokumaru.org/2013/01/TRACE-method-is-not-so-dangerous-in-fact.html][実はそんなに怖くないTRACEメソッド - 徳丸浩の日記]]
 **** SQL Injection
 
 **** Code Injection

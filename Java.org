@@ -151,11 +151,19 @@
   Starts a java application.
   クラスファイルからクラスを読み込んで実行する。
 
+****** Options
+******* -client
+******* -server
+******* -agentlib:libname[=options]
+******* -agentlib:libname[=options]
+******* -classpath classpath -cp classpath
 - -classpath classpath
 - -cp classpath
   
-- 
-  https://docs.oracle.com/javase/jp/6/technotes/tools/windows/java.html
+******* -Xmsn
+******* -Xmxn
+****** Link
+- https://docs.oracle.com/javase/jp/6/technotes/tools/windows/java.html
 
 ***** javac
 - javac [options] [sourcefiles] [classes] [@argfiles]

@@ -49,7 +49,11 @@
 **** #Const
 **** #If...Then...#Else
   
+*** Error Messages
+
+*** Events
 *** Functions / 関数
+- [[https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/functions-visual-basic-for-applications][Functions (Visual Basic for Applications) - Dev Center]]
 - [[http://officetanaka.net/excel/vba/function/index.htm][VBAの関数 - officeTANAKA]]
   （Application毎に違いがあれば移行する）
 
@@ -127,7 +131,23 @@
   
 - 
   "string"で指定した文字列に、conversionで指定した変換を行う。
+*** Keywords
+*** Methods
 *** Objects
+- [[https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/objects-visual-basic-for-applications][Objects (Visual Basic for Applications) - Dev Center]]
+**** Collection
+**** Debug
+**** Dictionary
+**** Drive
+**** Drives Collection
+**** Err
+**** File
+**** Files Collection
+**** FileSystemObject
+**** Folder
+**** Folders Collection
+**** TextStream
+**** UserForm
 *** Operators
 **** 算術演算子
 ***** ^
@@ -164,7 +184,7 @@
 *** Properties
 *** Statements
 - [[https://msdn.microsoft.com/ja-jp/library/office/jj692812.aspx][ステートメント - Visual Basic 言語リファレンス - Dev Center]]
-
+- [[https://msdn.microsoft.com/en-us/vba/language-reference-vba/articles/statements][Statements - Language Reference VBA - Dev Center]]
 **** AppActivate
 **** Beep
 **** Call
@@ -244,7 +264,7 @@
 **** Get
 **** GoSub
 **** GoTo
-**** If ... Then ... Else
+**** If ... Then ... ElseIf ... Else
 - 
   条件を評価して、条件付きの実行を行うステートメント
   If ... Thenで始まり、End Ifで終わる。
@@ -265,13 +285,29 @@
 - 
   プライベート変数を宣言する。プライベート変数は、宣言されたモジュール内のみ参照できる。
 
+**** Seek
+**** Select
+**** SendKeys
+**** Set
+
+**** SetAttr
+**** Static
+**** Stop
 **** Sub
 - 
   Subプロシージャを作成する。
 
+**** Time
+**** Type
+**** Unload
+**** While...Wend
+
+**** Width #
 **** With
 - 
 
+**** Write #
+*** Link
 ** Applications
 *** Excel
 **** About
