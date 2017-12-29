@@ -2,6 +2,32 @@
 ** Documentation
 *** Introduction
 **** Installation
+***** Basics/What Will Be Installed
+***** What Version to Pick?
+- Release cycles : Usually 4 months long.
+- Installation
+  - recommend to use OS package manager
+  - pip, python package manager
+  - source also sharing
+***** Control Machine Requirements
+- any machine with Python 2 or Pyton 3.
+  Windows isn't supported for the control machine.
+***** Managed Node Requirements
+- you need a way to communicate, which is normally ssh.
+  By default this uses sftp, and if that's not available, you can switch to scp in ansible.cfg.
+***** Installing the Control Machine
+****** Yum
+****** Apt(Ubntu)
+****** Apt(Debian)
+****** Portage(Getnoo)
+****** pkg(FreeBSD)
+****** OSX
+****** OpenCSW(Solaris)
+****** Pacman(Arch Linux)
+****** pip
+****** Tarballs of Tagged release
+****** Running From Source
+***** Ansible on GitHub
 **** Getting Started
 **** Inventory
 **** Dynamic Inventory
@@ -10,6 +36,21 @@
 **** Configuration file
 **** BSD Support
 **** Windows Support
+***** Windows: How Does It Work
+- asnible start to support for managing win machine form v1.7, using native PowerShell.
+- still be run from a Linux control machine, and uses the "winrm" Python module to talk to remote ohsts.
+  Win Subsystem for Linux bash also can be a control machine, though not supported.
+  
+***** Installing on the Control Machine
+***** Using a Windows control machine
+***** Authentication Options
+****** Certificate
+****** Kerberos
+****** CredSSP
+****** Credential Delegation
+***** Inventory
+***** Windows System Prop
+***** Getting to PowerShell 3.0 or higher
 **** Networking Support
 *** Quickstart Video
 *** Playbooks

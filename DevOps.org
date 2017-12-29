@@ -28,5 +28,17 @@
 
 **** Glossary
 ***** COSOキューブ
+*** Ansible実践ガイド
+- プロビジョニングレイヤ
+  - Orchestration
+    リソース集合体の連携したサービスを提供すること
+    Fabric, Capistranoなど
+  - Configuration Management
+    OS起動後の初期設定やMWのインストール、設定などの処理を行うレイヤ。
+    Ansible, Chef, Puppet, Itamaeなど
+  - Bootstrapping
+    OSをインストールした後にOSを起動し、利用可能な状態になるまでの処理レイヤ。
+    Cobbler, OpenStack, Dockerなど
+
 ** Link
 - [[http://simplearchitect.hatenablog.com/entry/2016/05/24/185431][DevOpsスタータキットの公開 - メソッド屋のブログ]]
