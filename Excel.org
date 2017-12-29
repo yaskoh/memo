@@ -270,9 +270,8 @@
   =CODE("A") ⇒ 65
   =CODE("!") ⇒ 33
 **** EXACT
-- 
-  2つのテキスト文字列を比較し、同じであればTRUE、それ以外の場合はFALSEを返す。
-
+- 2つのテキスト文字列を比較し、同じであればTRUE、それ以外の場合はFALSEを返す。
+- IFの場合、AaaAaとaaaaaは同じと判断されるが、EXACTを使うと別物と判断してくれる。
 - ex
   EXACT(text1, text2)
 
@@ -629,6 +628,9 @@
 *** 書式のユーザー設定
 - @"様"などと書式設定を入力すると、〜様、となる。
   https://kokodane.com/tec1_12.htm
+*** アルファベットの大文字・小文字を区別して判定する
+- EXACT関数を利用する。
+  http://www.relief.jp/docs/002927.html
 ** Link
 - [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
 - [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]

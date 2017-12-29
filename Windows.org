@@ -79,6 +79,46 @@
 ******** /F
 ****** format
 ****** fsutil
+******* Commands1
+******** 8dot3name
+******** behavior
+- ファイルシステムの動作の制御
+********* Commands2
+********** query
+- パラメータを照会
+*********** Options
+************ AllExtChar
+************ BugcheckOnCorrupt
+************ Disable8dot3
+************ DisableCompression
+************ DisableEncryption
+************ DisableLastAccess
+************ EncryptPagingFile
+************ MftZone
+************ MemoryUsage
+************ QuotaNotify
+************ SymlinkEvaluation
+- シンボリックリンクの許可設定を表示
+************ DisableDeleteNotify
+********** set
+- パラメータを変更
+*********** Options
+************ SymlinkEvaluation
+- 許可設定を変更。
+  R2R:1でRemote to remoteのlinkを許可とする。
+******** dirty
+******** file
+******** fsinfo
+******** hardlink
+******** objectid
+******** quota
+******** repair
+******** reparsepoint
+******** resource
+******** sparse
+******** transaction
+******** usn
+******** volume
 ****** ftype
 ****** goto
 ****** gpresult
@@ -744,6 +784,14 @@
 ******* gpupdate.exe
 - ドメインコントローラーからげな次の最新のグループポリシーをロードし適用する。
   "secedit /refreshpolicy"とほぼ同じ。
+- 即時反映は"gpupdate /force /wait:0"
+******** Options
+********* /Target:{Computer | User}
+********* /Force
+********* /Wait:{value}
+********* /Logoff
+********* /Boot
+********* /Sync
 ******* icacls.exe
 - Integrity Control Access Control List。
   ファイルやフォルダのアクセス制御リストを表示、修正、バックアップ、復元などが可能。
@@ -1458,6 +1506,16 @@ xwizard.exe
 - [[https://support.microsoft.com/ja-jp/kb/256986][上級ユーザー向けの Windows レジストリ情報 - Microsoft]]
 - [[http://www.akadia.com/services/windows_registry_tutorial.html][Windows Registry Tutorial]]
 
+*** Local Security Policy
+**** Windows Server 2012 R2
+***** Security Settings
+****** Account Policies
+****** Local Policies
+******* Audit Policy
+******* User Rights Assighnment
+******* Security Options
+******** User Account Control: Run all administrators in Admin Approval Mode
+****** Windows Firewall with Advanced Security
 ** Environment Variables
 *** Values
 **** APPDATA
@@ -1915,6 +1973,13 @@ xwizard.exe
 *** 権限
 - everyoneは、ログインできるユーザすべてに対しての権限。
   ユーザ登録していない、ログインできない人も含め全て、の場合はgeustが該当とのこと。
+*** シンボリックリンクの設定に関する事項
+- [[https://blogs.technet.microsoft.com/jpntsblog/2016/08/31/smbandsymlink/][ファイル共有とシンボリックリンクの利用について - Ask the Network & AD Support Team, Microsoft]]
+  アクセス元で"fsutil behavior set symlinkevaluation R2R:1"をしないとRemote間でのリンクは動作しない、など。
+
+- [[http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#changesymboliclinkprivilege][Change Symbolic Link Priviledge - Link Shell Extension]]
+  シンボリック利用のための権限
+
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

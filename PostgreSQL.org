@@ -726,7 +726,7 @@
 **** pg_user_mappings
 **** pg_view
 
-** サーバの管理
+** Server Administration サーバの管理
 *** 運用管理概要
 
 - [[http://lets.postgresql.jp/map/operation][目的別ガイド：運用管理編 - Let's postgres]]
@@ -822,15 +822,15 @@
 ***** 不定期
 ****** 再起動
 ****** フェイルオーバ
-*** 設定
+*** Installation from Source Code / ソースコードからインストール
+*** Installation from Source Code on Windows / Windowsにおけるソースコードからのインストール
+*** Server Setup and Operation / サーバの準備と運用
+*** Server Configuration / サーバの設定
 **** 設定ファイル
-- 
-  postgresql.conf、pg_hba.conf、pg_ident.confという設定ファイルがある。
+- postgresql.conf、pg_hba.conf、pg_ident.confという設定ファイルがある。
   インストールしたフォルダの"data"フォルダ配下に存在する。
-
 ***** postgresql.conf
-- 
-  最大接続数やログの保存方法など、基本的なPostgreSQLの設定を行う。
+- 最大接続数やログの保存方法など、基本的なPostgreSQLの設定を行う。
 
 ***** pg_hba.conf
 - 
@@ -857,76 +857,135 @@
   認証方式で"ident"を使う場合に、identのユーザ名をPostgreSQLのユーザ名にマップするマップ名の記述を行う。
   MAPNAME, SYSTEM-USERNAME, PG-USERNAMEの3項目がある。
 
-*** チューニング
-
-- [[http://lets.postgresql.jp/map/tuning][目的別ガイド：チューニング編 - Let's postgres]]
-- [[https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server/ja][Tuning Your PostgreSQL Server/ja]]
-
-**** チューニングの流れ
-- 情報収集と分析
-- チューニングの実施
-- 繰り返し or 完了の判断
-
-**** ハードウェア構成の見直し
-
-***** スケールアウト / スケールアップ
-
-***** ストレージを重視
-
-***** メモリ量を重視
-
-***** CPU速度を重視
-
-**** アプリケーション要求の見直し
+**** Setting Parameters / パラメータの設定
+***** パラメータ名とその値
 - 
-  アプリケーションやサービスの無謀な要求の確認。
-  
-  歯抜けのないIDを振る、正確な行数を表示する、など、
-  パフォーマンスを犠牲にして非効率な処理を行う必要があるか確認する。
+  - 論理型
+  - 文字列型
+  - 数値型
+  - 単位付きの数値
+  - 列挙型
+***** 設定ファイルによるパラメータ操作
+- postgresql.conf
+  - 1つの行に1つのパラメータが設定される
+  - 名前と値の間の等号は省略可能
+  - ハッシュはその行の後ろがコメントであることを示す。
+  - 単純でない識別子、または数値でないパラメータは単一引用符でくくられる。
+- 再読み込み
+  - SIGHUPシグナルを受け取るたびに再読み込み
+    - pg_ctl reload (コマンドライン)
+    - pg_reload_conf() (SQL関数)
+- postgres.auto.conf
+  - 決して手動で編集してはいけない
+  - ALTER SYSTEMコマンドを使った設定値を保存する。
+  - postgresql.confが読み込まれる度に常に自動で読み込まれ、postgresql.conf設定を上書きする。
+- pg_file_settings（システムビュー）
 
-**** スキーマ・チューニング
-
-***** テーブルの物理編成
-- 正規型
-  正規化が重要。
-  1行のサイズが2KBを超えると、極端に性能が落ちる場合がある。
-
-- データ型
-  文字列型の使い分けなど、効率の良いデータ型を選ぶことも効果がある。
-
-- パーティショニング
-  1テーブルのサイズが大きすぎるとキャッシュ効率も落ちる。
-  パーティショニングなどテーブル分割も検討されたし。
-
-***** データの並び順を考慮
-- 
-  
-
-***** 適切なインデックスを張る
-
-***** 更新処理でHOTを働かせる
-- 
-  HOTを利用すると更新処理が速くなる、とのこと。
-
-**** パラメータ・チューニング
-
-***** 接続数
-
-***** メモリ関連
-
-***** WAL関連
-
-**** クエリ・チューニング
-
-***** SQL チューニング
-
-***** 通信方式
-
-***** Prepared Statement
-
-***** 大量データ投入
-
-*** バックアップ・リストア
+***** SQLを通じたパラメータ操作
+- 恒久的
+  - ALTER SYSTEM
+    - グローバルな設定値を変更する。postgresql.conf変更と等価。
+  - ALTER DATABASE
+    - データベース単位での変更。グローバル設定値を上書き。
+  - ALTER ROLE
+    - ユーザ固有の設定値。グローバル、データベース設定値を上書き。
+- 一時的
+  - SHOW : 現在の値を調べる。
+    関数はcurrent_setting(setting_name text)
+  - SET : ローカルに変更できるパラメータの値を変更する。
+    関数はset_config(setting_name, new_value, is_local)
+- 参照
+  - pg_settings (system view)
+    - SHOW ALLと同じだが、更に詳細な情報が提供される。
+    - このビューのsetting列をudateするのは、SETコマンドの実行と同等。
+***** シェルによるパラメータ操作
+***** 設定ファイルの内容の管理
+**** File Locations
+- data_dirctory
+  - データ格納に使用するディレクトリ
+- config_file
+  - メインサーバ設定ファイル。通例postgresql.conf
+- hba_file
+  - ホストベース認証(HBA)用のファイル。通例pg_hba.conf
+- ident_file
+  - ユーザ名マッピング設定ファイル。通例pg_ident.conf
+- external_pid_file
+  - PIDファイルの名前を指定。
+**** Connections and Authentication / 接続と認証
+***** 接続設定
+****** listen_address (string)
+****** port (integer)
+****** max_connections (integer)
+****** superuser_reserved_connections (integer)
+****** unix_socket_directories (string)
+****** unix_socket_group (string)
+****** unix_socket_permissions (integer)
+****** bonjour (boolean)
+****** bonjour_name (string)
+****** tcp_keepalives_idle (integer)
+****** tcp_keepalives_interval (integer)
+****** tcp_keepalives_count (integer)
+***** セキュリティと認証
+****** authentication_timeout (integer)
+****** ssl (boolean)
+****** ssl_ca_file (string)
+****** ssl_cert_file (string)
+****** ssl_crl_file (string)
+****** ssl_key_file (string)
+****** ssL_ciphers (string)
+****** ssl_prefer_server_ciphers (bool)
+****** ssl_ecdh_curve (string)
+****** password_encryption (boolean)
+****** krb_server_keyfile (string)
+****** krb_caseins_users (boolean)
+****** db_user_namespace (boolean)
+**** Resource Consumption / 資源の消費
+***** メモリ
+***** ディスク
+***** カーネル資源使用
+***** コストに基づくVacuum遅延
+***** バックグラウンドライタ
+***** 非同期動作
+**** Write Ahead Log / ログ先行書き込み(WAL)
+***** 諸設定
+****** wal_level (enum)
+- VALUE: minimal, replica, logical
+****** wal_buffers (integer)
+***** チェックポイント
+****** checkpoint_timeout (integer)
+****** checkpoint_completion_target (floating point)
+****** max_wal_size (integer)
+- 自動WALチェックポイント尾間にWALが増加する最大サイズ。
+  ソフトリミット。高負荷の場合などwal_max_sizeを超える場合がある。
+****** min_wal_size (integer)
+***** アーカイビング
+****** archive_mode (enum)
+****** archive_command (string)
+****** archive_timeout (integer)
+**** Replication / 
+**** Query Planning
+***** プランナメソッド設定
+***** プランナコスト定数
+****** effective_cache_size (integer)
+***** 遺伝的問合せオプティマイザ
+***** その他のプランナオプション
+**** Error Reporting and Logging
+**** Run-time Statistics
+**** Automatic Vacuuming
+**** Client Connection Defaults
+**** Lock Management
+**** Version and Platform Compatibility
+**** Error Hadling
+**** Preset Options
+**** Customized Options
+**** Developer Options
+**** Short Options
+*** Client Authentication / クライアント認証
+*** Database Roles / データベースロール
+*** Managing Databases / データベース管理
+*** Localization / 多言語対応
+*** Routine Database Maintenance Tasks / 定常的なデータベース保守作業
+*** Backup and Restore / バックアップとリストア
 **** SQLによるダンプ
 - ダンプ
   データのダンプ方法は、以下の通り。
@@ -1022,19 +1081,80 @@
 - standby_mode(boolean)
 - primary_conninfo(string)
 - trigger_file(string)
+*** High Availability, Load Balancing, and Replication / 高可用性・負荷分散・レプリケーション
+*** Recovery Configuration / リカバリの設定
+*** Monitoring Database Activity / データベース活動状況の監視
+*** Monitoring Disk Usage / ディスク使用量の監視
+*** Reliability and the Write-Ahead Log / 信頼性とログ先行書き込み
+*** Regression Tests / リグレッションテスト
+*** チューニング
 
-*** 保守
-**** VACUUM
+- [[http://lets.postgresql.jp/map/tuning][目的別ガイド：チューニング編 - Let's postgres]]
+- [[https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server/ja][Tuning Your PostgreSQL Server/ja]]
+
+**** チューニングの流れ
+- 情報収集と分析
+- チューニングの実施
+- 繰り返し or 完了の判断
+
+**** ハードウェア構成の見直し
+
+***** スケールアウト / スケールアップ
+
+***** ストレージを重視
+
+***** メモリ量を重視
+
+***** CPU速度を重視
+
+**** アプリケーション要求の見直し
 - 
+  アプリケーションやサービスの無謀な要求の確認。
+  
+  歯抜けのないIDを振る、正確な行数を表示する、など、
+  パフォーマンスを犠牲にして非効率な処理を行う必要があるか確認する。
 
-*** 高可用性・負荷分散・レプリケーション
+**** スキーマ・チューニング
 
-*** 監視
+***** テーブルの物理編成
+- 正規型
+  正規化が重要。
+  1行のサイズが2KBを超えると、極端に性能が落ちる場合がある。
 
-**** データベース活動状況
+- データ型
+  文字列型の使い分けなど、効率の良いデータ型を選ぶことも効果がある。
 
-**** ディスク使用量
-   
+- パーティショニング
+  1テーブルのサイズが大きすぎるとキャッシュ効率も落ちる。
+  パーティショニングなどテーブル分割も検討されたし。
+
+***** データの並び順を考慮
+- 
+  
+
+***** 適切なインデックスを張る
+
+***** 更新処理でHOTを働かせる
+- 
+  HOTを利用すると更新処理が速くなる、とのこと。
+
+**** パラメータ・チューニング
+
+***** 接続数
+
+***** メモリ関連
+
+***** WAL関連
+
+**** クエリ・チューニング
+
+***** SQL チューニング
+
+***** 通信方式
+
+***** Prepared Statement
+
+***** 大量データ投入
 *** 物理的な格納
 **** データベースファイルのレイアウト
 - 
@@ -1093,8 +1213,8 @@
   テーブルまたはインデックスが1GBを超えると、ギガバイト単位のセグメントに分割される。
   2つ目以降のセグメントについては、ノード番号.1、ノード番号.2、というファイル名となる。
   
-** クライアントインターフェース
-** サーバプログラミング
+** Client Interfaces クライアントインターフェース
+** Server Programming サーバプログラミング
 ** Reference リファレンス
 *** SQL Command
 **** BEGIN
@@ -1363,7 +1483,19 @@
 **** postmaster
 - 
   postgresの別名。廃止予定。
-** 内部構造
+** Internals 内部構造
+*** Overview of PostgreSQL Internals /  PostgreSQL内部の概要
+*** System Catalogs / システムカタログ
+**** Overview / 概要
+**** System Catalogs
+**** System Views
+***** pg_file_settings
+- 設定ファイルの内容の要約を提供する。
+  現在の内容であり、最後に適用した内容ではない。
+***** pg_settings
+- サーバの実行時パラメータへのアクセスを提供する。
+  基本的にSHOWとSETコマンドの代わりとなるインターフェース。
+*** Frontend/Backend Protocol
 *** プロセスとメモリ構造
 *** データベースクラスタ/バックグラウンドライタ
 *** SQLの実行
@@ -1437,8 +1569,8 @@
 **** Link
 - [[http://www.slideshare.net/SoudaiSone/db-34069118][PostgreSQLの冗長化について - SlideShare]]
 ** Link
-- [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.2 Documentation]]
-- [[https://www.postgresql.jp/document/9.3/html/index.html][PostgreSQL 9.3.2文書]]
+- [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.6 Documentation]]
+- [[https://www.postgresql.jp/document/9.6/html/index.html][PostgreSQL 9.6.5文書]]
 - [[http://www.postgresql.org/][PostgreSQL]]
 - [[https://wiki.postgresql.org/wiki/Main_Page][PostgreSQL Wiki]]
 
@@ -1446,6 +1578,8 @@
 - [[http://lets.postgresql.jp/documents/tutorial/centos/2][CentOSでPostgreSQLを使ってみよう!(2)]]
 
 - [[https://thinkit.co.jp/series/4975][徹底比較!! Oracle & PostgreSQL 記事一覧 - Think IT]]
+
+- [[http://pgtune.leopard.in.ua/][pgtune]]
 
 * EnterpriseDB
 ** 比較

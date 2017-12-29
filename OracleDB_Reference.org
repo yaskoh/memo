@@ -26,7 +26,7 @@
 **** COMPATIBLE
 - Type:文字列, 変更不可
   Oracleとの互換性を保つ必要があるリリースを指定する。
-**** CONTROLL_FILES
+n**** CONTROLL_FILES
 - 制御ファイル名のリスト
 **** DB_BLOCK_BUFFERS
 - 
@@ -116,6 +116,9 @@
 - システムグローバル領域(SGA)内の共有プールのサイズ(BYTE)
 **** SPFILE
 - サーバー・パラメータ・ファイルのパス
+**** STREAMS_POOL_SIZE
+- SGA_TARGET初期化パラメータに0以外の値を設定すると、Oracleの自動共有メモリ―管理機能によってStreamsプールのサイズが管理される。
+  STREAMS_POOL_SIZE初期化パラメータにも0以外の値を設定した場合、この値は、Streamsプールの最小値として自動共有メモリ―管理によって使用される。
 **** UNDO_TABLESPACE
 - Type:文字列, Default:データベース内の最初に使用可能なUNDO表領域
   インスタンスの起動時に使用するUNDO表領域。

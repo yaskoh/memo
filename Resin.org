@@ -53,6 +53,7 @@
 **** Configuration
 ***** resin.properties
 - http://caucho.com/resin-4.0/admin/config-resin-properties.xtp
+****** Properties
 ***** resin.xml
 ****** Properties
 ******* cluster
