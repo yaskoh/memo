@@ -161,6 +161,8 @@
 *** /etc/passwd
 - Format
   ユーザ名:暗号化パスワード:UID:GID:ユーザのフルネーム:ユーザのホームディレクトリ:ログインシェル
+**** Memo
+- ログイン不要のユーザアカウントのログインシェルは、/usr/bin/falseなどとしてログインしてもすぐReturn 1(異常終了)が返る。
 
 *** /etc/group
 - Format
@@ -379,7 +381,19 @@
 ** Distributions
 *** Debian
 **** Debian
-
+***** Version
+****** Debian 9 / stretch
+****** Debian 8 / jessie
+****** Debian 7 / wheezy
+****** Debian 6.0 / squeeze
+****** Debian GNU/Linux 5.0 / lenny
+****** Debian GNU/Linux 4.0 / etch
+****** Debian GNU/Linux 3.1 / sarge
+- 2005/6/6
+****** Debian GNU/Linux 3.0 / woody
+****** Debian GNU/Linux 2.2 / potato
+****** Debian GNU/Linux 2.1 / slink
+****** Debian GNU/Linux 2.0 / hamm
 **** Ubuntu
 
 **** Obsoletes

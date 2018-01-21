@@ -130,6 +130,11 @@
 **** Multilib
 **** Testing
 *** tmp
+**** binutils
+- BINary UTILitieS
+***** ld
+**** GCC
+- Gnu Compiler Collection
 **** libjpeg
 - C library for reading and writing JPEG image files.
 **** libxpm

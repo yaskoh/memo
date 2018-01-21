@@ -323,7 +323,6 @@
          temporary
          deleted when unmounting or rebooting
 
-
 *** Link
 - [[http://refspecs.linuxfoundation.org/fhs.shtml][Filesystem Hierarchy Standard]]
 ** Link

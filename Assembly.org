@@ -280,6 +280,9 @@ LOOPNZ, LOOPNE SRC
     アボート
         例外。0除算などで発生。
 
+** x64 Assembly
+*** Link
+- [[https://software.intel.com/en-us/articles/introduction-to-x64-assembly][Introduction to x64 Assembly]]
 ** Assembler アセンブラ
 *** MASM Microsoft Macro Assembler
 - 
