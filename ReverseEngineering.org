@@ -1,0 +1,3 @@
+* Reverse Engineering
+** Link
+- [[http://www.atmarkit.co.jp/ait/articles/1105/17/news129.html][リバースエンジニアリング入門 - @IT]]
