@@ -1230,6 +1230,7 @@
 
 - [[https://docs.python.jp/3/tutorial/index.html][Pythonチュートリアル]]
 - [[https://docs.python.org/3/tutorial/][The Python Tutorial]]
+
 ** Reverse Lookup
 *** 覚書(old)
 - time.sleep
@@ -1310,3 +1311,10 @@
   "__abc"と変数やメソッドの前に"__"を付けるとprivateとなる。
 *** Tutorial
 - https://docs.python.jp/3/tutorial/index.html
+*** 仮想環境
+- Python3.6以降は"python3 -m venv evndir"を推奨。
+  3.3からvirtualenv相当のvenvが追加され、"pyvenv"コマンドが推奨されたが、現在非推奨。
+- [[https://qiita.com/shinespark/items/1d6ec0de89aa537da505][venvを使ったmacOSのPython開発環境2016]]
+
+- "pip freeze > packages"でインストール済みパッケージリストを出力、
+  "pip install -r packages"でインストール可能。

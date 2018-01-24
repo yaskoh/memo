@@ -16,14 +16,30 @@
 - brew --version
 - brew command [--verbose|-v} [options] [formula] ...
 **** Commads
-- install formula
-- remove formula
-- update
-- list
-- search text|/text/
-- audit
-- tap <user/repo>
+***** install formula
+***** remove formula
+***** update
+***** list
+***** link
+- リンクを更新する
+****** --force
+****** --overwrite
+***** search text|/text/
+***** audit
+***** tap <user/repo>
   taps a formula repository from GitHub using HTTPS.
+**** Memo
+***** Install
+- 公式ページ記載のスクリプトを実行
+  https://brew.sh/index_ja.html
+***** brewをupdate
+- cd $(brew --prefix)
+  git fetch origin
+  sudo git reset --hard origin/master
+***** FormulaのInstall先
+- /usr/local/Celler
+***** brewのlinkを更新
+- https://qiita.com/halo57/items/e7511f3befbcb9fedd6a
 ** Commands
 *** BSD
 **** dd

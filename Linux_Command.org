@@ -473,6 +473,7 @@
   変数を大域変数として追加する。
   ex) export FOO="BAR"
 
+***** Options
 - (-p)
   show environ variables
   
@@ -606,49 +607,74 @@
 **** gcc
 - コンパイルする。
 ***** Options
-****** -o
+****** Overall Options
+******* -c
+- アセンブルまで行いオブジェクトファイルを出力する
+******* -S
+- コンパイルまでを行いアセンブリファイルを出力する
+******* -E
+- プリプロセスだけ処理して標準出力する
+******* -o outfile
 - 出力ファイル名を指定する。
   ex) gcc -o hello.exe hello.c
-****** -Wall
-- ANSI Cスタイルの宣言と定義を使った場合に、一般的な警告オプションがすべてOnになり、
-  細かな警告をしてくれる。
-- "enable ALL of the Warnings"の略
-****** -Werror
-- 警告をエラーとして解釈させる
-****** -O1(O), -O2, -O3
-- 最適化オプション。数字が大きい方が強力な最適化が行われる。
-  ただしO3はバグが多い印象があるとのこと。
-****** -g
-- gdbでのデバッグが可能となる。
-****** -E
-- プリプロセスだけ処理して標準出力する
-****** -S
-- コンパイルまでを行いアセンブリファイルを出力する
-****** -c
-- アセンブルまで行いオブジェクトファイルを出力する
-****** -l
-- ダイナミックリンクを行う。
-  引数としてメイン関数を先、ライブラリを後に並べる必要ある。
-  -lの後にスペースはあけず、ライブラリ名のlibを除いたものを指定する。
-  ex) libmをリンクしたければ、-lmとする。
-****** -save-temps
-- 中間ファイルを保存する
-  SAVE TEMProrary filesS
-****** -v
+******* -v
 - 詳細を表示
   - Target: に標的システム名が表示される
     通常ハイフンで3つに区切られ、CPU名、マシンのベンダー名、OSもしくはカーネル名が
 
-****** -static
-- 静的リンクが行われる
-****** -print-prog-name=name
-- gccドライバが起動する外部プログラムの絶対パスを表示する
-****** -print-file-name=name
-- 外部ファイルの絶対パスを表示する
-****** -print-libgcc-file-name
-- GCCランタイムライブラリの絶対パスを表示する
-****** -dumpversion
+******* --help
+******* --version
+****** C Language Options
+****** C++ Language Options
+****** Language Independent Options
+****** Warning Options
+******* -Wall
+- ANSI Cスタイルの宣言と定義を使った場合に、一般的な警告オプションがすべてOnになり、
+  細かな警告をしてくれる。
+- "enable ALL of the Warnings"の略
+******* -Werror
+- 警告をエラーとして解釈させる
+****** Debugging Options
+******* -g
+- gdbでのデバッグが可能となる。
+******* -dumpversion
 - バージョンを表示する
+******* -print-file-name=library
+- 外部ファイルの絶対パスを表示する
+******* -print-libgcc-file-name
+- GCCランタイムライブラリの絶対パスを表示する
+******* -print-prog-name=name
+- gccドライバが起動する外部プログラムの絶対パスを表示する
+******* -save-temps
+- 中間ファイルを保存する
+  SAVE TEMProrary filesS
+****** Optimization Options
+******* -O1(O), -O2, -O3
+- 最適化オプション。数字が大きい方が強力な最適化が行われる。
+  ただしO3はバグが多い印象があるとのこと。
+****** Preprocessor Options
+******* -Dmacro
+******* -Umacro
+****** Assembler Option
+****** Linker Options
+******* -llibrary
+- ダイナミックリンクを行う。
+  引数としてメイン関数を先、ライブラリを後に並べる必要ある。
+  -lの後にスペースはあけず、ライブラリ名のlibを除いたものを指定する。
+  ex) libmをリンクしたければ、-lmとする。
+******* -shared
+- Produce a shared object which can then be linked with other objects to form an executable.
+******* -static
+- 静的リンクが行われる
+****** Directory Options
+******* -Idir
+******* -Ldir
+****** Code Generation Options
+******* -fPIC
+- emit position-independent code, suitable for dynamic linking and avoiding any limit on the size of the global offset table.
+- "位置独立コード"を生成するためのオプション。
+***** Link
+- https://linux.die.net/man/1/gcc
 **** gdb
 - 
   デバッグを行う。
@@ -991,6 +1017,8 @@
 ****** -Ifile, --dynamic-linker=file
 - Set the name of the dynamic linker.
   This is only meaningful when generating dynamically linked ELF executables.
+****** --dll-verbose, --verbose[=NUMBER]
+- Display the version number for ld and list the linker emulations supported.
 **** ld.so, ld-linux.so
 - 動的なリンカー/ローダー
   ld.soはa.outバイナリ、ld-linux.so*はELFバイナリを使う。
@@ -1004,19 +1032,13 @@
 ****** --inhibit-rpath LIST
 ****** --audit LIST
 ***** Environmental Variables
-***** Search libraries
-- 
-  - LD_LIBRARY_PATH
-  - /etc/ld.so.cache
-  - /lib
-  - /usr/lib
 ****** LD_ASSUME_KERNEL
 ****** LD_BIND_NOT
 ****** LD_DEBUG
 - (glibc 2.1以降)動作リンカーの詳細なデバッグ情報を出力する。
   - all : 全ての動的リンカーが持つデバッグ情報を表示する
   - help : カテゴリーのヘルプ情報を表示する
-  - libs :
+  - libs : 
   - reloc
   - files
   - symbols
@@ -1027,6 +1049,12 @@
   - unused
 ****** LD_TRACE_LOADED_OBJECTS
 - プログラムを普通に実行するのではなく、動的ライブラリの依存関係をリスト表示させる。
+***** Search libraries
+- 
+  - LD_LIBRARY_PATH
+  - /etc/ld.so.cache
+  - /lib
+  - /usr/lib
 **** ldconfig
 - configure dynamic linker run-time bindings
   
@@ -1428,8 +1456,7 @@
   実グループIDがリストのどれかであるプロセスのみマッチする
   
 **** printenv
-- 
-  show list of environment variables.
+- show list of environment variables.
 
 **** printf
 - 
@@ -1616,6 +1643,8 @@
 - ELFファイルに関する情報を表示
   binutilsに含まれる。
 ***** Options
+****** -d, --dynamic
+- Displays the contents of the file's dynamic section, if it has one.
 ****** -h, --file-header
 - Displays the information contained in the ELF header at the start of the file.
 ****** -l, --program-headers, --segments
