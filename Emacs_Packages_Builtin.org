@@ -478,6 +478,9 @@
 **** symbol-function
 - (sybmol-functon SYMBOL)
   Return SYMBOL's function definition, or nil if that is void.
+**** symbol-value
+- (symbol-value SYMBOL)
+  Return SYMBOL's value.
 **** system-name
 - (system-name)
   Return the host name of the machine you are running on, as a string.

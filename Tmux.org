@@ -114,9 +114,12 @@
   (Windows)Shiftを押しながらマウスを動かす・右クリックすると、
   コピーやペースト等の操作ができる。
 *** Mouse
-- 
-  tmux 2.1からmouse設定が変更になった模様。
+- tmux 2.1からmouse設定が変更になった模様。
   [[http://qiita.com/jyotti/items/70a3a8035d767f99f93d][tmux v2.1からmouse関連の設定が変わった - Qiita]]
   [[https://github.com/NHDaly/tmux-better-mouse-mode][tmux-better-mouse-mode]]
+
+- Macでスクロールしたい場合は、まずPrefix + [を押して、copy modeに入るとよい。
+  https://superuser.com/questions/1084487/scrolling-on-mac-with-tmux-and-iterm
+  
 ** Link
 - [[https://tmux.github.io/][tmux]]

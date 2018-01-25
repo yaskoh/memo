@@ -1,9 +1,7 @@
 * CPU
 ** CISC
-- 
-  Complex Instruction Set Computer。
+- Complex Instruction Set Computer。
   RISCが出現した時に、従来のISA（命令セットアーキテクチャ）は複雑である、として名付けられた。
-
 *** x86
 **** Generation
 ***** 1st
@@ -113,13 +111,47 @@
 ****** Nehalem/Westmere
 - Intel Core i3, i5, i7
 ***** 9th
-****** Sandy Bridge/Ivy Bridge
-- Intel Core i3, i5, i7
-****** Haswell/Broadwell
-- Intel Core i3, i5, i7
+****** Sandy Bridge
+- 第2世代Intel Core i3, i5, i7
+  2011/1/9
+****** Ivy Bridge
+- 第3世代Intel Core i3, i5, i7
+  2012/4/29
+****** Haswell
+- 第4世代Intel Core i3, i5, i7
+  2013/6/2
+- 22nm
+****** Broadwell
+- 第5世代Intel Core i3, i5, i7
+  2015/6l18
+- 14nm
 ***** 10th
-****** Skylake/Kaby Lake/Cannonlake
-- Intel Core i3, i5, i7j
+****** Skylake
+- 第6世代Intel Core i3, i5, i7j
+  2015/8/7
+- 14nm
+****** Kaby Lake
+- 第7世代Intel Core i3, i5, i7
+  2017/1/6
+  Core i7 7700Kなど7000番台
+- 14nm+
+- CPUソケット : LGA1151
+****** Coffee Lake
+- 第8世代Intel Core i3, i5, i7
+  Core i7 8700Kなど8000番台
+- プロセスルール : 14nm++
+- CPUソケット : LGA1151(第6・7世代と互換性なし)
+****** Cannonlake
+- 第8世代
+***** 11th
+****** Ice Lake
+***** 末尾のアルファベット
+- X : Extream、特別性能が高いCPU
+- K : アンロック対応、オーバークロック可
+- P : 内臓GPU非対応、グラッフィックボード要
+- S : 性能と消費電力のバランス・効率重視
+- T : 低消費電力
+- C, R : 高性能GPU搭載(第五世代のみ)
 **** 486 Architecture
 ***** About
 ****** Architecture
@@ -388,17 +420,34 @@
 - [[https://gist.github.com/k-takata/32e9954d503d67233d6e][k-tanaka/486-OpenWatcom.md - github]]
 - [[https://github.com/koron/486/releases][koron/486 - はじめて読む486 サンプルコード実験環境]]
 ***** Memo
+**** Link
+- [[https://software.intel.com/en-us/articles/intel-sdm][Intel 64 and IA-32 Architectures Software Developer Manuals - Intel]]
 *** z/Architecture
-
 ** RISC
-- 
-  Reduced Instruction Set Computer
+- Reduced Instruction Set Computer
   命令の種類を減らし、回路を単純化して演算速度の向上を図る設計手法。
-
 *** Alpha
 
 *** ARM
-
+**** Brand
+***** ARM
+***** Snapdragon
+****** Qualcomm Snapdragon S1, S2, S3
+- v7-A, Scorpion
+****** Qualcomm Snapdragon S4, 400/600/800
+- v7-A, Krait
+****** Qualcomm Snapdragon 820
+- v8-A, Kryo
+***** Apple Ax
+****** Apple A6, A6X
+- v7-A, Swift
+****** Apple A7
+- v8-A, Cyclone
+****** Apple A8
+- v8-A, Cyclone gen2
+****** Apple A8X
+- v8-A, Typhoon
+****** Apple A9X
 *** Atmel AVR
 - 
   Atmel社が製造している、RISCベースの8ビットマイクロコンピュータ製品群の総称。

@@ -363,8 +363,7 @@
 ********** add_CustomRequestHeader
 - add_CustomRequestHeader(self, key, value)
 ** Selenium IDE
-- 
-  Firefoxプラグイン。
+- Firefoxプラグイン。
 
 ** History
 - [[http://blog.trident-qa.com/2013/05/so-many-seleniums/][Selenium何とかっていうツールがやたら色々あるのはどういうわけなのか - 品質向上ブログ]]
@@ -420,7 +419,7 @@
 - https://www.kaitoy.xyz/2017/07/12/2017-selenium-headless-browsers/
 *** API
 - [[http://stackoverflow.com/questions/5644868/webdriver-selenium-2-api-documentation][WebDriver (Selenium 2) API documentation - stackoverflow]]
-- [[http://seleniumhq.github.io/selenium/docs/api/py/api.html][Selenium Documentation (Python)]]
 
 *** Python
 - [[http://selenium-python.readthedocs.io/#][Selenium with Python]]
+- [[http://seleniumhq.github.io/selenium/docs/api/py/api.html][Selenium Documentation (Python)]]

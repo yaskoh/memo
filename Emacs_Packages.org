@@ -1154,6 +1154,10 @@
 - (help-with-tutorial &optional ARG DONT-ASK-FOR-REVERT)
 - Command : (C-h t)
   Select the Emacs learn-by-doing tutorial.
+*** version
+**** Variables
+***** emacs-major-version
+***** emacs-minor-version
 *** window
 **** Functions
 ***** display-buffer

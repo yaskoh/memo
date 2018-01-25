@@ -64,12 +64,13 @@
 *** share
 *** snapshot
 *** ssh
-- 
-  仮想マシンにssh接続する
+- 仮想マシンにssh接続する
 
+**** Options
+***** -F configfile
+***** -i identity-file
 *** ssh-config
-- 
-  仮想マシンのSSH情報を確認する
+- 仮想マシンのSSH情報を確認する
 
 *** status
 - 
@@ -163,6 +164,10 @@
   Vagrantfileが設置されているフォルダ、
   および/vagrantが共有フォルダとして使用できる。
 
+*** Error
+**** command-line line 0: garbage at end of line
+- spaceがあるパスの場合にエラー。macにて発生。
+  v1.98のバグとのことで、2.01に更新して解決。
 ** link
 - [[https://www.vagrantup.com/docs/][VAGRANT DOCUMENTATION]]
 - [[https://atlas.hashicorp.com/boxes/search][Vagrant Boxes - Atlas]]

@@ -34,11 +34,36 @@
   show result searched from summaries and command names.
   whatisデータベースより文字列を検索する。
 
+**** ar
+- create, modify, and extract from archives
+***** Options
+****** t
+- Display a table listing the contents of archives
+****** x
+- Extract members from the archive.
+**** as
+- ASsembler
+  binutilsに属している。
+***** Options
+****** -v
+- Verbose
+****** -o
+- Output file name
+*** b
 **** basename
 - 
   extract filename from path strings.
 
-*** b
+**** bc
+- An arbitrary precision calculator language
+***** Options
+***** Special Variables
+****** scale
+****** ibase
+- base input number. default: 10.
+****** obase
+- base output number. default: 10.
+****** last
 **** bg
 - [%jobsid]
   ジョブをバックグラウンドで実行するよう切り替える。
@@ -134,6 +159,48 @@
      ルートディレクトリを変更してコマンドを実行する。
      chroot directory [command [args]]
 
+**** clang
+- C, C++ and Objective-C compiler
+- Synopsis
+  clang [options] filename a|
+***** Description
+****** Driver
+****** Preprocessing
+- handles tokenization of the input source file, macro expansion,
+  #include expansion, other preprocessor directives.
+- Output
+  - a.ia (C)
+  - a.iia (C++)
+  - a.mia (Objective-C)
+  - a.miia (Objective-C++)
+****** Parsing and Semantic Analysis
+- parses input file, translating preprocessor tokens into a parse tree.
+****** Code Generation and Optimization
+- translates an AST into low-level intermediate code and ultimately to machine code.
+****** Assembler
+- target assembler to translate the output of the compiler into a target object file.
+****** Linker
+- the target linker to merge multiple object files into an executable or dynamic library.
+***** Options
+****** Stage Selection Options
+******* -E
+- Run the preprocessor stage.
+******* -fsyntax-only
+******* -S
+- Run the previous stages as well as LLVM generation and optimization stages and target-specific code generation, producing an assembly file.
+******* -c
+- Run all of the above, puls the essembler, generating a target a.oa object file.
+
+******* (no stage selection)
+- all stages above are run, and linker is run to combine the results into an executable or shered library.
+****** Language Selection and Mode Options
+****** Target Selection Options
+****** Code Generation Options
+****** Driver Options
+******* -save-temps
+- save intermediate compilation results
+****** Diagnostics Options
+****** Preprocessor Options
 **** clear
    
 **** col
@@ -146,6 +213,32 @@
 - -i
   
 - -p
+**** cpp
+- プリプロセッサ
+***** Options
+****** -D
+- コマンド上でのマクロ指定
+  -Dxxxx=yyy
+****** -H
+- インデント形式でインクルードの状況を表示
+****** -M
+- Makefile形式で外部依存ファイルリストを表示
+****** -v
+- verbose
+****** -nostdinc
+- NO StanDard INClude files
+  既定のCプリプロセッサ内部のヘッダーファイル探索パスをリセットするためのオプション
+****** -I
+- 探索パスの追加。Include
+  -Iディレクトリ名
+****** -I-
+- セパレータ。
+  これより前で定義されたパスはローカルヘッダーファイル用の探索パス、
+  後方で定義されたパスはシステムヘッダーファイル、ローカルへだーファイル双方に対するパスとして登録される。
+  利用する場合、デフォルトのカレントディレクトリに対する探索パスは削除されるため注意。
+  明示的にカレントディレクトリを指定する場合、"-I./"と指定する。
+****** -dM
+- ソースファイル中で定義されている全てのマクロについて、宣言文を表示する
 **** crontab
 **** cut
 - 
@@ -333,7 +426,8 @@
 ****** -p, --print
 - print variables specified by --name
 **** env
-- 
+- 環境変数の表示。
+  シェル変数も合わせて確認する場合は、"set"を利用する。
   
 **** exec
 - 
@@ -379,6 +473,7 @@
   変数を大域変数として追加する。
   ex) export FOO="BAR"
 
+***** Options
 - (-p)
   show environ variables
   
@@ -398,6 +493,9 @@
   環境変数の一覧を取得する
 
 *** f
+**** false
+- Return false value.
+- Path : shell built-in command
 **** fdisk
 - fdisk (option) device
   ディスクのパーティションを設定する。
@@ -507,31 +605,76 @@
 
 *** g
 **** gcc
-- 
-  コンパイルする。
-- -o
-  ファイル名を指定する。
+- コンパイルする。
+***** Options
+****** Overall Options
+******* -c
+- アセンブルまで行いオブジェクトファイルを出力する
+******* -S
+- コンパイルまでを行いアセンブリファイルを出力する
+******* -E
+- プリプロセスだけ処理して標準出力する
+******* -o outfile
+- 出力ファイル名を指定する。
   ex) gcc -o hello.exe hello.c
-- -Wall
-  ANSI Cスタイルの宣言と定義を使った場合に、一般的な警告オプションがすべてOnになり、
+******* -v
+- 詳細を表示
+  - Target: に標的システム名が表示される
+    通常ハイフンで3つに区切られ、CPU名、マシンのベンダー名、OSもしくはカーネル名が
+
+******* --help
+******* --version
+****** C Language Options
+****** C++ Language Options
+****** Language Independent Options
+****** Warning Options
+******* -Wall
+- ANSI Cスタイルの宣言と定義を使った場合に、一般的な警告オプションがすべてOnになり、
   細かな警告をしてくれる。
-- -O1(O), -O2, -O3
-  最適化オプション。数字が大きい方が強力な最適化が行われる。
+- "enable ALL of the Warnings"の略
+******* -Werror
+- 警告をエラーとして解釈させる
+****** Debugging Options
+******* -g
+- gdbでのデバッグが可能となる。
+******* -dumpversion
+- バージョンを表示する
+******* -print-file-name=library
+- 外部ファイルの絶対パスを表示する
+******* -print-libgcc-file-name
+- GCCランタイムライブラリの絶対パスを表示する
+******* -print-prog-name=name
+- gccドライバが起動する外部プログラムの絶対パスを表示する
+******* -save-temps
+- 中間ファイルを保存する
+  SAVE TEMProrary filesS
+****** Optimization Options
+******* -O1(O), -O2, -O3
+- 最適化オプション。数字が大きい方が強力な最適化が行われる。
   ただしO3はバグが多い印象があるとのこと。
-- -g
-  gdbでのデバッグが可能となる。
-- -E
-  プリプロセスだけ処理して標準出力する
-- -S
-  コンパイルまでを行いアセンブリファイルを出力する
-- -c
-  アセンブルまで行いオブジェクトファイルを出力する
-- -l
-  ダイナミックリンクを行う。
+****** Preprocessor Options
+******* -Dmacro
+******* -Umacro
+****** Assembler Option
+****** Linker Options
+******* -llibrary
+- ダイナミックリンクを行う。
   引数としてメイン関数を先、ライブラリを後に並べる必要ある。
   -lの後にスペースはあけず、ライブラリ名のlibを除いたものを指定する。
   ex) libmをリンクしたければ、-lmとする。
-
+******* -shared
+- Produce a shared object which can then be linked with other objects to form an executable.
+******* -static
+- 静的リンクが行われる
+****** Directory Options
+******* -Idir
+******* -Ldir
+****** Code Generation Options
+******* -fPIC
+- emit position-independent code, suitable for dynamic linking and avoiding any limit on the size of the global offset table.
+- "位置独立コード"を生成するためのオプション。
+***** Link
+- https://linux.die.net/man/1/gcc
 **** gdb
 - 
   デバッグを行う。
@@ -592,23 +735,28 @@
 - grep [OPTIONS] [-e PATTERN | -f FILE} [FILE...] 
   searches the named input FILEs for lines containing a match to the given PATTERN.
 
-- -a, --text, --binary-files=text
-  Process a binary file as if it were text
+***** Options
+****** -a, --text, --binary-files=text
+- Process a binary file as if it were text
 
-- -v, --invert-match
-  to select non-matching lines.
+****** -B NUM, --before-centext=NUM
+- Print NUM lines of leading context before matching lines.
+****** -v, --invert-match
+- to select non-matching lines.
 
-- -E, --extended-repex
-  interpret pattern as an extended regular expression (ERE).
+****** -C NUM, -NUM, --context=NUM
+- Print NUM lines of output context.
+****** -E, --extended-repex
+- interpret pattern as an extended regular expression (ERE).
 
-- -F, --fixed-strinngs, --fixed-regexp
-  interpret pattern as a list of fixed strings, not as a regular exression.
+****** -F, --fixed-strinngs, --fixed-regexp
+- interpret pattern as a list of fixed strings, not as a regular exression.
 
-- -G, --basic-regexp
-  as a bacis regular expression (BRE)
+****** -G, --basic-regexp
+- as a bacis regular expression (BRE)
 
-- -P, --perl-repexp
-  as a Perl regular expresion.
+****** -P, --perl-repexp
+- as a Perl regular expresion.
 
 ***** egrep
 - 
@@ -652,8 +800,11 @@
 **** hexdump
 - 
   ascii, decimal, hexadecimal, octal dump
-
-- -C Canonical hex+ASCII display.
+***** Options
+****** -C
+- Canonical hex+ASCII display.
+****** -n length
+- Interpret only length bytes of input.
 **** history
 - 
   display the command history list with line numbers.
@@ -705,6 +856,8 @@
 
   - ifconfig eth1 up
     
+- Path:
+  /sbin
 **** inetd
 - 
   待ち受けポートの監視専用中継デーモン。ポート番号を指定して監視する。
@@ -856,12 +1009,61 @@
   show listing of last logged in sures
   searches the file /var/log/wtmp and displays a list of all users logged in.
 
+**** ld
+- linker, linker LoaDer
+  combines serevral object files and libraries, resolves references, and produces an output file.
+- ld files... [options] [-o outputfile]
+***** Options
+****** -Ifile, --dynamic-linker=file
+- Set the name of the dynamic linker.
+  This is only meaningful when generating dynamically linked ELF executables.
+****** --dll-verbose, --verbose[=NUMBER]
+- Display the version number for ld and list the linker emulations supported.
+**** ld.so, ld-linux.so
+- 動的なリンカー/ローダー
+  ld.soはa.outバイナリ、ld-linux.so*はELFバイナリを使う。
+- https://linuxjm.osdn.jp/html/LDP_man-pages/man8/ld.so.8.html
+***** Options
+****** --list
+- list all dependencies and how they are resolved
+****** --verify
+****** --inhibit-cache
+****** --library-path PATH
+****** --inhibit-rpath LIST
+****** --audit LIST
+***** Environmental Variables
+****** LD_ASSUME_KERNEL
+****** LD_BIND_NOT
+****** LD_DEBUG
+- (glibc 2.1以降)動作リンカーの詳細なデバッグ情報を出力する。
+  - all : 全ての動的リンカーが持つデバッグ情報を表示する
+  - help : カテゴリーのヘルプ情報を表示する
+  - libs : 
+  - reloc
+  - files
+  - symbols
+  - bindings
+  - versions
+  - scopes
+  - statistics
+  - unused
+****** LD_TRACE_LOADED_OBJECTS
+- プログラムを普通に実行するのではなく、動的ライブラリの依存関係をリスト表示させる。
+***** Search libraries
+- 
+  - LD_LIBRARY_PATH
+  - /etc/ld.so.cache
+  - /lib
+  - /usr/lib
 **** ldconfig
 - configure dynamic linker run-time bindings
   
 **** ldd
-- 
-  共有ライブラリの依存関係を表示する。
+- List Dynamic Dependencies
+- 共有ライブラリの依存関係を表示する。
+  ld.so -listと同じ
+- 実態はbashシェルスクリプト。
+  LD_TRACE_LOADED_OBJECTS=1とした上で該当プログラムを実行している。
 **** less
 - 
   pager
@@ -1116,6 +1318,17 @@
 - -z
   Specifies that nc should just scan for listening daemons, without sending any data to them.
 
+**** nm
+- list symbols from object files. symbol NaMe
+***** Symbol
+- D, d : The symbol is in the initialized data section.
+- R, r : The symbol is in a read only data section.
+- T, t : The symbol is in the text (code) section.
+- U : The symbol is undefined.
+  外部参照されている
+- u : The symbol is a unique global symbol.
+- W, w : The symbol is a weak symbol that has not been specifically tagged as a weak object symbol.
+***** Options
 **** netstat
 - 
 
@@ -1134,8 +1347,44 @@
   a program to query Internet domain name servers.
   two models, interactive and non-interactive mode, exists.
 *** o
+**** objdump
+- display information from object files.
+***** Options
+****** -a, --archive-header
+****** -d, --disassemble
+- Dissassemble
+  Display the assembler mnemonic for the machine instructions from objfile.
+****** -h, --section-headers, --headers
+****** -j
+- 解析対象オプションの選択
 **** od
 - dump files in octal and other formats
+***** Options
+****** -A, --address-radix=RADIX
+- output foramt for file offsets
+  RADIX is one of [doxn], Deximal, Octal, Hex or None.
+****** -j, --skip-bytes=BYTES
+- skip BYTES input bytes first
+****** -N, --read-bytes=BYTES
+- limit dump to BYTES input bytes
+****** -t, --format=TYPE
+- select output format or formats.
+******* TYPE
+******** a
+- named character
+******** c
+- printable character or backslash escape
+******** d[SIZE]
+******** f[SIZE]
+******** o[SIZE]
+******** u[SIZE]
+******** x[SIZE]
+- hexadecimal, SIZE byets per integer.
+****** -w[BYTES], --width[=BYTES]
+- output BYETS byets per output line; default 32.
+***** Traditional Options
+****** -x
+- same as -t x2, select hexadecimal 2-byte units
 **** openssl
 - openssl command [command opts] [command args]
   OpenSSL command line tool
@@ -1207,8 +1456,7 @@
   実グループIDがリストのどれかであるプロセスのみマッチする
   
 **** printenv
-- 
-  show list of environment variables.
+- show list of environment variables.
 
 **** printf
 - 
@@ -1391,8 +1639,20 @@
   read returs after reading nchars characters.
 
 **** readelf
-     ELFファイルに関する情報を表示
-
+- Displays information about ELF files.
+- ELFファイルに関する情報を表示
+  binutilsに含まれる。
+***** Options
+****** -d, --dynamic
+- Displays the contents of the file's dynamic section, if it has one.
+****** -h, --file-header
+- Displays the information contained in the ELF header at the start of the file.
+****** -l, --program-headers, --segments
+- Displays the information contained in the file's segment headers, if it has any.
+****** -S, --section-headers, --sections
+- Sectionsオプション
+  実行コード領域.text、固定データ領域.rodata、初期化済みデータ領域.dataなどが表示される
+****** -x <number or name>, --hex-dump=<number or name> 
 **** readlink
      シンボリックリンクの値を読む。
      readlink [OPTION]... FILE...
@@ -1482,7 +1742,7 @@
   中身はシェルスクリプト。
 **** set
 - set [-options] [-o options]
-  シェルのオプションを設定する。
+  シェルのオプションを設定する。環境変数とシェル変数どちらも表示されるため、"env"との差分がシェル変数となる。
   -aのように位置文字で設定する場合と、-oの後にスペースを空けて単語を指定する2種類の書式が存在する。
   「-」の代わりに「+」を用いると意味が逆になる。
 **** setfont(8)
@@ -1681,8 +1941,11 @@
 - 
   動作中のプログラムが呼んだシステムコールを表示してくれる。
 
+**** strings
+- print the strings of printable characters in files.
 **** strip
-     オブジェクトファイルからシンボル(デバッグ用のデータ)を切り捨てる。
+- Discard symbols from objet files.
+- オブジェクトファイルからシンボル(デバッグ用のデータ)を切り捨てる。
 
 **** stty
 - 
@@ -1911,6 +2174,8 @@
 - -p
   単独で用いた場合、現在各シグナルに対して設定されている処理内容を表示する。
 
+**** true
+- Return true value
 **** tty
 - 
   どの端末が割り当てられたか確認する
@@ -1983,6 +2248,7 @@
   show how long the system has been runnning.
   this is the same information contained in the header line displayed by w.
   - Current time, The actual up time, How many users logged in, The load average
+  - Path : (Mac)/usr/bin/uptime
 
 **** useradd
 - 
@@ -2188,3 +2454,6 @@
 ** Link
 - [[http://ss64.com/bash/][An A-Z Index of the Bash command line for Linux.]]
 - [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060224/230573/?ST=oss&rt=nocnt][Linuxコマンド集 INDEX （機能別） - ITpro]]
+
+- [[https://qiita.com/rsooo/items/bb91071685f447ce29db][バイナリレベルでの調査に使用するLinuxコマンドメモ - Qiita]]
+- [[https://qiita.com/koara-local/items/7a34f42c7257e5573f8c][【Linux】バイナリファイル(ELFファイル)の調査に使えるコマンドまとめ - Qiita]]

@@ -508,6 +508,8 @@ SSHは両方可能。
 - git config --global user.name "your name"
 - git config --global user.email "your.email@domain.com"
 - git config --global core.filemode false  # ignore file mode like 755 and 644
+- git config --global core.quotepath false # using Japanese file name
+
 - git config --list  # check your settings
 
 *** ~N
