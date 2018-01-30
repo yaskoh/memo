@@ -1173,6 +1173,9 @@
 ***** Link
 - [[https://pip.pypa.io/en/latest/index.html][pip]]
 - [[http://tdoc.info/blog/2014/01/15/pip.html][pipの使い方(2014/1バージョン) - そこはかとなく書くよん。]]
+**** Memo
+***** pipのupgrade
+- pip insntall --upgrade pip
 *** pyenv
 **** commands
 - [[https://github.com/yyuu/pyenv/blob/master/COMMANDS.md][Command Reference - pyenv - git hub]]
@@ -1212,14 +1215,17 @@
 **** Link
 - [[https://github.com/yyuu/pyenv][yyuu/pyenv - github]]
 *** virtualenv
-- de fact stdらしい。
+- デファクトスタンダードらしい。
+  →もはや過去。venvとしてpython3.3で取り込まれ(pyvenv)、
+    その後python 3.6でpython -m venvが推奨に。
 - インストール
   pip install virtualenv
 - 環境作成
   virtualenv env
 - Activate
-  Scripts/activate
-  (bin/activate?古い?)
+  (Win)Scripts/activate
+  (Posix)bin/activate
+- Deactivate
 **** Command
 ***** deactivate
 - 無効化

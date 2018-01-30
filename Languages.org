@@ -1,4 +1,5 @@
 * Languages
+** Perl6
 ** 2014- : Hack
 - Facebookにより開発されたプログラミング言語。
   PHP実行環境のHHVMで動作する。

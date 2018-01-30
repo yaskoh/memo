@@ -74,10 +74,43 @@
 *** Security
 *** User Interface
 ** Function
-*** Memory Management
-*** Protection
-*** Process Management
-*** Input/Output Management
+*** Main Functions
+**** Process Management
+- 
+  supporting and managing application software's execution.
+
+- Multitask
+  Tasks are being switched rapidly, it gets us like that some tasks are executing in same time.
+  When program requests I/O and need to wait, then the task is switched to another one, the task is handled and not to lose the time just waiting.
+
+- Event driven
+  Pseudo multitask
+  Event switches when waiting for new event.
+
+- Preemptive multitask
+  
+**** Memory Management
+- 
+  allotting memory by request of program. 
+
+**** File System
+- 
+  Supporting data storage devices.
+  File systems enable to arrange data as directory hierarchies or call them by file name.
+
+**** I/O Management
+- 
+  Enable to connect various peripheral devices and use them by application software.
+  "Driver",
+**** Protection
+** Kind
+*** DOS
+**** FreeDos
+- http://freedos.sourceforge.net/wiki/index.php/VirtualBox
+*** Windows
+*** Unix
+*** Linux
+
 ** Glossary
 *** RCU
 - read-copy-update

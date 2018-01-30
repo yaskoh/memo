@@ -130,6 +130,16 @@
 ***** Security and identity
 ***** System services
 ****** COM
+******* Component Object Model (COM)
+******** COM Fundamentals
+******** OLE and Data Transfer
+******** Controls and Property Pages
+******** COM Language Translation
+******** COM Glossary
+- https://msdn.microsoft.com/en-us/library/windows/desktop/ms690233(v=vs.85).aspx
+******* Automation
+******* Microsoft Interface Definition Language (MIDL)
+******* Structured Storage
 ****** COM+
 ****** Compression API
 ****** Distributed Transaction Coordinator(DTC)
@@ -303,3 +313,37 @@
   ("C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin"など)
 ** Link
 - [[https://msdn.microsoft.com/ja-jp/library/hh875057.aspx][C++言語及び標準ライブラリ - Visual Studio 2015  Developer Network]]
+* Memo
+** Object Linking and Embedding, OLE
+- COMの前身。マイクロソフトが開発した、オブジェクトをやり取りするための仕組み・規約。
+*** OLE 1.0
+- 1990年、動的データ交換(Dynamic Data Exchange, DDE)の後継として公開された。
+  1991年、OLE1がWindows 3.1と共に公開。
+  仮想関数テーブル(vtable, VTBL)を用いてクライアント間の通信を行う。
+*** OLE 2.0
+- 1992年、OLE2が公開される。
+  生のVTBLでなくCOMを使って実装しなおされた。
+** ActiveX
+- マイクロソフトが開発するインターネットに関するソフトウェアコンポーネントやその技術を示す用語。
+  元々はOLEのうちインターネットと関連のあるいくつかの技術を分離し、ActiveXとして名称変更。
+** Component Object Model, COM
+- マイクロソフトが提唱するソフトウェアの再利用を目的とした技術。
+  アプリケーションソフトウェア間での通信や、OSとアプリケーションソフトウェアとのAPIに用いられる。
+  1997年、コンポ―ネントを使用する技術名として名づける。
+- OLE、OLEオートメーション、ActiveX、COM+、DCOMをカバーする包括的な用語としてよく使われる。
+*** COMコンポーネント
+- COMを使用して開発されたソフトウェア部品。
+  特定の開発言語に依存せず、様々な言語により開発可能。
+*** Link
+- http://garicchi.com/?p=19259
+** COM+
+** Distributed Component Object Model, DCOM
+- ネットワーク上に分散されたコンピュータ上のソフトウェアコンポーネント間通信（分散オブジェクト技術）のためのマイクロソフト独自の技術。
+  当初Network OLEと呼ばれ、COMを拡張したもので、COM+サーバ基盤上での通信基盤となっていた。
+  .NET Frameworkのトウジョウとともにすたれていった。
+** .NET
+- [[file:dotNetFramework.org][dotNetFramework.org]]
+** Windows Runtime, WinRT
+- Windows 8およびWindows RTにて、新たなアプリケーションの開発・実行基盤としてWinRTが導入された。
+  COMを拡張したネイティブ技術だが、Windowsメタデータ(WinMD)および言語プロジェクション(language projection)と呼ばれる技術で、
+  .NET言語やJavaScriptなどからも透過的に利用可能。

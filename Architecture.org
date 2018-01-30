@@ -1,4 +1,7 @@
 * Architecture
+** Computer Architecture
+*** Link
+- http://par.mcr.muroran-it.ac.jp/~ohkama/2010comp2/lec2/lec2/lec2.html
 ** Link
 - [[https://coderwall.com/p/vmsa0g/10-papers-every-programmer-should-read-at-least-twice-with-links][10 Papers Every Programmer Should Read at Least Twice (with links!) by Michael Feathers - Coderwall]]
 - [[http://rgoarchitects.com/wiki/pmwiki.php?n=Main.ArchPapers][Papers software architects should read at least twice - Pmwiki]]

@@ -1592,6 +1592,7 @@ xwizard.exe
 - NT AUTHORITY\System
 - 権限:Administratorsグループメンバと同等
 - ネットワークアクセス時の資格情報:ローカルのコンピュータ・アカウント
+- Memo:ドメイン参加していないサーバ間では、ネットワーク接続が許可されない可能性がある。
 **** Local Service
 - NT AUTHORITY\LocalService
 - 権限:Usersグループメンバと同等

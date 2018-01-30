@@ -539,3 +539,17 @@
 
 - Excelアドインの「分析ツール(FUNCRES.XLAM)」を停止することで解決する場合もあるらしい。
   http://excelfactory.net/excelboard/excelvba/excel.cgi?mode=all&namber=175963&rev=0
+*** IE操作
+- ライブラリ参照設定
+  - Tools -> References...
+    - Microsoft HTML Object Library
+    - Microsoft Internet Controls
+*** Glossary
+**** VBE
+- Visual Basic Editor
+** Link
+- https://www.vba-ie.net/
+
+- VBA/IE操作のreferenceが見つからない。。。
+  [[https://msdn.microsoft.com/en-us/library/aa296861(v=office.11).aspx]]
+  

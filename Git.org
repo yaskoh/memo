@@ -553,6 +553,9 @@ SSHは両方可能。
   *はフォルダを跨がない。"/*/"は/test/local/には当てはまらず、/test/のみ当てはまる。
   **はフォルダを跨ぐ。"/**/"は/test/, /test/local/, /test/local/bin/すべてに当てはまる。
   
+*** git fetch
+- https://qiita.com/Teloo/items/95a860ae276b49edb040
+- https://qiita.com/osamu1203/items/cb94ef9da02e1ec3e921
 ** Link
 - [[https://www.atlassian.com/ja/git/tutorial][Gitチュートリアル Atlassian]]
 

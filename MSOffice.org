@@ -533,6 +533,8 @@
 
 ** VBA
 - [[file./VBA.org][VBA.org]]
+** Link
+- [[https://msdn.microsoft.com/en-us/library/office/dn467914.aspx][Office developer documentation - Dev Center]]
 ** Memo
 *** Backround Theme
 - (2013) File -> Account -> Office Background

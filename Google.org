@@ -15,3 +15,11 @@
 **** cache: キャッシュサイト
 **** Link
 - [[https://support.google.com/websearch/answer/2466433?visit_id=1-636274824380494107-1219258194&p=adv_operators&hl=ja&rd=1][ウェブ検索の精度を高める]]
+** Memo
+*** アメリカの検索結果を表示
+- https://www.google.com/webhp?gl=us&hl=en&gws_rd=cr&pws=0
+  - gl : 国を指定
+  - hl : 言語を指定
+  - gws_rd : リダイレクトを設定
+  - pws : 0でプライベート検索を無効化（任意）
+- [[https://www.suzukikenichi.com/blog/how-to-search-on-google-com-in-english-from-japan/][日本からアメリカのGoogle (google.com) で英語で検索する方法 - 海外SEO情報ブログ]]
