@@ -480,8 +480,8 @@
     - ネットワークプロファイルの確認
       Get-NetConnectionProfile -IPv4Connectivity Internet
     - 実行 (プロファイルがPublicの場合、コマンド末尾の"-SkipNetworkProfileCheck"が必要、その他の場合は不要。)
-      powershell -ExecutionPolicy RemoteSigned .\ConfigureRemotingForAnsible.ps1 -SkipNetworkProfileCheck
-- Client側
+      powershell -ExecutionPolicy RemoteSigned .\ConfigureRemotingForAnsible.ps1 [-SkipNetworkProfileCheck]
+- Ansible側
   - pipのインストール
   - pywinrmのダウンロード
     pip install pywinrm

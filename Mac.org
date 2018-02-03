@@ -15,7 +15,7 @@
 **** Synopsis
 - brew --version
 - brew command [--verbose|-v} [options] [formula] ...
-**** Commads
+**** Commands
 ***** install formula
 ***** remove formula
 ***** update
@@ -32,6 +32,8 @@
 ***** Install
 - 公式ページ記載のスクリプトを実行
   https://brew.sh/index_ja.html
+- updateがうまくいかなかった場合にも、
+  公式ページからのスクリプトを実行するとうまく動いた。
 ***** brewをupdate
 - cd $(brew --prefix)
   git fetch origin
