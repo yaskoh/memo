@@ -1,0 +1,4 @@
+* Embedded
+** Memo
+- http://www.ertl.jp/~takayuki/top.html
+- https://www.uquest.co.jp/embedded/learning/lecture11.html
