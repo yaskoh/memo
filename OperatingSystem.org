@@ -83,5 +83,106 @@
 - read-copy-update
   一種の排他制御を実装する同期機構で、リーダーライターロックの代替手段として使われることがある。
 
+** Kind
+*** Proprietary
+**** IBM
+***** MainFrame
+****** OS/360系
+******* OS/360
+******* OS/VS
+****** DOS/360系
+****** Unix系
+***** Mid Range
+***** x86
+**** Apple
+***** Apple II
+***** Apple III
+***** Apple Lisa
+***** Macintosh
+****** Classic Mac OS
+******* System 1
+******* System 2
+******* System 3
+******* System 4
+******* System 5
+******* System 6
+******* Mac OS 8
+******* Mac OS 9
+****** Newton
+******* Newton OS
+****** (Monolithic)
+******* A/UX
+****** (Mach kernel, Unix-like)
+******* MkLinux
+******* macOS
+******** Mac OS X v10.0
+******** Mac OS X v10.1
+******** OS X v10.8
+******** OS X v10.9
+******** OS X v10.10
+******** OS X v10.11
+******** matOS Sierra
+******** Darwin
+******* iPhone/iPad/iPod touch
+******** iOS
+**** Microsoft
+***** DOS
+****** MS-DOS
+****** MSX-DOS
+***** OS/2
+***** Windows
+****** Windows 1.0
+****** Windows 2.0
+****** Windows 3.x
+****** Windows 9x
+****** Windows NT
+******* Windows NT 3.1
+******* Windows 2000
+******* Windows XP
+******* Windows Server
+******** Windows Server 2012
+******** Windows Server 2016
+******* Windows Vista
+******* Windows 7
+******* Windows 8.x
+******** Windows 8
+******** Windows 8.1
+******* Windows 10
+***** Windows CE
+*** Non-proprietary
+**** Unix-like
+***** Research
+****** MINIX
+****** Unix
+***** Free, open source
+****** BSD
+******* FreeBSD
+- [[https://www.ibm.com/developerworks/jp/opensource/library/os-freebsd/][なぜFreeBSDか - developerWorks IBM]]
+******** darwin
+******* NetBSD
+******** OpenBSD
+- [[http://cruel.org/openbsd/][OpenBSDの巣窟]]
+****** GNU Hurd
+****** Linux
+****** Link(Free, open source)
+- [[https://mag.osdn.jp/05/06/15/0141255][LinuxとBSD - Linusに聞く - OSDNMagazine]]
+- [[https://mag.osdn.jp/05/06/20/0123202][BSDから見たLinux - OSDNMagazine]]
+**** Non-Unix-like
+*** Disk operating systems DOS
+*** Network operating systems
+*** Embedded
+**** Personal digital assistants (PDAs)
+**** Mobile phones and smartphones
+***** BlackBerry OS
+***** Embedded Linux
+****** Android
+****** Firefox OS
+****** Tizen
+****** Ubuntu Touch
+****** webOS
+***** iOS
+***** Palm OS
+***** Windows Mobile
+**** Routers
 ** Link
 - [[http://kozos.jp/kozos/index.html][独自OSを作ってみよう！ (KOZOS)]]

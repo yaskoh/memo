@@ -54,8 +54,8 @@
 
 *** rdp
 *** reload
-- 
-  仮想マシンを再起動する
+- restarts vagrant machine, loads new Vagrantfile configration
+- 仮想マシンを再起動する
 
 *** resume
 - 
@@ -133,7 +133,11 @@
     ...
   end
   
-** memo
+** Plug-ins
+*** vbguest
+**** Options
+***** --status
+** Memo
 *** VagrantのBox追加
 - 
   vagrant box add {title} {url}
@@ -160,14 +164,21 @@
     end
 
 *** 共有フォルダ
-- 
-  Vagrantfileが設置されているフォルダ、
+- Vagrantfileの設定値を変更する
+  config.vm.synced_folder 
+
+**** old
+- Vagrantfileが設置されているフォルダ、
   および/vagrantが共有フォルダとして使用できる。
 
 *** Error
 **** command-line line 0: garbage at end of line
 - spaceがあるパスの場合にエラー。macにて発生。
   v1.98のバグとのことで、2.01に更新して解決。
+**** Vagrant was unable to mount VirtualBox shared folders
+- VirtualBoxとGuest Additionsでバージョン不一致がある場合などに失敗する模様。
+  vagrant-vbguestというプラグインが便利。
+  https://qiita.com/ozawan/items/9751dcfd9bd4c470cd82
 ** link
 - [[https://www.vagrantup.com/docs/][VAGRANT DOCUMENTATION]]
 - [[https://atlas.hashicorp.com/boxes/search][Vagrant Boxes - Atlas]]

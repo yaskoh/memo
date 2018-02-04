@@ -240,6 +240,10 @@
 ****** -dM
 - ソースファイル中で定義されている全てのマクロについて、宣言文を表示する
 **** crontab
+**** curl
+***** Options
+****** -s, --silent
+****** -L, --location
 **** cut
 - 
   特定の文字で区切られた項目を分割する。
@@ -655,7 +659,9 @@
 ****** Preprocessor Options
 ******* -Dmacro
 ******* -Umacro
+******* -Wp,option
 ****** Assembler Option
+******* -Wa,opition
 ****** Linker Options
 ******* -llibrary
 - ダイナミックリンクを行う。
@@ -666,9 +672,14 @@
 - Produce a shared object which can then be linked with other objects to form an executable.
 ******* -static
 - 静的リンクが行われる
-****** Directory Options
+******* -Wl,option
+- pass option as an option to the linker.
+  If option contains commas, it is split into multiple options at the commas.
+****** Directory Search Options
 ******* -Idir
+- Add the directory 'dir' to the head of the list of directories to be searched for header file.
 ******* -Ldir
+- Add directory 'dir' to the list of directories to be searched for -l.
 ****** Code Generation Options
 ******* -fPIC
 - emit position-independent code, suitable for dynamic linking and avoiding any limit on the size of the global offset table.
@@ -1038,7 +1049,7 @@
 - (glibc 2.1以降)動作リンカーの詳細なデバッグ情報を出力する。
   - all : 全ての動的リンカーが持つデバッグ情報を表示する
   - help : カテゴリーのヘルプ情報を表示する
-  - libs : 
+  - libs : ライブラリの探索状況を表示
   - reloc
   - files
   - symbols
@@ -1047,6 +1058,14 @@
   - scopes
   - statistics
   - unused
+****** LD_LIBRARY_PATH
+- ライブラリ探索パスを設定
+- 探索順序 : 
+  1. LD_LIBRARY_PATH
+  2. /etc/ld.so.cache
+  3. /lib
+  4. /usr/lib
+  
 ****** LD_TRACE_LOADED_OBJECTS
 - プログラムを普通に実行するのではなく、動的ライブラリの依存関係をリスト表示させる。
 ***** Search libraries
@@ -1057,7 +1076,13 @@
   - /usr/lib
 **** ldconfig
 - configure dynamic linker run-time bindings
-  
+- ld.so.cacheの再構築を行う
+***** Options
+****** -p
+- Print the lists of directories and candidate libraries stored in the current cache.
+- ld.so.cacheの値を表示する
+****** -v
+****** -V
 **** ldd
 - List Dynamic Dependencies
 - 共有ライブラリの依存関係を表示する。
@@ -1355,8 +1380,10 @@
 - Dissassemble
   Display the assembler mnemonic for the machine instructions from objfile.
 ****** -h, --section-headers, --headers
-****** -j
+****** -j セクション名
 - 解析対象オプションの選択
+****** -s
+- セクション内容をダンプ
 **** od
 - dump files in octal and other formats
 ***** Options
@@ -1645,12 +1672,17 @@
 ***** Options
 ****** -d, --dynamic
 - Displays the contents of the file's dynamic section, if it has one.
+- ダイナミックセクションの情報を表示
 ****** -h, --file-header
 - Displays the information contained in the ELF header at the start of the file.
 ****** -l, --program-headers, --segments
 - Displays the information contained in the file's segment headers, if it has any.
+- プログラムヘッダーを表示
+****** -s
+- シンボル情報を表示
 ****** -S, --section-headers, --sections
 - Sectionsオプション
+- セクションヘッダーテーブルを表示
   実行コード領域.text、固定データ領域.rodata、初期化済みデータ領域.dataなどが表示される
 ****** -x <number or name>, --hex-dump=<number or name> 
 **** readlink
@@ -2206,6 +2238,9 @@
 - 
   unmount file systems
 
+**** unalias
+- unalias name
+- コマンドの別名を抹消する
 **** uname
 - 
   OSやCPUのアーキテクチャ、ホスト名、カーネルバージョン等のシステム情報が表示される。

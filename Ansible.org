@@ -332,7 +332,18 @@
 
 **** supervisorctl
 *** Windows Modules
-
+- http://docs.ansible.com/ansible/latest/list_of_windows_modules.html
+**** win_chocolately
+**** win_copy
+**** win_dsc
+**** win_feature
+- Installs and uninstalls Windows Features on Windows Server
+**** win_package
+**** win_path
+**** win_reboot
+**** win_regedit
+**** win_robocopy
+**** win_unzip
 ** Inevntory file
 - 
   ansibleはインベントリファイルに書かれたホストにしかアクセスしない。
@@ -477,6 +488,7 @@
   - WinRMの起動と構成を行う。
     - 構成スクリプトのダウンロード
       Invoke-WebRequest -Uri https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1 -OutFile ConfigureRemotingForAnsible.psl
+      (https://github.com/ansible/ansible/blob/devel/examples/scripts/ConfigureRemotingForAnsible.ps1)
     - ネットワークプロファイルの確認
       Get-NetConnectionProfile -IPv4Connectivity Internet
     - 実行 (プロファイルがPublicの場合、コマンド末尾の"-SkipNetworkProfileCheck"が必要、その他の場合は不要。)
