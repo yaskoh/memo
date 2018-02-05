@@ -2,7 +2,8 @@
 ** ASCII
 *** Escape
 ** Shift JIS
-*** Code page 932
+*** Code page 932, CP932
+*** Shift_JISX0213
 *** Memo
 **** 日本語の抜出
 - UTF-8でも通用するかは不明だが、少なくともSJISは理に適っていそう。
@@ -14,10 +15,8 @@
 *** Link
 - [[https://charset.uic.jp/show/cp932/][文字コード表]]
 ** Unicode
-- 
-  Unicodeは文字集合（表現したい文字の集まり）、
+- Unicodeは文字集合（表現したい文字の集まり）、
   UTF-8などは符号化方式（文字の表現方法）
-
 *** Code Point / Code Position コードポイント
 - 
   個々の文字に対して、文字集合内での符号位置が決められており、これをコードポイントという。
@@ -38,7 +37,16 @@
 - エンコード（符号化）方式
 **** UTF-8
 - [[https://tools.ietf.org/html/rfc3629][UTF-8, a transformation format of ISO 10646 (RFC3629)]]
+***** Memo
+****** BOM付
+- Byte Order Markは、先頭3バイトが0xEF 0xBB 0xBF
 **** UTF-16
+***** Memo
+****** BOM
+- BOMは基本必須。BEかLEかを見分けるのに使う。
+  BE : 0xFE 0xFF
+  LE : 0xFF 0xFE
+  
 **** UTF-32
 *** Normalization
 - [[http://nomenclator.la.coocan.jp/unicode/normalization.htm][Unicode正規化とは]]

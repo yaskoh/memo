@@ -740,6 +740,7 @@
 ******** cd
 ******** close
 ******** debug
+******** delete
 ******** dir
 ******** disconnect
 - disconnect server
@@ -868,6 +869,9 @@
 - 
   newplwiz.exeで開く。
   パスワード忘れてCMD立ち上げたときとかに役立つ。
+******* notepad.exe
+******** Memo
+- UTF-8で保存すると勝手にBOMがつくので注意。
 ******* wscript.exe
 - GUI実行用WSH。
 ****** System
@@ -1084,7 +1088,6 @@ NetProj.exe
 netsh.exe
 newdev.exe
 nltest.exe
-notepad.exe
 nslookup.exe
 ntoskrnl.exe
 ntprint.exe

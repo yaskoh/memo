@@ -316,6 +316,10 @@
 **** mod_so
 **** mod_speling
 **** mod_ssl
+***** Environmental Variables
+***** Directives
+****** SSLCertificateFile
+****** SSLCertificateKeyFile
 **** mod_status
 **** mod_suexec
 **** mod_unique_id
@@ -374,6 +378,24 @@
 - 
   the directory where CGI scripts are kept.
 
+** Memo
+*** 暗号化
+- 証明書の作成
+  - opensslによる例
+    - 秘密鍵 : openssl genrsa -aes256 -out server.key 2048
+    - CSR : openssl req -new -key server.key -sha256 -out server.csr
+    - 証明書 : openssl x509 -in server.csr -days 365 -req -signkey server.key -sha256 -out server.crt
+- mod_ssl.soの設定
+  LoadModuleのコメントアウトを外す
+- httpd-ssl.confの設定
+  conf/extra/httpd-ssl.confのIncludeのコメントアウトを外す
+  extra/httpd-ssl.confに、証明書、秘密鍵、各種パスの設定を行う
+- mod_socache_shmcb.so
+  LoadModuleのコメントアウトを外す
+**** Link
+- http://www.maruko2.com/mw/Apache/SSL%E8%87%AA%E5%B7%B1%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8mod_ssl%E3%81%AE%E8%A8%AD%E5%AE%9A
+- http://d.hatena.ne.jp/ozuma/20130511/1368284304
+- http://www.lesstep.jp/step_on_board/apache/335/
 ** Link
 - [[http://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
 

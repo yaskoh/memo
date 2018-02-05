@@ -1388,7 +1388,6 @@
 **** openssl
 - openssl command [command opts] [command args]
   OpenSSL command line tool
-
 ***** Description
 - OpenSSL is a cryptography toolkit implementing the Secure Sockets Layer
   and Transport Layer Security network protocols and related cryptography standards required by them.
@@ -1396,28 +1395,54 @@
 ***** Commands
 ****** Standard
 ******* genrsa
+- openssl genrsa [Options] [numbits]
 - Generation of RSA Private Key. Superceded by genpkey.
 ******** Options
+********* -help
 ********* -out filename
 ********* -passout arg
 ********* -aes128|-aes192|-aes256|-des|-des3
-********* numbits
+********* [numbits]
 - the size of the private key to enerate in bits.
-  This must be the last option specified. The default is 512.
+  This must be the last option specified. The default is 2048.
 
 ******* req
+- openssl req [Options]
 - PKCS#10 X.509 Certificate Signing Request (CSR) Management.
 ******** Options
 ********* -inform DER|PEM
 - This specifies the input format.
 ********* -new
 - this option generates a new certificate request.
+********* -[digest]
+- such as "-md5", "-sha1"
 ********* -key filename
 - This specifies the file to read the private key from.
 ********* -out filename
 - This specifies the output filename to write to or standard output by default.
 ******* s_client
 ******* s_server
+******* x509
+- openssl x509 [Options]
+- a mulit purpose certificate utility.
+  It can be used to display certificate information, convert certificates to various form,
+  sign certificate requests like a "mini CA" or edit certificate trust settings.
+******** Options
+********* INPUT, OUTPUT, GENERAL PURPOSE
+********** -in filename
+********** -out filename
+********** -md2|-md5|-sha1|-mdc2
+********* DISPLAY OPTIONS
+********* TRUST SETTINGS
+********* SIGNING OPTIONS
+********** -signkey filename
+- this option causes the input file to be self signed using the supplied private key.
+  
+********** -days arg
+- specifies the number of days to make a certificate valid for.
+********** -req
+- by default a certificate is expected on input.
+  With this option a certificate request is expected instead.
 ****** Message Digest
 ******* md5
 - md5 Digest

@@ -327,6 +327,9 @@
 - Set-ExecutionPolicy RemoteSigned
 *** 大文字小文字
 - 区別しない
+*** 環境変数の確認
+- $env:環境変数名
+  ex) echo $env:PATH
 ** Link
 - [[https://technet.microsoft.com/ja-jp/library/ee221100.aspx][Windows PowerShell Owner's Manual - TechNet]]
 - [[https://technet.microsoft.com/ja-jp/scriptcenter/powershell_owner.aspx][Windows PowerShell オーナーマニュアル - TechNet]]
