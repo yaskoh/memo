@@ -15,7 +15,7 @@
 **** Synopsis
 - brew --version
 - brew command [--verbose|-v} [options] [formula] ...
-**** Commads
+**** Commands
 ***** install formula
 ***** remove formula
 ***** update
@@ -32,6 +32,8 @@
 ***** Install
 - 公式ページ記載のスクリプトを実行
   https://brew.sh/index_ja.html
+- updateがうまくいかなかった場合にも、
+  公式ページからのスクリプトを実行するとうまく動いた。
 ***** brewをupdate
 - cd $(brew --prefix)
   git fetch origin
@@ -134,3 +136,5 @@
 *** 「開発元が未確認のため開けません」の対処
 - Ctrl+クリック、で開く
 - 「セキュリティとプライバシー」から許可設定をする
+** Link
+- [[http://www.jmuk.org/diary/index.php/2009/02/06/0/][伝統的なUNIXユーザがMac OSXを使うときにはまるポイント - val it: a -> a = fun]]

@@ -982,6 +982,44 @@
 **** Program Frameworks / プログラムのフレームワーク
 **** Graphical User Interface with Tk / Tkを用いたグラフィカルユーザインターフェース
 **** Development Tools / 開発ツール
+***** typing
+***** pydoc
+***** doctest
+- Test interactive Python examples
+***** unittest
+- Unit testing framework originally inspired by JUnit
+****** Commad-line options
+******* -b, --buffer
+******* -c, --catch
+******* -f, --failfast
+******* --locals
+****** Classes and functions
+******* Classes
+******** class unittest.TestCase(methodName='runTest')
+********* setUp()
+********* tearDown()
+********* setUpClass()
+********* tearDownClass()
+********* run(result=None)
+********* skipTest(reason)
+********* debug()
+********* assertEqual(first,second,msg=None)
+********* assertNotEqual(first,second,msg=None)
+********* assertTrue(expr,msg=None)
+********* assertFalse(expr,msg=None)
+********* assertIs(first,second,msg=None)
+********* assertIsNot(first,second,msg=None)
+********* assertIsNone(expr,msg=None)
+********* assertIsNotNone(expr,msg=None)
+********* assertIn(first,second,msg=None)
+********* assertNotIn(first,second,msg=None)
+********* assertIsInstance(first,second,msg=None)
+********* assertNotIsInstance(first,second,msg=None)
+***** unittest.mock
+***** 2to3
+- Automated Python 2 to 3 code translation
+***** test
+***** test.suppot
 **** Debugging and Profiling / デバッグとプロファイル
 ***** pdb
 - Pythonデバッガ
@@ -1058,6 +1096,15 @@
   デバッガを終了する。
 
 **** Software Packaging and Distribution / ソフトウェア・パッケージと配布
+***** distutils
+***** ensurepip
+***** venv
+- Creation of virutal environment
+- New in version 3.3
+****** Usage
+- python3 -m venv /path/to/nowenv
+- source bin/activate
+***** zipapp
 **** Python Runtime Services / Pythonランタイムサービス
 ***** sys
 - システムパラメータと関数
@@ -1249,6 +1296,8 @@
 
 - [[https://docs.python.jp/3/tutorial/index.html][Pythonチュートリアル]]
 - [[https://docs.python.org/3/tutorial/][The Python Tutorial]]
+
+- [[https://www.obeythetestinggoat.com/pages/book.html][Obey the Testing Goat!]]
 
 ** Reverse Lookup
 *** 覚書(old)

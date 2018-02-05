@@ -963,3 +963,7 @@ OSやCPUの差異を隠蔽するために別名で基本型を再定義してい
 - http://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1389236638
 ** -develとついたパッケージ
 - 開発用のパッケージ。
+** シェルで2進数、8進数、10進数、16進数変換
+- bcコマンドを使う。
+  obaseとibaseを設定することで計算可能。
+  http://www.mazn.net/blog/2013/02/24/854.html

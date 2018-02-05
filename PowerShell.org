@@ -1,4 +1,8 @@
 * PowerShell
+** Command
+*** PowerShell[.exe]
+**** Options
+***** -ExecutionPolicy <ExecutionPolicy>
 ** Command-lets
 *** Add-Content
 **** ac
@@ -33,10 +37,14 @@
 **** cpp
 *** Disable-PSBreakpoint
 **** dbp
+*** Disable-PSRemoting
+- Prevents remote users from running commands on the local computer
 *** Disconnect-PSSession
 **** dnsn
 *** Enable-PSBreakpoint
 **** ebp
+*** Enable-PSRemoting
+- Configures the computer to receive remote commands
 *** Enter-PSSession
 **** etsn
 *** Exit-PSSession
@@ -50,8 +58,9 @@
 *** Export-PSSession
 **** espn
 *** ForEach-Object
-**** %
-**** foreach
+**** Aliases
+***** %
+***** foreach
 *** Format-Custom
 **** fc
 *** Format-List
@@ -61,7 +70,8 @@
 *** Format-Wide
 **** fw
 *** Get-Alias
-**** gal
+**** Aliases
+***** gal
 *** Get-ChildItem
 **** dir
 **** gci
@@ -74,12 +84,19 @@
 **** gc
 **** type
 *** Get-EventLog
+*** Get-ExecutionPolicy
+- Gets the execution policies for the current session.
 *** Get-Help
 - Displays information about Windows PowerShell commadns and concepts
+**** Aliases
+- None
+***** (help)
+***** (man)
 *** Get-History
-**** ghy
-**** h
-**** history
+**** Aliases
+***** ghy
+***** h
+***** history
 *** Get-Item
 **** gi
 *** Get-ItemProperty
@@ -93,6 +110,10 @@
 **** gm
 *** Get-Module
 **** gmo
+*** Get-NetConnectionProfile
+**** Aliases
+- None
+**** Options
 *** Get-Process
 **** gps
 **** ps
@@ -129,7 +150,8 @@
 *** Invoke-Command
 **** icm
 *** Invoke-Expression
-**** iex
+**** Aliases
+***** iex
 *** Invoke-History
 **** ihy
 **** r
@@ -138,9 +160,13 @@
 *** Invoke-RestMethod
 **** irm
 *** Invoke-WebRequest
-**** curl
-**** iwr
-**** wget
+**** Aliases
+***** curl
+***** iwr
+***** wget
+**** Options
+***** -Uri <uri>
+***** -OutFile <string>
 *** Invoke-WmiMethod
 **** iwmi
 *** Measure-Object
@@ -277,6 +303,7 @@
 *** Tee-Object
 **** tee
 *** Test-Path
+- Determines wheher all elemens of a path exists.
 *** Trace-Command
 **** trcm
 *** Update-Help
@@ -284,12 +311,16 @@
 *** Wait-Job
 **** wjb
 *** Where-Object
-**** ?
-**** where
+**** Aliases
+***** ?
+***** where
 *** Write-EventLog
+*** Write-Host
+- Writes customized output to a host
 *** Write-Output
-**** echo
-**** write
+**** Alias
+***** echo
+***** write
 ** Commands(etc,tmp)
 *** Server Manager Cmdlets
 - https://technet.microsoft.com/ja-jp/library/jj205465(v=wps.630).aspx
@@ -303,6 +334,11 @@
 **** Enable-ServerManagerStandardUserRemoting
 **** Disable-ServerManagerStandardUserRemoting
 ** Shell Variables
+*** $Args
+- コマンドライン引数
+*** $env
+*** $profile
+- プロファイルのパスを表示。プロファイルは.bash_profileみたいなもの、起動時の実行コマンドを記述する。
 *** $PSVersionTable
 - Version2.0以降
   PowerShellのバージョン情報を表示する
@@ -315,6 +351,49 @@
   {
     <コードブロック>
   }
+*** 変数
+- $var = a,b,c
+- 組み込み変数に値を代入しても無視される。
+*** 配列
+- $a = 0,1,2,3,4
+- $a = 0..4 (連続した値)
+- アクセス : $a[1] -> 1
+*** 連想配列
+- $h = @{"dog"="犬";"cat"="猫"}
+- アクセス : $h[dog] -> 犬
+- 追加 : $h["bird"] = "鳥"
+*** 演算子
+**** 比較演算子
+- -eq
+- -ne
+- -lt
+- -le
+- -gt
+- -ge
+**** 正規表現演算子
+- -match
+**** 論理演算子
+- -and
+- -or
+*** 関数
+- function 
+** Shortcut keys
+*** ↑/↓
+- 前/次の履歴
+*** PageUp/PageDown
+- 最初/最後の履歴
+*** Home/End
+- カーソルを先頭/末尾に
+*** Ctrl + ←/→
+- 単語一つ分左/右に移動
+*** Ctrl + C
+- コマンドをキャンセル
+*** F2
+*** F3
+*** F7
+- 履歴を表示
+*** Link
+- https://technet.microsoft.com/ja-jp/scriptcenter/powershell_owner03.aspx
 ** Reverse Lookup
 *** tmp
 **** ネットワークプロファイルを調べる
@@ -325,11 +404,40 @@
 - UTF-16とのこと。
 *** ScriptFile実行許可
 - Set-ExecutionPolicy RemoteSigned
+*** ExecutionPolicy 実行ポリシー
+**** Values
+***** Restricted
+- 構成ファイルの読み込みやスクリプトの実行を行わない。デフォルト。
+***** AllSgined
+- 全てのスクリプトと構成ファイルが信頼された発行元によって署名されていることを要求
+***** RemoteSigned
+- インターネットからダウンロードされたすべてのスクリプトおよび構成ファイルが、信頼された発行元によって署名されていることを要求する
+***** Unrestricted
+***** Bypass
+***** Undefined
+**** Scope
+- Set-ExecutionPolicyの-Scopeオプションで設定する
+***** Process
+- 現在のプロセスのみに影響する
+***** CurrentUser
+- 現在のユーザのみに影響する
+***** LocalMachine
+- コンピュータのすべてのユーザに影響する
+**** Link
+- https://qiita.com/kikuchi/items/59f219eae2a172880ba6
 *** 大文字小文字
 - 区別しない
 *** 環境変数の確認
 - $env:環境変数名
   ex) echo $env:PATH
+*** Write-Host, Write-Outputの違い
+- $a=1,2,3
+- write-host $a
+  1 2 3
+- write-output $a
+  1
+  2
+  3
 ** Link
 - [[https://technet.microsoft.com/ja-jp/library/ee221100.aspx][Windows PowerShell Owner's Manual - TechNet]]
 - [[https://technet.microsoft.com/ja-jp/scriptcenter/powershell_owner.aspx][Windows PowerShell オーナーマニュアル - TechNet]]
@@ -337,3 +445,4 @@
 
 
 - [[http://qiita.com/tadnakam/items/f51e03021b95eb39f34b][コマンドプロンプトからPowerShellに乗り換えるための小さな本 - Qiita]]
+- [[https://qiita.com/cd01/items/da9a36582372e7d0a7f6][それPowerShellでできるよ - Qiita]]

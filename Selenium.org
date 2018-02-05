@@ -400,6 +400,9 @@
   Selenium IDEはSelenium RCの機能しか利用できないので、
   Selenium WebDriverの機能を利用できるSelenium Builderの開発が活発。
 
+** Driver
+*** ChromeDriver
+- https://sites.google.com/a/chromium.org/chromedriver/downloads
 ** Memo
 *** JSON Wire Protocol
 - [[https://code.google.com/p/selenium/wiki/JsonWireProtocol][The WebDriver Wire Protocol - selenium]]
@@ -410,6 +413,134 @@
 - click()でうまく行かない場合は、send_keys(Key.RETURN)などを使う。
   submit()はフォーム中であれば任意の場所で実行してくれる。
   submitのボタンを探してきてclick()をしても同様の動きとなる。
+*** 複数のクラスを条件として選択
+- 複数のクラスを条件とするには、xpathかcssSelectorを使うとよい、とのこと。
+  https://teratail.com/questions/90876
+*** ファイルをアップロードする
+- クリックしてポップアップを開くのではなく、'input type="file"'のタグにsendKeysで直接ファイル名を指定する。
+  [[http://www.dafuku.com/2014/12/selenium-file-upload.html][Seleniumでファイルがアップロードできない時の対処法 - ダーフク.com]]
+** Page Memo
+*** Selenium with Python
+- [[http://selenium-python.readthedocs.io/#][Selenium with Python]]
+**** Installation
+- pip install selenium
+**** Getting Started
+- import
+  from selenium import webdriver
+  from selenium.webdriver.common.keys import Keys
+
+- driver open & close
+  driver = webdriver.Firefox()
+  driver = webdriver.Chrome()
+
+  driver.close()
+
+- page
+  driver.get("url")
+
+- find
+  elem = driver.find_element_by_name("q")
+
+- operation
+  elem.clear()
+  elem.send_keys("pycon")
+  elem.send_keys(Keys.RETURN)
+**** Navigating
+- find
+  elem = dviver.find_element_by_id("passwd-id")
+  elem = dviver.find_element_by_name("passwd")
+  elem = dviver.find_element_by_xpath("//input[@id='passwd-id']")
+
+- fill forms
+  elem = dviver.find_element_by_xpath("//select[@name='name']")
+  all_options = elem.find_elements_by_tag_name("option")
+  for optoin in all_options:
+      print()
+      option.click()
+
+- Select
+  from selenium.webdriver.support.ui import Select
+  select = Select(driver.find_elemnt_by_name('name'))
+  select.select_by_index(index)
+  select.select_by_visible_text("text")
+  select.select_by_value(value)
+  
+  select.deselect_all()
+
+- Drag and Drop
+  from selenium.webdriver import ActionChain
+  ActionChains(driver).drag_and_drop(elem, target).perform()
+
+- Moving between windows and frames
+
+- Popup dialogs
+  driver.switch_to_alert()
+
+- Navigation
+  driver.forward()
+  driver.back()
+
+- Cookies
+  cookie = {'name' : 'foo', 'value' : 'bar'}
+  driver.add_cookie(cookie)
+  driver.get_cookies()
+
+**** Location Elements
+- locate
+  find_element_by_id
+  find_element_by_name
+  find_element_by_xpath
+  find_element_by_link_text
+  find_element_by_partial_link_text
+  find_element_by_tag_name
+  find_element_by_class_name
+  find_element_by_css_selector
+  (if you want to find multipleelements, use find_element"s"_by~, like "find_elements_by_name")
+
+**** Waits
+- Explicit Waits
+  from selenium.webdriver.support.ui import WebDriverWait
+  from selenium.webdriver.support import expected_conditions as EC
+  
+  try:
+      elem = WebDriverWait(driver, 10).until(
+          EC.presence_of_element_located((By.ID, "myDynamicElement"))
+      )
+  finally:
+      driver.quit()
+
+  - Conditions
+    title_is
+    title_contains
+    presence_of_element_located
+    visibility_of_element_located
+    visibility_of
+    presence_of_all_elements_located
+    text_to_be_present_in_element
+    text_to_be_present_in_element_value
+    frame_to_be_available_and_switch_to_it
+    invisibility_of_element_located
+    element_to_be_clickable
+    staleness_of
+    element_to_be_selected
+    element_located_to_be_selected
+    element_selection_state_to_be
+    element_located_selection_state_to_be
+    alert_is_present
+
+    - Custom Wait Conditions
+
+- Implicit Waits
+  poll the DOM for a certain amount of time when trying to find any element (or elements) not immediately available.
+  Once set, the implicit wait is set for the life of the WebDriver object.
+  
+  driver.implicitly_wait(10) # seconds
+  
+**** Page Objects
+**** WebDriver API
+**** FAQ
+*** SeleniumHQ
+- http://www.seleniumhq.org/docs/03_webdriver.jsp
 ** Link
 - [[http://www.seleniumhq.org/][SeleniumHQ]]
 - [[https://app.codegrid.net/entry/selenium-1][入門、Selenium - CodeGrid]]

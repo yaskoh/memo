@@ -437,7 +437,25 @@
 - exit
   終了する
 
-******* Options
+******* Commands
+******** ?
+******** add
+******** Advfirewall
+******** bridge
+******** delete
+******** dump
+******** exec
+******** firewall
+********* ?
+********* add
+- adds firewall configuration
+********* delete
+********* dump
+********* help
+********* set
+********* show
+******** help
+******** http
 ******** trace
 - パケットキャプチャを取得する。
   Microsoft Message Analyzerで解析が可能。
@@ -1355,6 +1373,22 @@ xwizard.exe
 ******* File Server Resource Manager
 ******* Folder
 ******* Group Policy Object Editor
+***** etc
+****** winrm.cmd
+- Windows Remote Management Command Line Tool
+- Server限定の可能性あり
+******* Usage
+- winrm OPERATION RESOURCE_URI
+******* OPERATIONS
+******** winrm g[et] -?
+******** winrm s[et] -?
+******** winrm c[reate] -?
+******** winrm d[elete] -?
+******** winrm e[numerate] -?
+******** winrm i[nvoke] -?
+******** winrm id
+******** winrm quickconfig -?
+- Configures this machine to accept WS-Management requests from other machines.
 **** wbem\
 ***** wmic.exe / WMI (Windows Management Instrumentation)
 - 
@@ -1429,6 +1463,10 @@ xwizard.exe
 ***** HKEY_USERS
 - HKU
   コンピュータ上に読み込まれた有効なユーザプロファイルがすべて格納される。
+****** .DEFAULT
+******* Keyboard Layout
+******** Preload
+- local layoutが表示される
 ***** HKEY_CURRENT_CONFIG
 - 
   システムの起動時にローカルコンピュータにより使用されるハードウェアプロファイルに関する情報が格納されている。
@@ -1449,6 +1487,10 @@ xwizard.exe
 ***** Dvorak
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\00000411
   KBDJPN.DLL -> KBDDV.DLL
+***** Default Settings
+- HKEY_USERS\.DEFAULT\Keyboard Layout\Preloadに記載あり
+  http://www.itprotoday.com/management-mobility/how-do-i-configure-default-keyboard-layout-during-login
+
 ***** caps<->ctrl
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout\Scancode Map(なければ作成)
 - 値のデータ
@@ -1766,6 +1808,12 @@ xwizard.exe
 - [[https://msdn.microsoft.com/ja-jp/library/dn505754(v=ws.11).aspx][フェールオーバー クラスターを作成する - Developer Network]]
 - [[https://techinfoofmicrosofttech.osscons.jp/index.php?MSCS%2FWSFC][MSCS/WSFC - Open棟梁Project - マイクロソフト系技術情報 Wiki]]
 
+** Tools
+*** Chocolatey
+- package manager
+**** Link
+- https://chocolatey.org/packages?q=
+- https://qiita.com/msp0310/items/2a92f8966608260c49c1
 ** Memo
 *** ACL
 - 

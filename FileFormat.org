@@ -227,6 +227,7 @@
 - http://www.atmarkit.co.jp/ait/articles/1202/17/news129.html
 - http://blog.techlab-xe.net/archives/3134
 - https://qiita.com/kobadlve/items/5bf9bd946c9dfb77a0f8
+- http://www.wivern.com/security20141205.html
 *** NE / New Executable
 - マイクロソフトの16ビットOSで採用された共有ライブラリおよび実行ファイルフォーマットの一つ。
   32ビットWindowsアプリケーションではPortable Executableが使われるようになった。
