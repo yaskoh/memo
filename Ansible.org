@@ -354,32 +354,115 @@
 
   フォーマットはINIフォーマットで書かれる。
 
-- グループ
+*** group
+- 
   ブラケット[]内にグループ名を記述する。複数グループを指定可能。
   SSH標準以外のポートを指定するには、ホストネームの後コロン:を置いた後ろに
   ポート番号を指定できる。
   ex) [webservers]
       badwolf.example.com:5309
 
-- alias
+*** alias
+- 
   静的IPを使ってエイリアスを付ける場合、以下のようにすることが可能。
   ex) jumper ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
 
-- ansible_ssh_port
-- ansible_ssh_host
-
-- 複数指定
-  複数まとめて指定可能。
+*** 複数指定
+- 
+  複数をまとめて指定可能。
   ex) www[01:50].example.com
       db-[a:f].example.com
 
-- コネクション
+*** connection
   コネクションタイプを以下のように指定可能。
   ex) localhost          ansible_connection=local
       other.example.com  ansible_connection=ssh    ansible_ssh_user=mpdehaan
 
-- ansible_connection
+*** Groups of Groups, Group Variables
+- 
+  グループのグループや、それぞれに対しグループに対して変数を設定可能。
+  ex) [atlanta]
+      host1
+      host2
+      
+      [raleigh]
+      host2
+      host3
+      
+      [southeast:children]
+      atlanta
+      raleigh]
+      
+      [southeast:vars]
+      soe_server=foo.southeast.example.com
+      halon_system_timeout=30
+      self_destruct_countdown=60
+      escape_pods=2
+      
+      [usa:children]
+      southeast
+      northeast
+      southwest
+      northwest
+
+*** Splitting Out
+- 
+  hostとgroupについては、別ファイルにして指定のフォルダに格納することで読み込むことができる。
+  ex) /etc/ansible/group_vars/raleigh
+      /etc/ansible/group_vars/webservers
+      /etc/ansible/host_vars/foosball
+  
+  更に、各グループやホスト名のディレクトリを作成して、配下にファイルを配備しても読み込んでくれる。
+  ex) /etc/ansible/group_vars/raleigh/db_settrings
+      /etc/ansible/group_vars/raleigh/cluster_settings
+
+*** Behavioral Inventory Parameters
+- ansible_ssh_host
+  The name of the host to connect to, if different from the alias you wish to give to it.
+
+- ansible_ssh_port
+  The ssh port number, if not 22
+
 - ansible_ssh_user
+  The default ssh user name to use.
+
+- ansible_ssh_pass
+  The ssh password to use (this is insecure, we strongly recommend using --ask-pass or SSH keys)
+
+- ansible_sudo_pass
+  The sudo password to use (this is insecure, we strongly recommend using --ask-sudo-pass)
+
+- ansible_sudo_exe (new in version 1.8)
+  The sudo command path.
+
+- ansible_connection
+  Connection type of the host.
+  Candidates are local, ssh or paramiko.
+  The default is paramiko before Ansible 1.2,
+  and 'smart' afterwards which detects whether usage of 'ssh'
+  would be feasible based on whether ControlPersist is supported.
+
+- ansible_ssh_private_key_file
+  Private key file used by ssh.
+  Useful if using multiple keys and you don't want to use SSH agent.
+
+- ansible_shell_type
+  The shell type of the target system.
+  By default commands are formatted using 'sh'-style syntax by default.
+  Setting this to 'csh' or 'fish' will cause commands executed on target systems
+  to follow those shell's syntax instead.
+
+- ansible_python_interpreter
+  The target host python path.
+  This is useful for systems with more than one Python or not located at "/usr/bin/python" such as \*BSD, 
+  or where /usr/bin/python is not a 2.X series Python.
+  We do not use the "/usr/bin/env" mechanism as that requires the remote user's path to be set right
+  and also assumes the "python" executable is named python,
+  where the executable might be named something like "python26".
+
+- ansible\_\*\_interpreter
+  Works for anything such as ruby or perl and works just like ansible_python_interpreter.
+  This replaces shebang of modules which will run on that host.
 
 ** Playbooks
 - りほーとホストの状態を定義するyamlファイル
