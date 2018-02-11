@@ -71,18 +71,27 @@
 ***** <Directory>
 - 説明
   指定のファイルシステムのディレクトリとサブディレクトリとのみに適用されるディレクティブを囲む
-  
 ***** DocumentRoot
 - 説明
   ウェブから見えるメインのドキュメントツリーになるディレクティブ
 - 構文
   DocumentRoot directory-path
+***** ErrorDocument
+- Desc : What the server will return to he client in case of an error
+- Syntax : ErrorDocument error-code document
+- e.g.
+  ErrorDocument 403 "Sorry, can't allow you access today"
 ***** ErrorLog
 - Description : サーバがエラーをログ収集する場所
 - Syntax : ErrorLog file-path|syslog[:facility]
 - Default : ErrorLog logs/error_log (Unix) / ErrorLog logs/error.log (Windows)
 ***** ErrorLogFormat
 - Description : Format specification for error log entries
+***** <Files>
+- Desc: Contains directives that apply to matched filenames
+- Syntax: <Files filename> ... </Files>
+- 
+  Wild-card strings, Regular expressions can be used.
 ***** <IfModule>
 - Description : モジュールの存在有無に応じて処理されるディレクティブを囲む。
 ***** Include
@@ -96,6 +105,16 @@
 ***** <Location>
 - Description : 囲んだディレクティブがマッチするURLのみに適用。
 - Syntax : <Location URL-path|URL> ... </Location>
+
+****** When to use
+- lives outside the filesystem.
+  in the filesystem, use <Directory> and <Files>.
+****** Regular expressions
+- with the addition of the ~ caharcter.
+  e.g.
+  <Location ~ "/(extra|special)/data">
+      # data
+  </Location>
 ***** Options
 - Description : ディレクトリに対して使用可能な機能を設定する。
 ****** Opitons
@@ -166,7 +185,24 @@
 ***** mpm_netware
 ***** mpm_os2
 *** Other defaluts
-**** mod_access
+**** mod_access_compat
+- mod_authz_hostにとってかわられるべきっぽい。
+***** Directives
+****** Allow
+- Description: Controls which hosts can access an area of the server.
+****** Deny
+****** Order
+- Default: Order Deny,Allow
+****** Satisfy
+***** Memo
+****** アクセスの制御
+- ホスト制御(Order, Allow, Deny)
+- ユーザ認証制御(Auth*, Require)
+- Satifsfy
+  - デフォルトでAll。すべての条件を満たす必要がある
+  - anyとすると、どれかを満たせばよい。
+- [[http://koseki.hatenablog.com/entry/20100913/ApacheAccessControl][Apacheのアクセス制御をちゃんと理解する。 - こせきの技術日記]]
+****** 
 **** mod_actions
 **** mod_alias
 **** mod_asis
@@ -175,6 +211,14 @@
 **** mod_auth_dbm
 **** mod_auth_digest
 **** mod_auth_ldap
+**** mod_authz_host
+- Group authorizations based on host
+***** Directives
+****** Require
+******* Require ip
+******* Require host
+******* Require forward-dns
+******* Require local
 **** mod_autoindex
 - Discription : UnixのlsやWinのdirシェルコマンドと似たディレクトリインデックスを生成する。
 **** mod_cache
@@ -283,6 +327,16 @@
   Network timeout for proxied requests
 - Syntax:
   ProxyTimeout seconds
+**** mod_remoteip
+- Replaces the original client IP adderss for the connection with the useragent IP adderss list
+  presented by a proxies or load balancer via the request headers.
+***** Directives
+****** RemoteIPHeader
+****** RemoteIPInternalProxy
+****** RemoteIPInternalProxyList
+****** RemoteIPProxyHeader
+****** RemoteIPTrustedProxy
+****** RemoteIPTrustedProxyList
 **** mod_rewrite
 - Provides a rule-based rewriting engine to rewrite requested URLs on the fly.
 - 
@@ -377,6 +431,30 @@
 *** cgi-bin
 - 
   the directory where CGI scripts are kept.
+** Manual
+*** Referense Manual
+*** User's Guide
+**** Getting Started
+***** Clients, Servers, and URLs
+- URL
+  - protocol
+  - servername
+  - URL-path
+  - query string : e.g. ?arg=value
+- 
+  - client : request
+  - server : response
+***** Hostnames and DNS
+- DNS
+- hosts file
+- virtual hosts
+***** Configuration File and Directives
+- 
+*** How-To / Tutorials
+*** Platform Specific Notes
+*** Other Topics
+*** Link
+- https://httpd.apache.org/docs/2.4/en/
 
 ** Memo
 *** 暗号化
@@ -396,6 +474,24 @@
 - http://www.maruko2.com/mw/Apache/SSL%E8%87%AA%E5%B7%B1%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%AE%E4%BD%9C%E6%88%90%E3%81%A8mod_ssl%E3%81%AE%E8%A8%AD%E5%AE%9A
 - http://d.hatena.ne.jp/ozuma/20130511/1368284304
 - http://www.lesstep.jp/step_on_board/apache/335/
+*** アクセス制御
+**** ディレクティブ
+- ファイルシステム向けのコンテナ
+  <Directory>ディレクティブ
+  <Files>ディレクティブ
+- Web空間向けコンテナ
+  <Location>ディレクティブ
+- [[https://httpd.apache.org/docs/2.4/ja/sections.html][セクションの設定 - Apache]]
+**** アクセス制御
+- mod_authz_host (,mod_access_compat)も参照
+- [[https://qiita.com/YasuyukiKawai/items/727d2238572851000c79][Apache:アクセス制御をする - Qiita]]
+*** Rewriteについて
+- RewriteRuleの前にRewriteCondを記述。
+- 複数Ruleが必要なら、そのたびにRewriteCondを直前に記述する。
+
+**** Link
+- https://weblabo.oscasierra.net/apache-rewritecond-base/
+- http://blog.livedoor.jp/tak_bon/archives/6508443.html
 ** Link
 - [[http://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
 

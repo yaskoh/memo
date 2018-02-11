@@ -962,6 +962,8 @@
   - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_admin_role_import_export_specification/index.html][intra-mart Accel Platform ロール インポート・エクスポート仕様書]]
   - [[http://www.intra-mart.jp/document/library/iap/public/im_job_scheduler/im_job_scheduler_import_export_specification/index.html][intra-mart Accel Platform ジョブ インポート・エクスポート仕様書]]
   - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_menu_import_export_specification/index.html][intra-mart Accel Platform メニュー インポート・エクスポート仕様書]]
+- Log
+  - [[https://www.intra-mart.jp/download/product/iap/im_core/im_log_specification/index.html][intra-mart Accel Platform ログ仕様書]]
 - IM-BIS
   - [[http://www.intra-mart.jp/document/library/bis/public/bis_setup_guide/index.html][IM-BIS for Accel Platform セットアップガイド]]
   - [[http://www.intra-mart.jp/document/library/bis/public/bis_beginners_guide/][IM-BIS for Accel Platform IM-BIS ビギナーズガイド]]

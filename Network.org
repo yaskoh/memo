@@ -1633,12 +1633,17 @@
   |------+----------------------------|
   
 ***** RIPv2
-*** Remote Desktop Protocol, RDP
+*** Unclassified
+**** Remote Desktop Protocol, RDP
 - TCPポート3389およびUDPポート3389を医療する。
-**** Link
+***** Link
 - [[https://msdn.microsoft.com/en-us/library/cc240445.aspx][(MS-RDPBCGR): Remote Desktop Protocol: Basic Connectivity and Graphics Remoting - Developer Network]]
 - [[https://wiki.wireshark.org/RDP][Remote Desktop Protocol (RDP) - WIRESHARK]]
 - [[https://msdn.microsoft.com/en-us/library/bb892075(v=vs.85).aspx][Remote Desktop Services - Developer Network]]
+**** SOCKS
+- ネットワーク・ファイアウォール越えやアクセス制御等を目的として、
+  クライアントサーバ型のプロトコルが透過的に使用できるよう設計されたプロキシのプロトコル、及びシステム。
+  SOCKetSの略。
 *** Link
 - https://en.wikipedia.org/wiki/OSI_model
 ** Command
@@ -1944,3 +1949,8 @@
   デフォルトゲートウェイのIPアドレスは、DHCPサーバに教えてもらうか、手動で設定する。
   ARPしてデフォルトゲートウェイのMACアドレスを取得した上で、データを送る。
   
+*** Dynamic Port Forward ダイナミックポートフォワード
+- 固定IPでWebアクセスしたい場合に、踏み台サーバにダイナミックポートフォワードする。
+  プロキシ設定を行うことで、その踏み台サーバのアドレスでブラウザアクセス等ができるようになる。
+  SOCKSプロトコル、というものに対応していれば利用できる模様。
+  [[http://vogel.at.webry.info/201505/article_6.html][ダイナミックポートフォワーディングは便利 - パソコン鳥のブログ]]

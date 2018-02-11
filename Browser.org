@@ -24,7 +24,6 @@
 
 **** Extensions
 ***** Vimium
-***** AutoPatchWork
 ***** The Great Suspender
 ***** Tab Glue
 ***** OneTab
@@ -33,6 +32,13 @@
 ***** Google Art Project
 ***** Google Dictionary
 ***** Keepa - Amazon Price Tracker
+***** Proxy SwitchSharp
+***** Obsolete
+****** AutoPatchWork
+- 規約違反？削除された模様。
+**** Options
+- http://chrome.half-moon.org/43.html
+- https://abhp.net/it/IT_Google_Chrome_950000.html
 *** InternetExplorer
 **** IE8
 - 
@@ -277,3 +283,9 @@
 - Link
   [[http://freesoft.tvbok.com/youtube_f/method/browser_jp.html][ブラウザやＯＳの言語をチェックする (逆に日本語以外にする裏技) - ぼくんちのTV別館]]
   [[http://memorva.jp/internet/pc/browser_language.php][ブラウザの言語設定 - 日本語が表示されない・英語が表示される - MEMORVA]]
+*** Proxy
+- IE, Firefoxは別プロキシ設定らしい。
+- Chromeは、--proxy-server起動オプションを付ける、
+- Proxyを操作するChrome Extentionも複数存在。
+  - Proxy SwitchyOmega
+  - Proxy SwitchyShrap
