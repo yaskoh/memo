@@ -344,7 +344,7 @@
 **** win_regedit
 **** win_robocopy
 **** win_unzip
-** Inevntory file
+** Inventory file
 - 
   ansibleはインベントリファイルに書かれたホストにしかアクセスしない。
   -i でインベントリファイルを指定して実行する。
@@ -465,7 +465,7 @@
   This replaces shebang of modules which will run on that host.
 
 ** Playbooks
-- りほーとホストの状態を定義するyamlファイル
+- リモートホストの状態を定義するyamlファイル
 ** Directory layout
 *** 最小構成
 - hosts #Inventory

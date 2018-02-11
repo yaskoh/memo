@@ -91,6 +91,20 @@
 ****** finner
 ****** finest
 ****** all
+**** Health
+***** Health Checking
+****** Configuration
+****** <health:HealthSystem>
+****** Health checks
+****** Health actions
+****** Health conditions
+******* Basic conditions
+******* Cobining conditions
+******* Health check conditions
+******* Lifecycle conditions
+***** Meters
+***** Report
+***** Watchdog
 **** Web Server
 ***** HTTP server
 ***** Virtual Hosts

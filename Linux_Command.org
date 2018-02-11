@@ -1943,6 +1943,10 @@
 **** ssh
 - secure shell.
 ***** Options
+****** -D [bind_address:]port
+- Specifies a local "dynamic" application-level port forwarding.
+- ダイナミックポートフォワーディング
+
 ****** -L LocalPort:RemoteHost:RemotePort
 - port forwarding.
   ex) ssh -L 8080:192.168.111.200:8080 User@192.168.111.1
@@ -1970,7 +1974,12 @@
 ******** Port
 ******** User
 ******** IdentityFile
+******** IdentitiesOnly
+- yes / no
 ******** LocalForward
+******** DynamicForward
+******** TCPKeepAlive
+- yes / no
 ******** Ex
 - ex1
   Host server1

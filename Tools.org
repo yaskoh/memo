@@ -231,8 +231,7 @@
 
 ** C
 ** Java
-- 
-  [[file:./Java.org][Java.org-Tools]]
+- [[file:./Java.org][Java.org-Tools]]
 
 ** Ruby
 *** Library

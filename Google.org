@@ -15,6 +15,13 @@
 **** cache: キャッシュサイト
 **** Link
 - [[https://support.google.com/websearch/answer/2466433?visit_id=1-636274824380494107-1219258194&p=adv_operators&hl=ja&rd=1][ウェブ検索の精度を高める]]
+** Google Apps Script, GAS
+- Googleが提供するサーバーサイド・スクリプト環境。
+  Googleが提供するあらゆるサービスを統合処理できる。
+- JavaScriptにGoogleのサービスを利用するためのさまざまなオブジェクトを追加したもの。
+
+*** Link
+- http://makimakimakino.hatenablog.com/entry/2017/03/16/010759
 ** Memo
 *** アメリカの検索結果を表示
 - https://www.google.com/webhp?gl=us&hl=en&gws_rd=cr&pws=0
