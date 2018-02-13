@@ -1321,9 +1321,16 @@ xwizard.exe
 ****** azman.msc
 ****** certmgr.msc
 ****** comexp.msc
-****** compmgmt.msc
+****** compmgmt.msc / Computer Management / コンピュータの管理
 ****** devmgmt.msc
-****** diskmgmt.msc
+****** diskmgmt.msc / Disk Management / ディスクの管理
+- ディスクの管理。
+  Windowsのスタートボタンを右クリック→disk managementを選択したり。
+  computer managementのStorage項目としても選択可能。
+******* Memo
+******** ディスクがGPTかMBRか確認する
+- ディスクを右クリック、プロパティ、ボリューム、パーティションのスタイル、に記載あり。
+  http://www1.ark-info-sys.co.jp/support/etc/etc/check_mbr_gpt.html
 ****** eventvwr.msc / Event Viewer / イベントビューアー
 ****** fsmgmt.msc
 ****** gpedit.msc / ローカルグループポリシーエディター
