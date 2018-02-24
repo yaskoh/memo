@@ -136,5 +136,11 @@
 *** 「開発元が未確認のため開けません」の対処
 - Ctrl+クリック、で開く
 - 「セキュリティとプライバシー」から許可設定をする
+*** Hibernation / Sleep ハイバネーション、スリープ
+- スリープ、セーフスリープ、ディープスリープの三種類が存在。
+
+- http://inforati.jp/apple/mac-tips-techniques/system-hints/how-to-change-the-sleep-mode-of-mac.html
+- http://www.hachim.jp/study-by-incident/mac-sleepimage.html
+- http://weble.org/2012/04/09/mac-deep-sleep
 ** Link
 - [[http://www.jmuk.org/diary/index.php/2009/02/06/0/][伝統的なUNIXユーザがMac OSXを使うときにはまるポイント - val it: a -> a = fun]]

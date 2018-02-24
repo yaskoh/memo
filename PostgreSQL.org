@@ -1214,9 +1214,23 @@
   2つ目以降のセグメントについては、ノード番号.1、ノード番号.2、というファイル名となる。
   
 ** Client Interfaces クライアントインターフェース
+*** libpq
+*** ラージオブジェクト
+*** ECPG - C言語による埋め込みSQL
+*** 情報スキーマ
+- 現在のデータベースで定義されたオブジェクトについての情報を持つビューの集合。
+  標準SQLで定義されており、移植性・安定性を保持できるものと期待される。
+  （システムカタログはPostgreSQLに特化し、実装上の事項にならって作成される。）
+  情報スキーマのビューにはPostgreSQL固有機能の情報がないため、確認にはシステムカタログやPostgreSQL固有ビューの問い合わせが必要。
+**** Views
+***** tables
+***** triggers
+***** views
 ** Server Programming サーバプログラミング
 ** Reference リファレンス
 *** SQL Command
+**** ABORT
+**** ALTER ~
 **** BEGIN
 
 **** COMMIT
@@ -1227,9 +1241,8 @@
   ファイルとテーブルの間でデータをコピーする。
   ex) COPY weather FROM '/home/user/weacher.txt';
 
-**** CREATE
-- 
-  
+**** CREATE ~
+***** tmp
 - INHERITS
   指定されたテーブルのすべての列を自動的に継承する。
   新しい子テーブルと複数の親テーブルとの間に永続的な関連が作成される。
@@ -1238,6 +1251,11 @@
   テーブルのすべての列名、データ型、非NULL制約が新しいテーブルにコピーされる。
   INHERITSとの違いは、新テーブルと旧テーブルが完全に分離されること。
 
+***** CREATE TABLE AS
+- 問合せの結果によって新しいテーブルを作成する
+****** 注釈
+- SELECT INTOと同等の機能を持つが、SELECT INTO構文の他の使用例と混乱する可能性から、こちらの使用のほうがよい。
+  機能もSELECT INTOのスーパーセットとなっている。
 **** DELETE
 - 
   テーブルから行を削除する。
@@ -1245,6 +1263,7 @@
   もし条件がない場合、テーブル内"全ての"データが削除される。
     ex) DELETE FROM weather;
 
+**** DROP ~
 **** EXPLAIN
 - 
   問い合わせ文の実行結果を表示する。
@@ -1259,7 +1278,13 @@
   現在のトランザクション内に新規にセーブポイントを定義する。
 
 **** SELECT
-
+- テーブルもしくはビューから行を検索する
+**** SELECT INTO
+- 問い合わせの結果からの新しいテーブルを定義する
+***** 注釈
+- 機能的にはSELECT INTOと同等。
+  ECPGやPL/pgSQLではINTO句の解釈が異なるため、CREATE TABLE AS構文の利用を勧める。
+  更に、SELECT INTOよりもCREATE TABLE ASの方が多くの機能がある。
 **** UPDATE
 
 *** Client Application
@@ -1486,15 +1511,38 @@
 ** Internals 内部構造
 *** Overview of PostgreSQL Internals /  PostgreSQL内部の概要
 *** System Catalogs / システムカタログ
+- テーブルや列の情報などのスキーマメタデータと内部的な情報を格納する場所。
+  PostgreSQLのシステムカタログは通常のテーブルのため、削除・再作成、列の追加、値の挿入や更新が可能だが、通常変更してはいけない。
 **** Overview / 概要
 **** System Catalogs
+***** pg_aggregate
+***** pg_am
+***** pg_amop
+***** pg_database
+***** pg_depend
+***** pg_enum
+***** pg_index
+***** pg_namespace
+***** pg_trigger
+***** pg_type
 **** System Views
+***** pg_config
 ***** pg_file_settings
 - 設定ファイルの内容の要約を提供する。
   現在の内容であり、最後に適用した内容ではない。
+***** pg_locks
+***** pg_roles
+***** pg_rules
+***** pg_stats
 ***** pg_settings
 - サーバの実行時パラメータへのアクセスを提供する。
   基本的にSHOWとSETコマンドの代わりとなるインターフェース。
+***** pg_shadow
+***** pg_stats
+***** pg_tables
+***** pg_user
+***** pg_user_mappings
+***** pg_views
 *** Frontend/Backend Protocol
 *** プロセスとメモリ構造
 *** データベースクラスタ/バックグラウンドライタ
@@ -1543,6 +1591,10 @@
   - SIGHUPを投げるとリロードするとのこと。方法は色々ある。
     - pg_ctl reload [-D PGDATA]
     - pg_ctl kill HUP PID
+*** テーブル名等の一覧を取得
+- information_schemaを利用
+  →どのような情報が取得されるか不明。
+    また、最新Verでの推奨法かも不明。
 ** Memo
 *** Uninstall(Windows)
 - 

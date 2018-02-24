@@ -825,7 +825,7 @@
 ******* reg.exe
 - Registry操作
 ******** Operations
-********* REG ADD key
+********* ADD key [Options]
 - REG ADD key
 
 - ex
@@ -864,11 +864,65 @@
   ただし/s servername, /u UserName, /p Passwordなどを入力すると、
   リモートの情報も取得できる。
 
+******* wevtutil.exe
+- wevtutil COMMAND [ARGUMENT [ARGUMENT] ...] [/OPTION:VALUE [/OPTION:VALUE] ...]
+- イベントログおよび発行元に関する譲歩の取得、イベントマニフェストのイントールおよびアンインストール、
+  クエリの実行、ログのエクスポート、アーカイブおよびクリアを実施できる。
+******** Commands
+********* el | enum-logs
+********* gl | get-log
+********** Options
+*********** /{f|format}:[XML|Text]
+- Specify the log file format.
+********* sl | set-log
+- 既存のログの構成を更新する。
+********** Options
+*********** /{ab|autobackup}:[true|false]
+*********** /{ca|channelaccess}:VALUE
+- Access permission for an event log.
+*********** /{rt|retention}:[true|false]
+********* ep | enum-publishers
+********* gp | get-publisher
+********* im | install-manifest
+********* um | uninstall-manifest
+********* qe | query-events
+********* gli | get-log-info
+********* epl | export-log
+********* al | archive-log
+********* cl | clear-log
+******** General Options
+********* /{r | remote}:VALUE
+********* /{u | username}:VALUE
+********* /{p | pasword}:VALUE
+********* /{a | authentication}:[Default|Negotiate|Kerberos|NTLM]
+********* /{uni | unicode}:[true|false]
 ******* where.exe
 - プログラムの場所を返す
+******* whoami.exe
+******** Options
+********* /UPN
+********* /FQDN
+********* /LOGONID
+********* /USER
+- SIDが調べられる
+********* /USER /FO LIST
+********* /USER /FO CSV
+********* /GROUPS
+- 所属グループのSID含む各種情報が取得できる。
+********* /GROUPS /FO CSV /NH
+********* /CLAIMS
+********* /CLAIMS /FO LIST
+********* /PRIV
+********* /PRIV /FO TABLE
+********* /USER /GROUPS
+********* /USER /GROUPS /CLAIMS /PRIV
+********* /ALL
+********* /ALL /FO LIST
+********* /ALL /FO CSV /NH
+********* /?
 ****** GUI
 ******* eventvwr.exe
-- イベントビューアー
+- イベントビューアー。.mscとの違いは不明、おそらく同じ。
 ******* mmc.exe
 - Microsoft管理コンソール Microsoft Management Console
 ******* mstsc.exe / リモートデスクトップ
@@ -890,6 +944,13 @@
 ******* notepad.exe
 ******** Memo
 - UTF-8で保存すると勝手にBOMがつくので注意。
+******* psr.exe / ステップ記録ツール
+- Steps Recorder, ステップ記録ツール、問題ステップ記録ツール
+- CLI操作も可能
+
+******** Link (psr.exe)
+- https://qiita.com/gzock/items/1c934d6577eec3b7f7ff
+- http://yaimairi.hateblo.jp/entry/2016/08/22/004029
 ******* wscript.exe
 - GUI実行用WSH。
 ****** System
@@ -1137,7 +1198,6 @@ printfilterpipelinesvc.exe
 PrintIsolationHost.exe
 printui.exe
 proquota.exe
-psr.exe
 PushPrinterConnections.exe
 qappsrv.exe
 qprocess.exe
@@ -1281,10 +1341,8 @@ wecutil.exe
 WerFault.exe
 WerFaultSecure.exe
 wermgr.exe
-wevtutil.exe
 wextract.exe
 WFS.exe
-whoami.exe
 wiaacmgr.exe
 wiawow64.exe
 wimserv.exe
@@ -1627,6 +1685,9 @@ xwizard.exe
 ***** com
 ***** CompatTel
 ***** Dism
+***** drivers/
+****** etc/
+******* hosts
 ***** DriverStore
 ***** IME
 ***** migwiz
@@ -1634,8 +1695,14 @@ xwizard.exe
 ***** Speech
 ***** spool
 ***** sysprep
-***** WindowsPowershell
-***** wbem
+***** wbem/
+***** WindowsPowershell/
+***** winevt/
+****** Logs/
+- イベントログが保存される
+******* Application.evtx
+******* Security.evtx
+******* System.evtx
 **** SysWOW64
 - 64bit OSで32bit OSをエミュレーションする際に利用される、32bit用のシステムファイル。
 ** Account
@@ -1657,6 +1724,46 @@ xwizard.exe
 - Win XPより追加。
 **** Link
 - http://www.atmarkit.co.jp/ait/articles/0905/08/news095.html
+** Functions
+*** Hyper-V
+*** Storage Space Direct, S2D
+- Windows Server 2016に追加。
+  フェールオーバークラスターに参加するノードのローカルディスクを1つの共有ボリュームとして構成することを可能とする機能。
+- アーキテクチャ
+  - コンバージド型
+  - ハイパーコンバージド型
+**** Link
+- https://docs.microsoft.com/ja-jp/windows-server/storage/storage-spaces/storage-spaces-direct-overview
+- https://mhiroblog.wordpress.com/2016/12/25/storage-space-direct-s2d-%E3%81%A8%E3%81%AF/
+- https://docs.microsoft.com/ja-jp/system-center/vmm/s2d?view=sc-vmm-1801
+- https://qiita.com/tsurun/items/b875ef74da6ce3e03b7d
+*** Server
+- [[https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831669(v%3dws.11)]]
+**** Roles
+***** ADDS Active Directory
+- Active Directory Domain Services
+****** 2012 R2
+- Server Manager : Dashboard -> Add roles and features
+  setting...
+- Server Manager : AD DS
+  setting...
+- http://www.rem-system.com/post-671/
+**** Features
+***** IIS
+- [[file:IIS.org][IIS.org]]
+***** Failover Clustering
+- MSCS / Microsoft Clustering Service
+- WSFC / Windows Server Failover Cluster (Windows Server 2008以降)
+****** Memo
+******* Error: A weak event was created ...
+- It's a bug, and just run a Windows Update.
+  http://www.itprocentral.com/resolving-failover-cluster-error-message-a-weak-event-was-created-and-it-lives-on-the-wrong-object-there-is-a-very-high-chance-this-will-fail-please-review-and-make-changes-onyour-code-to-prevent-t/
+****** Link
+- [[https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831579(v=ws.11)][Failover Clustering Overview - Microsoft Docs]]
+- [[http://blog.engineer-memo.com/2013/05/08/alwayson-%E3%82%92-azure-%E4%B8%8A%E3%81%AB%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B-wsfc-%E3%81%AE%E6%A7%8B%E7%AF%89%E7%B7%A8/][AlwaysOn を Azure 上に構築してみる – WSFC の構築編 – SEの雑記]]
+- [[https://msdn.microsoft.com/ja-jp/library/dn505754(v=ws.11).aspx][フェールオーバー クラスターを作成する - Developer Network]]
+- [[https://techinfoofmicrosofttech.osscons.jp/index.php?MSCS%2FWSFC][MSCS/WSFC - Open棟梁Project - マイクロソフト系技術情報 Wiki]]
+
 ** Shortcuts
 *** Windows 7
 **** Win + f : エクスプローラ・"検索結果"を開く
@@ -1752,13 +1859,45 @@ xwizard.exe
   | FA     |          | 監査失敗         |
   |--------+----------+------------------|
 
-******* 権利
+******* 権利 Rights
 - Platform SDKに含まれるsddl.hやWinnt.h、APIの解説なども参照のこと
+******** Generic access rights
+- 
+  |--------+----------+------|
+  | 文字列 | タイプ名 | 意味 |
+  |--------+----------+------|
+  |        |          |      |
+******** Standard access rights
+- 
   |--------+----------+------|
   | 文字列 | タイプ名 | 意味 |
   |--------+----------+------|
   |        |          |      |
 
+******** Directory service object access rights
+- 
+  |--------+----------+------|
+  | 文字列 | タイプ名 | 意味 |
+  |--------+----------+------|
+  |        |          |      |
+******** File access rights
+- 
+  |--------+----------+------|
+  | 文字列 | タイプ名 | 意味 |
+  |--------+----------+------|
+  |        |          |      |
+******** Registry key access rights
+- 
+  |--------+----------+------|
+  | 文字列 | タイプ名 | 意味 |
+  |--------+----------+------|
+  |        |          |      |
+******** Mandatory label rights
+- 
+  |--------+----------+------|
+  | 文字列 | タイプ名 | 意味 |
+  |--------+----------+------|
+  |        |          |      |
 ******* オブジェクトGUID
 - パスワードの変更やリセットなど、特別なタスクの実行を許可するための権利を表すオブジェクトのGUID文字列
 
@@ -1767,18 +1906,56 @@ xwizard.exe
 
 ******* アカウントSID
 - ACEの提供対象となるSIDを表す。
-  |--------+-------------------------|
-  | 文字列 | タイプ名                |
-  |--------+-------------------------|
-  | AO     |                         |
-  | AN     |                         |
-  | AU     | Authenticated Users     |
-  | BA     | Built-in Administrators |
-  | BG     |                         |
-  | IU     | Interactive             |
-  | SU     | Service                 |
-  | SY     | Local system            |
-  |        |                         |
+- https://msdn.microsoft.com/en-us/library/aa379602.aspx
+  |--------+------------------------------|
+  | 文字列 | タイプ名                     |
+  |--------+------------------------------|
+  | AN     | Anonymous                    |
+  | AO     |                              |
+  | AU     | Authenticated Users          |
+  | BA     | Built-in Administrators      |
+  | BG     |                              |
+  | BO     |                              |
+  | BU     | Built-in guests              |
+  | CA     |                              |
+  | CD     |                              |
+  | CG     |                              |
+  | CO     |                              |
+  | DA     |                              |
+  | DC     |                              |
+  | DD     |                              |
+  | DG     |                              |
+  | DU     | Domain users                 |
+  | EA     |                              |
+  | ED     |                              |
+  | HI     |                              |
+  | IU     | Interactively logged-on user |
+  | LA     |                              |
+  | LG     |                              |
+  | LS     | Local service account        |
+  | LW     |                              |
+  | ME     |                              |
+  | MU     |                              |
+  | NO     |                              |
+  | NS     | Network service account      |
+  | NU     |                              |
+  | PA     |                              |
+  | PO     |                              |
+  | PS     |                              |
+  | PU     |                              |
+  | RC     |                              |
+  | RD     |                              |
+  | RE     |                              |
+  | RO     |                              |
+  | RS     |                              |
+  | RU     |                              |
+  | SA     | Schema administrators        |
+  | SI     |                              |
+  | SO     | Server operators             |
+  | SU     | Service                      |
+  | SY     | Local system                 |
+  | WD     | Everyone                     |
+  |--------+------------------------------|
 
 ***** Link
 - [[https://msdn.microsoft.com/en-us/library/aa374928.aspx][ACE Strings - Microsoft Developer Network]]
@@ -1792,35 +1969,14 @@ xwizard.exe
 ***** Link
 - http://e-words.jp/w/UNC.html
 - http://desktop.arcgis.com/ja/arcmap/10.3/tools/supplement/pathnames-explained-absolute-relative-unc-and-url.htm#GUID-A2A3F32B-D0AE-4F60-97A9-4DA8AF8DC00B
-** Server
-*** Roles
-**** ADDS Active Directory
-- Active Directory Domain Services
-***** 2012 R2
-- Server Manager : Dashboard -> Add roles and features
-  setting...
-- Server Manager : AD DS
-  setting...
-- http://www.rem-system.com/post-671/
-*** Features
-**** Failover Clustering
-- MSCS / Microsoft Clustering Service
-- WSFC / Windows Server Failover Cluster (Windows Server 2008以降)
-***** Memo
-****** Error: A weak event was created ...
-- It's a bug, and just run a Windows Update.
-  http://www.itprocentral.com/resolving-failover-cluster-error-message-a-weak-event-was-created-and-it-lives-on-the-wrong-object-there-is-a-very-high-chance-this-will-fail-please-review-and-make-changes-onyour-code-to-prevent-t/
-***** Link
-- [[http://blog.engineer-memo.com/2013/05/08/alwayson-%E3%82%92-azure-%E4%B8%8A%E3%81%AB%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B-wsfc-%E3%81%AE%E6%A7%8B%E7%AF%89%E7%B7%A8/][AlwaysOn を Azure 上に構築してみる – WSFC の構築編 – SEの雑記]]
-- [[https://msdn.microsoft.com/ja-jp/library/dn505754(v=ws.11).aspx][フェールオーバー クラスターを作成する - Developer Network]]
-- [[https://techinfoofmicrosofttech.osscons.jp/index.php?MSCS%2FWSFC][MSCS/WSFC - Open棟梁Project - マイクロソフト系技術情報 Wiki]]
-
 ** Tools
 *** Chocolatey
 - package manager
 **** Link
 - https://chocolatey.org/packages?q=
 - https://qiita.com/msp0310/items/2a92f8966608260c49c1
+** Performance
+- https://msdn.microsoft.com/ja-jp/library/windows/hardware/dn529133
 ** Memo
 *** ACL
 - 
@@ -2039,6 +2195,29 @@ xwizard.exe
 - [[http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#changesymboliclinkprivilege][Change Symbolic Link Priviledge - Link Shell Extension]]
   シンボリック利用のための権限
 
+*** イベントログ
+**** 設定変更
+***** GUI
+- Event ViewrのGUI上、右クリックでプロパティを編集
+***** CUI
+- wevtutilで設定
+  - slオプションでSDDLを設定することでアクセス権設定可能
+  - eplオプションで出力
+**** Link
+- http://www.atmarkit.co.jp/ait/articles/0907/31/news106.html
+- https://blogs.technet.microsoft.com/askcorejp/2010/03/30/windows-server-2008-2/
+- https://qiita.com/sta/items/957d78a8e884f23cb8be
+- https://news.mynavi.jp/itsearch/article/hardware/923
+*** ユーザ、グループのSID確認
+- SIDは、whoamiにオプションを付けて確認可能。
+  /user, /groups
+*** スリープ、休止状態
+- 意外と待機電力に差がなかった。スリープ有用。
+  - シャットダウン後の待機電力 : 0.38W
+  - スリープ時の待機電力 : 0.56W
+  
+- http://affikatsu.com/pc-sleep-hibernation-shutdown-7748/
+- https://marvelsoflife.com/2016/12/02/post-2801/
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

@@ -3,6 +3,19 @@
 *** .NET Framework 4.6 and 4.5
 **** Class Library
 - [[https://msdn.microsoft.com/ja-jp/library/mt472912(v=vs.110).aspx]]
+***** Namespaces
+****** System.Diagnostics
+******* System.Diagnostics (Namespace)
+******* System.Diagnostics.Eventing.Reader (Namespace)
+- イベントログの読み取りと管理を行う
+******** Classes
+********* EventlLogSession (Class)
+********** Constructers
+********** Properties
+********** Methods
+*********** ExportLog(String, PathType, String, String)
+- イベントを外部のログファイルにエクスポートする
+******** Enum
 *** .NET Framework 3.5
 *** .NET Framework 3.0
 *** .NET Framework SDK 2.0

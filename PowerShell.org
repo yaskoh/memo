@@ -438,6 +438,9 @@
   1
   2
   3
+*** コピー・ペースト
+- 右クリックでどちらも動く。
+- 
 ** Link
 - [[https://technet.microsoft.com/ja-jp/library/ee221100.aspx][Windows PowerShell Owner's Manual - TechNet]]
 - [[https://technet.microsoft.com/ja-jp/scriptcenter/powershell_owner.aspx][Windows PowerShell オーナーマニュアル - TechNet]]
