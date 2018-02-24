@@ -1,5 +1,6 @@
 * Ansible
 ** Documentation
+- http://docs.ansible.com/ansible/latest/index.html
 *** Introduction
 **** Installation
 ***** Basics/What Will Be Installed
@@ -29,11 +30,56 @@
 ****** Running From Source
 ***** Ansible on GitHub
 **** Getting Started
+***** Foreword
+***** Remonte Connection Information
+- 
+  - Control Persist, Kerberos, .ssh/config Options (such as Jump Host setup).
+  - Using above, fedore's openssh is too old.
+    wishing to use features like Kerberized SSH and more, using Fedora, OS X, or Ubuntu as control machine.
+- default: paramiko
+  Native SSH had to be explicitly selected with the -c ssh option or set in the configuration file.
+***** Your first commands
+***** Host Key Checking
+- Ansible 1.2.1 and later have host key checking enabled by default.
+- host key cheking in paramiko mode is reasonably slow.
 **** Inventory
+- default inventory : /etc/ansible/hosts
+- specify : -i <path>
+
+- you can use multiple inventory files at the same time,
+  pull inventory from dynamic or cloud sources or different formats. (Dynamic Inventory)
+***** Hosts and Groups
+- the format for "/etc/ansible/hosts" will be an INI_like
 **** Dynamic Inventory
 **** Patterns
 **** Introduction To Ad-Hoc Commands
 **** Configuration file
+- configuration file reading order:
+  - ANSIBLE_CONFIG (an env var)
+  - ansible.cfg (in the current directory)
+  - .ansible.cfg (in the home directory)
+  - /etc/ansible/ansible.cfg
+***** Getting the latest configuration
+- installing from pip or source, you may want to create config file.
+  get from here: https://raw.githubusercontent.com/ansible/ansible/devel/examples/ansible.cfg
+***** Environmental configuration
+- Environmental vars are defined in constants.py.
+***** Explanation of values by section
+****** General defaults
+******* ask_pass
+- controling whether an Ansible playbook should prompt for a password by default.
+******* ask_sudo_pass
+- Ansible playbook should prompt for a sudo password
+- depriceted? use --ask-become-pass.
+******* ask_vault_pass
+****** Privilege Escalation Settings
+******* become_ask_pass
+- Ask for privilege escalation password, default is False.
+****** Paramiko Specific Settings
+****** OpenSSH Specific Settings
+****** Accelerated Mode Settings
+****** Selinux Specific Settings
+****** Galaxy Settings
 **** BSD Support
 **** Windows Support
 ***** Windows: How Does It Work
@@ -55,10 +101,14 @@
 *** Quickstart Video
 *** Playbooks
 **** Intro to Playbooks
-**** Playbook Roles and Include Statements
+**** Creating Resuable Playbooks
+***** old
+****** Playbook Roles and Include Statements
 **** Variables
-**** Jinja2 filters
-**** Jinja2 tests
+**** Templating (Jinga2)
+***** old
+****** Jinja2 filters
+****** Jinja2 tests
 **** Conditionals
 **** Loops
 **** Blocks
@@ -67,6 +117,7 @@
 *** Playbooks:Special Topics
 **** Become
 **** Accelerated Mode
+- Later 1.5, you might nott need this.
 **** Asynchronous Actions and Polling
 **** Check Mode
 **** Playbook Debugger
@@ -88,7 +139,52 @@
 **** Internal use
 *** Module Index
 **** All Modules
-**** (ry
+**** System Modules
+***** ping
+- Try to connect to host, verify a usable python and return pong on success
+**** Windows Modules
+*** Ansible Vault
+*** Command Line Tools
+**** ansible
+***** Synopsis
+- ansible <host-pattern> [options]
+***** Common Options
+****** -a <MODULE_ARGS>, --args <MODULE_ARGS>
+****** -b, --become
+- run operations with become (does not imply password prompting)
+****** -e, --extra-vars
+- set additional variables as key=value or YAML/JSON, if filename prepend with @
+****** -k, --ask-pass
+- ask for connection password
+****** -K, --ask-become-pass
+- ask for privilege escalation password
+****** -m <MODULE_NAME>, --module-name <MODULE_NAME>
+****** -s, --sudo
+****** -u <REMOTE_USER>, --user <REMOTE_USER>
+****** -U <SUDO_USER>, --sudo-user <SUDO_USER>
+****** -v, --verbose
+****** --become-user <BECOME_USER>
+****** deprecated
+******* --ask-su-pass
+- use "become"
+******* --ask-sudo-pass
+- use "become"
+***** Environment
+***** Files
+**** ansible-playbook
+***** Synopsis
+- ansible-playbook [options] playbook.yml [playbook2 ...]
+**** ansible-vault
+**** ansible-galaxy
+**** ansible-console
+**** ansible-console
+**** ansible-config
+**** ansible-doc
+***** Synopsis
+- ansible-doc [-l|-s] [options] [-t <plugin type] [plugin]
+***** Common Options
+**** ansible-inventory
+**** ansible-pull
 *** Detailed Guides
 **** Amazon Web Services Guide
 **** Azure
@@ -104,6 +200,20 @@
 **** Developing the Ansible Core Engine
 **** Helping Tseting PRs
 **** Releases
+*** Ansible Tower
+*** Ansible Galaxy
+*** Testing Strategies
+*** Configuration
+**** Common Options
+***** HOST_KEY_CHECKING
+- Description:
+  Set this to "False" if you want to avoid host key checking by the underlying tools Ansible uses to connect to the host.
+- Enviroment:
+  ANSIBLE_HOST_KEY_CHECKING
+**** Environment Variables
+***** ANSIBLE_CONFIG
+***** ANSIBLE_HOST_KEY_CHECKING
+- Ste this to "False" if you want to avoid host key checking by the underlying tools Ansible uses to connect to the host
 *** Glossary
 *** YAML Syntax
 ** Commands
@@ -111,21 +221,21 @@
 - Syntax: ansible <host-pattern> [-m module_name] [-a args] [option]
   run a task on a target host(s)
 
-**** option
-- -a MODULE_ARGS, --args=MODULE_ARGS
-  module argument
+**** Option
+***** -m MODULE_NAME, --module-name=MODULE_NAME
+- module name to execute (default=command)
 
-- -m MODULE_NAME, --module-name=MODULE_NAME
-  module name to execute (default=command)
+***** -a MODULE_ARGS, --args=MODULE_ARGS
+- module argument
 
-- -S, --su
-  run operations with su
+***** -S, --su
+- run operations with su
 
-- -s, --sudo
-  run operations with sudo
+***** -s, --sudo
+- run operations with sudo
 
-- -u REMOTE_USER, --user=REMOTE_USER
-  connect as this user (default=current-user like vagrant)
+***** -u REMOTE_USER, --user=REMOTE_USER
+- connect as this user (default=current-user like vagrant)
 
 *** ansible-playbook
 - run an ansible playbook
@@ -192,8 +302,7 @@
 - sudo easy_install pip
 - sudo pip install ansible
 ** Modules
-- 
-  Ansibleで実行できる機能。
+- Ansibleで実行できる機能。
   ansible-doc -lで一覧を取得できる。
   たくさんあるので(ansible-doc -l | wc -lの結果は242)、無理して覚えない。
 
@@ -214,7 +323,22 @@
 **** Postgresql
 
 *** Files Modules
-
+**** file
+- Sets attributes of files, symlinks, and directories, or removes.
+***** Options
+****** attributes
+****** group
+****** mode
+****** owner
+****** path
+****** state
+- choices
+  - file
+  - link
+  - directory
+  - hard
+  - touch
+  - absent
 *** Inventory Modules
 
 **** add_host
@@ -344,9 +468,9 @@
 **** win_regedit
 **** win_robocopy
 **** win_unzip
-** Inventory file
-- 
-  ansibleはインベントリファイルに書かれたホストにしかアクセスしない。
+** Files
+*** Inventory file
+- ansibleはインベントリファイルに書かれたホストにしかアクセスしない。
   -i でインベントリファイルを指定して実行する。
   デフォルトでは"/etc/ansible/hosts"を読む。
 
@@ -354,7 +478,7 @@
 
   フォーマットはINIフォーマットで書かれる。
 
-*** group
+**** group
 - 
   ブラケット[]内にグループ名を記述する。複数グループを指定可能。
   SSH標準以外のポートを指定するには、ホストネームの後コロン:を置いた後ろに
@@ -362,23 +486,23 @@
   ex) [webservers]
       badwolf.example.com:5309
 
-*** alias
+**** alias
 - 
   静的IPを使ってエイリアスを付ける場合、以下のようにすることが可能。
   ex) jumper ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
 
-*** 複数指定
+**** 複数指定
 - 
   複数をまとめて指定可能。
   ex) www[01:50].example.com
       db-[a:f].example.com
 
-*** connection
-  コネクションタイプを以下のように指定可能。
-  ex) localhost          ansible_connection=local
-      other.example.com  ansible_connection=ssh    ansible_ssh_user=mpdehaan
+**** connection
+   コネクションタイプを以下のように指定可能。
+   ex) localhost          ansible_connection=local
+       other.example.com  ansible_connection=ssh    ansible_ssh_user=mpdehaan
 
-*** Groups of Groups, Group Variables
+**** Groups of Groups, Group Variables
 - 
   グループのグループや、それぞれに対しグループに対して変数を設定可能。
   ex) [atlanta]
@@ -405,7 +529,7 @@
       southwest
       northwest
 
-*** Splitting Out
+**** Splitting Out
 - 
   hostとgroupについては、別ファイルにして指定のフォルダに格納することで読み込むことができる。
   ex) /etc/ansible/group_vars/raleigh
@@ -416,7 +540,7 @@
   ex) /etc/ansible/group_vars/raleigh/db_settrings
       /etc/ansible/group_vars/raleigh/cluster_settings
 
-*** Behavioral Inventory Parameters
+**** Behavioral Inventory Parameters
 - ansible_ssh_host
   The name of the host to connect to, if different from the alias you wish to give to it.
 
@@ -464,8 +588,31 @@
   Works for anything such as ruby or perl and works just like ansible_python_interpreter.
   This replaces shebang of modules which will run on that host.
 
-** Playbooks
+*** Playbooks
 - リモートホストの状態を定義するyamlファイル
+*** ansible.cfg
+- Ansibleの設定ファイル。置く場所によって読み込まれる優先順位が異なる。
+- 優先順位、オススメはホームディレクトリへの配置。
+  1. 環境変数のファイルパス(ANSIBLE_CONFIG=/usr/local/ansible/conf/ansible.cfg)
+  2. カレントディレクトリ (./ansible.cfg)
+  3. ホームディレクトリ ($HOME/.ansible.cfg)
+  4. /etc/ansible/ansible.cfg
+
+**** Parameters
+***** forks
+- ターゲットノードの並列処理を行うプロセス数
+***** log_path
+- ansible実行コマンドログの配置場所を設定。
+***** host_key_checking
+- ターゲットノードにSSH接続する際の公開鍵のフィンガープリントチェック
+***** gathering
+- ターゲットノードの詳細情報取得に関する情報
+  - implicit
+  - explicit
+  - smart
+***** gather_subset
+***** transport
+
 ** Directory layout
 *** 最小構成
 - hosts #Inventory

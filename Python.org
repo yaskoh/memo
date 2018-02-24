@@ -1149,6 +1149,11 @@
 **** Matplotlib
 **** SciPy
 **** scikit-learn
+**** Paramiko
+- Python implementation of the SSHv2 protocol
+***** Link
+- http://www.paramiko.org/
+- http://docs.paramiko.org/en/2.4/
 ** Python 2.x
 - [[file:Python_2_Lang.org][Python_2_Lang.org]]
 ** PEP
@@ -1222,7 +1227,7 @@
 - [[http://tdoc.info/blog/2014/01/15/pip.html][pipの使い方(2014/1バージョン) - そこはかとなく書くよん。]]
 **** Memo
 ***** pipのupgrade
-- pip insntall --upgrade pip
+- pip install --upgrade pip
 *** pyenv
 **** commands
 - [[https://github.com/yyuu/pyenv/blob/master/COMMANDS.md][Command Reference - pyenv - git hub]]
@@ -1271,8 +1276,9 @@
   virtualenv env
 - Activate
   (Win)Scripts/activate
-  (Posix)bin/activate
+  (Posix). bin/activate
 - Deactivate
+  deactivate
 **** Command
 ***** deactivate
 - 無効化
