@@ -1,4 +1,4 @@
-* Struts
+* Apache Struts
 ** Struts1
 *** About
 - 最終リリースは2008/10/4の1.3.10、2013/4/5にサポート終了を迎えた。
@@ -17,3 +17,5 @@
 
 *** Link
 - [[https://www.scutum.jp/information/waf_tech_blog/2014/04/waf-blog-036.html][例えば、Strutsを避ける - WAF Tech Blog]]
+** Link
+- http://struts.apache.org/

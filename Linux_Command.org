@@ -1447,6 +1447,7 @@
 - This specifies the file to read the private key from.
 ********* -out filename
 - This specifies the output filename to write to or standard output by default.
+********* -x509
 ******* s_client
 ******* s_server
 ******* x509
@@ -2098,8 +2099,7 @@
 ****** -o ssh_option
 - see "ssh -o" option
 **** ssh-keygen
-- 
-  認証用の鍵を生成、管理、および変換する。
+- 認証用の鍵を生成、管理、および変換する。
 
 **** stat
 - 

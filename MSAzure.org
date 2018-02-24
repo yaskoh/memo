@@ -74,16 +74,27 @@
 ** Services
 - サービスを並べただけ
 *** Compute
-**** Linux Virtual Machines / Linux 仮想マシン
-**** Windows Virtual Machines / Windows仮想マシン
+**** Virtual Machines
+***** Linux Virtual Machines / Linux 仮想マシン
+***** Windows Virtual Machines / Windows仮想マシン
 **** Virtual Machine Scale Sets /仮想マシン スケールセット
 **** App Service
 **** Azure Container Service
 **** Azure Container Registry
-**** Functions / 関数
+**** Functions App
 **** Service Fabric
 **** Batch
 **** Cloud Services
+**** 可用性セット
+**** ディスク
+**** スナップショット
+**** イメージ
+**** クラシック
+***** 仮想マシン
+***** Cloud Services
+***** ディスク
+***** OSイメージ
+***** VMイメージ
 *** Network
 **** Virtual Network
 **** Load Balancer
@@ -270,12 +281,23 @@
 ** Reverse lookup
 *** Storageの追加
 - https://azure-recipe.kc-cloud.jp/2016/06/vm-data1/
-- 
+-
+** Template
+- [[https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad][SQL Server 2016 Failover Cluster using Windows Serer 2016 Storage Spaces Direct - github]]
 ** Memo
 *** Azure China
 - 中国アカウントはGlobalアカウントとは切り離されており、MSアカウントの別途作成が必要。
   また、支払はAlipay, Unionpayのみ、中国の携帯電話番号が必要、法人アカウントの場合は中国国内の営業許可証が必要となるなど、要求が多い。
   MSでなく、21Vianetというローカル企業が運用を行っているとのこと。
+*** Resource Manager
+**** Classic / V1 / ASM
+- Azure Service Manager
+  設定ファイル: XML
+  クラシックポータル
+**** Resource Manager / V2 / ARM
+- Azure Resource Manager
+  設定ファイル: JSON
+  Azureポータル
 ** Link
 - [[https://docs.microsoft.com/ja-jp/azure/][Document]]
 - [[http://www.buildinsider.net/web/azure/01][まだ知らない人のための最新Microsoft Azure入門 - BulidINSIDER]]
