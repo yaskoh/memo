@@ -79,6 +79,10 @@
   書き込む
 - diskutil eject /dev/disk2
   取り出す
+** Applications
+*** windscribe
+- VPN. mac & chrome ext.
+  https://windscribe.com/
 ** Memo
 *** 写真の取り込み
 - 2017/10/18は、イメージキャプチャで取り込んだ。
@@ -136,6 +140,10 @@
 *** 「開発元が未確認のため開けません」の対処
 - Ctrl+クリック、で開く
 - 「セキュリティとプライバシー」から許可設定をする
+*** アプリのアンインストール
+- App Storeダウンロード: Launch Padから削除する
+- その他: アプリケーションを選択し削除
+  https://support.apple.com/kb/PH25083?viewlocale=ja_JP&locale=ja_JP
 *** Hibernation / Sleep ハイバネーション、スリープ
 - スリープ、セーフスリープ、ディープスリープの三種類が存在。
 

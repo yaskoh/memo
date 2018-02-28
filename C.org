@@ -875,8 +875,9 @@
   void exit(int status);
 
 **** atoi(3), atol(3)
-- 
-  整数表現を含む文字列strから対応する整数値を得る。
+- 整数表現を含む文字列strから対応する整数値を得る。
+  atoi : convert ASCII string to integer
+  atol : convert ASCII string to long or long long integer.
 
 - def
   #include <stdilb.h>

@@ -1761,6 +1761,73 @@
 
 *** s
 **** sar
+- Collect, report, or save system activity information.
+  sar [ options ] [ interval [ count ] ]
+- sysstatパッケージに含まれている、システムの統計情報を取得するコマンド。
+  System Admin Reporterの頭文字。
+- topやvmstatと異なり、cronで定期実行することで過去の情報を保存、後から確認ができる。
+***** Options
+****** まとめ
+- CPU : -u
+- CPU core : -P (ALL)
+- Load Average : -q
+- Memory : -r
+- Swap : -W, -S
+- Network
+  - Interface : -n DEV
+  - Error : -n EDEV
+  - Socket : -n SOCK
+  - IP : -n IP
+  - TCP : -n TCP
+- DiskIO : -b
+- Context switch : -w
+****** -A
+- This is equivalent to specifying "-bBdFHqRSuvwWy -I SUM -I XALL -m ALL -n ALL -r ALL -u ALL -P ALL"
+****** -B
+****** -f [ filename ]
+- Extract records from filename.
+****** -o [ filename ]
+- Save the readings in the file in binary form.
+****** -P { cpu [,...] | ALL }
+- Report per-processor statistics for the specified processor or processors.
+****** -q
+- Report queue length and load averages
+******* runq-sz
+- 実行待ちキューに入っているプロセス数
+******* plist-sz
+- プロセスリスト中のプロセス数とスレッド数
+******* ldavg-1
+- 直近1分のロードアベレージ
+******* ldavg-5
+- 直近5分のロードアベレージ
+******* ldavg-15
+- 直近15分のロードアベレージ
+******* blocked
+****** -u [ ALL ]
+- Report CPU utilization. ALL keyword indicates that all the CPU fields should be displayed.
+******* fields
+******** %user
+- ユーザが利用しているCPU使用率
+******** %usr
+******** %nice
+- nice値を変更しているプロセスのCPU使用率
+******** %system
+- システムが利用しているCPU使用率
+******** %sys
+******** %iowait
+- IO待ちしているしているCPU使用率
+******** %steal
+- ゲストOSが割り当て要求をし、割り当てられなかったCPU
+******** %irq
+******** %soft
+******** %guest
+******** %gnice
+******** %idle
+- 待機中のCPU使用率
+***** Link
+- http://makaaso.hatenablog.com/entry/2015/07/31/171740
+- http://naoberry.com/tech/sar/
+- https://qiita.com/hana_shin/items/6f00ca48a8de90478f88
 **** scp
 - scp [[user@]sourcehost1:]filename1 ... [[user@]desthost2:]filename2
   データコピーを安全に行う。
@@ -1964,6 +2031,8 @@
 - connection port setting
   ex) ssh user@192.168.100.1 -p 8080
 
+****** -o options
+- StrictHostKeyChecking
 ***** Memo
 ****** config
 - write down port forwarding settings to  ~/.ssh/config 
@@ -1992,6 +2061,43 @@
 ****** .ssh on win
 - ssh try to see settings on /home/username/.ssh.
 
+**** ssh-add
+- adds private key identities to the authentication agent, ssh-agent.
+***** Synopsis
+- ssh-add [-cDdkLlXx] [-E fingerprint_hash] [-t life] [file ...]
+- ssh-add -s pkcs11
+- ssh-add -e pkcs11
+***** Options
+****** -l
+- Lists fingerprints of all identities currently represented by the agent.
+**** ssh-agent
+- authentication agent
+  ssh-agent is a program to hold private keys used for pubilc authentication.
+- Synopsis
+  - ssh-agent [-c | -s] [command [arg ...]]
+***** Memo
+- 起動
+  ssh-agent bash(任意のシェル)
+  バックグラウンドでagentが動作し、指定されたシェルを起動。
+- 秘密鍵の登録
+  ssh-add ~/.ssh/id-rsa
+- 転送機能
+  ssh -A
+  .ssh/configに"ForwardAgent yes"と書いても同様。
+- https://qiita.com/isaoshimizu/items/84ac5a0b1d42b9d355cf
+**** ssh-copy-id
+- use locally available keys to authorise logins on a remote machine
+- SSH接続先のサーバに公開鍵を設定する
+***** Synopsis
+- ssh-copy-id [-f] [-n] [-i [identity_file]] [-p port] [-o ssh_option] [user@]hostname
+- ssh-copy-id -h | -?
+***** Options
+****** -i identity_file
+****** -f
+****** -n
+****** -p port
+****** -o ssh_option
+- see "ssh -o" option
 **** ssh-keygen
 - 認証用の鍵を生成、管理、および変換する。
 
