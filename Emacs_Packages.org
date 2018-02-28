@@ -485,6 +485,7 @@
 ****** C-c / : nxml-finish-element
 ****** C-c ] : nxml-finish-element
 ****** C-c C-b : nxml-balanced-close-start-tag-block
+****** C-c C-d : nxml-dynamic-markup-word
 ****** C-c C-f : nxml-finish-element
 ****** C-c C-i : nxml-balanced-close-start-tag-inline
 ****** C-c C-x : nxml-insert-xml-declaration
