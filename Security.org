@@ -118,6 +118,13 @@
   ARPキャッシュを改ざんすることをARPポイズニングという。
 **** Key logger
 - キーボード操作を記録するプログラム。
+*** Session hijacking セッションハイジャック
+- 通信の当事者でない第三者が何らかの手段でセッションIDを知り、セッションを乗っ取る攻撃手法。
+**** 対策
+- cookie
+- フォームデータのhiddenフィールド
+- URL
+  - URL中にセッションIDを含める方法。特別な理由がない限り利用すべきでない。
 ** Defences
 *** Security Tools or Systems
 **** Firewall
@@ -274,12 +281,28 @@
 - Federal Information Security Management Act
 ***** HIPPA
 - Health Insurance Portability and Accountability Act
+*** OpenPGP
+- RFC 1991 : (PGP)当初、PGPの仕様を提供しているだけ 
+- RFC 2440 : 1998年に仕様を標準化
+- RFC 4880
+- RFC 5581 : Camelia
+- RFC 6637 : 楕円曲線暗号対応
+
+- PGP/MIME
+  - RFC 2015
+  - RFC 3156
 ** Tools
-*** Burp Proxy
+*** Pretty Good Privacy, PGP
+- フィル・ジマーマンが開発、公開した暗号ソフトウェア。
+*** GNU Privacy Guard
+- Pretty Good Privacyの別実装で、GPLに基づいた暗号化ソフト。
+  OpenPGP(RFC 4880)準拠。
+*** tmp
+**** Burp Proxy
 - [[https://portswigger.net/burp/proxy.html][Burp Proxy - PORTSWIGGER]]
-*** FOCA
+**** FOCA
 - [[https://www.elevenpaths.com/labstools/foca/index.html][FOCA - Eleven Paths]]
-*** Evil FOCA
+**** Evil FOCA
 - [[https://www.elevenpaths.com/labstools/evil-foca/index.html][Evil FOCA - Eleven Paths]]
 
 ** Memo

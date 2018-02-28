@@ -125,18 +125,8 @@
   ex) rails destroy controller FooBars baz quux
 
 *** rake
-- 
-  "Make" command on Ruby.
-  
-  By default it execute test suite.
-
-- --tasks, -T
-  get a list of available Rake taskes.
-
-**** about
-- 
-  gives information about version numbers of Ruby, RubyGemns, Rails, Rails subcomponents, application's folder, Rails environment name, etc.
-
+- 基本はRuby.org/Toolsに記載。
+  ここにはrailsで定義されているものを記載する予定
 **** db
 - db:migrate
   マイグレーションを変更する
@@ -154,18 +144,6 @@
 - test:prepare
   データモデルdb/development.sqlite3がテストデータベースdb/test.sqlite3に反映されるようにするもの。
   たまにテストデータベースが壊れるので、このコマンドを実行する必要があるらしい。
-
-*** bundle
-**** update
-**** install
-**** exec
-- rake
-  - T
-    コマンド一覧を表示する
-  - db
-    - T
-      データベースのコマンドを表示する。
-- rspec
 
 ** File/Directory
 

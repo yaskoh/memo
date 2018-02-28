@@ -10,15 +10,22 @@
 - https://tools.ietf.org/html/rfc1951
 *** RFC1952 : GZIP file format specification version 4.3
 - https://tools.ietf.org/html/rfc1952
+*** RFC2015 : MIME Security with Pretty Good Privacy (PGP)
+*** RFC2440 : OpenPGP Message Format
+*** RFC3156 : MIME Security with OpenPGP
 *** RFC3768 : Virtual Router Redundancy Protocol (VRRP)
 **** Link
 - [[https://tools.ietf.org/html/rfc3768][RFC3768 - Virtual Router Redundancy Protocol (VRRP)]]
 *** RFC3875 : The Common Gateway Interface (CGI) Version 1.1
 **** Link
 - [[https://www.ietf.org/rfc/rfc3875][RFC3875 - The Common Gateway Interface (CGI) Version 1.1]]
-
 *** RFC4193 : Unique Local IPv6 Unicast Address
 - https://tools.ietf.org/html/rfc4193
+*** RFC4880 : OpenPGP Message Fromat
+**** Link
+- https://www.ietf.org/rfc/rfc4880.txt
+*** RFC5581 : The Camellia Cipher in OpenPGP
+*** RFC6637 : Elliptic Curve Cryptography in OpenPGP
 ** IATA
 ** ISO
 *** ISO 8879 : Standard Generalized Markup Language (SGML)

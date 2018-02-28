@@ -130,10 +130,13 @@
 
 **** launchd
 ** Files
-*** /dev/pts/number
-*** /etc/crontab
+*** /dev/
+**** pts/
+***** number
+*** /etc/
+**** crontab
 - cronのメイン設定ファイル
-*** /etc/inittab
+**** inittab
 - 
   being read by init process for the first time system starting.
 
@@ -153,27 +156,29 @@
     | powerokwait |                                                     |
     | ctrlaltdel  | the case when [Ctrl] + [Alt] + [Delete] are pressed |
 
-*** /etc/rc*.d
+**** os-release
+- Operationg system identification
+**** rc*.d
 - 
   files on it are symbolic links of /etc/init.d
 
-*** /etc/rc.sysinit
-*** /etc/passwd
+**** rc.sysinit
+**** passwd
 - Format
   ユーザ名:暗号化パスワード:UID:GID:ユーザのフルネーム:ユーザのホームディレクトリ:ログインシェル
-**** Memo
+***** Memo
 - ログイン不要のユーザアカウントのログインシェルは、/usr/bin/falseなどとしてログインしてもすぐReturn 1(異常終了)が返る。
 
-*** /etc/group
+**** group
 - Format
   グループ名:パスワード:GID:ユーザアカウントのリスト(カンマ区切り)
 
-*** /etc/nsswitch.conf
+**** nsswitch.conf
 - 
   ネームサービススイッチ(NSS)の設定ファイル。
   いろいろなカテゴリの名前サービス情報を、どの情報源からどの順序で取得するかを判断するのに使用される。
   
-*** /etc/logrotate.d
+**** logrotate.d
 - 
   
 - commands
@@ -215,29 +220,30 @@
   - prerotate～endscript
     間に記述されたコマンドをログローテーション前に実行
 
-*** /etc/fstab
+**** fstab
 - 
   起動時にマウントされるデバイスの一覧。
 
-*** /etc/mtab
+**** mtab
 - 
   現在マウントされているデバイス一覧。
   手動でマウントしたものなど、mountコマンドに
 
-*** /etc/hosts
-*** /etc/sysconfig/i18n
+**** hosts
+**** sysconfig/
+***** i18n
 - 
   i18nはinternationalisationの略。
   LANG設定などを行う。
-*** /etc/sysconfig/iptables
+***** iptables
 - 
   iptables, setting of firewalls.
 
-*** /etc/sysconfig/network
+***** network
 - 
   接続するネットワークに関する定義を記述する
 
-*** /etc/sysconfig/network-scripts/ifcfg-(eth0,and so on)
+***** network-scripts/ifcfg-(eth0,and so on)
 - (RHEL?)インターフェース設定ファイル
   個々のネットワークデバイスのソフトウェアインターフェースを制御する。
   どのインターフェースをアクティブにして、どのように設定するかを決定する。
@@ -267,7 +273,8 @@
 - SRCADDR=(address)
 - USERCTL(answer)
 
-*** /proc/cpuinfo
+*** /proc/
+**** cpuinfo
 - cpuの情報が含まれている
   コア数など調べることができる。
 
@@ -282,19 +289,21 @@
   cat /proc/cpuinfo | grep "cpu cores"
   また、"core id"でcoreのidを見ることができる。
 
-*** /proc/meminfo
+**** meminfo
 - メモリーの情報が含まれている
   メモリサイズなど調べられる。
 
-*** /proc/buddyinfo
+**** buddyinfo
 - primarily for diagnosing memmory fragmentation issue.
   Using the buddy algorithm, each column represents the number of pages of a certain order (a certain size) that are available at any given time.
   
 - DMA(direct memory access)32の領域を
   http://esupport.trendmicro.com/solution/ja-jp/1105158.aspx?print=true
 
-*** /proc/slabinfo
-*** /var/spool/mail
+**** slabinfo
+*** /var/
+**** spool/
+***** mail
 - 
   mailbox. mails that have sent is saved here temporary.
   later read them by mail command or POP3 for mailer, etc.
@@ -302,17 +311,18 @@
 - how to clear
   cat /dev/null > /var/spool/mail/root
 
-*** /var/spool/cron/(user)
+***** cron/(user)
 - ユーザの自動タスク設定ファイル
-*** /var/log/messages
+**** log/
+***** messages
 - 
   standard kernel / OS log
 
-*** /var/log/secure
+***** secure
 - 
   connected ssh logs
 
-*** /var/log/cron
+***** cron
 - 
   logged cron executed
 
@@ -498,7 +508,19 @@
 - Lubuntu
 ** Package Management
 *** apt
+- Advanced Pckaging Tool
+- dpkgを管理するためのツール
+**** apt
+***** apt
+***** apt-cache
+***** apt-get
+***** apt-key
+***** add-apt-repository
 **** aptitude
+- aptよりも後に開発され、多機能。
+**** dpkg
+**** Link
+- https://eng-entrance.com/linux-package-apt-2
 *** dnf
 - 
   Dandified Yum

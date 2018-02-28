@@ -25,6 +25,10 @@
   In Debian, this command works as an interactive way of user adding.
   CentOS or Fedora, this command may not exist, or just a link to "useradd" command.
 
+**** add-apt-repository
+- Adds a repository info the /etc/apt/sources.list or /etc/apt/sources.list.d or romeves an existing one
+- Synopsis
+  - add-apt-repository [OPTIONS] REPOSITORY
 **** alias
 - 
   別名をつける。
@@ -34,6 +38,25 @@
   show result searched from summaries and command names.
   whatisデータベースより文字列を検索する。
 
+**** apt
+**** apt-cache
+**** apt-get
+**** apt-key
+- APT key management utility
+***** Commands
+****** add filename
+- Add a new key to the list of trusted keys.
+  filename or if the filename is - from standard input.
+****** del keyid
+****** export keyid
+****** exportall
+****** list
+- List trusted keys.
+****** finger
+****** adv
+****** update
+****** net-update
+**** aptitude
 **** ar
 - create, modify, and extract from archives
 ***** Options
@@ -242,8 +265,15 @@
 **** crontab
 **** curl
 ***** Options
-****** -s, --silent
+****** -f, --fail
+- ()Fail silently on server errors.
 ****** -L, --location
+- (HTTP/HTTPS) If the server reports that the requested page has moved to a different location, 
+  making curl redo the request on the new place.
+****** -s, --silent
+- Silent or quiet mode. Don't show progress meter or eror messages.
+****** -S, --show-error
+- Whet used with -s it makes curl show an error message if it fails.
 **** cut
 - 
   特定の文字で区切られた項目を分割する。
@@ -1168,6 +1198,15 @@
 ***** Options
 ****** -a, --all
 ****** -b, --bytes
+**** lsb_release
+- print distribution-specific information
+  providing certain LSB (Linux Standard Base) and distribution-specific information.
+- Synopsis
+  lsb_release [options]
+***** Options
+****** -v, --version
+****** -c, --codename
+****** -s, --short
 **** lsof
 - list open files
   
@@ -2142,6 +2181,20 @@
   "su"だと、環境をuserから引き継ぐ。
   "su -"だと、rootの環境となる。
 
+**** sudo
+- execute a command as another user
+***** Synopsis
+- sudo -h | -K | -k | -V
+- sudo -v [-AknS] [-h host] [-p prompt] [-u user]
+- sudo -l [-AknS] [-h host] [-p prompt] [-u user]
+- sudo [-AbEHnPS] [-AknS] [-h host] [-p prompt] [-u user]
+***** Description
+***** Options
+****** -U user, --other-user=user
+- Used in conjunction with -l option to list the privileges for user instead of for the invoking user.
+
+****** -u user, --user=user
+- Run the command as a user other than the default target user.
 **** sync
 - sync
   force completion of pending disk writes

@@ -1319,6 +1319,14 @@
   
 *** Windows
 - [[file:./VisualC++.org][VisualC++]]
+*** tmp
+**** libxml2
+- XML C library
+**** XZ Utils / liblzma
+- free general-purpose data compression software with a high compression ratio.
+  successor to LZMA Utils.
+- https://tukaani.org/xz/
+- https://github.com/kobolabs/liblzma
 ** syntax
 *** do { ... } while ();
 
