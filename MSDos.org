@@ -201,4 +201,6 @@
 *** UMA
 - Upper Memory Area
 ** Link
+- [[http://www.freedos.org/][FreeDOS]]
 - [[http://wiki.freedos.org/wiki/index.php/Main_Page][Main Page - FreeDOS]]
+
