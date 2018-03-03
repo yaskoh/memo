@@ -1003,6 +1003,212 @@
 - resin-web.xmlなどのデータソース設定不足。
 - data-source-mapping-config.xmlの設定不足。
 *** テナント再作成
+** Table
+*** IM共通マスタ
+**** imm_company
+***** imm_company_post / 役職
+**** imm_corporation
+**** imm_currency
+**** imm_customer
+**** imm_department / 会社組織
+**** imm_item
+**** imm_private_grp
+**** imm_public_grp / パブリックグループ
+***** imm_public_grp_role / パブリックグループ役割
+**** imm_unit
+**** imm_user / ユーザ
+*** テナント管理
+**** b_m
+***** b_m_account
+***** b_m_calendar
+***** b_m_day_info
+***** b_m_link
+***** b_m_menu
+***** b_m_my_menu
+***** b_m_password
+***** b_m_portal
+***** b_m_portlet
+***** b_m_role / ロール
+***** b_m_rss
+***** b_m_shortcut
+***** b_m_sso
+***** b_m_system
+***** b_m_update
+**** b_vc
+***** b_vc_data
+***** b_vc_query
+***** b_vc_search
+***** b_vc_tm
+**** 認可
+- テーブルはimaz~、サブジェクトはim_authz~
+***** imaz_company_post_sid
+***** imaz_department_sid
+***** imaz_ipv4_addr_patterns / IPv4アドレス
+***** imaz_meta_subject / 認証
+***** imaz_role_sid
+***** imaz_subject
+***** imaz_term / 期間
+*** improj_project / プロジェクトチーム機能
+*** BIS
+**** ib_bis~
+*** フロー？
+**** imfr~
+*** ジョブ
+**** imjob
+*** ?
+**** imld
+*** ワークフロー
+**** IMBoxテンプレートテーブル
+***** imw_m_imbox_template / IMBoxテンプレート
+***** imw_m_imbox_template_classify / IMBoxテンプレート種類
+**** コンテンツ定義関連テーブル
+***** imw_m_contents / コンテンツ
+***** imw_m_contents_detail / コンテンツ詳細
+***** imw_m_contents_imbox_template / コンテンツIMBoxテンプレート
+***** imw_m_contents_mail_template / コンテンツメールテンプレート
+***** imw_m_contents_plugin / コンテンツプラグイン
+***** imw_m_contents_rule / コンテンツルール
+***** imw_m_page_path / コンテンツ画面パス
+**** スレッド監視関連テーブル
+***** imw_t_thread / スレッド実行情報
+**** バッチ関連テーブル
+***** imw_t_batch / バッチ起動日時
+***** imw_w_sync_batch / 同期バッチ用ワークテーブル
+**** フローグループ定義関連テーブル
+***** imw_m_flow_group / フローグループ設定
+***** imw_m_group / フローグループ
+***** imw_m_group_inc / フローグループ内包
+**** フロー定義関連テーブル
+***** imw_m_branch_union_detail / 分岐結合条件詳細
+***** imw_m_flow / フロー
+***** imw_m_flow_cooperation / フロー連携
+***** imw_m_flow_cooperation_detail / フロー連携詳細
+***** imw_m_flow_default_orgz / フロー標準組織
+***** imw_m_flow_detail / フロー詳細
+***** imw_m_flow_handle_user / フロー操作権限者
+***** imw_m_node_attr_cooperation / ノード属性連携
+***** imw_m_node_cooperation / ノード連携
+***** imw_m_node_cooperation_detail / ノード連携詳細
+**** メールテンプレートテーブル
+***** imw_m_mail_template / メールテンプレート
+***** imw_m_mail_template_classify / メールテンプレート種類
+**** ユーザデータ関連テーブル
+***** imw_t_user_data / ユーザデータ
+**** ルート定義関連テーブル
+***** imw_m_route / ルート
+***** imw_m_route_detail / ルート詳細
+***** imw_m_route_plugin / ルートユーザ設定
+**** ルールテーブル
+***** imw_m_rule / ルール
+***** imw_m_rule_detail / ルール詳細
+**** 案件プロパティ関連テーブル
+***** imw_m_matter_property / 案件プロパティ
+**** 一時保存関連テーブル
+***** imw_t_temporary_save / 一時保存案件
+**** 一覧表示パターン関連テーブル
+***** imw_m_column / 一覧表示カラム
+***** imw_m_list_pattern / 一覧パターン
+***** imw_m_selected_column_list / 一覧選択カラム
+**** 一覧表示関連テーブル
+***** imw_t_user_select_column_list / ユーザ選択一覧パターン
+**** 印影設定関連テーブル
+***** imw_t_stamp / 印影設定
+***** imw_t_stamp_tag / 印影タグ設定
+**** 過去案件関連テーブル
+***** imw_ayyyymm_matter / 過去案件
+***** imw_ayyyymm_matter_attach_b / 過去案件添付ファイルバイナリ
+***** imw_ayyyymm_matter_attach_file / 過去案件添付ファイル
+***** imw_ayyyymm_matter_auth_user / 過去案件操作権限者
+***** imw_ayyyymm_matter_confirm / 過去案件確認処理履歴
+***** imw_ayyyymm_matter_his / 過去案件履歴
+***** imw_ayyyymm_matter_his_detail / 過去案件履歴詳細
+***** imw_ayyyymm_matter_his_locale / 過去案件履歴ロケール
+***** imw_ayyyymm_matter_locale / 過去案件ロケール
+***** imw_ayyyymm_matter_task / 過去案件タスク
+***** imw_ayyyymm_matter_task_stamp / 過去案件印影情報
+***** imw_ayyyymm_matter_user_data / 過去案件ユーザデータ
+***** imw_ayyyymm_xml_exe_user / 過去案件権限者XML
+***** imw_ayyyymm_xml_flow / 過去案件フローXML
+***** imw_ayyyymm_xml_history / 過去案件履歴XML
+***** imw_ayyyymm_xml_master / 過去案件マスタXML
+***** imw_ayyyymm_xml_operation / 過去案件操作履歴XML
+***** imw_ayyyymm_xml_progress / 過去案件進捗XML
+**** 完了案件関連テーブル
+***** imw_t_cpl_matter / 完了案件
+***** imw_t_cpl_matter_attach_b / 完了案件添付ファイルバイナリ
+***** imw_t_cpl_matter_attach_file / 完了案件添付ファイル
+***** imw_t_cpl_matter_confirm / 完了案件確認処理履歴
+***** imw_t_cpl_matter_confirm_orgz / 完了案件確認処理権限者組織
+***** imw_t_cpl_matter_confirm_user / 完了案件確認処理権限者
+***** imw_t_cpl_matter_handle_user / 完了案件操作権限者
+***** imw_t_cpl_matter_his / 完了案件履歴
+***** imw_t_cpl_matter_his_detail / 完了案件履歴詳細
+***** imw_t_cpl_matter_his_locale / 完了案件履歴ロケール
+***** imw_t_cpl_matter_locale / 完了案件ロケール
+***** imw_t_cpl_matter_task / 完了案件タスク
+***** imw_t_cpl_matter_task_stamp / 完了案件印影情報
+***** imw_t_cpl_matter_user / 完了案件タスク完了ユーザ
+***** imw_t_cpl_matter_user_data / 完了案件ユーザデータ
+***** imw_t_cpl_matter_user_target / 完了案件完了タスク処理対象種別
+***** imw_t_cpl_xml_exe_user / 完了案件権限者XML
+***** imw_t_cpl_xml_flow / 完了案件フローXML
+***** imw_t_cpl_xml_history / 完了案件履歴XML
+***** imw_t_cpl_xml_master / 完了案件マスタXML
+***** imw_t_cpl_xml_operation / 完了案件操作履歴XML
+***** imw_t_cpl_xml_progress / 完了案件進捗XML
+**** 管理グループ定義関連テーブル
+***** imw_m_administration_group / 管理グループ
+***** imw_m_administration_orgz / 管理グループ標準組織
+***** imw_m_administration_plugin / 管理グループ権限プラグイン
+***** imw_m_administration_target / 管理グループ管理対象
+**** 集計情報関連テーブル
+***** imw_t_alert / アラート
+***** imw_t_monitoring_flow / フロー別モニタリング
+***** imw_t_monitoring_matter / 案件処理状況別モニタリング
+**** 代理管理者関連テーブル
+***** imw_m_act_administration / 代理管理者設定
+**** 代理設定関連テーブル
+***** imw_t_act / 代理設定
+***** imw_t_act_temporary_expand / 代理設定一時展開
+**** 非同期処理関連テーブル
+***** imw_t_async_proc_status / 非同期処理状況
+**** 未完了案件関連テーブル
+***** imw_t_actv_executable_user / 未完了案件タスク処理対象者
+***** imw_t_actv_matter / 未完了案件
+***** imw_t_actv_matter_attach_b / 未完了案件添付ファイルバイナリ
+***** imw_t_actv_matter_attach_file / 未完了案件添付ファイル
+***** imw_t_actv_matter_handle_user / 未完了案件案件操作権限者
+***** imw_t_actv_matter_his / 未完了案件履歴
+***** imw_t_actv_matter_his_detail / 未完了案件履歴詳細
+***** imw_t_actv_matter_his_locale / 未完了案件履歴ロケール
+***** imw_t_actv_matter_locale / 未完了案件案件ロケール
+***** imw_t_actv_task / 未完了案件未完了タスク
+***** imw_t_actv_user_orgz / 未完了案件タスク権限者組織
+***** imw_t_actv_user_target / 未完了案件タスク処理対象者種別
+***** imw_t_actv_xml_exe_user / 未完了案件権限者XML
+***** imw_t_actv_xml_flow / 未完了案件フローXML
+***** imw_t_actv_xml_history / 未完了案件履歴XML
+***** imw_t_actv_xml_master / 未完了案件マスタXML
+***** imw_t_actv_xml_operation / 未完了案件操作履歴XML
+***** imw_t_actv_xml_progress / 未完了案件進捗XML
+***** imw_t_before_task / 未完了案件前処理タスク
+***** imw_t_confirm / 未完了案件確認処理履歴
+***** imw_t_confirm_orgz / 未完了案件確認処理権限者組織
+***** imw_t_confirm_user / 未完了案件確認処理権限者
+***** imw_t_cpl_task / 未完了案件完了タスク
+***** imw_t_cpl_task_stamp / 未完了案件印影情報
+***** imw_t_cpl_task_user_target / 未完了案件完了タスク処理対象種別
+***** imw_t_cpl_user / 未完了案件タスク完了ユーザ
+**** 利用者ノード設定関連テーブル
+***** imw_t_user_node_config / 利用者ノード設定
+***** imw_t_user_node_config_detail / 利用者ノード設定詳細
+***** imw_t_user_node_config_node / 利用者ノード設定ノード
+*** DBBridge
+**** odbb_env
+**** odbb_history_detail
+**** odbb_history_header
+**** odbb_report_data
+**** odbb_report_search
 ** Link
 *** About
 - [[http://www.intra-mart.jp/document/library/index.html][intra-mart Accell Platform - intra-mart Accel Series ドキュメントライブラリ]]
@@ -1066,3 +1272,5 @@
   - [[http://www.intra-mart.jp/document/library/iap/public/development/usermodule_developers_guide/index.html][intra-mart Accel Platform ユーザモジュール開発ガイド]]
 - その他
   - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_language_additional_guide/index.html][intra-mart Accel Platform 言語追加ガイド]]
+*** その他
+- http://final.hateblo.jp/entry/2016/04/29/175815

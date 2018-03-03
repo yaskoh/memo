@@ -216,4 +216,14 @@
 ***** XPath 2.0
 ***** XPath 3.0
 **** XML Database
+*** インデント整形
+- Emcasでの整形
+  M-x sgml-pretty-print
+  http://d.hatena.ne.jp/lottz/20090509/1241859201
+- tidy (CUI)
+  http://takuya-1st.hatenablog.jp/entry/20110830/1314704820
+- xmllint
+- xmlstarlet
+  http://torotoki.hatenablog.com/entry/2013/02/25/003615
+  
 ** Link

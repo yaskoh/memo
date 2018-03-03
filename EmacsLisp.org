@@ -193,7 +193,12 @@
 *** Debugging
 *** Read and Print
 *** Minibuffers
-*** Command Loop
+*** 20. Command Loop
+**** 20.1 Command Overview
+**** 20.12 Prefix Command Arguments
+***** Function: prefix-numeric-value arg
+***** Variable: current-prefix-arg
+- This variable holds the raw prefix argument for the current command.
 *** Keymaps
 *** Modes
 *** Documentation

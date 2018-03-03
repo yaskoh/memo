@@ -1,7 +1,17 @@
 * Emacs
+** Documents
+*** The Emacs Editor
+- https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html
+**** Intro
+**** Important General Concepts
+**** Fundamental Editing Commands
+*** Emacs Lisp
+- [[file:EmacsLisp.org][EmacsLisp.org]]
+  (- https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html)
 ** Packages
 - [[file:Emacs_Packages.org][Emacs_Packages.org]]
-** Languages
+** Language Settings
+*** Common Lisp
 *** Go
 - [[https://www.emacswiki.org/emacs/GoLangMode][Go Lang Mode - EmacsWiki]]
 - [[http://unknownplace.org/archives/golang-editing-with-emacs.html][EmacsでのGo言語編集環境 - unknownplace.org]]
@@ -536,6 +546,7 @@
   - uncomment-region
 - トグル
   - comment-or-uncomment-region
+*** 連番
 ** Link
 *** Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]

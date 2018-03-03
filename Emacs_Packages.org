@@ -931,6 +931,15 @@
 ***** profiler-stop
 ***** profiler-report
 ***** profiler-reset
+*** rect
+**** Functions
+***** rectangle-number-lines (C-x r N, C-u C-x r N)
+- (rectangle-number-lines START END START-AT &optional FORMAT)
+- Insert numbers in front of region-rectangle.
+- 連番を矩形選択された箇所に挿入する。
+  前置引数(C-u)を付けて起動すると、各種パラメータをinteractiveに聞いてくれる。
+**** KeyBindings
+***** C-x r N : rectangle-number-lines
 *** replace
 **** Functions
 ***** replace-string (M-r)
