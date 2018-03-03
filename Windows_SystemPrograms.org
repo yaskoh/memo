@@ -813,4 +813,6 @@ xwizard.exe
 *** servermanagercmd.exe
 *** oclist.exe
 *** dcpromo.exe
-
+** Link
+- http://www.itmedia.co.jp/keywords/wincommand.html
+- http://tech.nikkeibp.co.jp/it/article/COLUMN/20060221/230144/

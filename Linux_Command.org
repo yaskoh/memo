@@ -847,10 +847,14 @@
 ****** -n length
 - Interpret only length bytes of input.
 **** history
-- 
-  display the command history list with line numbers.
+- display the command history list with line numbers.
   Lines listed with a * have been modified.
-
+***** Options
+****** -d num
+- delete the No.num line
+***** Memo
+****** Historyの削除
+- history -d numで消すか、~/.bash_historyなどを直接編集する。
 **** host
 - DNS lookup utility
   normally used to convert names to IP addresses and vice versa.
@@ -2672,6 +2676,14 @@
   "xhost +host_name"とすると、host_nameからもXサーバにアクセス可能となる。
   "xhost +"とすると全てのホスト（世界中）からアクセス可能となり、スクリーンショットを取ったりプログラムを表示・キーストロークを盗むことが可能となるので、xauthを使う方が望ましい。
   
+**** xxd
+- 16進ダンプの作成、再変換
+***** Options
+****** -a, -autoskip
+****** -b, -bits
+****** -h, -help
+****** -r, -revert
+- 16進ダンプからバイナリ形式に変換。
 **** xz / unxz
 
 *** z
