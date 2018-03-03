@@ -1,7 +1,9 @@
 * Ruby
-** オブジェクト
-*** クラス
-**** 定義
+** Reference Manual
+*** Ruby言語仕様
+**** オブジェクト
+***** クラス
+****** 定義
 - class式
   クラスを定義するにはcalss式を使う。
   クラス名はClassオブジェクトを参照する定数であり、大文字から始める必要がある。
@@ -55,7 +57,7 @@
   引数を渡さずsuperとだけ記述すると、現在のメソッドの引数をそのまま受け渡す。
   引数を一つも渡したくない場合は、super()と記述する。
 
-**** 特異クラス
+****** 特異クラス
 - 
   ある特定のインスタンスのためだけにあるクラス。
   class式においてクラス名の代わりに「<< (オブジェクト)」と記述する。
@@ -69,8 +71,8 @@
   特異クラスはクラスのクラスとなるので、メタクラスと呼ばれる。
   一般に、「Classオブジェクトの特異クラス」がメタクラス。
 
-*** モジュール
-**** Mix-in
+***** モジュール
+****** Mix-in
 - 
   クラスの多重継承は弊害が大きいので禁止するが、
   その代わりにModuleを複数継承できるようにすることで柔軟な対応が行える。
@@ -78,7 +80,7 @@
   モジュールはインスタンス化できない。
   ancestorsメソッドで継承したモジュールやクラスが確認できる。
 
-**** 名前空間
+****** 名前空間
 - 
   名前の衝突を避けるため、Rubyではモジュールを使う習慣がある。
   ex)
@@ -89,8 +91,8 @@
     ::Service            #=>トップレベルのService
     Library::Service     #=>Libraryモジュールに属しているService
 
-*** メソッド
-**** 呼び出し
+***** メソッド
+****** 呼び出し
 - メソッド呼び出しの形式
   メソッド呼び出しはレシーバ、メソッド名、引数の順番に並べる。下のどちらの方式でも良い。
   ex) a.some_method(1, "str")
@@ -124,7 +126,7 @@
   引数の数や型によるオーバーロードは行われず、単純にメソッド名のみで行われる。
   代替手段として、可変長引数で引数を受け、その長さによって挙動を変えることが行われている。
 
-**** 定義
+****** 定義
 - def
   メソッド定義にはdef式を用いる。
   一般にはメソッド内で最後に評価された式の値が戻り値となる。
@@ -141,7 +143,7 @@
 - 可変長引数
   引数に*をつけておくと、余った実引数を配列にまとめ仮引数に割り当ててくれる。
 
-**** ブロック付きメソッド
+****** ブロック付きメソッド
 - ブロック付きメソッドの用途
   1. ループの抽象化
   2. ブロックへの機能付加
@@ -177,7 +179,7 @@
   また、Procオブジェクトをブロックの代わりにブロック付きメソッドに渡すこともできる。
   &で修飾して引数リストの末尾におく。
 
-**** アクセス権限
+****** アクセス権限
 - 
   デフォルトではclass式の中で定義されたメソッドはpublic。
   トップレベルで定義されたメソッドはprivate。
@@ -197,7 +199,7 @@
   インスタンスメソッド名を文字列または引数で渡すと、そのメソッドはpublicとなる。
   protected, privateも同様。
 
-**** 特異メソッド
+****** 特異メソッド
 - 
   クラスではなくインスタンスに直接所属するメソッド。
   英訳はsingleton method。
@@ -210,12 +212,12 @@
     end
     message.bulid_greeting("world")       #=> Hello, world
 
-** 文法、構文、要素
-*** リテラル
+**** 文法、構文、要素
+***** リテラル
 - 
   数字の1や文字列"hello world"のようにプログラム中に直接記述できる値をリテラルという。
 
-**** 配列
+****** 配列
 - 
   Arrayクラスで表す。
   配列が保持しているのはオブジェクトへの参照。
@@ -224,7 +226,7 @@
       cattle[2] = 'p'
       p container  #=> ["yapoo", "yapoo"]
 
-***** 構築 
+******* 構築 
 - 
   [](角括弧)で括ると並列が構築される。
   ex) c = [a, b, 3, "string"]
@@ -232,7 +234,7 @@
 - 初期化
   Array.new(3, Ruby) #=> ["Ruby", "Ruby", "Ruby"]
 
-***** 添字参照
+******* 添字参照
 - 
   添字で内容を参照できる。
   ex) c[0] #=> 'a'
@@ -251,24 +253,24 @@
     開始位置または終了位置に負の添字も使える。
     ex) c[0..1], c[0...1]
 
-***** 添字代入
-  ex) a[4] = 3
+******* 添字代入
+    ex) a[4] = 3
 
-***** 配列の比較
-  対応する要素が全て同値のとき、且つそのときに限り同値。
+******* 配列の比較
+    対応する要素が全て同値のとき、且つそのときに限り同値。
 
-***** メソッド例
+******* メソッド例
 -
  Array#length
  Array#each
  unshift, shift, push, pop, first, last, reverse
  sort, sort_by, each_with_index, inject
 
-**** ハッシュ
+****** ハッシュ
 - 
   任意のオブジェクトをキーとして別のオブジェクトに対応づけるコンテナオブジェクト。
 
-***** 構築
+******* 構築
 - ハッシュロケット記法
   波括弧内にキーと値の対応関係を並べる。
   シンボルにハイフンを利用するためにこちらの記法を使う場合がある。
@@ -285,7 +287,7 @@
 - インスタンス化
   Hash.newに引数を渡すと、引数がデフォルト値となる。
 
-***** 添字演算式
+******* 添字演算式
 - 
   キーとなるオブジェクトを返して値を返す。一種類の方法しかない。
 
@@ -299,30 +301,30 @@
 - 登録
   ex) book_to_author["The Ruby Way"] = "Fulton"
 
-***** 比較
+******* 比較
 - 
   すべての対応する要素ペアについて、互いにキーが等しく値が等しいときに同値となる。
 
-***** メソッド例
+******* メソッド例
 - 
   Hash#delete
   keys, include?, key?, values, value?, clear
 
-**** 数値
-***** クラス
+****** 数値
+******* クラス
 - 
   Numeric ┬ Integer ┬ Fixnum
           │         └ Bignum
           └ Float
 
-***** 整数
-****** Integer
+******* 整数
+******** Integer
 - 
   Integerクラスのサブクラスに、FixnumとBignumがある。
   Fixnumは内部的に固定長で実装されている整数で、小さな整数を効率的に処理可能。
   Bignumは多売長整数で、任意に大きな整数を表すことができる。Fixnumで格納できない場合は自動的にBignumとなる。
 
-****** 基数
+******** 基数
 - 
   先頭記号を付けることで10進数以外のリテラルを表現できる。
   
@@ -335,11 +337,11 @@
   | 0b, 0B           | 2進数  |
   |------------------+--------|
 
-***** 浮動小数点数
+******* 浮動小数点数
 - 
   Floatクラス。
 
-****** 浮動小数点の精度を表す定数
+******** 浮動小数点の精度を表す定数
 - 
   |------------+---------------------------------------------------+----------------------|
   | 定数名     | 意味                                              |                   例 |
@@ -356,7 +358,7 @@
   | RADIX      | Floatの内部表現における基数                       |                    2 |
   |------------+---------------------------------------------------+----------------------|
 
-****** 特殊な浮動小数点値
+******** 特殊な浮動小数点値
 - Infinity
   正の無限大。1.0/0.0の結果など。
 - -Infinity
@@ -364,7 +366,7 @@
 - 非数(NaN)
   0.0/0.0の結果など。どんな数とも等しくなく、自分自身とも同値でない。
 
-***** 数値演算
+******* 数値演算
 - /
   除算
 - %
@@ -383,7 +385,7 @@
 - メソッド
   times, upto, downto, step
 
-***** その他の数値・代数系クラス
+******* その他の数値・代数系クラス
 - 
   標準添付されているライブラリにも各種の数値型が存在する。
 - rational
@@ -395,46 +397,46 @@
 - matrix
   行列クラスMatrixおよびベクトルクラスVectorを提供する。
 
-**** 文字列
+****** 文字列
 - 
   ダブルクォートと異なり、シングルクォートは文字列の式展開を行わない。
 
-***** memo
-    ・バックスラッシュ記法
-        ""はバックスラッシュ記法を使える、''は使えない。
-    ・パーセント記法
-        バックスラッシュのエスケープが毎度毎度面倒な時とかに使うらしい。
-        %Qは式展開やバックスラッシュ記法を使えるが、%qは使えない。
-        ex: str = %q("Ruby", "HTML", "JavaScript", "Rails")
-    ・ヒアドキュメント
-        開始と終了のラベルとしてキーワードを決め、
-        その範囲を文字列オブジェクトとして扱う機能。
-        ex:
-            print <<EOS
-            foo
-            bar
-            baz
-            EOS
-            #=>foobarbaz
-    メソッド
-        +, <<, concat, size, length, empty?, [], split, chomp,
-        upcase, downcase, capitalize, swapcase
+******* memo
+      ・バックスラッシュ記法
+          ""はバックスラッシュ記法を使える、''は使えない。
+      ・パーセント記法
+          バックスラッシュのエスケープが毎度毎度面倒な時とかに使うらしい。
+          %Qは式展開やバックスラッシュ記法を使えるが、%qは使えない。
+          ex: str = %q("Ruby", "HTML", "JavaScript", "Rails")
+      ・ヒアドキュメント
+          開始と終了のラベルとしてキーワードを決め、
+          その範囲を文字列オブジェクトとして扱う機能。
+          ex:
+              print <<EOS
+              foo
+              bar
+              baz
+              EOS
+              #=>foobarbaz
+      メソッド
+          +, <<, concat, size, length, empty?, [], split, chomp,
+          upcase, downcase, capitalize, swapcase
 
-**** 正規表現リテラル
-***** memo
-      /check/ =~ "original"
-      %rでも正規表現オブジェクト作成可能
-      String#sub(gsub)メソッド
+****** 正規表現リテラル
+******* memo
+        /check/ =~ "original"
+        %rでも正規表現オブジェクト作成可能
+        String#sub(gsub)メソッド
 
-**** シンボル
+****** シンボル
 
-**** 範囲オブジェクト
-***** memo
-      Rangeクラス
-      1..5は終端を含む。(1,2,3,4,5)
-      1...5は終端を含まない。(1,2,3,4)
+****** 範囲オブジェクト
+******* memo
+        Rangeクラス
+        1..5は終端を含む。(1,2,3,4,5)
+        1...5は終端を含まない。(1,2,3,4)
 
-*** 変数
+***** 変数
 - 
   変数が保持するのはオブジェクトへの参照。
 
@@ -454,27 +456,27 @@
   大文字小文字は区別される。
   慣習的には単語をアンダースコアで区切る。
 
-**** ローカル変数
+****** ローカル変数
 - 
   local variable
   start with '_' or small alphabet
 
-**** インスタンス変数
+****** インスタンス変数
 - 
   @で始まる値。個々のオブジェクトで固有の値を持つ。
   所属しているオブジェクト外部からはアクセスできない。
 
-**** クラス変数
+****** クラス変数
 - 
   クラスと子孫クラス、及びそれらクラスの全てのインスタンス間で共有される変数。
 
-**** グローバル変数
+****** グローバル変数
 - 
   - 組み込み変数
     $stdout, $:, $1など、ruby処理系それ自体の状態や、挙動を制御するためのフラグを保持する、
     組み込み変数と呼ばれる特殊なグローバル変数がある。
 
-**** 定数
+****** 定数
 - 
   constant
   マジックナンバーなどに名前をつけるために使う。
@@ -487,47 +489,47 @@
   クラスMに属する定数Kへは、M::Kでアクセス可能。
 　　　　　　　　　　　　　  クラス名やモジュール名も単なる定数なので、同様にアクセス可能。
 
-**** 擬似変数
+****** 擬似変数
 - 
   小文字またはアンダースコアで始まっているが、Ruby処理系が設定するオブジェクトを参照しており、
   ユーザが値を代入することはできない。
   nil, true, false, self, __FILE__, __LINE__, __ENCODING__の7つ。
 
-***** nil
+******* nil
 - 
   値がないことを特殊なオブジェクト。
   NilClass唯一のインスタンス。
 
-***** true
+******* true
 - 
   代表的な真の値。
   nilとfalseは偽となり、それ以外は真となるが、その中でもtrueは真の代表格。
 
-***** false
+******* false
 - 
    代表的な偽の値。
 
-***** self
+******* self
 - 
   「現在の」オブジェクトを表す。
   インスタンスメソッドの中ではメッセージの受け手がself。
   クラスメソッドにおいてはクラスを、ファイルのトップレベルにおいては通称mainと呼ばれる特別なObjectを参照する。
 
-***** __FILE__
+******* __FILE__
 - 
   その場所のソースファイル名。
 
-***** __LINE
+******* __LINE
 - 
   その場所の行番号。
 
-***** __ENCODING__
+******* __ENCODING__
 - 
   その場所のソースファイルのエンコーディングを保持している。
   Ruby1.9で導入。
 
 
-**** 予約語
+****** 予約語
 - 
   BEGIN    class    ensure   nil      self     when
   END      def      false    not      super    while
@@ -537,7 +539,7 @@
   break    eslif    module   retry    unless
   case     end      next     return   until
 
-*** 演算子
+***** 演算子
 - 
   再定義可能な演算子はオブジェクトによって意味が変わる。
   以下は代表的な意味。
@@ -577,18 +579,18 @@
   - 再定義不可能な演算子
     = ?: .. ... ! not && and || or ::
 
-**** 自己代入演算子
+****** 自己代入演算子
 - 
   += -= *= /= %= **= <<= >>= |= &= ^= &&= ||=
   2項演算子と代入を組み合わせた式に投下。
   再定義できないが、二項演算子を再定義するとそれに合わせて変更される。
 
-**** 否定演算子
+****** 否定演算子
 - 
   != !~
   Ruby1.9では再定義可能にはなった。
 
-**** 代入
+****** 代入
 - 
   代入式の値は代入された値そのものになるので、a = b = c = 1のように繋げてまとめて代入可能。
 
@@ -606,7 +608,7 @@
   ex) array = [1, 2, 3]; a, b, c = *array;
       p a  #=> 1; p b  #=> 2; p c  #=> 3
 
-**** 論理演算子
+****** 論理演算子
 - 
   再定義不可能。
 
@@ -619,24 +621,24 @@
   @a ||= generate_default_value のような式を評価すると、
   @aがtrueなら何もせず、偽ならgenerate_default_valueメソッドを呼んでその戻り値でaを初期化する。
 
-**** 範囲演算子
+****** 範囲演算子
 - 
   オペランドを両端とするRangeオブジェクトを生成する。
   a .. bはbが含まれる。 a ... bはbが含まれない。
   
-**** 条件演算子
+****** 条件演算子
 - 
   a ? b : c
   aが真のときにはbに評価され、aが偽のときにcが評価される。
   Rubyのif式は値をもつので、条件演算子はif式の別の書き方にすぎない。
   var = a ? b : c と var = if a then b else c end は同じ。
   
-*** 制御式
+***** 制御式
 - 
   一般的な言語のように「制御文」でなく、値を返すため「制御式」と呼んでいる。
   thought = if sample.color == "green" then "danger" else "undefined" end、のような書き方をよくする。
 
-**** if
+****** if
 - 
   条件が満たされたときだけthen節を実行する制御構造。
   実行された節の最後の式の値が返る。
@@ -654,9 +656,9 @@
   ifと同様elseは続けられるが、elsunlessはない。
   unless修飾子は存在する。
 
-**** case
+****** case
 
-***** その1
+******* その1
 - 
   多値分岐を提供する。
   まずvalueが評価され、その後when節に書かれている基準値が比較される。
@@ -702,7 +704,7 @@
   case式を評価する際は、通常の同値演算子==と異なり===演算子が用いられる。
   ===は==よりももう少し緩く一致性を判定する演算子。
 
-***** その2
+******* その2
 - 
   if節と酷似した形式。最初に評価する値が存在しない。
   ex)
@@ -713,7 +715,7 @@
     else                     process_even_composite(number)
     end
 
-**** while
+****** while
 - 
   条件が成立している間だけ被制御部を繰り返し実行する。
   nilを返す。
@@ -738,7 +740,7 @@
   条件式が成立するまで日制御式を繰り返し実行する。
   後置、修飾子としての使用も可能。
 
-**** for
+****** for
 - 
   配列などの要素に対して非制御部を繰り返し実行する。
   doは省略可能。
@@ -759,8 +761,8 @@
       puts "#{name}は#{num}月 "
     end
 
-**** イテレータ
-***** loop
+****** イテレータ
+******* loop
 - 
   無限ループを提供するイテレータ。
   脱出式を用いる必要がある。
@@ -769,19 +771,19 @@
       puts "looping"
     end
 
-***** times
+******* times
 - 
   Integerクラスのtimesメソッドは、Integerオブジェクトが表す回数だけブロックを実行する。
   ex)
     3.times{ puts "Yahoo" }
     3.times{|i| puts i}
 
-***** upto, downto
+******* upto, downto
 - 
   カウントアップする場合に使う。カウントダウンはdowntoメソッド。
   ex) 1.upto(3) do |i| puts i end
 
-**** 脱出
+****** 脱出
 - 
   while, until, for, イテレータから抜け出したいときに使う。
 
@@ -797,7 +799,7 @@
   今回の繰り返しをもう一度初めからやり直す。
   繰り返し条件が成立しているかどうかはチェックされない。
   
-**** 例外処理
+****** 例外処理
 - 
   begin, endで囲んだ範囲内で例外が発生した場合、対応するrescue節へ移動する。
   rescue節、else節、ensure節は不要であれば省略可能。
@@ -844,7 +846,7 @@
   ex) error = ArgumentError.new('message')
       raise error
 
-**** 大域脱出
+****** 大域脱出
 - 
   catchとthrowを使って深い入れ子になった繰り返しから外側へ脱出できる。
   throwの引数にシンボルまたは文字列を渡し、catchを識別する。
@@ -861,11 +863,11 @@
     }
     #ここに脱出する
 
-*** セキュリティモデル
+***** セキュリティモデル
 - 
   オブジェクトの汚染とセーフレベルという仕組みがある。
 
-**** 汚染
+****** 汚染
 - 
   1. 信用できない入力をもとに作られたオブジェクトを「汚染されている」と見なし、
      「危険な操作」の引数として使えないようにする。
@@ -879,7 +881,7 @@
   - Object#untaint
     オブジェクトの汚染を取り除く
 
-**** セーフレベル
+****** セーフレベル
 - 
   各スレッドは固有の「セーフレベル」を持っている。
   セーフレベルが高くなるほど、行える操作は制限される。
@@ -897,8 +899,8 @@
 - レベル4
   廃止された。
 
-** メタプログラミング
-*** メタ情報に関するメソッド
+**** メタプログラミング
+***** メタ情報に関するメソッド
 - 
   |------------------------------------------------+-------------------------------|
   | 説明                                           | メソッド                      |
@@ -923,14 +925,14 @@
   |------------------------------------------------+-------------------------------|
   (Rubyアプリケーションプログラミング)
 
-*** eval族
+***** eval族
 - 
   (Rubyアプリケーションプログラミング)
   - eval
   - instance_eval
   - module_eval, class_eval
 
-*** フック
+***** フック
 - 
   (Rubyアプリケーションプログラミング)
   |--------------------------------------+-------------------------------|
@@ -944,38 +946,39 @@
   | グローバル変数への代入をフックする   | trace_var                     |
   |--------------------------------------+-------------------------------|
   
-** ライブラリ(2.1)
-*** 組み込みライブラリ
+**** ライブラリ
+- https://docs.ruby-lang.org/ja/latest/library/index.html
+***** 組み込みライブラリ
 - Ruby本体に組み込まれているライブラリ。
   このライブラリのクラスやモジュールは、requireを書かなくても使うことが出来る。
 
-**** クラス
+****** クラス
 
-***** BasicObject
+******* BasicObject
 - 要約
   特殊な用途のために意図的にほとんど何も定義されていないクラス。
   Ruby 1.9以降で導入された。
-****** Inheritance
+******** Inheritance
 - BasicObject
-****** Instance Method
-****** Private Method
-******* List
+******** Instance Method
+******** Private Method
+********* List
 - 
   method_missing singleton_method_added singleton_method_removed singleton_method_undefined
-******* method_missing
+********* method_missing
 - method_missing(name, *args) -> object
   呼び出されたメソッドが定義されていなかった場合にこのメソッドを呼び出す。
   呼び出しに失敗したメソッドの名前(Symbol)がnameに、そのときの引数がargsに格納される。
   デフォルトではNoMethodErrorを発生させる。
 
-***** Object
+******* Object
 - 要約
   全てのクラスのスーパークラス。オブジェクトの一般的な振る舞いを定義する。
-****** Inheritance
+******** Inheritance
 - 
   Object < Kernel < BasicObject
-****** Instance Method
-******* send
+******** Instance Method
+********* send
 - send(name, *args) -> object
   send(name, *args){...} -> object
   (__send__も同様)
@@ -984,30 +987,30 @@
   sendが再定義された場合に備え別名__send__も用意されているので、ライブラリ等ではこちらを使うべき。
   メソッドの呼び出し制限にかかわらず任意のメソッドを呼び出せる。
 
-***** Class
+******* Class
 - 要約
   クラスのクラス。多くの機能はモジュールからModuleから継承されている。
-****** Inheritance
+******** Inheritance
 - 
   Class < Module  < Object < Kernel < BasicObject
-****** InstanceMethod
-******* new
+******** InstanceMethod
+********* new
 - 
   new(*args, &block) -> object
   自身のインスタンスを生成して返す。
-******* superclass
+********* superclass
 - 
   superclass -> Class | nil
   自身のスーパークラスを返す。
 
-***** Module
+******* Module
 - 要約
   モジュールクラス。
-****** Inheritance
+******** Inheritance
 - 
   Module < Object < Kernel < BasicObject
-****** InstanceMethod
-******* list
+******** InstanceMethod
+********* list
 - 
   < <= <=> === > >= ancestors autoload autoload? class_eval module_eval class_variable_defined? class_variables
   const_defined? const_get const_missing const_set constants include? include_modules inspect name to_s instance_method
@@ -1015,57 +1018,57 @@
   protected_instance_metohds protected_method_defined? public_class_method public_instance_method public_instance_methods
   public_method_defined? remove_class_variable
 
-******* ancestors
+********* ancestors
 - ancestors -> [Class, Module]
   クラス、モジュールのスーパークラスとインクルードしているモジュールを優先順位順に配列に格納して返す。
-***** Array
+******* Array
 - 
   配列を表すオブジェクトを提供する。
 
-****** Inheritance
+******** Inheritance
 - Array < Enumerable < Object < Kernel < BasicObject
 
-****** ClassMethod
-******* []
-******* new
+******** ClassMethod
+********* []
+********* new
 
-****** InstanceMethod
-******* +
+******** InstanceMethod
+********* +
 - 
   配列を連結
-******* <<
+********* <<
 - 
   末尾に要素を追加
-******* []
-******* []=
-******* length
-******* empty?
-******* include?
-******* select
-******* collect
+********* []
+********* []=
+********* length
+********* empty?
+********* include?
+********* select
+********* collect
 
-***** Hash
+******* Hash
 - 
   ハッシュテーブルのクラス。
-****** Inheritance
+******** Inheritance
 - Hash < Enumerable < Object < Kernel < BasicObject
-***** Enumerator
+******* Enumerator
 - 
   each以外のメソッドにもEnumerableの機能を提供するためのラッパークラス。
-****** Inheritance
+******** Inheritance
 - Enumerator < Enumerable < Object < Kernel < BasicObject
   
-***** Dir
+******* Dir
 - 要約
   ディレクトリの操作を行うためのクラス
-****** Inheritance
+******** Inheritance
 - 
   Dir < Enumerable < Object < Kernel < BasicObject
-****** SingletonMethod
-******* List
+******** SingletonMethod
+********* List
 - 
   [] glob chdir chroot delete rmdir unlink entries exist? exists? foreach getwd pwd home mkdir new open
-******* glob
+********* glob
 - 
   glob(pattern, flags = 0) -> [String]
   ワイルドカードの展開を行い、パターンにマッチするファイル名を文字列の配列として返す。
@@ -1080,89 +1083,94 @@
            {foo, bar{foo,bar}}はfoo, barfoo, barbarにマッチする。
     - **/ : ワイルドカード*/の0回以上の繰り返しを意味し、ディレクトリを再帰的にたどってマッチを行う。
             foo/**/barは、foo/bar, foo/*/bar, foo/*/*/bar, ... とマッチする。
-****** InstanceMethod
-******* List
+******** InstanceMethod
+********* List
 - 
   close each inspect path to_path pos tell pos= seek read rewind
 
-***** Proc
+******* Proc
 - 
   ブロックをコンテキストとともにオブジェクト化した手続きオブジェクト。
-****** Inheritance
+******** Inheritance
 - 
   Proc < Object < Kernel < BasicObject
-****** SingletenMethod
-******* List
+******** SingletenMethod
+********* List
 - 
   new
-****** InstanceMethod
-******* List
+******** InstanceMethod
+********* List
 - 
   === [] call yield arity binding curry hash inspect to_s lambda? parameters source_location to_proc
 
-***** String
+******* String
 - 
   文字列クラス
-****** Inheritance
+******** Inheritance
 - String < Comparable < Object < Kernel < BasicObject
-****** InstanceMethod
-******* chomp
+******** InstanceMethod
+********* chomp
 - chopm(rs=$/) -> String
   selfの末尾からrsで指定する改行コードを取り除いた文字列を生成して返す。
 
-**** モジュール
+****** モジュール
 
-***** Kernel
+******* Kernel
 - 要約
   全てのクラスから参照できるメソッドを定義しているモジュール。
   トップレベルのメソッドの再定義に対応するため、Objectクラスのメソッドは実際にはこのモジュールで定義されている。
-****** Inheritance
+******** Inheritance
 - 
   Kernel
-****** ModuleFunction
-******* gets
+******** ModuleFunction
+********* gets
 - gets(rs=$/) -> String | nil
   ARGFから一行読み込んで、それを返す。行の区切りは引数rsで指定した文字列となる。
 
-******* chomp
+********* chomp
 - chomp(rs=$/) -> String
   $_.chompとほぼ同じ。置換が発生した時は、$_の内容を置き換える点が異なる。
 
-******* lambda
+********* lambda
 - 
   Procを返す。Proc.newと似ているが、いくつかの場面で挙動が違う。
   return時の挙動や引数チェックなど。
   lambdaの方がよりメソッドに近い動きをし、厳密。
 
-******* proc
+********* proc
 - 
   Proc.newと同じ。
 
-***** Comparable
+******* Comparable
 - 
   比較演算を許すクラスのためのMix-in。
 
-***** Enumerable
+******* Enumerable
 - 
   繰り返しを行うクラスのためのMix-in。
   メソッドが全てeachを用いて定義されているので、インクルードするクラスにeachを定義する必要がある。
 
-***** Instance Method
-****** inject
+******* Instance Method
+******** inject
 - 
   リストの畳み込み演算を行う。
   初期値initとselfの最初の要素を引数に、ブロックを実行する。
   2回目以降は、前のブロックの実行結果とselfの次の要素を引数に、順次ブロックを実行する。
 
-*** rexml (ファイルフォーマット)
-
-**** rexml/document
+****** オブジェクト
+****** 例外クラス
+***** CUI
+***** 文字コード
+***** ファイルフォーマット
+****** rexml
+- Pure RubyのXMLパーサ
+******* rexml/document
 - DOBスタイルのXMLパーサ。
   REXML::Document.newでXML文書からDOMツリーを構築し、
   ツリーのノードの各メソッドで文書の内容にアクセスする。
 - [[http://www.germane-software.com/software/rexml/docs/tutorial.html][REXML Tutorial]] <- これが良い感じ。
 
-***** Elements
+******** Elements
 - 継承リスト
   REXML:Elements < Enumerable < Object < Kernel < BasicObject
 - 要約
@@ -1171,7 +1179,7 @@
   XPathで相対パスを指定した場合、このレシーバが基準要素となる。
 
 
-***** XPath
+******** XPath
 - 継承リスト
   REXML:XPath < REXML:Functions < Object < Kernel < BasicObject
 - 要約
@@ -1188,11 +1196,12 @@
     elementのpathで指定したXPath文字列にマッチする最初のノードを返す。
   - match(element, path = nil, namespaces = {}, variables = {}) -> [Node]
 
-*** Link
-- [[http://docs.ruby-lang.org/ja/2.1.0/doc/index.html][オブジェクト指向スクリプト言語 Ruby リファレンスマニュアル(2.1)]]
-
-** [[http://i.loveruby.net/ja/rhg/book/][Rubyソースコード完全解説]]
-
+***** ネットワーク
+****** webrick
+- 汎用HTTPサーバフレームワーク。
+**** C API
+** Rubyソースコード完全解説
+- http://i.loveruby.net/ja/rhg/book/
 *** ruby言語ミニマム
 - rubyでは全てがオブジェクトで、Javaのintやlongのような基本型(primitive)はない。
 - 配列
@@ -1692,11 +1701,82 @@
 - 
   モジュール名とファイル名を受けとり、モジュールを最初に参照したときにファイルを自動的に読み込む。
 
-** ツール
+** Tools ツール
 *** gem
-- environment
-  バージョンや実行ファイル、パスなどが表示される。
+- パッケージ管理ツール
+- frontend to RubyGems, the Ruby package manager
+**** Options
+***** environment
+- バージョンや実行ファイル、パスなどが表示される。
 
+*** bundler
+- Ruby Dependency Management
+- gemでインストールする各ライブラリをまとめて管理し、バージョン差異を揃えるためのもの。
+- Gemfilesというファイルにインストールするgemを記述、それを元にbundlerでインストールを行う。
+**** Synopsis
+- bundle COMMAND [--no-color] [--verbose] [ARGS]
+**** Options
+**** Bundle commands
+***** Primary commands
+****** bundle install
+****** bundle update
+****** bundle package
+****** bundle exec
+- Execute a script in the context of the current bundle.
+****** bundle config
+****** bundle help
+***** Utilities
+****** bundle add
+****** bundle binstubs
+****** bundle check
+****** bundle show
+****** bundle outdated
+****** bundle console
+****** bundle open
+****** bundle lock
+****** bundle viz
+****** bundle init
+****** bundle gem
+****** bundle platform
+****** bundle clean
+****** bundle doctor
+**** Link
+- https://qiita.com/hisonl/items/162f70e612e8e96dba50
+*** rake
+- a make-like build utility for Ruby
+**** Synopsis
+- rake [-f rakefile] {OPTIONS} TARGETS...
+**** Options
+***** -m, --multitask
+***** -T, --tasks
+- get a list of available Rake taskes.
+** Libarry(外部)
+*** Nokogiri
+- XMLドキュメントとHTMLドキュメントを扱うためのライブラリ。
+  実際はhtml/xml解析ライブラリであるlibxml2のラッパー。
+- http://www.nokogiri.org/
+*** pg
+- PostgreSQLにアクセスするためのライブラリ。
+*** unicorn
+- Rack HTTP server for fast client and Unix
+- https://bogomips.org/unicorn/
+**** Commands
+***** unicorn
+- Usage : unicorn [ruby options] [unicorn options] [rackup config file]
+****** Ruby options
+- -e, --eval LINE
+****** unicorn options
+- -o, --host HOST
+- -p, -port PORT
+- -E, --env RACK_ENV
+- -c, --config-file FILE : Unicorn-specific config file
+****** Common options
+- -h, --help
+- -v, --version
+***** unicorn_rails
+- ほぼunicornと同様。
+****** unicorn options
+- --path PATH : Runs rails app mounted at a specific path
 ** etc
 
 - encoding

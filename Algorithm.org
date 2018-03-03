@@ -18,10 +18,15 @@
 - Least Recently Used
   最近使われていないデータからキャッシュアウトする。
 ** Compression
-*** Lempel-Ziv-Welch LZW
+*** 可逆
+**** LZ77
+- 1977年にJacob Ziv, Abraham Lempelによって開発されたデータ圧縮アルゴリズム。
+**** Lempel-Ziv-Welch / LZW
 - Lempel-Ziv法をテリー・ウェルチが改良したアルゴリズム。
   GIFやTIFFなどの圧縮で利用されている。
-*** Deflate
+**** Lempel-Ziv-Markov chain-Algorithm / LZMA
+- 2001年から開発されているデータ圧縮アルゴリズム。
+**** Deflate
 - LZ77とハフマン符号化を組み合わせた可逆データ圧縮アルゴリズム。
   ZIPやgzipで使われる。
   RFC1951としてドキュメント化された。

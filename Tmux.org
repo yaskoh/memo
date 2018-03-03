@@ -110,9 +110,15 @@
 ** Settings
 ** Memo
 *** Copy/Paste
-- 
-  (Windows)Shiftを押しながらマウスを動かす・右クリックすると、
+**** Windows
+- Shiftを押しながらマウスを動かす・右クリックすると、
   コピーやペースト等の操作ができる。
+
+**** Mac
+- もともとコピペがうまく動かない。以下を導入
+  - brew install reattach-to-user-namespace
+  - .tmux.confで
+    - set-option -g default-command "reattach-to-user-namespace -l zsh"
 *** Mouse
 - tmux 2.1からmouse設定が変更になった模様。
   [[http://qiita.com/jyotti/items/70a3a8035d767f99f93d][tmux v2.1からmouse関連の設定が変わった - Qiita]]
@@ -123,3 +129,4 @@
   
 ** Link
 - [[https://tmux.github.io/][tmux]]
+- https://qiita.com/b4b4r07/items/01359e8a3066d1c37edc

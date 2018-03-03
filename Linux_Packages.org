@@ -33,6 +33,22 @@
 ***** Attr
 ***** Autoconf
 ***** Automake
+*** Debian
+- https://www.debian.org/distrib/packages
+**** apt-transport-https
+- https download transport for APT
+**** ca-certificates
+- Common CA certificates
+**** gnupg2
+- GNU privacy guard
+**** software-properties-common
+- manage the repositories that you install software from
+*** Ubuntu
+- https://packages.ubuntu.com/
+**** liblzma-dev
+- XZ-format compression library - development
+**** zlib1g-dev
+- compression library - development
 *** Arch Linux
 - https://www.archlinux.org/packages/
 **** Core
@@ -139,6 +155,7 @@
 - C library for reading and writing JPEG image files.
 **** libxpm
 
+** Commands
 *** rpm
 *** deb
 *** ports

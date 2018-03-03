@@ -52,75 +52,20 @@
 
 ** Command
 - See "Reference"
-*** psqlコマンド
-**** About
-- ;(セミコロン)で1文の終わりを表す。
-  SQLコマンドの使用が可能。
-  
-  オプション等はClient Applicationを参照。
-
-**** psqlメタコマンド
-- psql内で入力されたコマンドのうち、バックスラッシュで始まり、引用符で囲まれていないものは、
-  psql自身が実行するpsqlのメタコマンドとして扱われる。
-  [[https://www.postgresql.jp/document/9.3/html/app-psql.html][psql - PostgreSQL 9.3.2文書]]
-
-***** \c, \connect
-- 
-  サーバへの接続を新規に確立する。
-
-***** \C
-- 
-  テーブルタイトルの設定/解除を行う。
-  "Caption"に由来。
-
-***** \cd
-- 
-  カレントディレクトリを変更する。
-
-***** \d
-- 
-  接続されているDB内のテーブル一覧を表示
-
-***** \du
-- 
-  ユーザを確認できる
-
-***** \h
-- 
-  ヘルプを表示する
-
-***** \i
-- 
-  ファイルを読み込んで実行する。
-
-***** \l
-- 
-  存在するデータベースの一覧を表示する
-
-***** \p
-- 
-  途中まで入力されたクエリの内容を確認する。
-
-***** \q
-- psqlを終了する。
-  quit
-
-***** \r
-- 部分的に入力したクエリをキャンセルする。
-
-***** \z
-- テーブル一覧とアクセス権の表示
-***** \! [command]
-- 
-  別のシェルを起動するか、もしくはUnixのcommandコマンドを実行する。
-  引数はこれ以上解釈されず、そのままシェルに渡される。
-
-***** \?
-- 
-  バックスラッシュコマンドに関するヘルプ情報を表示する
-** SQL言語
-*** SQLの基本
-**** SQLの構文
+** Manuals
+*** Tutorial
+**** Getting Started
+***** Installation
+***** Architectural Fundamentals
+***** Creating a Database
+- $ createdb mydb (or /usr/local/pgsql/bin/createdb mydb , and so on)
+- $ dropdb mydb
+***** Accessing a Database
+- $ psql mydb
+**** The SQL Language
+**** Advanced Features
+*** The SQL Language / SQL言語
+**** SQL Syntax / SQLの構文
 ***** 語彙の構成
 - SQL
   SQLは一続きのコマンド。
@@ -291,7 +236,7 @@
 - 
   関数呼び出し時の引数は、位置表記、名前付け表記、混在表記が可能。
 
-**** データ定義
+**** Data Definition / データ定義
 ***** デフォルト値
 ****** DEFAULT
 - 
@@ -498,68 +443,10 @@
   5. マスタテーブルに、パーティションに中継するためのトリガ等を作成
   6. constraint.exclusion背亭パラメータがpostgresql.conf内で無効となっていないことの確認
 
-**** オブジェクト
-
-***** AGGREGATE
-
-***** CAST
-
-***** COLLATION
-
-***** CONVERSION
-
-***** DATABASE
-
-***** DOMAIN
-
-***** EXTENSION
-
-***** EVENT TRIGGER
-
-***** FOREIGN TABLE
-
-***** FUNCTION
-
-***** GROUP
-
-***** INDEX
-
-***** LANGUAGE
-
-***** OPERATOR
-
-***** ROLE
-
-***** RULE
-
-***** SCHEMA
-
-***** TABLE
-
-***** TRIGGER
-
-***** TYPE
-
-***** USER
-
-***** VIEW
-*** Functions / 関数
-**** Operator / 演算子
-**** システム情報関数
-**** システム管理関数
-***** 構成設定関数
-***** サーバシグナル送信関数
-**** tmp
-***** version()
-- 
-  postgresのバージョンを表示する。
-
-***** rank()
-
-***** nextval()
-
-*** Data Type / データ型
-**** 数値データ型
+**** Data Manipulation
+**** Queries
+**** Data Type / データ型
+***** 数値データ型
 - 
   |------------------+-------+--------------+------------------|
   |                  |       |              |                  |
@@ -576,7 +463,7 @@
   | bigserial        |       |              |                  |
   |------------------+-------+--------------+------------------|
 
-**** 通貨型
+***** 通貨型
 - 
   |-------+-------+----------+---|
   | 型名  | 格納サイズ | 説明     |   |
@@ -584,7 +471,7 @@
   | money | 8byte | 貨幣金額 |   |
   |-------+-------+----------+---|
 
-**** 文字型
+***** 文字型
 - 
   |----------------------------------+----------------|
   | 型名                             | 説明           |
@@ -594,7 +481,7 @@
   | text                             | 制限なし可変長 |
   |----------------------------------+----------------|
 
-**** バイナリ列データ型
+***** バイナリ列データ型
 - 
   |-------+--------------------------+--------------------|
   | 型名  | 格納サイズ               | 説明               |
@@ -602,7 +489,7 @@
   | bytea | (1 or 4) + binary length | 可変長のバイナリ列 |
   |-------+--------------------------+--------------------|
 
-**** 日付/時刻データ型
+***** 日付/時刻データ型
 - 
   |---------------------------------+------------+--------------------------+------+------+------|
   | 型名                            | 格納サイズ | 説明                     | 過去 | 未来 | 精度 |
@@ -615,7 +502,7 @@
   | interval                        | 12byte     | 時間間隔                       |      |      |      |
   |---------------------------------+------------+--------------------------+------+------+------|
 
-**** 論理値データ型
+***** 論理値データ型
 - 
   |---------+------------+------------|
   | 型名    | 格納サイズ | 説明       |
@@ -623,183 +510,104 @@
   | boolean | 1byte      | 真または偽 |
   |---------+------------+------------|
 
-**** 列挙型
-**** 幾何データ型
+***** 列挙型
+***** 幾何データ型
 
-*** Index / インデックス
-*** Information Schema / 情報スキーマ
+**** Functions and Operators / 関数
+***** Operator / 演算子
+***** システム情報関数
+***** システム管理関数
+****** 構成設定関数
+****** サーバシグナル送信関数
+***** tmp
+****** version()
 - 
-  現在のデータベースで定義されたオブジェクトについての情報をもつビューの集合から構成される。
-  標準SQLで定義されている。
-  そのため、PostgreSQLに特化し、実装上の事項にならって作成されるシステムカタログとは異なり、
-  移植性があり、安定性を保持できるものと期待される。
-  
-  しかしながら、PostgreSQL固有の機能についての情報を含まないため、
-  それらが必要な場合、システムカタログやビューへ問い合わせを行う必要がある。
+  postgresのバージョンを表示する。
 
-  スキーマなので、information_schema.(tablename)という問い合わせが必要。
+****** rank()
 
-**** スキーマ
-- 
-  情報スキーマ自身は、information_schemaという名前のスキーマ。
-  このスキーマは自動的にすべてのデータベース内に存在する。
-  所有者は、クラスタ内の最初のデータベースユーザであり、
-  スキーマの削除を含むスキーマについてのすべての権限を持つ。
+****** nextval()
 
-  デフォルトでは、情報スキーマはスキーマの検索パスには含まれない。
-
-**** データ型（情報スキーマ）
-- 概要
-  情報スキーマのビューの列では、情報スキーマ内で定義された特殊なデータ型を使用する。
-  これらは通常の組み込み型の上位ドメインとして定義される。
-  情報スキーマ内の列は、以下5つの型のいずれかを取る。
-  
-- cardinal_number
-  非負の整数
-
-- character_data
-  最大文字長の指定がない文字列
-
-- sql_identifier
-  文字列。SQL識別子用に使用される。その他の任意のテキストデータには、character_dataを用いる。
-
-- time_stamp
-  timestamp with time zone型の上位ドメイン。
-
-- yes_or_no
-  YESかNOのいずれかを持つ文字列ドメイン。
-  情報スキーマ内で論理（真/偽）データを表すために使用される。
-  情報スキーマはboolean型が追加される前に考案されたため、この記法が必要。
-
-**** information_schema
-**** columns
-**** tables
-**** viwes
-*** System Catalog / システムカタログ
-- 
-  テーブルや列の情報などのスキーマメタデータと内部的な情報を格納する場所。
-  PostgreSQLのシステムカタログは通常のテーブルのため、
-  テーブルの削除や再作成、列の追加や値の挿入・更新は可能。
-  システムをダメにする可能性があるため、基本手作業で変更しない。
-  その代りにSQLコマンドを実行する。
-
-**** pg_aggregate
-**** pg_am
-**** pg_amop
-**** pg_amproc
-**** pg_attrdef
-**** pg_attribute
-**** pg_authid
-**** pg_auth_members
-**** pg_cast
-**** pg_class
-**** pg_constraint
-**** pg_colation
-**** pg_conversion
-**** pg_database
-**** pg_db_role_setting
-**** pg_default_acl
-
-**** pg_statistic
-
-**** pg_trigger
-
-**** pg_type
-*** System View / システムビュー
-- 
-  システムカタログに対する問い合わせに手近にアクセスできるようにしたり、
-  サーバ内部状態へのアクセスを提供したりする。
-  
-  システムビューはPostgres特有なのに対し、情報スキーマはSQL標準なので、
-  情報スキーマが必要とする情報すべてを提供するのであれば、そちらを選ぶ方がよい。
-
-**** pg_cursors
-**** pg_group
-**** pg_indexes
-**** pg_locks
-**** pg_roles
-**** pg_rules
-**** pg_settings
-**** pg_stats
-**** pg_tables
-**** pg_user
-**** pg_user_mappings
-**** pg_view
-
-** Server Administration サーバの管理
-*** 運用管理概要
+**** Type Conversion
+**** Index / インデックス
+**** Full Text Search
+**** Concurrency Control
+**** Performance Tips
+**** Parallel Query
+*** Server Administration サーバの管理
+**** 運用管理概要
 
 - [[http://lets.postgresql.jp/map/operation][目的別ガイド：運用管理編 - Let's postgres]]
 
-**** 運用管理作業の分類
-***** メンテナンス
+***** 運用管理作業の分類
+****** メンテナンス
 - 
   内部状態を要状態に保ち、一定のパフォーマンスを発揮させる。
   VACUUMやANALYZE
 
-***** 監視
+****** 監視
 - 
   異常を事前に察知する、もしくは発生後に原因調査をする。
 
-***** バックアップ・リストア
+****** バックアップ・リストア
 - 
   ディスクの故障や誤操作によるデータ消失に対処するため、バックアップを行う。
 
-***** アップグレード・ダウングレード
+****** アップグレード・ダウングレード
 - 
   マイナーリリースに柔軟に追随できるようにする。
   マイナーリリースでは、互換性が保たれたまま、
   主にバグやセキュリティ問題の修正が行われる。
 
-**** 期間別作業
-***** 運用前
+***** 期間別作業
+****** 運用前
 
-****** ログ関連の設定
+******* ログ関連の設定
 
-****** 稼働統計情報関連の設定
+******* 稼働統計情報関連の設定
 
-****** autovacuum
+******* autovacuum
 - 
   テーブルのじょうたいを監視して、しかるべきタイミングでVACUUMする機能。
   
-***** 日単位
+****** 日単位
 
-****** VACUUM
+******* VACUUM
 - 
   追記型アーキテクチャのため、更新や削除でガベージが発生する。
   ガベージを回収する作業がVACUUM。
   VACUUMを主導で行う場合、VERBOSEオプションを付与すると
   所要時間や回収したガベージ量が確認できるため便利。
 
-****** ANALYZE
+******* ANALYZE
 - 
   統計情報を最新のデータ状態をもとにリフレッシュするコマンド。
   autovacuum機能により自動で実行することもできる。
 
-****** システムリソースの取得
+******* システムリソースの取得
 - 
   CPU使用率やデバイス使用率、各プロセスの活動状態などの情報を記録する。
 
-****** バックアップ
+******* バックアップ
 - 
   論理的なバックアップと、ファイルシステムのファイルとして取得する方法の2種類がある。
 
-******* 論理バックアップ(pg_dump)
+******** 論理バックアップ(pg_dump)
 - 
   pg_dumpを使ってDBのデータをダンプする。
   一部のテーブルやDBのスキーマ、データ内容だけを取得することが可能。
   SQLの形でデータ取得を行い、主に小規模のDBやメジャーバージョン間の移行などに使用。
   
-******* オンライン・バックアップ
+******** オンライン・バックアップ
 - 
   DBクラスタをrsyncやcpコマンドを使い、ファイルとして取得する。
   DBやテーブル単位の指定はできず、DBクラスタ全体のバックアップとなる。
   アーカイブログを取得しておくことが必須。
   アーカイブログと合わせて、ダウン直前までのリカバリが可能なPITRが必要な際に使用する。
 
-***** 月単位～
+****** 月単位～
 
-****** 月次メンテナンス
+******* 月次メンテナンス
 - REINDEX
   インデックスの再構築を行う。
 - CLUSTER
@@ -809,7 +617,7 @@
 - VACUUM FULL
   テーブルを物理的に圧縮する。DBが肥大化してディスクフル直前の場合に実施する。
 
-****** アップグレード・アップデート
+******* アップグレード・アップデート
 - アップグレード
   メジャーバージョン間のDBクラスタ互換性がないので、
   pg_updateにより変換するか、pg_dumpでデータを抽出し流し込む作業が必要。
@@ -819,20 +627,20 @@
   互換性があるため、基本的にバイナリの差し替えのみで済む。
   振る舞いは原則変わらない。
 
-***** 不定期
-****** 再起動
-****** フェイルオーバ
-*** Installation from Source Code / ソースコードからインストール
-*** Installation from Source Code on Windows / Windowsにおけるソースコードからのインストール
-*** Server Setup and Operation / サーバの準備と運用
-*** Server Configuration / サーバの設定
-**** 設定ファイル
+****** 不定期
+******* 再起動
+******* フェイルオーバ
+**** Installation from Source Code / ソースコードからインストール
+**** Installation from Source Code on Windows / Windowsにおけるソースコードからのインストール
+**** Server Setup and Operation / サーバの準備と運用
+**** Server Configuration / サーバの設定
+***** 設定ファイル
 - postgresql.conf、pg_hba.conf、pg_ident.confという設定ファイルがある。
   インストールしたフォルダの"data"フォルダ配下に存在する。
-***** postgresql.conf
+****** postgresql.conf
 - 最大接続数やログの保存方法など、基本的なPostgreSQLの設定を行う。
 
-***** pg_hba.conf
+****** pg_hba.conf
 - 
   クライアントの認証に関する記述を行う。
   TYPE, DATABASE, USER, ADDRESS, METHODの5つの項目で1行の設定となる。
@@ -852,20 +660,20 @@
   認証方式。以下が使用可能。
     trust / reject / md5 / crypt / password / krb5 / ident / pam
   
-***** pg_ident.conf
+****** pg_ident.conf
 - 
   認証方式で"ident"を使う場合に、identのユーザ名をPostgreSQLのユーザ名にマップするマップ名の記述を行う。
   MAPNAME, SYSTEM-USERNAME, PG-USERNAMEの3項目がある。
 
-**** Setting Parameters / パラメータの設定
-***** パラメータ名とその値
+***** Setting Parameters / パラメータの設定
+****** パラメータ名とその値
 - 
   - 論理型
   - 文字列型
   - 数値型
   - 単位付きの数値
   - 列挙型
-***** 設定ファイルによるパラメータ操作
+****** 設定ファイルによるパラメータ操作
 - postgresql.conf
   - 1つの行に1つのパラメータが設定される
   - 名前と値の間の等号は省略可能
@@ -881,7 +689,7 @@
   - postgresql.confが読み込まれる度に常に自動で読み込まれ、postgresql.conf設定を上書きする。
 - pg_file_settings（システムビュー）
 
-***** SQLを通じたパラメータ操作
+****** SQLを通じたパラメータ操作
 - 恒久的
   - ALTER SYSTEM
     - グローバルな設定値を変更する。postgresql.conf変更と等価。
@@ -898,9 +706,9 @@
   - pg_settings (system view)
     - SHOW ALLと同じだが、更に詳細な情報が提供される。
     - このビューのsetting列をudateするのは、SETコマンドの実行と同等。
-***** シェルによるパラメータ操作
-***** 設定ファイルの内容の管理
-**** File Locations
+****** シェルによるパラメータ操作
+****** 設定ファイルの内容の管理
+***** File Locations
 - data_dirctory
   - データ格納に使用するディレクトリ
 - config_file
@@ -911,82 +719,82 @@
   - ユーザ名マッピング設定ファイル。通例pg_ident.conf
 - external_pid_file
   - PIDファイルの名前を指定。
-**** Connections and Authentication / 接続と認証
-***** 接続設定
-****** listen_address (string)
-****** port (integer)
-****** max_connections (integer)
-****** superuser_reserved_connections (integer)
-****** unix_socket_directories (string)
-****** unix_socket_group (string)
-****** unix_socket_permissions (integer)
-****** bonjour (boolean)
-****** bonjour_name (string)
-****** tcp_keepalives_idle (integer)
-****** tcp_keepalives_interval (integer)
-****** tcp_keepalives_count (integer)
-***** セキュリティと認証
-****** authentication_timeout (integer)
-****** ssl (boolean)
-****** ssl_ca_file (string)
-****** ssl_cert_file (string)
-****** ssl_crl_file (string)
-****** ssl_key_file (string)
-****** ssL_ciphers (string)
-****** ssl_prefer_server_ciphers (bool)
-****** ssl_ecdh_curve (string)
-****** password_encryption (boolean)
-****** krb_server_keyfile (string)
-****** krb_caseins_users (boolean)
-****** db_user_namespace (boolean)
-**** Resource Consumption / 資源の消費
-***** メモリ
-***** ディスク
-***** カーネル資源使用
-***** コストに基づくVacuum遅延
-***** バックグラウンドライタ
-***** 非同期動作
-**** Write Ahead Log / ログ先行書き込み(WAL)
-***** 諸設定
-****** wal_level (enum)
+***** Connections and Authentication / 接続と認証
+****** 接続設定
+******* listen_address (string)
+******* port (integer)
+******* max_connections (integer)
+******* superuser_reserved_connections (integer)
+******* unix_socket_directories (string)
+******* unix_socket_group (string)
+******* unix_socket_permissions (integer)
+******* bonjour (boolean)
+******* bonjour_name (string)
+******* tcp_keepalives_idle (integer)
+******* tcp_keepalives_interval (integer)
+******* tcp_keepalives_count (integer)
+****** セキュリティと認証
+******* authentication_timeout (integer)
+******* ssl (boolean)
+******* ssl_ca_file (string)
+******* ssl_cert_file (string)
+******* ssl_crl_file (string)
+******* ssl_key_file (string)
+******* ssL_ciphers (string)
+******* ssl_prefer_server_ciphers (bool)
+******* ssl_ecdh_curve (string)
+******* password_encryption (boolean)
+******* krb_server_keyfile (string)
+******* krb_caseins_users (boolean)
+******* db_user_namespace (boolean)
+***** Resource Consumption / 資源の消費
+****** メモリ
+****** ディスク
+****** カーネル資源使用
+****** コストに基づくVacuum遅延
+****** バックグラウンドライタ
+****** 非同期動作
+***** Write Ahead Log / ログ先行書き込み(WAL)
+****** 諸設定
+******* wal_level (enum)
 - VALUE: minimal, replica, logical
-****** wal_buffers (integer)
-***** チェックポイント
-****** checkpoint_timeout (integer)
-****** checkpoint_completion_target (floating point)
-****** max_wal_size (integer)
+******* wal_buffers (integer)
+****** チェックポイント
+******* checkpoint_timeout (integer)
+******* checkpoint_completion_target (floating point)
+******* max_wal_size (integer)
 - 自動WALチェックポイント尾間にWALが増加する最大サイズ。
   ソフトリミット。高負荷の場合などwal_max_sizeを超える場合がある。
-****** min_wal_size (integer)
-***** アーカイビング
-****** archive_mode (enum)
-****** archive_command (string)
-****** archive_timeout (integer)
-**** Replication / 
-**** Query Planning
-***** プランナメソッド設定
-***** プランナコスト定数
-****** effective_cache_size (integer)
-***** 遺伝的問合せオプティマイザ
-***** その他のプランナオプション
-**** Error Reporting and Logging
-**** Run-time Statistics
-**** Automatic Vacuuming
-**** Client Connection Defaults
-**** Lock Management
-**** Version and Platform Compatibility
-**** Error Hadling
-**** Preset Options
-**** Customized Options
-**** Developer Options
-**** Short Options
-*** Client Authentication / クライアント認証
-*** Database Roles / データベースロール
-*** Managing Databases / データベース管理
-*** Localization / 多言語対応
-*** Routine Database Maintenance Tasks / 定常的なデータベース保守作業
-*** Backup and Restore / バックアップとリストア
-**** SQLによるダンプ
+******* min_wal_size (integer)
+****** アーカイビング
+******* archive_mode (enum)
+******* archive_command (string)
+******* archive_timeout (integer)
+***** Replication / 
+***** Query Planning
+****** プランナメソッド設定
+****** プランナコスト定数
+******* effective_cache_size (integer)
+****** 遺伝的問合せオプティマイザ
+****** その他のプランナオプション
+***** Error Reporting and Logging
+***** Run-time Statistics
+***** Automatic Vacuuming
+***** Client Connection Defaults
+***** Lock Management
+***** Version and Platform Compatibility
+***** Error Hadling
+***** Preset Options
+***** Customized Options
+***** Developer Options
+***** Short Options
+**** Client Authentication / クライアント認証
+**** Database Roles / データベースロール
+**** Managing Databases / データベース管理
+**** Localization / 多言語対応
+**** Routine Database Maintenance Tasks / 定常的なデータベース保守作業
+**** Backup and Restore / バックアップとリストア
+***** SQLによるダンプ
 - ダンプ
   データのダンプ方法は、以下の通り。
   - pg_dump dbname > outfile
@@ -1002,7 +810,7 @@
 - 大規模DBの扱い
   パイプを使って圧縮を行う等する。
 
-**** ファイルシステムのバックアップ
+***** ファイルシステムのバックアップ
 - 
   データを保存しているファイルを直接コピーしバックアップする方法も可能。
   ただし、以下の二点の制約があり、あまり実用的でなく、pg_dumpに劣る。
@@ -1013,26 +821,26 @@
   サイズ上は、インデックスの有無等の理由で概してダンプより大きくなる。
   ただし、ファイルシステムバックアップの方が高速である。
 
-**** 継続的アーカイブとPITR
+***** 継続的アーカイブとPITR
 - 
   WALファイルとファイルシステムレベルのバックアップから復旧する方法。
   - WALはpg_xlog/ディレクトリは以下で管理している。
   - pg_dumpやpg_dumpallは論理的なバックアップであり、WALでのやり直し目的には使用できない。
 
-***** WALアーカイブ設定
+****** WALアーカイブ設定
 - 
   - WALの記録は、通常1つ16メガバイトのWALセグメントファイルに分割される。
   - 概念的なWALの並び内の位置を反映した、数字の名前が付与される。
   - 不要となったセグメントファイルの名前をより大きなセグメント番号に変更することで"再回収"する。
   
-***** ベースバックアップの作成
+****** ベースバックアップの作成
 - 
   pg_basebackupを実行するのが一番簡単。
   より柔軟性が求められる場合は、低レベルなAPIを使ってバックアップを作ることも可能。
   
   ベースバックアップの過程で、WALアーカイブ領域にバックアップ履歴ファイルが作成さえっる。
   
-***** 復旧
+****** 復旧
 - 
   1. 稼働している場合、サーバを停止する。
   2. 容量があるのであれば、クラスタデータディレクトリ全体とテーブル空間をすべて一時的な場所にコピーする。
@@ -1047,7 +855,7 @@
      場合によってはpg_hba.confを編集し、一般ユーザが接続できないようにする。
   8. サーバを起動する。
 
-****** recovery.conf
+******* recovery.conf
 - 
   リカバリに使用する、リカバリのときのみ有効となるファイル。
   name = 'value'という書式取る。ハッシュ(#)は後続がコメントとなる。シングルクォートを使う場合は2つ重ねる。('')
@@ -1056,7 +864,7 @@
   
   リカバリが完了すると、"recovery.done"と拡張子が変わる。
 
-******* Archive Recoverry Parameters
+******** Archive Recoverry Parameters
 - restore_command(string)
   連続したWALファイルのアーカイブを取得するために実行するシェルコマンドを指定する。
   アーカイブリカバリには必須だが、ストリーミングレプリケーションの場合は必須ではない。
@@ -1069,7 +877,7 @@
 - archive_cleanup_command(string)
 - recovery_end_command(string)
 
-******* Recovery Target Parameters
+******** Recovery Target Parameters
 - recovery_target_name(string)
 - recovery_target_time(string)
 - recovery_target_xid(string)
@@ -1077,46 +885,46 @@
 - recovery_target_timeline(string)
 - pause_at_recovery_target(boolean)
 
-******* Standby Server Parameters
+******** Standby Server Parameters
 - standby_mode(boolean)
 - primary_conninfo(string)
 - trigger_file(string)
-*** High Availability, Load Balancing, and Replication / 高可用性・負荷分散・レプリケーション
-*** Recovery Configuration / リカバリの設定
-*** Monitoring Database Activity / データベース活動状況の監視
-*** Monitoring Disk Usage / ディスク使用量の監視
-*** Reliability and the Write-Ahead Log / 信頼性とログ先行書き込み
-*** Regression Tests / リグレッションテスト
-*** チューニング
+**** High Availability, Load Balancing, and Replication / 高可用性・負荷分散・レプリケーション
+**** Recovery Configuration / リカバリの設定
+**** Monitoring Database Activity / データベース活動状況の監視
+**** Monitoring Disk Usage / ディスク使用量の監視
+**** Reliability and the Write-Ahead Log / 信頼性とログ先行書き込み
+**** Regression Tests / リグレッションテスト
+**** チューニング
 
 - [[http://lets.postgresql.jp/map/tuning][目的別ガイド：チューニング編 - Let's postgres]]
 - [[https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server/ja][Tuning Your PostgreSQL Server/ja]]
 
-**** チューニングの流れ
+***** チューニングの流れ
 - 情報収集と分析
 - チューニングの実施
 - 繰り返し or 完了の判断
 
-**** ハードウェア構成の見直し
+***** ハードウェア構成の見直し
 
-***** スケールアウト / スケールアップ
+****** スケールアウト / スケールアップ
 
-***** ストレージを重視
+****** ストレージを重視
 
-***** メモリ量を重視
+****** メモリ量を重視
 
-***** CPU速度を重視
+****** CPU速度を重視
 
-**** アプリケーション要求の見直し
+***** アプリケーション要求の見直し
 - 
   アプリケーションやサービスの無謀な要求の確認。
   
   歯抜けのないIDを振る、正確な行数を表示する、など、
   パフォーマンスを犠牲にして非効率な処理を行う必要があるか確認する。
 
-**** スキーマ・チューニング
+***** スキーマ・チューニング
 
-***** テーブルの物理編成
+****** テーブルの物理編成
 - 正規型
   正規化が重要。
   1行のサイズが2KBを超えると、極端に性能が落ちる場合がある。
@@ -1128,35 +936,35 @@
   1テーブルのサイズが大きすぎるとキャッシュ効率も落ちる。
   パーティショニングなどテーブル分割も検討されたし。
 
-***** データの並び順を考慮
+****** データの並び順を考慮
 - 
   
 
-***** 適切なインデックスを張る
+****** 適切なインデックスを張る
 
-***** 更新処理でHOTを働かせる
+****** 更新処理でHOTを働かせる
 - 
   HOTを利用すると更新処理が速くなる、とのこと。
 
-**** パラメータ・チューニング
+***** パラメータ・チューニング
 
-***** 接続数
+****** 接続数
 
-***** メモリ関連
+****** メモリ関連
 
-***** WAL関連
+****** WAL関連
 
-**** クエリ・チューニング
+***** クエリ・チューニング
 
-***** SQL チューニング
+****** SQL チューニング
 
-***** 通信方式
+****** 通信方式
 
-***** Prepared Statement
+****** Prepared Statement
 
-***** 大量データ投入
-*** 物理的な格納
-**** データベースファイルのレイアウト
+****** 大量データ投入
+**** 物理的な格納
+***** データベースファイルのレイアウト
 - 
   制御ファイルとデータファイルは、クラスタのデータディレクトリ内に格納され、
   環境変数名にちなんでPGDATAとして参照される。
@@ -1186,12 +994,12 @@
   |                | および共有メモリのセグメントIDを記録するロックファイル(サーバが停止した後は存在しません）             |
   |----------------+-------------------------------------------------------------------------------------------------------|
 
-**** base
+***** base
 -
   クラスタ内の各データベースに対して、PGDATA/base内にサブディレクトリが存在する。
   サブディレクトリ名はpg_database内の「データベースOID」となる。
 
-***** base配下
+****** base配下
 - 
   各テーブルおよびインデックスは別個のファイルに格納される。
   通常のリレーションでは、これらのファイル名はテーブルまたはインデックスの「ファイルノード番号」となる。
@@ -1213,36 +1021,70 @@
   テーブルまたはインデックスが1GBを超えると、ギガバイト単位のセグメントに分割される。
   2つ目以降のセグメントについては、ノード番号.1、ノード番号.2、というファイル名となる。
   
-** Client Interfaces クライアントインターフェース
-*** libpq
-*** ラージオブジェクト
-*** ECPG - C言語による埋め込みSQL
-*** 情報スキーマ
+*** Client Interfaces クライアントインターフェース
+**** libpq
+**** ラージオブジェクト
+**** ECPG - C言語による埋め込みSQL
+**** Information Schema / 情報スキーマ
 - 現在のデータベースで定義されたオブジェクトについての情報を持つビューの集合。
   標準SQLで定義されており、移植性・安定性を保持できるものと期待される。
   （システムカタログはPostgreSQLに特化し、実装上の事項にならって作成される。）
   情報スキーマのビューにはPostgreSQL固有機能の情報がないため、確認にはシステムカタログやPostgreSQL固有ビューの問い合わせが必要。
-**** Views
-***** tables
-***** triggers
-***** views
-** Server Programming サーバプログラミング
-** Reference リファレンス
-*** SQL Command
-**** ABORT
-**** ALTER ~
-**** BEGIN
+  スキーマなので、information_schema.(tablename)という問い合わせが必要。
+***** The Schema スキーマ
+- 
+  情報スキーマ自身は、information_schemaという名前のスキーマ。
+  このスキーマは自動的にすべてのデータベース内に存在する。
+  所有者は、クラスタ内の最初のデータベースユーザであり、
+  スキーマの削除を含むスキーマについてのすべての権限を持つ。
 
-**** COMMIT
+  デフォルトでは、情報スキーマはスキーマの検索パスには含まれない。
 
-**** COPY
+***** Data Types データ型（情報スキーマ）
+- 概要
+  情報スキーマのビューの列では、情報スキーマ内で定義された特殊なデータ型を使用する。
+  これらは通常の組み込み型の上位ドメインとして定義される。
+  情報スキーマ内の列は、以下5つの型のいずれかを取る。
+  
+- cardinal_number
+  非負の整数
+
+- character_data
+  最大文字長の指定がない文字列
+
+- sql_identifier
+  文字列。SQL識別子用に使用される。その他の任意のテキストデータには、character_dataを用いる。
+
+- time_stamp
+  timestamp with time zone型の上位ドメイン。
+
+- yes_or_no
+  YESかNOのいずれかを持つ文字列ドメイン。
+  情報スキーマ内で論理（真/偽）データを表すために使用される。
+  情報スキーマはboolean型が追加される前に考案されたため、この記法が必要。
+
+***** Views
+****** columns
+****** tables
+****** triggers
+****** views
+*** Server Programming サーバプログラミング
+*** Reference リファレンス
+**** SQL Command
+***** ABORT
+***** ALTER ~
+***** BEGIN
+
+***** COMMIT
+
+***** COPY
 - 
   平文テキストから入力する。
   ファイルとテーブルの間でデータをコピーする。
   ex) COPY weather FROM '/home/user/weacher.txt';
 
-**** CREATE ~
-***** tmp
+***** CREATE ~
+****** tmp
 - INHERITS
   指定されたテーブルのすべての列を自動的に継承する。
   新しい子テーブルと複数の親テーブルとの間に永続的な関連が作成される。
@@ -1251,77 +1093,123 @@
   テーブルのすべての列名、データ型、非NULL制約が新しいテーブルにコピーされる。
   INHERITSとの違いは、新テーブルと旧テーブルが完全に分離されること。
 
-***** CREATE TABLE AS
+****** CREATE DATABES
+******* Synopsis
+- CREATE DATABASE name 
+    [ [WITH]
+      [ OWNER [=] user_name ]
+      [ ENCODING [=] encoding ]
+      [ IS_TEMPLATE [=] istemplate ]]
+******* Parameters
+******** OWNER [=] user_name
+- role name
+******** 
+****** CREATE TABLE AS
 - 問合せの結果によって新しいテーブルを作成する
-****** 注釈
+******* 注釈
 - SELECT INTOと同等の機能を持つが、SELECT INTO構文の他の使用例と混乱する可能性から、こちらの使用のほうがよい。
   機能もSELECT INTOのスーパーセットとなっている。
-**** DELETE
+****** CREATE ROLE
+- define a new database role
+******* Synopsis
+******* Parameters
+******** [ENCRYPTED | UNENCRYPTED] PASSWORD 'password'
+- control whether the password is stored encrypted in the system catalog.
+******** LOGIN | NOLOGIN
+- determine whether a role is allowed to log in;
+******** INHERIT | NOINHERIT
+- determine whether a role "inherits" the privileges of roles it is a member of.
+******** VALID UNTIL 'timestamp'
+- it sets a data and time after which the role's password is no longer valid.
+***** DELETE
 - 
   テーブルから行を削除する。
     ex) DELETE FROM weather WHERE city = 'Hayward';
   もし条件がない場合、テーブル内"全ての"データが削除される。
     ex) DELETE FROM weather;
 
-**** DROP ~
-**** EXPLAIN
+***** DROP ~
+***** EXPLAIN
 - 
   問い合わせ文の実行結果を表示する。
   与えられた文に対して、PostgreSQLプランナが生成する実行計画を表示する。
 
-**** INSERT
-  
-**** ROLLBACK
+***** INSERT
+   
+***** ROLLBACK
 
-**** SAVEPOINT
+***** SAVEPOINT
 - 
   現在のトランザクション内に新規にセーブポイントを定義する。
 
-**** SELECT
+***** SELECT
 - テーブルもしくはビューから行を検索する
-**** SELECT INTO
+***** SELECT INTO
 - 問い合わせの結果からの新しいテーブルを定義する
-***** 注釈
+****** 注釈
 - 機能的にはSELECT INTOと同等。
   ECPGやPL/pgSQLではINTO句の解釈が異なるため、CREATE TABLE AS構文の利用を勧める。
   更に、SELECT INTOよりもCREATE TABLE ASの方が多くの機能がある。
-**** UPDATE
+***** UPDATE
 
-*** Client Application
-**** clusterdb
+***** Memo - Objects オブジェクト
+****** AGGREGATE
+****** CAST
+****** COLLATION
+****** CONVERSION
+****** DATABASE
+****** DOMAIN
+****** EXTENSION
+****** EVENT TRIGGER
+****** FOREIGN TABLE
+****** FUNCTION
+****** GROUP
+****** INDEX
+****** LANGUAGE
+****** OPERATOR
+****** ROLE
+****** RULE
+****** SCHEMA
+****** TABLE
+****** TRIGGER
+****** TYPE
+****** USER
+****** VIEW
+**** Client Application
+***** clusterdb
 - 
   PostgreSQLデータベースをクラスタ化する
 
-**** createdb
+***** createdb
 - 
   新しいPostgreSQLデータベースを作成する
 
-**** createlang
+***** createlang
 - 
   PostgreSQL手続き言語をインストールする。
   廃止予定。CREATE EXTENSIONを使う。
 
-**** createuser
+***** createuser
 - 
   新しいPostgreSQLユーザアカウントを作成する。
 
-**** dropdb
+***** dropdb
 - 
   PostgreSQLデータベースを削除する。
 
-**** droplang
+***** droplang
 - 
   手続き言語を削除する
 
-**** dropuser
+***** dropuser
 - 
   ユーザアカウントを削除する
 
-**** ecpg
+***** ecpg
 - 
   埋め込みSQL用Cプリプロセッサを使用する
 
-**** pg_basebackup
+***** pg_basebackup
 - 
   クラスタのベースバックアップを取得。
   
@@ -1335,7 +1223,7 @@
   また、pg_hba.confにおける明示的な権限が許されていなければいけない。
   サーバでmax_wal_sendersをバックアップ用に少なくとも1つのセッションを残すように十分高く設定する必要がある。
 
-***** オプション・出力場所・書式
+****** オプション・出力場所・書式
 - -D directory, --pgdata=directory
   出力を書き出すディレクトリ。
 
@@ -1358,7 +1246,7 @@
   - s, stream
     バックアップを作成するときにトランザクションログをストリームする。
 
-***** オプション・バックアップ生成とプログラム実行制御
+****** オプション・バックアップ生成とプログラム実行制御
 - -l label, --label=label
   バックアップのラベルを設定する。
   デフォルトでは"pg_basebackup base backup"
@@ -1369,7 +1257,7 @@
 - -v, --verbose
   冗長モードを有効にする。
   
-***** オプション・データベース接続パラメータ制御
+****** オプション・データベース接続パラメータ制御
 - -h host, --host=host
   ホスト名を指定する。
 
@@ -1382,11 +1270,11 @@
 - -W, --password
   強制的にパスワード入力を促す。
 
-**** pg_config
+***** pg_config
 - 
   インストールしたPostgreSQLバージョン情報を提供する
 
-**** pg_dump
+***** pg_dump
 - Usage
   pg_dump [connection-option..] [option..] [dbname]
 
@@ -1418,140 +1306,238 @@
     pg_restoreへの入力に適したtar形式のアーカイブを出力する。
     個々のテーブルサイズに8GBという上限がある。
 
-**** pg_dumpall
+***** pg_dumpall
 - 
   データベースクラスタをスクリプトファイルへ抽出する。
   pg_dumpで取得できない、ロールやテーブル空間の情報を含むクラスタ全体にわたるデータを保存する。
 
-**** pg_isready
+***** pg_isready
 - 
   サーバの接続状態を検査する
 
-**** pg_receivexlog
+***** pg_receivexlog
 - 
   クラスタからトランザクションログをストリームする
 
-**** pg_restore
+***** pg_restore
 - 
   pg_dumpで作成されたアーカイブファイルから、データベースをリストアする
 
-**** psql
-- 対話的ターミナル。
-  「psqlコマンド」も参照。
+***** psql
+****** About
+- ;(セミコロン)で1文の終わりを表す。
+  SQLコマンドの使用が可能。
+  
+  オプション等はClient Applicationを参照。
 
-- -c comand, --command=command
-  psqlに対し、コマンド文字列を実行し終了するように指示する。
+****** Options
+******* -a, --echo-all
+******* -A, --no-align
+******* -b, --echo-errors
+******* -c comand, --command=command
+- psqlに対し、コマンド文字列を実行し終了するように指示する。
 
-- -d dbname
-  DB名を入力する。
+******* -d dbname, --dbname=dbname
+- DB名を入力する。
   postgres。
   省略した場合は、ユーザ名と同じDB名が使われる模様。
 
-- -?, --help
-  コマンドオプションを表示する。
-
-- -h hostname
-  ホスト名を入力する。
+******* -e, --echo-queries
+******* -f filename, --file=filename
+******* -h hostname
+- ホスト名を入力する。
   lotalhost。
   デフォルトがlocalhostであれば省略可能。とのことだったが失敗する。
 
-- -l
-  データベースの一覧を表示する。
+******* -l, --list
+- データベースの一覧を表示する。
 
-- -o filename
-  filenameに、問い合わせの出力を書き込む。
+******* -L filename, --log-file=filename
+******* -n, --no-readline
+******* -o filename, --output=filename
+- filenameに、問い合わせの出力を書き込む。
 
-- -U username
-  ユーザ名を入力する。
+******* -p port, --port=port
+******* -U username
+- ユーザ名を入力する。
   postgres。
+******* -V, --version
+******* -w, --no-password
+******* -W, --password
+******* -0, --record-separator-zero
+******* -?, --help
+- コマンドオプションを表示する。
 
-**** reindexdb
+****** Meta-Commands メタコマンド
+- psql内で入力されたコマンドのうち、バックスラッシュで始まり、引用符で囲まれていないものは、
+  psql自身が実行するpsqlのメタコマンドとして扱われる。
+
+******* \c, \connect
+- 
+  サーバへの接続を新規に確立する。
+
+******* \C
+- 
+  テーブルタイトルの設定/解除を行う。
+  "Caption"に由来。
+
+******* \cd
+- 
+  カレントディレクトリを変更する。
+
+******* \d
+- 
+  接続されているDB内のテーブル一覧を表示
+
+******* \du
+- ユーザを確認できる
+
+******* \h
+- 
+  ヘルプを表示する
+
+******* \i
+- 
+  ファイルを読み込んで実行する。
+
+******* \l
+- 
+  存在するデータベースの一覧を表示する
+
+******* \p
+- 
+  途中まで入力されたクエリの内容を確認する。
+
+******* \q
+- psqlを終了する。
+  quit
+
+******* \r
+- 部分的に入力したクエリをキャンセルする。
+
+******* \z
+- テーブル一覧とアクセス権の表示
+******* \! [command]
+- 
+  別のシェルを起動するか、もしくはUnixのcommandコマンドを実行する。
+  引数はこれ以上解釈されず、そのままシェルに渡される。
+
+******* \?
+- 
+  バックスラッシュコマンドに関するヘルプ情報を表示する
+***** reindexdb
 - 
   インデックスを再作成する
 
-**** vacuumdb
+***** vacuumdb
 - 
   不要領域の回収と解析を行う。
 
-*** Server Application
-**** initdb
+**** Server Application
+***** initdb
 - 
   データベースクラスタを新しく作成する
 
-**** pg_controldata
+***** pg_controldata
 - 
   クラスタの制御情報を表示する
 
-**** pg_ctl
+***** pg_ctl
 - サーバの初期化、起動、停止、制御
-***** Commands
-****** init[db]
-****** start
-****** stop
-****** restart
-****** reload
-****** status
-****** promote
-****** kill
+****** Commands
+******* init[db]
+******* start
+******* stop
+******* restart
+******* reload
+******* status
+******* promote
+******* kill
 - 指定したプロセスにシグナルを送信できる
-****** register
-****** unregister
-***** Options
-**** pg_resetxlog
+******* register
+******* unregister
+****** Options
+***** pg_resetxlog
 - 
   データベースクラスタの先行書き込みログやその他制御情報を初期化する
 
-**** postgres
+***** postgres
 - 
   PostgreSQLデータベースサーバ。
 
-**** postmaster
+***** postmaster
 - 
   postgresの別名。廃止予定。
-** Internals 内部構造
-*** Overview of PostgreSQL Internals /  PostgreSQL内部の概要
-*** System Catalogs / システムカタログ
+*** Internals 内部構造
+**** Overview of PostgreSQL Internals /  PostgreSQL内部の概要
+**** System Catalogs / システムカタログ
 - テーブルや列の情報などのスキーマメタデータと内部的な情報を格納する場所。
   PostgreSQLのシステムカタログは通常のテーブルのため、削除・再作成、列の追加、値の挿入や更新が可能だが、通常変更してはいけない。
-**** Overview / 概要
-**** System Catalogs
-***** pg_aggregate
-***** pg_am
-***** pg_amop
-***** pg_database
-***** pg_depend
-***** pg_enum
-***** pg_index
-***** pg_namespace
-***** pg_trigger
-***** pg_type
-**** System Views
-***** pg_config
-***** pg_file_settings
+  その代りにSQLコマンドを実行する。
+***** Overview / 概要
+***** System Catalogs
+****** pg_aggregate
+****** pg_am
+****** pg_amop
+****** pg_amproc
+****** pg_attrdef
+****** pg_attribute
+****** pg_authid
+****** pg_auth_members
+****** pg_cast
+****** pg_class
+****** pg_constraint
+****** pg_colation
+****** pg_conversion
+****** pg_database
+****** pg_database
+****** pg_depend
+****** pg_db_role_setting
+****** pg_default_acl
+****** pg_enum
+****** pg_index
+****** pg_namespace
+****** pg_statistic
+****** pg_trigger
+****** pg_type
+
+***** System Views
+- システムカタログに対する問い合わせに手近にアクセスできるようにしたり、
+  サーバ内部状態へのアクセスを提供したりする。
+  
+  システムビューはPostgres特有なのに対し、情報スキーマはSQL標準なので、
+  情報スキーマが必要とする情報すべてを提供するのであれば、そちらを選ぶ方がよい。
+
+****** pg_config
+****** pg_cursors
+****** pg_file_settings
 - 設定ファイルの内容の要約を提供する。
   現在の内容であり、最後に適用した内容ではない。
-***** pg_locks
-***** pg_roles
-***** pg_rules
-***** pg_stats
-***** pg_settings
+****** pg_group
+****** pg_indexes
+****** pg_locks
+****** pg_roles
+****** pg_rules
+****** pg_stats
+****** pg_settings
 - サーバの実行時パラメータへのアクセスを提供する。
   基本的にSHOWとSETコマンドの代わりとなるインターフェース。
-***** pg_shadow
-***** pg_stats
-***** pg_tables
-***** pg_user
-***** pg_user_mappings
-***** pg_views
-*** Frontend/Backend Protocol
-*** プロセスとメモリ構造
-*** データベースクラスタ/バックグラウンドライタ
-*** SQLの実行
-*** プラン処理
-*** バッファマネージャとバックグランドライタ
-*** トランザクションIDと同時実効制御
-*** VACUUM
-*** HOT(Heap Only Tuple)
+****** pg_shadow
+****** pg_stats
+****** pg_tables
+****** pg_user
+****** pg_user_mappings
+****** pg_views
+
+**** Frontend/Backend Protocol
+**** プロセスとメモリ構造
+**** データベースクラスタ/バックグラウンドライタ
+**** SQLの実行
+**** プラン処理
+**** バッファマネージャとバックグランドライタ
+**** トランザクションIDと同時実効制御
+**** VACUUM
+**** HOT(Heap Only Tuple)
 
 ** Etc
 *** current_date
@@ -1620,6 +1606,10 @@
 - https://ml.postgresql.jp/pipermail/pgsql-jp/2013-July/016400.html
 **** Link
 - [[http://www.slideshare.net/SoudaiSone/db-34069118][PostgreSQLの冗長化について - SlideShare]]
+*** Ubuntuでの設定
+- aptで取得したdbのsuperuserはpostgres。下記のようにpostgresユーザとして接続が必要。
+  sudo -u postgres psql postgres
+- https://help.ubuntu.com/community/PostgreSQL
 ** Link
 - [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.6 Documentation]]
 - [[https://www.postgresql.jp/document/9.6/html/index.html][PostgreSQL 9.6.5文書]]

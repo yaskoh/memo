@@ -191,6 +191,7 @@
 
 ** Project
 *** Redmine
+- [[file:Redmine.org][Redmine.org]]
 *** Trac
 *** JIRA
 ** Testing
