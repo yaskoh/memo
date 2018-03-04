@@ -84,6 +84,17 @@
 - VPN. mac & chrome ext.
   https://windscribe.com/
 ** Memo
+*** キーバインド
+- 変更点
+  - Control <-> Caps lock
+  - Emacs
+    - Command -> meta
+    - SpotlightがCtrl+Spaceで当たっていたが、Command+Spaceに変更できた（現在はデフォルト？）
+*** 特殊キー
+- ⌘ : Command コマンド
+- ⌥ : Option, Alt オプション、オルト
+- ⌃ : Control コントロール
+- ⇧ : Shift シフト
 *** 写真の取り込み
 - 2017/10/18は、イメージキャプチャで取り込んだ。
   写真だと日付や番号が見えないため、これが早いかも。

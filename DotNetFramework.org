@@ -22,6 +22,16 @@
 *** .NET Framework 1.1
 *** .NET Framework 1.0
 
+** Alterentive Implementation 別実装
+*** Mono
+- Ecma標準に準じた.NET Framework互換の環境を実現するためのオープンソースソフトウェア群、またそのプロジェクト名。
+**** Monoコンポーネント
+***** 中核コンポーネント
+***** Mono/Linux/GNOME開発スタック
+***** マイクロソフト互換スタック
+*** .NET Core
+*** .NET Micro Framework
+*** Portable.NET (part of DotGNU)
 ** Memo
 *** 互換性(tmp)
 - [[https://blogs.msdn.microsoft.com/jpvsblog/2015/04/06/net-framework-3/][.NET Frameworkの各バージョン同士の関係 - Developer]]
@@ -42,6 +52,15 @@
     This implementation performs an unstable sort; that is, if two elements are equal, their order might not be preserved.
     In contrast, a stable sort preserves the order of elements that are equal.
 
+*** DNX
+- Net Core, ASP.NET Core1.0 RC1でDNXツールが導入、RC2でDNXから.NET Core CLIに移行。
+  以前はKRE(K Rnutime Environment)、XRE(Cross-platform Runtime Environment)などと呼ばれていた。
+- DNXは以下から構成
+  - DNVM / DotNet Version Manager
+  - DNX / DotNet Execution Environment
+  - DNU
+- CLIの導入により、単一のツールセットに含められた。
+- https://docs.microsoft.com/ja-jp/dotnet/core/migration/from-dnx
 ** Link
 - [[https://msdn.microsoft.com/ja-jp/library/aa139615.aspx][.NET開発 - Developer Network]]
 - [[https://msdn.microsoft.com/ja-jp/library/cc948946.aspx][.NET開発(1.0含む) - Developer Network]]

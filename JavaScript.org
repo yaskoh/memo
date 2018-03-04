@@ -1038,6 +1038,9 @@
 - Apache License, version 2.0
 ****** Link
 - [[http://expressjs.com/][Express]]
+***** hexo
+- A fast, simple & powerful blog framework
+- https://hexo.io/
 ***** Socket.io
 **** Babel
 **** React

@@ -1,7 +1,13 @@
 * ASP.NET
-
+** ASP.NET 4
+** ASP.NET 5
+- ASP.NET 5とASP.NET 4.6には基本的に互換性がない。
+  ASP.NET 5は「次世代のASP.NET」で、これまでのASP.NETを一から作り直したもの。
+  System.Webアセンブリへの依存も断ち切り、OS XやLinux上でも動作する。
+** ASP.NET Core
+** Link
+- http://www.atmarkit.co.jp/ait/articles/1505/19/news016.html
 ** TeachYourSelf ASP.NET
-
 *** 1章
 - [[http://msdn.microsoft.com/ja-jp/library/bb400852(v=vs.100).aspx][ASP.NETポータル]]
 - .NetFrameork

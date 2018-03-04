@@ -1,4 +1,29 @@
 * Visual Studio Code
+** Folder Structure
+*** ~/.vscode
+** Keyboard shortcuts
+*** tmp
+- Open : Cmd + O
+-  : Cmd + P
+- Command palette : Cmd + Shift + P
+- Change language mode : ⌘K M
+- Change theme : ⌘K ⌘T
+- Custmize keyboard shortcuts : ⌘K ⌘S
+- User Settings : ⌘,
+- Extensions : Shift + Cmd + X 
+- Toggle Sidebar : Cmd + B
+- Zen Mode : Cmd + K, Z
+- Split window : Cmd + \
+- Switch between editors : Cmd + 1, Cmd + 2, ...
+- Close current folder
+*** General
+*** Basic editing
+*** Link
+- https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
+- https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
+** Extensions
+*** Emacs Keymap
+*** Org Mode
 ** Docs
 *** Overview
 *** Setup
@@ -18,6 +43,42 @@
 *** Get Started
 **** Intro Videos
 **** Tips and Tricks
+***** Basic
+****** Getting Started
+****** Command Palette
+- Win: Ctrl+Shift+P, F1
+- Mac: ⇧⌘P
+****** Default keyboard shortcuts
+- See right on the Command Palette
+****** Keyboard Reference Sheets
+- https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
+- https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
+****** Quick Open
+- Win: Ctrl+P
+- Mac: ⌘P
+
+- ? to view help suggestions
+****** Navigate
+****** Open multiple files
+- Right arrow key will open in background and can continue selecting files.
+***** Command line
+- code .
+- code -r .
+- code -n
+- code --locale=es
+***** Status Bar
+****** Errors and Warning
+****** Change language mode
+***** Customization
+***** Extensions
+***** Files and Folders
+***** Editing Hacks
+***** IntelliSense
+***** Snippets
+***** Get integration
+***** Debugging
+***** Task Runner
+***** Insiders builds
 **** User Interface
 **** Themes
 **** Settings
@@ -33,3 +94,6 @@
 ** Link
 - [[https://www.microsoft.com/ja-jp/dev/products/code-vs.aspx][Visual Studio Code]]
 - https://www.microsoft.com/ja-jp/dev/resource/default.aspx
+
+
+- https://code.visualstudio.com/docs/setup/mac
