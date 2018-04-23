@@ -229,5 +229,29 @@
 **** テスト範囲
 **** テスト環境
 **** テストのやり方
+*** ダミーデータ
+**** ドメイン
+***** トップレベルドメイン
+- .example
+- .test
+***** セカンドレベルドメイン
+- RFC2606で例示用として示されたもの
+  (https://tools.ietf.org/html/rfc2606)
+  - example.com
+  - example.net
+  - example.org
+- JPドメインは以下
+  (https://jprs.jp/faq/use/)
+  - "example"を用いたもの
+    - example.jp
+    - example.co.jp
+    - example.ne.jp
+  - "example"の後に数字1桁がつくもの
+    - example1.jp
+    - example2.co.jp
+    - 他...
+**** Link
+- https://blog.ko31.com/201304/sample-domain-example/
+- https://www.find-job.net/startup/dummy-2013
 ** Link
 - [[https://www.qbook.jp/qptop][Qbook]]

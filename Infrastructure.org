@@ -119,8 +119,11 @@
 - 有名
   - Nutanix
 - http://cn.teldevice.co.jp/column/detail/id/98
-*** Software Defined Network SDN
-*** Software Defined Storage SDS
+*** SDN / Software Defined Network
+*** SDS / Software Defined Storage
+*** SRE / Site Reliability Engineering
+- サイトの信頼性保証
+- 
 ** Link
 - [[http://yuuki.hatenablog.com/entry/large-scale-infrastructure][はてなで大規模サービスのインフラを学んだ - ゆううきブログ]]a
 - [[http://blog.harukasan.jp/entry/2014/09/11/181006][インターン生向け講義で発表しました#pixiv - BLOG::はるかさん]]

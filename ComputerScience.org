@@ -7,7 +7,8 @@
 - メモリ安全性
 *** Liskov substitution principle リスコフの置換原理
 - オブジェクト指向プログラミングにおける派生型の定義の一種。
-  
+*** Amdahl's law アムダールの法則
+- 計算機の並列度を上げた場合に、全体として期待できる性能向上の程度を数式として表現したもの。
 ** Memo
 *** Evaluation
 **** normal-order evaluation

@@ -280,8 +280,16 @@
 - [[https://docs.microsoft.com/en-us/cli/azure/][Azure CLI 2.0: Command reference - az - Microsoft Azure]]
 ** Reverse lookup
 *** Storageの追加
+- 仮想マシンの画面→ディスク、で作成
 - https://azure-recipe.kc-cloud.jp/2016/06/vm-data1/
--
+
+*** 仮想ネットワークの変更
+- https://blogs.msdn.microsoft.com/ainaba-csa/2017/06/16/change-azure-vnet-configuration/
+*** IPの固定化
+- 内部IP: ネットワークインターフェースから変更
+- Public IP: パブリックIPアドレスから変更
+*** デフォルトDNS設定
+- 仮想ネットワークで設定⇒DNSサーバー→カスタムにより指定。
 ** Template
 - [[https://github.com/MSBrett/azure-quickstart-templates/tree/master/sql-server-2016-fci-existing-vnet-and-ad][SQL Server 2016 Failover Cluster using Windows Serer 2016 Storage Spaces Direct - github]]
 ** Memo

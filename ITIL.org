@@ -55,4 +55,8 @@
 *** NPV NetPresentValue
 - 
   <http://m-words.jp/w/NPV.html>
+*** TAM
+- Technical Advisory Comittee
+*** CAB
+- Change Advisory Board
 ** Memo

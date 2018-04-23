@@ -802,7 +802,7 @@
   
 ***** HTTP
 ****** Specification
-******* HTML 1.1
+******* HTTP 1.1
 ******** RFC7230 - Message Syntax and Routing
 ********* Architecture
 ********* Message Fromat
@@ -1034,10 +1034,37 @@
 ********* IANA Considerations
 ********* Security Considerations
 ******** RFC7234 - Caching
+********* tmp
+********** Cache-Control
+*********** 分類
+************ 一般ヘッダー
+************* Cache-Control
+************** Directives
+*************** Cacheability
+**************** private
+- Indicates that the response is intended for a singe user and must not be stored by a shared cache.
+**************** no-cache
+- Forces caches to submit the request to the origin server for validation before releasing a cached copy.
+*************** Expiration
+*************** Revalidation and reloading
+**************** must-revalidate
+- The cache must verify teh status of the stale resources before using it and expired ones should not be used.
+*************** Other
+**************** no-store
+- The cache should not store anything about the request or server response.
+************ 要求ヘッダー
+************ 応答ヘッダー
+************ エンティティヘッダー
 ******** RFC7235 - Authentication
 ******* RFC7239 - Forward HTTP Extension
 ******** Link
 - [[https://tools.ietf.org/html/rfc7239][RFC7239 Forwarded HTTP Extension]]
+****** Reference
+******* HTTP headers
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers
+******** Cache-Control
+******** X-Content-Type-Option
+******** X-XSS-Protection
 ****** Memo
 ******* XFF / X-Forwarded-For
 - HTTPヘッダフィールドの一つ。

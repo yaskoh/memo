@@ -235,7 +235,9 @@
 **** システム統計
 - [[http://www.doppo1.net/oracle/tuning/sysstat.html][システム統計一覧 - WalkingAlone]]
 *** Manual
-**** 
+- 基本的には以下に記載
+  [[file:OracleDB_Manuals.org][OracleDB_Manuals.org]]
+**** ?
 ***** 概要
 ***** パフォーマンス計画
 ***** インスタンスのパフォーマンス最適化
@@ -257,17 +259,6 @@
 ****** オプティマイザ・ヒントの使用方法
 ****** プラン・スタビリティの使用方法
 ****** アプリケーション・トレース・ツールの使用方法
-**** 2日でパフォーマンス・チューニング・ガイド
-- https://docs.oracle.com/cd/E16338_01/server.112/b56313/toc.htm
-***** スタート・ガイド
-****** 概要
-****** パフォーマンス・メソッド
-***** データベースの事前チューニング
-****** データベースのパフォーマンスの自動監視
-****** リアルタイムなデータベースのバフォーマンスの監視
-****** パフォーマンス・アラートの監視
-***** データベースの事後チューニング
-***** SQLチューニング
 *** Memo
 **** Metrics
 ***** 2003: User Transaction Per Sec
@@ -298,7 +289,38 @@
   - V$SQL : SQLの累積リソース使用状況
   - V$SQL_TEXT : SQLの全文
   - V$SQL_PLAN : SQLの実行計画
-*** Link
+** Tuning
+- 以下のような検討を行う(http://www.oracle.com/technetwork/jp/database/articles/tsushima/tsushima-hakushi-38-2236622-ja.html)
+  - オプティマイザ統計の再収集（オプティマイザ統計が正しくない
+  - 索引の作成（効果的な索引が作成されていない）
+  - SQLの変更・ヒントの挿入（複雑なSQLなどで効果的な実行計画にならない）
+  - SQL計画ベースラインの設定（ヒントで効果的にできるがSQLを変更できない）
+  - SQLチューニング・アドバイザ（どのようにチューニングするか判断できない）
+** Tools
+*** SQL Tuning Advisor / SQLチューニング・アドバイザ
+- 1つ以上のSQLに対して自動チューニング・オプティマイザを起動してSQLチューニングを行う。
+
+- 基本はOracle Enterprise Managerを使用。DBMS_SQLTUNEパッケージでも実行可能。
+
+- 実行には、SQLチューニング・アドバイザ・タスクの作成と実行が必要。
+
+**** SQLプロファイル
+- より適切な実行計画が生成できるSQLの補助統計情報として、SQLチューニング・アドバイザによって生成される。
+**** SQL計画ベースライン
+**** Memo
+***** 無効化
+- DBMS_AUTO_TASK_ADMIN_DISABLEを利用
+- http://at-j.co.jp/blog/?p=5503
+*** 自動チューニング・オプティマイザ
+- オプティマイザには、実行計画を作成する標準モードと、標準モードで作成された実行計画をさらに改善できるか分析するチューニング・モードがあり、
+  このチューニング・モードを自動チューニング・オプティマイザと呼ぶ。
+*** 自動SQLチューニング・アドバイザ
+- 自動メンテナンス・タスクとして構成される。
+  11gから提供。AWRを分析して
+**** Memo
+- 自動SQLチューニングによるSQL文チューニングの改善
+  http://www.oracle.com/webfolder/technetwork/jp/obe/11gr1_db/manage/ast/ast.htm
+** Link
 - [[http://www.atmarkit.co.jp/ait/series/2413/][Oracle SQLチューニング講座 - @IT]]
 - [[http://www.oracle.com/technetwork/jp/articles/index-349908-ja.html][Oracleデータベース 性能対策機能 ～StatspackとDiagnostics Packを使いこなす～ - Oracle Technology Network]]
 - [[http://www.oracle.com/technetwork/jp/articles/chapter1-1-085735-ja.html][門外不出のOracle現場ワザ 第１章 目からウロコのOracleパフォーマンス分析テクニック - Oracle Technology Network]]

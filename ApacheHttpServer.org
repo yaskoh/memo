@@ -3,8 +3,7 @@
 *** 複数バージョンのサポート
 *** MPM : Multi Processing Module
 - 複数OSに最適化
-
-**** プロセスの挙動(Unix)
+**** プロセスの挙動
 ***** prefork
 - 
   スレッドを使わず、先行してforkを行うウェブサーバ。
@@ -29,6 +28,8 @@
   違いはKeep-Aliveの処理方法で、Keep-Aliveの処理を別のスレッドに割り振って通信を処理する。
   2.4.1で正式に採用された。
 
+***** winnt
+- Windows向け。スレッド対応型。
 *** モジュールによる機能追加
 - 
   モジュールを追加することで拡張可能。(Apache->A patch)
@@ -258,16 +259,21 @@
 ***** Directives
 ****** Header
 - 説明 : HTTPレスポンスヘッダの設定
-- 構文 :
-  Header [condition] set|append|add|unset|echo header [value] [early|env=[!]variable]
-******* Options
-******** set
-******** append
+******* Syntax
+- Header [condition] action header [value] [early|env=[!]variable]
+******* Actions
 ******** add
+******** append
+******** echo
+******** edit
+******** edit*
+******** set
 ******** unset
 - 指定された名前の応答ヘッダが存在している場合、削除する。
-******** echo
+******* conditions
 ****** RequestHeader
+- Configure HTTP request headers
+******* Syntax
 **** mod_imap
 **** mod_include
 **** mod_info
@@ -492,6 +498,10 @@
 **** Link
 - https://weblabo.oscasierra.net/apache-rewritecond-base/
 - http://blog.livedoor.jp/tak_bon/archives/6508443.html
+*** Secure属性を付与
+- mod_headersモジュールでCookieに変更を入れる。
+  Header edit Set-Cookie ^(.*)$ $1;secure
+  https://qiita.com/yuba/items/034dd027dbde15f6a795
 ** Link
 - [[http://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
 

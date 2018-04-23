@@ -73,9 +73,19 @@
 **** Aliases
 ***** gal
 *** Get-ChildItem
-**** dir
-**** gci
-**** ls
+**** Aliases
+***** dir
+***** gci
+***** ls
+**** Options
+***** -Exclude
+- 取得結果から除外するパスを指定する
+***** -Filter
+- 取得結果に含めるパスを指定する
+***** -Path
+- ディレクトリパスを指定する
+***** -Recurse
+- サブディレクトリ配下を含めて再帰的に取得する
 *** Get-Command
 - コマンドレットを取得する
 **** gcm
@@ -190,6 +200,10 @@
 **** ni
 *** New-Module
 **** nmo
+*** New-Object
+**** 概要
+- Microsoft .NET FrameworkまたはCOMオブジェクトのインスタンスを作成する。
+**** 構文
 *** New-PSDrive
 **** mount
 **** ndr
@@ -311,6 +325,8 @@
 *** Wait-Job
 **** wjb
 *** Where-Object
+**** 概要
+- Selects objects from a collection based on their property values.
 **** Aliases
 ***** ?
 ***** where
@@ -334,6 +350,8 @@
 **** Enable-ServerManagerStandardUserRemoting
 **** Disable-ServerManagerStandardUserRemoting
 ** Shell Variables
+*** $_
+- パイプラインに渡されたオブジェクトを表す変数。
 *** $Args
 - コマンドライン引数
 *** $env
@@ -395,10 +413,23 @@
 *** Link
 - https://technet.microsoft.com/ja-jp/scriptcenter/powershell_owner03.aspx
 ** Reverse Lookup
+*** ポートの接続確認
+- powershellで確認する。telnetなどがデフォルトで入っていないため、、
+- 手順:
+  $tc = New-Object System.Net.Sockets.tcpClient
+  $tc.connect(ターゲット, ポート)
+  $tc.connected
+  $tc.close()
+- https://qiita.com/_norin_/items/8f534bd0531a960af5e9
+*** シンボリックリンクファイルのリストを取得
+- Command:
+  Get-ChildItem | Where-Object { $_.Attributes -match "ReparsePoint" }
+- [[https://stackoverflow.com/questions/817794/find-out-whether-a-file-is-a-symbolic-link-in-powershell][Find out whether a file is a symbolic link in PowerShell - stackoverflow]]
 *** tmp
 **** ネットワークプロファイルを調べる
 - Get-NetConnectionProfile -IPv4Connectivity Internet
   NetworkCategoryの値を見る。
+
 ** Memo
 *** Default Encode
 - UTF-16とのこと。
@@ -440,7 +471,9 @@
   3
 *** コピー・ペースト
 - 右クリックでどちらも動く。
-- 
+-
+*** オブジェクトのパイプライン
+- 従来のテキストデータによるパイプラインでなく、「オブジェクトもしくはその配列」が「プロパティ値を保持したまま」パイプを渡る。
 ** Link
 - [[https://technet.microsoft.com/ja-jp/library/ee221100.aspx][Windows PowerShell Owner's Manual - TechNet]]
 - [[https://technet.microsoft.com/ja-jp/scriptcenter/powershell_owner.aspx][Windows PowerShell オーナーマニュアル - TechNet]]

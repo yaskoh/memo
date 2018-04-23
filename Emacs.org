@@ -547,6 +547,8 @@
 - トグル
   - comment-or-uncomment-region
 *** 連番
+- C-u C-x r N
+  https://qiita.com/kwappa/items/639b40ef0e18170edf43
 ** Link
 *** Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]

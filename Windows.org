@@ -182,45 +182,62 @@
 ****** replace
 ****** rmdir
 ****** robocopy
-- 
-  フォルダを同期するためのコマンド。
+- Windows の堅牢性の高いファイルコピー
+- フォルダを同期するためのコマンド。
   Robust File Copyの略で、堅牢で確実なファイル・コピーという意味を持つ。
   コマンドラインでなくGUIから使いたい場合は、richcopyが利用できる。
 
-- source dest files (option)
+******* Usage
+- robocopy source dest files (option)
   sourceがコピー元、destがコピー先、filesでコピーするファイルを指定する。
   filesはワイルドカード指定可能で、規定値は*.*。
-
-- /S
-  サブディレクトリをコピーするが、空のディレクトリはコピーしない。
+******* Options
+******** Copy Options
+********* /S
+- サブディレクトリをコピーするが、空のディレクトリはコピーしない。
   
-- /E
-  空のサブディレクトリを含むサブディレクトリをコピーする。
+********* /E
+- 空のサブディレクトリを含むサブディレクトリをコピーする。
 
-- /LEV:n
-  コピー元ディレクトリツリーの上位nレベルのみをコピーする。
+********* /LEV:n
+- コピー元ディレクトリツリーの上位nレベルのみをコピーする。
 
-- /MIR
-  2つのフォルダを同期させる。
+********* /PURGE
+- 既にコピー元に存在しないコピー先のファイル・ディレクトリを削除する
+********* /MIR
+- 2つのフォルダを同期させる。
   destファイルにsourceにないファイルがあれば削除し、古いファイルがあれば上書きされる。
-  /purgeと/sを組み合わせた挙動と同じ。
+  /purgeと/Eを組み合わせた挙動と同じ。
 
-- /COPY:コピーフラグ
-  ファイルにコピーする情報
+********* /COPY:コピーフラグ
+- ファイルにコピーする情報
   D:データ、A:属性、T:タイムスタンプ
+********* /XJ
+- ジャンクションポイントを外す。
+  シンボリックリンクも除いてくれる模様(2018/4, Win7/2012R2)
+********* /XJD
+- ディレクトリのジャンクションポイントを外す
+********* /XJF
+- ファイルのジャンクションポイントを外す
+******** File Selection Options
+******** Retry Options
+******** Log Options
+********* /TS
+- 出力にコピー元ファイルのタイムスタンプを含める
 
-- /TS
-  出力にコピー元ファイルのタイムスタンプを含める
+********* /FP
+- 出力にファイルの完全なパス名を含める
 
-- /FP
-  出力にファイルの完全なパス名を含める
+********* /BYTES
+- サイズをバイトで出力する
 
-- /BYTES
-  サイズをバイトで出力する
+********* /TEE
+- コンソールウィンドウとログファイルに出力する
 
-- /TEE
-  コンソールウィンドウとログファイルに出力する
-
+******** Job Options
+******* Memo
+******** 
+- [[http://www.atmarkit.co.jp/ait/articles/1309/27/news116.html][Windowsのrobocopyコマンドでコピーするファイルの種類を選択／変更する - @IT]]
 ****** set
 - SET [変数名=[文字列]]
   環境変数を表示、設定、または削除する。
@@ -362,71 +379,24 @@
   [[http://www.atmarkit.co.jp/fwin2k/win2ktips/258netcommand/netcommand.html][netコマンドの使い方 - @IT]]
   [[http://pasofaq.jp/windows/command/net7.htm][NETコマンド(Windows 7)]]
 
-******* net use
-- 
-  共有リソースの使用/解除。net shareされたネットワーク上のリソースをローカルで使う場合に使う。
+******* net accounts
 
-******* net share
-- 
-  共有リソースの公開/公開停止。ローカルのリソースを公開して、外部のマシンでnet useできるようにする。
+******* net computer
 
-******* net view
+******* net config
+- サーバ・サービスやワークステーション・サービスに関する情報の表示/設定
+******** net config server
+******** net config workstation
+******* net continue
 - 
-  リソースが共有されているマシンの列挙や、特定のマシンが公開している共有リソースの一覧を調べる
+  サービスの再開
 
 ******* net file
 - 
   使用されているファイルの一覧の表示/強制終了。
   net shareで公開されたリソースのうち、どのようなファイルが実際に外部マシンで利用されているか調べる。
 
-******* net session
-- 
-  ユーザアカウントに対するログオンやパスワードの要件の表示/強制終了
-
-******* net print
-
-******* net user
-
-******* net accounts
-
 ******* net group
-
-******* net computer
-
-******* net start
-- サービスの表示/開始
-
-******* net stop
-- 
-  サービスの停止
-
-******* net pause
-- 
-  サービスの一時停止
-
-******* net continue
-- 
-  サービスの再開
-
-******* net name
-- 
-  NetBIOS名の表示・追加。
-  新しく追加された名前はnet sendコマンドの宛先として利用できる。
-
-******* net send
-- 指定されたユーザやコンピュータに対するメッセージの送信
-
-******* net config
-- 
-  サーバ・サービスやワークステーション・サービスに関する情報の表示/設定
-
-******* net sattistics
-- 
-  ネットワーク・プロトコルやリソースの公開/共有サービスに対する統計情報の表示
-
-******* net time
-- 
-  時間情報の表示や外部との同期
 
 ******* net help
 - 
@@ -435,6 +405,53 @@
 ******* net helpmsg
 - 
   エラー番号に対する詳しいエラーメッセージの表示
+
+******* net name
+- 
+  NetBIOS名の表示・追加。
+  新しく追加された名前はnet sendコマンドの宛先として利用できる。
+
+******* net pause
+- 
+  サービスの一時停止
+
+******* net print
+
+******* net send
+- 指定されたユーザやコンピュータに対するメッセージの送信
+
+******* net session
+- 
+  ユーザアカウントに対するログオンやパスワードの要件の表示/強制終了
+
+******* net share
+- 
+  共有リソースの公開/公開停止。ローカルのリソースを公開して、外部のマシンでnet useできるようにする。
+
+******* net start
+- サービスの表示/開始
+
+******* net statistics
+- 
+  ネットワーク・プロトコルやリソースの公開/共有サービスに対する統計情報の表示
+
+******* net stop
+- 
+  サービスの停止
+
+******* net time
+- 
+  時間情報の表示や外部との同期
+
+******* net use
+- 
+  共有リソースの使用/解除。net shareされたネットワーク上のリソースをローカルで使う場合に使う。
+
+******* net user
+
+******* net view
+- 
+  リソースが共有されているマシンの列挙や、特定のマシンが公開している共有リソースの一覧を調べる
 
 ****** netsh
 - 
@@ -707,6 +724,13 @@
 ** Settings
 *** Control Panel
 **** Win7
+***** システムとセキュリティ
+****** 電源オプション
+- プラン
+  - バランス
+  - 省電力
+  - 高パフォーマンス
+    ⇒パフォーマンスを優先、電力の消費が増える可能性あり。
 ***** ユーザーアカウント
 ****** 資格情報の管理
 ******* 汎用資格情報
@@ -951,7 +975,6 @@
 **** Link
 - http://www.atmarkit.co.jp/ait/articles/0905/08/news095.html
 ** Functions
-*** Hyper-V
 *** Storage Space Direct, S2D
 - Windows Server 2016に追加。
   フェールオーバークラスターに参加するノードのローカルディスクを1つの共有ボリュームとして構成することを可能とする機能。
@@ -963,32 +986,29 @@
 - https://mhiroblog.wordpress.com/2016/12/25/storage-space-direct-s2d-%E3%81%A8%E3%81%AF/
 - https://docs.microsoft.com/ja-jp/system-center/vmm/s2d?view=sc-vmm-1801
 - https://qiita.com/tsurun/items/b875ef74da6ce3e03b7d
-*** RPC
-**** 設定
-- ポート設定 :
-  - 静的ポート : 135/tcp
-  - 動的ポート : 49152-65535 (Windows Server 2008, Vista以降)
-  - Link :
-    - https://blogs.technet.microsoft.com/jpntsblog/2009/09/02/rpc/
-    - http://www.dell.com/support/article/jp/ja/jpbsd1/sln283117/windows-server-rpc-server-unavailable-rpc%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93-%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%AE%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0?lang=ja
-    - https://support.microsoft.com/ja-jp/help/179442/how-to-configure-a-firewall-for-domains-and-trusts
-- レジストリ :
-  - HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\AllowRemoteRPC, value "1" means accept.
-  - Link :
-    - https://stackoverflow.com/questions/22155943/qwinsta-error-5-access-is-denied
-**** Link
-- https://blogs.technet.microsoft.com/jpntsblog/2009/09/02/rpc/
-*** Server Roles & Featuctions
+*** Server Roles & Features
 - [[https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831669(v%3dws.11)]]
-**** Roles
-***** ADDS Active Directory
-- Active Directory Domain Services
+**** Server Roles
+***** Active Directory Certificate Services
+***** Active Directory Domain Services
 ****** 2012 R2
 - Server Manager : Dashboard -> Add roles and features
   setting...
 - Server Manager : AD DS
   setting...
 - http://www.rem-system.com/post-671/
+***** Active Directory Lightweight Directory Services
+***** Active Directory Rights Management Services
+***** Application Server
+***** DTCP Server
+***** DNS Server
+***** File and Storage Services
+****** File and iSCSI Services
+******* File Server
+******* iSCSI Target Server
+******* iSCSI Target Storage Provider (VDS and VSS hardware providers)
+****** Storage Services
+***** Hyper-V
 **** Features
 ***** IIS
 - [[file:IIS.org][IIS.org]]
@@ -1005,6 +1025,24 @@
 - [[https://msdn.microsoft.com/ja-jp/library/dn505754(v=ws.11).aspx][フェールオーバー クラスターを作成する - Developer Network]]
 - [[https://techinfoofmicrosofttech.osscons.jp/index.php?MSCS%2FWSFC][MSCS/WSFC - Open棟梁Project - マイクロソフト系技術情報 Wiki]]
 
+***** Multipath I/O
+- [[https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725907(v=ws.11)]]
+***** RPC over HTTP Proxy
+****** 設定
+- ポート設定 :
+  - 静的ポート : 135/tcp
+  - 動的ポート : 49152-65535 (Windows Server 2008, Vista以降)
+  - Link :
+    - https://blogs.technet.microsoft.com/jpntsblog/2009/09/02/rpc/
+    - http://www.dell.com/support/article/jp/ja/jpbsd1/sln283117/windows-server-rpc-server-unavailable-rpc%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8C%E3%81%82%E3%82%8A%E3%81%BE%E3%81%9B%E3%82%93-%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%AE%E3%83%88%E3%83%A9%E3%83%96%E3%83%AB%E3%82%B7%E3%83%A5%E3%83%BC%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0?lang=ja
+    - https://support.microsoft.com/ja-jp/help/179442/how-to-configure-a-firewall-for-domains-and-trusts
+- レジストリ :
+  - HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\AllowRemoteRPC, value "1" means accept.
+  - Link :
+    - https://stackoverflow.com/questions/22155943/qwinsta-error-5-access-is-denied
+****** Link
+- https://blogs.technet.microsoft.com/jpntsblog/2009/09/02/rpc/
+***** Windows PowerShell
 ** Shortcuts
 *** Windows 7
 **** Win + f : エクスプローラ・"検索結果"を開く
@@ -1024,6 +1062,10 @@
 - http://www.pg-direct.jp/user_data/cal.php
 - http://wa3.i-3-i.info/word12578.html
 ** Glossary
+*** System32 / SysWOW64
+- System32には64bitプログラム用のファイル（現在使用しているもの）、
+  SysWOW64には32bitプログラムを動かすための32bitバイナリが入っている。
+  
 *** WOW64
 - Windows 32-bit On Windows 64-bit
   64bit版のWindowsで、Win32アプリケーションを実行する、エミュレーションレイヤー・サブシステム。
@@ -1032,6 +1074,13 @@
   
 *** SafeSEH, SoftwareDEP
 - http://resemblances.click3.org/?p=1449
+*** Network関連
+**** SMB, Server message Block
+- ネットワーク(LAN)上の複数のWinマシン間でファイル共有やプリント共有を行うためのプロトコルおよび通信サービス。
+- 下位のプロトコルとしてNetBIOS、近年では更に下位のプロトコルとしてTCP/IPを利用する(NetBT, NetBIOS over TCP/IP)。
+**** CIFS, Common Internet File System
+- SMBを拡張し、Windows以外のOSやアプリケーションソフトでも利用できるように仕様を公開したもの。
+  TCP/IPを基盤としており、NetBIOSは必要ではなくなっている。
 *** MMCスナップイン
 - Windowsの管理用ツールの中身。
   外側はMicrosoft管理コンソール。「mmc.exe」がMicrosoft管理コンソールの本体。
@@ -1367,10 +1416,6 @@
 - 
   http://www.atmarkit.co.jp/ait/articles/0402/21/news005.html
 
-*** System32 / SysWOW64
-- System32には64bitプログラム用のファイル（現在使用しているもの）、
-  SysWOW64には32bitプログラムを動かすための32bitバイナリが入っている。
-  
 *** アイコン画像作成
 - bmpで保存、拡張子を.icoとすればOK。
 *** Bluetooth設定
@@ -1435,13 +1480,31 @@
 *** 権限
 - everyoneは、ログインできるユーザすべてに対しての権限。
   ユーザ登録していない、ログインできない人も含め全て、の場合はgeustが該当とのこと。
-*** シンボリックリンクの設定に関する事項
+*** リンク（ジャンクション、シンボリックリンク、ハードリンク）
+**** 種類
+- ハードリンク
+- シンボリックリンク
+- ジャンクション
+- [[http://www.atmarkit.co.jp/ait/articles/1306/07/news111.html][Windowsのシンボリックリンクとジャンクションとハードリンクの違い - @IT]]
+**** ジャンクション
+***** 小技
+****** ジャンクションならLinuxでマウントした場合も利用可
+- WindowsのフォルダをLinuxでマウントした場合、
+  symlinkではLinuxでリンクを辿れないが、ジャンクションなら可能。
+  [[http://var.blog.jp/archives/49781846.html][ジャンクションが便利 - nmm実験室]]
+****** ジャンクションなら、ファイルダイアログを使ってもパスが変換されない
+- シンボリックリンクでは、ファイルダイアログを使う場合パスが変換されてしまう。
+  対して、ジャンクションであれば変換されずにそのまま利用可能。
+  [[https://qiita.com/go_astrayer/items/ab993cdc420d4f7f50d4][シンボリックリンクの使い方と落とし穴 - Qiita]]
+**** シンボリックリンクの設定に関する事項
 - [[https://blogs.technet.microsoft.com/jpntsblog/2016/08/31/smbandsymlink/][ファイル共有とシンボリックリンクの利用について - Ask the Network & AD Support Team, Microsoft]]
   アクセス元で"fsutil behavior set symlinkevaluation R2R:1"をしないとRemote間でのリンクは動作しない、など。
 
 - [[http://schinagl.priv.at/nt/hardlinkshellext/hardlinkshellext.html#changesymboliclinkprivilege][Change Symbolic Link Priviledge - Link Shell Extension]]
   シンボリック利用のための権限
 
+**** ジャンクション、シンボリックリンクを避けてコピー
+- robocopy {src} {dst} /E /XJ
 *** イベントログ
 **** 設定変更
 ***** GUI
@@ -1475,6 +1538,18 @@
 - https://qiita.com/MrDairi/items/5a1ac9cd02b3018940e5
   - (別件)https://qiita.com/MrDairi/items/697050b30052bb0894df
 - https://social.technet.microsoft.com/Forums/ja-JP/12538f0f-f487-42ea-a697-6ef733134c73?forum=w7itprogeneralja
+*** ポートの接続確認
+- powershellで確認する。telnetなどがデフォルトで入っていないため、、
+- 手順:
+  $tc = New-Object System.Net.Sockets.tcpClient
+  $tc.connect(ターゲット, ポート)
+  $tc.connected
+  $tc.close()
+- https://qiita.com/_norin_/items/8f534bd0531a960af5e9
+
+*** 共有フォルダの現在のアクセス確認
+- "Computer management"から確認可能。
+  http://itdiary.info/windows/post-88/
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

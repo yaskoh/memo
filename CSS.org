@@ -13,7 +13,8 @@
 ***** Link
 - [[https://momdo.github.io/css-2015/][CSS Snapshot 2015 日本語訳]]
 **** CSS Snapshot
-- [[https://www.w3.org/TR/CSS/#css][CSS Snapshot - W3C]]
+- [[https://www.w3.org/TR/CSS][CSS Snapshot - W3C]]
+- [[https://www.w3.org/standards/techs/css#w3c_all][CSS CURRENT STATUS - W3C]]
 *** CSS 1
 **** Completed
 ***** CSS Level 1
@@ -280,38 +281,82 @@
 - [[https://momdo.github.io/css2/Overview.html][Cascading Style Sheets Level 2 Revision 2 (CSS 2.2) Specification 日本語訳 - W3C]]
 *** CSS 3
 **** Completed
-***** CSS Color Module Level3
+***** Standards
+****** CSS Color Module Level3
 - REC 2011/6/7
-****** Link
+******* Link
 - [[http://standards.mitsue.co.jp/resources/w3c/TR/css3-color/][CSS カラーモジュール Level 3 - W3C]]
-***** CSS Namespaces
+****** CSS Namespaces Module Level 3
 - REC 2011/9/29
-***** Selectors Level 3
+****** Selectors Level 3
 - REC 2011/9/29
 
-***** Media Queries
+****** Media Queries
 - REC 2011/6/19
-***** CSS Style Attributes
+****** CSS Style Attributes
 - REC 2013/11/7
 
-**** Stable
-***** CSS Backgrounds and Borders Level 3
-***** CSS Conditional Rules Level 3
-***** CSS Multi-column Layout
-***** CSS Values and Units Level 3
-***** CSS Cascading and Inheritance Level 3
-**** Testing
-***** CSS Image Values and Replaced Content Level 3
-***** CSS Speech
-***** CSS Flexible Box Layout
+**** Drafts
+***** PR / Proposed Recommendations
+****** CSS Backgrounds and Borders Level 3
+****** CSS Conditional Rules Level 3
+****** CSS Multi-column Layout
+****** CSS Values and Units Level 3
+****** CSS Cascading and Inheritance Level 3
+***** CR / Candidate Reccomendations
+****** CSS Image Values and Replaced Content Level 3
+****** CSS Speech
+****** CSS Flexible Box Layout
 - https://www.w3.org/TR/css-flexbox-1/
-***** CSS Text Decoration Module Level 3
-***** CSS Fonts Level 3
-***** CSS Writing Modes Level 3
-***** CSS Counter Styles Level 3
-***** CSS Fragmentation Level 3
-***** CSS Syntax Level 3
-***** CSS Basic User Interface Level 3
+****** CSS Text Decoration Module Level 3
+****** CSS Fonts Level 3
+****** CSS Writing Modes Level 3
+****** CSS Counter Styles Level 3
+****** CSS Fragmentation Level 3
+****** CSS Syntax Level 3
+****** CSS Basic User Interface Level 3
+***** WD / Other Working Drafts
+****** CSS Text Module Level 3
+******* Spec
+- https://drafts.csswg.org/css-text-3/
+- https://www.w3.org/TR/css-text-3/
+******** 1.Introduction
+******** 2.Transforming Text
+******** 3.White Space and Wrapping
+******** 4.White Space Processing Details
+******** 5.Line Breaking and Word Boundaries
+********* 5.2 Breaking Rules for Letters: 'word-break' property
+********** word-break
+- Name: word-break
+- Value: normal | keep-all | break-all
+*********** Values
+************ normal
+- デフォルトの改行ルール
+************ break-all
+- CJK以外のテキストは単語中での改行禁止
+************ keep-all
+- CJKテキストの改行を許可しない。CJK以外はデフォルト挙動
+************ break-word
+- To prevent overflow, normally unbreakable words may be broken at arbitrary points
+******** 6.Breaking Within Words
+********* 6.2 Overflow Wrapping: the 'overflow-wrap'/'word-wrap' property
+********** 'overflow-wrap' / 'word-wrap'
+*********** Values
+************ normal
+- Lines may break only at allowed break points.
+************ break-word
+- 
+************ break-spaces
+
+******** 7.Alignment and Justification
+******** 8.Spacing
+******** 9.Edge Effects
+******* Memo
+******** word-break, overflow-wrap/word-wrap
+- overflow-wrap/word-wrap: 単語の途中で改行するかどうか
+  https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap
+- word-break: 行の途中で改行するかどうか
+  https://developer.mozilla.org/en-US/docs/Web/CSS/word-break
 *** CSS 4
 **** Testing
 ***** CSS Cascading and Inheritance Level 4
@@ -909,8 +954,7 @@
 *** 擬似要素
 
 ** SASS
-- 
-  SCSSというフォーマットに対応。
+- SCSSというフォーマットに対応。
   ネスト、変数の使用、ミックスインに対応。
 
 *** ネスト
@@ -979,10 +1023,8 @@
   There is no CSS Level 4.
   CSS as the language has no longer levels, and independent modules can reach level 4 or beyond.
 *** 記述箇所
-- 
-  上のものから順に優先的に適用される。
+- 上のものから順に優先的に適用される。
   同じ箇所に書いた場合、下に書いたものが優先される。
-
 **** 1. Inline / HTMLタグに埋め込む
 - by using the style attribute in HTML elements
 - 
@@ -1018,8 +1060,7 @@
   /* ... */ でコメントアウトできる。
 
 *** Media Query メディアクエリ
-- 
-  CSS3の機能。
+- CSS3の機能。
   メディアタイプとメディア特性を利用して、スタイルシートの適応条件を決定する式。
 
 - link要素として指定する場合
@@ -1045,10 +1086,13 @@
   [[https://www.w3.org/TR/css3-mediaqueries/][Media Queries - W3C]]
   
 *** ベンダープレフィックス
-- 
-  ブラウザベンダーが独自の拡張機能を実装するとき、または草案段階の仕様を先行実装する場合に付ける識別子のこと。  
+- ブラウザベンダーが独自の拡張機能を実装するとき、または草案段階の仕様を先行実装する場合に付ける識別子のこと。
 - [[http://scene-live.com/page.php?page=43][【CSS3】ベンダープレフィックスとは？ - SCENE LIVE]]
 
+**** -ms- (Internet Explorer)
+**** -webkit- (Google Chrome, Safari)
+**** -moz- (Firefox)
+**** -o- (Opera)
 *** floatの処理
 **** clearプロパティを使う
 - margin-topが効かない、などのデメリットあり。
