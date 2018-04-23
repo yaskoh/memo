@@ -685,6 +685,22 @@
   正常終了時は書き込んだバイト数を返す。
   エラー時は-1を返す。
 
+** System calls (assembly)
+- http://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
+- https://syscalls.kernelgrok.com/
+*** sys_read(rax:0)
+- rax: 0
+- rdi: unsigned int fd
+- rsi: char *buf
+- rdx: size_t count
+*** sys_write(rax:1)
+- rax: 1
+- rdi: unsigned int fd / ディスクリプタ(1=stdout)
+- rsi: const char *buf / output file address
+- rdx: size_t count / output byte counts
+*** sys_exit (rax:60)
+- rax: 60
+- rdi: int error_code
 ** Subroutine
 ** Headers
 *** aio.h

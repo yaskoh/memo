@@ -6,11 +6,74 @@
 *** pLaTeX 2e
 ** Expression
 - [[http://hooktail.sub.jp/nocategory/latexImpress/][LaTeX表現集]]
-*** 分数
-- \frak{a}{x}
+*** メタ
+**** 行内数式
+- $で挟み込む。
+- ex: $\frac{x}{2}$
+**** 別行立て数式
+***** 数式番号付き
+- \begin{equation}
+    数式
+  \end{equation}
+- ex: 
+  \begin{equation}
+    \int_{0}^{\infty} \sin x dx
+  \end{equation}
+***** 数式番号なし
+- \[
+    数式
+  \]
+- ex:
+- \[
+    \sum_{k = 0}^{\infty} \sin x dx
+  \]
+
+***** amsmathパッケージ
+- \begin{equation*}
+    数式
+  \end{equation*}
+
+- ex:
+  \begin{equation*}
+    数式
+  \end{equation*}
+
+**** \documentclass{}
+**** \title{}
+**** \date{}
+*** 特殊文字
+**** 括弧( \left(, \right) )
+**** 円周率(\pi)
+**** 無限大(\infty)
+*** 記号
+**** 分数(\frac{num}{den})
+- ex: $\frac{1}{n}$
+**** 三角関数(\sin, \cos, \tan)
+**** 対数(\log)
+**** 平方根・n乗根(\sqrt[n]{x})
+**** 総和(\sum)
+**** 総乗(\prod)
+**** 積分記号(\int, \int_{min}^{max})
 *** 添え字
-- 上付 : x^2
+- 上付き : x^{2}
+- 下付き : x_{i}
+- ex: $x_{i} = n^{5}$
   
+*** フォント
+**** ローマン体
+- \mathrm{文字}
+- ex: $55 \mathrm{m/s}$
+*** スペースの扱い
+- カンマ区切り文字の場合以下のように書く
+  299{,}792{,}458
+  {}がないと、数列と解釈されてスペースが入るため。
+*** 例
+\[
+  \frac{\pi}{2} =
+  \left( \int_{0}^{\infty} \frac{\sin x}{\sqrt{x}} dx \right)^2 =
+  \sum_{k=0}^{\infty} \frac{(2k)!}{2^{2k}(k!)^2} \frac{1}{2k+1} =
+  \prod_{k=1}^{\infty} \frac{4k^2}{4k^2 - 1}
+\]
 ** Install
 *** Mac
 - 基本的にはMacTeXのpkgをインストールすればOK。
@@ -29,6 +92,7 @@
 - https://texwiki.texjp.org/?AUCTeX
 ** Link
 - [[https://texwiki.texjp.org/][TeX Wiki]]
+- [[https://www.latex-project.org/][The LaTeX Project]]
 - [[https://www.tug.org/index.html][TeX Users Group web site]]
 *** TeX Live
 - [[http://tug.org/texlive/doc/texlive-en/texlive-en.html][The TeX Live Guide - 2016]]

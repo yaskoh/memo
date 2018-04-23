@@ -1,314 +1,86 @@
 * Assembly
-** Memo x86(?)
-*** Register レジスタ
-**** 汎用レジスタ(GBR)
-***** 汎用レジスタ
-- 
-  |------+------+------+-----+------------------+----------------------------|
-  | 31-0 | 15-0 | 15-8 | 7-0 | 名称             | 用途                       |
-  |------+------+------+-----+------------------+----------------------------|
-  | EAX  | AX   | AH   | AL  | アキュムレータ   | 何にでも使う               |
-  | EBX  | BX   | BH   | BL  | ベースレジスタ   | 何にでも使う               |
-  | ECX  | CX   | CH   | CL  | カウントレジスタ | 何にでも使うが主にカウンタ |
-  | EDX  | DX   | DH   | DL  | データレジスタ   | 何でも使う                 |
-  |------+------+------+-----+------------------+----------------------------|
-- 
-  EnXは32bit
-  nH,nLが8bitで両者を合わせたものがnX（16bit）
-  X, EはExtendから。
-
-***** インデックスレジスタ
-- 
-  |------+------+--------------------------------+------------------------------------------------|
-  | 31-0 | 15-0 | 名称                           | 用途                                           |
-  |------+------+--------------------------------+------------------------------------------------|
-  | ESI  | SI   | ソースインデックス             | ストリング命令に利用するが、何に利用してもよい |
-  | EDI  | DI   | デスティネーションインデックス | 同上                                           |
-  |------+------+--------------------------------+------------------------------------------------|
-
-***** ポインタレジスタ
-- 
-  |------+------+------------------+----------------------------------------|
-  | 31-0 | 15-0 | 名称             | 用途                                   |
-  |------+------+------------------+----------------------------------------|
-  | EBP  | BP   | ベースポインタ   | 特別な用途に利用し、めったに利用しない |
-  | ESP  | SP   | スタックポインタ | スタックを格納するアドレスのオフセット |
-  |------+------+------------------+----------------------------------------|
-
-**** セグメントレジスタ
-- 
-  |------+----------------------+------------------------------------------------------|
-  | 15-0 | 名称                 | 用途                                                 |
-  |------+----------------------+------------------------------------------------------|
-  | SS   | スタックセグメント   | スタックを格納するアドレスのセグメントを指す         |
-  | CS   | コードセグメント     | 次に実行するアドレスのセグメントを指す               |
-  | DS   | データセグメント     | データを読み書きするアドレスのセグメントを指す       |
-  | ES   | エクストラセグメント | 追加のデータを読み書きするアドレスのセグメントを指す |
-  |------+----------------------+------------------------------------------------------|
-
-**** ステータス・制御レジスタ
-- 
-  |--------+-------+----------------------------+----------------------------------------|
-  | 31-0   | 15-0  | 名称                       | 用途                                   |
-  |--------+-------+----------------------------+----------------------------------------|
-  | EIP    | IP    | インストラクションポインタ | 次に実行するアドレスのオフセットを指す |
-  | EFLAGS | FLAGS | ステータスレジスタ         | CPUの状態や前の命令のエラー状態が入る  |
-  |--------+-------+----------------------------+----------------------------------------|
-
-- フラグ
-  |-------+------+-------------------------|
-  |   bit | 略記 | 名称                    |
-  |-------+------+-------------------------|
-  |     0 | CF   | キャリーフラグ          |
-  |     2 | PF   | パリティーフラグ        |
-  |     4 | AF   | 補助フラグ              |
-  |     6 | ZF   | ゼロフラグ              |
-  |     7 | SF   | サインフラグ            |
-  |     8 | TF   | トラップフラグ          |
-  |     9 | IF   | 割り込み許可フラグ      |
-  |    10 | DF   | ディレクションフラグ    |
-  |    11 | OF   | オーバーフローフラグ    |
-  | 12-13 | IOPL | I/O特権レベルフィールド |
-  |-------+------+-------------------------|
-
-*** 命令
-**** move
-- move dest,src
-  (.COMはセグメントレジストが全て同じ値)
-
-**** int
-- 
-  ソフトウェア割り込み
-  "int 21h"がファンクションコール
-  AHの内容で実行値が変わる。
-  AHに4Chが入っている時にint 21hを動かすと終了する。
-
-**** mov 即値の転送
-- 
-  mov ah,10     10進数
-  mov ah,10h    16進数
-  mov ah,10o    8進数
-  mov ah,10b    2進数
-  mov ah,'A'    文字コード
-  mov ax,offset DATA    DATAという変数のアドレス
-
-
-***** 直接アドレス法
-- 
-  mov DATA,al        変数に書き込む
-  mov [1000h],al    アドレスに書き込む
-
-  メモリ  レジストリと違い大きさが分からないため大きさを書く
-  mov byte ptr DATA, 0 (byte ptr)
-  mov word ptr DATA, 0 (word ptr)
-  or
-  mov DATA, byte ptr 0
-  mov DATA, word ptr 0
-  (コンパイラによって書き方が違う)
-
-****** 間接アドレス法(メモリのアドレスをレジスタを使って指定)
-- 
-  mov bx,offset DATA
-  mov byte ptr [bx], 0
-  or
-  mov [bx], byte ptr 0
-  mov [byte ptr bx], 0
-
-  ワード以上だと逆順に格納
-  mov [1000h],word ptr 1234h ⇒ 34h(1000h), 12h(1001h)
-  mov [1000h],dword ptr 12345678h ⇒ 78h(1000h), 56h(1001h), 34h(1000h), 12h(1000h)
-
-**** 疑似命令
-- 
-  CPUでなくアセンブラに伝える命令を「疑似命令」という。
-  DB    byte
-  DW    word
-  DD    dword
-
-**** ADD 足し算
-- 
-  ADD DEST,SRC (DEST←DEST+SRC)
-  ADC DEST,SRC
-
-  AAA
-    桁超えをしたものを補正してくれる
-
-**** SUB 引き算
-- 
-  SUB DEST,SRC
-  SBB DEST,SRC    (キャリーフラグつき)
-
-**** MUL, IMUL かける
-- MUL SRC        符号なし
-- IMUL SRC    符号付き
-  AX        AL×SRC
-  DX:AX    AX×SRC
-  EDX:EAX    EAX×SRC
-
-**** DIV, IDIV わる
-- DIV SRC
-- IDIV SRC
-  AX÷SRC→余AH, 商AL
-  DX:AX÷SRC→余DX, 商AX
-  EDX:EAX÷SRC→余EDX, 商EAX
-
-**** INC, DEC
-- 
-  1足す（引く）
-
-**** JMP DEST
-- DESTに移行する
-  short, near, farがある。
-
-**** CMP SRC1,SRC2
-- 
-  比較
-  SRC1 - SRC2のフラグのみ残る
-
-**** JMP系
-JCXZ DEST
-JECXZ DEST
-    条件分岐。CX(ECX)が0のときジャンプ。
-
-LOOP SRC
-    (E)CX=(E)CX-1,not equal 0ならSRCにショートジャンプ
-
-LOOPZ, LOOPE SRC
-    ZF=1ならジャンプ
-LOOPNZ, LOOPNE SRC
-    ZF=0ならジャンプ
-
-**** サブルーチン
-- 
-    CALL
-    RET
-        SS:SPを2増やしてcall, 2減らしてret
-
-    先：public サブルーチン名
-    元：extern サブルーチン名:near
-
-    PUSH
-    POP
-
-    PUSHA,POPA        AX,CX,DX,BX,SP,BP,SI,DI(POPはA逆順）
-    PUSHAD,POPAD    EAX,ECX...
-
-    PUSHF,POPF        FLAGS
-    PUSHFD,POPFD    EFLAGS
-
-**** 論理
-- 
-    AND DEST,SRC
-    OR DEST,SRC
-    XOR DEST,SRC
-    NOT DEST
-    NEG DEST
-        2の補数
-    TEST SRC1,SRC2
-        論理積(ANDと同じ)、結果が保持されずフラグのみ持つ
-
-**** シフト
-- 
-    SHR DEST,COUNT
-    SHL DEST,COUNT
-    SAR DEST,COUNT
-    SAL DEST,COUNT
-        算術（最上位ビットが保存）
-
-**** ローテート
-- 
-    RCL, RCR キャリーフラグ込み
-    ROL, ROR キャリーフラグは溢れ分
-
-**** ストリング命令
-- 
-    読み出しは[DS:SI]
-    書き出しは[ES:DI]
-    レジスタはEAX,AX,ALのみ
-
-
-    MOVSB, MOVSW, MOVSD
-    REP MOVS?
-        CX回繰り返す
-    REP,REPE(REPZ),REPNE(REPNZ)
-
-    CLD        DF=0
-    STD        DF=1
-
-
-    LODS?
-        メモリをレジストリAL,AX.EAXに読み込む
-    STOS?
-        レジストリをメモリに
-    SCAS?
-        レジスタとメモリを比較
-    CMPS?
-        [DS:SI]と[ES:DI]の比較
-
-**** 入出力
-- 
-    Memory Mapped I/O
-        メモリ空間の一部を制御用の空間に
-    I/O Mapped I/O
-        メモリと制御は別
-        IN,OUTなど専用命令がある
-
-    IN DEST,SRC
-        SRCのポートに接続されているデバイスの状態を読みだす
-    OUT DEST,SRC
-        DESTに接続されているデバイスにコマンドを送る
-
-    INS?
-    OUTS?
-        ストリング命令用
-
-**** 他
-- 
-    LEA DEST,SRC
-        SRCの実行アドレスを計算し、DESTに代入
-    XCHG DEST1,DEST2
-        DEST1とDEST2を交換する
-    NOP
-        何もしない。あとで書くための場所の確保とか。
-
-**** 割り込み
-- 
-    トラップ
-        INT
-    フォルト
-        メモリー制限
-    アボート
-        例外。0除算などで発生。
-
 ** x64 Assembly
 *** Link
 - [[https://software.intel.com/en-us/articles/introduction-to-x64-assembly][Introduction to x64 Assembly]]
 ** Assembler アセンブラ
-*** MASM Microsoft Macro Assembler
+*** nasm Netwide Assembler
+- MASMと互換性の高いx86 CPU用アセンブラ
+- nasm -f elf -o program.o program.asm
+  (link: ld -o program program.o)
+**** 構文
+***** 特徴
+- Intel構文、TASMやMASMなど大多数のアセンブラがサポート。
+- メモリー・オペランドの前にbyte ptr, word ptr, dword ptrをつける
+**** manual documents
+- https://www.nasm.us/xdoc/2.13.03/html/nasmdoc0.html
+***** C1: Introduction
+****** S1.1: What Is NASM?
+******* S1.1.1: License Conditions
+***** C2: Running NASM
+****** S2.1: NASM Command-Line Syntax
+******* S2.1.1: The -o Option: Specifying the Output File Name
+******* S2.1.2: The -f Option: Specifying the Output File Format
 - 
-  インテルのx86 CPU用にマイクロソフトが開発したアセンブラ
+- show list: -hf
+******** Memo
+- -f -elfとした際に "~is incompatible with i386:x86-64"と出る場合、64bitにして置く必要があるので、-f -elf64とする。
+- https://stackoverflow.com/questions/4252227/error-when-trying-to-run-asm-file-on-nasm-on-ubuntu?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+****** S2.2: Quick Start for MASM Users
+***** C3: The NASM Language
+****** S3.1: Layout of a NASM Source Line
+****** S3.2: Pseudo-Instructions
+****** S3.3: Effectie Addresses
+****** S3.9: Local Labels
+- NASM gives special treatment to symbols beginning with a period.
+  A label beginning with a single period is treated as a "local" label.
+***** C4: The NASM Preprocessor
+***** C5: Standard Macro Packages
+***** C6: Assembler Directives
+****** S6.1:
+****** S6.5: EXTERN: Importing Symbols from Other Modules
+- it is assumed to be defined in some other modules and needs to be referred to by this one.
+****** S6.6: GLOBAL: Exporting Symbols to Other Modules
+- other end of EXTERN:
+***** C7: Output Formats
+***** C8: Writing 16-bit Code
+***** C9: Writing 32-bit Code
+***** C10: Mixing 16 and 32 Bit Code
+***** C11: Writing 64-bit Code
+***** C12: Troubleshooting
+***** ApA: Ndisasm
+***** ApB: Instruction List
+***** ApC: NASM Version History
+***** ApD: Building NASM from Source
+***** ApE: Contact Information
+**** Link
+- https://www.nasm.us/
+*** gas GNUアセンブラ
+- x86, 680x0, SPARC, VAXなど各種CPU用のアセンブラ
+- as -o program.o program.s
+  (link: ld -o program program.o)
+
+**** 構文
+***** 特徴
+- AT&T構文、GASや一部の古いアセンブラに特有、比較的初期の構文。
+  最近は".intel_syntax"というIntel構文を使えるディレクティブをサポート
+- 即値オペランドの前に$を置く
+  レジスターオペランドの前に%を付く
+- メモリー・オペランドのサイズはオペコード名の最後の文字で決まる。
+  b(8bit), w(16bit), l(32bit)
+
+*** MASM Microsoft Macro Assembler
+- インテルのx86 CPU用にマイクロソフトが開発したアセンブラ
   「命令 書き込み先 読み込み先」の順で書かれる。GASと逆。
 
-*** nas Netwide Assembler
-- 
-  MASMと互換性の高いx86 CPU用アセンブラ
-
 *** TASM Turbo Assembler
-- 
-  ボーランドが開発していたMASMと互換性の高いx86 CPU用アセンブラ
+- ボーランドが開発していたMASMと互換性の高いx86 CPU用アセンブラ
 
-*** gas GNUアセンブラ
-- 
-  x86, 680x0, SPARC, VAXなど各種CPU用のアセンブラ
-  
 *** COMET II
 *** CASL
-- 
-  情報処理技術者試験用に作られたアセンブリ言語。
+- 情報処理技術者試験用に作られたアセンブリ言語。
 
 *** as
-- 
-  UNIX用のアセンブラ
+- UNIX用のアセンブラ
 
 *** HLASM / IBM High Level Assembler
 - 
@@ -438,5 +210,20 @@ LOOPNZ, LOOPNE SRC
   - C:\WATCOM\owsetenv.bat
   - wasm file.asm
   - wcl -ecc -D__MSC__ test.c test.obj
+** IDE
+*** SASM
+- https://dman95.github.io/SASM/english.html
+*** Visual MASM
+- https://github.com/ThomasJaeger/VisualMASM
+** Memo
+*** nasmとGASの比較
+**** 構文
+- nasm: Intel, GAS: AT&T
+- 
+- 例
+  - Intel(nasm): mov eax, 4
+  - AT&T(GAS): movl $4, %eax
+
 ** Link
+- [[https://www.ibm.com/developerworks/jp/linux/library/l-gas-nasm.html][GAS と NASM を比較する - IBM developerWorks]]
 - [[http://qiita.com/usk83/items/c97066c3c663c5007658][(スクリプト言語しか書けないあなたへ)FreeDOSとdebugコマンドで8086アセンブラ入門 - Qiita]]

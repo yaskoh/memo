@@ -212,7 +212,7 @@
 ******* -S
 - Run the previous stages as well as LLVM generation and optimization stages and target-specific code generation, producing an assembly file.
 ******* -c
-- Run all of the above, puls the essembler, generating a target a.oa object file.
+- Run all of the above, plus the assembler, generating a target a.oa object file.
 
 ******* (no stage selection)
 - all stages above are run, and linker is run to combine the results into an executable or shered library.
@@ -717,8 +717,7 @@
 ***** Link
 - https://linux.die.net/man/1/gcc
 **** gdb
-- 
-  デバッグを行う。
+- デバッグを行う。
 - run (options)
   プログラムを開始する。オプションをつけるとオプション付きで実行する。
 - backtrace, bt
@@ -1374,6 +1373,16 @@
   mv aaa{,bbb}とするとaaa->aaabbbにリネームされる。
 
 *** n
+**** nasm
+- the Netwide Assembler, a portable 80x86 assembler
+***** Synopsis
+- nasm [-@ response file] [-f format] [-o outfile] [-l listfile] [options...] filename
+***** Options
+****** -f format
+- Specifies the output file format.
+****** -g
+- Causes nasm to generate debug information in selected format.
+****** -@ filename
 **** nc
 - 
   netcat.

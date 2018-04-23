@@ -80,9 +80,12 @@
 - diskutil eject /dev/disk2
   取り出す
 ** Applications
+*** magnet
+- 画面の
 *** windscribe
 - VPN. mac & chrome ext.
   https://windscribe.com/
+*** Paragon
 ** Memo
 *** キーバインド
 - 変更点
@@ -110,10 +113,19 @@
 - 
   Apple LLVM Compilerのコマンド。
 
-*** 画面最大化
-- 
-  Ctrl + Opt + yで画面最大化
+*** 画面の整理
+**** magnet (app)
+- Ctrl+Alt+αで制御。便利。
+**** split window
+- 最大化ボタンを長押し、半分のどちらかに寄せる。
+  もう一つの画面をもう一つの半分の画面で選択する。
+**** 画面最大化
+- Ctrl + Opt + yで画面最大化
 
+**** Mission Control
+- Ctrl + ↑ : MissionControl （3本指上スワイプと同様）
+- Ctrl + ↓ : アプリケーションウィンドウ （アプリの一覧）
+- Ctrl + ← / → : 別デスクトップへの移動
 *** スライドショー
 - 
   Space押すと出てくる画面を使うと話が早い。プレビューではできないようなので。。

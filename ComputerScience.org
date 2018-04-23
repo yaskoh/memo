@@ -8,6 +8,14 @@
 *** Liskov substitution principle リスコフの置換原理
 - オブジェクト指向プログラミングにおける派生型の定義の一種。
   
+*** 数の表現方法
+**** HEX
+**** BIN
+**** BCD - binary coded decimal notation
+- 1桁に4ビットずつ割り振る。
+- http://www.system-brain.com/bcd.htm
+**** OCT
+**** BIN - binary
 ** Memo
 *** Evaluation
 **** normal-order evaluation

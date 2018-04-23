@@ -200,7 +200,8 @@
   the first 640 KiB of memory usually thought of as DOS's normal memory.
 *** UMA
 - Upper Memory Area
+** FreeDOS
+- [[file:FreeDOS.org][FreeDOS.org]]
 ** Link
 - [[http://www.freedos.org/][FreeDOS]]
 - [[http://wiki.freedos.org/wiki/index.php/Main_Page][Main Page - FreeDOS]]
-

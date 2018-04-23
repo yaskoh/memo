@@ -547,6 +547,7 @@
 - トグル
   - comment-or-uncomment-region
 *** 連番
+- C-u C-x r N
 ** Link
 *** Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]

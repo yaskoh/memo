@@ -2,20 +2,21 @@
 ** Commands
 - tmux [-2Cluv] [-c shell-command] [-f file] [-L socket-name] [-S socket-path] [command [flags]]
 ** Key Bindings
+*** c : new-window
+*** o : rotate-window
+*** ! : break-pane
+*** " : split-window
+*** ( : switch-client -p
+*** ) : switch-client -n
+*** % : split-window -h
+*** space : next-layout
+*** List
 (Bind-key ?)
-- C-b        send-prefix
-- C-o        rotate-window
 - C-z        suspend-client
-- Space      next-layout
-- !          break-pane
-- "          split-window
 - #          list-buffers
 - $          command-prompt -I #S "rename-session '%%'"
-- %          split-window -h
 - &          confirm-before -p "kill-window #W? (y/n)" kill-window
 - '          command-prompt -p index "select-window -t ':%%'"
-- (          switch-client -p
-- )          switch-client -n
 - ,          command-prompt -I #W "rename-window '%%'"
 - -          delete-buffer
 - .          command-prompt "move-window -t '%%'"
@@ -37,7 +38,6 @@
 - L          switch-client -l
 - [          copy-mode
 - ]          paste-buffer
-- c          new-window
 - d          detach-client
 - f          command-prompt "find-window '%%'"
 - i          display-message
@@ -76,36 +76,36 @@
 - -r C-Down  resize-pane -D
 - -r C-Left  resize-pane -L
 - -r C-Right resize-pane -R
-*** Command(old)
-**** ?
-   キー一覧の取得
-**** c
-   新規ウィンドウの作成。
-   :new-window
-**** [番号(0-9)]
-   ウィンドウの切替
-**** n
-   次のウィンドウへ
-**** p
-   前のウィンドウへ
-**** w
-   現在のウィンドウの一覧
-**** &
-   ウィンドウの削除
-**** "
-   水平分割
-**** %
-   垂直分割
-**** o
-   ウィンドウの移動
-**** q
-   分割ウィンドウの番号表示
-**** q + [番号]
-   ペインの移動
-**** x
-   現在のペインの削除
-**** !
-   現在のペインを別ウィンドウへ
+**** Command(old)
+***** ?
+    キー一覧の取得
+***** c
+    新規ウィンドウの作成。
+    :new-window
+***** [番号(0-9)]
+    ウィンドウの切替
+***** n
+    次のウィンドウへ
+***** p
+    前のウィンドウへ
+***** w
+    現在のウィンドウの一覧
+***** &
+    ウィンドウの削除
+***** "
+    水平分割
+***** %
+    垂直分割
+***** o
+    ウィンドウの移動
+***** q
+    分割ウィンドウの番号表示
+***** q + [番号]
+    ペインの移動
+***** x
+    現在のペインの削除
+***** !
+    現在のペインを別ウィンドウへ
 
 ** Settings
 ** Memo

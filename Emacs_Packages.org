@@ -540,6 +540,9 @@
 ****** org-cycle (<TAB> @org-mode)
 - (org-cycle &optional ARG)
 ****** org-sort (C-c ^ @org-mode)
+****** org-preview-latex-fragment (C-c C-x C-l @org-mode)
+- (org-preview-latex-fragment &optional SUBTREE)
+- Preview the LaTex fragment at point, or all locally or globally.
 ***** Keybinds
 ****** C-c ^ : org-sort
 ****** <TAB> : org-cycle
