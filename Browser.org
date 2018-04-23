@@ -3,25 +3,36 @@
 *** GoogleChrome
 **** Developer Tool
 - 要素の検証
+- 開く:
+  Ctrl+Shift+I, F12
 ***** Kind
+****** Device Mode (Ctrl+Shift+M)
+- デフォルトでOn。
 ****** Elements
+- DOMとCSSを自由に操作してサイトのレイアウトやデザインを反復処理可能
 ****** Console
-- 
-  Javascriptの実行ができる。
+- 開発中に診断情報を記録したr、イその情報をシェルとして使用してページ上のJavascriptを操作したりできる。
 
 - 改行
   改行の入力はShift+Enter
 ****** Sources
-- JSのデバッグ
+- ブレークポイントを使用してJavaScriptをデバッグしたり、ワークスペース経由でローカルファイルを接続、DevToolsラライブディタを使用したりできる。
 - http://postd.cc/javascript-debugging-tips-and-tricks/
 
 ****** Network
-****** Timeline
-****** Profiles
-****** Resources
+- リクエストされたリソースやダウンロードされたリソースを詳しく調べたり、ページ読み込みパフォーマンスを最適化したりできる
+****** Performance
+****** Memory
+- 旧Profiles(+Timeline?)
+****** Application
+- 旧Resources
+
 ****** Security
+- 混合コンテンツの問題、証明書の問題などをデバッグ
 ****** Audits
 
+***** Link
+- https://developers.google.com/web/tools/chrome-devtools/?hl=ja
 **** Extensions
 ***** Vimium
 ***** The Great Suspender
@@ -144,9 +155,8 @@
   a program that renders marked up content(such as HTML, XML, image files, etc) and formatting information (such as CSS, XSL, etc).
   ウェブページ記述用言語で書かれたデータを解釈し、実際に画面に表示する文字や画像などの配置を計算するプログラム。
 *** Blink
-- 
-  Googleなどが開発するHTMLレンダリングエンジン。
-  2013/4/3にWebKitからWebKitから分岐した。
+- Googleなどが開発するHTMLレンダリングエンジン。
+  2013/4/3にWebKitから分岐した。
 **** Browsers
 - Google Chrome
 - Opera
@@ -162,24 +172,19 @@
 - MSのMacintosh Business Unitが開発したエンジン。
   
 *** EdgeHTML
-- 
-  Microsoftが開発したプロプライエタリなレンダリングエンジン。
+- Microsoftが開発したプロプライエタリなレンダリングエンジン。
   Tridentからフォークし、レガシーな機能を削除しWeb標準を重視し、最新ブラウザとの互換性が確保されている。
-  
 **** Browsers
 - Microsoft Edge
 *** Gecko
-- 
-  Netscapeシリーズ6以降およびMozillaソフトウェアのために開発されたオープンソースのHTMLレンダリングエンジン群の総称。
-  
+- Netscapeシリーズ6以降およびMozillaソフトウェアのために開発されたオープンソースのHTMLレンダリングエンジン群の総称。
 **** Browsers
 - Firefox
 - Camino
 - SeaMonkey
 
 *** Servo
-- 
-  Mozilla‘の研究によって開発されている実験的なウェブブラウザ用レイアウトエンジン。
+- Mozilla研究によって開発されている実験的なウェブブラウザ用レイアウトエンジン。
   
 *** KHTML
 - used in KDE's Konqueror web browser and wath tha basis for WebKit
@@ -189,8 +194,7 @@
 **** Browsers
 - Konqueror
 *** WebKit
-- 
-  Appleが中心となって開発されているオープンソースのHTMLレンダリングエンジン群の総称。
+- Appleが中心となって開発されているオープンソースのHTMLレンダリングエンジン群の総称。
   HTML、CSS、JavaScript、SVG、MathMLなどを解釈する。
   元々Safariのレンダリングエンジンとして、KHTMLをフォークして開発された。
 **** Browsers
@@ -205,18 +209,14 @@
 - Googleが開発するオープンソースのJIT Virtual Machine型JavaScript実行エンジン。
 - [[https://developers.google.com/v8/intro][Chrome V8]]
   
-  
 **** Browsers
 - Google Chrome
 - Android Browser
 *** JavaScriptCore
-- 
-  built-in JavaScript engine for WebKit.
-- 
-  [[https://trac.webkit.org/wiki/JavaScriptCore][JavaScritCore]]
+- built-in JavaScript engine for WebKit.
+- [[https://trac.webkit.org/wiki/JavaScriptCore][JavaScritCore]]
 *** SpiderMonkey
-- 
-  SpiderMonkey is Mozilla's JavaScript engine written in C/C++.
+- SpiderMonkey is Mozilla's JavaScript engine written in C/C++.
   It is used in various Mozilla products, including Firefox, and is available under the MPL2.
 - [[https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey][SpiderMonkey - MDN]]
 *** Chakra
@@ -225,8 +225,7 @@
 ** Etc
 *** CG Libraries
 **** Skia
-- 
-  Googleが開発している、C++で書かれたオープンソースの2次元コンピュータグラフィックスライブラリ。
+- Googleが開発している、C++で書かれたオープンソースの2次元コンピュータグラフィックスライブラリ。
   Skia.inc.が開発していたが、2005年にGoogleが買収、その後修正BSDライセンスとしてオープンソースライブラリとなった。
 
 ***** 利用

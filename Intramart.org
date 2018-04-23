@@ -258,6 +258,15 @@
 - 企業向けSNS機能。
 ***** ViewCreator
 - intra-martの画面上からDBデータを使用して、表やグラフを作成するツール。
+****** Data データ
+******* Query クエリ
+- データベース上のテーブルを使用して作成されるSQLクエリ
+******* データ参照
+- クエリの表示方法（表orグラフなど）の設定
+  1つのクエリから複数の見せ方をさせることが可能。
+******** リスト集計
+******** クロス集計
+******** グラフ集計
 ***** TableMaintenance
 - データベース上の既存のテーブルに対して、レコードの新規登録・更新・削除を行うことができる。
 ***** IM-Notice
@@ -1011,6 +1020,9 @@
 **** imm_currency
 **** imm_customer
 **** imm_department / 会社組織
+***** imm_department
+***** imm_department_ath
+***** imm_department_ctg
 **** imm_item
 **** imm_private_grp
 **** imm_public_grp / パブリックグループ
@@ -1209,6 +1221,17 @@
 **** odbb_history_header
 **** odbb_report_data
 **** odbb_report_search
+** Reverse Lookup
+*** スマートフォン版へ、の削除
+- 認可でモバイルフレームワーク⇒スマートフォンリダイレクタ、を外す。
+  http://www.earthlink.co.jp/info/1758/
+*** アカウントロック回数の設定
+- サイトマップ⇒テナント管理⇒テナント情報⇒アカウントロックで設定。
+  https://www.intra-mart.jp/download/product/iap/operation/tenant_administrator_guide/texts/basic_guide/basic_guide_9.html
+*** 認可が消滅した場合などの対処
+- システム管理者でログインした状態で、
+  直接認可設定やジョブネット設定のURLに飛ぶことで、該当ページにアクセス可能。
+  http://www.earthlink.co.jp/info/2994/
 ** Link
 *** About
 - [[http://www.intra-mart.jp/document/library/index.html][intra-mart Accell Platform - intra-mart Accel Series ドキュメントライブラリ]]
@@ -1241,10 +1264,27 @@
   - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_menu_import_export_specification/index.html][intra-mart Accel Platform メニュー インポート・エクスポート仕様書]]
 - Log
   - [[https://www.intra-mart.jp/download/product/iap/im_core/im_log_specification/index.html][intra-mart Accel Platform ログ仕様書]]
+- 認可
+  - [[https://www.intra-mart.jp/document/library/iap/public/im_authz/im_authz_specification/index.html][intra-mart Accel Platform 認可仕様書]]
 - IM-BIS
+  - [[https://www.intra-mart.jp/document/library/bis/public/bis_specification/index.html][IM-BIS for Accel Platform IM-BIS 仕様書]]
   - [[http://www.intra-mart.jp/document/library/bis/public/bis_setup_guide/index.html][IM-BIS for Accel Platform セットアップガイド]]
   - [[http://www.intra-mart.jp/document/library/bis/public/bis_beginners_guide/][IM-BIS for Accel Platform IM-BIS ビギナーズガイド]]
   - [[http://www.intra-mart.jp/download/product/bis/manager_guide/index.html][IM-BIS for Accel Platform 業務管理者 操作ガイド]]
+  - [[https://www.intra-mart.jp/document/library/bis/public/bis_administrator_guide/index.html][IM-BIS for Accel Platform システム管理者 操作ガイド]]
+- Design
+  - [[https://www.intra-mart.jp/document/library/iap/public/im_ui/im_design_guideline_pc/index.html][intra-mart Accel Platform UIデザインガイドライン（PC版）]]
+- 開発
+  - [[http://www.intra-mart.jp/document/library/iap/public/development/script_programming_guide/index.html][intra-mart Accel Platform スクリプト開発モデル プログラミングガイド]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/development/sastruts_s2jdbc_programming_guide/index.html][intra-mart Accel Platform SAStruts+S2JDBC プログラミングガイド]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/development/tgfw_programming_guide/index.html][intra-mart Accel Platform TERASOLUNA Server Framework for Java (5.x) プログラミングガイド]]
+  - [[http://www.intra-mart.jp/document/library/iap/public/development/usermodule_developers_guide/index.html][intra-mart Accel Platform ユーザモジュール開発ガイド]]
+- ポータル・ポートレット
+  - [[https://www.intra-mart.jp/download/product/iap/im_portal/im_portal_administrator_guide/index.html][intra-mart Accel Platform ポータル 管理者操作ガイド]]
+  - [[https://www.intra-mart.jp/download/product/iap/im_portal/im_portlet_programming_guide/index.html][intra-mart Accel Platform ポートレット プログラミングガイド]]
+- その他
+  - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_language_additional_guide/index.html][intra-mart Accel Platform 言語追加ガイド]]
+
 - IM-FormaDesigner
   - [[http://www.intra-mart.jp/document/library/forma/public/forma_setup_guide/index.html][IM-FormaDesigner for Accel Platform セットアップガイド]]
 - IM-Workflow
@@ -1265,12 +1305,7 @@
   - [[http://www.intra-mart.jp/document/library/ebuilder/public/e_builder_setup_guide/texts/all_in_one/index.html][intra-mart e Builder for Accel Platform セットアップガイド]]
   - [[http://www.intra-mart.jp/document/library/ebuilder/public/e_builder_user_guide/index.html][intra-mart e Builder for Accel Platform アプリケーション開発ガイド]]
   - [[http://accel-archives.intra-mart.jp/2014-winter/document/ebuilder/public/e_builder_user_guide/index.html][intra-mart e Builder for Accel Platform / ユーザ操作ガイド]]
-- 開発
-  - [[http://www.intra-mart.jp/document/library/iap/public/development/script_programming_guide/index.html][intra-mart Accel Platform スクリプト開発モデル プログラミングガイド]]
-  - [[http://www.intra-mart.jp/document/library/iap/public/development/sastruts_s2jdbc_programming_guide/index.html][intra-mart Accel Platform SAStruts+S2JDBC プログラミングガイド]]
-  - [[http://www.intra-mart.jp/document/library/iap/public/development/tgfw_programming_guide/index.html][intra-mart Accel Platform TERASOLUNA Server Framework for Java (5.x) プログラミングガイド]]
-  - [[http://www.intra-mart.jp/document/library/iap/public/development/usermodule_developers_guide/index.html][intra-mart Accel Platform ユーザモジュール開発ガイド]]
-- その他
-  - [[http://www.intra-mart.jp/document/library/iap/public/im_import_export/im_language_additional_guide/index.html][intra-mart Accel Platform 言語追加ガイド]]
+*** 要件
+- [[https://issue.intra-mart.jp/][intra-mart 要件情報公開サイト]]
 *** その他
 - http://final.hateblo.jp/entry/2016/04/29/175815

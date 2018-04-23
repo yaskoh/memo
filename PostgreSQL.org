@@ -64,8 +64,8 @@
 - $ psql mydb
 **** The SQL Language
 **** Advanced Features
-*** The SQL Language / SQL言語
-**** SQL Syntax / SQLの構文
+*** II: The SQL Language / SQL言語
+**** 4. SQL Syntax / SQLの構文
 ***** 語彙の構成
 - SQL
   SQLは一続きのコマンド。
@@ -236,7 +236,7 @@
 - 
   関数呼び出し時の引数は、位置表記、名前付け表記、混在表記が可能。
 
-**** Data Definition / データ定義
+**** 5. Data Definition / データ定義
 ***** デフォルト値
 ****** DEFAULT
 - 
@@ -443,9 +443,9 @@
   5. マスタテーブルに、パーティションに中継するためのトリガ等を作成
   6. constraint.exclusion背亭パラメータがpostgresql.conf内で無効となっていないことの確認
 
-**** Data Manipulation
-**** Queries
-**** Data Type / データ型
+**** 6. Data Manipulation / データ操作
+**** 7. Queries / 問合せ
+**** 8. Data Type / データ型
 ***** 数値データ型
 - 
   |------------------+-------+--------------+------------------|
@@ -513,10 +513,23 @@
 ***** 列挙型
 ***** 幾何データ型
 
-**** Functions and Operators / 関数
-***** Operator / 演算子
-***** システム情報関数
-***** システム管理関数
+**** 9. Functions and Operators / 関数と演算子
+***** 9.1. 論理演算子
+***** 9.9. 日付/時刻関数と演算子
+****** 日付/時刻演算子
+****** 日付/時刻関数
+- age(timestamp, timestamp)
+- age(timestamp)
+- current_date
+- current_time
+- current_timestamp
+****** 9.9.1. EXTRACT, date_part
+****** 9.9.2. date_trunc
+****** 9.9.3. AT TIME ZONE
+****** 9.9.4. Current Date/Time
+****** 9.9.5. 遅延実行
+***** 9.25. システム情報関数
+***** 9.26. システム管理関数
 ****** 構成設定関数
 ****** サーバシグナル送信関数
 ***** tmp
@@ -528,12 +541,12 @@
 
 ****** nextval()
 
-**** Type Conversion
-**** Index / インデックス
-**** Full Text Search
-**** Concurrency Control
-**** Performance Tips
-**** Parallel Query
+**** 10. Type Conversion / 型変換
+**** 11. Index / インデックス
+**** 12. Full Text Search / 全文検索
+**** 13. Concurrency Control / 同時実行制御
+**** 14. Performance Tips / 性能に関するヒント
+**** 15. Parallel Query / パラレルクエリ
 *** Server Administration サーバの管理
 **** 運用管理概要
 
@@ -708,7 +721,7 @@
     - このビューのsetting列をudateするのは、SETコマンドの実行と同等。
 ****** シェルによるパラメータ操作
 ****** 設定ファイルの内容の管理
-***** File Locations
+***** File Locations / ファイルの場所
 - data_dirctory
   - データ格納に使用するディレクトリ
 - config_file
@@ -770,19 +783,33 @@
 ******* archive_mode (enum)
 ******* archive_command (string)
 ******* archive_timeout (integer)
-***** Replication / 
-***** Query Planning
+***** Replication / レプリケーション
+***** Query Planning / 問合せ計画
 ****** プランナメソッド設定
 ****** プランナコスト定数
 ******* effective_cache_size (integer)
 ****** 遺伝的問合せオプティマイザ
 ****** その他のプランナオプション
-***** Error Reporting and Logging
-***** Run-time Statistics
-***** Automatic Vacuuming
-***** Client Connection Defaults
-***** Lock Management
-***** Version and Platform Compatibility
+***** Error Reporting and Logging / エラー報告とログ取得
+****** Where To Log / ログの出力先
+****** When To Log / いつログを取得するか
+******* log_min_duration_statement (integer)
+- 文の実行に少なくとも指定したミリ秒かかった場合に、文の実行に要した時間をログに記録する。
+- -1(default)は無効とする。0にするとすべての分の実行時間が出力される。
+****** What To Log / 何をログに
+******* log_statement (enum)
+- どのSQL文をログに記録するかを制御する。
+- Values: none, ddl, mod, all
+****** Using CSV-Format Log Output
+****** Process Title
+***** Run-time Statistics / 実行時統計情報
+****** Query/Index Statistics Collector / 問い合わせおよびインデックスに関する統計情報コレクタ
+******* track_functions (enum)
+- 関数の呼び出し数と費やされた時間の追跡を有効にする。
+***** Automatic Vacuuming / 自動Vacuum作業
+***** Client Connection Defaults / クライアント接続デフォルト
+***** Lock Management / ロック管理
+***** Version and Platform Compatibility / バージョンとプラットフォーム互換性
 ***** Error Hadling
 ***** Preset Options
 ***** Customized Options
@@ -1073,6 +1100,16 @@
 **** SQL Command
 ***** ABORT
 ***** ALTER ~
+****** ALTER INDEX
+- インデックス定義を変更する
+******* 概要
+- ALTER INDEX [ IF EXISTS ] name RENAME TO new_name
+- ALTER INDEX [ IF EXISTS ] name SET TABLESPACE tablespace_name
+****** ALTER TABLE
+- ALTER TABLE
+******* 概要
+- ALTER TABLE [ IF EXISTS ] [ ONLY ] name [ * ] RENAME [ COLUMN ] column_name TO new_column_name
+- ALTER TABLE [ IF EXISTS ] name RENAME TO new_name
 ***** BEGIN
 
 ***** COMMIT
@@ -1122,12 +1159,17 @@
 ******** VALID UNTIL 'timestamp'
 - it sets a data and time after which the role's password is no longer valid.
 ***** DELETE
-- 
-  テーブルから行を削除する。
+- テーブルから行を削除する。
     ex) DELETE FROM weather WHERE city = 'Hayward';
   もし条件がない場合、テーブル内"全ての"データが削除される。
     ex) DELETE FROM weather;
 
+****** 概要
+- [WITH [RECURSIVE] with query [, ...] ]
+  DELETE FROM [ONLY] table_name [*] [[AS] alias]
+      [USING using_list]
+      [WHERE condition | WHERE CURRENT OF cursor_name]
+      [RETURNING * | output_expression [[AS] output_name] [, ...]]
 ***** DROP ~
 ***** EXPLAIN
 - 
@@ -1151,7 +1193,11 @@
   ECPGやPL/pgSQLではINTO句の解釈が異なるため、CREATE TABLE AS構文の利用を勧める。
   更に、SELECT INTOよりもCREATE TABLE ASの方が多くの機能がある。
 ***** UPDATE
-
+****** 概要
+- [ WITH [ RECURSIVE ] with_query [, ...] ] 
+  UPDATE [ ONLY ] table_name [ * ] [[AS] alias]
+     SET { column_name = { exression | DEFALUT } |
+           ( 
 ***** Memo - Objects オブジェクト
 ****** AGGREGATE
 ****** CAST
@@ -1569,6 +1615,8 @@
 - Management Software
 **** pgAdmin4
 **** pgAdmin3
+**** Link
+- https://www.pgadmin.org/
 ** Reverse lookup
 *** 設定ファイルを読み込ませる
 - GUI
@@ -1610,6 +1658,9 @@
 - aptで取得したdbのsuperuserはpostgres。下記のようにpostgresユーザとして接続が必要。
   sudo -u postgres psql postgres
 - https://help.ubuntu.com/community/PostgreSQL
+*** 実行したクエリを取得したい場合
+- ログに残す:
+  postgresql.confのlog_statementを修正する。
 ** Link
 - [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.6 Documentation]]
 - [[https://www.postgresql.jp/document/9.6/html/index.html][PostgreSQL 9.6.5文書]]

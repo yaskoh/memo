@@ -2084,14 +2084,16 @@
   ex) ssh user@192.168.100.1 -p 8080
 
 ****** -o options
-- StrictHostKeyChecking
+- see config explanation, or "man ssh-config"
 ***** Memo
 ****** config
-- write down port forwarding settings to  ~/.ssh/config 
+- write down port forwarding settings to  ~/.ssh/config or /etc/ssh/ssh_config
   and not to need to set everytime to connect.
+- see "man ssh-config"
 
 ******* Description
 ******** Host
+- Restricts the folowing declarations to only for those hosts that match one of the patterns given after the keyword.
 ******** HostName
 ******** Port
 ******** User
@@ -2100,9 +2102,13 @@
 - yes / no
 ******** LocalForward
 ******** DynamicForward
+******** PubkeyAuhtentication
+- Specifies whether to tory public key authentication
+- value: yes / no
+******** StrictHostKeyChecking
 ******** TCPKeepAlive
 - yes / no
-******** Ex
+******* Ex
 - ex1
   Host server1
     HostName     192.168.11.101
@@ -2113,6 +2119,9 @@
 ****** .ssh on win
 - ssh try to see settings on /home/username/.ssh.
 
+****** pubkeyを使わずログインしたい場合
+- "ssh -o PubkeyAuthentication=no"
+- https://qiita.com/smallpalace/items/a29ee4a3b170804355b9
 **** ssh-add
 - adds private key identities to the authentication agent, ssh-agent.
 ***** Synopsis
@@ -2632,19 +2641,29 @@
   単語数を出力する。単語数はスペース、タブおよび改行で区切られた文字列の数とする。
 
 **** wget
-- 
-  ファイルをダウンロードする。
+- ファイルをダウンロードする。
   wget [option] URL
 
 ***** Options
-****** -r
+****** Download Options
+******* --user=user
+- Specify the username "user"
+******* --password=password
+- Specify the password "password"
+****** Directory Options
+****** HTTPS (SSL/TLS) Options
+******* --no-check-certificate
+- Don't check the server certificate against the available certificate authorities.
+****** Recursive Retrieval Options
+******* -r, --recursive
 - 配下全てのデータを取得する。再帰的にファイルを入手する。
 
-****** -l 階層数
+******* -l depth, --level/depth
 - 再帰的にファイルを入手する場合の階層数を指定する。
 
-****** --no-check-certificate
-- Don't check the server certificate against the available certificate authorities.
+****** Recursive Accept/Reject Options
+******* -np, --no-parent
+- Do not ever ascend to the parent directory when retrieving recursively.
 
 ***** Memo
 ****** SSLサイトから取得

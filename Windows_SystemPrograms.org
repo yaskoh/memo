@@ -59,6 +59,16 @@
 ****** eventcreate.exe
 - This enables an admistrator to create a custom event ID and message in a specified event log.
   イベントログの追加に加え、イベントソースが存在しない場合は作成してくれる。
+******* Options
+******** /S system
+******** /U [domain\]user
+******** /P [passowrd]
+******** /L logname
+******** /T type
+******** /SO source
+******** /ID id
+******** /D description
+******** /?
 ****** findstr.exe
 - ファイルから文字列を検索する
 ******* Options
@@ -783,6 +793,8 @@ xwizard.exe
 ****** Folder
 ****** Group Policy Object Editor
 **** etc
+***** inetcpl.cpl
+- インターネットのプロパティ
 ***** winrm.cmd
 - Windows Remote Management Command Line Tool
 - Server限定の可能性あり

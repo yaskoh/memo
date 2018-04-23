@@ -449,6 +449,15 @@
 - [[http://cblog.crie.jp/word/176/][タブの位置を設定して文字の位置を整えるには １ - クリエのちょこテク]]
 **** Link
 - [[http://news.mynavi.jp/series/word/001/][Wordはなぜ思い通りにならないのか？ - マイナビニュース]]
+*** SharePoint
+**** サイトの設定
+***** 記憶域メトリックス
+- 使用済み記憶域サイズ
+**** Memo
+***** htmlファイルを表示させる方法
+- 拡張子がaspxとすれば、ソースでなくhtmlの画面として認識され表示される
+**** Link
+- [[https://www.slideshare.net/kaz-nak/20130831-o365][SharePoint Online 「アクセス権」を理解する - SlideShare]]
 ** Format
 *** Office Binary Foramt
 **** Word Binary File Format

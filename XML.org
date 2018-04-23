@@ -204,6 +204,9 @@
 ******** select
 **** Version 2.0
 *** XSL-FO
+** SGML
+- Standard Generalized Markup Language
+- SGMLを元にXML、HTMLが開発された。
 ** Memo
 *** Spec
 **** XQuery
@@ -223,7 +226,9 @@
 - tidy (CUI)
   http://takuya-1st.hatenablog.jp/entry/20110830/1314704820
 - xmllint
-- xmlstarlet
+  xmllint --format name.xml
+- xmlstarlet(xml)
+  xmltartlet fo name.xml
   http://torotoki.hatenablog.com/entry/2013/02/25/003615
   
 ** Link

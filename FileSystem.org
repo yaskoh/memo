@@ -1,0 +1,23 @@
+* File System
+- https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0
+** Kind
+*** NTFS
+**** Glossary
+***** Reparse point
+- a type of NTFS file system object.
+- https://en.wikipedia.org/wiki/NTFS_reparse_point
+****** Soft links
+******* NTFS symbolic link (SYMLINK)
+******* Junction point / directory junction
+****** Hard links
+******* NTFS HARD link
+****** Detect
+- Powershell:
+  Get-ChildItem | Where-Object { $_.Attributes -match "ReparsePoint" }
+*** FAT32
+*** exFAT
+*** HFS
+*** HFS Plus
+*** HFSX
+*** ext3
+*** ext4

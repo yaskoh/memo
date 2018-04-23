@@ -631,6 +631,9 @@
 *** アルファベットの大文字・小文字を区別して判定する
 - EXACT関数を利用する。
   http://www.relief.jp/docs/002927.html
+*** Excelで、桁数が多い数字を入力すると最後の桁がゼロとなる
+- IEEE 754仕様に準拠しているため、15桁目以降の数値は0となる。
+  回避したければ、文字列として扱う必要がある。文字列は32,767文字まで入力可、1,024文字までが表示される。
 ** Link
 - [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
 - [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]

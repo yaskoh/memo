@@ -1,37 +1,67 @@
 * .NET Framework
-** Version
-*** .NET Framework 4.6 and 4.5
-**** Class Library
-- [[https://msdn.microsoft.com/ja-jp/library/mt472912(v=vs.110).aspx]]
-***** Namespaces
-****** System.Diagnostics
-******* System.Diagnostics (Namespace)
-******* System.Diagnostics.Eventing.Reader (Namespace)
-- イベントログの読み取りと管理を行う
-******** Classes
-********* EventlLogSession (Class)
-********** Constructers
-********** Properties
-********** Methods
-*********** ExportLog(String, PathType, String, String)
-- イベントを外部のログファイルにエクスポートする
-******** Enum
-*** .NET Framework 3.5
-*** .NET Framework 3.0
-*** .NET Framework SDK 2.0
-*** .NET Framework 1.1
-*** .NET Framework 1.0
+** Implementation
+*** .NET Framework
+**** Version
+***** .NET Framework 4.7
+***** .NET Framework 4.6 and 4.5
+***** .NET Framework 3.5
+***** .NET Framework 3.0
+***** .NET Framework SDK 2.0
+***** .NET Framework 1.1
+***** .NET Framework 1.0
 
-** Alterentive Implementation 別実装
-*** Mono
-- Ecma標準に準じた.NET Framework互換の環境を実現するためのオープンソースソフトウェア群、またそのプロジェクト名。
-**** Monoコンポーネント
-***** 中核コンポーネント
-***** Mono/Linux/GNOME開発スタック
-***** マイクロソフト互換スタック
 *** .NET Core
-*** .NET Micro Framework
-*** Portable.NET (part of DotGNU)
+- 複数のOS向けに利用できる.NET実装。
+  .NET FrameworkとSilverlightから分岐したもの。
+*** Alterentive Implementation 別実装
+**** Mono
+- Ecma標準に準じた.NET Framework互換の環境を実現するためのオープンソースソフトウェア群、またそのプロジェクト名。
+***** Monoコンポーネント
+****** 中核コンポーネント
+****** Mono/Linux/GNOME開発スタック
+****** マイクロソフト互換スタック
+**** .NET Micro Framework
+**** Portable.NET (part of DotGNU)
+** Class Library
+- [[https://msdn.microsoft.com/ja-jp/library/mt472912(v=vs.110).aspx]]
+*** Namespaces
+**** System.Diagnostics
+***** System.Diagnostics (Namespace)
+***** System.Diagnostics.Eventing.Reader (Namespace)
+- イベントログの読み取りと管理を行う
+****** Classes
+******* EventlLogSession (Class)
+******** Constructers
+******** Properties
+******** Methods
+********* ExportLog(String, PathType, String, String)
+- イベントを外部のログファイルにエクスポートする
+****** Enum
+**** System.Net
+***** System.Net (Namespace)
+***** System.Net.Sockets (Namespace)
+- implemantation of the Windows Socket interface for developers who need to tightly control access to the network.
+****** Classes
+******* TcpClient
+- Provides client connectoins for TCP network services.
+******** Constructors
+******** Properties
+********* Connected
+- Gets a value indicating whether the underlying Socket for a TcpClient is connected to a remote host.
+******** Methods
+********* Close()
+- Disposes this TcpClient instance and requests that the underlying TCP connection be closed.
+********* Connect(IPAddress, Int32)
+- Connects the client to a remote TCP host using the specified IP address and port number.
+********* 
+** Related tools
+*** SDK
+**** Xamarin
+** Glossary
+*** .NET Standard
+- 基本APIのセット。このAPIを基本クラスライブラリ(BCL)と呼ぶ。
+  どの.NET実装やOSで実行されても共有できる。
+  https://msdn.microsoft.com/ja-jp/magazine/mt842506.aspx
 ** Memo
 *** 互換性(tmp)
 - [[https://blogs.msdn.microsoft.com/jpvsblog/2015/04/06/net-framework-3/][.NET Frameworkの各バージョン同士の関係 - Developer]]

@@ -1,13 +1,23 @@
 * Web
-** Web Application Development Introduction
-*** Chapter1 : Goal
-**** Type
+** Tools
+*** Web Icon
+**** Font Awesome
+- scalable vector icons
+
+- classに「fa」と、各アイコンに割り振られている「fa-xxxx」を利用することで表示される。
+  
+- [[http://fontawesome.io/][Font Awesome]]
+- [[https://h2ham.net/font-awasome][楽して便利！Webアイコンフォント『Font Awesome』の使い方と活用 Tips - HAM MEDIA MEMO]]
+** Documents
+*** Web Application Development Introduction
+**** Chapter1 : Goal
+***** Type
 - .NET
 - LAMP
 - Ruby on Rails
 - Java EE
 
-*** Chapter2 : Environment Settings
+**** Chapter2 : Environment Settings
 - Download and install OS on the virtual environment
   Use VMWare and Debian(installed)
 
@@ -45,7 +55,7 @@
     - select index.php and right click, Run.
   - Eclipse
 
-*** Chapter3 : How to Write Web pages
+**** Chapter3 : How to Write Web pages
 - Web Browser
   Reccomended Firefox as some reasons.
 
@@ -103,7 +113,7 @@
       so "<font size='5'> is not good.
       use <span style='font-size: 14pt;'>
 
-*** Chapter4 : Program performing on the browser
+**** Chapter4 : Program performing on the browser
 - How to write JavaScript
   - alert()
     show diagram.
@@ -112,8 +122,9 @@
 - jQuery
   - Library for using javascript as same appearence over browsers.
   
-** Web Server
-*** Apache
+*** Memo
+**** Web Server
+***** Apache
 - Download
   (on debian)
   sudo apt-get install apache2
@@ -121,15 +132,15 @@
 - Setting
   Set the permisson of /var/www as 775.
 
-**** Modules
-***** mod_rewrite
+****** Modules
+******* mod_rewrite
 - 
 
-**** Link
+****** Link
 - [[https://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
 
-** Lang
-*** PHP
+**** Lang
+***** PHP
 - Download
   (on debian)
   sudo apt-get install php5 php-pear
@@ -138,7 +149,7 @@
   Pear is "PHP Extension and Application Repository",
   a framework and distribution system for reusable PHP components.
 
-*** Java 
+***** Java 
 - Download
   sudo apt-get install openjdk-6-jdk
   (sudo apt-get install default-jre)
@@ -151,21 +162,9 @@
   sudo update-alternatives --config javac
   [[https://www.digitalocean.com/community/tutorials/how-to-install-java-on-ubuntu-with-apt-get][How To Install Java on Ubuntu with Apt-Get]]
 
-** IDE
-*** NetBeans
-*** Eclipse
-
-** Tools
-*** Web Icon
-**** Font Awesome
-- 
-  scalable vector icons
-
-- 
-  classに「fa」と、各アイコンに割り振られている「fa-xxxx」を利用することで表示される。
-  
-- [[http://fontawesome.io/][Font Awesome]]
-- [[https://h2ham.net/font-awasome][楽して便利！Webアイコンフォント『Font Awesome』の使い方と活用 Tips - HAM MEDIA MEMO]]
+**** IDE
+***** NetBeans
+***** Eclipse
 
 ** Link
 - [[https://developer.mozilla.org/en-US/Learn][Learning web development - MDN]]
@@ -183,8 +182,7 @@
 - [[http://lp-web.com/][ランディングページ集めました。]]
 ** Glossary
 *** Carousel カルーセル
-- 
-  Webデザインの一種で、画像などのコンテンツをスムーズに横にスライドさせる表示方法。
+- Webデザインの一種で、画像などのコンテンツをスムーズに横にスライドさせる表示方法。
 
 *** WebService
 - HTTPなどのインターネット関連技術を応用し、SOAPと呼ばれるXML形式のプロトコルを用いメッセージの送受信を行う技術。
@@ -203,9 +201,7 @@
   [[https://www.tinymce.com/][tinymce]]
 
 *** CMS
-- 
-  Contents Management System
-
+- Contents Management System
 **** TeamSite
 **** MODX
 
@@ -217,6 +213,26 @@
   URL末尾に「?」マークを付け、続けて「名前=値」の形式で記述する。
   値が複数ある時は「&」で区切る。
   例)http://example.com/foo/var.php?name1=value1&name2=value2
+*** Session, Cookie
+**** Cookie
+- https://tools.ietf.org/html/rfc6265
+***** 
+****** Session Cookie
+- Webサイトから離脱すると削除される
+****** Persistent Cookie
+- ブラウザのフォルダに保存されたままとなるCookie。
+***** Cookieヘッダの属性
+****** 名前=値
+****** expires=有効期限（日時）
+****** Max-Age=有効期限（秒数）
+****** domain=ドメイン名
+****** path=パス
+****** secure
+- HTTPSなどSecureな通信が行われている時のみ、Cookieを送信する。
+****** httponly
+- JavaScript経由でCookieを取得できないようにする
+**** Session ID
+- サーバ側で保持し、セッション管理に利用するID。cookieによる管理の場合、値はCookieと同じ。
 *** Percent-Encoding
 - 
   URIにおいて使用できない文字を使う際に行われるエンコードの名称。一般にURLエンコードとも。

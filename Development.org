@@ -58,6 +58,8 @@
 - People Capability Maturity Model, People CMMI
 ** Book
 - [[http://keens.github.io/blog/2016/01/17/dokugakudepuroguraminguwoyattekitanakadeyokattagijutsushowoageteiku/][独学でプログラミングをやってきた中で良かった技術書50選 - κeenのHappy Hacκing Blog]]
+- [[http://rkx1209.hatenablog.com/entry/2016/12/25/141543][低レイヤーの歩き方 - るくすの日記 ~ Out_Of_Range]]
+- [[http://yuseinishiyama.com/posts/2014/07/07/recently-read-books/][プログラマ歴2年の文系出身プログラマがこの1年で読んだ本 - だからといって、このままでいいはずがない。]]
 ** Memo
 *** 標準工期の計算
 - 

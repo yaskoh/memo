@@ -94,23 +94,14 @@
   allotting memory by request of program. 
 
 **** File System
-- 
-  Supporting data storage devices.
+- Supporting data storage devices.
   File systems enable to arrange data as directory hierarchies or call them by file name.
-
+- [[file:FileSystem.org][FileSystem.org]]
 **** I/O Management
 - 
   Enable to connect various peripheral devices and use them by application software.
   "Driver",
 **** Protection
-** Kind
-*** DOS
-**** FreeDos
-- http://freedos.sourceforge.net/wiki/index.php/VirtualBox
-*** Windows
-*** Unix
-*** Linux
-
 ** Glossary
 *** RCU
 - read-copy-update
