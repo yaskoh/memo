@@ -1,5 +1,6 @@
 * Resin
 ** Commands
+- see also "Command Line"
 *** resin
 **** deploy
 **** deploy-list
@@ -61,6 +62,34 @@
 ********** web-app-deploy
 ****** Link
 - http://caucho.com/resin-4.0/admin/config-resin-xml.xtp
+**** Command Line
+- http://www.caucho.com/resin-4.0/admin/resin-admin-command-line.xtp#webappstartstartingapplication
+***** enabling commands
+- set resin.xml files settings.
+***** available commands
+****** deploy
+****** undeploy
+****** deploy-list
+****** deploy-copy
+****** restart-webapp
+- Start an application with
+- resinctl webap-stop [option] <name>
+****** start-webapp
+- Starting application
+- resinctl webap-stop [option] <name>
+****** stop-webapp
+- Stop an applicatoion
+- resinctl webap-stop [option] <name>
+****** restart-webapp
+****** heap-dump
+****** thread-dump
+****** profile
+****** jmx-list
+****** jmx-dump
+****** jmx-set
+****** jmx-call
+****** log-level
+****** pdf-report
 **** Logging
 ***** Overview
 - using "java.util.logging"

@@ -267,6 +267,39 @@
 ******** リスト集計
 ******** クロス集計
 ******** グラフ集計
+****** Memo
+******* 対応するフィールドの型
+- https://www.intra-mart.jp/download/product/iap/viewcreator/viewcreator_administrator_guide/texts/about/about.html
+******** PostgreSQL
+********* 文字列型
+- varchar
+- character
+- text
+********* 数値型
+- smallint
+- bigint
+- decimal
+- numeric
+- real
+********* 日付型
+- date
+********* タイムスタンプ型
+- timestamp
+********* バイナリ型
+- bytea
+********* 真偽値型
+- boolean
+******* 日付フォーマットパターン
+- https://www.intra-mart.jp/download/product/iap/viewcreator/viewcreator_administrator_guide/texts/apply_guide/apply_guide_6.html
+- フォーマットパターンは以下ファイルで設定している、追加も可能。
+  - %コンテキストパス%/WEB-INF/conf/viewcreator-config.xml
+- 設定例
+  <date-format-list>
+    <date-format>yyyy/MM/dd HH:mm:ss</date-format>
+    <date-format>yyyy/MM/dd HH:mm</date-format>
+    <date-format>yyyy/MM/dd</date-format>
+    <date-format>yyyy/MM</date-format>
+  </date-format-list>
 ***** TableMaintenance
 - データベース上の既存のテーブルに対して、レコードの新規登録・更新・削除を行うことができる。
 ***** IM-Notice
@@ -1232,6 +1265,9 @@
 - システム管理者でログインした状態で、
   直接認可設定やジョブネット設定のURLに飛ぶことで、該当ページにアクセス可能。
   http://www.earthlink.co.jp/info/2994/
+*** WARファイル単位での起動・停止
+- resin web-app-start imart / resin web-app-stop imart
+  http://imfaq.intra-mart.jp/imqa/faq/print.asp?Option=&NodeID=&DispNodeID=&CID=&Text=&Field=&KW=&KWAnd=&Attrs=&Bind=&SearchID=&FAQID=413&baID=1&strKind=5
 ** Link
 *** About
 - [[http://www.intra-mart.jp/document/library/index.html][intra-mart Accell Platform - intra-mart Accel Series ドキュメントライブラリ]]

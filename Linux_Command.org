@@ -2162,6 +2162,44 @@
 **** ssh-keygen
 - 認証用の鍵を生成、管理、および変換する。
 
+**** sshd
+- daemon program for ssh.
+***** Descriptions
+****** Options
+****** Authentication
+****** Login Process
+****** sshrc
+****** authorized_keys
+****** ssh_known_hosts
+****** Files
+***** sshd_config
+- https://euske.github.io/openssh-jman/sshd_config.html
+****** 
+******* Port
+******* AddressFamily
+******* ListenAddress
+******* Protocol
+******* HostKey
+****** Ciphers and keying
+****** Logging
+******* SyslogFacility
+- Values:
+  - DAEMON
+  - USER
+  - AUTH
+  - LOCAL0-7
+******* LogLevel
+- Values:
+  - QUIET
+  - FATAL
+  - ERROR
+  - INFO
+  - VERBOSE
+  - DEBUG
+  - DEBUG1
+  - DEBUG2
+  - DEBUG3
+
 **** stat
 - 
   display file or file system status

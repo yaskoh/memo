@@ -1227,9 +1227,12 @@
   PostgreSQLデータベースをクラスタ化する
 
 ***** createdb
-- 
-  新しいPostgreSQLデータベースを作成する
-
+- 新しいPostgreSQLデータベースを作成する
+  createdb [connection-option...] [option...] [dbname [description]]
+****** Options
+******* -T template, --template=template
+******* -V, --version
+******* -?, --help
 ***** createlang
 - 
   PostgreSQL手続き言語をインストールする。
@@ -1629,6 +1632,18 @@
 - information_schemaを利用
   →どのような情報が取得されるか不明。
     また、最新Verでの推奨法かも不明。
+*** データベースの複製
+- コマンド:
+  - createdb -T ORG_DB_NAME NEW_DB_NAME (createdb --template=template db)
+  - https://qiita.com/tatataiki/items/e6208ab36d35356f1f55
+- クエリ:
+  - CREATE DATABASE 新DB名 TEMPLATE 複製元のDB名
+  - https://whitemitt.com/2012/04/14-113046.htm
+*** 実行クエリをログ取得したい場合
+- ログに残す:
+  postgresql.confのlog_statementを修正する。
+*** セッションを切る
+- SELECT pg_terminate_backend(processID);
 ** Memo
 *** Uninstall(Windows)
 - 
@@ -1658,9 +1673,6 @@
 - aptで取得したdbのsuperuserはpostgres。下記のようにpostgresユーザとして接続が必要。
   sudo -u postgres psql postgres
 - https://help.ubuntu.com/community/PostgreSQL
-*** 実行したクエリを取得したい場合
-- ログに残す:
-  postgresql.confのlog_statementを修正する。
 ** Link
 - [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.6 Documentation]]
 - [[https://www.postgresql.jp/document/9.6/html/index.html][PostgreSQL 9.6.5文書]]
