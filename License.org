@@ -11,16 +11,17 @@
 **** version 2.0
 **** version 1.1
 **** version 1.0
-*** FreeBSD license
-*** BSD
+*** FreeBSD License
+*** Berkeley Software Distribution License (BSD)
 *** Common Public License (CPL)
 - 
   IBMの作ったIBM Public License(IPL)を汎用的にしたもの。
 
 *** Eclipse Public License (EPL)
+*** MIT License
+*** Mozilla Public License (MPL)
 ** Link
 - [[http://www.gnu.org/licenses/license-list.en.html][Various Licenses and Comments about Them - GNU Operating System]]
 ** Memo
 *** Intellectual Property
 - 知的財産、IP
-
