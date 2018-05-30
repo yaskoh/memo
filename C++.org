@@ -71,6 +71,109 @@
 ** Compiler
 *** g++
 - GNUのコンパイラ。
+*** Cling
+- CERNで開発されているC++ Interpreter
+- https://root.cern.ch/cling
+** Tools
+*** Unit Testing Framework
+**** googletest
+- https://github.com/google/googletest
+- http://opencv.jp/googletestdocs/primer.html
+**** Boost.Test
+- https://www.boost.org/doc/libs/1_67_0/libs/test/doc/html/index.html
+**** CppUnit
+**** CppUnitLite
+*** Build
+**** CMake
+***** Documentation
+****** CMake 3.11
+- https://cmake.org/cmake/help/v3.11/
+******* Command-Line Tools
+******** cmake
+********* Synopsis
+- cmake [(-D <var>=<value>)...] -P <cmake-script-file>
+********* Options
+********** -C <initial-cache>
+********** -D <var>:<type>=<value>,-D <var>=<value>
+******** ctest
+******** cpack
+******* Interactive Dialogs
+******** cmake-gui
+******** ccmake
+******* Reference Manuals
+******** cmake-buildsystem
+********* Introduction
+********* Binary Tragets
+********** Binary Executables
+********** Binary Library Types
+********* Build Specification and Usage Requirement
+********* Pseudo Targets
+******** cmake-commands
+********* Scripting Commands
+********** break
+********** cmake_minimum_required
+- Set the minimum required version of cmake for a project and update Policy Settings to match the version given
+********** continue
+********** elseif
+********** else
+********** endif
+********** file
+********** message
+- Display a messega to the user.
+********** if
+********** set
+- Set a normal, cache, or environment variable to given value.
+********* Project Commands
+********** add_definitions
+- マクロの指定
+********** add_executable
+- Add an executable to the project using the specified source files.
+********** add_library
+- ライブラリを作成する
+********** add_test
+- Add a test to the project to be run by ctest.
+- テストを追加する
+********** enable_testing
+- ctestを有効化する
+********** include_directories
+- インクルードパスの指定
+********** link_directories
+********** project
+- Set a name, version, and enable languages for the entire project.
+********** target_link_libraries
+- リンクするライブラリの追加
+********* CTest Commands
+********* Deprecated Commands
+******** cmake-compile-features
+******** cmake-develoker
+******** cmake-language
+********* Organization
+********* Syntax
+********* Control Structures
+********* Variables
+********* Lists
+******** cmake-server
+******** cmake-modules
+******** cmake-packages
+******** cmake-variables
+********* Variables that Provide Information
+********* Variables that Change Behavior
+********** CMAKE_BUILD_TYPE
+- Specifies the build type on single--configuration generators.
+********* Variables that Describe the System
+********* Variables that Control the Build
+********* Variables for Languages
+********* Variables for CTest
+********* Variables for CPack
+***** Download
+- https://cmake.org/download/
+***** Link
+- https://cmake.org/
+
+- [[http://www.wagavulin.jp/entry/2011/11/27/222636][CMakeを使ってみた（1）経緯と簡単なアプリケーション - wagavulin's blog]]
+- [[http://www.wakayama-u.ac.jp/~chen/cmake/cmake.html][CMakeの勧め]]
+
+- [[https://qiita.com/mrk_21/items/25ee7f00cebb9934b472][CMake:CTest - Qiita]]
 ** Memo
 *** Standard C++
 - C++17 : 2017年予定
@@ -82,6 +185,8 @@
 
 ** Link
 - [[https://isocpp.org/std/the-standard][The Standard - THE C++ PROGRAMMING LANGUAGE]]
+
+- [[http://ezoeryou.github.io/cpp-book/C++11-Syntax-and-Feature.xhtml#][C++11の文法と機能(C++11:Syntax and Feature)]]
 
 - [[https://github.com/cplusplus/draft][C++ 20 : C++ Stardard Draft Sources]]
 - [[http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4659.pdf][2017: March 2017 working draft, C4659.pdf]]

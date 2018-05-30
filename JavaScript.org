@@ -388,11 +388,37 @@
 - https://developer.mozilla.org/en-US/docs/Web/API
 - [[https://developer.mozilla.org/ja/docs/DOM/DOM_Reference][DOMリファレンス - MDN]]
 ***** Console
+****** About
+- ブラウザのデバッグコンソールへアクセスする機能を提供する。
+  標準化された仕様でなく詳細な動作はブラウザによって異なるが、一般的に共通の機能セットがサポートされる
 ****** Methods
+******* Console.assert()
+******* Console.clear
+******* Console.debug()
+- log()の別名
+******* Console.dir() --非標準
+- 指定したJavaScriptオブジェクトプロパティの、対話型リストを表示する。
+******* Console.error()
+- エラーメッセージを出力する
+******* Console.group()
+- 以降の出力を別のレベルにインデントする、新たなインライングループを作成する
+******* Console.groupEnd()
+- インライングループから抜ける
+******* Console.info()
+- メッセージタイプのログ情報を出漁
 ******* Console.log()
-- 
-  Output a message to the Web Console.
-
+- Output a message to the Web Console.
+******* Console.table()
+- 表形式のデータを、テーブルを使用して表示する。
+******* Console.time()
+******* Console.timeEnd()
+******* Console.trace()
+- スタックトレースを出力する
+******* Console.warn()
+- 警告メッセージを出力する
+****** Link
+- MDNでなくChrome版
+  [[https://developers.google.com/web/tools/chrome-devtools/console/console-reference?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3#consolegroupobject-object][Console API Reference - Tools for Web Developers]]
 ***** Document
 ****** Properties
 ******* Extension for HTML document
@@ -490,6 +516,14 @@
 - 
   Loads a page from session history, identified by its relative location to the current page.
 
+***** HTMLElement
+- https://developer.mozilla.org/ja/docs/Web/API/HTMLElement
+****** About
+****** Properties
+******* HTMLElement.style
+- 要素のstyle属性の宣言を表すCSSStyleDeclaration。
+****** Methods
+****** Events
 ***** Window
 - [[https://developer.mozilla.org/ja/docs/Web/API/Window][window - MDN]]
 ****** Property
@@ -520,6 +554,13 @@
   ex: intervalId = window.setInterval(animate, 500)
 ******* WindowTimers.setTimeout()
 ****** Constractor
+***** WindowOrWorkerGlobalScope (mixin)
+****** Properties
+****** Methods
+******* WindowOrWorkerGlobalScope.setInterval()
+****** Implemented by
+- Window
+- WorkerGlobalScope
 ***** Worker
 - バックグラウンドで行われるタスクを実行することができる。そのタスクは簡単に生成され、作成元にメッセージを送り返すことができる。
 ***** XMLHttpRequest
@@ -572,6 +613,10 @@
 ******* XMLHttpRequest.state
 ****** Event
 ******* onreadystatechange
+****** Memo
+- JSなどウェブブラウザ搭載のスクリプト言語でサーバとのHTTP通信を行うためのAPI。Ajaxの基幹技術。
+- ページ全体を更新する必要なしに、データを受け取ることができる。
+  名前はXMLHttpRequestだが、XMLだけでなくあらゆる種類のデータを受け取ることができ、HTTP以外の(fileおよびftp含む)プロトコルにも対応している。
 **** Misc.
 ***** Lexical grammer 字句文法
 ****** Control characters 制御文字
@@ -642,6 +687,12 @@
 - [[file:DOM.org][DOM.org]]
 *** XMLHttpRequest
 - [[https://xhr.spec.whatwg.org/][XMLHttpRequest - Living Standard]]
+*** data URIs
+- data:スキームはデータをインラインで埋め込むことができる
+  URLスキームなので、http: と似たような扱い。
+**** Link
+- https://developer.mozilla.org/ja/docs/data_URIs
+- https://tools.ietf.org/html/rfc2397
 *** Memo
 **** Objects
 ***** Properties
@@ -814,7 +865,10 @@
 ***** Ctrl-Shift-J or F12
 
 ** Edition
-*** 5
+*** ECMAScript 4
+- 標準化作業が分裂したため2008/8に破棄された
+*** ECMAScript 5 (2009)
+- 2009年に標準化
 *** 5.1
 *** 6, 2015
 - 2015/6/17公開
@@ -1052,6 +1106,9 @@
 - [[https://angularjs.org/][AngularJS]]
 - [[http://js.studio-kingdom.com/angularjs/guide/introduction][AngularJS入門 - js STUDIO]]
 **** Electron
+**** Vue.js
+***** Link
+- http://kakakakakku.hatenablog.com/entry/2018/02/18/113426
 **** Lint
 ***** ESLint
 - Pluggable linting utility
@@ -1155,6 +1212,8 @@
 - [[http://postd.cc/the-state-of-web-components/][Web Componentsの現状 - POSTD]]
 - [[http://www.h2.dion.ne.jp/~defghi/webc/webc.htm][Web Copmonetsの基本的な使い方・まとめ]]
 - [[http://www.h2.dion.ne.jp/~defghi/webc/webc.htm][Web開発者に革命をもたらす!「Web Components」超入門 - LIG.inc]]
+*** Link
+- [[http://iwasiman.hatenablog.com/entry/2018/04/23/200000][【JavaScript】３大フレームワーク Angular, React, Vue.jsを比べてみよう (2018年4月) - Rのつく財団入り口]]
 ** Coding Standard
 *** SPA/mmikowski
 - [[https://github.com/mmikowski/spa/blob/master/js-code-standard.pdf][JavaScript code standard]]
@@ -1207,6 +1266,10 @@
     //関数
   })();
 
+**** その他の記号
+- ()で囲まず、!,+,-,~などでも実行可能。
+  !function(){console.log("do")}();など。
+  https://qiita.com/ukiuni@github/items/5f3d8620187905aea3d4
 *** トラッキングコード
 - 
   [[http://web-tan.forum.impressrd.jp/l/6342][Googleアナリティクスとは／衣袋教授のGoogleアナリティクス入門講座 コーナーの記事一覧 - Web担当者Forum]]
@@ -1223,6 +1286,29 @@
 *** プロトタイプチェーン、スコープチェーン
 - プロパティ（メソッド）など、オブジェクトの所有する値はプロトタイプチェーン、
   変数（関数？）などはスコープチェーンで解決するのではないか、と思われる。
+*** ==と===の違い
+- == : 等価演算子
+  数値と文字列を比較する場合、文字列は数値に変換される。
+- === : 厳密等価演算子
+  オペランド同士が肩を変換することなく比較される
+- https://qiita.com/PianoScoreJP/items/e43d70ec188c6fed73ed
+*** strictモード
+- "use strict";
+- EMCAScript 5以降。厳格モード。
+  エラーでないが落とし穴になる事柄をエラーに、また最適化を困難にする誤りを修正する。
+- strict/not strictの違い
+  - 構文エラー
+  - 新しいランタイムエラー
+    - 日宣言変数への値設定
+    - 設定不可能なプロパティの削除
+    - ポイズン引数と関数プロパティ
+  - 意味的な違い
+    - 関数呼び出しでのthin
+    - argumentsが名前付きの関数の引数をエイリアスしない
+    - evalへの変更
+
+- https://developer.mozilla.org/ja/docs/Web/JavaScript/Strict_mode
+- https://developer.mozilla.org/ja/docs/Web/JavaScript/Strict_mode/Transitioning_to_strict_mode
 ** Link
 - [[http://www.ecma-international.org/publications/standards/Ecma-262.htm][Standard ECMA-262 - ecma INTERNATIONAL]]
 - [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
@@ -1240,3 +1326,5 @@
 - [[http://qiita.com/mizchi/items/3bbb3f466a3b5011b509][春からはじめるモダンJavaScript / ES2015 - Qiita]]
 - [[http://www.slideshare.net/yuka2py/javascript-23768378][最強オブジェクト指向言語 JavaScript 再入門！ - SlideShare]]
 - [[http://azu.github.io/slide/nodejs-es6/how-to-learn.html][どうやってECMAScrit6を学び始めるか]]
+
+- [[https://postd.cc/how-to-become-a-great-javascript-developer/][優秀なJavaScriptの開発者になるための5か条 - POSTD]]

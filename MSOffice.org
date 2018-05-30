@@ -538,6 +538,7 @@
 - Microsoftによるファイル格納に関する技術で、XMLと非XMLファイルをパッケージするための規格。
 **** Link
 - [[http://www.ecma-international.org/publications/standards/Ecma-376.htm][Standard ECMA-376 Office Open XML File Formats]]
+- [[http://mitsutakauomi.com/?p=362][Excelブック(*.xlsx)形式概要 - OpenBook]]
 - [[http://chuwa.iobb.net/tech/archive/2012/10/docx.html][docxを解剖してみる - 手抜きLab@DTPの現場]]
 
 ** VBA

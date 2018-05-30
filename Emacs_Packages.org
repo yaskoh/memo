@@ -803,6 +803,21 @@
 ***** view-lossage (C-h l)
 - 
   これまでに打鍵した最後の100文字を表示する
+*** hexl
+**** Functions
+***** hexl-mode
+- (hexl-mode &optional ARG)
+***** hexl-mode-exit
+***** hexl-insert-decimal-char (C-M-d)
+***** hexl-insert-octal-char (C-M-o)
+***** hexl-insert-hex-char (C-M-x)
+***** hexl-insert-hex-string
+- (hex-insert-hex-string STR ARG)
+  Insert hexadecimal string STR at point ARG times.
+**** Keybinds
+***** C-M-d : hexl-insert-decimal-char
+***** C-M-o : hexl-insert-octal-char
+***** C-M-x : hexl-insert-hex-char
 *** ielm
 - Inferior Emacs Lisp Mode
   this acts like an intreactive Lisp interpreter.

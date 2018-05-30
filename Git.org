@@ -557,5 +557,8 @@ SSHは両方可能。
 - https://qiita.com/Teloo/items/95a860ae276b49edb040
 - https://qiita.com/osamu1203/items/cb94ef9da02e1ec3e921
 ** Link
+- [[https://git-scm.com/book/ja/v2][Book - git]]
+- [[https://github.com/Shinpeim/introduction-to-git][Gitをはじめからていねいに - Shinpeim/introduction-to-git - GitHub]]
+
 - [[https://www.atlassian.com/ja/git/tutorial][Gitチュートリアル Atlassian]]
 

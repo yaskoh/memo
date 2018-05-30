@@ -363,19 +363,34 @@
 - dd [operands ...]
 - convert and copy a file
   The dd utility copies the standard input to the standard output.
-  
+- dataset definitionの略。元IBMメインフレームのDD Statementからきているため、引数の構文が他のUnixコマンドと異なる。
 ***** Options
-****** bs
+****** bs=n
 - bs=n
   Set both input adn output block size to n bytes, supersending the ibs and obs operands.
-****** cbs
+****** cbs=n
 - cbs=n
+****** count=n
+- copy only n input blocks
+****** files=n
+- Copy n input files before terminating.
 ****** if
 - if=file
   Read input from file instead of the standard input.
 ****** of
 - of=file
   Write output to file instead of the standard output.
+****** seek=n
+- Seek n blocks from beginning of the output before copying.
+****** conv=value[,value ...]
+- Where value is one of the symbols 
+
+******* Values
+******** ascii, oldascii
+******** block
+******** ebcdic
+******** notrunc
+- Do not truncate the output file.
 **** df
 - 
   ファイルシステムについて、使用領域と空き領域のサイズを表示する。
@@ -644,6 +659,7 @@
 ****** Overall Options
 ******* -c
 - アセンブルまで行いオブジェクトファイルを出力する
+- Compile or assemble the source file, but do not link.
 ******* -S
 - コンパイルまでを行いアセンブリファイルを出力する
 ******* -E
@@ -710,6 +726,13 @@
 - Add the directory 'dir' to the head of the list of directories to be searched for header file.
 ******* -Ldir
 - Add directory 'dir' to the list of directories to be searched for -l.
+****** Machine Dependent Options
+******* ARM
+******* Darwin
+******* GNU/Linux
+******* i386 ad x86-64
+******** -m32 / -m64
+- Generate code for a 32-bit or 64-bit environment.
 ****** Code Generation Options
 ******* -fPIC
 - emit position-independent code, suitable for dynamic linking and avoiding any limit on the size of the global offset table.
@@ -1054,15 +1077,34 @@
   searches the file /var/log/wtmp and displays a list of all users logged in.
 
 **** ld
+- See also "[[file:GNULinker.org][GNULinker.org]]"
 - linker, linker LoaDer
   combines serevral object files and libraries, resolves references, and produces an output file.
 - ld files... [options] [-o outputfile]
-***** Options
+***** GNU Options
+****** -e entry, --entry=entry
+- Use 'entry' as teh explicit symbol for beginning execution of your program, rather than default entry point.
+****** -m emulation
+- Emulate the 'emulation' linker.
 ****** -Ifile, --dynamic-linker=file
 - Set the name of the dynamic linker.
   This is only meaningful when generating dynamically linked ELF executables.
+****** -T scriptfile, --script=scriptfile
 ****** --dll-verbose, --verbose[=NUMBER]
 - Display the version number for ld and list the linker emulations supported.
+***** BSD Options
+****** Options that control the kind of output
+****** Options that control libraries
+****** Options that control additional content
+****** Options when creating a dynamic library (dylib)
+****** Options when creating a main executable
+****** Options when creating bundle
+****** Options when creating an object file
+****** Options that control symbol resolution
+****** Options for introspecting the linker
+****** Options for controling symbol table optimizations
+****** Options for Bitcode build flow
+****** Really used Options
 **** ld.so, ld-linux.so
 - 動的なリンカー/ローダー
   ld.soはa.outバイナリ、ld-linux.so*はELFバイナリを使う。
@@ -1352,21 +1394,57 @@
   mkswap /dev/sbd2
 
 **** mount
+***** Linux
+- mount a filesystem
+****** Synopsis
+****** Opiotns
 - 
   現在マウントされているファイルシステムを調べる。
-- --bind
-  すでにマウントされているツリーの一部を別の場所にマウントする。
-- -v verbose
-- -t
-  ファイルシステムのタイプを指定
+******* --bind
+- すでにマウントされているツリーの一部を別の場所にマウントする。
+******* -v, --verbose
+******* -t vstype
+- ファイルシステムのタイプを指定
    ext3, ntfs, sysfs, devpts, proc, tmpfsなど。
 
+***** BSD
+- mount file systems
+****** Synopsis
+****** Options
+******* -a
+******* -d
+******* -f
+******* -o
+******* -r
+******* -t lfs | external type
+******* -u
+******* -v
+******* -w
+- Mount the file system read-write.
 **** mpstat
 - Report processors related statistics
   
 - -A
   equivalent to specifying "-I ALL -u -P ALL"
 
+**** mtools
+- utilities to access DOS disks in Unix.
+- https://www.gnu.org/software/mtools/manual/mtools.html
+***** mcopy
+- copy MSDOS files to/from Unix
+  The mcopy command is used to copy MS-DOS files to and from Unix.
+***** mformat
+- add an MSDOS fliesystem to a low-level formatted floppy disk
+****** Syntax
+- mformat [options] drive:
+****** Options
+******* -B boot_sector
+- Use the boot sector stored in the given file or device instead fo using its own.
+******* -C
+- Creates the disk image file to install the MS-DOS file system on it.
+******* -f size
+- Specifies the size of the DOS file system to format.
+******* -i
 **** mv
 - 
   リネームとかファイルの移動とか。
@@ -1432,6 +1510,8 @@
 - Dissassemble
   Display the assembler mnemonic for the machine instructions from objfile.
 ****** -h, --section-headers, --headers
+****** -i, --info
+- Display a list showing all architectures 
 ****** -j セクション名
 - 解析対象オプションの選択
 ****** -s

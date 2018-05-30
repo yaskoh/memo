@@ -637,3 +637,5 @@
 ** Link
 - [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
 - [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]
+
+- [[https://qiita.com/matarillo/items/549493f6bb7e36c99443][サーバサイドでExcelブックを生成するいくつかの方法 - Qiita]]
