@@ -54,9 +54,14 @@
 
 *** rdp
 *** reload
+- vagrant reload [vm-name]
 - restarts vagrant machine, loads new Vagrantfile configration
 - 仮想マシンを再起動する
 
+**** --[no-]provision
+- Enable ordisable provisioning
+**** --provision-with-x,y,z
+- Enable only certain provisioners, by type or by name.
 *** resume
 - 
   一時停止(suspend)からの復帰

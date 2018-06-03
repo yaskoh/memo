@@ -1328,3 +1328,5 @@
 - [[http://azu.github.io/slide/nodejs-es6/how-to-learn.html][どうやってECMAScrit6を学び始めるか]]
 
 - [[https://postd.cc/how-to-become-a-great-javascript-developer/][優秀なJavaScriptの開発者になるための5か条 - POSTD]]
+
+- [[https://gist.github.com/azu/027859e08e284cb8dfe7][JavaScriptのレベル別書籍のまとめ - azu/js.md]]

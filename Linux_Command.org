@@ -263,6 +263,12 @@
 ****** -dM
 - ソースファイル中で定義されている全てのマクロについて、宣言文を表示する
 **** crontab
+- maintain crontab files for individual users
+***** Synopsis
+- crontab [-u user] file
+- crontab [-u user] [-i] {-e | -l | -r}
+***** Options
+- 
 **** curl
 ***** Options
 ****** -f, --fail
@@ -462,9 +468,11 @@
   display a line of text
   メッセージを表示する
 
-- -n
-  do not output the trailing newline
-  
+***** Options
+****** -e
+****** -n
+- do not output the trailing newline
+   
 **** efivar
 - Tool to manipulate UEFI variables
 - efivar [OPTION...]
@@ -1462,17 +1470,26 @@
 - Causes nasm to generate debug information in selected format.
 ****** -@ filename
 **** nc
-- 
-  netcat.
+- netcat.
   arbitrary TCP and UDP connections and listens.
   nc utility is used for just about anything under the sun involving TCP and UDP.
-  
-- -v
-  give more verbose output.
-  
-- -z
-  Specifies that nc should just scan for listening daemons, without sending any data to them.
 
+***** Options
+****** -l
+- used to specify that nc should listen for an incoming connection rather than initiate a connection to a remote host.
+
+****** -p
+- source port
+
+****** -v
+- give more verbose output.
+  
+****** -z
+- Specifies that nc should just scan for listening daemons, without sending any data to them.
+
+***** Memo
+****** Port scan
+- 
 **** nm
 - list symbols from object files. symbol NaMe
 ***** Symbol
