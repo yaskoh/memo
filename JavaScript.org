@@ -1223,6 +1223,12 @@
 *** プロトタイプチェーン、スコープチェーン
 - プロパティ（メソッド）など、オブジェクトの所有する値はプロトタイプチェーン、
   変数（関数？）などはスコープチェーンで解決するのではないか、と思われる。
+*** 「型」を取得する
+- typeof <object>
+- toString.call(<object>);
+- <object>.constructor
+- 
+- https://qiita.com/south37/items/c8d20a069fcbfe4fce85
 ** Link
 - [[http://www.ecma-international.org/publications/standards/Ecma-262.htm][Standard ECMA-262 - ecma INTERNATIONAL]]
 - [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]

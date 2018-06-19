@@ -7,8 +7,7 @@
   https://github.com/yascentur/RictyDiminished
 
 ** Inconsolata
-- 
-  http://levien.com/type/myfonts/inconsolata.html
+- http://levien.com/type/myfonts/inconsolata.html
 
 ** M+とIPAの合成フォント
 - 
@@ -51,3 +50,6 @@
 ******* SVG
 ******* ベンダー独自
 **** ファイル形式
+*** Ligature 合字
+- [[https://ja.wikipedia.org/wiki/%E5%90%88%E5%AD%97][合字 - Ligature]]
+- [[http://liginc.co.jp/web/design/font/29064][合字（リガチャ）が美しいフォント7選 - LIG]]

@@ -1,4 +1,26 @@
 * Subversion
+** Subversion
+*** Documentation
+*** Memo
+*** Link
+- [[http://subversion.apache.org/packages.html][SUBVERSION]]
+-
+** VisualSVNServer
+*** Link
+- https://www.visualsvn.com/server/
+** TortoiseSVN
+*** Documentation
+**** Manual (Japanese)
+- [[https://tortoisesvn.net/docs/release/TortoiseSVN_ja/index.html][TortoiseSVN Manual (Japanese)]]
+***** 序章
+***** 1.さぁはじめましょう
+***** 2.バージョン管理の基本概念
+***** 3.リポジトリ
+***** 4.日常の使用ガイド
+***** 5.プロジェクトモニター
+***** 6.SubWCRevプログラム
+***** 7.IBugtraqProviderインターフェース
 
-** Link
-- [[http://tracpath.com/bootcamp/learning_tortoisesvn.html][TortoiseSVN縺ｮ蝓ｺ遉主級蠑ｷ - tracpath]]
+*** Link
+- [[https://tortoisesvn.net/downloads.html][TortoiseSVN]]
+

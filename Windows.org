@@ -853,7 +853,14 @@
 
 ***** Key設定
 ****** PC
-- 内容(2017/12/18)
+******* 2018/6/18
+- 00 00 00 00 : header version[4byte]
+  00 00 00 00 : flags[4byte]
+  03 00 00 00 : エントリ数、terimnate含む
+  1D 00 3A 00 : 左Ctrl で CapsLock を上書
+  79 00 38 E0 : 変換 で 右Alt を上書
+  00 00 00 00 : terminate
+******* 2017/12/18
   00 00 00 00 : header version[4byte]
   00 00 00 00 : flags[4byte]
   04 00 00 00 : エントリ数、terimnate含む
