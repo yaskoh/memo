@@ -76,6 +76,9 @@
 *** 1980s- : VHDL
 - a hardware description language used in electronic design automation
 - ハードウェア記述言語の一種。FPGAやASICなどの設計で使う。
+*** 1977- : m4
+- マクロプロセッサ。ブライアン・カーニハンとデニス・リッチーが設計した汎用テキストマクロプロセッサ。
+- http://www.nurs.or.jp/~sug/soft/super/m4.htm
 *** 1977- : AWK
 *** 1972- : C
 *** 1970s?- : SAS 

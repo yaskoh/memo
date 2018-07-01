@@ -228,6 +228,20 @@
 ******* Search
 ******* Sensors
 ******* What's New
+****** More Tools
+******* Animations
+******* Changes
+******* Coverage
+******* JavaScript Profiler
+******* Layers
+******* Network conditions
+******* Performance monitor
+******* Quick source
+******* Remote devices
+******* Rendering
+******* Request blocking
+******* Search
+******* Sensors
 ***** Link
 - https://developers.google.com/web/tools/chrome-devtools/?hl=ja
 **** Extensions

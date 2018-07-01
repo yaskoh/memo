@@ -113,6 +113,7 @@
 ********* Array.prototype
 ******** Methods
 ********* Array.from()
+- 配列型(array-like)や反復型(iterable)オブジェクトから、新しいArrayインスタンスを生成する。
 ********* Array.of()
 ******* Array Instance / Array.prototype
 ******** Properties
@@ -122,6 +123,11 @@
 ********* Mutator methods 変更メソッド
 ********** Array.prototype.push()
 - 配列の最後に1個以上の要素を追加し、新しい配列の長さを返す。
+********** Array.prototype.sort()
+- 配列内で要素を整列し、配列を返す。
+*********** Syntax
+- arr.sort([compareFunction])
+  
 ********* Accessor methods アクセサメソッド
 ********** Array.prototype.join()
 - 配列の全ての要素を結合した文字列を返す
@@ -894,146 +900,64 @@
 **** Underscore.js
 - [[file:Underscorejs.org][Underscorejs.org]]
 **** node.js
-***** v4.5.0
-****** Command
-- node [options] [v8 options] [script.js | -e "script"] [arguments]
-******* Options
-******** -v, --version
-- Print node's version
-******** -h, --help
-- Print node command line options.
-******** -e, --eval "script"
-- Evaluate the following argument as JavaScript.
-******** -p, --print "script"
-- Identical to -e but prints the result.
-******* Environmental Variables
-******** NODE_PATH=path[:...]
-******* Link
-- [[https://nodejs.org/dist/latest-v4.x/docs/api/cli.html][Command Line Options - Node.js]]
-****** Global Objects
-******* Class:Buffer
-******* __dirname
-******* __filename
-******* clearImmediate(immediateObject)
-******* clearInterval(intervalObject)
-******* clearTimeout(timeoutObject)
-******* console
-- <Object>
-  Used to print to stdout and stderr.
-  
-******* exports
-- 
-  A reference to the "module.exports".
-
-******* global
-- <Object> The global namespace object
-  In browsers, the top-level scope is the global scope.
-  In Node.js, the top-level scope is not the global scope, and variables inside an Node.js module will be local to that module.
-******* module
-- <Object>
-  A reference to the current module.
-  In particular "module.exports" is used for defining what module exports and makes available through "require()".
-  "module" isn't actually a global but rather local to each module.
-
-******* process
-- <Object>
-  The process object.
-******* require()
-- <Function>
-  To reqire modules.
-  "require" isn't actually a global but rather local to each module.
-******* setImmediate(callback[,arg][, ...])
-******* setInterval(callback, delay[, arg][, ...])
-******* setTimeout(callback, delay[, arg][, ...])
-******* Link
-- [[https://nodejs.org/dist/latest-v4.x/docs/api/globals.html][Globals - Node.js]]
-****** Core Modules
-******* Assert
-******* Console
-******** Class:Console
-********* new Console(stdout[, stderr])
-********* consle.assert(value[, mesage][, ...])
-********* console.dir(obj[, options])
-********* console.error([data][, ...])
-********* console.info([data][, ...])
-********* console.log([data][, ...])
-********* console.time(label)
-********* console.timeEnd(label)
-********* console.trace(mesage[, ...])
-********* console.warn([data][, ...])
-******* HTTP
-******** Class:http.Agent
-******** Class:http.ClientRequest
-******** Class:http.Server
-******** Class:http.ServerResponse
-******** Class:http.IncomingMessage
-******** http.METHODS
-******** http.STATUS_CODES
-******** http.createClient([port][,host])
-******** http.createServer([requestListener])
-- Returns a new instance of http.Server.
-  The "requestListener" is a function which is automatically added to the 'request' event.
-******** http.get(options[,callback])
-******** http.globalAgent
-******** http.request(options[, callback])
-******* Net
-******** Class:net.Server
-- The class inherits from net.Srever and has some additional events
-********* Event:'checkContinue'
-********* Event:'clientError'
-********* Event:'connect'
-********* Event:'connection'
-********* Event:'request'
-********* Event:'upgrade'
-********* server.close([callback])
-********* server.listen(handle[,callback])
-********* server.listen(path[,callback])
-********* server.listen(port[,callback])
-********* server.listen(handle[,callback])
-********* server.listen(handle[,callback])
-******** Class:net.Socket
-***** Link
-- [[https://nodejs.org/en/][node.js]]
-****** v4.5.0
-- [[https://nodejs.org/dist/latest-v4.x/docs/api/cli.html#cli_command_line_options][Command Line Options - Node.js v4.5.0 Documentation]]
-
-****** Tutorial
-- http://www.nodebeginner.org/index-jp.html
-- http://rfs.jp/sb/javascript/node
-- http://libro.tuyano.com/index2?id=1115003
-- http://sakuratan.biz/archives/3101
-
+- [[file:Nodejs.org][Nodejs.org]]
 **** npm
 - node package manager
-***** CLI Commands
--
-****** npm
-- Synopsis
-  npm <command> [args]
+***** Documentation
+- https://docs.npmjs.com/
+****** CLI Commands
+******* npm
+******** Synopsis
+- npm <command> [args]
 
-****** access
-****** install
-- 
-  Install a package
+******* access
+******* adduser
+******* audit
+******* bin
+******* bugs
+******* build
+******* bundle
+******* cache
+******* ci
+******* completion
+******* config
+******* ls
+******* install
+- Install a package
 
-- Alias
-  npm i
+******** Synopsis
+- npm install (with no args, in package dir)
+- ...
+- npm install <tarball url>
+- npm install <folder>
 
-- Synopsis
-  npm install (with no args, in package dir)
+******** Alias
+- npm i
 
-******* arguments
-******** --dry-run
-******** -f, --force
-******** -g, --global
+******** Options
+********* --dry-run
+********* -f, --force
+********* -g, --global
 - 
   npm to install the package globally rather than locally.
 
+******* update
+- Update a package
+******** Synopsis
+- npm update [-g] [<pkg> ...]
+******** Aliases
+- up
+- upgrade
+******** Flags
+********* -g
+- this command will update globally installed packages.
+****** Using npm
+****** Configuring npm
 ***** Link
 - [[https://www.npmjs.com/][npm]]
 - [[https://docs.npmjs.com/][docs - npm]]
 
-**** Modules
+**** npm Modules
 ***** browserify
 - browser-side require() the node way
 ***** EJS
@@ -1095,6 +1019,9 @@
 ***** hexo
 - A fast, simple & powerful blog framework
 - https://hexo.io/
+***** nodegrind
+- Profile nodejs applications with kcachegrind
+- https://www.npmjs.com/package/nodegrind
 ***** Socket.io
 **** Babel
 **** React

@@ -1,84 +1,87 @@
 * Linux Packages
 - 必要に応じ、言語別とする、C関連へ移動するなどするかも。
 ** Packages
-*** LFS
-**** LSB
-***** Core
-****** Bash
-****** Bc
-****** Binutils
-****** Coreutils
-****** Diffutils
-****** File
-****** Findutils
-****** Gawk
-****** Grep
-****** Gzip
-****** M4
-****** Man-DB
-****** Ncurses
-****** Procps
-****** Psmisc
-****** Sed
-****** Shadow
-****** Tar
-****** Util-linux
-****** Zlib
-***** Runtime
-****** Perl
-**** Etc
-***** Acl
+*** tmp - Distributions
+**** LFS
+***** LSB
+****** Core
+******* Bash
+******* Bc
+******* Binutils
+******* Coreutils
+******* Diffutils
+******* File
+******* Findutils
+******* Gawk
+******* Grep
+******* Gzip
+******* M4
+******* Man-DB
+******* Ncurses
+******* Procps
+******* Psmisc
+******* Sed
+******* Shadow
+******* Tar
+******* Util-linux
+******* Zlib
+****** Runtime
+******* Perl
+***** Etc
+****** Acl
 - アクセス制御リストを管理するツールを提供する。
   ファイルやディレクトリに対して、きめ細かく様々なアクセス権限を定義する
-***** Attr
-***** Autoconf
-***** Automake
-*** Debian
+****** Attr
+****** Autoconf
+****** Automake
+**** Debian
 - https://www.debian.org/distrib/packages
-**** apt-transport-https
+***** apt-transport-https
 - https download transport for APT
-**** ca-certificates
+***** ca-certificates
 - Common CA certificates
-**** gnupg2
+***** gnupg2
 - GNU privacy guard
-**** software-properties-common
+***** software-properties-common
 - manage the repositories that you install software from
-*** Ubuntu
+**** Ubuntu
 - https://packages.ubuntu.com/
-**** liblzma-dev
+***** build-essential
+- https://packages.ubuntu.com/xenial/build-essential
+***** liblzma-dev
 - XZ-format compression library - development
-**** zlib1g-dev
+***** zlib1g-dev
 - compression library - development
-*** Arch Linux
+**** Arch Linux
 - https://www.archlinux.org/packages/
-**** Core
-***** base
-****** bash
+***** Core
+****** base
+******* bash
 - The GNU Bourne Again shell
-******* Degendencies
+******** Degendencies
 - glibc
 - ncurses
 - readline
 - bash-completion
-****** bzip2
-****** coreutils
+******* bzip2
+******* coreutils
 - The basic file, shell and text manipulation utilities of the GNU operating system
-****** cryptsetup
-****** device-mapper
-****** dhcpcd
-****** filesystem
+******* cryptsetup
+******* device-mapper
+******* dhcpcd
+******* filesystem
 - Base Arche Linux files
-****** file
+******* file
 - File type identification utility
-****** gawk
-****** gcc-libs
+******* gawk
+******* gcc-libs
 - Runtime libraries shipped by GCC
-****** glibc
+******* glibc
 - GNU C Library
-****** grep
-****** gzip
-****** iproute2
-****** inetutils
+******* grep
+******* gzip
+******* iproute2
+******* inetutils
 - http://archive.linux.or.jp/JF/JFdocs/LFS-BOOK/chapter06/inetutils.html
 - 概要
   - ftp
@@ -93,64 +96,63 @@
   - telnet
   - tftp
   - traceroute
-****** iputils
-****** less
-****** linux
-****** lvm2
-****** man-pages
-****** nano
-****** pacman
-****** perl
-****** sed
-****** shadow
+******* iputils
+******* less
+******* linux
+******* lvm2
+******* man-pages
+******* nano
+******* pacman
+******* perl
+******* sed
+******* shadow
 - Password and account management tool suite with support for shadow files and PAM
-****** util-linux
+******* util-linux
 - Miscellaneaus system utilities for Linux
-****** tar
-****** textinfo
-****** vi
-****** which
-***** base-devel
-****** autoconf
-****** automake
-****** binutils
+******* tar
+******* textinfo
+******* vi
+******* which
+****** base-devel
+******* autoconf
+******* automake
+******* binutils
 - A set of programs to assemble and manipulate binary and object files
   https://www.gnu.org/software/binutils/
-******* ld
-******* as
-****** bison
-****** flex
-****** gcc
+******** ld
+******** as
+******* bison
+******* flex
+******* gcc
 - The GNU Compiler Collection - C and C++ frontends
-******* Dependencies
+******** Dependencies
 - binutils
 - gcc-libs
-****** gettext
-****** make
-****** patch
-****** pkg-config
-****** sudo
-****** zlib
-******* Dependencies
+******* gettext
+******* make
+******* patch
+******* pkg-config
+******* sudo
+******* zlib
+******** Dependencies
 - glibc
-***** etc
-****** ncurses
+****** etc
+******* ncurses
 - System V Release 4.0 curses emulation library
   http://invisible-island.net/ncurses/ncurses.html
-****** readline
+******* readline
 - GNU readline library
-**** Extra
-***** clang
-***** git
+***** Extra
+****** clang
+****** git
 - the fast distributed version control system
-**** Multilib
-**** Testing
+***** Multilib
+***** Testing
 *** tmp
 **** binutils
-- BINary UTILitieS
-***** ld
-**** GCC
-- Gnu Compiler Collection
+- [[file:GNUSoftware.org][GNUSoftware.org]]
+**** GCC / GNU Compiler Collection
+- [[file:GNUSoftware.org][GNUSoftware.org]]
 **** libjpeg
 - C library for reading and writing JPEG image files.
 **** libxpm

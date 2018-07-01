@@ -480,6 +480,17 @@ SSHは両方可能。
 *** Git Commits
 *** Git Diffs
 *** other
+** Tools
+*** GitHub
+**** Webページの公開
+- https://qiita.com/budougumi0617/items/221bb946d1c90d6769e9
+***** GitHubPages - ユーザアカウントのページ
+- Create a reository named "username.github.io"
+  https://pages.github.com/
+***** リポジトリごとのページ
+- 以下どちらか
+  - masterにdocsディレクトリを作る
+  - gh-pagesブランチを切る
 ** Reverse lookup
 *** ローカルの変更を取り消す
 - 
