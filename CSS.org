@@ -26,7 +26,7 @@
 **** Refining
 ***** CSS Will Change Level 1
 - CR
-*** CSS 2.1
+*** CSS 2.1/2.2
 **** Completed
 ***** CSS Level 2 Revison 1
 ****** Syntax and basic data types
@@ -383,6 +383,15 @@
 - user origin
 - author origin
 ****** Changes
+** Functions(tmp)
+*** transforms
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transforms
+- Specification: CSS Transforms Level 1 (WD)
+  https://drafts.csswg.org/css-transforms/
+**** Properties
+***** rotate
+***** scale
+***** transform
 ** Properties
 *** Foundamentals
 **** box
@@ -1015,6 +1024,7 @@
   CSS2の改訂版。CSS2の定義が不明瞭で各ユーザーエージェントに非互換が生じたため、
   曖昧な記述を明確にするための改定が行われた。
   ベンダは2002年ごろからCSS2.1を基本仕様と見なしている。
+**** CSS Level 2.2
 **** CSS Level 3
 - CSS Level 3 uses CSS2.1 spec as its core, and builds on Level 2 module by module.
   Each module adds functionality and/or replaces part of the CSS 2.1 spec.

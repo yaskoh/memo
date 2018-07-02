@@ -451,10 +451,46 @@
 ***** DOM References
 - https://developer.mozilla.org/ja/docs/DOM/DOM_Reference
 ****** DOM Interface
+******* Attr
+******* CharacterData
+******* Comment
+******* CustomEvent
+******* Document
+******* DocumentFragment
+******* DOMError
+******* DOMException
+******* DOMString
+******* DOMTimeStamp
+******* DOMStringList
+******* Element
+******* Event
+******* EventTarget
+******* HTMLCollection
+******* MutationObserver
+******* MutationRecord
+******* Node
+******* NodeIterator
+******* NodeList
+******* ParentNode
+******* Range
+******* Text
+******* URL
+******* Window
+******** Properties
+******** Methods
+********* setInterval()
+- https://developer.mozilla.org/ja/docs/Web/API/Window/setInterval
+- WindowOrWorkerGlobalScope.setInterval()
+- 一定の遅延間隔を置いて関数やコードスニペットを繰り返し呼び出す。
+********** Syntax
+*********** Arguments
+*********** Return value
+******** Events
+******* Worker
 ****** HTML Interface
 ******* HTML element IFs
 ******* Other HTML IFs
-****** SGV Interfaces
+****** SVG Interfaces
 ******* SVG element IFs
 ******* SVG Data type IFs
 ******** Static
@@ -519,7 +555,7 @@
 - [[https://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/Overview.html#contents][Document Object Model (DOM) Level 2 Events Specification - W3C]]
 - [[https://en.wikipedia.org/wiki/DOM_events][DOM events - Wikipedia]]
 ** Link
-- [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
+- [[https://dom.spec.whatwg.org][DOM - Living Standard]]
 - [[DOM Standard ("DOM4") 日本語訳]]
 
 - [[https://www.w3.org/TR/dom/][W3C DOM4 - W3C]]

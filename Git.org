@@ -531,6 +531,16 @@ SSHは両方可能。
 **** Link
 - https://git-lfs.github.com/
 - https://github.com/git-lfs/git-lfs
+*** GitHub
+**** Webページの公開
+- https://qiita.com/budougumi0617/items/221bb946d1c90d6769e9
+***** GitHubPages - ユーザアカウントのページ
+- Create a reository named "username.github.io"
+  https://pages.github.com/
+***** リポジトリごとのページ
+- 以下どちらか
+  - masterにdocsディレクトリを作る
+  - gh-pagesブランチを切る
 ** Reverse lookup
 *** 変更を取り消す
 **** ローカル
@@ -617,5 +627,8 @@ SSHは両方可能。
 - https://qiita.com/Teloo/items/95a860ae276b49edb040
 - https://qiita.com/osamu1203/items/cb94ef9da02e1ec3e921
 ** Link
+- [[https://git-scm.com/book/ja/v2][Book - git]]
+- [[https://github.com/Shinpeim/introduction-to-git][Gitをはじめからていねいに - Shinpeim/introduction-to-git - GitHub]]
+
 - [[https://www.atlassian.com/ja/git/tutorial][Gitチュートリアル Atlassian]]
 

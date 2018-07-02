@@ -30,6 +30,12 @@
 ****** S3.1: Layout of a NASM Source Line
 ****** S3.2: Pseudo-Instructions
 ****** S3.3: Effectie Addresses
+****** $3.5: Expressions
+- $ and $$
+  - calculating the current assembly position:
+  - $: evaluates the assembly position at the beginning of the line containing the expression
+  - $$: evaluates to the beginning of the current section
+******* 3.5.1: |: Bitwise OR Operator
 ****** S3.9: Local Labels
 - NASM gives special treatment to symbols beginning with a period.
   A label beginning with a single period is treated as a "local" label.
