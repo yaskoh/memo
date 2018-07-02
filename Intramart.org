@@ -1268,6 +1268,14 @@
 *** WARファイル単位での起動・停止
 - resin web-app-start imart / resin web-app-stop imart
   http://imfaq.intra-mart.jp/imqa/faq/print.asp?Option=&NodeID=&DispNodeID=&CID=&Text=&Field=&KW=&KWAnd=&Attrs=&Bind=&SearchID=&FAQID=413&baID=1&strKind=5
+*** IMマスタの変更内容がWorkflowに反映されない
+- 「処理対象者標準プラグイン結果キャッシュ設定」のため。
+  "WEB-INF/conf/im-workflow-system-config.xml"に設定がある。
+- キャッシュ削除方法としてジョブが存在する。
+  「処理対象者標準プラグイン結果キャッシュ削除」
+- https://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_specification/texts/setting_guide/setting_list/system_unit/setting_guide_1.html#set-plugin
+- https://www.intra-mart.jp/download/product/iap/im_workflow/im_workflow_troubleshooting/texts/troubleshooting/target_user2.html
+- https://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_specification/texts/job_guide/job_guide_1.html
 ** Link
 *** About
 - [[http://www.intra-mart.jp/document/library/index.html][intra-mart Accell Platform - intra-mart Accel Series ドキュメントライブラリ]]

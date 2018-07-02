@@ -480,14 +480,67 @@ SSHは両方可能。
 *** Git Commits
 *** Git Diffs
 *** other
+** Tools
+*** Git LFS
+**** Client
+***** Commands
+****** High level commands
+******* git lfs env
+******* git lfs checkout
+******* git lfs clone
+******* git lfs fetch
+- Download Git LFS files from a remote.
+******* git lfs fsck
+******* git lfs lock
+******* git lfs locks
+******* git lfs logs
+******* git lfs ls-files
+- Show information about Git LFS files in the index and working tree.
+******** Options
+********* -l, --long
+********* -s, --size
+********* -d, --debug
+********* -a, --all
+********* --deleted
+********* -I <paths>, --include=<paths>
+********* -X <paths>, --exclude=<paths>
+******* git lfs migrate
+******* git lfs prune
+******* git lfs pull
+******* git lfs push
+******* git lfs status
+******* git lfs track
+******* git lfs uninstall
+******* git lfs unlock
+******* git lfs untrack
+******* git lfs update
+******* git lfs version
+****** Low level commands
+******* git lfs clean
+******* git lfs pointer
+******* git lfs pre-push
+******* git lfs smurge
+***** Specification
+- https://github.com/git-lfs/git-lfs/blob/master/docs/spec.md
+***** Memo
+****** git lfs help <command>, git lfs <command> -h
+-
+**** Server
+***** API
+- https://github.com/git-lfs/git-lfs/tree/master/docs/api
+**** Link
+- https://git-lfs.github.com/
+- https://github.com/git-lfs/git-lfs
 ** Reverse lookup
-*** ローカルの変更を取り消す
-- 
-  git checkout file
+*** 変更を取り消す
+**** ローカル
+- git checkout file
   
   チェックアウトを選ぶ場合は、
   git checkout <code> file
 
+**** コミットを戻す
+- git reset --hard <hash>
 *** 普通にrmしたファイルをcommitに乗せる
 - git rm <file>
   ファイルを消してしまって実体がいない場合でも、
@@ -503,6 +556,13 @@ SSHは両方可能。
 - core.quotepath を false とする。
 - 例: git config --[global|local] core.quotepath false
 - [[http://dev.classmethod.jp/tool/git/git-avoid-illegal-charactor-tips/][日本語ファイルの文字化けを回避する - Developers.IO]]
+*** 一部のフォルダのみを使う(sparse checkout)
+- 1. configでsparsecheckoutを許す
+  git config core.sparsecheckout true
+- 2. 対象ディレクトリを設定する
+  echo 目的のフォルダ > ./git/info/sparse-checkout
+
+- https://mseeeen.msen.jp/git-sparse-checkout/
 ** Memo
 *** Initialize Setting
 - git config --global user.name "your name"

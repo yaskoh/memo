@@ -133,6 +133,23 @@
   [表示]タブ、[ビューの変更]、[現在のビューを他のメールフォルダーに適用する]
   [[http://outlook-navi.com/qa/ol92.htm][Outlook2010：フォルダのビューを一括変更（コピー）するには]]
 *** PowerPoint
+**** Shortcuts
+***** Ribbon
+****** HOME (Alt, H)
+******* Clipboard
+******* Slides
+******* Font
+******* Paragraph
+******** Add or Remove Columns (Alt,H,J)
+- 段落組を変更する。
+****** INSERT (Alt, N)
+****** DESIGN
+****** TRANSITIONS
+****** ANIMATIONS
+****** SLIDE SHOW
+****** REVIEW
+****** VIEW
+****** DEVELOPER
 **** Memo
 ***** Replace
 - 

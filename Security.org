@@ -73,6 +73,11 @@
 ** Attacks
 *** DoS
 - Denial of Service
+**** HashDos
+- https://blog.tokumaru.org/2011/12/webdoshashdos.html
+- https://blog.tokumaru.org/2012/01/cookie-hashdos-attack-defense.html
+- http://bakera.jp/ebi/topic/4680
+- https://employment.en-japan.com/engineerhub/entry/2018/01/11/110000
 *** DDoS
 - Distributed Denial of Service
 *** Flood
