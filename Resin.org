@@ -1,15 +1,6 @@
 * Resin
 ** Commands
-- see also "Command Line"
-*** resin
-**** deploy
-**** deploy-list
-**** generate-password
-***** Options
-- --user
-- --password
-**** undeploy
-*** Link
+- see "Command Line"
 - [[http://caucho.com/resin-4.0/admin/resin-admin-command-line.xtp][command line resin administration - Resin Documentation]]
 ** Structure
 *** Unix
@@ -195,6 +186,14 @@
   Resin will detect the .war archive, expand it, and start serving requests.
 *** Command-Line
 *** Cloud
+** Source
+*** 4.0.56
+**** modules/
+***** c/
+***** resin/
+****** src/
+******* com/caucho/
+******** resin/
 ** Memo
 *** Intramart
 **** Resinでクラスタを組む

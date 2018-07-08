@@ -1145,6 +1145,14 @@
 *** SPA/mmikowski
 - [[https://github.com/mmikowski/spa/blob/master/js-code-standard.pdf][JavaScript code standard]]
 ** Glossary
+** Reverse lookup
+*** 全置換を行う
+- replaceを行うと単に最初の値を置換する。
+- 1. 正規表現でgタグを使う。
+  - "a b c".replace(/ /g, '-');
+- 2. splictしてjoinする。
+  - "a b c".split(' ').join('-');
+- http://marycore.jp/prog/js/replace-all/
 ** Memo
 *** API仕様
 **** CommonJS
@@ -1213,6 +1221,11 @@
 *** プロトタイプチェーン、スコープチェーン
 - プロパティ（メソッド）など、オブジェクトの所有する値はプロトタイプチェーン、
   変数（関数？）などはスコープチェーンで解決するのではないか、と思われる。
+*** 「型」を取得する
+- typeof <object>
+- toString.call(<object>);
+- <object>.constructor
+- https://qiita.com/south37/items/c8d20a069fcbfe4fce85
 *** ==と===の違い
 - == : 等価演算子
   数値と文字列を比較する場合、文字列は数値に変換される。

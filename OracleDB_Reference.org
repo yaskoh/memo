@@ -34,7 +34,7 @@ n**** CONTROLL_FILES
   特に事情がなければDB_CACHE_SIZEを使う。
    
 **** DB_BLOCK_SIZE
-- 標準ブロックサイズ
+- 標準ブロックサイズの確認
 **** DB_CACHE_SIZE
 - バッファキャッシュのサイズを設定するパラメータ。
 **** DB_DOMAIN

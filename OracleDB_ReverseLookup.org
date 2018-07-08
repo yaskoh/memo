@@ -27,6 +27,16 @@
   archive log list
 - 出力先の確認
   show parameter log_archive_dest
+*** 初期化パラメータの確認
+- 現在使用中のすべてのパラメータ
+  SHOW PARAMETERS
+- 現在使用している特定のパラメータ
+  SHOW PARAMETERS [parameter name]
+- 動的パフォーマンスビューからの表示
+  select * from v$parameter;
+  select * from v$parameter2; --行出力
+  select * from gv$parameter;
+- http://www.atmarkit.co.jp/fdb/ref/ref_oracle/param.html
 ** SQL
 *** 制約
 **** 制約の追加
@@ -165,3 +175,4 @@
 - 
   SELECT FILE_NAME, TABLESPACE_NAME FROM DBA_DATA_FILES;
   (WHEREでFILE_NAMEやTABLESPACE_NAMEを絞り込む)
+*** ブロックサイズを確認する
