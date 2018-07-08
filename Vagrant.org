@@ -176,6 +176,15 @@
 - Vagrantfileが設置されているフォルダ、
   および/vagrantが共有フォルダとして使用できる。
 
+*** Vagrantとホストの時刻同期
+- 1.UTCの対処
+  - sudo rm /etc/localtime
+  - sudo ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+- 2.時刻同期
+  - config.vm.provider :virtualbox do |vb|
+      vb.customize ["setextradata", :id, "VBoxInternal/Devices/VMMDev/0/Config/GetHostTimeDisabled",0]
+    end
+- https://polidog.jp/2014/01/08/vagrant/
 *** Error
 **** command-line line 0: garbage at end of line
 - spaceがあるパスの場合にエラー。macにて発生。
@@ -184,6 +193,6 @@
 - VirtualBoxとGuest Additionsでバージョン不一致がある場合などに失敗する模様。
   vagrant-vbguestというプラグインが便利。
   https://qiita.com/ozawan/items/9751dcfd9bd4c470cd82
-** link
+** Link
 - [[https://www.vagrantup.com/docs/][VAGRANT DOCUMENTATION]]
 - [[https://atlas.hashicorp.com/boxes/search][Vagrant Boxes - Atlas]]

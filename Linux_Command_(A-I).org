@@ -251,7 +251,27 @@
 - crontab [-u user] file
 - crontab [-u user] [-i] {-e | -l | -r}
 ***** Options
-- 
+-
+**** cu
+- Call up another system
+***** Synopsis
+- cu [options] [system|phone|"dir"]
+***** Commands
+****** ~.
+- Terminate the conversation
+****** ~! command
+- Run command in a shell
+****** ~$ command
+- Run command, sending the standard output to the romete system.
+****** ~| command
+- Run command, taking the standard input from the remote system.
+****** ~+ command
+- Run command, taking the standard input from the remote system and sending the standard output to the remote system.
+****** ~?
+- List all commands
+***** Options
+****** -l line, --line line
+- Name the line to use by giving a device name.
 **** curl
 ***** Options
 ****** -f, --fail

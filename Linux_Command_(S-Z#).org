@@ -82,7 +82,11 @@
   ex) scp 'SERVERNAME:/DIR/\*' .
 
 **** screen
-
+- screen manager with VT100/ANSI terminal emulation
+***** Synopsis
+- screen [-options] [cmd [args]]
+- screen -r [[pid.]tty[.host]]
+- screen -r sessionowner/[[pid.]tty[.host]]
 **** seq
 - usage
   - seq [OPTION]... LAST
