@@ -470,6 +470,9 @@
 - コンソールフォント。
 ******* /sys/firmware/efi/efivars
 - UEFIモードで起動しているか確認する。配下にディレクトリが存在しない場合、BIOSもしくはCSMモードで起動している。
+***** Memo
+****** コンソールの切り替え
+- alt+arrowで切り替え可能
 ***** Link
 - [[https://www.archlinux.org/][archlinux]]
 - [[https://www.archlinuxjp.org/][archlinux jp]]

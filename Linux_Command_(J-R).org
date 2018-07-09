@@ -230,6 +230,14 @@
   
 - -p [pid]
   
+**** lsx
+- module in "lrzsz"
+***** Usage
+- lsx [options] file ...
+  lsx [options] -{c|i} COMMAND
+***** Options
+****** -h, --help
+- print usage, etc
 **** lvcreate
 - 
   create a new logical volume in a volume group.
