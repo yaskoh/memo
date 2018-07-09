@@ -13,6 +13,22 @@
 **** Command
 ***** glance
 - performanceを確認する
+****** Options
+****** Commands
+******* ? - Commands Menu
+******* g - Process List
+******** Screen
+********* Process List
+********** Process Name
+********** PID
+********** Memory RSS/VSS
+- VSS : プロセスがアクセスできるアドレスの総和。未使用領域も含む。
+- RSS : プロセスが実際に使用している層メモリ量。共有ライブラリ使用分も合計し算出する。
+
+******* e - exit
+******* q - exit
+******* m - Memory Report
+******* h - Online-Help
 *** Solaris
 *** Minix
 ** Link

@@ -5,6 +5,16 @@
 ***** git-add
 ***** git-am
 ***** git-archive
+- Create an archive of files from a named tree
+****** SYNOPSIS
+- git archive [--format=<fmt>] [--list] [--prefix=<prefix>/] [<extra>] [-o <file> | --output=<file>] [...] <tree-ish> [<path>...]
+****** Options
+******* --format=<fmt>
+******* <extra>
+******* <tree-ish>
+******* <path>
+- Without an option path parameter, all files and subdirectories of the current working directory are included in teh archive.
+  If one or more paths are specified, only these are included.
 ***** git-checkout
 ****** SYNOPSIS
 - git checkout [-q] [-f] [-m] [<branch>]
@@ -29,9 +39,28 @@
   |      | tree          <-   HEAD  | ->                     repository |
   |------+--------------------------+-----------------------------------|
 
-****** options
-- --stat[=<width>[,<name-width>[,<count>]]]
-  Generate a diffstat.
+****** Synopsis
+- git diff [options] [<commit>] [--] [<path>...]
+- git diff [options] --cached [<commit>] [--] [<path>...]
+- git diff [options] <commit> <commit> [--] [<path>...]
+- git diff [options] <blob> <blob>
+- git diff [options] [--no-index] [--] <path> <path>
+****** Options
+******* --diff-filter=[(A|C|D|M|R|T|U|X|B)...[*]]
+- Select only files are:
+  - A: Added
+  - C: Copied
+  - D: Deleted
+  - M: Modified
+  - R: Renamed
+  - T: Type changed
+  - U: Unmerged
+  - X: Unknown
+  - B: Broken
+******* --name-only
+- Show only names of change files.
+******* --stat[=<width>[,<name-width>[,<count>]]]
+- Generate a diffstat.
   統計情報を表示する。
 
 ***** git-fetch
@@ -52,6 +81,21 @@
 ***** git-show
 ***** git-status
 ***** git-tag
+****** Options
+******* -f, --force
+******* -d, --delete
+******* -l, --list
+******* -m <msg>, --message=<msg>
+******* <tagname>
+****** Memo
+- https://h2ham.net/git-tag-checkout
+******* 過去のコミットにタグを付ける
+- git tag -a tagname -m 'comment' <tagname>
+******* タグを削除
+- git tag -d tagname
+******* タグをリモートに送信
+- 特定のタグを送信 : git push origin <tagname>
+- 全てのタグを送信 : git push origin --tags
 ***** git-worktree
 **** Ancillary
 ***** Manipulators
@@ -626,6 +670,9 @@ SSHは両方可能。
 *** git fetch
 - https://qiita.com/Teloo/items/95a860ae276b49edb040
 - https://qiita.com/osamu1203/items/cb94ef9da02e1ec3e921
+*** 差分ファイルのみを抽出する
+- git archive <rev> `git diff <rev0> <rev> --name-only --diff-filter=ACMR` -o <filename.like.zip>
+- https://www.granfairs.com/blog/staff/git-archivediff
 ** Link
 - [[https://git-scm.com/book/ja/v2][Book - git]]
 - [[https://github.com/Shinpeim/introduction-to-git][Gitをはじめからていねいに - Shinpeim/introduction-to-git - GitHub]]

@@ -199,30 +199,30 @@
 - ?
 
 **** sort
-- 
-  sorts the contents of a text file, line by line.
+- sorts the contents of a text file, line by line.
 
-- -c, --check
-  Check for sorted input; do not sort.
+***** Options
+****** -c, --check
+- Check for sorted input; do not sort.
 
-- -d, --dictionary-order
-  Consider only blanks and alphanumeric characters.
+****** -d, --dictionary-order
+- Consider only blanks and alphanumeric characters.
 
-- -f, --ignore-case
-  Fold lower case to upper case characters.
+****** -f, --ignore-case
+- Fold lower case to upper case characters.
   
-- -k, --key=POS1[, POS2]
-  start a key at at POS1 (origin 1), end it at POS2 (default end of line)
+****** -k, --key=POS1[, POS2]
+- start a key at at POS1 (origin 1), end it at POS2 (default end of line)
 
-- -n, --numeric-sort
+****** -n, --numeric-sort
 
-- -t, --field-separator=SEP
-  use SEP instead of non-blank to blank transition
+****** -t, --field-separator=SEP
+- use SEP instead of non-blank to blank transition
 
-- -r, --reverse
+****** -r, --reverse
 
-- -u, --unique
-  With -c, check for strict ordering; without -c, output only the first of an equal run.
+****** -u, --unique
+- With -c, check for strict ordering; without -c, output only the first of an equal run.
 
 **** source
 - 
@@ -444,6 +444,8 @@
 
 ****** -u user, --user=user
 - Run the command as a user other than the default target user.
+**** svn
+- [[file:Subversion.org][Subversion.org]]
 **** sync
 - sync
   force completion of pending disk writes

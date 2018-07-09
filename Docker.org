@@ -352,11 +352,16 @@
 **** Application Programming Interfaces (APIs)
 **** Drivers and specifications
 **** Compliance control references
-** memo
+** Memo
 *** detach
-- 
-  press Ctr-p Ctr-q when you detach and leave a container.
+- press Ctr-p Ctr-q when you detach and leave a container.
 
+*** Windows
+**** Docker Toolbox
+**** Docker for Windows
+**** Windows Container on Windows Server
+**** Link
+- https://qiita.com/tksarah/items/cf3ca3724532491a6861
 ** link
 - [[http://www.techscore.com/blog/2014/08/05/introduction-to-docker/][隔離の技術Dockerの考え方と使い方の基本 - TECHSCORE BLOG]]
 - [[http://yuuki.hatenablog.com/entry/docker-performance][Dockerは早いのか？Dockerのパフォーマンスについて重要なことは何か？ - ゆううきブログ]]

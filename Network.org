@@ -1065,7 +1065,7 @@
 ******** X-Content-Type-Option
 ******** X-XSS-Protection
 ****** Memo
-******* XFF / X-Forwarded-For
+******* X-Forwarded-For / XFF
 - HTTPヘッダフィールドの一つ。
   RFCの標準的なヘッダフィールドではないが、同種の"Forwarded"の標準化作業が開始されている。
   プロキシサーバやロードバランサを経由してアクセスするクライアントの送信元IPアドレスを特定する際のデファクトスタンダード。
@@ -1076,6 +1076,15 @@
   接続元がclient1、proxy1とproxy2を経由してproxy2に到達する場合のデータ。
 ******** Link
 - [[http://3.1415.jp/kc47fh1k/][HTTPクライアントの接続元IPアドレスを知る - 3.1415.jp]]
+******* X-Forwarded-Host
+******* X-Forwarded-Proto / XFP
+- de-facto standard header for identifying the protocol (HTTP or HTTPS) that a client used to connect to your proxy or load balancer.
+******** Syntax
+- X-Forwarded-Proto: <protocol>
+******** Directives
+- protocol:
+  http or https
+******* X-Forwarded-Port
 ****** Link
 - [[https://triple-underscore.github.io/RFC723X-ja.html][Hytertext Transfer Protocol (HTTP/1.1) - RFC 7230 〜 7235 - 日本語訳]]
 
