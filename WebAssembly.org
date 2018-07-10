@@ -1,0 +1,3 @@
+* WebAssembly
+** Link
+- [[https://developer.mozilla.org/ja/docs/WebAssembly][Web Assembly - MDN web docs]]
