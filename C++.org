@@ -183,6 +183,11 @@
 - C++03 : ISO/IEC 14882:2003 (2003/10/16)
 - C++98 : ISO/IEC 14882:1998 (1998/9/1)
 
+*** :: / Scope resolution スコープ解決演算子
+- ::は名前空間の区切りを表す。
+  ex) std::cout
+  どの名前空間にも属さない変数はグローバル名前空間(globla namespace)という特別な名前空間に属しており、
+  ::fooという書き方となる。
 ** Link
 - [[https://isocpp.org/std/the-standard][The Standard - THE C++ PROGRAMMING LANGUAGE]]
 

@@ -155,6 +155,8 @@
   - :d
     remove current file on the list
 
+**** lldb
+- [[file:LLVM.org][LLVM.org]]
 **** ln
 - 
   リンクを作成する
