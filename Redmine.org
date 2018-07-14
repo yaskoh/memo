@@ -245,6 +245,8 @@
 ** 記法
 *** Redmineのwiki記法
 *** textile記法
+** Reveres Lookup
+*** HTTPS化
 ** Link
 - https://www.redmine.org/projects/redmine
 - http://redmine.jp/

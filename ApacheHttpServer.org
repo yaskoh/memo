@@ -274,6 +274,12 @@
 ****** RequestHeader
 - Configure HTTP request headers
 ******* Syntax
+- RequestHeader set|append|add|unset header [value] [early|env=[!]variable]
+******** set
+- リクエストヘッダを設定する。同じ名前のヘッダが存在していると、それを置き換える。
+******** append
+******** add
+******** unset
 **** mod_imap
 **** mod_include
 **** mod_info
@@ -502,6 +508,17 @@
 - mod_headersモジュールでCookieに変更を入れる。
   Header edit Set-Cookie ^(.*)$ $1;secure
   https://qiita.com/yuba/items/034dd027dbde15f6a795
+*** Apacheでリバースプロキシした際のプロトコル変換
+- X_FORWARDED_PROTOを利用する
+  RequestHeader set X_FORWARDED_PROTO 'https'
+- SSLをLBやApacheまでで終わらせ、内部通信はhttp通信の場合に、
+  アプリケーション側がプロトコルをhttpだと勘違いする場合に、上記設定を行う。
+  Railsだと解釈をしてくれるのでうまく動作する。
+
+- Link
+  - https://qiita.com/yusabana/items/1e61f46094b965a66599
+  - http://www.rarul.com/mt/log/2015/05/reverseproxyred.html
+  - https://qiita.com/HeRo/items/7063b86b5e8a2efde0f4
 ** Link
-- [[http://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
+- [[https://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
 
