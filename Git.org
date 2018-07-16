@@ -430,9 +430,17 @@
   インタラクティブなベースセッション。
 
 **** git reflog
-reflogという機能が働いていて、ブランチの先端に対する更新の追跡が行われており、
-いかなるブランチからもタグからも参照されていない更新内容であっても戻ることができる。
+- Manage reflog information
+- reflogという機能が働いていて、ブランチの先端に対する更新の追跡が行われており、
+  いかなるブランチからもタグからも参照されていない更新内容であっても戻ることができる。
 
+***** Synopsis
+- git reflog <subcommand> <options>
+***** Options
+****** --all
+****** -n, --dry-run
+****** --rewrite
+****** --verbose
 **** git remote
 リモート接続。リンクではなくブックマークのようなもの。
 通常はHTTPプロトコルはリードオンリーで、プッシュが出来ない。
@@ -587,14 +595,27 @@ SSHは両方可能。
   - gh-pagesブランチを切る
 ** Reverse lookup
 *** 変更を取り消す
+- http://www-creators.com/archives/1116
+**** コミットを戻す
+- インデックス、ワークツリーを残す
+  git reset --soft <commit>
+- インデックスは戻す、ワークツリーは残す
+  git reset --mixed <commit>
+- インデックス、、ワークツリーも戻す
+  git reset --hard <commit>
+**** 打消しコミットを作る
+- git revert
+**** commitしたコメントを修正
+- 最後のコメントを修正
+  git commit --amend
+**** 歴史の修正
+- git rebase (-i) <commit>
 **** ローカル
 - git checkout file
   
   チェックアウトを選ぶ場合は、
   git checkout <code> file
 
-**** コミットを戻す
-- git reset --hard <hash>
 *** 普通にrmしたファイルをcommitに乗せる
 - git rm <file>
   ファイルを消してしまって実体がいない場合でも、
