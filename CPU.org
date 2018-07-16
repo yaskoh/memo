@@ -714,6 +714,8 @@ LOOPNZ, LOOPNE SRC
 ***** Link
 - [[https://software.intel.com/en-us/articles/intel-sdm][Intel 64 and IA-32 Architectures Software Developer Manuals - Intel]]
 **** z/Architecture
+**** H8
+- [[file:Microcontroller.org][Microcontroller.org]]
 *** RISC
 - Reduced Instruction Set Computer
   命令の種類を減らし、回路を単純化して演算速度の向上を図る設計手法。
