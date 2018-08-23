@@ -1280,6 +1280,8 @@
 ***** Link
 - https://technet.microsoft.com/ja-jp/sysinternals/bb897553
 - http://www.atmarkit.co.jp/ait/articles/1205/11/news147.html
+*** Xming
+- Windows上で動作するX Window Systemの実装の一つ。
 ** Performance
 - https://msdn.microsoft.com/ja-jp/library/windows/hardware/dn529133
 ** Memo
@@ -1559,6 +1561,20 @@
 *** 共有フォルダの現在のアクセス確認
 - "Computer management"から確認可能。
   http://itdiary.info/windows/post-88/
+*** sshdサービス
+**** Win32-OpenSSH
+- https://github.com/PowerShell/Win32-OpenSSH/releases
+- https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH
+
+- https://www.rootlinks.net/2017/10/05/install-sshd-on-windows-server-2012-r2-win32-openssh/
+**** cygwin/putty
+**** Win 10以降
+- https://rcmdnk.com/blog/2018/04/27/computer-windows-network/
+*** X11接続
+- XmingなどX Windowサーバをインストール
+- sshで-Xオプションを付けて接続
+- echo $DISPLAYを確認して割り当てを確認
+- GUIアプリケーションを実行する
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

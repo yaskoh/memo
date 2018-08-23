@@ -32,14 +32,16 @@
   - TNSNAMES.ORAのorcl=(...)など。データベースの接続情報に名前を付けて保存している。
 *** Listener Process
 - Oracle Databseへの接続リクエストを転送
+  リスナープロセスを経由してサーバープロセスに接続する
 *** Server Process
 - ユーザプロセスから受け取ったSQL文を、実際にOracleインスタンスと対話させ実行するプロセス。
   原則的には、SQLの結果を返すために必要なことを行う。
 - ユーザ毎に起動され、リクエストを処理する。
-
+  リスナープロセスを経由して、ユーザープロセスと接続する。
 *** Background Process
 - SGAとデータベースファイルとの同期や、整合性の保持などの役割。
   原則的には、SQLの結果を返すために必要なこと以外を行う。
+- https://docs.oracle.com/cd/E60665_01/db112/REFRN/bgprocesses.htm
 **** PMON プロセス・モニター
 - サーバ・プロセスの監視を行い、ユーザ・プロセス障害時にクリーンナップを行う（ロックの解放、ロールバックなど）
 - ora_pmon_XXXXXX(SID)
@@ -56,9 +58,15 @@
 - REDOログ・バッファ上のREDOログ・エントリを定期的にREDOログ・ファイルに書き込む（COMMIT時など）
 - ora_lgwr_XXXXXX(SID)
   ログライター。ログをディスクに書く。
-**** ARCn 
+**** ARCn アーカイバ・プロセス
 - ora_arcX(0や1)_XXXXXX(SID)
   アーカイバ。ログデータをアーカイブ（長期保存のため別ファイルとして保存）する。
+**** MMAN メモリー・マネージャ・プロセス
+- Memory Manager
+- インスタンスのメモリー・コンポーネントのサイズ変更を実行する。
+**** MMON 管理性モニタープロセス
+- Manageability Monitor
+- AWRのスナップショットの取得、Automatic Database Diagnostic Monitor分析の実行など、管理性に関するタスクを実行する。
 ** Memory
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56306/memory.htm#i8451][14 メモリー・アーキテクチャ - Oracle® Database概要 11gリリース2 (11.2)]]
 *** Cache
@@ -79,7 +87,7 @@
   ソート処理やハッシュ結合などで使われる。
 - サーバプロセスやバックグラウンドプロセスなど、プロセスごとに確保される領域。
 **** 内容
-- セッション情報
+- セッション情報 (UGA?)
   セッションに対するユーザの権限に関する情報
 - カーソル状態
   セッションで使用している様々なカーソルの処理段階を示す
@@ -94,6 +102,9 @@
 - System Global Area システムグローバル領域
   共有領域。
   便利だが競合が起こるため、ロックによる排他制御が必要で、性能トラブル等が起きやすい原因となっている。
+- Command
+  - select * from v$sga;
+  - show sga
 **** 共有プール
 - SQLキャッシュとしての役割。実行するSQLと同じSQLが共有プール上にある場合、解析をスキップできる。
   SQL文の解析情報、実行計画、データディクショナリのデータが格納される。
@@ -122,15 +133,50 @@
 - 特定の大きなプロセス（Oracleバックアップ、リカバリ操作、I/Oサーバー・プロセスなど）が使用できるオプション領域
 **** Streamsプール
 *** UGA : User Global Area
+- ユーザーセッションに関連付けられたメモリー。セッションメモリー。
+  ログオン情報やデータベース・セッションに必要な情報などのセッション変数に割り当てられるメモリー。
+- 共有サーバ接続では結果の共有のためSGA（ラージプール）上にUGAが、専用サーバ接続では共有が不要のためPGA上にUGAが存在するらしい。
+  また、Oracleは基本的にはPGAに多くのデータは置かれるようにできているとのこと。
+  https://www.freelists.org/post/oracle-l/UGA-and-PGA-basic-question,1
+  http://www.atmarkit.co.jp/ait/articles/0706/20/news129.html
+**** 内容
+- Session Variabels
+- OLAP Pool
 *** Software Code Area
 
 *** Management 管理
 - 11g:
-  合計メモリサイズを指定するとSGAの各コンポーネントとPGAに必要に応じて最適なメモリが割り当てられる。
+  合計メモリサイズを指定するとSGAの各コンポーネントとPGAに必要に応じて最適なメモリが割り当てられる（自動メモリ管理）。
 - 10gまで:
   SGAとPGAにそれぞれメモリ割り当てを設定。SGA内では最適メモリ割り当てがなされる
 - 手動管理:
   SGAの各メモリコンポーネントおよびPGAに、それぞれメモリ・サイズを設定。
+**** メモリ管理自動化の変遷
+- 11g:
+  - SGA + PGA / memory_target 合計メモリ・サイズ
+- 10g:
+  - SGA / sga_target 共有メモリ・サイズ
+  - PGA / pga_aggergate_target
+- 9i:
+  - SGA相当
+    - バッファキャッシュ db_cache_size
+    - 共有プール shared_pool_size
+    - Javaプール java_pool_size
+    - ラージプール large_pool_size
+    - REDOログバッファ log_buffer_size
+  - PGA / pga_aggregate_target
+- 8i:
+  - SGA相当
+    - バッファキャッシュ db_cache_size
+    - 共有プール shared_pool_size
+    - Javaプール java_pool_size
+    - ラージプール large_pool_size
+    - REDOログバッファ log_buffer_size
+  - PGA相当
+    - sort_area_size
+    - hash_area_size
+    - bitmap_merge_area_size
+    - create_bitmap_area_size
 ** Files
 - Oracleデータベース部分
 *** データファイル Data File

@@ -466,6 +466,10 @@
 ***** 9.CREATE DATABASE文の発酵
 ***** 10.追加の表領域の作成
 ***** 11.スクリプトの実行によるデータ・ディクショナリ・ビューの作成
+*** Silent install
+**** Link
+- [[https://docs.oracle.com/cd/E16338_01/install.112/b56273/app_nonint.htm#BABFEECI][A レスポンス・ファイルを使用したOracle Databaseのインストールおよび構成 - Oracle® Databaseインストレーション・ガイド 11gリリース2 (11.2) for Linux]]
+- [[http://www.lovebug.jp/index.php?Oracle%2F11g%2F%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%EF%BC%88%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9FCUI%E3%81%A7%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%EF%BC%89][Oracle 11g Release 2のインストール（レスポンスファイルを利用したCUIでのインストール）]]
 *** Install Log
 **** 2016/6/11 11c
 - http://docs.oracle.com/cd/E16338_01/install.112/b56277/toc.htm
@@ -525,13 +529,12 @@
   - current home is not registered in the central inventory on this system. OK? -> Yes
 **** 2016/6/14
 - パスが/home/oracleになっていたため再作成。
-  - plcn.localhost
   - デフォルトのユーザはSYSTEM、だった。
 ***** DBCA
 - General
 - test.local_domain
 - local management
-- すべてyasutake(SYS, SYSTEM, DBSNMP, SYSMAN)
+- すべて自分のユーザ(SYS, SYSTEM, DBSNMP, SYSMAN)
 ** Backup/Recovery
 *** Glossary
 **** Backup
@@ -600,15 +603,96 @@
 **** Baseline
 - パフォーマンス上の問題が発生したときに比較するために保持された特定の基幹のパフォーマンスデータが含まれる。
 - 自動AWR消去プロセス対象からは除去され、無期限に保存される。
+**** Memo
+***** しばちょう先生
+****** 第39回 AWRレポートを読むステップ1
+- [[http://www.oracle.com/technetwork/jp/database/articles/shibacho/index-2547807-ja.html][しばちょう先生の試して納得！DBAへの道 第39回 AWRレポートを読むステップ1.バッファキャッシュ関連の待機イベントと統計情報]]
+
+- まず確認すべき項目
+  - Top, 最上段
+    - HW増強の確認
+      - Release - バージョン情報
+      - RAC - RACか否か
+      - CPUs, Cores, Sockets - CPUコア数
+      - Memory(GB) - 物理メモリ容量
+        - Report SummaryのCache SizesでSGAの設定を合わせて見る
+    - Elapsed - レポートの期間、比較する他のAWRレポートの期間が異なる場合特に意識する必要あり。
+  - Report Summary
+    - Load Profile
+      - どのようなWorkloadが流れているのかを理解するのにこのセクションが大事。
+        このセクションは大事、すべて見る。
+      - Redo size : Per Second - 秒間のRedo生成量。
+        1MB/secだと更新が少ない、5-10MB/secはふつう、20MB/secで少し多い、40MB/secで多い。
+    - Instance Efficency Precentage (Target 100%)
+      - Buffer Hit % - ミスしたIOPSをディスクが捌けるか、が重要。%以外にI/O回数が重要。
+    - Cache Sizes
+****** 第40回 AWRレポートを読むステップ2
+- [[http://www.oracle.com/technetwork/jp/database/articles/shibacho/index-2613471-ja.html][しばちょう先生の試して納得！DBAへの道 第40回 AWRレポートを読むステップ2：アクセス数が多い表領域とセグメント]]
+****** 第51回 AWRレポートを読むステップ3
+- [[http://www.oracle.com/technetwork/jp/database/articles/shibacho/index-3655144-ja.html][しばちょう先生の試して納得！DBAへの道 第51回 AWRレポートを読むステップ3: オンライン・トランザクションのスループット低下の原因特定]]
+****** 第52回 AWRレポートを読むステップ4
+- [[http://www.oracle.com/technetwork/jp/database/articles/shibacho/index-3682060-ja.html][しばちょう先生の試して納得！DBAへの道 第52回 AWRレポートを読むステップ4: 特定時間帯に発生する性能劣化の原因特定]]
 **** Link
 - tmp
   - http://docs.oracle.com/cd/E16338_01/server.112/b56312/autostat.htm#i27008
   - http://oracle-pub.wikidot.com/ocm-11g-awr
+  - [[http://www.oracle.com/technetwork/jp/ondemand/database/db-new/120517-consultant-shinzui-part2-1641035-ja.pdf][オラクルコンサルタントが語る性能分析の真髄 Part2 - Oracle]]
   
 *** Automatic Database Diagnostic Monitor(ADDM)
 - 自動データベース診断モニター
   ある程度のパフォーマンス分析を自動的に実施し、その分析結果をレポートとして提供する機能。
 
+*** Automatic Diagnostic Repository(ADR)
+- Automatic Diagnostic Repository 自動診断レポジトリ
+  ログファイルなどのデータベースの状況管理や診断に使用するデータを一括で管理する。11gより。
+  ログファイルを含むすべての診断データを「ADR_BASE」と呼ばれる単一のディレクトリの配下に補完する。
+  ADR_BASEとADR_HOMEの場所は「V$DIAG_INFO」ビューで確認できる。
+- 
+  [[http://www.atmarkit.co.jp/ait/articles/0808/08/news143.html][11gからの新管理機構「ADR」を理解しよう (1/4) - @IT]]
+  [[http://cosol.jp/tech/detail/d3_adr_automatic_diagnostic_repository.shtml][Oracle Database 11gから導入されたADR ( 自動診断リポジトリ ) - 株式会社こーそる]]
+**** ADRCI
+- https://docs.oracle.com/cd/E60665_01/db112/SUTIL/adrci.htm
+***** Command Reference
+****** CREATE REPORT
+****** ECHO
+****** EXIT
+****** HOST
+****** IPS
+****** PURGE
+- 現在の削除ポリシーに従って、カレントADRホーム内の診断データを削除する。
+******* フラグ
+******** -i {id1 | start_id end_id}
+******** -age mins
+******** -type {ALERT | INCIDENT | TRACE | CDUMP | HM}
+****** QUIT
+****** RUN
+****** SELECT
+****** SET BASE
+****** SET CONTROL
+- 削除ポリシー属性を含む、ADRの各種属性を示す。
+******* 削除ポリシー属性
+******** SHORTP_POLICY
+- 残存期間の短いADRの内容が削除可能になるまでの時間数。デフォルトは720(30日)。
+  0を設定すると、全ての残存期間の短い内容を削除できる。
+******** LONGP_PLICY
+- 残存期間の長いADRの内容が削除可能になるまでの時間数。デフォルトは8760(365日)。
+  0を設定すると、全ての内容を削除できる。
+****** SET ECHO
+****** SET EDITOR
+****** SET HOMEPATH
+****** SET TERMOUT
+****** SHOW ALERT
+****** SHOW BASE
+****** SHOW CONTROL
+****** SHOW HM RUN
+****** SHOW HOMEPATH
+****** SHOW HOMES
+****** SHOW INCDIR
+****** SHOW INCIDENT
+****** SHOW PROBLEM
+****** SHOW REPORT
+****** SHOW TRACEFILE
+****** SPOOL
 *** Database Upgrade Assistant
 - 既存のDBを新しいリリースのDBへアップグレードする際に使うツール
 *** Net Configuration Assistant (NetCA)
@@ -1042,14 +1126,6 @@
 *** ASH
 - Active Session History
   
-*** ADR
-- Automatic Diagnostic Repository 自動診断レポジトリ
-  ログファイルなどのデータベースの状況管理や診断に使用するデータを一括で管理する。11gより。
-  ログファイルを含むすべての診断データを「ADR_BASE」と呼ばれる単一のディレクトリの配下に補完する。
-  ADR_BASEとADR_HOMEの場所は「V$DIAG_INFO」ビューで確認できる。
-- 
-  [[http://www.atmarkit.co.jp/ait/articles/0808/08/news143.html][11gからの新管理機構「ADR」を理解しよう (1/4) - @IT]]
-  [[http://cosol.jp/tech/detail/d3_adr_automatic_diagnostic_repository.shtml][Oracle Database 11gから導入されたADR ( 自動診断リポジトリ ) - 株式会社こーそる]]
 *** CRブロック
 - Consistent Read Block、読み取り一貫性ブロック
   多くの場合、データ更新中のブロックに対して別ノードから参照要求があった場合に一部UNDOのデータ等を使用して作成されるブロック。
@@ -1236,17 +1312,6 @@
 - 
   テーブル名や列名、その別名にマルチバイト文字を使用する場合必ず""で囲む必要がある。
   困難なため、実際には英数字および記号（_ $ #）のみを使用することが推奨される。
-*** 読み込み時の情報
-**** sequential read
-- 
-  ランダムアクセス時。
-  単一ブロック読み込みのため、読み込んだデータが（1ブロックなので当然）メモリ上で連続する。
-  そのため、"sequential"と表示される。
-
-**** scattered read
-- 
-  シーケンシャル読み込み時。
-  複数ブロックを読み込み、それらは連続していないので、"scattered"と表示される。
 *** インスタンス
 - 
   Oracleでは、管理の単位として「インスタンス」という用語を用いる。
@@ -1457,6 +1522,8 @@
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/toc.htm][Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
 **** Performance
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56312/toc.htm][Oracle® Databaseパフォーマンス・チューニング・ガイド 11gリリース2 (11.2)]]
+**** Utilities
+- [[https://docs.oracle.com/cd/E60665_01/db112/SUTIL/toc.htm][Oracle® Databaseユーティリティ 11gリリース2 (11.2)]]
 
 **** Geo Spatial
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b72087/toc.htm][Oracle® Spatial開発者ガイド 11gリリース2 (11.2)]]

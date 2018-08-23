@@ -18,4 +18,11 @@
   - 特許法６９条１項
     「特許権の効力は、試験又は研究のためにする特許発明の実施には、及ばない。」
 ** Link
+- [[https://github.com/wtsxDev/reverse-engineering][wtsxDev/reverse-engineering - GitHub]]
+
 - [[http://www.atmarkit.co.jp/ait/articles/1105/17/news129.html][リバースエンジニアリング入門 - @IT]]
+
+- [[http://d.hatena.ne.jp/waidotto/20120820/1345477008][CTFに使用するツール類まとめ - ソースコード置き場]]
+
+- [[https://hackmd.io/s/S1kLEr5x#][マルウェア解析に必要な素養]]
+  - [[https://hackmd.io/s/HkV9t7chW][マルウェア解析に必要な素養～導入編～]]

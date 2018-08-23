@@ -688,15 +688,7 @@ n**** CONTROLL_FILES
 - 各クラスに割り振る。
 - https://docs.oracle.com/cd/E16338_01/server.112/b56311/waitevents003.htm#BGGIBDJI
 **** Memo(待機イベント)
-***** 確認方法
-- [[http://oracle-pub.wikidot.com/wait-event][待機イベント基礎 - Oracle Pub]]
-- V$EVENT_NAME
-  待機イベントの種類を知ることができる
-- V$SYSTEM_WAIT_CLASS
-  待機イベントクラスごとの待機回数と待機時間
-***** 待機イベント情報の取得
-- V$SESSION_WAIT: セッションが現在待機中または待機を完了した直後のイベントを表示する
-- V$SYSTEM_EVENT: すべてのセッションがV$SESSION_WAITビューに表示されているイベントを待機した合計回数を表示する
+- [[file:OracleDB_Performance.org][OracleDB_Performance.org]]
 **** Link
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56311/waitevents.htm][Oracle待機イベント - Oracle® Databaseリファレンス 11gリリース2 (11.2)]]
 - [[http://www.doppo1.net/oracle/tuning/wait-event.html][待機イベント一覧 - WalkingAlone]]
