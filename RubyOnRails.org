@@ -428,8 +428,7 @@
 
 ****** quit
 ***** bundle install
-- 
-  gemfileに書いた内容をインストールしてくれる
+- gemfileに書いた内容をインストールしてくれる
 
 **** helper
 

@@ -278,6 +278,8 @@
 
 ****** -o options
 - see config explanation, or "man ssh-config"
+****** -X
+- Enables X11 forwarding.
 ***** Memo
 ****** config
 - write down port forwarding settings to  ~/.ssh/config or /etc/ssh/ssh_config
@@ -393,6 +395,10 @@
   - DEBUG2
   - DEBUG3
 
+***** Memo
+****** サービスをリスタートしても接続は切断しない
+- sshdのルートプロセスのみが消え、代わりにinitが親プロセスとなり、子プロセスは再起動対象となる。
+  http://equj65.net/tech/sshdprocess/
 **** stat
 - 
   display file or file system status

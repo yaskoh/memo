@@ -242,6 +242,11 @@
 **** tmp/
 ***** pdf/
 ** Plug-ins
+*** redmine_absolute_dates
+- https://github.com/suer/redmine_absolute_dates
+- 日付を相対日付でなく絶対日付表示とする。
+*** redmine_issue_templates
+- https://github.com/akiko-pusu/redmine_issue_templates
 ** 記法
 *** Redmineのwiki記法
 *** textile記法

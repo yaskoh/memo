@@ -405,7 +405,6 @@
 ****** Debian GNU/Linux 2.1 / slink
 ****** Debian GNU/Linux 2.0 / hamm
 **** Ubuntu
-
 **** Obsoletes
 ***** KNOPIX
 *** Red Hat
@@ -517,6 +516,11 @@
 ***** apt
 ***** apt-cache
 ***** apt-get
+****** memo
+******* GUIのインストール
+- sudo apt-get install ubuntu-desktop
+  or
+  sudo apt-get install xserver-xorg
 ***** apt-key
 ***** add-apt-repository
 **** aptitude
@@ -531,12 +535,29 @@
   The next generation version of yum.
 
 *** yum
-- 
-  Yellowdog Updater Modified.
+- Yellowdog Updater Modified.
   interactive, rpm based, package manager.
   yumは内部でrpmを呼び出していて、rpmよりも高度。
   
-**** command
+**** commands
+***** check
+***** check-update
+***** clean
+
+***** deplist
+***** downgrade
+***** erase
+***** groupinfo
+***** groupinstall
+- ex: sudo yum -y groupinstall "X Window System"
+- リストは"grouplist"で取得する。
+***** grouplist
+- ex: yum grouplist hidden
+***** groupremove
+***** info
+- 
+  show details.
+
 ***** install
 - 
   install the latest version of a package or group packages while ensuring that all dependencies are satisfied.
@@ -544,32 +565,30 @@
 - -y
   answer "yes" to questions in the install message.
 
-***** update
-- 
-  If run without any packeages, update will update every currently installed package.
-  
-***** upgrade
-
-***** remove
-
 ***** list
 - 
   find out which package provides some feature or file.
 
-***** info
-- 
-  show details.
-
-***** clean
+***** remove
 
 ***** search
 - 
   This is used to find packages when you know something about package
   but aren't sure of it's name.
 
+***** update
+- 
+  If run without any packeages, update will update every currently installed package.
+  
+***** upgrade
+
 **** error
 ***** cannot find a valid baseurl
 - [[http://nksg.org/archives/22][CentOS で yum がエラーを吐いてしまう - nksg.org]]
+**** memo
+***** groupinstallできるパッケージのリストを取得
+- yum grouplist hidden
+  (hiddenを付けないと表示されないものがある)
 *** rpm
 - 
   RPM Package Manager
@@ -666,12 +685,40 @@
 ****** Search packages
 - pacman -Ss string1 string2 ...
 - (local) pacman -Qs string1 string2 ...
-****** Display information
+****** Display information (detailed info)
 - pacman -Si package_name
 - (local) pacman -Qi package_name
+***** 操作例
+****** ヘルプの表示
+- pacman -h
+- pacman -S -h : 各オペレーションのヘルプ
+****** ミラーの最適化
+- sudo pacman -g
+****** レポジトリとの同期
+- pacman -Syy (apt-get updateに相当)
+  プログラムも更新するには、"sudo pacman -Syyu"
+****** パッケージの検索
+- pacman -Ss [pattern]
+- pacman -Qs [pattern] (local)
+
+- pacman -Qi [pattern] (詳細情報)
+- pacman -Qii [pattern] (さらに詳細情報、iを重ねる)
+
+- pacman -Qdt (孤児パッケージ/orphansの表示)
+****** ソフトウェアの一覧を表示
+- pacman -Sl
+- pacman -Ql (local)
+****** キャッシュ削除
+- sudo pacman -Sc
+- sudo pacman -Scc (完全に削除)
+****** ソフトウェアのアンインストール
+- pacman -R [package]
+- pacman -Rs [package] (依存パッケージも同時に削除)
 **** Link
 - [[https://www.archlinux.org/pacman/pacman.8.html][pacman(8) Manual Page]]
 - [[https://wiki.archlinuxjp.org/index.php/Pacman][pacman - archlinux]]
+
+- [[https://qiita.com/MoriokaReimen/items/dbe1448ce6c0f80a6ac1][Pacmanの使い方 - Qiita]]
 ** Packages
 - [[file:Linux_Packages.org][Linux_Packages.org]]
 ** Reverse lookup

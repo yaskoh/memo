@@ -158,7 +158,9 @@
 ** Link
 - [[https://nodejs.org/en/][node.js]]
 
-- [[https://yosuke-furukawa.hatenablog.com/entry/2018/06/07/080335][Node.js 縺ｫ縺翫￠繧玖ｨｭ險医Α繧ｹ By Ryan Dahl - from scratch]]
+- [[https://yosuke-furukawa.hatenablog.com/entry/2018/06/07/080335][Node.jsにおける設計ミス By Ryan Dahl - from scratch]]
+
+- [[https://github.com/pana/node-books][Pana/node-books - GitHub]]
 *** v4.5.0
 - [[https://nodejs.org/dist/latest-v4.x/docs/api/cli.html#cli_command_line_options][Command Line Options - Node.js v4.5.0 Documentation]]
 
@@ -168,3 +170,5 @@
 - http://libro.tuyano.com/index2?id=1115003
 - http://sakuratan.biz/archives/3101
 
+- [[https://qiita.com/kenju/items/fe149acfa8f7b0ec25c8][Node.js良記事まとめ(随次更新) - Qiita]]
+- https://qiita.com/MASAYUKI-ABE/items/856172b2958701d42808 (Express)

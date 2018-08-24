@@ -231,7 +231,49 @@
   ...
 *** List
 **** 待機イベント
-- [[file://OracleDB_Reference.org][OracleDB_Reference.org]]
+- [[file:OracleDB_Reference.org][OracleDB_Reference.org]]
+***** Memo(待機イベント)
+****** 確認方法
+- [[http://oracle-pub.wikidot.com/wait-event][待機イベント基礎 - Oracle Pub]]
+- V$EVENT_NAME
+  待機イベントの種類を知ることができる
+- V$SYSTEM_WAIT_CLASS
+  待機イベントクラスごとの待機回数と待機時間
+****** 待機イベント情報の取得
+- V$SESSION
+- V$SESSION_WAIT: セッションが現在待機中または待機を完了した直後のイベントを表示する
+- V$SYSTEM_EVENT: すべてのセッションがV$SESSION_WAITビューに表示されているイベントを待機した合計回数を表示する
+****** UserI/OとWait
+- http://www.ex-em.co.jp/oracle-k/oracle-event-%E8%A7%A3%E8%AA%AC/855/
+- [[https://www.insight-tec.com/mailmagazine/ora3/vol328.html][待ちイベントに関する検証　その８ - InsightTechnology]]
+******* 従来型パスI/O
+- SGAのバッファキャッシュにデータが存在しない場合に、サーバプロセスがデータファイルから該当データブロックをバッファ・キャッシュにロードする。
+  マルチブロック読み込み方式とシングルブロック読み込み方式に分けられる。
+******** マルチブロック読み取り方式
+- 1回に幾つかの連続したブロックを読み込む
+******** シングルブロック読み取り方式
+- 1回に1つのブロックだけを読み込むI/O。
+  1回シングル・ブロック読み取りが発生すると、1回のdb file sequential readイベントが発生。
+
+******* sequential read
+- ランダムアクセス時。
+  単一ブロック読み込みのため、読み込んだデータが（1ブロックなので当然）メモリ上で連続する。
+  そのため、"sequential"と表示される。
+- タイムアウトは発生せず、読み込み完了まで待機する。
+
+******** 解決策
+********* Appレイヤー
+********* Oracleメモリ―レイヤー
+- バッファキャッシュの大きさが小さすぎる
+  慢性的に物理I/Oが発生しdb file sequential read待機が増加することとなる。
+  この場合、同時にfree buffer waits待機が発生する確率も高くなる。
+- クラスタ化係数(Clustering Factor)が高すぎる
+- 行連鎖や行移行が多発
+********* I/Oデバイスレイヤー
+- V$FILESTATビューを利用することで、データ・ファイルごとにマルチブロック読取とシングルブロック読取の活動性に関する情報を取得できる。
+******* scattered read
+- シーケンシャル読み込み時。
+  複数ブロックを読み込み、それらは連続していないので、"scattered"と表示される。
 **** システム統計
 - [[http://www.doppo1.net/oracle/tuning/sysstat.html][システム統計一覧 - WalkingAlone]]
 *** Manual
@@ -279,9 +321,15 @@
 ***** 2109: Response Time Per Txn
 ***** 2121: Executions Per Sec
 ***** 2144: Average Synchronous Single-Block Read Latency
+- The average latency in miliseconds of a synchronous single-block read.
+- https://docs.oracle.com/cd/B16240_01/doc/doc.102/e16282/oracle_database_help/oracle_database_instance_throughput_avg_sync_singleblk_read_latency.html
 ***** 2145: I/O Megabytes per Second
 ***** 2146: I/O Requests per Second
 ***** 2147: Average Active Sessions
+- AAS
+  ロードアベレージ
+  DMA(Direct Memory Access)による高頻度なサンプリング方式。
+- http://www.oracle.com/technetwork/jp/ondemand/db-new/091028-insight-tuning-250540-ja.pdf
 **** OEM Metrics
 - https://docs.oracle.com/cd/E17559_01/em.111/b61024/toc.htm
 **** Tuningが必要なSQLの洗い出し
@@ -327,3 +375,5 @@
 - [[http://www.oracle.com/webfolder/technetwork/jp/ondemand/ddd2014/A1-4.pdf][オラクル・コンサルが語る！プロフェッショナルのデータベース性能分析手法 AWR/ASHを活用した分析事例 - ORACLE]]
 - [[http://www.oracle.com/technetwork/jp/articles/index-088346-ja.html][おら！オラ！Oracle － どっぷり検証生活 現場で役立つOracle DBのパフォーマンスチューニング - Oracle Technology Network]]
 - [[http://www.oracle.com/technetwork/jp/ondemand/db-new/091028-insight-tuning-250540-ja.pdf][おら! オラ! Oracle - どっぷり検証生活 - 現場で役立つ Oracle DBのパフォーマンス チューニング(slide)]]
+
+- [[https://docs.oracle.com/en/database/oracle/oracle-database/12.2/tdppt/monitoring-real-time-database-performance.html#GUID-EB19F9B4-A912-4354-8D8D-F89EEFD56704][2 Day + Performance Tuning Guide - ORACLE Help Center]]
