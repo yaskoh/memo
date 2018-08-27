@@ -1,5 +1,5 @@
 * PostgreSQL
-** 概要
+** About 概要
 *** postgreSQLとは
 - 
   カリフォルニア大学バークレイ校のCS学科で開発されたものがベース。
@@ -51,20 +51,9 @@
   |----------------------+--------------------------------------------------------------------------------------|
 
 ** Command
-- See "Reference"
+- See "Reference" on Manuals
 ** Manuals
 - [[file:PostgreSQL_Documentation.org][PostgreSQL_Documentation.org]]
-** Etc
-*** current_date
-- 変数だろう。ただし今欄がない。
-
-*** DISTINCT
-
-*** OVER
-- 
-  window関数で使われる。
-  （そのうち項目をSQL Commandにでも移すかも。）
-
 ** Architecture
 - [[https://speakerdeck.com/soudai/postgresql-architecture-and-performance-monitoring?slide=19][PostgreSQL Architecture And Performance Monitoring - speakerdeck]]
 - [[https://www.slideshare.net/uptimejp/postgresql-6872500][PostgreSQLアーキテクチャ入門 - SlideShare]] ※2011年時点の情報
@@ -129,6 +118,36 @@
 - 16MBずつのセグメントに分割されている
 - pg_xlog/(pg10からはpg_wal)以下に配置され、リカバリ時に読み込まれる。
 ***** アーカイブログファイル
+** Structure
+*** Install
+**** data
+***** base/
+- データ領域。データベースのデータを格納
+****** nnnnn/
+- データベース、テーブルスペース。
+  紐付は以下で確認可能(oidがフォルダ名となる)。
+  "select datname, oid from pg_database;"
+******* nnnnn
+- オブジェクト。以下でファイル名との紐付確認が可能。
+  "select relname, relfilenode from pg_class;"
+******* nnnnn_fsm
+******* nnnnn_vm
+***** global/
+***** pg_clog/
+***** pg_log/
+***** pg_multixact/
+***** pg_notify/
+***** pg_serial/
+***** pg_snapshots/
+***** pg_stat_tmp/
+***** pg_tblspc/
+***** pg_twophase/
+***** pg_xlog/
+***** pg_hba.conf
+***** pg_ident.conf
+***** PG_VERSION
+***** postgresql.conf
+***** postmaster.opts
 ** Performance
 - [[https://taityo-diary.hatenablog.jp/entry/2017/09/10/091729][PostgreSQLの実行計画を読み解くための参考資料集 - ぱと隊長日誌]]
 ** Security
@@ -153,6 +172,17 @@
 **** pgAdmin3
 **** Link
 - https://www.pgadmin.org/
+** Etc
+*** current_date
+- 変数だろう。ただし今欄がない。
+
+*** DISTINCT
+
+*** OVER
+- 
+  window関数で使われる。
+  （そのうち項目をSQL Commandにでも移すかも。）
+
 ** Reverse lookup
 *** 設定ファイルを読み込ませる
 - GUI
@@ -178,6 +208,11 @@
   postgresql.confのlog_statementを修正する。
 *** セッションを切る
 - SELECT pg_terminate_backend(processID);
+*** データベースとフォルダ、テーブルとファイル名の関係を取得
+- データベース、テーブルスペースの紐付は以下で確認可能(oidがフォルダ名)。
+  "select datname, oid from pg_database;"
+- オブジェクト。以下でファイル名との紐付確認が可能。
+  "select relname, relfilenode from pg_class;"
 ** Memo
 *** Uninstall(Windows)
 - 
