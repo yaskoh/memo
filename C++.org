@@ -68,6 +68,66 @@
 ******* wcout
 ******* wcerr
 ******* wclog
+** Library
+- http://www.cplusplus.com/reference/
+- https://ja.wikipedia.org/wiki/%E6%A8%99%E6%BA%96C%2B%2B%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA
+- http://cs.stmarys.ca/~porter/csc/ref/cpp_standlib.html
+*** C Library
+- C++の標準Cライブラリのヘッダは、Cと異なり、先頭にcを加え、末尾の.hを取り除く。
+  time.h -> ctime、など。
+**** <cassert>
+**** <cctype>
+**** <cmath>
+***** Functions
+****** Other functions
+******* abs
+- Compute absolute value
+***** Macnos/Functions
+***** Macro constants
+*** Containers
+**** <array>
+**** <bitset>
+**** <deque>
+**** <forward_list>
+**** <list>
+**** <map>
+**** <queue>
+**** <set>
+**** <stack>
+**** <unordered_map>
+**** <unordered_set>
+**** <vector>
+*** Input/Output
+**** <fstream>
+**** <iomanip>
+**** <ios>
+***** Types
+****** Class templates
+****** Classes
+******* ios
+******* ios_base
+- Base class for streams
+******* wios
+****** Other types
+***** Format flag manipulators
+***** Other functions
+**** <iosfwd>
+**** <ostream>
+**** <istream>
+**** <ostream>
+**** <sstream>
+**** <streambuf>
+*** Atomics and threading
+*** Miscellaneous
+**** <algorithm>
+***** Functions
+****** Non-modifying sequence operations
+****** Modifying sequence operations
+****** Partitions
+****** Sorting
+******* sort
+- Sorts the elements in the range [filst,last) into ascending order.
+****** Binary search
 ** Compiler
 *** g++
 - GNUのコンパイラ。
@@ -76,9 +136,70 @@
 - https://root.cern.ch/cling
 ** Tools
 *** Unit Testing Framework
-**** googletest
+**** googletest / Google C++ Testing Framework
 - https://github.com/google/googletest
+***** Documents
+****** 入門ガイド
 - http://opencv.jp/googletestdocs/primer.html
+******* はじめに
+******* 新しいテストプロジェクトを開始する
+******* 基本コンセプト
+- アサーションを書く
+  - 結果は、成功、致命的でない失敗、致命的な失敗、の3種類。
+- 1つのテストケースには、1つまたは複数のテストが含まれる。
+  対象コードの構造を反映するように、テストをテストケースとしてグループ化すべし。
+  共通のオブジェクトやサブルーチンを共有する必要がある場合、テストフィクスチャクラスに書くことが可能。
+******* アサーション
+- ASSERT_* : 致命的な失敗、実行中の関数を中断する
+- EXPECT_* : 致命的でない失敗、中断しない。
+
+- EXPECTが好まれるが、失敗したら後続をやっても仕方ない場合にはASSERTを使う。
+******* 基本的なアサーション
+- 
+  |-------------------------+-------------------------+------------------|
+  | ASSERT_TRUE(condition)  | EXPECT_TRUE(condition)  | conditionがtrue  |
+  | ASSERT_FALSE(condition) | EXPECT_FALSE(condition) | conditionがfalse |
+  |-------------------------+-------------------------+------------------|
+  
+******* 2つの値の比較
+- 
+  |-----------------------------+-----------------------------+--------------------|
+  | ASSERT_EX(expected, actual) | EXPECT_EX(expected, actual) | expected == actual |
+  | ASSERT_NE(val1, val2)       | NEPECT_NE(val1, val2)       | val1 != val2       |
+  | ASSERT_LT(val1, val2)       | LTPECT_LT(val1, val2)       | val1 < val2        |
+  | ASSERT_LE(val1, val2)       | LEPECT_LE(val1, val2)       | val1 <= val2       |
+  | ASSERT_GT(val1, val2)       | GTPECT_GT(val1, val2)       | val1 > val2        |
+  | ASSERT_GE(val1, val2)       | GEPECT_GE(val1, val2)       | val1 >= val2       |
+  |-----------------------------+-----------------------------+--------------------|
+
+******* 文字列の比較
+- 
+  |--------------------------------------------+--------------------------------------------+--------------------------------|
+  | ASSERT_STREQ(expected_str, actual_str)     | EXPECT_STREQ(expected_str, actual_str)     | 内容が等しい                   |
+  | ASSERT_STRNE(str1, str2)                   | EXPECT_STRNE(str1, str2)                   | 内容が等しくない               |
+  | ASSERT_STRCASEEQ(expected_str, actual_str) | EXPECT_STRCASEEQ(expected_str, actual_str) | CASEを無視して内容が等しい     |
+  | ASSERT_STRCASENE(str1, str2)               | EXPECT_STRCASENE(str1, str2)               | CASEを無視した内容が等しくない |
+  |--------------------------------------------+--------------------------------------------+--------------------------------|
+
+******* 簡単なテスト
+- 作成方法
+  - TEST()マクロを利用してテスト関数を定義
+  - 
+
+****** 上級ガイド
+- http://opencv.jp/googletestdocs/advancedguide.html#advancedguide
+***** Library
+****** libtest.a
+****** libtest_main.a
+***** Memo
+****** 設定例
+- https://qiita.com/medaka5/items/171e10d5fa2d5e04f860
+
+- gtest_mainを使う場合
+  - g++ test1.cpp -I$GTEST_INCLUDEDIR -L$GTEST_LIBDIR -lgtest -lgtest_main
+- mainを自分で書く場合
+- g++ test1.cpp -I$GTEST_INCLUDEDIR -L$GTEST_LIBDIR -lgtest
+
 **** Boost.Test
 - https://www.boost.org/doc/libs/1_67_0/libs/test/doc/html/index.html
 **** CppUnit
