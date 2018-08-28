@@ -1483,6 +1483,7 @@
 ***** pg_auth_members
 ***** pg_cast
 ***** pg_class
+- テーブルやテーブルに似たもの全ての目録となっていｒ。う
 ***** pg_constraint
 ***** pg_colation
 ***** pg_conversion

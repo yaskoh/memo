@@ -2,9 +2,11 @@
 ** Tools
 *** Debugger
 **** Win
+***** x64dbg
+****** Link
+- https://github.com/x64dbg/x64dbg/wiki
 ***** WinDBG
 - https://blog.takanabe.tokyo/2015/06/03/1087/
-***** x64dbg
 ***** Old
 ****** Ollydbg
 ****** Immunity Debugger
@@ -14,6 +16,33 @@
 - [[file:IDA.org][IDA.org]]
 **** Link
 - https://stackoverflow.com/questions/47334835/what-are-the-key-differences-between-ida-and-x64dbg#
+** Command
+- https://qiita.com/rsooo/items/bb91071685f447ce29db
+*** General
+**** file
+- ファイルタイプを調べる
+**** strings
+- 文字列を抜き出す
+**** od
+- バイナリファイルの16進ダンプ
+**** hexdump
+- バイナリファイルの16進ダンプ
+**** objdump
+- バイナリファイルの16進ダンプ
+**** vim
+- :%!xxd : バイナリ表示にする
+- :%!xxd -r : 元に戻す
+**** emacs
+- M-x hexl-mode
+**** dd
+- バイナリ編集
+  ブロック単位で読み出し、変換するコマンド。
+*** ELF
+**** readelf
+**** nm
+- シンボルを表示
+**** ldd
+- ライブラリ一覧
 ** Glossary
 *** Clean room design / クリーンルーム設計
 - リバースエンジニアリングするチームと、そこで得られた情報を元に再実装するチームを隔離することで、

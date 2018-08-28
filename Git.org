@@ -125,18 +125,31 @@
 - Command aliases for the git command wrapper.
 - alias.<alias-name> <git-command>
   Gitコマンドのショートカットを設定する。
-******** color.ui
+******** color.*
+********* color.branch
+********* color.diff
+********* color.ui
 - This variable determines the default value for variables such as color.diff and color.grep that control the use of color per command family.
 - --global color.ui "auto"
   ユーザインターフェースを自動で色付けする。
 
-******** core.editor
+******** core.*
+********* core.autocrlf
+- true: same as auto
+- auto: CRLF at working directory and LF at the repository.
+********* core.editor
 - Commands such as commit and tag that lets you edit messages by lauching an editor uses the value of this variable
 - --system core.editor <editor>
   git commandのようなコマンドを実行する際のエディタを指定する。
-******** core.fileMode
+********* core.eol
+********* core.fileMode
 - Tells Git if the executable bit of files in the working tree is tobe honored.
 - ファイルの権限・モードの設定。faleで無視する。
+********* core.hideDotFiles
+********* core.ignoreCase
+********* core.gitProxy
+********* core.pager
+********* core.worktre
 ******** user.email
 - Your email address to be recorded in any newly created commits.
 - user.email <email>
@@ -638,6 +651,16 @@ SSHは両方可能。
   echo 目的のフォルダ > ./git/info/sparse-checkout
 
 - https://mseeeen.msen.jp/git-sparse-checkout/
+*** 差分ファイルのみを抽出する
+- git archive <rev> `git diff <rev0> <rev> --name-only --diff-filter=ACMR` -o <filename.like.zip>
+- https://www.granfairs.com/blog/staff/git-archivediff
+*** 末尾の^M表示抑制
+- 原因: 末尾のCRLF
+  空白文字の扱いを決めるcore.whitespaceという設定があるが、blank-at-eolが有効だと改行コード前の空白文字をエラーとして報告する。
+  デフォルトでCRは改行コードでなく空白文字として扱われるため、CRLFのCR部分が"blank-at-eol"に引っかかり^Mで反転表示される。
+- 対応: 行末のCRを許容する設定
+  git config --local core.whitespace cr-at-eol
+- http://amano41.hatenablog.jp/entry/git-diff-treats-cr-at-eol-as-error
 ** Memo
 *** Initialize Setting
 - git config --global user.name "your name"
@@ -691,9 +714,6 @@ SSHは両方可能。
 *** git fetch
 - https://qiita.com/Teloo/items/95a860ae276b49edb040
 - https://qiita.com/osamu1203/items/cb94ef9da02e1ec3e921
-*** 差分ファイルのみを抽出する
-- git archive <rev> `git diff <rev0> <rev> --name-only --diff-filter=ACMR` -o <filename.like.zip>
-- https://www.granfairs.com/blog/staff/git-archivediff
 ** Link
 - [[https://git-scm.com/book/ja/v2][Book - git]]
 - [[https://github.com/Shinpeim/introduction-to-git][Gitをはじめからていねいに - Shinpeim/introduction-to-git - GitHub]]
