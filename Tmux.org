@@ -1,113 +1,124 @@
 * tmux
 ** Commands
 - tmux [-2Cluv] [-c shell-command] [-f file] [-L socket-name] [-S socket-path] [command [flags]]
+*** Window
+**** new-window
+**** move-window / movew
+**** swap-window / swapw
+**** choose-window
+*** Client
+**** detach-client
+**** choose-tree
+*** Buffer
+**** delete-buffer / deleteb
 ** Key Bindings
-*** c : new-window
-*** o : rotate-window
-*** ! : break-pane
-*** " : split-window
-*** ( : switch-client -p
-*** ) : switch-client -n
-*** % : split-window -h
-*** space : next-layout
+*** Client
+**** d : detach-client
+
+*** Session
+**** ( : switch-client -p
+**** ) : switch-client -n
+**** s : choose-tree
+**** $ : command-prompt -I #S "rename-session '%%'"
+
+*** Window
+**** c : new-window
+
+**** w : choose-window
+
+**** l : last-window
+**** n : next-window
+**** p : previous-window
+
+**** 0 : select-window -t :0
+**** 1 : select-window -t :1
+**** 2 : select-window -t :2
+**** 3 : select-window -t :3
+**** 4 : select-window -t :4
+**** 5 : select-window -t :5
+**** 6 : select-window -t :6
+**** 7 : select-window -t :7
+**** 8 : select-window -t :8
+**** 9 : select-window -t :9
+*** Pane
+**** Move pane
+***** q : display-panes
+***** o : select-pane -t :.+
+
+***** ; : last-pane
+
+***** -r Up : select-pane -U
+***** -r Down : select-pane -D
+***** -r Left : select-pane -L
+***** -r Right : select-pane -R
+
+**** Arrange pane
+***** z :resize-pane -Z
+- paneをフルサイズに。再度行うと元の分割状態に戻る。
+***** " : split-window
+***** % : split-window -h
+***** ! : break-pane
+- 別のWindowに分離させる
+***** { : swap-pane -U
+***** } : swap-pane -D
+**** Layout pane
+***** space : next-layout
+***** M-1 : select-layout even-horizontal
+***** M-2 : select-layout even-vertical
+***** M-3 : select-layout main-horizontal
+***** M-4 : select-layout main-vertical
+***** M-5 : select-layout tiled
+**** Resize pane
+- C-矢印キーでPaneサイズを調整。M-矢印キーだとまとめて移動。
+***** -r C-Up : resize-pane -U
+***** -r C-Down : resize-pane -D
+***** -r C-Left : resize-pane -L
+***** -r C-Right : resize-pane -R
+***** -r M-Up : resize-pane -U 5
+***** -r M-Down : resize-pane -D 5
+***** -r M-Left : resize-pane -L 5
+***** -r M-Right : resize-pane -R 5
+
+*** Copy buffer
+**** [ : copy-mode
+**** - : delete-buffer
+**** # : list-buffers
+
+*** Meta
+**** t : clock-mode
+**** ? : list-keys
+**** ":" : command-prompt
+
 *** List
 (Bind-key ?)
 - C-z        suspend-client
-- #          list-buffers
-- $          command-prompt -I #S "rename-session '%%'"
 - &          confirm-before -p "kill-window #W? (y/n)" kill-window
 - '          command-prompt -p index "select-window -t ':%%'"
 - ,          command-prompt -I #W "rename-window '%%'"
-- -          delete-buffer
 - .          command-prompt "move-window -t '%%'"
-- 0          select-window -t :0
-- 1          select-window -t :1
-- 2          select-window -t :2
-- 3          select-window -t :3
-- 4          select-window -t :4
-- 5          select-window -t :5
-- 6          select-window -t :6
-- 7          select-window -t :7
-- 8          select-window -t :8
-- 9          select-window -t :9
-- :          command-prompt
-- ;          last-pane
-- =          choose-buffer
-- ?          list-keys
-- D          choose-client
+- =          choose-buffer -Z
+- D          choose-client -Z
 - L          switch-client -l
-- [          copy-mode
 - ]          paste-buffer
-- d          detach-client
 - f          command-prompt "find-window '%%'"
 - i          display-message
-- l          last-window
-- n          next-window
-- o          select-pane -t :.+
-- p          previous-window
-- q          display-panes
 - r          refresh-client
-- s          choose-tree
-- t          clock-mode
-- w          choose-window
 - x          confirm-before -p "kill-pane #P? (y/n)" kill-pane
-- z          resize-pane -Z
-- {          swap-pane -U
-- }          swap-pane -D
 - ~          show-messages
 - PPage      copy-mode -u
-- -r Up      select-pane -U
-- -r Down    select-pane -D
-- -r Left    select-pane -L
-- -r Right   select-pane -R
-- M-1        select-layout even-horizontal
-- M-2        select-layout even-vertical
-- M-3        select-layout main-horizontal
-- M-4        select-layout main-vertical
-- M-5        select-layout tiled
 - M-n        next-window -a
 - M-o        rotate-window -D
 - M-p        previous-window -a
-- -r M-Up    resize-pane -U 5
-- -r M-Down  resize-pane -D 5
-- -r M-Left  resize-pane -L 5
-- -r M-Right resize-pane -R 5
-- -r C-Up    resize-pane -U
-- -r C-Down  resize-pane -D
-- -r C-Left  resize-pane -L
-- -r C-Right resize-pane -R
-**** Command(old)
-***** ?
-    キー一覧の取得
-***** c
-    新規ウィンドウの作成。
-    :new-window
-***** [番号(0-9)]
-    ウィンドウの切替
-***** n
-    次のウィンドウへ
-***** p
-    前のウィンドウへ
-***** w
-    現在のウィンドウの一覧
-***** &
-    ウィンドウの削除
-***** "
-    水平分割
-***** %
-    垂直分割
-***** o
-    ウィンドウの移動
-***** q
-    分割ウィンドウの番号表示
-***** q + [番号]
-    ペインの移動
-***** x
-    現在のペインの削除
-***** !
-    現在のペインを別ウィンドウへ
-
 ** Settings
+** Reverse Lookup
+*** Paneを他のWindowに移す
+- :join-pane -t :WindowNum
+  Windowタブ番号は":2"のようにコロンの後に番号を置く。
+*** Windowの番号を動かす/Swapする
+- 移動
+  :move-window -t TabNum
+- スワップ
+  :swap-window -t TabNum
 ** Memo
 *** Copy/Paste
 **** Windows
@@ -129,4 +140,9 @@
   
 ** Link
 - [[https://tmux.github.io/][tmux]]
-- https://qiita.com/b4b4r07/items/01359e8a3066d1c37edc
+- https://wiki.archlinux.jp/index.php/Tmux
+
+- tmp
+  - https://qiita.com/b4b4r07/items/01359e8a3066d1c37edc
+  - https://qiita.com/vintersnow/items/3d7e25d520bc7deefc77
+  - http://engineerspirit.com/2016/12/25/post-407/

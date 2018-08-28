@@ -3,24 +3,27 @@
 *** Vulnerability
 **** OS Command Injection
 
-**** XSS / Cross-Site Scripting-
+**** XSS / Cross-Site Scripting / クロスサイトスクリプティング
 ***** Measure
 - 利用者
   - 会員登録したサイトを閲覧中は他のサイトを見に行かず、終了後は一旦ブラウザを終了させることでcookieを盗まれないようにする。
 - 作成者
   - ユーザIDやユーザ認証に関わる情報は極力cookieには含めないようにし、セッションIDはセッションごとにランダムな値を生成することで、推測できないようにする。
+***** Link
+- https://www.techmatrix.co.jp/product/appscan/column/check5.html
 **** XST / Cross-Site Tracing
 ***** Link
 - [[https://blog.tokumaru.org/2013/01/TRACE-method-is-not-so-dangerous-in-fact.html][実はそんなに怖くないTRACEメソッド - 徳丸浩の日記]]
-**** SQL Injection
-
+**** SQL Injection / SQLインジェクション
+- 条件に"'1' = '1'"などと入力して任意の結果を得る方法。
+- https://www.techmatrix.co.jp/product/appscan/column/check6.html
 **** Code Injection
 
 **** Baffer Error
 
 **** Certification・Password Management
 
-**** CSRF / Cross-Site Request Forjery
+**** CSRF / Cross-Site Request Forjery / クロスサイトリクエストフォージェリ
 - 概要
   任意のHTTPリクエストを送信させられてしまう
 
@@ -39,6 +42,8 @@
   - HTTP Refererを取得し照合することで、外部からの不正POSTを判別する。
     第三者サイトから、Refererを偽造したPOSTを送信することは不可能。
 
+***** Link
+- https://www.techmatrix.co.jp/product/appscan/column/check8.html
 **** Session Fixation
 - 手順
   1. 攻撃者があらかじめWebサイトからCookieとして有効なセッションIDを取得する。
@@ -52,6 +57,8 @@
   ブラウザが送ってきたセッションIDが、自分の発行していないにもかかわらず、
   それを有効なセッションIDとして許可してしまうサーバがある場合、問題となる。
 
+***** Link
+- https://www.techmatrix.co.jp/product/appscan/column/check8.html
 **** ARP spoofing
 - ARPスプーフィング (ARP cache poisoning, ARP poison routing)
   ARPプロトコルの応答を偽装することにより、LAN上で通信機器のなりすましを行う技法。
@@ -62,6 +69,13 @@
 - DNS偽装, DNS cache poisoning
 **** Buffer overflow, Buffer overrun
 - 
+**** ディレクトリトラバーサル
+- 相対パスを用いて、任意のパスの情報を取得できる脆弱性
+- https://www.techmatrix.co.jp/product/appscan/column/check7.html
+**** 強制ブラウジング
+- 許可されていないはずのページにアクセスできてしまう
+- https://f5.com/jp/education/glossary/glossary150-21634
+- https://www.techmatrix.co.jp/product/appscan/column/check7.html
 *** Malware
 **** Viruses
 - 他のファイルに感染することで増殖するもの
