@@ -5,6 +5,8 @@
 ***** x64dbg
 ****** Link
 - https://github.com/x64dbg/x64dbg/wiki
+
+- http://reverseengineeringtips.blogspot.com/2015/01/an-introduction-to-x64dbg.html
 ***** WinDBG
 - https://blog.takanabe.tokyo/2015/06/03/1087/
 ***** Old
