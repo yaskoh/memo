@@ -1861,6 +1861,9 @@
 *** LLC
 - Logical Link Control
 
+*** MPLS
+- Multi-Protocol Label Switching
+- LSP: Label Switched Pathと呼ばれるパスを構成し、通信を行う。
 *** NIC
 - 
   Network Information Center
@@ -1932,10 +1935,22 @@
 *** SNAP
 - SubNetwork Access Protocol
 
+*** VPN
+- Virtual Private Network
+**** 種類
+- インターネットVPN、IP-VPNの二種類。
+***** インターネットVPN
+****** IPsec-VPN
+****** SSL-VPN
+***** IP-VPN
+****** MPLS-VPN
 *** Broadcast Storm
 - 
   ブロードキャストが多発しすぎて、ネットワーク全体が通信不能になってしまう状態。
 
+**** Type
+***** サイト間VPN
+***** リモート
 ** Link
 - [[https://en.wikipedia.org/wiki/Computer_network][Computer network Wikipedia]]
 - [[http://blog.amedama.jp/entry/2017/03/29/080000][Python: ソケットプログラミングのアーキテクチャパターン - CUBE SUGAR CONTAINER]]
