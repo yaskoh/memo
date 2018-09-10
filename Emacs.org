@@ -4,7 +4,26 @@
 - https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html
 **** Intro
 **** Important General Concepts
+***** Screen
+***** User Input
+***** Keys
+***** Commands
+***** Entering Emacs
+***** Exiting
 **** Fundamental Editing Commands
+**** Important Text-Changing Commands
+***** Search / 15 Searching and Replacement
+****** Replace / 15.10 Replacement Commands
+******* Regexp Replace / 15.10.2 Regexp Replacement
+- \, : using Lisp expressions to calculate
+- \& : stands for the entire match being replaced.
+- \"d" : ("d" is digit, like 1, 2...) stands for whatever matched the "d"th parenthesized grouping grouping in regexp
+- \# : refers to the count of replacements already made in this command, as a decimal number
+- \? : replacement by hand each time
+**** Major Structures of Emacs
+**** Advanced Features
+**** Recovery from Problems
+**** Appendicies
 *** Emacs Lisp
 - [[file:EmacsLisp.org][EmacsLisp.org]]
   (- https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html)
@@ -549,6 +568,8 @@
 *** 連番
 - C-u C-x r N
   https://qiita.com/kwappa/items/639b40ef0e18170edf43
+- (reg-exp) \,(1+ \#)
+  http://lambda1.blogspot.com/2012/04/emacs-emacs-replace-regexp-m-x-replace.html
 ** Link
 *** Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]

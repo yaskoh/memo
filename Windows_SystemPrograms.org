@@ -143,6 +143,16 @@
   ファイルやフォルダのアクセス制御リストを表示、修正、バックアップ、復元などが可能。
 - icalcs <name> /save <acl file> 
 - 名前が一致する全てのファイルとフォルダーのDACLを
+****** makecab.exe
+- Cabinet Maker : Lossless data compression
+******* Usage
+- MAKECAB [/V[n]] [/D var=value ...] [/L dir] source [destination]
+- MAKECAB [/V[n]] [/D var=value ...] /F directive_file [...]
+******* /d value
+******** MaxDiskSize
+******** RptFileName
+******** InfFileName
+******** DiskDirectoryTemplate
 ****** nbtstat.exe
 -NBT(NetBIOS over TCP/IP)を使用して、プロトコルの統計と現在のTCP/IPネットワーク接続を表示する。
 ******* Options
@@ -481,7 +491,6 @@ lpremove.exe
 lsass.exe
 lsm.exe
 Magnify.exe
-makecab.exe
 manage-bde.exe
 mblctr.exe
 mcbuilder.exe

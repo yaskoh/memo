@@ -1,6 +1,21 @@
 * tmux
 ** Commands
 - tmux [-2Cluv] [-c shell-command] [-f file] [-L socket-name] [-S socket-path] [command [flags]]
+*** Tmp
+**** ls
+**** attach
+*** Option
+**** show-options 
+**** show-window-options
+**** set-option / set
+**** set-window-option / setw
+**** list-keys
+**** bind-key / bind
+**** unbind-key / unbind
+*** Server
+**** kill-server
+*** Session
+**** kill-session
 *** Window
 **** new-window
 **** move-window / movew
@@ -110,6 +125,32 @@
 - M-o        rotate-window -D
 - M-p        previous-window -a
 ** Settings
+*** Optionの種類
+- "set-option"は"set"というエイリアスがある。
+  例: set-option -g -> set -g
+**** Server Option サーバーオプション
+- set-option -s
+- tmuxのサーバプロセス全体で共有される
+**** Session Global Option セッショングローバルオプション
+- set-option -g
+- セッション全体で適用される
+**** Session Option セッションオプション
+- tmux set-option
+- 個別のセッションでオプションを上書きする
+**** Window Global Option ウィンドウグローバルオプション
+- set-optoin -w -g
+- ウィンドウ全体で適用される
+**** Window Option ウィンドウオプション
+- set-option -w, (set-window-option, setw)
+- 個別のウィンドウでオプションを上書き
+*** Optionの表示
+- tmux show-options [-s|-g|-w|-wg]
+- tmux show-options -wg = tmux show-window-option -g
+** Structure
+- https://qiita.com/sainuio/items/b7e04182e1dd8cb3bbd6
+*** Session
+*** Window
+*** Pane
 ** Reverse Lookup
 *** Paneを他のWindowに移す
 - :join-pane -t :WindowNum
@@ -119,6 +160,12 @@
   :move-window -t TabNum
 - スワップ
   :swap-window -t TabNum
+*** プレフィックスなしのキーバインドを使う
+- bind-key -n KEY COMMAND
+- https://blog.monochromegane.com/blog/2013/12/12/tmux-no-prefix/
+
+- bind-key -T root KEY COMMAND
+- https://mynavi-agent.jp/it/geekroid/2017/03/-11tmux.html
 ** Memo
 *** Copy/Paste
 **** Windows
@@ -143,6 +190,9 @@
 - https://wiki.archlinux.jp/index.php/Tmux
 
 - tmp
+  - https://qiita.com/succi0303/items/cb396704493476373edf
   - https://qiita.com/b4b4r07/items/01359e8a3066d1c37edc
   - https://qiita.com/vintersnow/items/3d7e25d520bc7deefc77
+  - https://qiita.com/Frog_woman/items/f6797f2a70c44e42863d
   - http://engineerspirit.com/2016/12/25/post-407/
+  - https://mynavi-agent.jp/it/geekroid/2017/03/-11tmux.html

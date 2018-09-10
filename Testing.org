@@ -253,5 +253,11 @@
 **** Link
 - https://blog.ko31.com/201304/sample-domain-example/
 - https://www.find-job.net/startup/dummy-2013
+*** Pairwise ペアワイズ法
+- すべての因子の組み合わせでなく、全てのペアの組み合わせにテストを制限する。
+  テストケースを組み合わせる場合、直交させて組み合わせるとすぐに値が大きくなってしまうため、
+  ペアに制限することで増加率を抑える。
+- [[https://github.com/Microsoft/pict/blob/master/doc/pict.md][Microsoft/pict - Github]]
+- [[https://msdn.microsoft.com/en-us/library/cc150619.aspx][Pairwise Testing in the Real World: Practical Extensions to Test-Case Scenarios - Microsoft Developer Network]]
 ** Link
 - [[https://www.qbook.jp/qptop][Qbook]]

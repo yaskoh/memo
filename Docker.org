@@ -81,6 +81,16 @@
 ***** diff
 ***** events
 ***** exec
+- Run a command in a running container
+****** Synopsis
+- docker exec [OPTONS] CONTAINER COMMAND [ARG...]
+****** Options
+******* -d, --detach[=false]
+******* -h, --help[=false]
+******* -i, --interactive[=false]
+- Keep STDIN open even if not attached
+******* -t, --tty[=falsse]
+- Allocate a pseudo-TTY
 ***** export
 - 
   Stream the contents of a container as a tar archive
@@ -168,7 +178,6 @@
 - run a command in a new container.
   I usually use this command as "docker run -it image/images /bin/bash"
 ****** Options
-******* --add-host list
 ******* -a, --attach list
 ******* -d, --detach=false
 - detached mode: run container in the background and print new container ID
@@ -189,6 +198,8 @@
 ******* -v
 - mount file or directory in the host to the container.
   -v /home/user/hostdir:/target/container
+******* --add-host list
+******* --name[=NAME]
 
 ***** save
 - 

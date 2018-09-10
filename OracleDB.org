@@ -1530,6 +1530,7 @@
 - [[https://docs.oracle.com/cd/E16338_01/appdev.112/b72086/toc.htm][Oracle® Spatial GeoRaster開発者ガイド 11gリリース2 (11.2)]]
 **** 2日でシリーズ
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56320/toc.htm][Oracle® Database 2日でデータベース管理者 11gリリース2(11.2)]]
+- [[https://docs.oracle.com/cd/E16338_01/appdev.112/b56265/toc.htm][Oracle® Database 2日で開発者ガイド 11gリリース2 (11.2)]]
 - [[https://docs.oracle.com/cd/E16338_01/server.112/b56313/tdppt_preface.htm#sthref2][Oracle® Database 2日でパフォーマンス・チューニング・ガイド 11gリリース2(11.2)]]
 *** Etc
 - [[https://support.oracle.com/epmos/faces/Dashboard][my oracle support]]

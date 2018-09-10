@@ -662,7 +662,7 @@ SSHは両方可能。
   git config --local core.whitespace cr-at-eol
 - http://amano41.hatenablog.jp/entry/git-diff-treats-cr-at-eol-as-error
 ** Memo
-*** Initialize Setting
+*** Initialize Setting 初期設定
 - git config --global user.name "your name"
 - git config --global user.email "your.email@domain.com"
 - git config --global core.filemode false  # ignore file mode like 755 and 644

@@ -52,6 +52,7 @@
 
 ** Command
 - See "Reference" on Manuals
+  @[[file:PostgreSQL_Documentation.org][PostgreSQL_Documentation.org]]
 ** Manuals
 - [[file:PostgreSQL_Documentation.org][PostgreSQL_Documentation.org]]
 ** Architecture
@@ -203,6 +204,8 @@
 - クエリ:
   - CREATE DATABASE 新DB名 TEMPLATE 複製元のDB名
   - https://whitemitt.com/2012/04/14-113046.htm
+*** テーブルの複製
+- CREATE TABLE new_table AS SELECT * FROM present_table;
 *** 実行クエリをログ取得したい場合
 - ログに残す:
   postgresql.confのlog_statementを修正する。
@@ -213,6 +216,7 @@
   "select datname, oid from pg_database;"
 - オブジェクト。以下でファイル名との紐付確認が可能。
   "select relname, relfilenode from pg_class;"
+*** 制約を調べる
 ** Memo
 *** Uninstall(Windows)
 - 

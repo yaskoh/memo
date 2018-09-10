@@ -32,9 +32,11 @@
   
   MySQLのバイナリログは前者、InnoDBログは後者。
 ** Performance
-- 
-  DBMS, 特にOLTPでは、ディスクのIOPSが重要と言われている。
+- DBMS, 特にOLTPでは、ディスクのIOPSが重要と言われている。
   
+*** Link
+- [[https://use-the-index-luke.com/ja/sql/table-of-contents][USE THE INDEX, LUKE]]
+
 ** Glossary
 *** OLTP
 - OnLine Transaction Processing
