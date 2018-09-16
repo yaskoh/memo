@@ -265,6 +265,13 @@
 - [[https://developers.google.com/web/tools/chrome-devtools/console/console-reference?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3#consolegroupobject-object][Console API Reference - Tools for Web Developers]]
 - [[https://developers.google.com/web/tools/chrome-devtools/console/command-line-reference?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3][Command Line API Reference - Tools for Web Developers]]
 
+**** Memo
+***** ブラウザを最新版に更新する
+- 基本的には自動アップデートが走るので問題ない。
+  手動で確認したい場合は、設定→Chromeについて、で確認、updateがあれば手動更新可能。
+***** ブックマークの場所
+- バージョンやOSなどによって変わるはず。。
+- Win7: C:\Users\UserName\AppData\Local\Google\Chrome\User Data\Default
 *** InternetExplorer
 **** IE8
 - 
@@ -347,7 +354,12 @@
 *** Edge
 - EdgeHTMLエンジンを使用。
 *** Firefox
-
+**** Memo
+***** 設定の変更
+- "about:config"にアクセスすることで様々な設定の変更が可能。
+***** 最後のタブを閉じてもWindowを閉じないようにする
+- about:configで以下を設定
+  - browser.tabs.close.WindowWithLastTab -> false
 *** Safari
 
 *** Opera

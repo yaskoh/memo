@@ -1514,15 +1514,14 @@
   データベースクラスタの先行書き込みログやその他制御情報を初期化する
 
 **** postgres
-- 
-  PostgreSQLデータベースサーバ。
+- PostgreSQLデータベースサーバ。
 
 **** postmaster
 - 
   postgresの別名。廃止予定。
 ** VII: Internals 内部構造
 *** Overview of PostgreSQL Internals /  PostgreSQL内部の概要
-*** System Catalogs / システムカタログ
+*** 50. System Catalogs / システムカタログ
 - テーブルや列の情報などのスキーマメタデータと内部的な情報を格納する場所。
   PostgreSQLのシステムカタログは通常のテーブルのため、削除・再作成、列の追加、値の挿入や更新が可能だが、通常変更してはいけない。
   その代りにSQLコマンドを実行する。
@@ -1543,7 +1542,6 @@
 ***** pg_colation
 ***** pg_conversion
 ***** pg_database
-***** pg_database
 ***** pg_depend
 ***** pg_db_role_setting
 ***** pg_default_acl
@@ -1558,7 +1556,7 @@
 - システムカタログに対する問い合わせに手近にアクセスできるようにしたり、
   サーバ内部状態へのアクセスを提供したりする。
   
-  システムビューはPostgres特有なのに対し、情報スキーマはSQL標準なので、
+  システムビューはPhostgres特有なのに対し、情報スキーマはSQL標準なので、
   情報スキーマが必要とする情報すべてを提供するのであれば、そちらを選ぶ方がよい。
 
 ***** pg_config

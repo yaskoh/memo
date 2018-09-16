@@ -120,6 +120,7 @@
 - For writing options: write to the repository .git/config file. (Default behavior)
 ******** -l, --list
 - List all variables set in config file, along with their values.
+******** --unset
 ******* Variables
 ******** alias.*
 - Command aliases for the git command wrapper.
@@ -661,6 +662,9 @@ SSHは両方可能。
 - 対応: 行末のCRを許容する設定
   git config --local core.whitespace cr-at-eol
 - http://amano41.hatenablog.jp/entry/git-diff-treats-cr-at-eol-as-error
+*** 設定を削除する
+- --unsetを使う。
+  git config --unset core.filemode
 ** Memo
 *** Initialize Setting 初期設定
 - git config --global user.name "your name"

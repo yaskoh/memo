@@ -325,6 +325,10 @@
 ****** conhost.exe
 - コンソールウィンドウホスト。
 
+****** dwm.exe
+- デスクトップ・ウィンドウ・マネージャー
+  Aeroの
+  サービス「Desktop Window Manager Session Manager」の実行ファイル。
 ***** tmp
 AdapterTroubleshooter.exe
 aitagent.exe
@@ -420,7 +424,6 @@ driverquery.exe
 drvinst.exe
 dvdplay.exe
 dvdupgrd.exe
-dwm.exe
 dxcpl.exe
 dxdiag.exe
 Dxpserver.exe

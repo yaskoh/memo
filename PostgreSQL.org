@@ -217,6 +217,9 @@
 - オブジェクト。以下でファイル名との紐付確認が可能。
   "select relname, relfilenode from pg_class;"
 *** 制約を調べる
+*** メッセージを表示する(PL/pgSQL)
+- RAISEを利用してメッセージを表示可能。
+- https://db.just4fun.biz/?PL/pgSQL/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%AB%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B
 ** Memo
 *** Uninstall(Windows)
 - 
