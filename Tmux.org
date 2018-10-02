@@ -119,6 +119,9 @@
   :move-window -t TabNum
 - スワップ
   :swap-window -t TabNum
+*** tmuxの設定をOSによって切り替える
+- if-shellを.tmux.confで使う。
+- https://kiririmode.hatenablog.jp/entry/20150207/1423296151
 ** Memo
 *** Copy/Paste
 **** Windows
