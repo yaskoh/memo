@@ -168,14 +168,21 @@
       vb.gui = true
     end
 
-*** 共有フォルダ
+*** ファイルを共有
+**** 共有フォルダ設定
 - Vagrantfileの設定値を変更する
   config.vm.synced_folder 
 
-**** old
+***** old
 - Vagrantfileが設置されているフォルダ、
   および/vagrantが共有フォルダとして使用できる。
 
+**** scp等による転送
+- 1. 設定ファイルの下記だし
+  vagrant ssh.config > ssh.config
+- 2. 設定ファイルを利用してファイルを転送
+  scp -F ssh.config hello.txt vagrant@default:~/
+- https://qiita.com/sxo/items/2a2ce57a84b90100a20d
 *** Vagrantとホストの時刻同期
 - 1.UTCの対処
   - sudo rm /etc/localtime

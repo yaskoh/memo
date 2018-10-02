@@ -45,6 +45,9 @@
 ***** Link
 - https://www.techmatrix.co.jp/product/appscan/column/check8.html
 **** Session Fixation
+***** 概要
+- ログイン前に使用されていたセッションIDが、ログイン後も同じ値で使用されている脆弱性。
+***** 
 - 手順
   1. 攻撃者があらかじめWebサイトからCookieとして有効なセッションIDを取得する。
   2. その後ユーザが攻撃者の仕掛けた悪意のWebサイトにアクセスした際、
@@ -69,10 +72,10 @@
 - DNS偽装, DNS cache poisoning
 **** Buffer overflow, Buffer overrun
 - 
-**** ディレクトリトラバーサル
+**** Directory Traversal / ディレクトリトラバーサル
 - 相対パスを用いて、任意のパスの情報を取得できる脆弱性
 - https://www.techmatrix.co.jp/product/appscan/column/check7.html
-**** 強制ブラウジング
+**** Forceful Browsing / 強制ブラウジング
 - 許可されていないはずのページにアクセスできてしまう
 - https://f5.com/jp/education/glossary/glossary150-21634
 - https://www.techmatrix.co.jp/product/appscan/column/check7.html
@@ -346,6 +349,14 @@
 *** GNU Privacy Guard
 - Pretty Good Privacyの別実装で、GPLに基づいた暗号化ソフト。
   OpenPGP(RFC 4880)準拠。
+*** Vulnerability Scan
+- https://webrage.jp/techblog/security_tool/
+- https://ja.wikipedia.org/wiki/%E8%84%86%E5%BC%B1%E6%80%A7%E6%A4%9C%E6%9F%BB%E3%83%84%E3%83%BC%E3%83%AB
+**** OWASP ZAP
+- OWASP Zed Attack Proxy
+- https://github.com/zaproxy/zaproxy
+**** IBM AppScan
+**** Fortify WebInspect Hewlett-Packard
 *** tmp
 **** Burp Proxy
 - [[https://portswigger.net/burp/proxy.html][Burp Proxy - PORTSWIGGER]]

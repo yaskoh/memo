@@ -18,6 +18,8 @@
 **** Sorry
 ** OS
 *** Posix
+** Hypervisor
+- [[http://syuu1228.github.io/howto_implement_hypervisor/][ハイパーバイザの作り方]]
 ** Network
 *** Glossary
 **** Contents Delivery Network, CDN
@@ -28,24 +30,19 @@
 ** Database
 *** Relational
 **** Oracle
-- 
-  
+- [[file:OracleDB.org][OracleDB.org]]
 
 **** SQL Server
-- 
-  [[file:./SQLServer.org][SQLServer.org]]
+- [[file:./SQLServer.org][SQLServer.org]]
 
 **** MySQL
-- 
-  [[file:./MySQL.org][MySQL.org]]
+- [[file:./MySQL.org][MySQL.org]]
 
 **** PostgreSQL
-- 
-  [[file:./PostgreSQL.org][PostgreSQL.org]]
+- [[file:./PostgreSQL.org][PostgreSQL.org]]
 
 *** NoSQL
-- 
-  [[file:./NoSQL.org][NoSQL.org]]
+- [[file:./NoSQL.org][NoSQL.org]]
 
 *** Link
 - [[http://yuuki.hatenablog.com/entry/architecture-of-database-connection][Webシステムにおけるデータベース接続アーキテクチャ - ゆううきブログ]]
@@ -83,6 +80,7 @@
   CPU、メモリ、ディスク、ネットワークなど、OSやハードウェアのリソース使用状況を収集する。
 
 *** Security
+- [[file:Security.org][Security.org]]
 ** Performance
 *** Memory
 **** Linux

@@ -45,6 +45,12 @@
 - シンボルを表示
 **** ldd
 - ライブラリ一覧
+** Documents
+*** Docs
+- https://x64dbg.readthedocs.io/en/latest/what.html
+*** Wiki
+**** Coding Guidelines
+**** Color Schemes
 ** Glossary
 *** Clean room design / クリーンルーム設計
 - リバースエンジニアリングするチームと、そこで得られた情報を元に再実装するチームを隔離することで、
