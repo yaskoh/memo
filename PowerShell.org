@@ -425,6 +425,16 @@
 - Command:
   Get-ChildItem | Where-Object { $_.Attributes -match "ReparsePoint" }
 - [[https://stackoverflow.com/questions/817794/find-out-whether-a-file-is-a-symbolic-link-in-powershell][Find out whether a file is a symbolic link in PowerShell - stackoverflow]]
+*** Switch文
+- https://qiita.com/nimzo6689/items/26373ed44119c303e539
+- switch (value) {
+    checkVal1 {command 1}
+    checkVal2 {command 2}
+    checkVal3 {command 3}
+    default {default command}
+  }
+*** Tail代わり
+- Get-Content -Path "filePath" -Wait -Tail "readLine"
 *** tmp
 **** ネットワークプロファイルを調べる
 - Get-NetConnectionProfile -IPv4Connectivity Internet

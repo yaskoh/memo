@@ -2023,3 +2023,8 @@
   プロキシ設定を行うことで、その踏み台サーバのアドレスでブラウザアクセス等ができるようになる。
   SOCKSプロトコル、というものに対応していれば利用できる模様。
   [[http://vogel.at.webry.info/201505/article_6.html][ダイナミックポートフォワーディングは便利 - パソコン鳥のブログ]]
+*** キャリアの利用するIPアドレス
+**** DoCoMo
+- https://www.nttdocomo.co.jp/service/developer/smart_phone/spmode/index.html
+**** SoftBank
+- https://www.support.softbankmobile.co.jp/partner/home_tech1/

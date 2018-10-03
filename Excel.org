@@ -494,6 +494,9 @@
 - cell("filename")を使うと、フルパス、ファイル名、シート名が取得できる。
   =RIGHT(CELL("filename",A1),LEN(CELL("filename",A1))-FIND("]",CELL("filename",A1)))
 
+*** シート番号を取得する
+- SHEET関数を利用する
+  =SHEET(シート名)
 *** 曜日を表示する
 - 
   セルの書式設定でフォーマットで、aaa, aaaa, ddd, dddd等で曜日の表示が可能。

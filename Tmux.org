@@ -195,4 +195,4 @@
   - https://qiita.com/vintersnow/items/3d7e25d520bc7deefc77
   - https://qiita.com/Frog_woman/items/f6797f2a70c44e42863d
   - http://engineerspirit.com/2016/12/25/post-407/
-  - https://mynavi-agent.jp/it/geekroid/2017/03/-11tmux.html
+  - https://mynavi-agent.jp/it/geekroid/2017/03/-11tmux.

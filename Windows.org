@@ -583,7 +583,7 @@
   | rm          | del     |
   |-------------+---------|
 
-**** etc
+**** Batch
 ***** IF文の複数条件指定
 - 
 
@@ -634,6 +634,17 @@
   set time_tmp=%time: =0%
   set now=%today%%time_tmp:~0,2%%time_tmp:~3,2%%time_tmp:~6,2%
 
+***** バッチ実行を一時停止/sleepする
+- Linuxのsleepなどと同じような"待ち"をしたい場合、timeout.exeを使う。
+  "timeout 60"とすると60秒間キー入力を待ち受け、何もなければ60秒後に次のコマンドへ移る。
+- http://www.atmarkit.co.jp/ait/articles/1206/08/news137.html
+  
+***** for文
+****** 無限ループ
+- for /l %%i in (0,0,0) do (
+    echo loop
+  )
+- http://d.hatena.ne.jp/simply-k/20100821/1282490379
 *** WSH
 - Windows Script Host
 - Windows環境でスクリプトを実行するための環境。
@@ -1269,11 +1280,16 @@
 - http://e-words.jp/w/UNC.html
 - http://desktop.arcgis.com/ja/arcmap/10.3/tools/supplement/pathnames-explained-absolute-relative-unc-and-url.htm#GUID-A2A3F32B-D0AE-4F60-97A9-4DA8AF8DC00B
 ** Tools
-*** Chocolatey
+*** Package manager
+**** PackageManagement (OneGet)
+- https://qiita.com/japboy/items/451cf30fd0d763d98ae6
+- https://qiita.com/arachan@github/items/399da4a19ac3a20205a7
+**** Chocolatey
 - package manager
-**** Link
+***** Link
 - https://chocolatey.org/packages?q=
 - https://qiita.com/msp0310/items/2a92f8966608260c49c1
+**** NuGet
 *** PsTools
 **** PsExec
 -
@@ -1577,6 +1593,11 @@
 - GUIアプリケーションを実行する
 *** ファイルの分割
 - makecabを使うと分割できる（らしい。詳細わかっていないので次使うときに調べると良い）
+*** パケットキャプチャーをソフトを使わずに実行
+- start: netsh trace start capture=yes
+  end: netsh trace stop
+- 確認はMicrosoft Message Analyzer/Microsoft Network Monitorあたりが必要
+- http://www.vwnet.jp/windows/WS16/2017013001/PacketCapture.htm
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

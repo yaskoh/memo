@@ -510,6 +510,7 @@
 
 *** 10. Type Conversion / 型変換
 *** 11. Index / インデックス
+**** 11.9. 演算子クラスと演算子族
 *** 12. Full Text Search / 全文検索
 *** 13. Concurrency Control / 同時実行制御
 *** 14. Performance Tips / 性能に関するヒント
@@ -613,13 +614,14 @@
 *** Installation from Source Code / ソースコードからインストール
 *** Installation from Source Code on Windows / Windowsにおけるソースコードからのインストール
 *** Server Setup and Operation / サーバの準備と運用
-*** Server Configuration / サーバの設定
+*** 19. Server Configuration / サーバの設定
 **** 設定ファイル
 - postgresql.conf、pg_hba.conf、pg_ident.confという設定ファイルがある。
   インストールしたフォルダの"data"フォルダ配下に存在する。
 ***** postgresql.conf
 - 最大接続数やログの保存方法など、基本的なPostgreSQLの設定を行う。
 
+- 設定ファイル上では、booleanはtrue/falseでなくon/offで設定する。
 ***** pg_hba.conf
 - 
   クライアントの認証に関する記述を行う。
@@ -645,7 +647,7 @@
   認証方式で"ident"を使う場合に、identのユーザ名をPostgreSQLのユーザ名にマップするマップ名の記述を行う。
   MAPNAME, SYSTEM-USERNAME, PG-USERNAMEの3項目がある。
 
-**** Setting Parameters / パラメータの設定
+**** 19.1. Setting Parameters / パラメータの設定
 ***** パラメータ名とその値
 - 
   - 論理型
@@ -685,10 +687,10 @@
 - 参照
   - pg_settings (system view)
     - SHOW ALLと同じだが、更に詳細な情報が提供される。
-    - このビューのsetting列をudateするのは、SETコマンドの実行と同等。
+    - このビューのsetting列をupdateするのは、SETコマンドの実行と同等。
 ***** シェルによるパラメータ操作
 ***** 設定ファイルの内容の管理
-**** File Locations / ファイルの場所
+**** 19.2. File Locations / ファイルの場所
 - data_dirctory
   - データ格納に使用するディレクトリ
 - config_file
@@ -699,7 +701,7 @@
   - ユーザ名マッピング設定ファイル。通例pg_ident.conf
 - external_pid_file
   - PIDファイルの名前を指定。
-**** Connections and Authentication / 接続と認証
+**** 19.3. Connections and Authentication / 接続と認証
 ***** 接続設定
 ****** listen_address (string)
 ****** port (integer)
@@ -727,13 +729,16 @@
 ****** krb_server_keyfile (string)
 ****** krb_caseins_users (boolean)
 ****** db_user_namespace (boolean)
-**** Resource Consumption / 資源の消費
-***** メモリ
-***** ディスク
-***** カーネル資源使用
-***** コストに基づくVacuum遅延
-***** バックグラウンドライタ
-***** 非同期動作
+**** 19.4. Resource Consumption / 資源の消費
+***** 19.4.1. メモリ
+****** shared_buffers(integer)
+- 1GB以上のRAMを載せた専用DBSの場合は、妥当な初期値は25%。OSのキャッシュにも依存するため、40%以上を割り当てても動作がよくなる見込みはない。
+- shared_buffersを50%以上に設定するとカーネルのキャッシュがあふれスワップする
+***** 19.4.2. ディスク
+***** 19.4.3. カーネル資源使用
+***** 19.4.4. コストに基づくVacuum遅延
+***** 19.4.5. バックグラウンドライタ
+***** 19.4.6. 非同期動作
 **** Write Ahead Log / ログ先行書き込み(WAL)
 ***** 諸設定
 ****** wal_level (enum)
@@ -774,7 +779,14 @@
 ****** track_functions (enum)
 - 関数の呼び出し数と費やされた時間の追跡を有効にする。
 **** Automatic Vacuuming / 自動Vacuum作業
-**** Client Connection Defaults / クライアント接続デフォルト
+**** 19.11. Client Connection Defaults / クライアント接続デフォルト
+***** 19.11.3. 共有ライブラリのプリロード
+****** local_preload_libraries (string)
+- 接続時に事前読み込みされる、1つまたは複数の共有ライブラリを指定。
+****** session_preload_libraries (string)
+- 接続開始時にプリロードされる共有ライブラリを指定。
+****** shared_preload_libraries (string)
+- サーバ起動時にプリロードされる共有ライブラリを指定
 **** Lock Management / ロック管理
 **** Version and Platform Compatibility / バージョンとプラットフォーム互換性
 **** Error Hadling
@@ -1017,6 +1029,15 @@
   
 ** IV:  Client Interfaces クライアントインターフェース
 *** 32. libpq
+**** 32.14. 環境変数
+- 呼び出し側のプログラムで直接値を指定しなかった場合の接続パラメータのデフォルト値を設定可能。
+***** PGHOST
+***** PGPORT
+***** PGDATABASE
+***** PGPASSOWRD
+- password接続パラメータと同様に動作する。
+***** PGCLIENTENCODING
+- client_encoding接続パラメータと同様に動作する。
 *** 33. ラージオブジェクト
 *** 34. ECPG - C言語による埋め込みSQL
 **** 34.5. 動的SQL
@@ -1066,6 +1087,17 @@
 ***** views
 ** V:   Server Programming サーバプログラミング
 *** 36. SQLの拡張
+**** 36.15. 関連するオブジェクトを拡張としてパッケージ化
+- まとまったパッケージを拡張と呼ぶ。
+  少なくともSQLコマンドを含むスクリプトファイル、拡張自身の基本属性を指定する制御ファイルが必要。
+- CREATE EXTENSIONでオブジェクトをDB内に読み込み、DROP EXTENSIONでオブジェクトを削除できる。
+***** 36.15.1. 拡張のファイル
+- .control / 制御ファイル
+  拡張と同じ名前に.controlという拡張子を持つファイル名の制御ファイルが必要。
+  SHAREDIR/extensionディレクトリに存在する必要がある。
+  - extension.control / 主制御ファイル
+  - extension--version.control
+- extension--version.sql / SQLスクリプトファイル
 *** 37. トリガ
 *** 38. イベントトリガ
 *** 39. ルールシステム
@@ -1146,12 +1178,18 @@
 ****** Parameters
 ******* OWNER [=] user_name
 - role name
-******* 
+*******
+***** CREATE EXTENSION
 ***** CREATE TABLE AS
 - 問合せの結果によって新しいテーブルを作成する
 ****** 注釈
 - SELECT INTOと同等の機能を持つが、SELECT INTO構文の他の使用例と混乱する可能性から、こちらの使用のほうがよい。
   機能もSELECT INTOのスーパーセットとなっている。
+***** CREATE TABLESPACE
+- CREATE TABLESPACE tablespace_name
+  [ ... ]
+  LOCATION 'directory'
+  [ ... ]
 ***** CREATE ROLE
 - define a new database role
 ****** Synopsis
@@ -1177,6 +1215,7 @@
       [WHERE condition | WHERE CURRENT OF cursor_name]
       [RETURNING * | output_expression [[AS] output_name] [, ...]]
 **** DROP ~
+***** DROP EXTENSION
 **** EXPLAIN
 - 
   問い合わせ文の実行結果を表示する。
@@ -1184,6 +1223,9 @@
 
 **** INSERT
   
+**** LOAD
+- LOAD 'filename'
+- 共有ライブラリファイルの読み込みを行う。
 **** ROLLBACK
 
 **** SAVEPOINT
@@ -1342,13 +1384,14 @@
   - アーカイブ形式
     リストア時はpg_restoreを使う。
 ***** Options
-****** -a, --data-only
+****** 出力内容と形式の制御
+******* -a, --data-only
 - データのみダンプし、スキーマ（データ定義）はダンプしない。
 
-****** -f file, --file=file
+******* -f file, --file=file
 - 出力を指定のファイルへ送る。
 
-****** -F format, --format=format
+******* -F format, --format=format
 - 出力形式を選択する。以下のいずれかの値を取る。
   - p, plain
     平文のSQLスクリプトを出力する（デフォルト）
@@ -1360,6 +1403,9 @@
     pg_restoreへの入力に適したtar形式のアーカイブを出力する。
     個々のテーブルサイズに8GBという上限がある。
 
+******* -s, --schema-only
+- --data-onlyの逆。
+****** 
 **** pg_dumpall
 - 
   データベースクラスタをスクリプトファイルへ抽出する。
@@ -1378,6 +1424,7 @@
   pg_dumpで作成されたアーカイブファイルから、データベースをリストアする
 
 **** psql
+- https://www.postgresql.jp/document/9.6/html/app-psql.html
 ***** About
 - ;(セミコロン)で1文の終わりを表す。
   SQLコマンドの使用が可能。
@@ -1431,21 +1478,28 @@
   サーバへの接続を新規に確立する。
 
 ****** \C
-- 
+- \C [ title ]
   テーブルタイトルの設定/解除を行う。
   "Caption"に由来。
 
 ****** \cd
-- 
-  カレントディレクトリを変更する。
+- カレントディレクトリを変更する。
+****** \conninfo
+- 現在の接続情報を表示する
 
-****** \d
-- 
-  接続されているDB内のテーブル一覧を表示
+****** \encoding [encoding]
+- 円コーディングを表示、またはセット
+****** \d[S+]
+- 接続されているDB内のテーブル一覧を表示
 
+****** \db[+]
 ****** \du
 - ユーザを確認できる
 
+****** \e, \edit [ filename ] [ line_number ]
+
+****** \echo text [ ... ]
+****** \encoding [ encoding]
 ****** \h
 - 
   ヘルプを表示する
@@ -1458,6 +1512,8 @@
 - 
   存在するデータベースの一覧を表示する
 
+****** \o | \out [filename]
+****** \o | \out [| command]
 ****** \p
 - 
   途中まで入力されたクエリの内容を確認する。
@@ -1490,6 +1546,7 @@
 - 
   データベースクラスタを新しく作成する
 
+**** pg_archivecleanup
 **** pg_controldata
 - 
   クラスタの制御情報を表示する
@@ -1501,7 +1558,8 @@
 ****** start
 ****** stop
 ****** restart
-****** reload
+****** reload [-s] [-D datadir]
+- 単にpostgresにSIGHUPシグナルを送り、設定ファイルの再読み込みをさせる。
 ****** status
 ****** promote
 ****** kill
@@ -1513,6 +1571,9 @@
 - 
   データベースクラスタの先行書き込みログやその他制御情報を初期化する
 
+**** pg_test_fsync
+**** pg_test_timing
+**** pg_upgrade
 **** postgres
 - PostgreSQLデータベースサーバ。
 
@@ -1591,3 +1652,34 @@
 *** HOT(Heap Only Tuple)
 
 ** VIII:Appendixes
+*** A. PostgreSQLエラーコード
+*** F. 追加で提供されるモジュール
+**** F.3. auto_explain
+- 自動的に遅い文の実行計画をログ記録する手段を提供する。
+**** F.24. pg_buffercache
+- 追加: extension pg_buffercache;
+- https://qiita.com/noborus/items/3b8b8cc9b8efb2f894d7
+- http://pgsqldeepdive.blogspot.com/2012/12/pgbuffercache.html
+***** pgpagecache
+- Pythonスクリプト、OSのファイルシステムキャッシュの調査
+
+- https://github.com/cnanakos/pgpagecache
+- https://pypi.org/project/pgpagecache/0.1/#description
+- http://tyawan080.hatenablog.com/entry/2017/12/31/004634
+**** F.27. pg_prewarm
+- 追加: extension pg_prewarm;
+*** G. 追加で提供されるプログラム
+**** G.1. クライアントアプリケーション
+***** oid2name
+- OIDとpostgreSQLデータディレクトリ内のファイルノードを解決する
+***** vacuumlo
+- 虎児となったラージオブジェクトを削除する
+**** G.2. サーバアプリケーション
+***** pg_standby
+- PostgreSQLウォームスタンバイサーバの作成をサポートする
+*** H. 外部プロジェクト
+**** H.1. クライアントインタフェース
+**** H.2. 管理ツール
+**** H.3. 手続き言語
+**** H.4. 拡張
+*** J. ドキュメント作成

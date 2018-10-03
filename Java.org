@@ -657,6 +657,12 @@
 *** varargs
 - 可変長引数を取れるようにするもの。
   (そのうち文法に統合するなどしてください。@SafeVarargs, @SuppressWarningsとかも)
+*** "exit code = 13"の対処
+- "Java was started but returned error code=13"となった場合の対処法。
+  Win7でDBeavor実行時に同様の状況に陥った
+  ショートカット先のJavaを読んでいたので、x64側を読むように*.iniにvmを設定したところ、問題なく動いた。
+- https://blog.clock-up.jp/entry/2015/01/17/eclipse-exit-code-13
+- https://stackoverflow.com/questions/27019786/eclipse-java-was-started-but-returned-error-code-13
 *** temp
 **** 修飾子
 ***** アクセス修飾子

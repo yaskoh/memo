@@ -225,6 +225,8 @@
 ****** tasklist.exe
 - 現在アクティブなプロセスとそのPIDのリストが表示される。
   POSIXのpsみたいなもの。
+****** timeout.exe
+- 指定した時間だけ待つ。キーが入力されると待ちを終えて次のコマンドを実行する。
 ****** systeminfo.exe 
 - 
   システム情報を表示できる。cmd上でsysteminfo。CUI。
@@ -668,7 +670,6 @@ taskhost.exe
 taskkill.exe
 taskmgr.exe
 tcmsetup.exe
-timeout.exe
 TpmInit.exe
 tracerpt.exe
 tscon.exe

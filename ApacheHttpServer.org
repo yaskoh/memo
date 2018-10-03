@@ -142,7 +142,6 @@
 ***** <VirtualHost>
 *** MPM
 - Multi Prosessing Module
-
 **** About
 - 
   |---------+------------------------|
@@ -212,6 +211,26 @@
 **** mod_auth_dbm
 **** mod_auth_digest
 **** mod_auth_ldap
+**** mod_authz_core
+- Core authorization
+***** Topics
+***** Directives
+****** AuthMerging
+****** Require
+- Require all granted
+- Require all denied
+- Require env [env-var]
+- Require method [http-method]
+- Require expr [expression]
+- Require user [user]
+- Require group [group-name]
+- Require valid-user
+- Reuire ip [ip-addr]
+****** <RequireAll>
+****** <RequireAny>
+****** <RequireNone>
+***** Memo
+- [[https://qiita.com/ngyuki/items/779ea21eec2ae6c450d5][Apache 2.4 の Require ディレクティブのマージとか - Qiita]]
 **** mod_authz_host
 - Group authorizations based on host
 ***** Directives
@@ -522,3 +541,4 @@
 ** Link
 - [[https://httpd.apache.org/][Apache HTTP SERVER PROJECT]]
 
+- [[https://www.nic.ad.jp/ja/materials/iw/2005/proceedings/T16.pdf][自信を持ってApacheを操るために]]

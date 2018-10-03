@@ -1276,6 +1276,9 @@
 - https://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_specification/texts/setting_guide/setting_list/system_unit/setting_guide_1.html#set-plugin
 - https://www.intra-mart.jp/download/product/iap/im_workflow/im_workflow_troubleshooting/texts/troubleshooting/target_user2.html
 - https://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_specification/texts/job_guide/job_guide_1.html
+*** ヘルスチェック画面
+- availability_check/index.jsp、を利用する
+- https://www.intra-mart.jp/download/product/iap/setup/iap_setup_guide/texts/appendix/health_check.html
 ** Link
 *** About
 - [[http://www.intra-mart.jp/document/library/index.html][intra-mart Accell Platform - intra-mart Accel Series ドキュメントライブラリ]]
