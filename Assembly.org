@@ -29,6 +29,11 @@
 ***** C3: The NASM Language
 ****** S3.1: Layout of a NASM Source Line
 ****** S3.2: Pseudo-Instructions
+******* S3.2.1: DB
+******* S3.2.2: RESB
+******* S3.2.3: INCBIN
+******* S3.2.4: EQU
+******* S3.2.5: TIMES
 ****** S3.3: Effectie Addresses
 ****** $3.5: Expressions
 - $ and $$
