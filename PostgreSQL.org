@@ -241,6 +241,8 @@
 *** 実行クエリをログ取得したい場合
 - ログに残す:
   postgresql.confのlog_statementを修正する。
+*** 接続中のセッションを調べる
+- SELECT * from pg_stat_activity;
 *** セッションを切る
 - SELECT pg_terminate_backend(processID);
 *** データベースとフォルダ、テーブルとファイル名の関係を取得
@@ -286,7 +288,7 @@
 *** TRIM
 - trim, rtrim, ltrim, btrim
   https://www.postgresql.jp/document/9.6/html/functions-string.html
-*** 拡張
+*** Extension(拡張)関連
 **** 現在設定中の拡張を調べる。
 - \dx
 - select * from pg_extension;
@@ -330,6 +332,8 @@
 - LIMIT、OFFSETを利用する。
   OFFSETは飛ばす数、LIMITは限度数。
   OFFSET 10は最初の10行を飛ばして他を返す。LIMIT 20は20行分返す。
+*** 文字列型の使い分け
+- https://lets.postgresql.jp/documents/technical/text-processing/1
 ** Link
 - [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.10 Documentation]]
 - [[https://www.postgresql.jp/document/9.6/html/index.html][PostgreSQL 9.6.5文書]]

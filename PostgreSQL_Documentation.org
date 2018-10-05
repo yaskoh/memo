@@ -510,6 +510,7 @@
 
 *** 10. Type Conversion / 型変換
 *** 11. Index / インデックス
+**** 11.8. 部分インデックス
 **** 11.9. 演算子クラスと演算子族
 *** 12. Full Text Search / 全文検索
 *** 13. Concurrency Control / 同時実行制御
@@ -897,7 +898,8 @@
 - trigger_file(string)
 *** High Availability, Load Balancing, and Replication / 高可用性・負荷分散・レプリケーション
 *** Recovery Configuration / リカバリの設定
-*** Monitoring Database Activity / データベース活動状況の監視
+*** 28. Monitoring Database Activity / データベース活動状況の監視
+**** 28.1. 表運的なUnixツール
 *** Monitoring Disk Usage / ディスク使用量の監視
 *** Reliability and the Write-Ahead Log / 信頼性とログ先行書き込み
 *** Regression Tests / リグレッションテスト
@@ -1416,12 +1418,10 @@
   サーバの接続状態を検査する
 
 **** pg_receivexlog
-- 
-  クラスタからトランザクションログをストリームする
+- クラスタからトランザクションログをストリームする
 
 **** pg_restore
-- 
-  pg_dumpで作成されたアーカイブファイルから、データベースをリストアする
+- pg_dumpで作成されたアーカイブファイルから、データベースをリストアする
 
 **** psql
 - https://www.postgresql.jp/document/9.6/html/app-psql.html
@@ -1628,6 +1628,28 @@
 ***** pg_group
 ***** pg_indexes
 ***** pg_locks
+****** 列
+******* locktype
+- 対象オブジェクトの種類
+  - relation
+  - extend
+  - page
+  - tuple
+  - transactionid
+  - virtualxid
+  - object
+  - userlock
+  - advisory
+******* mode
+- ロックモードの名称。
+******* granted
+- boolean
+  - true: ロック保持
+  - false: ロック待ち
+******* fastpath
+- boolean
+  - true: ファストパス経由でロックが獲得されている場合
+  - false: メインロックテーブル経由の場合
 ***** pg_roles
 ***** pg_rules
 ***** pg_stats
