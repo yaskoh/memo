@@ -1,0 +1,27 @@
+* Powershell Cheat Sheet
+** Cluster
+- Get-ClusterResource
+- Get-ClusterResource pd-racm-im01 | Get-ClusterParameter
+- Get-ClusterGroup
+- Get-ClusterResource "resourceName" | Start-ClusterResource
+- Get-ClusterResource "namePattern*" | Start-ClusterResource
+- Move-ClusterGroup "pd-racm-im01"
+
+- Get-Cluster
+- Get-ClusterAvailableDisk
+- Get-ClusterNode
+
+- Get-ClusterLog
+
+- Get-Cluster pd-racm-im01 res "Resin-app-0" /prop
+
+- Get-ClusterAccess
+- Grant-ClusterAccess -User username [-Full|ReadOnly]
+- Remove-ClusterAccess -User username
+
+** 項目数の取得
+- (Get-Content filepath).Length
+- Get-Conntent filepath | Measure-Object
+
+** tail
+- Get-Content filename -Wait
