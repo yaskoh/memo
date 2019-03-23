@@ -689,14 +689,24 @@
       fgets(buf, sizeof buf, stdin);
       printf(buf);
 
-**** scanf(3)
-- 
-  フォーマットを指定して入力できる。
+**** scanf(3), fscanf(3), sscanf(3), vfscanf(3), vscanf(3), vsscanf(3)
+- input format conversion
+
+- フォーマットを指定して入力できる。
   ただし、潜在的にgets()と同様バッファオーバーフローを起こす危険がある。
   ex) scanf("%d", &n);
   また、%s指定した場合も、最初のホワイトスペース(tab, space, 改行)にぶつかった時点で読み込みをやめるので、
   使い方が難しく、gets()が使われる場合が多い。
 
+- 数字を読み込む時などはscanfを使わず、fgets()を使って取得したデータをsscanfでフォーマットするのがおすすめ。
+  - fgets(line, sizeof(line), stdin);
+    sscanf(line, "%d", &number);
+
+
+***** Synopsis
+- #include <stdio.h>
+  int fscanf(FILE *restrict steam, const char *restrict format, ...)
+      
 **** fread(3)
 - 
   streamより、(size * nmemb)バイト読み込み、bufに格納する。
@@ -978,7 +988,9 @@
 **** strcat()
 
 **** strcmp()
-
+- 文字列を比較して、同じ場合に0を返す。
+  そのため、if(strcmp(str1,str2)){...}とした場合、一致すると実行がされないので使い方に注意。
+  if(strcmp(str1,str2) == 0)などとするとよい。
 **** strlen()
 
 **** strncasecmp()
@@ -1746,3 +1758,10 @@
 *** 拡張整数型
 - __int8, __int16, __int32, __int64
   Microsoft C/C++が独自拡張で定義した予約語。
+*** sizeof演算子
+- sizeofは組み込みの演算子。Cの定義に含まれるはず。
+  Cの標準ライブラリやOSのシステムコール、ではない。
+  
+*** ヘッダファイルの使い方
+- defineについて
+  http://www.c-lang.org/define.html

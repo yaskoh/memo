@@ -849,12 +849,12 @@
 ****** -l, --program-headers, --segments
 - Displays the information contained in the file's segment headers, if it has any.
 - プログラムヘッダーを表示
-****** -s
-- シンボル情報を表示
 ****** -S, --section-headers, --sections
 - Sectionsオプション
 - セクションヘッダーテーブルを表示
   実行コード領域.text、固定データ領域.rodata、初期化済みデータ領域.dataなどが表示される
+****** -s
+- シンボル情報を表示
 ****** -x <number or name>, --hex-dump=<number or name> 
 **** readlink
      シンボリックリンクの値を読む。
