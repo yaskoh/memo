@@ -90,9 +90,19 @@
 - コマンドレットを取得する
 **** gcm
 *** Get-Content
-**** cat
-**** gc
-**** type
+**** Aliases
+***** cat
+***** gc
+***** type
+**** Options
+***** -ReadCount <long>
+***** -TotalCount <long>
+- 先頭から行数分取得する
+***** -Tail <int>
+- 末尾から行数分取得する
+***** -Filter <string>
+***** -Wait
+- 更新を待ち、更新があった場合に後続を表示する
 *** Get-EventLog
 *** Get-ExecutionPolicy
 - Gets the execution policies for the current session.
@@ -119,7 +129,10 @@
 *** Get-Member
 **** gm
 *** Get-Module
-**** gmo
+**** Syntax
+- Get-Module [-ListAvailable]
+**** Aliases
+***** gmo
 *** Get-NetConnectionProfile
 **** Aliases
 - None
@@ -150,11 +163,15 @@
 *** help
 **** man
 *** Import-Alias
-**** ipal
+**** Aliases
+***** ipal
 *** Import-Csv
-**** ipcsv
+**** SYNTAX
+**** ALIASES
+***** ipcsv
 *** Import-Module
-**** ipmo
+**** Aliases
+***** ipmo
 *** Import-PSSession
 **** ipsn
 *** Invoke-Command
@@ -180,7 +197,13 @@
 *** Invoke-WmiMethod
 **** iwmi
 *** Measure-Object
-**** measure
+**** About
+- オブジェクトの数値プロパティと、テキストのファイルなど文字列オブジェクト内の文字、単語、行を計算する。
+**** Syntax
+- Measure-Object [-Average] [-Sum] [-Maximum] [-Minimum] [[-Property] <String[]>] [<CommandParameters>]
+- Measure-Object [-Line] [-Word] [-Character] [[-Property] <String[]>] [<CommandParameters>]
+**** Aliases
+***** measure
 *** mkdir
 **** md
 *** Move-Item
@@ -305,6 +328,8 @@
 **** sasv
 *** Start-Sleep
 **** sleep
+*** Start-Transcript
+- Start-Transcript [[-Path] <string>] [-Append] [-Force] [-NoClobber] [-WhatIf] [-Confirm] [<CommonParameters>]
 *** Stop-Job
 **** spjb
 *** Stop-Process
@@ -312,6 +337,8 @@
 **** spps
 *** Stop-Service
 **** spsv
+*** Stop-Transcript
+- Stop-Transcript [<CommonParameters>]
 *** Suspend-Job
 **** sujb
 *** Tee-Object
@@ -337,7 +364,7 @@
 **** Alias
 ***** echo
 ***** write
-** Commands(etc,tmp)
+** Command-lets(etc,tmp)
 *** Server Manager Cmdlets
 - https://technet.microsoft.com/ja-jp/library/jj205465(v=wps.630).aspx
 **** Add-WindowsFeature
@@ -413,6 +440,22 @@
 *** Link
 - https://technet.microsoft.com/ja-jp/scriptcenter/powershell_owner03.aspx
 ** Reverse Lookup
+*** フィルタ、オブジェクト操作
+- オブジェクト操作には以下などを使用
+  Where-Object(?,where), Select-Object(select), Sort-Object(sort)などを利用。
+- https://qiita.com/Kirito1617/items/bd3937fb26c668eca078
+**** Where-Object
+- Usage:
+  - Where-Object {$_.Column -match "^Pattern*"}
+**** Select-Object
+- Usage:
+  - Select-Object column1, column2
+  - Select-Object -First 2 / -Last 2
+**** Sort-Object
+- Usage:
+  Sort-Object column1 [-Descending]
+*** 関連コマンドの取得
+- Get-Command | Where-Object {$_.Name -match "FilterName"}
 *** ポートの接続確認
 - powershellで確認する。telnetなどがデフォルトで入っていないため、、
 - 手順:
@@ -435,6 +478,33 @@
   }
 *** Tail代わり
 - Get-Content -Path "filePath" -Wait -Tail "readLine"
+*** wc代わり
+- Measure-Object (measure)
+- $obj.length, $obj.count
+  行数を取得可能
+- https://operationslab.wordpress.com/2013/03/12/powershell-%E3%81%A7%E8%A1%8C%E6%95%B0%E3%82%84%E6%96%87%E5%AD%97%E6%95%B0%E3%82%92%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%81%99%E3%82%8B/
+*** CSVファイルを読む
+- Import-CSV "csvfile"
+  オブジェクトが返ってくる。ForEach-ObjectやWhere-Objectなどで操作する。
+*** ログを取得する
+- Start-Transcript ["filename"] [Options]
+- Stop-Transcript
+
+- 設定では、グループポリシー(gpedit.msc)で「ユーザーの構成/User Configuration」＞「管理用テンプレート/Administrative Templates」＞「Windows Components」>「Windows PowerShell」配下の、
+  「Powershell トランスクリプションを有効にする / Turn on PowerShell Transcription」を設定する。
+*** クラスタ関連コマンド
+**** Get-Cluster
+**** Get-ClusterResource
+**** Get-ClusterResource pd-racm-im01 | Get-ClusterParameter
+**** Get-ClusterGroup
+**** Get-ClusterResource "resourceName" | Start-Resource
+**** Move-ClusterGroup "resourceName"
+**** Get-ClusterAvailableDisk
+**** Get-ClusterNode
+**** Get-ClusterLog
+**** Get-ClusterAccess
+**** Grant-ClusterAccess -User userName [-Full|-ReadOnly]
+**** Remove-ClusterAccess -User username
 *** tmp
 **** ネットワークプロファイルを調べる
 - Get-NetConnectionProfile -IPv4Connectivity Internet
@@ -473,17 +543,25 @@
   ex) echo $env:PATH
 *** Write-Host, Write-Outputの違い
 - $a=1,2,3
-- write-host $a
-  1 2 3
-- write-output $a
-  1
-  2
-  3
+- Write-Host
+  - write-host $a
+    1 2 3
+  - コンソールに文字を表示。Standard output streamへ出力しない。
+- Write-Outut
+  - write-output $a
+    1
+    2
+    3
+  - Standard output streamにオブジェクトを出力し、コンソールへの表示は行わない。
+- https://blog.shibata.tech/entry/2016/01/11/151201
 *** コピー・ペースト
 - 右クリックでどちらも動く。
 -
 *** オブジェクトのパイプライン
 - 従来のテキストデータによるパイプラインでなく、「オブジェクトもしくはその配列」が「プロパティ値を保持したまま」パイプを渡る。
+*** ファイルの先頭・末尾の出力
+- Get-Content filename -TotalCount num
+- Get-Content filename -Tail num
 ** Link
 - [[https://technet.microsoft.com/ja-jp/library/ee221100.aspx][Windows PowerShell Owner's Manual - TechNet]]
 - [[https://technet.microsoft.com/ja-jp/scriptcenter/powershell_owner.aspx][Windows PowerShell オーナーマニュアル - TechNet]]

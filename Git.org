@@ -145,7 +145,7 @@
 ********* core.eol
 ********* core.fileMode
 - Tells Git if the executable bit of files in the working tree is tobe honored.
-- ファイルの権限・モードの設定。faleで無視する。
+- ファイルの権限・モードの設定。falseで無視する。
 ********* core.hideDotFiles
 ********* core.ignoreCase
 ********* core.gitProxy

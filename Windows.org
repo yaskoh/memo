@@ -584,6 +584,7 @@
   |-------------+---------|
 
 **** Batch
+***** 実行元フォルダに移動
 ***** IF文の複数条件指定
 - 
 
@@ -645,6 +646,12 @@
     echo loop
   )
 - http://d.hatena.ne.jp/simply-k/20100821/1282490379
+***** エラーレベルの確認
+- 表示
+  echo %errorlevel%
+- 条件分岐
+  if errorlevel [number] [command]
+- https://jj-blues.com/cms/command-errorlevel/
 *** WSH
 - Windows Script Host
 - Windows環境でスクリプトを実行するための環境。
@@ -758,44 +765,63 @@
 - フォントをここに置くと適用される。
 *** Registry
 **** Structure
-***** HKEY_CLASSES_ROOT
+***** HKEY_CLASSES_ROOT\
 - HKCR
   HKEY_LOCAL_MACHINE\Softwareのサブキー。
   エクスプローラを使用してファイルを開くときに正しいプログラムを起動するための情報が格納される。
-***** HKEY_CURRENT_USER
+***** HKEY_CURRENT_USER\
 - HKCU
   現在ログオンしているユーザの構成情報のルートが格納されている。
   現在ログオンしているユーザのフォルダ、画面の色、コントロールパネル設定などが格納される。
   HKEY_USERSのサブキー。
-***** HKEY_LOCAL_MACHINE
+***** HKEY_LOCAL_MACHINE\
 - HKLM
   コンピュータに固有の構成情報が格納される。
-****** SOFTWARE
-****** SYSTEM
-******* CurrentControlSet
-******** Control
+****** SOFTWARE\
+******* Microsoft\
+******** Windows\
+********* CurrentVersion\
+********** Policies\
+*********** System\
+************ Audit\
+************ kerberos\
+************ UIPI\
+************ dontdisplaylastusername
+- サインイン時のユーザアカウント入力設定を変更する。
+  ローカルセキュリティポリシーの「対話型ログイン: 最後のユーザー名を表示しない」と同じはず。
+- 0: 普段と変わらない動作(？)
+  1: ユーザアカウントの表示名、ドメインおよびユーザー名
+  2: ユーザーアカウントの表示名のみ
+  3: 一切の情報を表示しない
+- [[https://news.mynavi.jp/article/windows-227/][Win 8編: サインイン時にユーザーアカウントの入力を求める - Windowsスマートチューニング - マイナビニュース]]
+************ dontdisplaylockeduserid
+- ロック時のユーザアカウント入力設定を変更する。
+  ローカルセキュリティポリシーの「対話型ログイン: セッションがロックされているときにユーザーの情報を表示する」と同じはず。
+  [[https://news.mynavi.jp/article/windows-229/][Win 8編: ロック画面解除時にユーザーアカウントの入力を求める - Windowsスマートチューニング - マイナビニュース]]
+****** SYSTEM\
+******* CurrentControlSet\
+******** Control\
 ********* Keyboard Layout
-********* Keyboard Layouts
-
-******** Services
-********* EventLog
-********** Application
+********* Keyboard Layouts\
+******** Services\
+********* EventLog\
+********** Application\
 - イベントログソースが保存されている。
   Event Log Source
-********* LanmanWorkstation
-********** Parameters
+********* LanmanWorkstation\
+********** Parameters\
 *********** EnableNetBTForSmb2
 - Win8, Win8.1, Win2012, Win2012R2でSMBバージョン2を使用して通信したい場合に1とする。
   Win10では使用できない。
 *********** SMB1NATCompatibility
-***** HKEY_USERS
+***** HKEY_USERS\
 - HKU
   コンピュータ上に読み込まれた有効なユーザプロファイルがすべて格納される。
-****** .DEFAULT
-******* Keyboard Layout
-******** Preload
+****** .DEFAULT\
+******* Keyboard Layout\
+******** Preload\
 - local layoutが表示される
-***** HKEY_CURRENT_CONFIG
+***** HKEY_CURRENT_CONFIG\
 - 
   システムの起動時にローカルコンピュータにより使用されるハードウェアプロファイルに関する情報が格納されている。
 **** Type
@@ -887,15 +913,33 @@
 - [[http://www.akadia.com/services/windows_registry_tutorial.html][Windows Registry Tutorial]]
 
 *** Local Security Policy
-**** Windows Server 2012 R2
-***** Security Settings
-****** Account Policies
+**** Windows Server 2012 R2, Windows 7
+***** Security Settings セキュリティの設定
+****** Account Policies アカウント ポリシー
+******* パスワードのポリシー
+******* アカウント ロックアウトのポリシー
 ****** Local Policies
-******* Audit Policy
-******* User Rights Assighnment
-******* Security Options
-******** User Account Control: Run all administrators in Admin Approval Mode
-****** Windows Firewall with Advanced Security
+******* Audit Policy 監査ポリシー
+******* User Rights Assighnment ユーザー権利の割り当て
+******* Security Options セキュリティオプション
+******** User Account Control: ユーザー アカウント制御:
+********* Run all administrators in Admin Approval Mode 管理者承認モードですべての管理者を実行する
+******** 対話型ログオン:
+********* セッションがロックされているときにユーザーの情報を表示する
+- レジストリでいうと、おそらく"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\DontDisplayLockedUserId"
+********* 最後のユーザー名を表示しない
+- 
+****** Windows Firewall with Advanced Security セキュリティが強化された Windows ファイアウォール
+*** Local Group Policy (gpedit.msc)
+**** コンピュータの構成
+***** ソフトウェアの設定
+***** Windowsの設定
+***** 管理用テンプレート
+**** ユーザーの構成
+***** ソフトウェアの設定
+***** Windowsの設定
+***** 管理用テンプレート
+****** Windows コンポーネント
 ** Environment Variables
 *** Values
 **** APPDATA
@@ -1598,6 +1642,10 @@
   end: netsh trace stop
 - 確認はMicrosoft Message Analyzer/Microsoft Network Monitorあたりが必要
 - http://www.vwnet.jp/windows/WS16/2017013001/PacketCapture.htm
+*** Windowsでwget/curl的なことを行う
+- bitsadminコマンドを使う
+- 例:
+  bitsadmin /TRANSFER htmlget https://url c:\savepath
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe
@@ -1627,4 +1675,5 @@
   
 - 
   起動プロセス、
-  
+
+- 

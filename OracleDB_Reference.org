@@ -448,11 +448,11 @@ n**** CONTROLL_FILES
 ****** T
 ****** N
 ****** F
-**** V$SQL_TEXT
-- SGA内の共有SQLカーソルに属するSQL文のテキストを示す。
 **** V$SQLAREA
 - 共有SQL領域の統計情報を示し、SQL文字列毎に1行ずつ表示する。
 - V$SQLとの違いは、こちらは親カーソル・SQL単位の統計情報、V$SQLは子カーソル単位の統計情報を示す、とのこと。
+**** V$SQLTEXT
+- SGA内の共有SQLカーソルに属するSQL文のテキストを示す。
 **** V$STATNAME
 - V$SESSTAT表及びV#SYSSTAT表で表示される統計情報のデコードされた統計名を示す。
 **** V$SYSSTAT

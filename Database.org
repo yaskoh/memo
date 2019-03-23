@@ -73,6 +73,12 @@
 ******** Projects
 ******** Bookmarks
 ******* Database Management
+****** Memo
+******* Java was started but returned exit code=1で起動しない
+- dbeaver.iniに以下のような項目を追加する。
+-VM
+C:/Program Files/Java/jdk1.8.0_31/bin/javaw.exe
+
 ****** Link
 - https://dbeaver.io/
 - https://github.com/dbeaver/dbeaver

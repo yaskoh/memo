@@ -487,6 +487,12 @@
 - [[https://msdn.microsoft.com/ja-jp/library/ee861525.aspx][PowerPoint VBAリファレンス - Developer Network]]
 
 *** Outlook
+** IDE
+*** Immediate Window
+- 使い方
+  ?に続けて確認したい式を書く。
+  ?EOF(1) など。
+  [[https://tonari-it.com/vba-immediate-command-input/][【エクセルVBA】イミディエイトウィンドウはコマンド入力画面として使うと超便利 - いつも隣にITのお仕事]]
 ** Memo
 *** ByValとByRef
 - 
@@ -547,6 +553,11 @@
 *** Glossary
 **** VBE
 - Visual Basic Editor
+** tmp
+*** EOF(fileNo)
+*** Line Input #fileNo, buf
+*** FreeList
+- 使用可能なファイル番号を整数で返す。
 ** Link
 - https://www.vba-ie.net/
 

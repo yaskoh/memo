@@ -3,6 +3,15 @@
 *** Direct
 **** exe
 ***** CUI
+****** bitsadmin.exe
+- Linuxのcurlやwgetのようなもの。
+  BITS = Background Intelligent Transfer Service
+- BITSADMIN [/RAWRETURN] [/WRAP | /NOWRAP] command
+******* Commands
+******** /HELP, /?
+******** /UTIL /?
+- Prints the list of utilities commands
+******** /TRANSFER <jobname> [type] [/PRIORITY priority] [/ACLFLAGS flags] remote_url local_name
 ****** cacls.exe
 - ファイルのアクセス制御リスト（ACL）を表示・変更する。
   使用が推奨されていない、icaclsの使用を推奨。
@@ -222,6 +231,23 @@
 ******** EXPORT
 ******** IMPORT
 ******** FLAGS
+****** Robocopy.exe
+- 戻り値
+  - 
+    |------+------+------------------------------------------------------|
+    | 16進 | 10進 | 意味                                                 |
+    |------+------+------------------------------------------------------|
+    | 0x10 |   16 | 重大なエラー。ひとつもコピーできず。                 |
+    | 0x08 |    8 | いくつかのファイルがコピーできず                     |
+    | 0x04 |    4 | いくつかMismatchedファイルあるいはディレクトリが存在 |
+    | 0x02 |    2 | いくつかExtraファイルまたはディレクトリが存在        |
+    | 0x01 |    1 | 1つ以上のファイルがコピーされた                      |
+    | 0x00 |    0 | エラーは発生せず、コピーもされない（完全同期済み）   |
+    |------+------+------------------------------------------------------|
+
+- [[https://www.google.com/search?q=robocopy.doc][Google: "robocopy.doc"の検索]]
+- [[https://www.atmarkit.co.jp/ait/articles/1309/27/news116.html][Windowsのrobocopyコマンドでコピーするファイルの種類を選択／変更する - @IT]]
+
 ****** tasklist.exe
 - 現在アクティブなプロセスとそのPIDのリストが表示される。
   POSIXのpsみたいなもの。
@@ -296,12 +322,15 @@
 ****** mmc.exe
 - Microsoft管理コンソール Microsoft Management Console
 ****** mstsc.exe / リモートデスクトップ
+- mstsc MicroSoft TerminaL Server Client
 ******* Options
 ******** /admin
 - コンソールセッションに接続する(RDC 6.1以降)
 - Windows 2008以上では、Session 0がnon-interactiveとなったため、consoleセッションには接続できない模様。
   [[https://social.technet.microsoft.com/Forums/lync/en-US/5895015a-d041-441e-83b3-4b0c4c74169a/windows-server-2012-console-session?forum=winserverTS][Windows server 2012 Console session - Lync TechCenter]]
   [[https://blogs.technet.microsoft.com/askperf/2007/04/27/application-compatibility-session-0-isolation/][Application Compatibility -Session 0 Isolation - Ask the Performance Team Blog]]
+******** /?
+- helpを表示
 ******** obsolete
 ********* /console
 - RDC 5.x/6.0の場合に、コンソールセッションに接続する方法。
@@ -314,6 +343,8 @@
 ****** notepad.exe
 ******* Memo
 - UTF-8で保存すると勝手にBOMがつくので注意。
+
+****** perfmon.exe / パフォーマンスモニター
 ****** psr.exe / ステップ記録ツール
 - Steps Recorder, ステップ記録ツール、問題ステップ記録ツール
 - CLI操作も可能
@@ -321,6 +352,9 @@
 ******* Link (psr.exe)
 - https://qiita.com/gzock/items/1c934d6577eec3b7f7ff
 - http://yaimairi.hateblo.jp/entry/2016/08/22/004029
+
+****** resmon.exe / リソースモニター
+- "perfmon /res"でも起動
 ****** wscript.exe
 - GUI実行用WSH。
 ***** System
@@ -356,7 +390,6 @@ BdeUISrv.exe
 BdeUnlockWizard.exe
 BitLockerWizard.exe
 BitLockerWizardElev.exe
-bitsadmin.exe
 bootcfg.exe
 bridgeunattend.exe
 bthudtask.exe
@@ -552,7 +585,6 @@ pcalua.exe
 pcaui.exe
 pcawrk.exe
 pcwrun.exe
-perfmon.exe
 PkgMgr.exe
 plasrv.exe
 PnPUnattend.exe
@@ -597,13 +629,11 @@ RelPost.exe
 repair-bde.exe
 replace.exe
 reset.exe
-resmon.exe
 RMActivate.exe
 RMActivate_isv.exe
 RMActivate_ssp.exe
 RMActivate_ssp_isv.exe
 RmClient.exe
-Robocopy.exe
 RpcPing.exe
 rrinstaller.exe
 rstrui.exe
