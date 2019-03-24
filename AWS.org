@@ -221,5 +221,7 @@
 *** Desktop & App Streaming
 *** Internet of Things
 *** Game Development
+** Memo
+- [[https://qiita.com/nakazax/items/20458e146d3d9f2aa615][AWS認定9冠制覇したのでオススメの勉強法などをまとめてみる - Qiita]]
 ** Link
 - https://aws.amazon.com/jp/

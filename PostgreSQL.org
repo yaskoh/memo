@@ -213,22 +213,41 @@
   http://www.nminoru.jp/~nminoru/postgresql/pg-table-and-block-structure.html#relation
 *** Tuple
 - 行、Row、Recordのこと。
+** Error
+*** psqlでencodingに関連するエラー
+**** エラー内容: character with byte sequence 0xe3 0x82 0x94 in encoding has no ～
+- UTF8の内容を別のエンコーディングへ変換する際、同じ表示項目が存在せずエラーとなる。
+- 対応
+  "\encoding"で現在の設定を確認。
+  "\encoding utf8"とすることでエンコーディングをUTF8に変更可能。
+- https://kenpg.bitbucket.io/blog/201601/12.html
+
+**** エラー内容: character with byte sequence 0x81 in encoding "WIN1252" has no equivalent in encoding "UTF8"
+- WIN1251の0x81に該当するコードが、UTF8にはありませんよ、というエラー。
+  この場合クライアントがWIN1252、サーバがUTF8設定。
+- 対応
+  - 2: 0x81は、全角スペース？だったため、削除して再度実行。
+  
+**** 符号化方式"UTF8"で無効なバイトシーケンスです
+- COPYコマンドでファイルの文字コードを指定すればよい。
+  今回は、encoding 'UTF8'にずっとしていたが、ファイルはSJISだったため、encoding 'SJIS'として取り込むことで対応。
+  https://kenpg.bitbucket.io/blog/201601/12.html
 ** Reverse lookup
-*** 設定ファイルを読み込ませる
+*** 設定値関連
+**** 設定
+- システム全体: alter system set (parameter) = (value)
+- 実行時: set (parameter) = (value) ※実行時パラメータ
+**** 確認
+- show {name|ALL}
+- select * from pg_settings; (view)
+**** 反映
 - GUI
   - "PostgreSQL X.X"を右クリックして"Reload Configuration"
 - CUI
   - SIGHUPを投げるとリロードするとのこと。方法は色々ある。
     - pg_ctl reload [-D PGDATA]
     - pg_ctl kill HUP PID
-*** 設定値の確認
-- SHOW [ALL]
-- select * from pg_settings; (view)
-*** テーブル名等の一覧を取得
-- information_schemaを利用
-  →どのような情報が取得されるか不明。
-    また、最新Verでの推奨法かも不明。
-- pg_tablesなどを利用
+  - select pg_reload_conf(); --システム管理関数
 *** データベースの複製
 - コマンド:
   - createdb -T ORG_DB_NAME NEW_DB_NAME (createdb --template=template db)
@@ -236,8 +255,42 @@
 - クエリ:
   - CREATE DATABASE 新DB名 TEMPLATE 複製元のDB名
   - https://whitemitt.com/2012/04/14-113046.htm
+*** データベースとフォルダ、テーブルとファイル名の関係を取得
+- データベース、テーブルスペースの紐付は以下で確認可能(oidがフォルダ名)。
+  "select datname, oid from pg_database;"
+- オブジェクト。以下でファイル名との紐付確認が可能。
+  "select relname, relfilenode from pg_class;"
+*** テーブル名等の一覧を取得
+- information_schemaを利用
+  →どのような情報が取得されるか不明。
+    また、最新Verでの推奨法かも不明。
+- pg_tablesなどを利用
+*** テーブル定義の取得
+- information_schema.columnsを取得する。
+  http://landhere.jp/blog/a169.html
+*** 各種定義を確認(psql)
+- \d table_name (or index_name, etc...)
 *** テーブルの複製
 - CREATE TABLE new_table AS SELECT * FROM present_table;
+*** テーブルスペースの確認
+- select * from pg_tablespace;
+- \db
+*** テーブルスペースが作成できない場合(Windows)
+- Permission deniedの場合、WindowsではAuthenticated_Usersに権限をつける。
+- https://www21.atwiki.jp/ohden/pages/628.html
+
+*** テーブルスペースの作成
+- テーブルスペースの作成自体は、CREATE TABLESPACE tablespacename LOCATION 'directory';といったところ。
+*** テーブルスペースの変更
+- テーブルの変更はALTER TABLE tablename SET TABLESPACE tablespacename;
+*** NASなどの利用
+- レジストリで"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\services\postgresql-9.1"(一例)以下のImagePathを変更する。
+  例: "postgresql-91" -D "//isln-1/share/work/pgpsql/daat" -w
+  initdbやテーブルスペースにはUNCは利用できないが、ベースディレクトリにはUNCが利用可能な模様。  
+  https://ml.postgresql.jp/pipermail/pgsql-jp/2012-August/016156.html
+*** インデックスの一覧を表示
+- SELECT tablename, indexname from pg_indexes;
+- https://hacknote.jp/archives/2474/
 *** 実行クエリをログ取得したい場合
 - ログに残す:
   postgresql.confのlog_statementを修正する。
@@ -245,24 +298,19 @@
 - SELECT * from pg_stat_activity;
 *** セッションを切る
 - SELECT pg_terminate_backend(processID);
-*** データベースとフォルダ、テーブルとファイル名の関係を取得
-- データベース、テーブルスペースの紐付は以下で確認可能(oidがフォルダ名)。
-  "select datname, oid from pg_database;"
-- オブジェクト。以下でファイル名との紐付確認が可能。
-  "select relname, relfilenode from pg_class;"
 *** 制約を調べる
 *** メッセージを表示する(PL/pgSQL)
 - RAISEを利用してメッセージを表示可能。
 - https://db.just4fun.biz/?PL/pgSQL/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%AB%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B
-*** psqlでencodingに関連するエラー
-- エラー内容: character with byte sequence 0xe3 0x82 0x94 in encoding has no ～
-  UTF8の内容を別のエンコーディングへ変換する際、同じ表示項目が存在せずエラーとなる。
-- "\encoding"で現在の設定を確認。
-  "\encoding utf8"とすることでエンコーディングをUTF8に変更可能。
-- https://kenpg.bitbucket.io/blog/201601/12.html
-
 *** postgresql.confの設定値
 - booleanはtrue/falseでなくon/offで設定する。
+*** psqlの接続時引数
+- -h hostname : ホスト名
+- -d dbname : 接続先DB
+- -U username : 接続ユーザ
+
+- -c command : コマンド実行
+- -o filename : 出力ファイル
 *** psqlのバッチ設定
 **** パスワードの入力を省略
 - 環境変数"PGPASSWORD"を設定することで、デフォルトのパスワード名を設定可能。
@@ -271,17 +319,19 @@
 - 環境変数"PGCLIENTENCODING=sjis"を設定することで、cmdと同様のsjisを設定しておくことができる。
   https://qiita.com/hoxo_m/items/1ef8666ab939fd68ed72
 - psqlにログインできる場合は、\encoding
+*** psqlで標準出力
+- qechoを使う。echoではない。
+*** psqlでファイル出力
+- psql -c "command" >> out.txtがよい。
+- psql -o out.txt -c "command" だと、毎回新規に書き込みにいくので、複数回同じファイルでは不可。
+  -cでなく、psql内で動作し続ける場合は可。
+- psql > \o out.txt も、-oと同様の動き。
+- https://stackoverflow.com/questions/19114346/export-from-postgresql-multiple-times-to-same-file
+*** psqlのよく使うコマンド
+- https://dev.classmethod.jp/server-side/db/postgresql-organize-command/
 *** ArchiveLogの削除タイミング
 - basebackupで作成したbackup_labelよりも古いものは不要。
   pg_archivecleanupも利用可能だが、結局walのバージョンは指定が必要。
-*** テーブルスペースが作成できない場合(Windows)
-- Permission deniedの場合、WindowsではAuthenticated_Usersに権限をつける。
-- https://www21.atwiki.jp/ohden/pages/628.html
-  
-- テーブルスペースの作成自体は、CREATE TABLESPACE tablespacename LOCATION 'directory';といったところ。
-  テーブルの変更はALTER TABLE tablename SET TABLESPACE tablespacename;
-*** 定義を確認(psql)
-- \d table_name (or index_name, etc...)
 *** timeoutを設定
 - SET statement_timeout TO 1000; (1000ms -> 1s)
 - RESET statement_timeout
@@ -299,6 +349,15 @@
 - select * from pg_available_extensions;
 **** 拡張の追加・削除
 - CREATE / DROP EXTENSION extension_name;
+*** ロケールの確認
+- pg_settingsから'lc%'を取得
+  SELECT name, setting, context FROM pg_settings WHERE name LIKE 'lc%';
+*** エンコーディングを設定
+- psql, client
+  \encoding utf8
+*** 列の追加・削除
+- 追加: ALTER TABLE tablename [ADD | DROP] COLUMN columnname type;
+- 削除: ALTER TABLE tablename [ADD | DROP] COLUMN columnname {CASCADE};
 ** Memo
 *** Uninstall(Windows)
 - 
@@ -334,6 +393,20 @@
   OFFSET 10は最初の10行を飛ばして他を返す。LIMIT 20は20行分返す。
 *** 文字列型の使い分け
 - https://lets.postgresql.jp/documents/technical/text-processing/1
+*** 依存関係の確認
+- CASCADEなしで実行した場合のエラーメッセージに、依存関係にあるオブジェクトが表示される。
+  その後DROP ~ CASCADE;として、依存関係を確認したうえでオブジェクトを削除するのがよい。
+  
+*** COPYコマンド
+- メタコマンド: \COPY
+  - 1行で書く必要あり。
+  - 出力ファイルは絶対パス指定。
+  - サーバが読み書き込みを行うのでなく、psqlがファイルの読み書きやシステム間データ送信をおこなう。
+  - COPYに比べると効率が悪い。（すべてのデータをクライアント/サーバ接続を通じてやり取りするため）
+- コマンド: COPY
+  - 複数行で記述可能。
+  - 出力ファイルは相対パス指定。
+  - \COPYに比べて効率がよい。
 ** Link
 - [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.10 Documentation]]
 - [[https://www.postgresql.jp/document/9.6/html/index.html][PostgreSQL 9.6.5文書]]

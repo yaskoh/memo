@@ -115,6 +115,8 @@
 ****** 
 ***** ファイルサービス システム
 ***
+*** Memo
+- [[http://www.nkjmkzk.net/?p=946][サーバ仮想化環境でのお薦めストレージ構成 - nkjmkzk.net]]
 ** Mother board / マザーボード
 *** Chipset
 **** Northbridge

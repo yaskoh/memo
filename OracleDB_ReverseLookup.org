@@ -150,6 +150,15 @@
 - [[http://www.atmarkit.co.jp/ait/articles/0806/30/news118.html][Oracleトラブル対策の基礎知識 - @IT]]
 - [[http://www.atmarkit.co.jp/ait/articles/0406/25/news101.html][Oracleパフォーマンス障害の克服 - @IT]]
 - [[http://www.shift-the-oracle.com/oerrs/][Oracle エラーの代表的な原因と具体的な対応方法 - SHIFT the ORacle]]
+** Performance
+*** 統計情報の取得
+- set autotrace on [explain|statistics]
+  (or set autotrace traceonly)
+- set autotrace off
+** IO
+*** 結果の出力
+- SPOOL filename
+- SPOOL OFF
 ** Query
 *** テーブルに関連したインデックスを確認する
 - 
@@ -171,6 +180,20 @@
          USED_SPACE/1024/1024/1024 “USED(GB)”,
          USED_PERCENT “USED(%)”
   from DBA_TABLESPACE_USAGE_METRICS
+*** テーブルスペースに属するオブジェクトを確認する
+- 
+  select segment_name, segment_type, tablespace_name
+    from dba_segments
+   where tablespace_name like 'ABCDE%'
+  ;
+
+- 種類を調べる
+  select segment_type, count(*)
+    from dba_segments
+   where tablespace_name like 'ABCDE%'
+   group by segment_type
+  ;
+
 *** ファイルとテーブルスペースの関係を調べる
 - 
   SELECT FILE_NAME, TABLESPACE_NAME FROM DBA_DATA_FILES;

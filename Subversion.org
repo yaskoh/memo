@@ -86,6 +86,9 @@
 ** Subversion
 *** Documentation
 *** Memo
+**** Structure
+**** best practice
+- https://www.open.collab.net/scdocs/SVNTips.html.ja
 *** Link
 - [[http://subversion.apache.org/packages.html][SUBVERSION]]
 -
