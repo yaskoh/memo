@@ -504,6 +504,10 @@
   ex) =choose(weekday(A1),"日曜日","月曜日","火曜日","水曜日","木曜日","金曜日","土曜日")
       =text(A1,"aaaa")
 
+*** 曜日を条件付き書式で色付けする
+- 新しい書式ルールを作成する際に、「数式を使用して、書式設定するセルを決定 / Use a formula to determine which cells to format」を選択。
+  数式として"=workday(A3※選択した項目の最初のセルを選択。また、絶対参照とはしない)=1※日曜日の場合"とする。
+  [[https://forest.watch.impress.co.jp/docs/serial/exceltips/1059891.html][【Excel】「土曜は青、日曜は赤」予定表の曜日を色分けしたい！　エクセルで日付を見やすく書式設定するテク - 窓の杜]]
 *** 複数のセル選択後、選択解除
 - 
   Tabキーで選択場所を移し、Shift+↑/↓を操作することで、
@@ -637,6 +641,9 @@
 *** Excelで、桁数が多い数字を入力すると最後の桁がゼロとなる
 - IEEE 754仕様に準拠しているため、15桁目以降の数値は0となる。
   回避したければ、文字列として扱う必要がある。文字列は32,767文字まで入力可、1,024文字までが表示される。
+*** 条件付き書式設定自体はコピーせず、設定後の書式のみをコピーしてくる
+- コピーしたあと、ホーム->クリップボードにに存在する内容を貼り付けると、「条件付き」は除かれ、結果の「書式」のみが反映される。
+  [[https://dekiru.net/article/16416/][【エクセル時短】条件付き書式の「書式」だけ残すには？ 文字やセルの色を固定してコピーするワザ - できるネット]]
 ** Link
 - [[https://www.youtube.com/watch?v=0nbkaYsR94c][You Suck at Excel with Joel Spolsky - YouTube]]
 - [[https://www.maxmasnick.com/2015/09/15/excel/][Notes from "You Suck at Excel" with Joel Spolsky - MAX MASNICK, PhD]]

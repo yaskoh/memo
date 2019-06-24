@@ -253,6 +253,9 @@
 - [[http://www.intra-mart.jp/download/product/iap/im_workflow/im_workflow_user_guide/index.html][intra-mart Accel Platform IM-Workflow ユーザ操作ガイド]]
 - [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_specification/][intra-mart Accel Platform IM-Workflow 仕様書]]
 - [[http://www.intra-mart.jp/document/library/iap/public/im_workflow/im_workflow_programming_guide/][intra-mart Accel Platform IM-Workflow プログラミングガイド]]
+
+- [[https://www.intra-mart.jp/apidoc/iap/apilist-ssjs/doc/im_workflow/com/imwCodeList.html][IM-Workflow CodeList]]
+
 ***** Portal
 ***** IMBox
 - 企業向けSNS機能。

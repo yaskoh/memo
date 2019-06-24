@@ -1109,7 +1109,12 @@
 ***** NNTP
 
 ***** NTP
-
+- Network Time Protocol
+- Application Layer, UDP123
+****** SNTP
+- Simple Network Time Protocol
+- NTPのサブセット
+- [[https://milestone-of-se.nesuke.com/l7protocol/ntp/ntp-summary/][【図解】NTPプロトコルの概要・仕組み（時間補正の計算・仕様・シーケンス） - SEの道標]]
 ***** POP
 
 ***** RIP
