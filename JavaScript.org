@@ -769,65 +769,6 @@
 - user["name"]と、user.nameは同じ。
 - データ型 : 
 
-*** Obsolete
-**** Types Values, variables, literals
-***** Variables 変数
-****** 名前
-- 
-  識別子はアルファベット、アンダースコア(_)、ドル記号($)から始まらなければいけない。
-  続く文字は数字(0-9)も使用できる。
-  大文字・小文字を区別する。
-
-****** Scope スコープ
-- グローバルスコープ、グローバル（大域）変数
-  関数の外側で宣言すると、どのコードからも使用できる。
-- ローカルスコープ、（局所）変数
-  関数の内部で宣言すると、関数の中のみで使用できる。
-- evalスコープ
-- ブロックスコープ
-  ブロックを内包しているコードに局所化される。if, for文など。
-  本来のjs・varによる変数はブロックスコープを持たなかったが、
-  JS5で導入されたlet/constはブロックスコープを持つ。
-
-**** Control flow 条件式
-***** 条件文
-
-****** if...else
-
-****** switch
-
-***** ループ文
-
-****** for
-
-****** do...while
-
-****** while
-
-****** label
-
-****** break
-
-****** continue
-
-***** オブジェクト操作文
-
-****** for...in
-
-****** for each...in
-
-***** コメント
-
-***** 例外処理分
-
-****** throw
-
-****** try...catch
-
-******* catchブロック
-
-******* finallyブロック
-
 *** W3C
 **** Syntax
 ***** Loop
@@ -1249,6 +1190,24 @@
 
 - https://developer.mozilla.org/ja/docs/Web/JavaScript/Strict_mode
 - https://developer.mozilla.org/ja/docs/Web/JavaScript/Strict_mode/Transitioning_to_strict_mode
+*** コンストラクタ
+- newをつけて関数を呼び出す
+- newをつけた場合、暗黙的に以下のコードが追加される。
+  - var this = {};
+  - return this;
+- 明示的に記述する場合は以下
+  - var self = {};
+    self.name = name;
+    self.bark = function() {...};
+    return self;
+  - 明示的にreturnをしているため、thisの暗黙のルールは適用されなくなる。
+- コンストラクタはただの関数。newをつけずに実行すると、関数のため内部のthisはグローバルオブジェクトをさす。
+  そのため、グローバルスコープに変数などが定義されてしまう。
+- コンストラクタ呼び出しを期待する場合、最初の文字を大文字で書くのが慣例。
+  - MyObjcet()、など。
+
+- [[https://qiita.com/takeharu/items/010752b1427773558f7c][JavaScriptのクラス？コンストラクタ？？ @takeharu - Qiita]]
+- [[https://qiita.com/takeharu/items/9935ce476a17d6258e27][JavaScriptの「this」は「4種類」？？ @takeharu - Qiita]]
 ** Link
 - [[http://www.ecma-international.org/publications/standards/Ecma-262.htm][Standard ECMA-262 - ecma INTERNATIONAL]]
 - [[https://dom.spec.whatwg.org/#interface-document][DOM - Living Standard]]
@@ -1270,3 +1229,13 @@
 - [[https://postd.cc/how-to-become-a-great-javascript-developer/][優秀なJavaScriptの開発者になるための5か条 - POSTD]]
 
 - [[https://gist.github.com/azu/027859e08e284cb8dfe7][JavaScriptのレベル別書籍のまとめ - azu/js.md]]
+  - 初心者
+    - 開眼！JavaScript
+  - 中級者
+    - Speaking JavaScript
+    - Eloquent JavaScript
+    - JavaScript Pattern
+  - 上級者
+    - O'Reilly JavaScript
+    - Exploring ES6
+    - You Don't Know JS

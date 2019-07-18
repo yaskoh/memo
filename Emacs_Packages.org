@@ -1244,6 +1244,7 @@
 **** Link
 - [[http://www.gnu.org/software/emacs/manual/html_mono/cl.html][GNU Emacs Common Lisp Emulation]]
 *** company
+- 入力補完
 **** Vairables
 ***** company-selection-wrap-around
 - If enabled, selecting item before first or after last wraps around.
@@ -1307,7 +1308,19 @@
   - relative
 - Memo
   Windowsでは、root->relativeを設定することで動作するようになった。
+*** helm
+**** Functions
+***** helm-M-x
+***** helm-mini
+***** helm-find-files
+***** helm-show-kill-ring
+**** Link
+- [[https://qiita.com/jabberwocky0139/items/86df1d3108e147c69e2c][初心者〜初級者のためのEmacs-Helm事始め : 前編 - Qiita]]
 *** init-loader
+**** Link
+- http://emacs.rubikitch.com/init-loader/
+- http://blog.aqutras.com/entry/2016/07/14/210000
+- https://qiita.com/tadsan/items/181a352edcda740582ec
 *** initchart
 - https://github.com/yuttie/initchart
 - provides macros and functions to measure and visualize a init process of Emacs.
@@ -1316,6 +1329,7 @@
 ***** initchart-visualize-init-sequence
 - (initchart-visualize-init-sequence &optional FP)
   指定したfilepathに計測結果をsvg形式でグラフ表示する。
+*** ivy/counsel
 *** js2-mode
 **** Functions
 **** KeyBindings
@@ -1423,7 +1437,29 @@
 **** Link
 - [[https://common-lisp.net/project/slime/][SLIME: The Superior Lisp Interaction Mode for Emacs]]
   
+*** straight
+**** Link
+- http://www.mhatta.org/wp/2018/09/23/org-mode-101-6/
+- https://nukosuke.hatenablog.jp/entry/straight-el
+
 *** use-package
+**** Memo
+***** Keywords
+-
+  |--------------+--------------------------------------+-------+---------------------------------------|
+  | keyword      | comment                              | defer | format                                |
+  |--------------+--------------------------------------+-------+---------------------------------------|
+  | :config      | 設定コード                           |       | ロード後に評価                        |
+  | :init        | 初期化コード                         |       | ロード前に評価する式（複数でもOK）    |
+  | :if          | 場合分け                             |       | 条件文                                |
+  | :commands    | autoload                             | ○     | command or そのリスト                 |
+  | :bind        | autoload＋キー割り当て               | ○     | (key . command) or そのリスト         |
+  | :mode        | autoload＋auto-mode-alist設定        | ○     | regex or (regex . mode) or そのリスト |
+  | :interpreter | autoload＋interpreter-mode-alist設定 | ○     | regex or (regex . mode) or そのリスト |
+  | :defer       | 遅延ロード                           | ○     | boolean                               |
+  | :disabled    | 無効化                               |       | boolean                               |
+  |--------------+--------------------------------------+-------+---------------------------------------|
+
 **** Link
 - [[http://emacs.rubikitch.com/use-package-2/][use-package.el : Emacsの世界的権威が行っている最先端ラクラクinit.el整理術 - るびきち「新生日刊Emacs」]]
 - [[http://qiita.com/kai2nenobu/items/5dfae3767514584f5220][use-packageで可読性の高いinit.elを書く - Qiita]]

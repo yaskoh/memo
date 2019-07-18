@@ -56,6 +56,18 @@
 
 **** PCMM
 - People Capability Maturity Model, People CMMI
+** Personal Development
+*** Link
+- [[https://www.google.com/search?q=%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA&oq=%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA&aqs=chrome..69i57j69i59j69i61j0j69i61l2.2892j0j7&sourceid=chrome&ie=UTF-8][個人開発 - Google]]
+- [[https://www.google.com/search?q=%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA+%E3%83%9E%E3%83%8D%E3%82%BF%E3%82%A4%E3%82%BA&oq=%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA%E3%80%80&aqs=chrome.2.69i57j0l5.4285j0j7&sourceid=chrome&ie=UTF-8][個人開発 マネタイズ - Google]]
+
+- [[https://qiita.com/kazukichi/items/aeba286c2a750081e5c0][WEBサービスで起業したい人に読んで欲しい２０のコト @kazukichi - Qiita]]
+- [[https://qiita.com/curryperformer-kato/items/a7dc9a41200b6c9c1912][Webサービス個人開発するなら読みたい情報源12 @curryperformer-kato - Qiita]]
+- [[https://qiita.com/jabba/items/1a49e860a09a613b09d4][開設後３週間で収益１０万円を得た個人開発サイトでやったことの全部を公開する @jabba - Qiita]]
+- [[https://blog.sesere.net/entry/2017/10/27/183957][【7年かかった】19歳から7年、1人で30個のWebサービスを作り一発当ててもう働く必要がなくなったので振り返ってみる - 考えすぎてしまう人のブログ]]
+
+- [[https://www.jabba.cloud/20190120-andrey-indie-maker/][個人開発者のAndreyは今、世界で最も熱い男。彼のブログから学ぶ個人開発のあり方 - ジャバ・ザ・ハットリ]]
+
 ** Book
 - [[http://keens.github.io/blog/2016/01/17/dokugakudepuroguraminguwoyattekitanakadeyokattagijutsushowoageteiku/][独学でプログラミングをやってきた中で良かった技術書50選 - κeenのHappy Hacκing Blog]]
 - [[http://rkx1209.hatenablog.com/entry/2016/12/25/141543][低レイヤーの歩き方 - るくすの日記 ~ Out_Of_Range]]

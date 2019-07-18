@@ -34,9 +34,20 @@
 - Indicates that an annotated class is a "Repository"
 ******* Service
 - Indicates that an annotated class is a "Service"
+** Tools
+*** Spring Tool Suite (STS)
+**** application.propertiens
+ - 
+**** Memo
+***** KeybindをEmacsに変更
+- Spring Tool Suite 3 -> 環境設定 -> General -> Keys
+  Schemeをdefault -> Emacsに変更
 ** Link
 - [[http://projects.spring.io/spring-framework/][spring]]
 - [[http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/][Spring Framework Reference Documnetation]]
 - [[http://docs.spring.io/spring/docs/current/javadoc-api/][Spring Framework 4.3.6 RELEASE API]]
+
+- [[https://spring.io/guides][spring GUIDES]]
+
 - [[http://dev.classmethod.jp/series/spring-framework/][連載 Spring framework – シリーズ – - Developers.IO]]
 

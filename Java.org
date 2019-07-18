@@ -143,6 +143,17 @@
 
 ([[http://ja.wikipedia.org/wiki/Java_Development_Kit][Java DevelopmentKit]])
 
+*** Binary
+**** Oracle JDK
+**** Oracle OpenJDK
+**** AdoptOpenJDK
+**** GraalVM
+**** Amazon Corretto
+**** Red Hat OpenJDK
+**** Zulu
+**** Link
+- [[https://qiita.com/nowokay/items/edb5c5df4dbfc4a99ffb][Javaのサポートについてのまとめ - Qiita]]
+- [[https://speakerdeck.com/kishida/java-is-still-free?slide=18][Javaは今でも無償です、という話 ]]
 ** Commands
 - [[file:Java_SE_Command.org][Java_SE_Command]]
 ** Warnings

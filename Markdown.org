@@ -109,6 +109,58 @@
   - ex
     [Github](https://www.github.com)
   
+** Cheatsheet
+# 見出し1
+
+## 見出し2
+
+### 見出し3
+
+**太字**
+
+*斜字*
+
+~~取り消し線~~
+
+<details><summary>test</summary>
+
+***
+線を引く
+
+---
+
+ * 箇条書き
+ * 箇条書き2
+   * 箇条書き3
+     * 箇条書き4
+ - 箇条書き1
+   - 箇条書き2
+
+1. 数字1
+1. 数字2
+1. 数字3
+
+</details>
+
+- [ ] test
+- [ ] test
+
+> 引用
+>> 二重引用
+
+[リンクのテキスト](http://google.com "タイトル")
+
+![画像の代替テキスト](http://google.com "タイトル")
+
+```python
+import numpy
+import pandas
+```
+
+```c++
+#include <iostream>
+using namespace std;
+```
 
 ** Link
 - [[https://help.github.com/articles/markdown-basics/][Markdown Basics - GitHub Help]]

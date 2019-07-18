@@ -3,6 +3,23 @@
 psql {-f filename | -c command} -U username -h hostname -d dbname -o outputfile -f filename
 
 set PGPASSWORD=""
+
+psql -l  # see database list
+export PG_DATA=/usr/local/var/postgres  #set postgers location
+
+pg_ctl [start|stop] #pg server startup / stop
+
+createuser -P username
+createdb dbName -O userNameOfOwner
+
+*** on Mac
+initdb /usr/local/var/postgres -E utf8  #init db on utf-8
+postgres -D /usr/local/var/postgres     #manual startup
+
+- uninstall
+  open /Library/PostgreSQL/9.6/uninstall-postgresql.app  #if binary set up is made
+  https://nektony.com/how-to/uninstall-postgresql-on-mac
+
 ** /* on psql - meta command */
 \encoding utf8
 
@@ -19,6 +36,11 @@ set (parameter) = (value) -- ˆêŽž“I
 show {name|ALL}
 
 select pg_reload_conf();
+
+*** /* create user|role */
+CREATE ROLE username LOGIN ...;
+*** /* create database */
+CREATE DATABASE databaseName WITH OWNER = ownerName ...;
 
 *** /* alter */
 **** tale

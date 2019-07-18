@@ -2,13 +2,17 @@
 ** Folder Structure
 *** ~/.vscode
 ** Keyboard shortcuts
+- Keyboard Shortcuts : Cmd K Cmd S
+*** Markdown
+**** Ctrl + K, V : サイドバイサイドでプレビュー表示
+**** Ctrl + Shift + V : 別タブとしてプレビュー表示
 *** tmp
+- Custmize keyboard shortcuts : Ctl K Ctl S / ⌘K ⌘S
 - Open : Cmd + O
--  : Cmd + P
+- : Cmd + P
 - Command palette : Cmd + Shift + P
 - Change language mode : ⌘K M
 - Change theme : ⌘K ⌘T
-- Custmize keyboard shortcuts : ⌘K ⌘S
 - User Settings : ⌘,
 - Extensions : Shift + Cmd + X 
 - Toggle Sidebar : Cmd + B
@@ -91,9 +95,19 @@
 - コマンドパレットで"Configure Language" -> locale.jsonが開く
   "locale:en-US"
 - https://qiita.com/tinymouse/items/13d6e3564581a3199d32
+*** 設定の共有
+**** 設定ファイルの場所
+- Windows: %APPDATA%\Code\User\settings.json
+- Mac: $HOME/Library/Application Support/Code/User/settings.json
+- Linux: $HOME/.config/Code/User/settings.json
+**** Settings Sync
+- Synchronize Settings, Snippets, Themes, File Icons, Launch, Keybindings, Workspaces and Extensions
+  Across Multiple Machines Using GitHub Gist.
+  https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
 ** Link
 - [[https://www.microsoft.com/ja-jp/dev/products/code-vs.aspx][Visual Studio Code]]
 - https://www.microsoft.com/ja-jp/dev/resource/default.aspx
 
+- https://qiita.com/sensuikan1973/items/74cf5383c02dbcd82234?utm_content=buffer4ae03&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
 
 - https://code.visualstudio.com/docs/setup/mac
