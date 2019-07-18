@@ -260,6 +260,20 @@
   ただし/s servername, /u UserName, /p Passwordなどを入力すると、
   リモートの情報も取得できる。
 
+****** w32tm.exe
+******* Commands
+******** w32tm [ /? | /register | /unregister ]
+******** w32tm /monitor
+******** w32tm /ntte
+******** w32tm /ntpte
+******** w32tm /resync
+******** w32tm /stripchart
+******** w32tm /config
+******** w32tm /tz
+******** w32tm /dumpreg
+******** w32tm /query
+******** w32tm /debug
+******** w32tm 
 ****** wevtutil.exe
 - wevtutil COMMAND [ARGUMENT [ARGUMENT] ...] [/OPTION:VALUE [/OPTION:VALUE] ...]
 - イベントログおよび発行元に関する譲歩の取得、イベントマニフェストのイントールおよびアンインストール、
@@ -317,7 +331,9 @@
 ******** /ALL /FO CSV /NH
 ******** /?
 ***** GUI
-****** eventvwr.exe
+****** control.exe / コントロールパネル
+- コントロールパネルの実行ファイル。
+****** eventvwr.exe / イベントビューア
 - イベントビューアー。.mscとの違いは不明、おそらく同じ。
 ****** mmc.exe
 - Microsoft管理コンソール Microsoft Management Console
@@ -340,7 +356,7 @@
 - 
   newplwiz.exeで開く。
   パスワード忘れてCMD立ち上げたときとかに役立つ。
-****** notepad.exe
+****** notepad.exe / メモ帳
 ******* Memo
 - UTF-8で保存すると勝手にBOMがつくので注意。
 
@@ -418,7 +434,6 @@ CompatTelRunner.exe
 CompMgmtLauncher.exe
 ComputerDefaults.exe
 consent.exe
-control.exe
 convert.exe
 credwiz.exe
 csrss.exe
@@ -730,7 +745,6 @@ vmicsvc.exe
 vsjitdebugger.exe
 vssadmin.exe
 VSSVC.exe
-w32tm.exe
 waitfor.exe
 wbadmin.exe
 wbengine.exe
@@ -773,6 +787,7 @@ xwizard.exe
 - Microsoft Common Console Documentファイル。
   mscは、MMC用に作られた特殊なDDL。
   スナップインをどのように組み込むかを定義しているファイルで、中身はXML形式のテキストファイル。
+- MMCスナップイン
 ***** azman.msc
 ***** certmgr.msc
 ***** comexp.msc
@@ -835,9 +850,35 @@ xwizard.exe
 ****** File Server Resource Manager
 ****** Folder
 ****** Group Policy Object Editor
+**** cpl
+- コントロールパネルの各アイテム
+- cplファイルはDLLファイルのため、コマンドラインで実行する場合、本来はcontrolコマンドのパラメータとして指定する必要がある。
+  （control.exeはコントロールパネルの実行ファイル。）
+  https://www.atmarkit.co.jp/ait/articles/0507/02/news016.html
+***** appwiz.cpl / プログラムと機能
+***** bthprops.cpl
+***** collab.cpl
+***** desk.cpl / 画面の解像度
+***** Firewall.cpl / Windowsファイアウォール
+***** hdwwiz.cpl / デバイスマネージャー
+***** IDTNC64.cpl
+***** igfxcpl.cpl
+***** inetcpl.cpl / インターネットのプロパティ
+***** infocardcpl.cpl
+***** intl.cpl / 地域と言語
+***** irprops.cpl
+***** joy.cpl / ゲームコントローラー
+***** main.cpl / マウスのプロパティ
+***** mmsys.cpl / サウンド
+***** ncpa.cpl / ネットワーク接続
+***** powercfg.cpl / 電源オプション
+***** sysdm.cpl / システムのプロパティ
+***** TabletPC.cpl / ペンとタッチ
+***** telephon.cpl / 所在地情報
+***** timedate.cpl / 日付と時刻
+***** wscui.cpl / アクションセンター
 **** etc
-***** inetcpl.cpl
-- インターネットのプロパティ
+**** 
 ***** winrm.cmd
 - Windows Remote Management Command Line Tool
 - Server限定の可能性あり
@@ -853,6 +894,7 @@ xwizard.exe
 ******* winrm id
 ******* winrm quickconfig -?
 - Configures this machine to accept WS-Management requests from other machines.
+
 *** wbem\
 **** wmic.exe / WMI (Windows Management Instrumentation)
 - 

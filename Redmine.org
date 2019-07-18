@@ -250,6 +250,8 @@
 ** 記法
 *** Redmineのwiki記法
 *** textile記法
+- [[https://www.promptworks.com/textile][Textile Reference Manual - promptworks]]
+- [[http://redmine.jp/tech_note/textile/][textile記法 - Redmine.jp]]
 ** Reveres Lookup
 *** HTTPS化
 ** Link
