@@ -1282,6 +1282,24 @@
 *** ヘルスチェック画面
 - availability_check/index.jsp、を利用する
 - https://www.intra-mart.jp/download/product/iap/setup/iap_setup_guide/texts/appendix/health_check.html
+** Memo
+*** トレーニング
+**** 環境
+***** サービス
+****** Task Service
+  - 全てのAPサーバ上で稼働
+  - 非同期系のメッセージを実行する
+****** Job Scheduler Service
+  - 全てのAPサーバ上で稼働
+  - Job(バッチ)を実行する。
+
+****** Server Manager
+  - 1APサーバ上のみで稼働
+
+**** スクリプト開発
+- スクリプト開発では、init関数がまず実行される。
+- ファンクションコンテナから、プレゼンテーションページに値を受け渡す。
+
 ** Link
 *** About
 - [[http://www.intra-mart.jp/document/library/index.html][intra-mart Accell Platform - intra-mart Accel Series ドキュメントライブラリ]]

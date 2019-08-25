@@ -2033,3 +2033,6 @@
 - https://www.nttdocomo.co.jp/service/developer/smart_phone/spmode/index.html
 **** SoftBank
 - https://www.support.softbankmobile.co.jp/partner/home_tech1/
+** Tools
+*** GNS3
+- ネットワーク機器をエミュレートできるアプリケーション。
