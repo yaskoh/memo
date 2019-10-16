@@ -1458,7 +1458,7 @@
 
 *** Cドライブの掃除
 **** ディスククリーンアップ
-- Cのプロパティ->ツールタブ
+- Cのプロパティ->全般->ツールタブ
 **** Tempの削除
 - C:\WINDOWS\Temp
 - C:\Users\(username)\AppData\Local\Temp
