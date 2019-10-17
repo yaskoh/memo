@@ -205,6 +205,7 @@
 
 ***** Edit points 好きな形の図を作成する
 *** Project
+- [[file:MSProject.org][MSProject]]
 **** Shortcuts
 ***** Ribbon
 ****** FILE(F)

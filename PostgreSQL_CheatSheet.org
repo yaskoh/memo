@@ -81,7 +81,13 @@ select pg_prewarm('program','buffer')
 psql -U raapp -c "\copy tablename (col1, col2, col3) FROM 'file.csv' (FORMAT csv, HEADER true, ENCODING 'UTF8')" dbname >> %tnum%_in.log
 **** \copy from
 *** /* tablespace */
-create tablespace spacef location 'C:\\windows\\directory\\path'
+create tablespace spacef location 'C:\\windows\\directory\\path';
+drop tablespace spacef;
+
+*** /* get ids */
+- SELECT datid, datname FROM pg_stat_database;
+- SELECT relid, relname FROM pg_stat_all_tables;
+- SELECT oid, * FROM pg_tablespace;
 
 ** /* data 20181225 */
 select * 

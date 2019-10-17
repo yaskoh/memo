@@ -420,6 +420,7 @@
 
 - [[http://pgtune.leopard.in.ua/][pgtune]]
 
+- [[https://www.postgresqlinternals.org][PostgreSQL Internals]]
 - [[https://www.slideshare.net/uptimejp/postgresql-6872500][PostgreSQLアーキテクチャ入門 - SlideShare]]
 
 * EnterpriseDB

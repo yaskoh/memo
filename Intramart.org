@@ -989,6 +989,8 @@
 - Location : WEB-INF/conf/password-history.xml
 **** Link
 - [[http://www.intra-mart.jp/download/product/iap/setup/im_configuration_reference/index.html][intra-mart Accel Platform 設定ファイルリファレンス]]
+*** Log 
+- [[https://www.intra-mart.jp/support/information/texts/logfile/index.html][付録（ログファイル構造詳細） - intra-mart]]
 *** Glossary
 **** tenant テナント
 ***** マルチテナント
