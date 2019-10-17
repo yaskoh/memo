@@ -1,0 +1,13 @@
+* Cisco IOS
+** Command
+*** ?
+*** configurate, conf
+**** terminal, t
+*** show, sh
+**** version
+- ルータで動作しているIOSバージョン情報などを表示する
+**** startup-config
+**** running-config
+**** interfaces, int
+**** ip
+***** route
