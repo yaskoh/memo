@@ -11,3 +11,10 @@
 **** interfaces, int
 **** ip
 ***** route
+** Mode
+*** User EXEC / Router>
+*** Privileged EXEC / Router#
+*** Rommonitor / Rommon#
+*** Global Configuration / Router(config)#
+*** Interface Configuration / Router(config-if)#
+*** Line Configuration / Router(config-line)#
