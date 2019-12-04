@@ -1,9 +1,6 @@
 * SQL Server
-
 ** Command
-
 *** DBCC
-
 - dbcc ind
     隠しコマンド。インデックスのページ割り当て等の情報を見ることができる。
     dbcc ind ( { 'dbname' | dbid }, { 'objname' | objid }, { nonclustered indid | 1 | 0 | -1 | -2 } [, partition_number] )
@@ -34,7 +31,6 @@
     DB内にアクティブなトランザクションが存在するか否かを確認できる。
 
 *** Procedure
-
 - sp_helptext 'procedure'
     プロシージャの内容を出力する。
 
@@ -66,7 +62,6 @@
 
 ** Built-in Functions
 - 組込関数
-
 
 	関数の種類
 		行セット関数
@@ -129,10 +124,8 @@
 ** memo
 
 *** GROUPING SETS
--
-  GROUP BY句で、どの単位でまとめるか複数の選択が可能。
+- GROUP BY句で、どの単位でまとめるか複数の選択が可能。
   rollupやcubeだけでなく、柔軟な設定ができる。
-
 
 *** データベースの種類
 - master
