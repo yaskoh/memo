@@ -671,8 +671,14 @@ SSHは両方可能。
 - git config --global user.email "your.email@domain.com"
 - git config --global core.filemode false  # ignore file mode like 755 and 644
 - git config --global core.quotepath false # using Japanese file name
+- git config --global core.editor vi
 
-- git config --list  # check your settings
+- git config --list  # check your settings (git config -l)
+
+**** Local設定
+- 現状確認 : git config -l --local
+- ユーザ名設定 : git config --local user.name Name
+- メール設定 : git config --local user.email Mail
 
 *** ~N
 - 

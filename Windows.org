@@ -2,6 +2,10 @@
 ** Version
 *** Windows 7
 *** Windows 10
+**** Tips
+***** バージョン情報の確認
+- Windows -> 設定 -> システム -> バージョン情報
+- Windows -> Settings -> System -> Version
 *** Windows Server 2012 R2
 **** Server Manager サーバーマネージャー
 ***** Add Roles and Features Wizard
@@ -690,6 +694,18 @@
 - [[http://news.mynavi.jp/articles/2009/01/25/wsh/][ゼロからはじめるWindows Script Host - 基本編 - マイナビニュース]]
 *** PowerShell
 - [[file:PowerShell.org][PowerShell.org]]
+*** WSL
+**** General
+***** Tips
+****** WSLとWindowsファイルシステム間のアクセス
+- WSL -> Windowsには、/mnt/DriveLetterからアクセス可能。
+- Windows -> WSLは、\\wsl$で確認ができるらしい。が、現時点では試したところ不可。
+  - https://qiita.com/quzq/items/1096c638c0d86795be13
+****** ホームフォルダを変更
+- passwdの設定で、パスを/home/usernameから/mnt/c/Users/usernameに変更するといろいろと便利。
+  - sudo vim /etc/passwd
+**** debian
+**** ubuntu
 *** MSYS2
 **** pacman
 - [[file:Linux.org][Linux.org(PackageManagement/pacman参照)]]
@@ -841,6 +857,9 @@
 ***** Dvorak
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\00000411
   KBDJPN.DLL -> KBDDV.DLL
+
+- Win10利用時、ログインなどシステム利用時にQWERTYに戻ってしまう場合があったため、
+  加えて"00000409"のUS分もKBDDV.DLLに変更した。
 ***** Default Settings
 - HKEY_USERS\.DEFAULT\Keyboard Layout\Preloadに記載あり
   http://www.itprotoday.com/management-mobility/how-do-i-configure-default-keyboard-layout-during-login
@@ -1653,6 +1672,9 @@
   - ドメインにもローカルにも同じアカウントを用意する
   - 必要な資格情報を、資格情報マネージャーであらかじめ用意しておく
 - [[https://www.atmarkit.co.jp/ait/articles/1406/12/news097_2.html][第2回　ファイル共有の使い方 (2/2) - @IT]]
+*** Windows10の電源オプションに「休止」を追加
+- 設定→システム→電源とスリープ→電源の追加設定→電源ボタンの動作を選択する→現在利用可能でない設定を利用します
+- [[https://www.atmarkit.co.jp/ait/articles/1808/20/news026.html][Windows 10の電源メニューに「休止状態」を表示する - @IT]]
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe
