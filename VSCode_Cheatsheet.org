@@ -1,20 +1,29 @@
 * VSCode Cheatsheet
-**  Cmd+K Cmd+S : Keyboard Shortcuts
+** List
+*** Cmd+K Cmd+S : Keyboard Shortcuts
+*** Cmd+, : Settings
 ** General
-*** Ctrl+Shift+P, F1 | Cmd+Shift+P : Command Paletteをひらく
-*** Ctrl+O | Cmd+O : Open Local 開く
+*** Ctrl+Shift+P, F1 | Cmd+Shift+P / Command Paletteをひらく
+*** Ctrl+O | Cmd+O / File: Open File / ファイルを開く
+*** Ctrl+K Ctrl+O | Cmd+K Cmd+O / File: Open Folder / フォルダを開く
 *** : Open Recent
-*** Ctrl+K F | Cmd+K F : Close Workplace ワークプレースを閉じる
+*** Ctrl+K F | Cmd+K F / Close Workspace / ワークスペースを閉じる
+*** Ctrl+K Ctrl+O | Cmd+K Cmd+O / View: Close All Editors / 全てのファイルを閉じる
 
-*** Ctrl+B | Cmd+B : サイドバー開閉
-*** Ctrl+N | Cmd+N : 新しいバッファ Open New Untitled File
-*** Ctrl+\ | Cmd+\ : 画面分割
-*** Ctrl+W | Cmd+W : 画面を閉じる
+*** Ctrl+B | Cmd+B / サイドバー開閉
+*** Ctrl+N | Cmd+N / 新しいバッファ Open New Untitled File
+*** Ctrl+\ | Cmd+\ / 画面分割
+*** Ctrl+W | Cmd+W / 画面を閉じる
 *** Quick Open
 - Win: Ctrl+P
 - Mac: ⌘P
 - ? to view help suggestions
 
+** Command Palette
+*** ワークスペースを開く
+- CP + Workspaces: Add ~を選択
+*** 統合ターミナルを開く
+- CP + Terminal: Create New Integrated Terminal 
 ** Markdown
 *** Ctrl + K, V : サイドバイサイドでプレビュー表示
 *** Ctrl + Shift + V : 別タブとしてプレビュー表示
