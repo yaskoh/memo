@@ -513,18 +513,31 @@
 - Advanced Pckaging Tool
 - dpkgを管理するためのツール
 **** apt
-***** apt
-***** apt-cache
+- apt-getより後継。現在はaptの使用を推奨とのこと。
+***** Cheatsheet
+- sudo apt update : リポジトリを更新
+- sudo apt upgrade : パッケージを更新
+- sudo apt full-upgrade : 保留パッケージなど含んだ場合の更新
+- sudo apt install (packagename) : インストール
+- sudo apt remove (pacagename) : 削除
+- sudo apt show (packagename) : 詳細情報を表示
+- sudo apt list (packagename) : パッケージを検索（完全一致）
+- sudo apt search (packagename) : パッケージを検索（部分一致）
+- sudo dpkg -l : インストール済みパッケージの一覧を表示（dpkgですが）
+
+**** apt-get
 ***** apt-get
 ****** memo
 ******* GUIのインストール
 - sudo apt-get install ubuntu-desktop
   or
   sudo apt-get install xserver-xorg
+***** apt-cache
 ***** apt-key
 ***** add-apt-repository
 **** aptitude
 - aptよりも後に開発され、多機能。
+  外部プロジェクト。
 **** dpkg
 **** Link
 - https://eng-entrance.com/linux-package-apt-2
