@@ -25,6 +25,12 @@
 *** Link
 - https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
 - https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf
+** Structure
+*** Editor
+*** Panel
+*** Side bar
+*** Activity bar
+*** Status bar
 ** Extensions
 *** Emacs Keymap
 *** Org Mode
@@ -107,6 +113,8 @@
 ** Link
 - [[https://www.microsoft.com/ja-jp/dev/products/code-vs.aspx][Visual Studio Code]]
 - https://www.microsoft.com/ja-jp/dev/resource/default.aspx
+
+- [[https://www.atmarkit.co.jp/ait/articles/1507/10/news028.html][Visual Studio Codeの使い方、基本の「キ」 - @IT]]
 
 - https://qiita.com/sensuikan1973/items/74cf5383c02dbcd82234?utm_content=buffer4ae03&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
 

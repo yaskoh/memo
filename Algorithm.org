@@ -67,3 +67,7 @@
 - 楕円曲線DSA
 ***** ECDH
 - 楕円曲線ディフィー・ヘルマン
+** Unclassified
+*** Dynamic programming / DP / 動的計画法
+**** Link
+- 
