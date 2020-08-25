@@ -570,6 +570,10 @@
   https://qiita.com/kwappa/items/639b40ef0e18170edf43
 - (reg-exp) \,(1+ \#)
   http://lambda1.blogspot.com/2012/04/emacs-emacs-replace-regexp-m-x-replace.html
+*** Emacs Client
+- WindowsのGUIでEmacsを使う場合、emacsclientwを使うとよい。
+  規定のプログラムとして指定すると、ダブルクリックですでに開いているemacsの上でファイルが開いてくれる。
+- CUIだとemacsclientをemacs serverと組み合わせることになるはず。
 ** Link
 *** Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]

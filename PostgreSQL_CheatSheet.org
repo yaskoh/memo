@@ -43,7 +43,7 @@ CREATE ROLE username LOGIN ...;
 CREATE DATABASE databaseName WITH OWNER = ownerName ...;
 
 *** /* alter */
-**** tale
+**** table
 alter table {tablename} rename to {renamedname};
 alter table {tablename} add column {colname} {type};
 alter table {tablename} drop column {colname};
@@ -64,6 +64,8 @@ log_min_duration_statement
 *** /* auto_explain */
 auto_explain.log_min_duration
 auto_explain.verbose
+
+*** explain
 
 *** /* prewarm */
 select pg_prewarm('program','buffer')

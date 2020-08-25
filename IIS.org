@@ -2,6 +2,14 @@
 ** FTP
 *** 構築手順
 - https://technet.microsoft.com/ja-jp/library/hh831655(v=ws.11).aspx
+*** Memo
+**** Logの形式
+- [[https://oshiete.goo.ne.jp/qa/8939779.html][WindowsServer2008(IIS7.5)のFTPサイトはIISログ形式(日本時間)が不可？ - 教えて!goo]]
+  FTP サーバーでサポートしているログ形式は W3C のみである、と明記されており、UTC で記録するのは仕様となる
+- [[https://docs.microsoft.com/ja-jp/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831624(v=ws.11)?redirectedfrom=MSDN][FTP Logging - Mcrosoft Docs]]
+  This version of the FTP server only supports W3C Extended Log File format.
+**** ステータスコード
+- https://support.microsoft.com/ja-jp/help/969061/the-ftp-7-0-status-codes-in-iis-7-0
 ** Settings
 *** Server Level
 *** Site Level
@@ -120,4 +128,4 @@
 - 匿名ユーザーのアクセスを禁止する
 - 接続元IPでアクセスを制限する
 - 最大同時接続数を最小限にする
-- 
+

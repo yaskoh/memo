@@ -789,6 +789,7 @@ xwizard.exe
   スナップインをどのように組み込むかを定義しているファイルで、中身はXML形式のテキストファイル。
 - MMCスナップイン
 ***** azman.msc
+***** certlm.msc / 証明書
 ***** certmgr.msc
 ***** comexp.msc
 ***** compmgmt.msc / Computer Management / コンピュータの管理

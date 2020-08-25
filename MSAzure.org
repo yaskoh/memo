@@ -219,10 +219,15 @@
 *** Data + Analysis
 *** Internet of Things
 *** Enterprise Integration
-*** Security + Identity
+*** ID
+**** Azure Active Directory
+**** Azure AD Domain Services
+*** Security
+**** 仮想ネットワークゲートウェイ
 *** Developer Tools
 *** Monitoring + Management
-*** Other Clouds
+*** Other Clouds / その他
+**** アプリケーション ゲートウェイ
 ** Azure Powershell
 - [[https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-4.2.0][Install and configure Azure PowerShell - Microsoft Azure]]
 ** Azure CLI

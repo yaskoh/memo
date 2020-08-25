@@ -1515,6 +1515,10 @@
 *** ネットワークドライブの割り当て
 - エクスプローラでAlt, 「ネットワークドライブの割り当て」を行う。
 - http://www1.ark-info-sys.co.jp/support/all/kakumei/c21.html
+*** ドライブレターの変更
+- Win10系：
+  - Windowsマークを右クリック→Disk Management / ディスクの管理、から変更。
+    ディスク系は上部に現れないので、下部の画面上、右クリックから変更する。
 *** ドメイン環境で使用されるポート
 - https://blogs.technet.microsoft.com/jpntsblog/2009/03/03/563/
 **** ドメインメンバー
@@ -1672,9 +1676,28 @@
   - ドメインにもローカルにも同じアカウントを用意する
   - 必要な資格情報を、資格情報マネージャーであらかじめ用意しておく
 - [[https://www.atmarkit.co.jp/ait/articles/1406/12/news097_2.html][第2回　ファイル共有の使い方 (2/2) - @IT]]
+*** 「ショートカット」の「ショートカットキー」
+- ショートカットのプロパティで設定できる「ショートカットキー」は、
+  ショートカットがデスクトップにある場合に、そのキーの組み合わせで起動できるようにする設定。
+- [[https://www.724685.com/word/wd190925.htm][「ショートカット」の「ショートカットキー」とは - なにパソ]]
+
+*** Program Filesなどに存在しないファイルをショートカットとしたい場合
+- プログラムファイルなどに存在しない場合に、ショートカットを作成するのが難しいので、
+  まず'shell:AppsFolder'などにアクセスしたうえで、右クリックでアプリケーションのショートカットを（デスクトップに）作成することができる。
+- あるいは単に
+  https://www.early2home.com/blog/application/edge/post-181.html
+
 *** Windows10の電源オプションに「休止」を追加
 - 設定→システム→電源とスリープ→電源の追加設定→電源ボタンの動作を選択する→現在利用可能でない設定を利用します
 - [[https://www.atmarkit.co.jp/ait/articles/1808/20/news026.html][Windows 10の電源メニューに「休止状態」を表示する - @IT]]
+*** Windows10のPCディレクトリから「ピクチャ」「ミュージック」などを削除
+- レジストリをいじるしかない、とのこと。
+  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ FolderDescriptions\{0ddd015d-b06c-45d5-8c4c-f59713854639}\PropertyBag
+  [[https://www.billionwallet.com/goods/windows10/win10_this_pc_delete.html][ファイルエクスプローラー上のPCに入っているデーターフォルダーを非表示にする - Windows 10 - BILLIONWALLET]]
+
+- 3Dオブジェクトのフォルダを削除して非表示にする。
+  HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}
+  [[https://www.billionwallet.com/windows10/3d-objects-delete.html][Windows 10 ファイルエクスプローラのPCに入っている3Dオブジェクトのフォルダを削除して非表示にする - BILLIONWALLET]]
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

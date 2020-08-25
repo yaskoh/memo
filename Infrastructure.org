@@ -117,6 +117,11 @@
 - 有名
   - Nutanix
 - http://cn.teldevice.co.jp/column/detail/id/98
+*** 3 Tier
+- サーバ、SANスイッチ（ネットワーク）、ストレージ、の3層構成。
+- コンバージドに対しての説明のためよく用いられる。
+  コンバージドは、上記を1台のラックに検証済みの状態でパッケージングされており、
+  
 *** SDN / Software Defined Network
 *** SDS / Software Defined Storage
 *** SRE / Site Reliability Engineering

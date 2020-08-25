@@ -223,5 +223,7 @@
 *** Game Development
 ** Memo
 - [[https://qiita.com/nakazax/items/20458e146d3d9f2aa615][AWS認定9冠制覇したのでオススメの勉強法などをまとめてみる - Qiita]]
+*** Security
+- [[https://aws.amazon.com/jp/blogs/news/aws-hands-on-for-beginners-06/][アカウント作成後すぐやるセキュリティ対策” 編を公開しました！- Monthly AWS Hands-on for Beginners 2020年4月号 - AWS]]
 ** Link
 - https://aws.amazon.com/jp/
