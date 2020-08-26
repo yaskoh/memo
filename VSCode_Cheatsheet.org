@@ -1,8 +1,7 @@
 * VSCode Cheatsheet
 ** List
-*** Cmd+K Cmd+S : Keyboard Shortcuts
 - あるいは"keybindings.json"を編集
-*** Cmd+, : Settings
+*** Cmd+, / Settings
 ** General
 *** Ctrl+Shift+P, F1 | Cmd+Shift+P / Command Paletteをひらく
 *** Ctrl+O | Cmd+O / File: Open File / ファイルを開く
@@ -28,10 +27,13 @@
 *** マルチルートワークスペース
 - CP + Workspaces: Add ~を選択
   複数のフォルダをルートとして追加可能。
+** Panel
+*** Ctrl + J | Cmd + J / Toggle Panel
+- WinはAlt + J に変更
 
 ** Markdown
-*** Ctrl + K, V : サイドバイサイドでプレビュー表示
-*** Ctrl + Shift + V : 別タブとしてプレビュー表示
+*** Ctrl + K, V / サイドバイサイドでプレビュー表示
+*** Ctrl + Shift + V / 別タブとしてプレビュー表示
 ** Command Palette
 *** ワークスペースを開く
 - CP + Workspaces: Add ~を選択
