@@ -1,6 +1,7 @@
 * VSCode Cheatsheet
 ** List
 *** Cmd+K Cmd+S : Keyboard Shortcuts
+- あるいは"keybindings.json"を編集
 *** Cmd+, : Settings
 ** General
 *** Ctrl+Shift+P, F1 | Cmd+Shift+P / Command Paletteをひらく
@@ -19,11 +20,22 @@
 - Mac: ⌘P
 - ? to view help suggestions
 
+** Editor
+*** Command+\ / Split Editor / 画面分割
+*** Alt + Click / マルチカーソル
+*** Ctrl+K Z / Zenモード
+** Workspace
+*** マルチルートワークスペース
+- CP + Workspaces: Add ~を選択
+  複数のフォルダをルートとして追加可能。
+
+** Markdown
+*** Ctrl + K, V : サイドバイサイドでプレビュー表示
+*** Ctrl + Shift + V : 別タブとしてプレビュー表示
 ** Command Palette
 *** ワークスペースを開く
 - CP + Workspaces: Add ~を選択
 *** 統合ターミナルを開く
-- CP + Terminal: Create New Integrated Terminal 
-** Markdown
-*** Ctrl + K, V : サイドバイサイドでプレビュー表示
-*** Ctrl + Shift + V : 別タブとしてプレビュー表示
+- CP + Terminal: Create New Integrated Terminal ~
+*** ミニマップのToggle
+- CP + View: Toggle Minimap

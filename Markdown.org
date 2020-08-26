@@ -56,6 +56,8 @@
   - ex
     **This text will be bold**
 
+- ***(Italic and Bold)
+
 *** Lists
 **** Unordered lists
 - * / -
@@ -110,19 +112,25 @@
     [Github](https://www.github.com)
   
 ** Cheatsheet
+見出し1
+============
+
+見出し2
+------------
+
 # 見出し1
 
 ## 見出し2
 
 ### 見出し3
 
-**太字**
-
 *斜字*
+**太字**
+*** 斜体で太字***
 
 ~~取り消し線~~
 
-<details><summary>test</summary>
+<details><summary>サマリ</summary>
 
 ***
 線を引く
@@ -142,7 +150,7 @@
 
 </details>
 
-- [ ] test
+- [ ] チェックボックス
 - [ ] test
 
 > 引用
@@ -153,6 +161,7 @@
 ![画像の代替テキスト](http://google.com "タイトル")
 
 ```python
+# python code
 import numpy
 import pandas
 ```

@@ -102,11 +102,15 @@
   "locale:en-US"
 - https://qiita.com/tinymouse/items/13d6e3564581a3199d32
 *** 設定の共有
-**** 設定ファイルの場所
+**** Settings Sync (VSCode)
+- Turn On Settings Sync...
+  https://forest.watch.impress.co.jp/docs/news/1240071.html
+**** old
+***** 設定ファイルの場所
 - Windows: %APPDATA%\Code\User\settings.json
 - Mac: $HOME/Library/Application Support/Code/User/settings.json
 - Linux: $HOME/.config/Code/User/settings.json
-**** Settings Sync
+***** Settings Sync
 - Synchronize Settings, Snippets, Themes, File Icons, Launch, Keybindings, Workspaces and Extensions
   Across Multiple Machines Using GitHub Gist.
   https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
