@@ -574,6 +574,23 @@
 - WindowsのGUIでEmacsを使う場合、emacsclientwを使うとよい。
   規定のプログラムとして指定すると、ダブルクリックですでに開いているemacsの上でファイルが開いてくれる。
 - CUIだとemacsclientをemacs serverと組み合わせることになるはず。
+*** WindowsでEmacsを使う
+- いつも通りEmacsのzip回答やインストーラ実行を試みると、作成元不明のためセキュリティ的にインストールできなかった。
+  そのため、scoopを使ってインストールを実行。
+- [[https://emacs-jp.github.io/tips/emacs-for-windows][GNU Emacs for Windows再入門 - Emacs JP]]
+  - ・管理者ユーザで接続、ポリシーを変更
+    Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+    ・scoopのインストール
+    Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+    ・bucketの追加に先立ってgitが必要
+    scoop install git
+    ・bucketを追加
+    scoop bucket add extras
+    ・scoopをupdate
+    scoop update
+    ・emacsのインストール
+    scoop install emacs
+
 ** Link
 *** Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]

@@ -706,6 +706,7 @@
   - sudo vim /etc/passwd
 **** debian
 **** ubuntu
+*** WSL2
 *** MSYS2
 **** pacman
 - [[file:Linux.org][Linux.org(PackageManagement/pacman参照)]]
@@ -746,6 +747,7 @@
 ****** cygstart
 - start a program or open a file or URL
   
+
 ** System Programs
 - [[file:Windows_SystemPrograms.org][Windows_SystemPrograms.org]]
 ** Files
@@ -855,6 +857,13 @@
   QWORD(64bit)値。64bit符号なし整数値
 **** Tips
 ***** Dvorak
+- [[https://teratail.com/questions/44008][Win10 1607でDvorakにするレジストリがストアアプリに効かない - teratail]]
+  Keyboard Layoutではうまく反映されない場合がでてくる（日本語キーボード限定かもしれない）。
+  その場合に、①キーボードレイアウトを"英語キーボード(101/102キー)"に変更、②下記のようにキーボードレイアウトをレジストリエディタで変更。
+- HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\i8042prt\Parameters\LayoutDriver JPN
+  kbd101.dll -> kbddv.dll
+  
+****** old
 - HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\00000411
   KBDJPN.DLL -> KBDDV.DLL
 
@@ -1344,6 +1353,36 @@
 - http://desktop.arcgis.com/ja/arcmap/10.3/tools/supplement/pathnames-explained-absolute-relative-unc-and-url.htm#GUID-A2A3F32B-D0AE-4F60-97A9-4DA8AF8DC00B
 ** Tools
 *** Package manager
+**** winget
+- 現時点ではプレビュー版、とのこと。win公式。
+**** scoop
+- emacsを利用するために導入した。便利そう。
+  環境を汚さずに導入でき、環境変数も併せて設定してくれる、とのこと。
+- https://scoop.sh/
+  
+***** Tips
+****** Installation
+- Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
+- iwr -useb get.scoop.sh | iex
+
+- If policy needed to change:
+  - Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+
+****** Commands
+******* help
+******* search
+******* bucket
+- bucketの追加、一覧表示、削除
+******* insntall
+******* update
+- アプリを最新のバージョンに更新するコマンド
+- scoop update : scoop自身のアップデート
+- scoop update <app> : appのアップデート
+  - scoop update * : 全appのアップデート
+******* uninstall
+***** Link
+- [[https://qiita.com/nimzo6689/items/1ab33380366e324c0b84][全Scoopコマンド解説 その１ ～使用頻度（高）～ - @nimzo6689 - Qiita]]
+
 **** PackageManagement (OneGet)
 - https://qiita.com/japboy/items/451cf30fd0d763d98ae6
 - https://qiita.com/arachan@github/items/399da4a19ac3a20205a7
@@ -1353,6 +1392,29 @@
 - https://chocolatey.org/packages?q=
 - https://qiita.com/msp0310/items/2a92f8966608260c49c1
 **** NuGet
+*** Terminal
+**** Windows Terminal, wt
+***** Shortcut
+- Ctrl+Shift+T : タブを開く
+- Ctrl+Shift+W : タブを閉じる
+- Ctrl+Shift+P : コマンドパレットを開く
+
+- Ctrl+Tab : タブの切替
+- Ctrl+Shift+Space : ドロップダウンリストの表示
+- Ctrl+Shift+F : 検索
+
+- Altを押しながらSettings/設定 : defalut.jsonが開く
+
+****** User Shortcut
+- Ctrl+Shift+- : 水平分割
+- Ctrl+Shift+\ : 垂直分割
+
+***** Settings
+- [[https://docs.microsoft.com/ja-jp/windows/terminal/customize-settings/actions][Custom actions in Windows Terminal - Microsoft Docs]]
+
+***** Link
+- [[https://qiita.com/whim0321/items/6a6b11dea54642bd6724][Windows Terminal Tips - whim0321 - Qiita]]
+  
 *** PsTools
 **** PsExec
 -
@@ -1698,6 +1760,19 @@
 - 3Dオブジェクトのフォルダを削除して非表示にする。
   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}
   [[https://www.billionwallet.com/windows10/3d-objects-delete.html][Windows 10 ファイルエクスプローラのPCに入っている3Dオブジェクトのフォルダを削除して非表示にする - BILLIONWALLET]]
+
+- 2021/1に再設定した際に参照したリンク。
+  [[https://river-link.co.jp/2020/05/29/%E3%82%A8%E3%82%AF%E3%82%B9%E3%83%97%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC%E3%82%92%E3%82%B9%E3%83%83%E3%82%AD%E3%83%AA%E3%81%95%E3%81%9B%E3%82%8B/][エクスプローラーをスッキリさせる - RiverLINK]]
+
+*** Windowsのデフォルト壁紙が存在しているところ
+- C:\Windows\Web\Wallpaper以下。
+  ロック画面はScreen、4K壁紙は4Kフォルダ以下。
+- [[https://memorva.jp/internet/pc/windows_default_wallpaper.php#:~:text=Windows%2010%2F8.1%2F7%E3%81%AA%E3%81%A9,%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%88%E3%81%AE%E5%A3%81%E7%B4%99%E3%81%8C%E3%81%82%E3%82%8B%E3%80%82][Windows のデフォルトの壁紙とロック画面の画像が保存されている場所（フォルダ） - MEMORVA]]
+
+*** ユーザ辞書のインポート・エクスポート
+- 辞書ツールで「一覧の出力」、および「テキストファイルからの登録」
+- [[http://office-qa.com/win/win12.htm][MS-IME：日本語入力（MS-IME）のユーザー辞書を他のPCにエクスポートする]]
+
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe
