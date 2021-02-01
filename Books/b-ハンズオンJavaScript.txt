@@ -1,0 +1,99 @@
+* ハンズオンJavaScript / あんどうやすし
+** サポートサイト
+- https://www.technohippy.dev/handsonjs/
+- https://github.com/oreilly-japan/hands-on-javascript/blob/master/repl.txt
+
+** 1章
+*** 1.3
+**** 1.3.3
+- Chrome DevTolos -> Console
+  - console.log("string")
+  - 50+2
+  - console -> object情報
+
+*** 1.4
+**** 1.4.1
+- 各概念の関係
+
+- モジュール
+  - クラス
+    - データ
+      - オブジェクト、配列
+        - プリミティブ
+    - 処理
+      - 関数
+        - 制御構造
+
+**** 1.4.3
+***** 1.4.3.1
+- import文でモジュールを読み込む
+  import {CA1Rule90} from "./js/ca.js"
+
+*** 1.5
+- Source上でbreakpoint
+- Consoleタブで実行中の値を変更
+
+*** 1.6
+- 文法 : 2-5
+- 標準ライブラリ : 6-11
+- API : 12-19
+
+** 2章 データの種類
+*** 2.1
+- JavaScriptで扱える型は8種類
+  - Null
+  - Undifiend
+  - 真偽値 : true, false
+  - 数値
+  - 長整数
+  - 文字列
+  - シンボル
+  - オブジェクト
+
+typeof演算子で型を調べられる
+
+Nullは無効なオブジェクト
+
+オブジェクトのみが構造を持つ。
+それ以外の非オブジェクトの型をまとめてプリミティブprimitiveと呼ぶ
+
+*** 2.2
+リテラル: データ型に関する用語ではない。
+4種類
+
+*** 2.3 定数
+名前重要
+自宅の住所を知っている暴力的な狂人がコードをメンテナンスすると思ってコーディングしろ
+Always code as if the guy who ends up maintaining your code will be a violent psychopath who knows where you live
+
+
+**** 2.3.1
+識別子identifier 開発者がつける名前
+
+**** 2.3.2
+トークン: プログラミング言語にとって意味のある単語
+予約語
+
+*** 2.4 変数
+**** 2.4.1
+let
+**** 2.4.2
+**** 2.4.3
+参照透過性
+undefinedはリテラルでない、定数と思っておいて。
+
+*** 2.5
+無効な値であることを示したいときはundefinedでなくnullを使う
+
+*** 2.6
+*** 2.7
+型が違うと適用できる操作が異なる。型には特有の操作がある。
+真偽値の場合、論理演算
+
+**** 2.7.1
+**** 2.7.2
+**** 2.7.3
+
+
+
+
