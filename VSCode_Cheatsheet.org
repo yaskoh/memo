@@ -2,15 +2,20 @@
 ** List
 - あるいは"keybindings.json"を編集
 *** Cmd+, / Settings
+** Keyboard Shortcuts
+***  Ctrl+K Ctrl+S : Keyboard Shortcut
+***  Ctrl+K Ctrl+R : Keyboard Reference
 ** General
-*** Ctrl+Shift+P, F1 | Cmd+Shift+P / Command Paletteをひらく
+*** Alt+Shift+P, F1 | Cmd+Shift+P / Command Paletteをひらく
 *** Ctrl+O | Cmd+O / File: Open File / ファイルを開く
-*** Ctrl+K Ctrl+O | Cmd+K Cmd+O / File: Open Folder / フォルダを開く
-*** : Open Recent
+*** Ctrl+X Ctrl+F | Cmd+K Cmd+O / File: Open Folder / フォルダを開く
+*** Ctrl+Shift+T : Reopen Closed Editor
+*** Ctrl+R / File : Open Recent
 *** Ctrl+K F | Cmd+K F / Close Workspace / ワークスペースを閉じる
 *** Ctrl+K Ctrl+O | Cmd+K Cmd+O / View: Close All Editors / 全てのファイルを閉じる
 
-*** Ctrl+B | Cmd+B / サイドバー開閉
+*** Alt+L | Cmd+B / Show Sidebar / サイドバー開閉
+*** Alt+J / Show Panel
 *** Ctrl+N | Cmd+N / 新しいバッファ Open New Untitled File
 *** Ctrl+\ | Cmd+\ / 画面分割
 *** Ctrl+W | Cmd+W / 画面を閉じる

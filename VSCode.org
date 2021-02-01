@@ -2,7 +2,7 @@
 ** Folder Structure
 *** ~/.vscode
 ** Keyboard shortcuts
-- Keyboard Shortcuts : Cmd K Cmd S
+- Keyboard Shortcuts : Ctrl+K Ctrl+S Cmd K Cmd S
 *** Markdown
 **** Ctrl + K, V : サイドバイサイドでプレビュー表示
 **** Ctrl + Shift + V : 別タブとしてプレビュー表示
