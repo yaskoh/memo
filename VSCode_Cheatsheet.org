@@ -3,19 +3,23 @@
 - あるいは"keybindings.json"を編集
 *** Cmd+, / Settings
 ** Keyboard Shortcuts
-***  Ctrl+K Ctrl+S : Keyboard Shortcut
-***  Ctrl+K Ctrl+R : Keyboard Reference
+*** Ctrl+K Ctrl+S : Keyboard Shortcut
+*** Ctrl+K Ctrl+R : Keyboard Reference
+*** Command Palette -> Open Keyboard Shortcuts (JSON) : keybinding.json開く
+- ※キーバインドはデフォルトで使うことにした。。(2021/7/15)
 ** General
-*** Alt+Shift+P, F1 | Cmd+Shift+P / Command Paletteをひらく
+*** Ctrl+Shift+P, F1 | Cmd+Shift+P / Command Paletteをひらく
 *** Ctrl+O | Cmd+O / File: Open File / ファイルを開く
-*** Ctrl+X Ctrl+F | Cmd+K Cmd+O / File: Open Folder / フォルダを開く
+*** Ctrl+K Ctrl+F | Cmd+K Cmd+O / File: Open Folder / フォルダを開く
 *** Ctrl+Shift+T : Reopen Closed Editor
 *** Ctrl+R / File : Open Recent
+*** Ctrl+S / File: Save
 *** Ctrl+K F | Cmd+K F / Close Workspace / ワークスペースを閉じる
 *** Ctrl+K Ctrl+O | Cmd+K Cmd+O / View: Close All Editors / 全てのファイルを閉じる
 
-*** Alt+L | Cmd+B / Show Sidebar / サイドバー開閉
-*** Alt+J / Show Panel
+*** Ctrl+B | Cmd+B / Show Sidebar / サイドバー開閉
+*** Ctrl+J / Show Panel
+*** Ctrl+F / Find、検索
 *** Ctrl+N | Cmd+N / 新しいバッファ Open New Untitled File
 *** Ctrl+\ | Cmd+\ / 画面分割
 *** Ctrl+W | Cmd+W / 画面を閉じる
@@ -28,10 +32,13 @@
 *** Command+\ / Split Editor / 画面分割
 *** Alt + Click / マルチカーソル
 *** Ctrl+K Z / Zenモード
+*** Ctrl+ ' + '  or Ctrl+ ' - ' / 
 ** Workspace
 *** マルチルートワークスペース
 - CP + Workspaces: Add ~を選択
   複数のフォルダをルートとして追加可能。
+** Sidebar
+*** Ctrl+Shift+X : Open Extensions
 ** Panel
 *** Ctrl + J | Cmd + J / Toggle Panel
 - WinはAlt + J に変更

@@ -225,5 +225,16 @@
 - [[https://qiita.com/nakazax/items/20458e146d3d9f2aa615][AWS認定9冠制覇したのでオススメの勉強法などをまとめてみる - Qiita]]
 *** Security
 - [[https://aws.amazon.com/jp/blogs/news/aws-hands-on-for-beginners-06/][アカウント作成後すぐやるセキュリティ対策” 編を公開しました！- Monthly AWS Hands-on for Beginners 2020年4月号 - AWS]]
+**** MFAの設定
+-  IAM→ユーザー→設定したいユーザーを選択→認証情報タブ→MFAデバイスの割り当て、で設定。
+  [[https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html][仮想 Multi-Factor Authentication (MFA) デバイスの有効化 (コンソール) - aws]]
+**** アカウントIDの確認、アカウントエイリアスの設定
+- マネジメントコンソール上右上に表示されるユーザ名のドロップダウンで確認、あるいはその中のマイセキュリティ資格情報内で確認可能。
+  [[https://docs.aws.amazon.com/ja_jp/IAM/latest/UserGuide/console_account-alias.html][AWS アカウントのエイリアスの作成、削除および一覧表示 - aws]]
 ** Link
 - https://aws.amazon.com/jp/
+*** Learn
+- [[https://pages.awscloud.com/JAPAN-event-OE-At-least-10-basic-2020-confirmation-639.html][AWS ご利用開始時に最低限おさえておきたい10のこと - aws]]
+- [[https://d1.awsstatic.com/webinars/jp/pdf/services/20190123_10things_at_least_for_AWSBeginner.pdf][AWSご利用開始時に最低限おさえておきたい10のこと・資料 - aws]]
+
+  

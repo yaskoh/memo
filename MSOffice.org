@@ -4,6 +4,23 @@
 
 *** Excel
 - [[file:Excel.org][Excel.org]]
+*** OneNote
+**** 構成
+***** 単位
+- ノート、セクション、ノートブック
+       
+**** Shortcuts
+
+**** Link
+- [[https://education.microsoft.com/ja-jp/learningPath/3d96bcc8/course/94a610d0/0][はじめての OneNote]]
+- [[https://support.microsoft.com/ja-jp/office/onenote-%E3%83%93%E3%83%87%E3%82%AA-%E3%83%88%E3%83%AC%E3%83%BC%E3%83%8B%E3%83%B3%E3%82%B0-1c983b65-42f6-42c1-ab61-235aae5d0115][OneNote ビデオ トレーニング]]
+       
+
+**** Reverse lookup
+***** ノートブックを削除する
+- OneDrive上で削除する。
+  ローカルでショートカットを削除しても消えない。
+
 *** Outlook
 **** Shortcuts
 ***** Ribbon
@@ -471,6 +488,12 @@
 **** Memo
 ***** htmlファイルを表示させる方法
 - 拡張子がaspxとすれば、ソースでなくhtmlの画面として認識され表示される
+***** デフォルトで利用するアプリケーションの設定
+- Excelで開くか、Office365で開くか、などの設定。
+  ドキュメントライブラリごとに設定が必要。
+- https://www.office365room.com/kb/sharepoint-online/spo_fileopen_to_clientapp/
+  - ドキュメントライブラリ→ライブラリタブ→設定→ライブラリの設定
+    →詳細設定→ブラウザーで開くドキュメント、を変更。
 **** Link
 - [[https://www.slideshare.net/kaz-nak/20130831-o365][SharePoint Online 「アクセス権」を理解する - SlideShare]]
 ** Format

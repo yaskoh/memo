@@ -72,73 +72,6 @@
 - Tokyo Azure Meetup
 
 ** Services
-- サービスを並べただけ
-*** Compute
-**** Virtual Machines
-***** Linux Virtual Machines / Linux 仮想マシン
-***** Windows Virtual Machines / Windows仮想マシン
-**** Virtual Machine Scale Sets /仮想マシン スケールセット
-**** App Service
-**** Azure Container Service
-**** Azure Container Registry
-**** Functions App
-**** Service Fabric
-**** Batch
-**** Cloud Services
-**** 可用性セット
-**** ディスク
-**** スナップショット
-**** イメージ
-**** クラシック
-***** 仮想マシン
-***** Cloud Services
-***** ディスク
-***** OSイメージ
-***** VMイメージ
-*** Network
-**** Virtual Network
-**** Load Balancer
-**** Application Gateway
-**** VPN Gateway
-**** Azure DNS
-**** CDN
-**** TRaffic Manager
-**** ExpressRoute
-*** Storage
-**** Storage
-***** Menu
-****** Settings
-******* Access keys
-******* Configuration
-**** Data Lake Store
-**** StorSimple
-**** Backup
-**** Site Recovery
-*** Web + Mobile
-**** App Service
-**** Web Apps
-**** Mobile Apps
-**** API Apps
-**** Logic Apps
-**** CDN
-**** Media Services
-**** Search
-**** Mobile Engagement
-**** Notification Hubs
-*** Database
-**** SQL Database
-**** SQL Data Warehouse
-**** SQL Server Stretch Database
-**** DocumentDB
-**** Redis Cache
-**** Data Factory
-*** Intelligence + Analysis
-*** IoT
-*** Enterprise Migration
-*** Security + ID
-*** Development Tools
-*** 監視 + Management
-** Resources
 *** General
 **** Dashboard
 **** Resouce groups
@@ -176,6 +109,28 @@
   IP割り当てなども全て解除されてしまうが、マルチインスタンスの場合はどれか一台が残っていればIP等の設定は残る。
 - http://cloudsteady.jp/faq/2611.html/
 - http://yomon.hatenablog.com/entry/2014/02/19/Azure%E3%81%AE%E4%BB%AE%E6%83%B3%E3%83%9E%E3%82%B7%E3%83%B3%E3%81%AE%E3%82%B7%E3%83%A3%E3%83%83%E3%83%88%E3%83%80%E3%82%A6%E3%83%B3%E6%96%B9%E6%B3%95%E3%81%AB%E3%81%AF%E6%B0%97%E3%82%92%E4%BB%98%E3%81%91
+***** Type
+****** Linux Virtual Machines / Linux 仮想マシン
+****** Windows Virtual Machines / Windows仮想マシン
+**** Virtual Machine Scale Sets /仮想マシン スケールセット
+**** Functions App
+**** App Service
+**** Azure Container Service
+**** Azure Container Registry
+**** Service Fabric clusters
+**** Kuberetes services
+**** Batch
+**** Cloud Services
+**** Availability sets / 可用性セット
+**** ディスク
+**** スナップショット
+**** イメージ
+**** クラシック
+***** 仮想マシン
+***** Cloud Services
+***** ディスク
+***** OSイメージ
+***** VMイメージ
 *** Networking
 **** Virtual networks
 ***** Menu
@@ -184,6 +139,11 @@
 - 
 **** Load balancers
 **** Application gateways
+***** WAF
+****** Link
+- [[https://docs.microsoft.com/ja-jp/azure/application-gateway/log-analytics][Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォール (WAF) のログを調べる]]
+- [[https://docs.microsoft.com/ja-jp/azure/web-application-firewall/ag/web-application-firewall-troubleshoot][Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング]]
+
 **** Virtual network gataways
 **** Local network gataways
 **** DNS zones
@@ -206,30 +166,83 @@
 **** Network interfaces
 **** Public IP addresses
 **** Connections
+**** ExpressRoute circuits
+**** Network Watcher
+- 仮想ネットワークのトラブルシューティングツール。
+  現在は仮想ネットワークを作成するとデフォルトで有効となる。
+- [[https://www.cloudou.net/virtual-network/vnet013/][ネットワーク調査ツール「Network Watcher」を見る！！ - くらう道]]
+
+**** Azure Synapse Analytics
 *** Storage
-*** Web + Mobile
+**** Storage accounts
+***** Menu
+****** Settings
+******* Access keys
+******* Configuration
+**** Recovery Services vaults
+**** Data Lake Storage
+**** StorSimple
+**** Backup
+**** Site Recovery
+*** Web
 **** App Service
+**** API Management services
+**** Media Services
+**** Search services
+**** Notification Hubs
+*** Mobile
 *** Containers
 *** Database
 **** SQL Database
 **** SQL Data Warehouse
 **** NoSQL
 **** SQL servers
-*** AI + Cognitive Services
-*** Data + Analysis
+**** SQL Server Stretch Database
+**** DocumentDB
+**** Redis Cache
+**** Data Factory
+*** Analytics
+**** Azure Databricks
+*** Blockchain
+*** AI + machine learning
 *** Internet of Things
-*** Enterprise Integration
-*** ID
+*** Mixed reality
+*** Integration
+
+*** Identity
 **** Azure Active Directory
 **** Azure AD Domain Services
+**** Groups
+**** Users
 *** Security
-**** 仮想ネットワークゲートウェイ
-*** Developer Tools
-*** Monitoring + Management
-*** Other Clouds / その他
-**** アプリケーション ゲートウェイ
+**** Key vaults
+*** DevOps
+*** Migrate
+*** Monitor
+**** Log Analytics workspaces
+***** Link
+- [[https://docs.microsoft.com/ja-jp/azure/azure-monitor/logs/log-analytics-tutorial][Log Analytics のチュートリアル]]
+***** Memo
+****** Kusto Query Language
+- [[file:KustoQueryLanguage.org][KustoQueryLanguage.org]]
+*** Management + governance
+*** Intune
+*** Other
+    
 ** Azure Powershell
 - [[https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-4.2.0][Install and configure Azure PowerShell - Microsoft Azure]]
+*** Command-let
+**** Popular
+- Get-AzVM : 仮想マシンのプロパティを取得する
+- Update-AzVM : Azure仮想マシンの状態を更新する
+- New-AzDiskConfig : 構成可能なディスクオブジェクトを作成する
+- Add-AzVMDataDisk : データディスクを仮想マシンに追加する
+**** Modules
+- https://docs.microsoft.com/en-us/powershell/module/?view=azps-6.2.1
+***** Az.Compute
+****** Get-AzVM
+*** Link
+- [[https://docs.microsoft.com/en-us/powershell/azure/?view=azps-6.2.1][Azure Powershell documentation - Microsoft Docs]]
 ** Azure CLI
 *** Commands
 **** az
@@ -295,6 +308,12 @@
 - Public IP: パブリックIPアドレスから変更
 *** デフォルトDNS設定
 - 仮想ネットワークで設定⇒DNSサーバー→カスタムにより指定。
+*** VMのリージョンを移動する
+- Azure Resource Moverを利用する。
+  - https://docs.microsoft.com/ja-jp/azure/resource-mover/tutorial-move-region-virtual-machines
+
+- 
+
 ** Documentaiton
 - [[file:MSAzure_Documentation.org][MSAzure_Documentation.org]]
 ** Template
@@ -313,6 +332,23 @@
 - Azure Resource Manager
   設定ファイル: JSON
   Azureポータル
+*** WindowsでAzureファイル共有
+- Azureファイル共有のマウント方法：
+  - エクスプローラからMap network drive
+  - FolderにUNCパスを入力。
+    - 形式：\\<storageAccountName>.file.core.windows.net\<fileShareName>
+    - 例：\\anexampleaccountname.file.core.windows.net\example-share-name
+  - ユーザー名に"AZURE\ストレージアカウント名"、パスワードにストレージアカウントキーを入力。
+
+- https://docs.microsoft.com/ja-jp/azure/storage/files/storage-how-to-use-files-windows    
+*** ホストキャッシュ / host caching
+- [[https://docs.microsoft.com/ja-jp/azure/virtual-machines/disks-performance][仮想マシンとディスクのパフォーマンス - Microsoft Docs]]
+
+*** Azureのディスクパフォーマンスが出ない
+- [[https://docs.microsoft.com/ja-jp/learn/modules/caching-and-performance-azure-storage-and-disks/][Azure Storageディスクのキャッシュとパフォーマンス - Microsoft Docs - Learn]]
+- [[https://blog.ryukiy.net/2015/06/12/premium-storage-part2/][IOPS とスループットの関係を解説します ～Premium SSD を使ってみよう～ - RyukiY's Blog]]
+- [[https://teratail.com/questions/117126][Azureのディスク速度の遅さ、どうにかなりませんか？ - teratail]]
+  
 ** Link
 - [[https://docs.microsoft.com/ja-jp/azure/][Document]]
 - [[http://www.buildinsider.net/web/azure/01][まだ知らない人のための最新Microsoft Azure入門 - BulidINSIDER]]

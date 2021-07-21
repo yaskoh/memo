@@ -732,6 +732,8 @@
 - [[https://wiki.archlinuxjp.org/index.php/Pacman][pacman - archlinux]]
 
 - [[https://qiita.com/MoriokaReimen/items/dbe1448ce6c0f80a6ac1][Pacmanの使い方 - Qiita]]
+*** snap
+-  https://snapcraft.io/docs
 ** Packages
 - [[file:Linux_Packages.org][Linux_Packages.org]]
 ** Reverse lookup

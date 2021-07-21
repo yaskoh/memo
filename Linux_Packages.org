@@ -162,6 +162,9 @@
 *** deb
 *** ports
 *** pkg
+** Memo
+*** sftp has no instllation catdidate / SFTPがaptで取得できない
+- "sftp"でなく、"openssh-server"を取得するようにする。
 ** Link
 - [[https://launchpad.net/ubuntu/+search?text=][Search packages in Ubuntu]]
 - [[https://rpmfind.net/linux/RPM/index.html][Rpmfind.net]]

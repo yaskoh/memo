@@ -21,13 +21,14 @@ postgres -D /usr/local/var/postgres     #manual startup
   https://nektony.com/how-to/uninstall-postgresql-on-mac
 
 ** /* on psql - meta command */
+\l : list of databases
+\d : list of tables, etc
+\c <database> : connec to the database
+\conninfo : connection information
+
 \encoding utf8
-
 \o outputfile
-
 \i queryscriptfile
-
-\l
 
 ** /* query */
 *** /* set parameters */

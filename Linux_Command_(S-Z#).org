@@ -684,6 +684,9 @@
   タイムゾーンを選択する。
 
 *** u
+**** ufw
+- Uncomplicated FireWalls
+  tools for iptables settings on Ubuntu. / Frontend of iptables
 **** umask
 - 
   The user file-creation mask is set to mode.

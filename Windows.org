@@ -747,7 +747,6 @@
 ****** cygstart
 - start a program or open a file or URL
   
-
 ** System Programs
 - [[file:Windows_SystemPrograms.org][Windows_SystemPrograms.org]]
 ** Files
@@ -1458,7 +1457,9 @@
   [[http://level69.net/archives/752][Windows Server 2012のパスワードを初期化しよう。- 技術的な何か。]]
   
 *** コントロールパネルをコマンドから開く
-- [[http://pasofaq.jp/windows/admintools/cpllist7.htm][コントロールパネルのコマンド一覧(Windows 7)]]
+- [[https://www.atmarkit.co.jp/ait/articles/0507/02/news016.html][Windowsのコントロールパネルの各アイテムをコマンドラインから起動する - @IT]]
+- [[file:Windows_SystemPrograms.org][Windows_SystemPrograms.org]]
+  
 *** Thumbs.db
 - 
   エクスプローラで縮小表示を行うと、画像や写真データの縮小イメージが格納されたThumbs.dbが作成される。
@@ -1772,6 +1773,20 @@
 *** ユーザ辞書のインポート・エクスポート
 - 辞書ツールで「一覧の出力」、および「テキストファイルからの登録」
 - [[http://office-qa.com/win/win12.htm][MS-IME：日本語入力（MS-IME）のユーザー辞書を他のPCにエクスポートする]]
+
+*** Windows10: ワールドワイド言語サポートでUnicode UTF-8を使用について
+- 7zipでzip化した際に文字化けする、と連絡あり。該当チェックを外したところ、問題なさそう。
+  各種日本語などの文字列をSJISでなくUTF-8処理してしまうため問題となったと考えられる。
+  ベータ版であり、しばらくは有効にしない方がよさそう。
+- 関連URL: [[https://news.mynavi.jp/article/win10tips-444/][「ワールドワイド言語サポートでUnicode UTF-8を使用」は有効にすべき？ - マイナビニュース]]
+
+*** サービスの削除
+- sc delete サービス名
+    
+*** サービスの実行ファイルのパス変更方法
+- regedit
+  -> HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\<サービス名>、のImagePathを変更。
+- https://nketomok-asa.hatenadiary.org/entry/20060503
 
 *** (聞いた話メモ)
 - 
