@@ -411,6 +411,12 @@
   - 複数行で記述可能。
   - 出力ファイルは相対パス指定。
   - \COPYに比べて効率がよい。
+*** ベースバックアップの状態確認
+- [[http://server-helper.doorblog.jp/archives/3202048.html][【PostgreSQL】ベースバックアップの状態確認について - インフラエンジニアのメモ]]
+- ベースバックアップが実行中であるかの確認方法はあるのか。
+  - /var/lib/pgsql/data/backup_ラベル という名前のファイルがある場合には、pg_start_backup のあと、pg_stop_backup が実行されていない状況ということになります。
+  - Windowsで確認したところ、data配下にbackup_labelというファイルが作成され、中に情報が書かれていた。
+
 ** Link
 - [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.10 Documentation]]
 - [[https://www.postgresql.jp/document/9.6/html/index.html][PostgreSQL 9.6.5文書]]

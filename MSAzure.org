@@ -137,19 +137,22 @@
 ****** Settings
 ******* DNS servers
 - 
+**** Azure Synapse Analytics
 **** Load balancers
-**** Application gateways
-***** WAF
-****** Link
-- [[https://docs.microsoft.com/ja-jp/azure/application-gateway/log-analytics][Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォール (WAF) のログを調べる]]
-- [[https://docs.microsoft.com/ja-jp/azure/web-application-firewall/ag/web-application-firewall-troubleshoot][Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング]]
-
-**** Virtual network gataways
-**** Local network gataways
-**** DNS zones
-**** Route tables
+**** Front Doors Standard/Premium (Preview)
 **** CDN profiles
-**** Traffic Manager profiles
+**** ExpressRoute circuits
+**** Network Watcher
+- 仮想ネットワークのトラブルシューティングツール。
+  現在は仮想ネットワークを作成するとデフォルトで有効となる。
+- [[https://www.cloudou.net/virtual-network/vnet013/][ネットワーク調査ツール「Network Watcher」を見る！！ - くらう道]]
+
+***** Next hop
+
+***** Packet capture
+- パケットキャプチャをNetwork Watcher上で設定して取得できる。
+  https://docs.microsoft.com/ja-jp/azure/network-watcher/network-watcher-packet-capture-manage-portal
+      
 **** Network security groups
 - NSG secures inbound and outbound traffic.
 ***** Menu
@@ -165,14 +168,39 @@
 ****** Support + Toroubleshooting
 **** Network interfaces
 **** Public IP addresses
-**** Connections
-**** ExpressRoute circuits
-**** Network Watcher
-- 仮想ネットワークのトラブルシューティングツール。
-  現在は仮想ネットワークを作成するとデフォルトで有効となる。
-- [[https://www.cloudou.net/virtual-network/vnet013/][ネットワーク調査ツール「Network Watcher」を見る！！ - くらう道]]
+**** Pubilc IP Prefixes
+**** On-premises Data Gateways
+**** Route tables
+**** Route filters
+**** Application security groups
+**** DDoS protection plans
+**** Service endpoint policies
+**** Private DNS zones
+**** Web Application Firewall policies (WAF)
+**** Private Link
+**** Virtual WANs
+**** Bastions
+**** DNS zones
+**** Traffic Manager profiles
+**** Application gateways
+***** WAF
+****** Link
+- [[https://docs.microsoft.com/ja-jp/azure/application-gateway/log-analytics][Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォール (WAF) のログを調べる]]
+- [[https://docs.microsoft.com/ja-jp/azure/web-application-firewall/ag/web-application-firewall-troubleshoot][Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) のトラブルシューティング]]
 
-**** Azure Synapse Analytics
+**** NAT gateways
+**** Front Doors
+**** IP Groups
+**** Firewall Manager
+**** Firewall Policies
+**** Firewalls
+**** Connections
+**** Local network gataways
+**** Virtual network gataways
+***** Memo
+****** BGP on VPN
+- [[https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-bgp-overview][About BGP with Azure VPN Gateway - Microsoft Docs]]
+**** ExpressRoute Direct
 *** Storage
 **** Storage accounts
 ***** Menu
@@ -349,6 +377,10 @@
 - [[https://blog.ryukiy.net/2015/06/12/premium-storage-part2/][IOPS とスループットの関係を解説します ～Premium SSD を使ってみよう～ - RyukiY's Blog]]
 - [[https://teratail.com/questions/117126][Azureのディスク速度の遅さ、どうにかなりませんか？ - teratail]]
   
+*** ルーティングに関する問題を診断
+- Network Watcher / ネットワークウォッチャーを利用して、次ホップ機能を使用して通信をテスト可能。Azure Portal上でも利用可能。
+  https://docs.microsoft.com/ja-jp/azure/network-watcher/diagnose-vm-network-routing-problem-powershell
+    
 ** Link
 - [[https://docs.microsoft.com/ja-jp/azure/][Document]]
 - [[http://www.buildinsider.net/web/azure/01][まだ知らない人のための最新Microsoft Azure入門 - BulidINSIDER]]

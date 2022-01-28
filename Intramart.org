@@ -1068,7 +1068,7 @@
 **** imm_unit
 **** imm_user / ユーザ
 *** テナント管理
-**** b_m
+**** b_m / マスタか？
 ***** b_m_account
 ***** b_m_calendar
 ***** b_m_day_info
@@ -1084,7 +1084,7 @@
 ***** b_m_sso
 ***** b_m_system
 ***** b_m_update
-**** b_vc
+**** b_vc / ViewCreatorか
 ***** b_vc_data
 ***** b_vc_query
 ***** b_vc_search
@@ -1301,6 +1301,10 @@
 **** スクリプト開発
 - スクリプト開発では、init関数がまず実行される。
 - ファンクションコンテナから、プレゼンテーションページに値を受け渡す。
+
+*** jsspRpc
+- 
+   - https://api.intra-mart.jp/iap/apilist-jssp-tagdoc/doc/imart_tag_api/jsspRpc/index.html
 
 ** Link
 *** About
