@@ -469,6 +469,28 @@
 
 ** Link
 - [[http://www.html5rocks.com/ja/tutorials/internals/howbrowserswork/][ブラウザの仕組み:最新ウェブブラウザの内部構造 - HTML5 ROCKS]]
+
+*** ブラウザの仕組み / リクルート
+- [[https://speakerdeck.com/recruitengineers/browser-b45d3a59-af2b-449c-992e-fd7563745f80][ブラウザ / Browser - SQUARESPACE]]
+- 2021年度リクルート エンジニアコース新人研修の講義資料
+
+**** Structure
+- Structure
+  - User Interface : ブラウザのインターフェース。アドレスバーとか戻るボタンとか
+  - Browser Engine : レンダリングエンジンを操作するブラウザの核、データ層と調停する
+  - Rendering Engine : コンテンツの描画。HTMLならページをパースしてロードする
+  - Network : ネットワーク層、HTTP/HTTPSリクエストをしたりする
+  - JavaScript Engine : JavaScript実行エンジン。v8, SpiderMonkeyなど
+  - UI Backend : inputのUIなど、共通ウィジェット部分のUI。場合によってはOS共通のことも。
+  - Data Storage : ディスクに保存するレイヤ。Cookieとかlocalstorageとか。
+
+**** レンダリングエンジン
+- レンダリングプロセス
+  - [html] -> Parse -> [DOM] -> Style -> [Styled] -> Layout/Paint -> [Screen]
+
+*** [[https://browserbook.shift-js.info/][ちいさなWebブラウザを作ろう]]
+- [[https://speakerdeck.com/lmt_swallow/build-your-own-web-browser][ちいさなWebブラウザを作ってみよう(オンライン講義版) - speakerdeck]]
+
 *** Browser実装対応状況
 - [[http://caniuse.com/][Can I Use?]]
 - [[http://fmbip.com/litmus/][HTML5 & CSS3 Support - findmebyIP.com]]

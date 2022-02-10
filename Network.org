@@ -40,6 +40,30 @@
   ドメインネームシステムにおいて、各空間の頂点にある情報を保持するサーバ。
   A-M.ROOT_SERVERS.NETという13台のサーバが存在する。
 
+****** Record
+******* SOA
+- Start Of Authorityの略。五人に関するオーソリティ情報を示すもの。
+
+- MNAME
+- RNAME
+- SERIAL
+- REFRESH
+- RETRY
+- EXPIRE
+- MINIMUM
+  
+******* NS
+- Name Server。ドメインのネームサーバを指定する。
+******* A
+- Address。ホストのIPアドレスを設定。
+******* AAAA
+- IPv6のIPアドレスを設定。
+******* CNAME
+- 正規名。別名を書くときに利用する。
+******* MX
+- Mail Exchanger。メールサーバの情報。
+******* PTR
+- Pointer。逆引きレコード。
 **** Presentation
 ***** About
 - 
@@ -2073,6 +2097,12 @@
 **** 5 - 248
 **** 6 - 252
 **** 7 - 254
+
+*** APIPA
+- APIPA / Automatic Private IP Adressing
+- 静的なアドレスの割当がなく、またDHCPアドレスの割当が失敗した場合や、そういった機構がない場合に利用されるアドレス。
+- IPv4では169.254.0.0/16に定義されている。
+    
 
 ** Tools
 *** GNS3

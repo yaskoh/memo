@@ -2,7 +2,9 @@
 ** Folder Structure
 *** ~/.vscode
 ** Keyboard shortcuts
-- Keyboard Shortcuts : Ctrl+K Ctrl+S Cmd K Cmd S
+- Reference Keyboard Shortcuts : Ctrl+K Ctrl+S / Cmd K Cmd S
+- Edit: Command Palette -> Open Keyboard Shortcuts (JSON)、keybinding.jsonを変更
+  ※キーバインドはデフォルトで使うことにした。。辛いかもしれない。(2021/7/15)
 *** Markdown
 **** Ctrl + K, V : サイドバイサイドでプレビュー表示
 **** Ctrl + Shift + V : 別タブとしてプレビュー表示
@@ -32,8 +34,21 @@
 *** Activity bar
 *** Status bar
 ** Extensions
-*** Emacs Keymap
-*** Org Mode
+*** Draw.io Integration
+**** Memo
+***** 拡張子 : drawio.svg
+- 拡張子をdrawio.svgとすることで、Drawioのファイルと認識される。
+***** テーマ変更
+- Preferences -> Settings -> Extensions -> Draw.io Integration -> Themeで変更可能。
+***** 画像の種類を追加
+- 左下の"More Shapes..."から各種画像セットを追加可能。AzureとかAWSなども可。
+      
+**** Link
+- [[https://syachiku.net/vscodedrawioaws/][VScodeでdraw.ioを使ってAWS図面を作ってみる - SyachikuLOG]]
+     
+*** Obsolete
+**** Emacs Keymap
+**** Org Mode
 ** Docs
 *** Overview
 *** Setup

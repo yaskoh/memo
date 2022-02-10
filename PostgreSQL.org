@@ -52,7 +52,7 @@
 
 ** Command
 - See "Reference" on Manuals
-  @[[file:PostgreSQL_Documentation.org][PostgreSQL_Documentation.org]]
+  [[file:PostgreSQL_Documentation.org][PostgreSQL_Documentation.org]]
 ** Manuals
 - [[file:PostgreSQL_Documentation.org][PostgreSQL_Documentation.org]]
 ** Architecture
@@ -358,6 +358,10 @@
 *** 列の追加・削除
 - 追加: ALTER TABLE tablename [ADD | DROP] COLUMN columnname type;
 - 削除: ALTER TABLE tablename [ADD | DROP] COLUMN columnname {CASCADE};
+*** テーブルに設定したオプションを調べる
+- テーブルごとに設定した"autovacuum_enabled=0"などを調べるには、"d+ tablename"を実行すると確認できる。
+*** Windows版・インストール後にデータの場所を変える
+- https://kenpg.bitbucket.io/blog/201506/04.html
 ** Memo
 *** Uninstall(Windows)
 - 
@@ -407,6 +411,12 @@
   - 複数行で記述可能。
   - 出力ファイルは相対パス指定。
   - \COPYに比べて効率がよい。
+*** ベースバックアップの状態確認
+- [[http://server-helper.doorblog.jp/archives/3202048.html][【PostgreSQL】ベースバックアップの状態確認について - インフラエンジニアのメモ]]
+- ベースバックアップが実行中であるかの確認方法はあるのか。
+  - /var/lib/pgsql/data/backup_ラベル という名前のファイルがある場合には、pg_start_backup のあと、pg_stop_backup が実行されていない状況ということになります。
+  - Windowsで確認したところ、data配下にbackup_labelというファイルが作成され、中に情報が書かれていた。
+
 ** Link
 - [[https://www.postgresql.org/docs/9.6/static/][PostgreSQL 9.6.10 Documentation]]
 - [[https://www.postgresql.jp/document/9.6/html/index.html][PostgreSQL 9.6.5文書]]
@@ -423,44 +433,44 @@
 - [[https://www.postgresqlinternals.org][PostgreSQL Internals]]
 - [[https://www.slideshare.net/uptimejp/postgresql-6872500][PostgreSQLアーキテクチャ入門 - SlideShare]]
 
-* EnterpriseDB
-** 比較
-- 
-  [[http://www.enterprisedb.co.jp/products-services-training/products/postgres-plus-advanced-server][PostgreSQLとPostgres Plus Advanced Serverの比較 - EDB]]
+** EnterpriseDB
+*** 比較
+ - 
+   [[http://www.enterprisedb.co.jp/products-services-training/products/postgres-plus-advanced-server][PostgreSQLとPostgres Plus Advanced Serverの比較 - EDB]]
 
-- 主な違い
-  PostgreSQLの全機能とアップデートに加え、以下が含まれる。
-  - セキュリティ機能
-  - パフォーマンス機能
-  - 開発者向け機能
-  - データベース管理者向け機能
-  - Oracleとの互換性
-  - 企業ツール
+ - 主な違い
+   PostgreSQLの全機能とアップデートに加え、以下が含まれる。
+   - セキュリティ機能
+   - パフォーマンス機能
+   - 開発者向け機能
+   - データベース管理者向け機能
+   - Oracleとの互換性
+   - 企業ツール
 
-** Features
-- 
-  [[http://www.enterprisedb.com/docs/en/9.4/eeguide/toc.html][Postgres Plus Enterprise Edition Guide v9.4 - EDB]]
+*** Features
+ - 
+   [[http://www.enterprisedb.com/docs/en/9.4/eeguide/toc.html][Postgres Plus Enterprise Edition Guide v9.4 - EDB]]
 
-*** Introduction
+**** Introduction
 
-*** Database Administration
+**** Database Administration
 
-*** Enhanced SQL Features
+**** Enhanced SQL Features
 
-*** Security
+**** Security
 
-*** EDB Resource Manager
+**** EDB Resource Manager
 
-*** Database Utilities
+**** Database Utilities
 
-*** Open Client Library
+**** Open Client Library
 
-*** Performance Analysis and Tuning
+**** Performance Analysis and Tuning
 
-*** Built-In Utility Packages
+**** Built-In Utility Packages
 
-*** Expanded Catalog Views
+**** Expanded Catalog Views
 
-*** System catalog Tables
+**** System catalog Tables
 
-*** Appendix
+**** Appendix

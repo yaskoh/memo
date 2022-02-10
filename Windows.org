@@ -747,7 +747,6 @@
 ****** cygstart
 - start a program or open a file or URL
   
-
 ** System Programs
 - [[file:Windows_SystemPrograms.org][Windows_SystemPrograms.org]]
 ** Files
@@ -1117,6 +1116,8 @@
 - [[https://msdn.microsoft.com/ja-jp/library/dn505754(v=ws.11).aspx][フェールオーバー クラスターを作成する - Developer Network]]
 - [[https://techinfoofmicrosofttech.osscons.jp/index.php?MSCS%2FWSFC][MSCS/WSFC - Open棟梁Project - マイクロソフト系技術情報 Wiki]]
 
+- [[https://blog.engineer-memo.com/2009/09/26/wsfc-%E3%81%AE%E3%83%AD%E3%82%B0%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6/][WSFC のログについて - SE の雑記]]
+
 ***** Multipath I/O
 - [[https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc725907(v=ws.11)]]
 ***** RPC over HTTP Proxy
@@ -1356,39 +1357,55 @@
 **** winget
 - 現時点ではプレビュー版、とのこと。win公式。
 **** scoop
-- emacsを利用するために導入した。便利そう。
-  環境を汚さずに導入でき、環境変数も併せて設定してくれる、とのこと。
-- https://scoop.sh/
-  
-***** Tips
-****** Installation
-- Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://get.scoop.sh')
-- iwr -useb get.scoop.sh | iex
-
-- If policy needed to change:
-  - Set-ExecutionPolicy RemoteSigned -scope CurrentUser
-
-****** Commands
-******* help
-******* search
-******* bucket
-- bucketの追加、一覧表示、削除
-******* insntall
-******* update
-- アプリを最新のバージョンに更新するコマンド
-- scoop update : scoop自身のアップデート
-- scoop update <app> : appのアップデート
-  - scoop update * : 全appのアップデート
-******* uninstall
-***** Link
-- [[https://qiita.com/nimzo6689/items/1ab33380366e324c0b84][全Scoopコマンド解説 その１ ～使用頻度（高）～ - @nimzo6689 - Qiita]]
-
+- [[file:Scoop.org][Scoop.org]]
 **** PackageManagement (OneGet)
 - https://qiita.com/japboy/items/451cf30fd0d763d98ae6
 - https://qiita.com/arachan@github/items/399da4a19ac3a20205a7
 **** Chocolatey
 - package manager
+***** CLI
+****** Commands
+******* choco
+******** Options and Switechs
+*********  -v, --version
+******* list
+******* search
+******* find
+******* help
+******* info
+******* install - installs packages using configured sources
+******* pin
+******* outdated
+******* upgrade - upgrades packages from various sources
+******** Usage
+- choco upgrade <pkg|all> [<pkg2> ...] [<options/switches>
+- cup <pkg|all> [<pkg2> ...] [<options/switches>
+******* uninstall
+******* pach
+******* push
+******* new
+******* source
+******* sources
+******* config
+******* feature
+******* features
+******* apikey
+******* setapikey
+******* unpackself
+******* export
+****** Default Options and Switches
+******* -?,  --help, -h
+******* -v, --verbose
+*******  -y, --yes, --confirm
+***** Memo
+****** Install
+- [[https://docs.chocolatey.org/en-us/choco/setup][Chocolatey CLI Setup / Install]]
+- 2021/9/17にインストールした際は、powershellの管理者権限利用でいれたので、管理者権限でないとうまく扱えていない。
+
 ***** Link
+- https://docs.chocolatey.org/en-us/
+- [[https://community.chocolatey.org/courses/getting-started][Getting Started with Chocolatey]]
+  
 - https://chocolatey.org/packages?q=
 - https://qiita.com/msp0310/items/2a92f8966608260c49c1
 **** NuGet
@@ -1404,6 +1421,8 @@
 - Ctrl+Shift+F : 検索
 
 - Altを押しながらSettings/設定 : defalut.jsonが開く
+
+- Win + ` : Quakeモード
 
 ****** User Shortcut
 - Ctrl+Shift+- : 水平分割
@@ -1458,7 +1477,9 @@
   [[http://level69.net/archives/752][Windows Server 2012のパスワードを初期化しよう。- 技術的な何か。]]
   
 *** コントロールパネルをコマンドから開く
-- [[http://pasofaq.jp/windows/admintools/cpllist7.htm][コントロールパネルのコマンド一覧(Windows 7)]]
+- [[https://www.atmarkit.co.jp/ait/articles/0507/02/news016.html][Windowsのコントロールパネルの各アイテムをコマンドラインから起動する - @IT]]
+- [[file:Windows_SystemPrograms.org][Windows_SystemPrograms.org]]
+  
 *** Thumbs.db
 - 
   エクスプローラで縮小表示を行うと、画像や写真データの縮小イメージが格納されたThumbs.dbが作成される。
@@ -1773,6 +1794,24 @@
 - 辞書ツールで「一覧の出力」、および「テキストファイルからの登録」
 - [[http://office-qa.com/win/win12.htm][MS-IME：日本語入力（MS-IME）のユーザー辞書を他のPCにエクスポートする]]
 
+*** Windows10: ワールドワイド言語サポートでUnicode UTF-8を使用について
+- 7zipでzip化した際に文字化けする、と連絡あり。該当チェックを外したところ、問題なさそう。
+  各種日本語などの文字列をSJISでなくUTF-8処理してしまうため問題となったと考えられる。
+  ベータ版であり、しばらくは有効にしない方がよさそう。
+- 関連URL: [[https://news.mynavi.jp/article/win10tips-444/][「ワールドワイド言語サポートでUnicode UTF-8を使用」は有効にすべき？ - マイナビニュース]]
+
+*** サービスの削除
+- sc delete サービス名
+    
+*** サービスの実行ファイルのパス変更方法
+- regedit
+  -> HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\<サービス名>、のImagePathを変更。
+- https://nketomok-asa.hatenadiary.org/entry/20060503
+
+*** ルート証明書が信頼されていない
+- 問題となっている証明書を、「信頼されたルート証明機関」にインポートして対処した。
+  実際には、まず問題となっているルート証明書をエクスポートしたうえで、そのファイルを上記の信頼されたものとしてインポートしなおした。
+- [[https://milestone-of-se.nesuke.com/troubleshoot/not-exist-in-trusted-rootca-store/][『 信頼されたルート証明機関のストアに存在しないためこの ca ルート証明書は信頼されていません』または『 このcaルート証明書は信頼されていません。信頼を有効にするにはこの証明書を信頼されたルート証明機関のストアにインストールしてください』と表示される - SEの道標]]
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe
