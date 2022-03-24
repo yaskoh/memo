@@ -333,6 +333,12 @@
 - 文字列を数値に変換する
 *** アドインでインストールされるユーザー定義関数
 *** Web関数
+*** 未掲載分
+**** LAMBDA
+- [[https://forest.watch.impress.co.jp/docs/news/1387035.html][Excelの新関数「LAMBDA」（ラムダ）が一般提供開始 ～Excel数式が本格的なプログラミング言語に - 窓の杜]]
+- ヘルパー関数
+  - MAP, REDUCE, SCAN, MAKEARRAY, BYROW, BYCOL, ISOMITTED
+  
 *** Link
 - [[https://support.office.com/ja-jp/article/Excel-%E9%96%A2%E6%95%B0-%E3%82%A2%E3%83%AB%E3%83%95%E3%82%A1%E3%83%99%E3%83%83%E3%83%88%E9%A0%86-b3944572-255d-4efb-bb96-c6d90033e188][Excel関数（アルファベット順） - Office]]
 - [[https://support.office.com/ja-jp/article/Excel-%E9%96%A2%E6%95%B0-%E6%A9%9F%E8%83%BD%E5%88%A5-5f91f4e9-7b42-46d2-9bd1-63f26a86c0eb][Excel関数（機能別） - Office]]
