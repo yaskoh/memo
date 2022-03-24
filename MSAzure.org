@@ -381,6 +381,9 @@
 - Network Watcher / ネットワークウォッチャーを利用して、次ホップ機能を使用して通信をテスト可能。Azure Portal上でも利用可能。
   https://docs.microsoft.com/ja-jp/azure/network-watcher/diagnose-vm-network-routing-problem-powershell
     
+*** 運用関連
+- [[https://www.slideshare.net/mihochannel1/azure-98590356][こわくない！Azure運用管理 - slideshare]]
+
 ** Link
 - [[https://docs.microsoft.com/ja-jp/azure/][Document]]
 - [[http://www.buildinsider.net/web/azure/01][まだ知らない人のための最新Microsoft Azure入門 - BulidINSIDER]]
