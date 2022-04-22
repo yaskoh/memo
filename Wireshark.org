@@ -50,6 +50,13 @@
 *** TLSv1
 
 *** UDP
+** Shortcuts
+- Ctrl + E : Start / Stop
+- Ctrl + R : Restart
+- Ctrl + O : Open file
+- Ctrl + S : Save file
+- Ctrl + G : Go
+- Ctrl + M : Mark/Unmark packet
 ** Link
 *** Wireshark Wiki
 - https://wiki.wireshark.org/FrontPage

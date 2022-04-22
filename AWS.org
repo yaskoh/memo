@@ -305,7 +305,7 @@
 *** Quantum Technologies
 **** Amazon Braket
 
-*** Management and Governance
+*** Management and Governance / 管理とガバナンス
 **** AWS Organizations
 - [[https://dev.classmethod.jp/articles/organizations-gettingstarted/][AWS Organizationsとは？rootユーザも制御するその強力さを手を動かして体感してみる - DeveloperIO]]
 
@@ -352,6 +352,8 @@
 **** AWS AppConfig
 **** Trusted Advisor
 - パフォーマンスとセキュリティの最適化
+- AWSアカウント内の状況を5つの観点でチェックしてくれる。
+
 **** Control Tower
 **** AWS License manager
 **** AWS Well-Architected Tool

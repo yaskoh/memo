@@ -641,6 +641,8 @@
   diff -u [oldfile] [newfile]
 - http://d.hatena.ne.jp/mrgoofy33/20101019/1287500809
   https://qiita.com/astro_super_nova/items/e30dcaf4d106deebc63c
+**** perf
+- [[https://qiita.com/ryuichi1208/items/87658621d332d31b9450][Linux 性能解析ツールperfを使ってみた - Qiita]]
 **** pgrep
 - 
   選択基準にマッチするプロセスのプロセスIDを標準出力する
