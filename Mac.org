@@ -93,6 +93,10 @@
   - Emacs
     - Command -> meta
     - SpotlightがCtrl+Spaceで当たっていたが、Command+Spaceに変更できた（現在はデフォルト？）
+*** マウスのスクロール
+- マウスを使う場合、ウィンドウズとスクロールが逆。変更できる。
+  システム環境設定→マウス→スクロールの方向：ナチュラル、のチェックを外す。
+- https://itips.krsw.biz/reverse-direction-of-scroll-in-mac-os/
 *** 特殊キー
 - ⌘ : Command コマンド
 - ⌥ : Option, Alt オプション、オルト

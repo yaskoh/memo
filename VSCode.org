@@ -4,7 +4,7 @@
 ** Keyboard shortcuts
 - Reference Keyboard Shortcuts : Ctrl+K Ctrl+S / Cmd K Cmd S
 - Edit: Command Palette -> Open Keyboard Shortcuts (JSON)、keybinding.jsonを変更
-  ※キーバインドはデフォルトで使うことにした。。辛いかもしれない。(2021/7/15)
+  ※Emacsなしは、移動ができないので無理でした。。<-キーバインドはデフォルトで使うことにした。。辛いかもしれない。(2021/7/15)
 *** Markdown
 **** Ctrl + K, V : サイドバイサイドでプレビュー表示
 **** Ctrl + Shift + V : 別タブとしてプレビュー表示
@@ -130,8 +130,11 @@
   Across Multiple Machines Using GitHub Gist.
   https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync
 ** Link
-- [[https://www.microsoft.com/ja-jp/dev/products/code-vs.aspx][Visual Studio Code]]
-- https://www.microsoft.com/ja-jp/dev/resource/default.aspx
+- Visual Studio Code - Docs
+  - [[https://code.visualstudio.com/docs][Getting Started - Visual Studio Code - Docs]]
+  - [[https://code.visualstudio.com/docs/getstarted/introvideos][Introductory Videos - Visual Studio Code - Docs]]
+  - [[https://code.visualstudio.com/docs/getstarted/tips-and-tricks][Visual Studio Code Tips and Tricks - Visual Studio Code - Docs]]
+
 
 - [[https://www.atmarkit.co.jp/ait/articles/1507/10/news028.html][Visual Studio Codeの使い方、基本の「キ」 - @IT]]
 
