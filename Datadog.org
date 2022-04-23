@@ -1,0 +1,107 @@
+* Datadog
+** Documents
+*** はじめに
+**** Datadog
+- Integration
+- Log
+- APM & Continuous Profiler
+  - Datadog Application Performance Monitoring
+- Infrastructure
+- Host Map
+  - Infrastructureメニュー内
+- Events
+- Dashboards
+- Moritors
+- Network Performance Monitoring / NPM
+  - Infrastructureメニュー内
+- リアルユーザーモニタリング / RUM
+- Serverless
+- Security Monitoring
+**** Datadogサイト
+- 各サイトは完全に独立しており、サイト間でデータを共有できない。
+- URLで確認可能。
+**** Agent
+***** 概要
+- ホストにインストール。
+  インテグレーション、DogStatsD、またはAPIを介して、ホストのメトリクスとイベントをDatadogに報告する。
+***** セットアップ
+****** Configuration
+- 設定ファイル: datadog.yaml
+  - 必須パラメーターはDatadog APIキー、AgentのデータをオーガニゼーションとDatadogサイト(datadoghq.com)に関連付ける。
+    - 構成オプションの詳細: https://github.com/DataDog/datadog-agent/blob/main/pkg/config/config_template.yaml
+    
+****** 検証
+- ステータスコマンドを実行する
+****** コマンド
+***** 収集データ
+****** メトリクス
+******* エージェント
+******* チェック
+- メトリクスを収集する幾つかのコアチェックがデフォルトで有効になっている
+  
+****** イベント
+起動または再起動の際に、イベントをDatadogに送信する
+
+****** サービスチェック
+- datadog.agent.up: 接続できない場合にCRITICAL
+- datadog.agent.check_status: Agentチェックがメトリクスを送信できない場合にCRITICAL
+
+       
+***** トラブルシューティング
+
+**** インテグレーション
+- 新しい構築方法：
+  - [[https://docs.datadoghq.com/ja/developers/integrations/new_check_howto/?tab=configurationtemplate][新しいインテグレーションの設定]]
+- インフラストラクチャーからすべてのメトリクスとログを収集して、統合システムを全体として把握できる。
+- 3つのインテグレーション
+  - エージェントベース、checkというPythonクラスメソッドを使用して、収集するメトリクスを定義する
+  - 認証（クローラー）ベース、APIを使用してメトリクスを取得するための資格情報を指定する。Slack, AWS, Azure, PagerDutyなど
+  - ライブラリインテグレーション、Datadog APIを使用して、記述言語に基づいてアプリケーションを監視できる
+
+***** インテグレーションの設定
+- Datadog Agentパッケージに、公式にサポートとしているインテグレーションコアが含まれる。
+- [[https://docs.datadoghq.com/ja/agent/guide/integration-management/][インテグレーション管理]]
+
+****** APIキーとアプリケーションキー
+- APIキーが必要。
+
+****** インストール
+クローラーまたはライブラリベースのインテグレーションに接続する場合、来b手ウに確認
+
+****** Agentインテグレーションの構成
+
+***** 複数インテグレーションのインストール
+***** 自動検出インテグレーション
+***** セキュリティ対策
+
+**** ダッシュボード
+
+**** ログ
+
+**** トレーシング
+
+**** タグ
+
+**** API
+
+**** Syntheticモニタリング
+
+**** ラーニングセンター
+
+*** Agent
+- https://docs.datadoghq.com/ja/agent/
+**** 基本的なAgentの利用方法
+***** Agentアーキテクチャ
+***** CLI
+- <AGENT_バイナリパス> <サブコマンド> <オプション>
+****** check
+****** configcheck
+****** health
+****** help
+*** Integration
+*** Dashboard
+*** Infrastracture
+*** Metrics
+*** Alert
+*** Log
+** 

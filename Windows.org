@@ -704,6 +704,10 @@
 ****** ホームフォルダを変更
 - passwdの設定で、パスを/home/usernameから/mnt/c/Users/usernameに変更するといろいろと便利。
   - sudo vim /etc/passwd
+****** パスワードを忘れたとき
+- cmdなどで、"wsl -u root"を実行すると、rootユーザでログインできる。
+  そこで"passwd username"などをして変更すればよい。
+- [[https://qiita.com/iszk/items/557cd99739ea6cc82941][wsl でパスワードを忘れてしまった際の対処 - Qiita]]
 **** debian
 **** ubuntu
 *** WSL2
@@ -1747,8 +1751,14 @@
 *** パケットキャプチャーをソフトを使わずに実行
 - start: netsh trace start capture=yes
   end: netsh trace stop
-- 確認はMicrosoft Message Analyzer/Microsoft Network Monitorあたりが必要
-- http://www.vwnet.jp/windows/WS16/2017013001/PacketCapture.htm
+- 確認は、etl2pcapngなどを利用して、変換した情報をWiresharkあたりで確認するのがよい。
+  - [[https://github.com/microsoft/etl2pcapng/releases][microsoft/etl2pcapng - Github]]
+
+- 旧情報：確認はMicrosoft Message Analyzer/Microsoft Network Monitorあたりが必要
+  - http://www.vwnet.jp/windows/WS16/2017013001/PacketCapture.htm
+  →Message Analyzerは開発中止に。
+
+  
 *** Windowsでwget/curl的なことを行う
 - bitsadminコマンドを使う
 - 例:
@@ -1813,6 +1823,22 @@
 - 問題となっている証明書を、「信頼されたルート証明機関」にインポートして対処した。
   実際には、まず問題となっているルート証明書をエクスポートしたうえで、そのファイルを上記の信頼されたものとしてインポートしなおした。
 - [[https://milestone-of-se.nesuke.com/troubleshoot/not-exist-in-trusted-rootca-store/][『 信頼されたルート証明機関のストアに存在しないためこの ca ルート証明書は信頼されていません』または『 このcaルート証明書は信頼されていません。信頼を有効にするにはこの証明書を信頼されたルート証明機関のストアにインストールしてください』と表示される - SEの道標]]
+*** フォルダーとディレクトリ
+- フォルダー：仮想フォルダー/Virtual folderとファイルシステムフォルダー/File system folderからなるオブジェクト。
+- ディレクトリ：ファイルシステムフォルダーのみを指すオブジェクト
+- [[https://ascii.jp/elem/000/004/081/4081147/][Windowsにおけるフォルダーとディレクトリとは - ASCII.jp]]
+
+- 仮想フォルダー
+  代表的なものとしては「コントロールパネル」
+- ディレクトリ（ファイルシステムフォルダー）は特殊なファイル。その中に属するファイルのリストを保持している。
+
+*** コマンドでウェブページを開く
+- strat URLで、ウェブページを開くことができる。
+  なお、Macではopen URL。
+*** UACの仕組みで管理者としてコマンドを実行
+- powershellを使って、以下のように実行する。
+  - start-process cmd -verb runas
+  - (powershell -command start-process cmd -verb runas)
 *** (聞いた話メモ)
 - 
   ntoskrnl.exe

@@ -1,4 +1,8 @@
 * Outlook
+** Shortcut
+*** フォルダー移動 : Ctrl + Y
+- [[https://dekiru.net/article/11832/#:~:text=%5BCtrl%5D%2B%5BY%5D%E3%82%AD%E3%83%BC%E3%82%92,%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%81%8C%E5%8F%AF%E8%83%BD%E3%81%A7%E3%81%99%E3%80%82][ショートカットキーでフォルダーを移動する【Outlook】 - できるネット]]
+
 ** Memo
 *** 条件付書式
 - 
