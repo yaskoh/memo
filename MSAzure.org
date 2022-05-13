@@ -384,6 +384,9 @@
 *** 運用関連
 - [[https://www.slideshare.net/mihochannel1/azure-98590356][こわくない！Azure運用管理 - slideshare]]
 
+*** 命名規則
+- [[https://docs.microsoft.com/ja-jp/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming][名前付け規則を定義する - Microsoft Docs]]
+    
 ** Link
 - [[https://docs.microsoft.com/ja-jp/azure/][Document]]
 - [[http://www.buildinsider.net/web/azure/01][まだ知らない人のための最新Microsoft Azure入門 - BulidINSIDER]]
