@@ -38,6 +38,12 @@
 - scoop update <app> : appのアップデート
   - scoop update * : 全appのアップデート
 **** uninstall
+** Memo
+***  バージョンを変更
+- scoop reset app@version
+  - scoop reset emacs@27.2、など。
+    ただし本当にこれが良いやり方なのかは、よいくわからない。
+- https://qiita.com/akiakishitai/items/67de2d8dded401f218a2
 ** Link
 - [[https://qiita.com/nimzo6689/items/1ab33380366e324c0b84][全Scoopコマンド解説 その１ ～使用頻度（高）～ - @nimzo6689 - Qiita]]
 

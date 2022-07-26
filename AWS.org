@@ -662,3 +662,9 @@
 *** Datacenter
 - [[https://atmarkit.itmedia.co.jp/ait/articles/1411/20/news106.html][AWSのデータセンターの中身を、設計総責任者が話した - @IT]]
 - [[https://qiita.com/saitotak/items/f56234d0506b47ddbcfe][WikiLeaksがAWSのデータセンター所在地を暴露したので詳細を見る - Qiita]]
+
+*** SIEM
+- ハンズオン
+  - [[https://security-log-analysis-platform.workshop.aws/ja/][SIEM ON AMAZON OPENSEARCH SERVICE WORKSHOP - aws]]
+  - [[https://github.com/aws-samples/siem-on-amazon-opensearch-service/blob/main/README_ja.md][SIEM on Amazon OpenSearch Service - aws-samples - github]]
+    
