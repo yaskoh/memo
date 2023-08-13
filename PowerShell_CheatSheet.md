@@ -1,0 +1,47 @@
+# Powershell Cheat Sheet
+## Cluster
+- Get-ClusterResource
+- Get-ClusterResource pd-racm-im01 | Get-ClusterParameter
+- Get-ClusterGroup
+- Get-ClusterResource "resourceName" | Start-ClusterResource
+- Get-ClusterResource "namePattern*" | Start-ClusterResource
+- Move-ClusterGroup "pd-racm-im01"
+
+- Get-Cluster
+- Get-ClusterAvailableDisk
+- Get-ClusterNode
+
+- Get-ClusterLog
+
+- Get-Cluster pd-racm-im01 res "Resin-app-0" /prop
+
+- Get-ClusterAccess
+- Grant-ClusterAccess -User username [-Full|ReadOnly]
+- Remove-ClusterAccess -User username
+
+## 項目数の取得
+- (Get-Content filepath).Length
+- Get-Conntent filepath | Measure-Object
+
+## tail
+- Get-Content filename -Wait
+
+## Version / バージョン情報
+- $PSVersionTable.PSVersion
+
+## Execution Policy
+- https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7
+- Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+## Azure
+### インストール
+- https://docs.microsoft.com/ja-jp/powershell/azure/install-az-ps?view=azps-4.3.0#code-try-0
+### Azureに接続a
+- Connect-AzAccount
+
+### Subscription / サブスクリプション
+- Get-AzSubscription
+- Set-AzContext (Id)
+
+### 
+- Get-AzResource
