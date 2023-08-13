@@ -29,3 +29,7 @@
 ** Questions
 *** Project Euler
 - https://projecteuler.net/
+*** AtCoder上達のガイドライン
+- [[https://qiita.com/e869120/items/f1c6f98364d1443148b3][レッドコーダーが教える、競プロ・AtCoder上達のガイドライン【初級編：競プロを始めよう】 - e869120 - Qiita]]
+** Link
+- [[https://qiita.com/BinomialSheep/items/bdced19c2dc4e6b481ec][【競プロ】新人SEがAtCoderを始めて水色になった【色変記事】 - BionomialSheep - Qiita]]

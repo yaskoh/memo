@@ -35,6 +35,42 @@
 - バックアップ世代数と取得媒体
 - バックアップにかけられる費用
 
+** The Twelve-Factor App / 12FA
+- [[https://12factor.net/][THE TWELVE-FACTOR APP]]
+- [[https://aws.amazon.com/jp/builders-flash/202208/introductions-twelve-factors-app/?awsf.filter-name=*all][AWS アーキテクチャで学ぶ The Twelve Factors App 本格入門 - builders.flash]]
+- [[https://kakakakakku.hatenablog.com/entry/2020/03/09/084833][「The Twelve-Factor App」を15項目に見直した「Beyond the Twelve-Factor App」を読んだ - kakakakakku blog]]
+
+*** About
+- Heroku の共同創設者である Adam Wiggins 氏が提唱した、優れたソフトウェアを開発するための方法論
+*** Practices
+**** 1. Codebase
+- コードとアプリケーションは常に1:1の関係であるべき
+**** 2. Dependencies
+- アプリケーション内で利用されるライブラリ等の依存関係を明示的に宣言し、その定義を分離すべき
+**** 3. Config
+- 環境毎に異なるアプリケーションの設定値はコード上から分離すべき
+**** 4. Backing services
+- ネットワーク越しに利用するサービスは、アプリケーション上のリソースとして考えることでコードを変更することなく切り替えられるべき
+**** 5. Build, release, run
+- アプリケーションはコードベースから厳密に分離されたビルドステージ、リリースステージ、実行ステージを経て本番環境にデプロイされるべき
+**** 6. Processes
+- アプリケーションは 1 つもしくは複数のステートレスなプロセスとして実行すべき
+**** 7. Port binding
+- アプリケーション自体がポートをバインドして Web アプリケーションとして公開できるようにすべき
+- ApacheやTomcatは利用せず、アプリケーション自信がポートを持っている状態とすべき
+**** 8. Concurrency
+- アプリケーションをプロセスとして扱い、プロセス単位で水平にスケール可能とするべき
+**** 9. Disposability
+- アプリケーション、プロセスに関する起動や終了時間を最小化するように努めるべき
+**** 10. Dev/prod parity
+- アプリケーションの継続的なデプロイが実現できるように、開発環境と本番環境の差を可能な限り小さく保つべき
+**** 11. Logs
+- ログをイベントストリームとして扱うべき
+**** 12. Admin processes
+- 管理タスクを 1 回限りのプロセスとして実行すべき
+- 管理作業の自動化
+*** Link
+
 ** Glossary
 *** COCOMO
 - constructive cost model

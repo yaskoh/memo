@@ -202,7 +202,7 @@
 - Amazon VPC Endpoint
 - インターネットゲートウェイやNATゲートウェイ、NATインスタンスなどを経由することなく、VPCと他のAWSのサービスとをプライベートに接続できるAWSのサービス。
 - ゲートウェイエンドポイント(S3, DynamoDBのみ)と、インターフェイスエンドポイントがある。
-  - インターフェースエンドポイントをPrivateLinkと呼ぶ。
+  - インターフェースエンドポイントをPrivateLinkを利用。実質PrivateLink。
 ******* Endpoint Service
 ******* NAT Gateway
 ******* Peering
@@ -323,6 +323,17 @@
 - ログの監視
 ****** CloudWatch Events
 - APIのイベントをトリガーに何らかのアクションを実行させる
+****** CloudWatch Agent
+******* 設定ファイル / config.json
+- [[https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html][CloudWatch エージェントを使用して Amazon EC2 インスタンスとオンプレミスサーバーからメトリクスとログを収集する - aws]]
+- [[https://docs.aws.amazon.com/ja_jp/AmazonCloudWatch/latest/monitoring/create-cloudwatch-agent-configuration-file.html][CloudWatch エージェント設定ファイルを作成する - aws]]
+  - 設定ファイルconfig.json
+    Linux : /opt/aws/amazon-cloudwatch-agent/bin/
+******** Agentセクション
+******** Metricsセクション
+******** 
+******* amazon-cloudwatch-agent.toml / json
+- https://qiita.com/swiftman/items/705e75349f5f0a9f7d51
 **** AWS Auto Scaling
 **** CloudFormation
 - テンプレートを使ったリソースの作成と管理

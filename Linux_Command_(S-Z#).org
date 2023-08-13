@@ -253,6 +253,7 @@
   [[http://itpro.nikkeibp.co.jp/article/COLUMN/20060227/230888/][【split】ファイルを分割する - Linuxコマンド集]]
 
 **** ss
+- Socket Statistics、旧netstat相当の機能。
 **** ssh
 - secure shell.
 ***** Options

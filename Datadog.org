@@ -104,4 +104,63 @@
 *** Metrics
 *** Alert
 *** Log
-** 
+** Datadog Agent
+*** Command
+**** RHEL
+***** datadog-agent
+****** check
+- Run the specified check
+****** completion
+- Generate the autocompletion script for the specified shell
+****** config
+- Print the runtime configuration of a running agent
+****** configcheck
+- Print all configurations loaded & resolved of a running agent
+****** diagnose
+- Check availability of cloud provider and container metadata endpoints
+****** dogstatsd-capture
+- Start a dogstatsd UDS traffic capture
+****** dogstatsd-replay
+- Replay dogstatsd traffic
+****** dogstatsd-stats
+- Print basic statistics on the metrics processed by dogstatsd
+****** flare
+- Collect a flare and send it to Datadog
+****** health
+- Print the current agent health
+****** help
+- Help about any command
+****** hostname
+- Print the hostname used by the Agent
+****** import
+- Import and convert configuration files from previous versions of the Agent
+****** integration
+- Datadog integration manager
+****** jmx
+- Run troubleshooting commands on JMXFetch integrations
+******* collect
+******* list
+******** collected
+- List attributes that will actually be collected by your current instances configuration.
+******** everything
+- List every attributes available that has a type supported by JMXFetch.
+******** limited
+- List attributes that do match one of your instances configuration but that are not being collected because it would exceed the number of metrics that can be collected.
+******** matching
+- List attributes that match at least one of your instances configuration.
+******** not-matching
+- List attributes that don’t match any of your instances configuration.
+******** with-metrics
+- List attributes and metrics data that match at least one of your instances configuration.
+******** with-rate-metrics List attributes and metrics data that match at least one of your instances configuration, including rates and counters.
+****** launch-gui        starts the Datadog Agent GUI
+****** run:   Run the Agent
+****** secret            Print information about decrypted secrets in configuration.
+****** secret-helper     Secret management provider helper
+****** snmp:  Snmp tools
+****** status            Print the current status
+****** stop:  Stops a running Agent
+****** stream-logs       Stream the logs being processed by a running agent
+****** tagger-list       Print the tagger content of a running agent
+****** version           Print the version info
+****** workload-list     Print the workload content of a running agentr

@@ -1,4 +1,12 @@
 * Powershell Cheat Sheet
+** 基本的なコマンド
+- Write-Output : echo
+- Rename-Item
+- Get-ChildItem : dir, ls
+- 
+
+** grep
+- Select-String <Pattern> <Path>
 ** Cluster
 - Get-ClusterResource
 - Get-ClusterResource pd-racm-im01 | Get-ClusterParameter
@@ -32,6 +40,19 @@
 ** Execution Policy
 - https://docs.microsoft.com/ja-jp/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7
 - Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+** 文字列の連結
+- +演算子を使う
+
+** 名前の取得と変更
+- 単一ファイル：
+  Rename-Item OLD NEW
+- 複数ファイルをまとめて変更
+  Get-ChildItem | Rename-Item -NewName { $_ -Replace "old", "new" }
+
+** ファイルのコピー
+- 元ファイルから、Get-ChildItemの情報に沿った資料をコピー
+  Get-ChildItem ターゲットフォルダ\*.xlsx  -Recurse | ForEach-Object { $name = $_.DirectoryName + "出力ファイル名の編集" + $_.Name; Copy-Item コピー元ファイル.xlsx -Destination $name }
 
 ** Azure
 *** インストール

@@ -133,6 +133,8 @@
 *** /dev/
 **** pts/
 ***** number
+**** urandom
+- 外部デバイスの割り込みをエントロピーソースにためる。加工したデータのハッシュ値を取る。
 *** /etc/
 **** crontab
 - cronのメイン設定ファイル
@@ -301,6 +303,9 @@
   http://esupport.trendmicro.com/solution/ja-jp/1105158.aspx?print=true
 
 **** slabinfo
+**** sys/
+***** kernel/random/entropy_avail
+- エントロピーの値
 *** /var/
 **** spool/
 ***** mail

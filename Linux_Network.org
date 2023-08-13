@@ -1,6 +1,8 @@
 * Linux Network
 ** Command
 *** ip
+*** ss
+- netstatの代わり
 *** tc
 - show/manipulate traffic control settings
 ** Memo
