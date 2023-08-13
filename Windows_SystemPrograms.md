@@ -199,6 +199,28 @@
 - QUERY USERのalias。
 ###### qwinsta.exe
 - QUERY SESSIONのalias。
+###### rasdial.exe
+- vpn接続のために確認。
+- コマンド
+  rasdial.exe エントリ名 [ユーザー名 [パスワード|*]] [/DOMAIN:ドメイン]
+                [/PHONE:電話番号] [/CALLBACK:コールバック番号]
+                [/PHONEBOOK:電話帳ファイル] [/PREFIXSUFFIX]
+  rasdial.exe [エントリ名] /DISCONNECT
+  rasdial.exe
+###### rasphone.exe / ダイヤルアップネットワーク コマンドライン
+- vpn接続のために確認。
+- コマンド
+  rasphone.exe [-f ファイル] [[ -e | -d | -h | -r] エントリ]
+  rasphone.exe [-f ファイル] -a [エントリ]
+  rasphone.exe [-f ファイル] -lx リンク
+- 引数
+  -a 新しいエントリダイアログ
+  -e エントリの編集ダイアログ
+  -d エントリのダイヤルダイアログ
+  -h エントリを切断するときにメッセージを表示しない
+  -r エントリを削除するときにメッセージを表示しない
+  -lx ダイヤルアップショートカットファイルに対して'x'を実行
+  x コマンドa, e, d, hまたはrのいずれか
 ###### reg.exe
 - Registry操作
 ####### Operations
@@ -620,9 +642,7 @@ PushPrinterConnections.exe
 qappsrv.exe
 qprocess.exe
 rasautou.exe
-rasdial.exe
 raserver.exe
-rasphone.exe
 rdpclip.exe
 rdpinit.exe
 rdpshell.exe

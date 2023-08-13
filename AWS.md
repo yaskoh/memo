@@ -658,4 +658,12 @@
 - [[https://pages.awscloud.com/JAPAN-event-OE-At-least-10-basic-2020-confirmation-639.html][AWS ご利用開始時に最低限おさえておきたい10のこと - aws]]
 - [[https://d1.awsstatic.com/webinars/jp/pdf/services/20190123_10things_at_least_for_AWSBeginner.pdf][AWSご利用開始時に最低限おさえておきたい10のこと・資料 - aws]]
 
-  
+*** Datacenter
+- [[https://atmarkit.itmedia.co.jp/ait/articles/1411/20/news106.html][AWSのデータセンターの中身を、設計総責任者が話した - @IT]]
+- [[https://qiita.com/saitotak/items/f56234d0506b47ddbcfe][WikiLeaksがAWSのデータセンター所在地を暴露したので詳細を見る - Qiita]]
+
+*** SIEM
+- ハンズオン
+  - [[https://security-log-analysis-platform.workshop.aws/ja/][SIEM ON AMAZON OPENSEARCH SERVICE WORKSHOP - aws]]
+  - [[https://github.com/aws-samples/siem-on-amazon-opensearch-service/blob/main/README_ja.md][SIEM on Amazon OpenSearch Service - aws-samples - github]]
+    

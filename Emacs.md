@@ -591,6 +591,23 @@
     ・emacsのインストール
     scoop install emacs
 
+### 変数を確認する。
+- M-x describe-variables RET "vars-to-see"
+
+## Error対応
+### 28.1へのバージョンアップ / 2022/5
+#### Cannot find libgccjit
+- リンク
+- https://misohena.jp/blog/2022-04-06-use-native-compilation-on-emacs-28-1-for-windows.html
+- https://misohena.jp/blog/2022-04-11-use-native-compilation-on-emacs-28-1-for-windows-2.html
+
+- やったこと
+  - scoopでmsys2導入
+  - msys2でpacman -S mingw-w64-x86_64-libgccjitでlibgccjitを導入
+  - emacsのbinフォルダにlibgccjit、その他必要なリンクファイルをlib/gccフォルダを作って配置。
+
+#### Cannot open load file, ~~ build/initloader/initloader
+
 ## Link
 ### Manual
 - [[https://www.gnu.org/software/emacs/][GNU Emacs]]

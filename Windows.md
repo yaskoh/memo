@@ -1839,6 +1839,11 @@
 - powershellを使って、以下のように実行する。
   - start-process cmd -verb runas
   - (powershell -command start-process cmd -verb runas)
+### VPNへコマンドから接続する
+- 結局うまくいっていない。rasdial, rasphoneを利用すればよさそうなのだが。
+- http://unyouchan.blog.jp/archives/1003946859.html
+- https://seesaawiki.jp/w/kou1okada/d/20220215%3A%20Windows10%20-%20VPN%20%A4%CE%BC%AB%C6%B0%C0%DC%C2%B3
+  
 ### (聞いた話メモ)
 - 
   ntoskrnl.exe
